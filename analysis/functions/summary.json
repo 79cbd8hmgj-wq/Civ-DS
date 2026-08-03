@@ -1,0 +1,113 @@
+{
+  "components": [
+    {
+      "component": "arm9",
+      "direct_calls": 29806,
+      "function_candidates": 4528,
+      "internal_direct_calls": 29743
+    },
+    {
+      "component": "overlay_0000",
+      "direct_calls": 0,
+      "function_candidates": 0,
+      "internal_direct_calls": 0
+    },
+    {
+      "component": "overlay_0001",
+      "direct_calls": 193,
+      "function_candidates": 15,
+      "internal_direct_calls": 23
+    },
+    {
+      "component": "overlay_0002",
+      "direct_calls": 134,
+      "function_candidates": 8,
+      "internal_direct_calls": 12
+    },
+    {
+      "component": "overlay_0003",
+      "direct_calls": 129,
+      "function_candidates": 8,
+      "internal_direct_calls": 10
+    },
+    {
+      "component": "overlay_0004",
+      "direct_calls": 167,
+      "function_candidates": 13,
+      "internal_direct_calls": 15
+    },
+    {
+      "component": "overlay_0005",
+      "direct_calls": 177,
+      "function_candidates": 12,
+      "internal_direct_calls": 26
+    },
+    {
+      "component": "overlay_0006",
+      "direct_calls": 194,
+      "function_candidates": 16,
+      "internal_direct_calls": 39
+    },
+    {
+      "component": "overlay_0007",
+      "direct_calls": 72,
+      "function_candidates": 5,
+      "internal_direct_calls": 6
+    },
+    {
+      "component": "overlay_0008",
+      "direct_calls": 156,
+      "function_candidates": 10,
+      "internal_direct_calls": 12
+    },
+    {
+      "component": "overlay_0009",
+      "direct_calls": 132,
+      "function_candidates": 11,
+      "internal_direct_calls": 16
+    },
+    {
+      "component": "overlay_0010",
+      "direct_calls": 164,
+      "function_candidates": 11,
+      "internal_direct_calls": 13
+    },
+    {
+      "component": "overlay_0011",
+      "direct_calls": 132,
+      "function_candidates": 10,
+      "internal_direct_calls": 10
+    },
+    {
+      "component": "overlay_0012",
+      "direct_calls": 204,
+      "function_candidates": 35,
+      "internal_direct_calls": 44
+    },
+    {
+      "component": "overlay_0013",
+      "direct_calls": 139,
+      "function_candidates": 4,
+      "internal_direct_calls": 5
+    },
+    {
+      "component": "overlay_0014",
+      "direct_calls": 1909,
+      "function_candidates": 322,
+      "internal_direct_calls": 557
+    },
+    {
+      "component": "overlay_0015",
+      "direct_calls": 638,
+      "function_candidates": 47,
+      "internal_direct_calls": 146
+    },
+    {
+      "component": "overlay_0016",
+      "direct_calls": 374,
+      "function_candidates": 24,
+      "internal_direct_calls": 66
+    }
+  ],
+  "method": "ARM STMFD sp prologues and unconditional BL instructions; candidate only"
+}

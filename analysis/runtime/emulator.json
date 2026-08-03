@@ -1,6 +1,35 @@
 {
   "architecture": "ELF64 x86-64 PIE",
   "archive_sha256": "87b9e55d8555b2f9df6b8ac188de9dc5e6f91a527ed7a02097e82e9097ebe8c3",
+  "compatibility_pass": {
+    "arm9_gdb_port_opened": true,
+    "dummy": {
+      "error": "OpenGL support is not configured or available for SDL dummy",
+      "exit_code": 255
+    },
+    "environment": [
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "MESA_LOADER_DRIVER_OVERRIDE=llvmpipe",
+      "SDL_AUDIODRIVER=dummy"
+    ],
+    "kmsdrm": {
+      "error": "SDL kmsdrm unavailable",
+      "exit_code": 1
+    },
+    "offscreen": {
+      "error": "Could not initialize OpenGL / GLES library",
+      "exit_code": 255
+    },
+    "stale_processes_after_cleanup": false,
+    "wayland": {
+      "error": "XDG_RUNTIME_DIR invalid and SDL wayland unavailable",
+      "exit_code": 1
+    },
+    "x11": {
+      "error": "SDL x11 not available; Xvfb executable absent",
+      "exit_code": 1
+    }
+  },
   "executable_sha256": "fc2e9fde3e0865158c0b228fb6fe726a4da85f29a1fc8464a67d23d094aa95f2",
   "gdb_flags": [
     "--arm9gdb PORTNUM",
@@ -8,5 +37,7 @@
   ],
   "headless_result": "ROM loads and GDB opens, then SDL dummy/offscreen window initialization fails due unavailable OpenGL/GLES",
   "process_cleanup": "confirmed no stale desmume-cli process after bounded capture",
+  "runtime_requirement_to_resume": "A DeSmuME CLI build without mandatory OpenGL window creation, or a working X11/Xvfb + Mesa bundle and an automatable save state at a reachable diplomacy screen.",
+  "unconfirmed_runtime_evidence": "No controlled diplomacy state transition, overlay-load trace, watchpoint, or save-state comparison.",
   "version": "DeSmuME 0.9.14 git#0 dev+ x64-JIT SSE2"
 }

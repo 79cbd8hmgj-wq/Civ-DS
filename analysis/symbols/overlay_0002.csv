@@ -1,1 +1,9 @@
 address,name,kind,confidence,evidence_artifact,notes
+0x022056cc,overlay_0002_sub_022056cc,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02205c0c,overlay_0002_sub_02205c0c,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02205d84,overlay_0002_sub_02205d84,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02205dfc,overlay_0002_sub_02205dfc,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02205ee8,overlay_0002_sub_02205ee8,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02206394,overlay_0002_sub_02206394,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x022067a8,overlay_0002_sub_022067a8,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
+0x02206e10,overlay_0002_sub_02206e10,function,candidate,analysis/functions/summary.json,ARM prologue heuristic only
