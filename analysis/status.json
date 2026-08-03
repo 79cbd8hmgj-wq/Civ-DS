@@ -1,0 +1,38 @@
+{
+  "branch": "codex/establish-decompilation-project-structure",
+  "completed_evidence": [
+    "archive and ROM hashes",
+    "header, FAT, FNT, and overlay manifests",
+    "packaged supported-ROM registry",
+    "strict hierarchy and executable range validation",
+    "LZ10 decoder and atomic expected-byte patch primitive",
+    "transactional full workspace extraction (2753 FAT, 2736 named NitroFS, 17 overlays)",
+    "exact byte-identical no-change rebuild",
+    "ARM9 entry static/runtime mapping",
+    "overlay 1 diplomacy presentation consumer",
+    "conservative ARM function/call inventories",
+    "confirmed symmetric 6x6 relationship matrix at 0x0219fb54",
+    "confirmed relationship setter sub_02041f4c and attack validator sub_02063238",
+    "bounded five-backend DeSmuME graphics compatibility pass"
+  ],
+  "current_checkpoint": "Trace relationship matrix initialization, turn decay, and save serialization; classify nonzero relationship values",
+  "current_milestone": 5,
+  "head_policy": "Resolve exact current head with git rev-parse HEAD; never copy a pre-commit hash here.",
+  "last_local_verification": {
+    "ci_result": "not run; do not claim CI success",
+    "command": "make check",
+    "exact_rom_round_trip": "byte-identical SHA-256 f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "result": "26 passed on exact local ROM; 0 skipped"
+  },
+  "limitations": [
+    "Ghidra is unavailable; LLVM 20 raw ARM disassembly preparation is operational.",
+    "Network policy prevented fetching setuptools for a local wheel-install test; GitHub workflow performs packaging tests in CI.",
+    "DeSmuME compatibility pass exhausted dummy, offscreen, X11, Wayland, and KMSDRM; ARM9 GDB opens but no available backend sustains gameplay.",
+    "GitHub push blocked by CONNECT tunnel HTTP 403; remote PR/CI head could not be updated from this environment."
+  ],
+  "remaining_questions": [
+    "relationship matrix initialization and save/load consumers",
+    "nonzero relationship value semantics and turn-boundary update",
+    "controlled diplomacy transaction with a compatible display/emulator bundle"
+  ]
+}

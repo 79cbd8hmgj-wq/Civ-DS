@@ -1,0 +1,56 @@
+{
+  "archive": {
+    "sha256": "79eca1af3b1a5ed32a64033cdb6302552909a9512532207ac1cf25b71ecf652b",
+    "size": 26121713
+  },
+  "emulator_archive": {
+    "sha256": "87b9e55d8555b2f9df6b8ac188de9dc5e6f91a527ed7a02097e82e9097ebe8c3",
+    "size": 14275704
+  },
+  "game": "Sid Meier's Civilization Revolution",
+  "history_cleanup_note": "Copyrighted archives existed in prior history; history was not rewritten.",
+  "platform": "Nintendo DS",
+  "rom": {
+    "arm7": {
+      "entry_address": 37224448,
+      "load_address": 37224448,
+      "rom_offset": 1886720,
+      "size": 159192
+    },
+    "arm7_overlay_table": {
+      "rom_offset": 0,
+      "size": 0
+    },
+    "arm9": {
+      "entry_address": 33556480,
+      "load_address": 33554432,
+      "rom_offset": 16384,
+      "size": 1640376
+    },
+    "arm9_overlay_table": {
+      "rom_offset": 1656832,
+      "size": 544
+    },
+    "banner_offset": 2121728,
+    "fat": {
+      "rom_offset": 2099200,
+      "size": 22024
+    },
+    "file_count": 2753,
+    "fnt": {
+      "rom_offset": 2045952,
+      "size": 52764
+    },
+    "game_code": "YS6E",
+    "header_checksum": 43659,
+    "maker_code": "54",
+    "named_file_count": 2736,
+    "overlay_count": 17,
+    "rom_size": 67108864,
+    "rom_version": 0,
+    "secure_area_checksum": 4548,
+    "sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "title": "CIVREV",
+    "unit_code": 0
+  }
+}

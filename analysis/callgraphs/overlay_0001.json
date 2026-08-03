@@ -1,0 +1,1361 @@
+{
+  "confidence": "candidate",
+  "edges": [
+    {
+      "caller_function": 35673940,
+      "caller_instruction": 35673948,
+      "caller_offset": 188,
+      "internal": true,
+      "target_address": 35673960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674000,
+      "caller_offset": 240,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674008,
+      "caller_offset": 248,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674040,
+      "caller_offset": 280,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674048,
+      "caller_offset": 288,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674080,
+      "caller_offset": 320,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674088,
+      "caller_offset": 328,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674120,
+      "caller_offset": 360,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674128,
+      "caller_offset": 368,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674180,
+      "caller_offset": 420,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674188,
+      "caller_offset": 428,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674224,
+      "caller_offset": 464,
+      "internal": false,
+      "target_address": 34214900
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674232,
+      "caller_offset": 472,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674268,
+      "caller_offset": 508,
+      "internal": false,
+      "target_address": 34209784
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674276,
+      "caller_offset": 516,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674320,
+      "caller_offset": 560,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35673960,
+      "caller_instruction": 35674428,
+      "caller_offset": 668,
+      "internal": false,
+      "target_address": 34286732
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674476,
+      "caller_offset": 716,
+      "internal": false,
+      "target_address": 34287292
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674484,
+      "caller_offset": 724,
+      "internal": false,
+      "target_address": 34351312
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674496,
+      "caller_offset": 736,
+      "internal": false,
+      "target_address": 33563616
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674608,
+      "caller_offset": 848,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674688,
+      "caller_offset": 928,
+      "internal": false,
+      "target_address": 34241908
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674728,
+      "caller_offset": 968,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674764,
+      "caller_offset": 1004,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674796,
+      "caller_offset": 1036,
+      "internal": false,
+      "target_address": 34243924
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674828,
+      "caller_offset": 1068,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674912,
+      "caller_offset": 1152,
+      "internal": false,
+      "target_address": 34241908
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674952,
+      "caller_offset": 1192,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35674988,
+      "caller_offset": 1228,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675024,
+      "caller_offset": 1264,
+      "internal": false,
+      "target_address": 34243924
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675056,
+      "caller_offset": 1296,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675120,
+      "caller_offset": 1360,
+      "internal": false,
+      "target_address": 34241908
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675160,
+      "caller_offset": 1400,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675196,
+      "caller_offset": 1436,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675228,
+      "caller_offset": 1468,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675268,
+      "caller_offset": 1508,
+      "internal": false,
+      "target_address": 34241908
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675308,
+      "caller_offset": 1548,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675348,
+      "caller_offset": 1588,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675384,
+      "caller_offset": 1624,
+      "internal": false,
+      "target_address": 34237740
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675412,
+      "caller_offset": 1652,
+      "internal": false,
+      "target_address": 34917140
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675464,
+      "caller_offset": 1704,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675488,
+      "caller_offset": 1728,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675512,
+      "caller_offset": 1752,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35674448,
+      "caller_instruction": 35675536,
+      "caller_offset": 1776,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675680,
+      "caller_offset": 1920,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675700,
+      "caller_offset": 1940,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675716,
+      "caller_offset": 1956,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675880,
+      "caller_offset": 2120,
+      "internal": false,
+      "target_address": 34220880
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675924,
+      "caller_offset": 2164,
+      "internal": false,
+      "target_address": 34227588
+    },
+    {
+      "caller_function": 35675596,
+      "caller_instruction": 35675932,
+      "caller_offset": 2172,
+      "internal": true,
+      "target_address": 35674448
+    },
+    {
+      "caller_function": 35675972,
+      "caller_instruction": 35675996,
+      "caller_offset": 2236,
+      "internal": false,
+      "target_address": 33564128
+    },
+    {
+      "caller_function": 35675972,
+      "caller_instruction": 35676004,
+      "caller_offset": 2244,
+      "internal": true,
+      "target_address": 35673960
+    },
+    {
+      "caller_function": 35675972,
+      "caller_instruction": 35676036,
+      "caller_offset": 2276,
+      "internal": false,
+      "target_address": 34220880
+    },
+    {
+      "caller_function": 35675972,
+      "caller_instruction": 35676064,
+      "caller_offset": 2304,
+      "internal": false,
+      "target_address": 34227424
+    },
+    {
+      "caller_function": 35675972,
+      "caller_instruction": 35676096,
+      "caller_offset": 2336,
+      "internal": false,
+      "target_address": 34917140
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676208,
+      "caller_offset": 2448,
+      "internal": false,
+      "target_address": 34932048
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676228,
+      "caller_offset": 2468,
+      "internal": false,
+      "target_address": 33646232
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676268,
+      "caller_offset": 2508,
+      "internal": false,
+      "target_address": 34932048
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676288,
+      "caller_offset": 2528,
+      "internal": false,
+      "target_address": 33646232
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676344,
+      "caller_offset": 2584,
+      "internal": false,
+      "target_address": 34915148
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676364,
+      "caller_offset": 2604,
+      "internal": false,
+      "target_address": 33646232
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676384,
+      "caller_offset": 2624,
+      "internal": false,
+      "target_address": 33640648
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676392,
+      "caller_offset": 2632,
+      "internal": false,
+      "target_address": 33652000
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676400,
+      "caller_offset": 2640,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676444,
+      "caller_offset": 2684,
+      "internal": false,
+      "target_address": 34915148
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676488,
+      "caller_offset": 2728,
+      "internal": false,
+      "target_address": 34241908
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676548,
+      "caller_offset": 2788,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676616,
+      "caller_offset": 2856,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676700,
+      "caller_offset": 2940,
+      "internal": false,
+      "target_address": 34915148
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676720,
+      "caller_offset": 2960,
+      "internal": false,
+      "target_address": 33646232
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676740,
+      "caller_offset": 2980,
+      "internal": false,
+      "target_address": 33640648
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676748,
+      "caller_offset": 2988,
+      "internal": false,
+      "target_address": 33652000
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676756,
+      "caller_offset": 2996,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676800,
+      "caller_offset": 3040,
+      "internal": false,
+      "target_address": 34915148
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676820,
+      "caller_offset": 3060,
+      "internal": false,
+      "target_address": 34214848
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676868,
+      "caller_offset": 3108,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676912,
+      "caller_offset": 3152,
+      "internal": false,
+      "target_address": 34228248
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676948,
+      "caller_offset": 3188,
+      "internal": false,
+      "target_address": 33718776
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676968,
+      "caller_offset": 3208,
+      "internal": false,
+      "target_address": 34209704
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676984,
+      "caller_offset": 3224,
+      "internal": false,
+      "target_address": 34210032
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35676992,
+      "caller_offset": 3232,
+      "internal": false,
+      "target_address": 33652000
+    },
+    {
+      "caller_function": 35676148,
+      "caller_instruction": 35677000,
+      "caller_offset": 3240,
+      "internal": false,
+      "target_address": 33652000
+    },
+    {
+      "caller_function": 35677056,
+      "caller_instruction": 35677092,
+      "caller_offset": 3332,
+      "internal": false,
+      "target_address": 34917140
+    },
+    {
+      "caller_function": 35677056,
+      "caller_instruction": 35677228,
+      "caller_offset": 3468,
+      "internal": false,
+      "target_address": 34243924
+    },
+    {
+      "caller_function": 35677056,
+      "caller_instruction": 35677272,
+      "caller_offset": 3512,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35677296,
+      "caller_instruction": 35677368,
+      "caller_offset": 3608,
+      "internal": false,
+      "target_address": 34969384
+    },
+    {
+      "caller_function": 35677296,
+      "caller_instruction": 35677388,
+      "caller_offset": 3628,
+      "internal": true,
+      "target_address": 35676148
+    },
+    {
+      "caller_function": 35677296,
+      "caller_instruction": 35677432,
+      "caller_offset": 3672,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35677456,
+      "caller_instruction": 35677660,
+      "caller_offset": 3900,
+      "internal": true,
+      "target_address": 35676148
+    },
+    {
+      "caller_function": 35677456,
+      "caller_instruction": 35677704,
+      "caller_offset": 3944,
+      "internal": true,
+      "target_address": 35677056
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677768,
+      "caller_offset": 4008,
+      "internal": false,
+      "target_address": 33564128
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677780,
+      "caller_offset": 4020,
+      "internal": false,
+      "target_address": 34235960
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677796,
+      "caller_offset": 4036,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677864,
+      "caller_offset": 4104,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677888,
+      "caller_offset": 4128,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677904,
+      "caller_offset": 4144,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35677976,
+      "caller_offset": 4216,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678020,
+      "caller_offset": 4260,
+      "internal": false,
+      "target_address": 34168484
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678036,
+      "caller_offset": 4276,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678048,
+      "caller_offset": 4288,
+      "internal": false,
+      "target_address": 34932356
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678116,
+      "caller_offset": 4356,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678160,
+      "caller_offset": 4400,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678228,
+      "caller_offset": 4468,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678256,
+      "caller_offset": 4496,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678300,
+      "caller_offset": 4540,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678344,
+      "caller_offset": 4584,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678384,
+      "caller_offset": 4624,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678408,
+      "caller_offset": 4648,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678448,
+      "caller_offset": 4688,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678504,
+      "caller_offset": 4744,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678540,
+      "caller_offset": 4780,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678596,
+      "caller_offset": 4836,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678628,
+      "caller_offset": 4868,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678684,
+      "caller_offset": 4924,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678744,
+      "caller_offset": 4984,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678800,
+      "caller_offset": 5040,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35678976,
+      "caller_offset": 5216,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35679032,
+      "caller_offset": 5272,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35679088,
+      "caller_offset": 5328,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35679144,
+      "caller_offset": 5384,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35679184,
+      "caller_offset": 5424,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35677712,
+      "caller_instruction": 35679240,
+      "caller_offset": 5480,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679484,
+      "caller_offset": 5724,
+      "internal": false,
+      "target_address": 34214900
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679492,
+      "caller_offset": 5732,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679524,
+      "caller_offset": 5764,
+      "internal": false,
+      "target_address": 34209784
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679532,
+      "caller_offset": 5772,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679564,
+      "caller_offset": 5804,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679572,
+      "caller_offset": 5812,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679668,
+      "caller_offset": 5908,
+      "internal": true,
+      "target_address": 35677296
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679676,
+      "caller_offset": 5916,
+      "internal": true,
+      "target_address": 35677056
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679764,
+      "caller_offset": 6004,
+      "internal": false,
+      "target_address": 34214900
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679772,
+      "caller_offset": 6012,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679804,
+      "caller_offset": 6044,
+      "internal": false,
+      "target_address": 34209784
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679812,
+      "caller_offset": 6052,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679844,
+      "caller_offset": 6084,
+      "internal": false,
+      "target_address": 34241960
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679852,
+      "caller_offset": 6092,
+      "internal": false,
+      "target_address": 33718824
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679948,
+      "caller_offset": 6188,
+      "internal": true,
+      "target_address": 35677296
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35679956,
+      "caller_offset": 6196,
+      "internal": true,
+      "target_address": 35677056
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35680012,
+      "caller_offset": 6252,
+      "internal": false,
+      "target_address": 34969280
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35680044,
+      "caller_offset": 6284,
+      "internal": false,
+      "target_address": 34235096
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35680112,
+      "caller_offset": 6352,
+      "internal": false,
+      "target_address": 34210372
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35680156,
+      "caller_offset": 6396,
+      "internal": false,
+      "target_address": 34227280
+    },
+    {
+      "caller_function": 35679396,
+      "caller_instruction": 35680200,
+      "caller_offset": 6440,
+      "internal": false,
+      "target_address": 34210536
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680276,
+      "caller_offset": 6516,
+      "internal": false,
+      "target_address": 34287456
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680328,
+      "caller_offset": 6568,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680388,
+      "caller_offset": 6628,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680408,
+      "caller_offset": 6648,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680472,
+      "caller_offset": 6712,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680516,
+      "caller_offset": 6756,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680576,
+      "caller_offset": 6816,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680596,
+      "caller_offset": 6836,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35680244,
+      "caller_instruction": 35680660,
+      "caller_offset": 6900,
+      "internal": false,
+      "target_address": 33564792
+    },
+    {
+      "caller_function": 35680680,
+      "caller_instruction": 35680696,
+      "caller_offset": 6936,
+      "internal": false,
+      "target_address": 33609136
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35680920,
+      "caller_offset": 7160,
+      "internal": true,
+      "target_address": 35677456
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35680956,
+      "caller_offset": 7196,
+      "internal": false,
+      "target_address": 34236064
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35680976,
+      "caller_offset": 7216,
+      "internal": false,
+      "target_address": 34235960
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35680984,
+      "caller_offset": 7224,
+      "internal": true,
+      "target_address": 35679396
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681020,
+      "caller_offset": 7260,
+      "internal": true,
+      "target_address": 35680680
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681052,
+      "caller_offset": 7292,
+      "internal": false,
+      "target_address": 33562900
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681072,
+      "caller_offset": 7312,
+      "internal": false,
+      "target_address": 34168184
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681092,
+      "caller_offset": 7332,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681120,
+      "caller_offset": 7360,
+      "internal": false,
+      "target_address": 34168184
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681136,
+      "caller_offset": 7376,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681156,
+      "caller_offset": 7396,
+      "internal": false,
+      "target_address": 33700444
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681168,
+      "caller_offset": 7408,
+      "internal": true,
+      "target_address": 35680244
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681176,
+      "caller_offset": 7416,
+      "internal": true,
+      "target_address": 35677712
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681204,
+      "caller_offset": 7444,
+      "internal": false,
+      "target_address": 33557860
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681244,
+      "caller_offset": 7484,
+      "internal": false,
+      "target_address": 33611704
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681412,
+      "caller_offset": 7652,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681436,
+      "caller_offset": 7676,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681460,
+      "caller_offset": 7700,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681484,
+      "caller_offset": 7724,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681508,
+      "caller_offset": 7748,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681532,
+      "caller_offset": 7772,
+      "internal": false,
+      "target_address": 33595276
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681624,
+      "caller_offset": 7864,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681696,
+      "caller_offset": 7936,
+      "internal": false,
+      "target_address": 34243476
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681776,
+      "caller_offset": 8016,
+      "internal": false,
+      "target_address": 34969280
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681900,
+      "caller_offset": 8140,
+      "internal": true,
+      "target_address": 35677456
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681920,
+      "caller_offset": 8160,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35681932,
+      "caller_offset": 8172,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682004,
+      "caller_offset": 8244,
+      "internal": true,
+      "target_address": 35677456
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682024,
+      "caller_offset": 8264,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682036,
+      "caller_offset": 8276,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682092,
+      "caller_offset": 8332,
+      "internal": true,
+      "target_address": 35680680
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682108,
+      "caller_offset": 8348,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682140,
+      "caller_offset": 8380,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682152,
+      "caller_offset": 8392,
+      "internal": false,
+      "target_address": 34284772
+    },
+    {
+      "caller_function": 35680904,
+      "caller_instruction": 35682188,
+      "caller_offset": 8428,
+      "internal": false,
+      "target_address": 33561316
+    },
+    {
+      "caller_function": 35682268,
+      "caller_instruction": 35682288,
+      "caller_offset": 8528,
+      "internal": true,
+      "target_address": 35673760
+    },
+    {
+      "caller_function": 35682268,
+      "caller_instruction": 35682304,
+      "caller_offset": 8544,
+      "internal": true,
+      "target_address": 35675596
+    },
+    {
+      "caller_function": 35682268,
+      "caller_instruction": 35682312,
+      "caller_offset": 8552,
+      "internal": true,
+      "target_address": 35680904
+    },
+    {
+      "caller_function": 35682268,
+      "caller_instruction": 35682324,
+      "caller_offset": 8564,
+      "internal": true,
+      "target_address": 35675972
+    },
+    {
+      "caller_function": 35682268,
+      "caller_instruction": 35682332,
+      "caller_offset": 8572,
+      "internal": true,
+      "target_address": 35673940
+    }
+  ],
+  "limitations": [
+    "ARM-state prologue heuristic only",
+    "Thumb functions and tail calls are not enumerated",
+    "Candidates are not semantic confirmations"
+  ]
+}

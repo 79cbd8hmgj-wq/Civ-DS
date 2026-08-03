@@ -1,0 +1,18 @@
+# Copyrighted and generated reference material
+local/
+*.nds
+*.sav
+*.dsv
+*.dst
+*.ram
+*.log
+*.zip
+# Python/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/

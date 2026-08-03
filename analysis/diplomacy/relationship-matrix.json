@@ -1,0 +1,37 @@
+{
+  "binary_offsets": [
+    "0x00041f4c-0x00041fef",
+    "global is outside stored ARM9 static extent"
+  ],
+  "component": "arm9",
+  "component_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+  "conclusion": "0x0219fb54 is the confirmed authoritative symmetric 6x6 relationship-state matrix and sub_02041f4c is its direct/network-aware setter. Value zero is confirmed as the state selected when an attack proceeds from declaration or treaty breaking. Names for other numeric values remain unconfirmed.",
+  "game": "Sid Meier's Civilization Revolution",
+  "instruction_hashes": [
+    "d22340a0b21b94d29743aa6d7d147bc12f2d3e260e1932d0c419aa76774fe317"
+  ],
+  "limitations": [
+    "Save/load consumers are not yet traced.",
+    "The controlled neutral-to-war runtime transaction is not captured.",
+    "Meanings of nonzero values 1 and 3 remain candidates."
+  ],
+  "next_checkpoint": "Trace initialization and serialization references to 0x0219fb54, then classify nonzero values from state-specific consumers.",
+  "observations": [
+    "sub_02041f4c computes row base as 0x0219fb54 + 24*a and indexes b as a 32-bit element, establishing a six-element row.",
+    "The direct path writes value to both [a][b] and [b][a].",
+    "A repeated nonzero value returns early; zero is deliberately written again.",
+    "When network state 0x0219fa6c is active and propagation is requested, message ID 38 is emitted instead of a local write.",
+    "ARM9 sub_02063238 reads the same matrix while validating an attempted attack; its declare/break-peace path calls sub_02041f4c with value zero."
+  ],
+  "platform": "Nintendo DS",
+  "question": "Where is authoritative pairwise relationship state stored and mutated?",
+  "rom_offsets": [
+    "0x00045f4c-0x00045fef"
+  ],
+  "rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "runtime_addresses": [
+    "0x02041f4c-0x02041fef",
+    "0x0219fb54-0x0219fbe3"
+  ],
+  "status": "confirmed"
+}

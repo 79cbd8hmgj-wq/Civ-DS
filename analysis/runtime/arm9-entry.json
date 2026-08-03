@@ -1,0 +1,33 @@
+{
+  "binary_offsets": [
+    "0x00000800-0x0000081f"
+  ],
+  "component": "arm9",
+  "component_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+  "conclusion": "The supplied x86-64 DeSmuME build loads the exact ROM and its ARM9 GDB stub permits bounded register and memory capture at entry.",
+  "game": "Sid Meier's Civilization Revolution",
+  "instruction_hashes": [
+    "77ef5bbd3a0d80ae6a5945d236ce47a674d0d67f55493d2db2bd3c057860ba9a"
+  ],
+  "limitations": [
+    "SDL dummy/offscreen window creation fails with exit 255 because OpenGL/GLES is unavailable.",
+    "No interactive gameplay transaction was attempted."
+  ],
+  "next_checkpoint": "Provide a display backend, stop after SDK startup, and trace overlay loading.",
+  "observations": [
+    "GDB stop reply S02; PC decoded from register packet was 0x02000800.",
+    "Memory packet at 0x02000800 returned 01c3a0e308c28ce5b600dce1000050e3fcffff1aa50000eb1300a0e300f021e1.",
+    "The returned runtime bytes exactly match ARM9 binary offset 0x800.",
+    "The emulator identifies the cartridge as YS6E / NTR-YS6E-USA and exposes ARM9 GDB on the requested TCP port."
+  ],
+  "platform": "Nintendo DS",
+  "question": "Does the supplied DeSmuME ARM9 GDB stub expose the header entry and memory?",
+  "rom_offsets": [
+    "0x00004800-0x0000481f"
+  ],
+  "rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "runtime_addresses": [
+    "0x02000800-0x0200081f"
+  ],
+  "status": "confirmed"
+}
