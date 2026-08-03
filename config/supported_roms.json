@@ -1,0 +1,11 @@
+{
+  "roms": {
+    "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08": {
+      "game_code": "YS6E",
+      "maker_code": "54",
+      "rom_version": 0,
+      "title": "CIVREV"
+    }
+  },
+  "schema_version": 1
+}
