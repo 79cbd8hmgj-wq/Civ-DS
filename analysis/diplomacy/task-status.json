@@ -1,0 +1,7 @@
+{
+  "confirmed": ["overlay 1 presentation consumer sub_02206610", "direct caller at 0x02207398", "peace and war turn-count labels"],
+  "probable": [],
+  "candidate": ["ARM9 formatter sub_02023a5c", "ARM9 text renderer sub_02002878"],
+  "rejected": ["sub_02206610 as authoritative relationship mutation boundary"],
+  "next_checkpoint": "Trace ARM9 globals and overlay 1 input dispatcher; capture overlay runtime when a display backend is available."
+}

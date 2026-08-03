@@ -5,6 +5,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 import struct
 from typing import cast
+from .crc import crc16
 from .errors import FormatError
 
 HEADER_SIZE = 0x200
@@ -56,6 +57,12 @@ def _text(data: bytes, start: int, size: int, field: str) -> str:
 def parse_header(data: bytes, rom_size: int) -> NDSHeader:
     if len(data) < HEADER_SIZE:
         raise FormatError("truncated NDS header")
+    stored_crc = struct.unpack_from("<H", data, 0x15E)[0]
+    actual_crc = crc16(data[:0x15E])
+    if stored_crc != actual_crc:
+        raise FormatError(
+            f"header CRC mismatch: stored 0x{stored_crc:04x}, calculated 0x{actual_crc:04x}"
+        )
 
     def u16(offset: int) -> int:
         return cast(int, struct.unpack_from("<H", data, offset)[0])
@@ -107,6 +114,12 @@ def parse_header(data: bytes, rom_size: int) -> NDSHeader:
             raise FormatError(f"{name} range exceeds ROM")
     if result.fat.size % 8:
         raise FormatError("FAT size is not a multiple of 8")
+    for name, program_info in (("ARM9", result.arm9), ("ARM7", result.arm7)):
+        runtime_end = program_info.load_address + program_info.size
+        if runtime_end > 0x1_0000_0000:
+            raise FormatError(f"{name} load range overflows 32-bit address space")
+        if not (program_info.load_address <= program_info.entry_address < runtime_end):
+            raise FormatError(f"{name} entry address is outside its load range")
     for name, table in (("ARM9", result.arm9_overlay_table), ("ARM7", result.arm7_overlay_table)):
         if table.size % 32:
             raise FormatError(f"{name} overlay table size is not a multiple of 32")

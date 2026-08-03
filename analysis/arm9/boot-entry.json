@@ -1,0 +1,32 @@
+{
+  "binary_offsets": [
+    "0x00000800-0x0000087f"
+  ],
+  "component": "arm9",
+  "component_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+  "conclusion": "The ARM9 stored/runtime mapping at entry is confirmed: runtime 0x02000800 equals decoded-binary offset 0x800 and ROM offset 0x4800.",
+  "game": "Sid Meier's Civilization Revolution",
+  "instruction_hashes": [
+    "1e66881b90150fd201e88d3dd03580ceee72fdfdce27d6835c30ca7a7124c661"
+  ],
+  "limitations": [
+    "Semantics beyond CPU/bootstrap initialization are not assigned here.",
+    "The supplied CLI cannot keep a display window alive with available SDL video backends."
+  ],
+  "next_checkpoint": "Trace bootstrap callees beginning at 0x02000ab0 and SDK initialization.",
+  "observations": [
+    "Header entry address is 0x02000800.",
+    "Static ARM decoding begins with mov r12, #0x04000000 and str r12, [r12, #0x208].",
+    "DeSmuME ARM9 GDB stub stopped with PC 0x02000800 and returned the same first 32 bytes as the stored ARM9 binary."
+  ],
+  "platform": "Nintendo DS",
+  "question": "What code executes at the ARM9 header entry point?",
+  "rom_offsets": [
+    "0x00004800-0x0000487f"
+  ],
+  "rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "runtime_addresses": [
+    "0x02000800-0x0200087f"
+  ],
+  "status": "confirmed"
+}

@@ -1,0 +1,74 @@
+{
+  "binary_offsets": [
+    "0x00000f70",
+    "0x00001cf8",
+    "0x00002210",
+    "0x0000225c",
+    "0x00002270",
+    "0x00002322"
+  ],
+  "component": "overlay",
+  "component_sha256": "63a208e9018b04d6c0fe01f2e67192448f9ada671a6ca82620660f74b41cb2b1",
+  "conclusion": "Overlay 1 sub_02206610 is a confirmed diplomacy status presentation consumer. It is not evidence for authoritative relationship mutation.",
+  "game": "Sid Meier's Civilization Revolution",
+  "instruction_hashes": [
+    "c42655664a0e514b73625fc9a198f8cd5c07ece46c0c2169348a3c5223f06ca5"
+  ],
+  "limitations": [
+    "Global/table semantics are not assigned.",
+    "No relationship field or mutation function is confirmed."
+  ],
+  "next_checkpoint": "Trace ARM9 globals read by sub_02206610 and input dispatch from sub_02206ff4.",
+  "observations": [
+    "Overlay 1 contains the diplomacy screen title, peace/war turn counters, and talk action labels.",
+    "sub_02206610 loads diplomacy presentation strings through its literal pool and calls ARM9 formatting/drawing routines.",
+    "sub_02206ff4 calls sub_02206610 at runtime address 0x02207398.",
+    "The routine reads multiple ARM9 globals/tables while laying out status rows."
+  ],
+  "platform": "Nintendo DS",
+  "question": "Which executable component presents diplomacy relationship status?",
+  "rom_offsets": [
+    "0x0019b970",
+    "0x0019c6f8",
+    "0x0019cc10",
+    "0x0019cc5c",
+    "0x0019cc70",
+    "0x0019cd22"
+  ],
+  "rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "runtime_addresses": [
+    "0x02206610",
+    "0x02207398",
+    "0x022078b0",
+    "0x022078fc",
+    "0x02207910",
+    "0x022079c2"
+  ],
+  "status": "confirmed",
+  "string_evidence": [
+    {
+      "bytes_sha256": "7e00c2047ec22cb831a9bfe9cba547c543a6f40f0b47cf8a98f006558b2d467b",
+      "label": "screen_title",
+      "overlay_relative_address": "0x2210",
+      "runtime_address": "0x022078b0"
+    },
+    {
+      "bytes_sha256": "71c3ca33071a12d628086dbfc3a7524f001671b8c9e14f5af41bbf25da9667d4",
+      "label": "peace_turn_count",
+      "overlay_relative_address": "0x225c",
+      "runtime_address": "0x022078fc"
+    },
+    {
+      "bytes_sha256": "1c68e3668c7146dcaa834856bbb22cb02084ac22dd7f49371e8650f9da327e6e",
+      "label": "war_turn_count",
+      "overlay_relative_address": "0x2270",
+      "runtime_address": "0x02207910"
+    },
+    {
+      "bytes_sha256": "c6644aa8687939dba20a0a5ca08368755998303b24e9fc292225bb9868c1a2e7",
+      "label": "talk_action",
+      "overlay_relative_address": "0x2322",
+      "runtime_address": "0x022079c2"
+    }
+  ]
+}

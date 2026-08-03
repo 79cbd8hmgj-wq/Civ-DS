@@ -1,25 +1,33 @@
 {
+  "branch": "work",
   "completed_evidence": [
-    "archive hashes",
-    "ROM identity",
-    "header map",
-    "FAT/FNT manifests",
-    "overlay manifest",
-    "strict LZ10 decoder and atomic expected-byte patch primitive"
+    "archive and ROM hashes",
+    "header, FAT, FNT, and overlay manifests",
+    "packaged supported-ROM registry",
+    "strict hierarchy and executable range validation",
+    "LZ10 decoder and atomic expected-byte patch primitive",
+    "transactional full workspace extraction (2753 FAT, 2736 named NitroFS, 17 overlays)",
+    "exact byte-identical no-change rebuild",
+    "ARM9 entry static/runtime mapping",
+    "overlay 1 diplomacy presentation consumer"
   ],
-  "current_blockers": [
-    "GDB, Xvfb, and Ghidra are unavailable on the host"
-  ],
-  "current_checkpoint": "Milestone 2 transactional workspace extraction",
-  "current_milestone": 2,
-  "last_verified_commands": [
-    "make check (6 passed at 895a2be3a6217d81c827a647006b57cff5501029)"
-  ],
-  "relevant_commit_ids": [
-    "895a2be3a6217d81c827a647006b57cff5501029"
+  "current_checkpoint": "Trace overlay 1 diplomacy input dispatcher and authoritative ARM9 relationship storage",
+  "current_milestone": 5,
+  "head_policy": "Resolve exact current head with git rev-parse HEAD; never copy a pre-commit hash here.",
+  "last_local_verification": {
+    "ci_result": "not run; do not claim CI success",
+    "command": "make check",
+    "exact_rom_round_trip": "byte-identical SHA-256 f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "result": "23 passed on exact local ROM; 0 skipped"
+  },
+  "limitations": [
+    "SDL dummy/offscreen backends cannot initialize OpenGL/GLES; emulator loads ROM and ARM9 GDB capture works before exit.",
+    "Ghidra is unavailable; LLVM 20 raw ARM disassembly preparation is operational.",
+    "Network policy prevented fetching setuptools for a local wheel-install test; GitHub workflow performs packaging tests in CI."
   ],
   "remaining_questions": [
-    "compression formats used by each payload",
-    "emulator runtime behavior"
+    "authoritative diplomacy relationship fields and mutation/save consumers",
+    "overlay load lifecycle after SDK boot",
+    "display-backed controlled gameplay transaction"
   ]
 }

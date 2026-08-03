@@ -1,0 +1,21 @@
+{
+  "binary_offsets": [],
+  "component": "overlay",
+  "component_sha256": "63a208e9018b04d6c0fe01f2e67192448f9ada671a6ca82620660f74b41cb2b1",
+  "conclusion": "No diplomacy transaction is runtime-confirmed yet.",
+  "game": "Sid Meier's Civilization Revolution",
+  "instruction_hashes": [],
+  "limitations": [
+    "SDL/OpenGL display initialization failure prevents automated menu navigation."
+  ],
+  "next_checkpoint": "Run with a functional display backend and break on 0x02206610.",
+  "observations": [
+    "ARM9 entry capture is operational, but overlay 1 was not reached because no display backend remains alive."
+  ],
+  "platform": "Nintendo DS",
+  "question": "Has a diplomacy state transaction been captured?",
+  "rom_offsets": [],
+  "rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "runtime_addresses": [],
+  "status": "candidate"
+}

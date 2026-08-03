@@ -1,0 +1,12 @@
+{
+  "architecture": "ELF64 x86-64 PIE",
+  "archive_sha256": "87b9e55d8555b2f9df6b8ac188de9dc5e6f91a527ed7a02097e82e9097ebe8c3",
+  "executable_sha256": "fc2e9fde3e0865158c0b228fb6fe726a4da85f29a1fc8464a67d23d094aa95f2",
+  "gdb_flags": [
+    "--arm9gdb PORTNUM",
+    "--arm7gdb PORTNUM"
+  ],
+  "headless_result": "ROM loads and GDB opens, then SDL dummy/offscreen window initialization fails due unavailable OpenGL/GLES",
+  "process_cleanup": "confirmed no stale desmume-cli process after bounded capture",
+  "version": "DeSmuME 0.9.14 git#0 dev+ x64-JIT SSE2"
+}

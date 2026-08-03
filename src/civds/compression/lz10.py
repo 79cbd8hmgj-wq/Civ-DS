@@ -1,8 +1,11 @@
 """Strict Nintendo LZ10 decompression."""
+
 from civds.errors import FormatError
+
 
 def is_lz10(data: bytes) -> bool:
     return len(data) >= 4 and data[0] == 0x10 and int.from_bytes(data[1:4], "little") > 0
+
 
 def decompress(data: bytes) -> bytes:
     if not is_lz10(data):

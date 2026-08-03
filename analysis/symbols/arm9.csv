@@ -1,0 +1,2 @@
+address,name,kind,confidence,evidence_artifact,notes
+0x02000800,sub_02000800,function,confirmed,analysis/arm9/boot-entry.json,ARM9 header entry; neutral semantic name
