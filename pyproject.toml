@@ -9,7 +9,7 @@ description = "Civilization Revolution DS reverse-engineering and modding consum
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "nds-disassembly-toolkit @ git+https://github.com/79cbd8hmgj-wq/NDS-Disassembly-Toolkit.git@d807e256f022016483d106c8802fa349ff16a42a",
+  "nds-disassembly-toolkit @ git+https://github.com/79cbd8hmgj-wq/NDS-Disassembly-Toolkit.git@fc8c56963baa3227b5c77bc61f1b05638e69587d",
 ]
 
 [project.optional-dependencies]
