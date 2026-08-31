@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+
+# User-supplied ROMs and generated/rebuilt ROMs
+*.nds
+roms/
+build/
+
+# Extracted copyrighted assets and mutable workspaces
+work/
+
+# Generated analysis output; durable annotations/projects can be committed selectively later
+analysis/*.json
+*.ndsre/
