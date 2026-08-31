@@ -1,0 +1,61 @@
+name: Civ Rev Baseline Bootstrap
+
+on:
+  push:
+    branches:
+      - feature/civrev-baseline
+
+permissions:
+  contents: write
+
+jobs:
+  baseline:
+    if: ${{ !contains(github.event.head_commit.message, '[baseline-generated]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/civrev-baseline
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Civ-DS
+        run: python -m pip install -e '.[dev]'
+      - name: Generate safe baseline evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          WORK_DIR="$RUNNER_TEMP/civrev-work"
+          OUT_ROM="$RUNNER_TEMP/CivRev-roundtrip.nds"
+          mkdir -p "$ROM_DIR" evidence/baseline profiles
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+
+          civds profile create "$ROM" --id civrev-usa --output profiles/civrev-us.json
+          civds inspect "$ROM" --output evidence/baseline/rom-inspection.json
+          civds assets inventory "$ROM" --include-unknown --output evidence/baseline/assets.json
+          civds disasm overlay-map "$ROM" --output evidence/baseline/overlay-map.json
+          civds extract "$ROM" "$WORK_DIR"
+
+          cp "$WORK_DIR/manifests/workspace.json" evidence/baseline/workspace.json
+          cp "$WORK_DIR/manifests/files.json" evidence/baseline/files.json
+          cp "$WORK_DIR/manifests/overlays.json" evidence/baseline/overlays.json
+
+          civds rebuild "$ROM" "$WORK_DIR" "$OUT_ROM"
+          cp "${OUT_ROM}.build.json" evidence/baseline/rebuild-report.json
+          civds inspect "$OUT_ROM" --allow-unsupported --output evidence/baseline/roundtrip-inspection.json
+      - name: Commit metadata-only evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profiles/civrev-us.json evidence/baseline
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "analysis: add Civ Rev baseline evidence [baseline-generated]"
+          git push origin HEAD:feature/civrev-baseline
