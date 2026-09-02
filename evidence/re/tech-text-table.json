@@ -1,2093 +1,4927 @@
 {
-  "boundary_after": {
-    "address": 35102496,
-    "ascii": "Settlers",
-    "offset": 1548064
-  },
-  "candidate_effect_offset": 42,
   "component": "arm9",
   "component_base": 33554432,
-  "format_version": 2,
-  "observed_name_window": 42,
-  "record_count": 49,
-  "record_size": 106,
-  "records": [
+  "contiguous_block": {
+    "boundary_after": "Settlers",
+    "end_address": 35102496,
+    "end_offset": 1548064,
+    "prefix_candidate_count": 2,
+    "record_count": 49,
+    "start_address": 35097302,
+    "start_offset": 1542870,
+    "technology_count": 47
+  },
+  "format_version": 3,
+  "layout": {
+    "effect": {
+      "encoding": "ascii-nul-zero-padded",
+      "offset": 42,
+      "size": 64
+    },
+    "metadata": {
+      "encoding": "5 x little-endian signed int16",
+      "offset": 32,
+      "semantic_names_confirmed": false,
+      "size": 10
+    },
+    "name": {
+      "encoding": "ascii-nul-zero-padded",
+      "offset": 0,
+      "size": 32
+    },
+    "record_size": 106
+  },
+  "literal_load_uses": [
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33814012,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0x7e0]",
+          "size": 4
+        },
+        {
+          "address": 33814016,
+          "mnemonic": "mov",
+          "operands": "r0, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 33814020,
+          "mnemonic": "smlabb",
+          "operands": "r0, r3, r0, r2",
+          "size": 4
+        },
+        {
+          "address": 33814024,
+          "mnemonic": "ldrsh",
+          "operands": "r2, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 33814028,
+          "mnemonic": "cmp",
+          "operands": "r2, r1",
+          "size": 4
+        },
+        {
+          "address": 33814032,
+          "mnemonic": "ldrne",
+          "operands": "r1, [pc, #-0x838]",
+          "size": 4
+        },
+        {
+          "address": 33814036,
+          "mnemonic": "ldrne",
+          "operands": "r1, [r1, r2, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33814040,
+          "mnemonic": "ldrsh",
+          "operands": "r2, [r0, #0x22]",
+          "size": 4
+        },
+        {
+          "address": 33814044,
+          "mnemonic": "cmpne",
+          "operands": "r1, #0",
+          "size": 4
+        },
+        {
+          "address": 33814048,
+          "mnemonic": "mvn",
+          "operands": "r1, #0",
+          "size": 4
+        },
+        {
+          "address": 33814052,
+          "mnemonic": "movne",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 33814056,
+          "mnemonic": "cmp",
+          "operands": "r2, r1",
+          "size": 4
+        },
+        {
+          "address": 33814060,
+          "mnemonic": "ldrne",
+          "operands": "r1, [pc, #-0x854]",
+          "size": 4
+        },
+        {
+          "address": 33814064,
+          "mnemonic": "ldrne",
+          "operands": "r1, [r1, r2, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33814068,
+          "mnemonic": "cmpne",
+          "operands": "r1, #0",
+          "size": 4
+        },
+        {
+          "address": 33814072,
+          "mnemonic": "ldrsh",
+          "operands": "r1, [r0, #0x24]",
+          "size": 4
+        },
+        {
+          "address": 33814076,
+          "mnemonic": "mvn",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33814080,
+          "mnemonic": "movne",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 33814084,
+          "mnemonic": "cmp",
+          "operands": "r1, r0",
+          "size": 4
+        },
+        {
+          "address": 33814088,
+          "mnemonic": "ldrne",
+          "operands": "r0, [pc, #-0x870]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r2, [pc, #0x7e0]",
+      "instruction_address": 33814012,
+      "instruction_set": "arm",
+      "literal_address": 33816036,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33869040,
+          "mnemonic": "ldr",
+          "operands": "sb, [pc, #0x668]",
+          "size": 4
+        },
+        {
+          "address": 33869044,
+          "mnemonic": "mov",
+          "operands": "r7, r5",
+          "size": 4
+        },
+        {
+          "address": 33869048,
+          "mnemonic": "mov",
+          "operands": "r8, #0",
+          "size": 4
+        },
+        {
+          "address": 33869052,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [sb, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 33869056,
+          "mnemonic": "cmp",
+          "operands": "r0, #0x63",
+          "size": 4
+        },
+        {
+          "address": 33869060,
+          "mnemonic": "beq",
+          "operands": "#0x204cd34",
+          "size": 4
+        },
+        {
+          "address": 33869064,
+          "mnemonic": "mov",
+          "operands": "r0, r8",
+          "size": 4
+        },
+        {
+          "address": 33869068,
+          "mnemonic": "mov",
+          "operands": "r1, r4",
+          "size": 4
+        },
+        {
+          "address": 33869072,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33869076,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33869080,
+          "mnemonic": "bne",
+          "operands": "#0x204cd34",
+          "size": 4
+        },
+        {
+          "address": 33869084,
+          "mnemonic": "mov",
+          "operands": "r0, r8",
+          "size": 4
+        },
+        {
+          "address": 33869088,
+          "mnemonic": "mov",
+          "operands": "r1, r4",
+          "size": 4
+        },
+        {
+          "address": 33869092,
+          "mnemonic": "bl",
+          "operands": "#0x209562c",
+          "size": 4
+        },
+        {
+          "address": 33869096,
+          "mnemonic": "cmp",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 33869100,
+          "mnemonic": "movlt",
+          "operands": "r6, r0",
+          "size": 4
+        },
+        {
+          "address": 33869104,
+          "mnemonic": "movlt",
+          "operands": "r7, r8",
+          "size": 4
+        },
+        {
+          "address": 33869108,
+          "mnemonic": "add",
+          "operands": "sb, sb, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 33869112,
+          "mnemonic": "add",
+          "operands": "r8, r8, #1",
+          "size": 4
+        },
+        {
+          "address": 33869116,
+          "mnemonic": "cmp",
+          "operands": "r8, #0x30",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr sb, [pc, #0x668]",
+      "instruction_address": 33869040,
+      "instruction_set": "arm",
+      "literal_address": 33870688,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33871320,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0xaac]",
+          "size": 4
+        },
+        {
+          "address": 33871324,
+          "mnemonic": "mov",
+          "operands": "r5, r0",
+          "size": 4
+        },
+        {
+          "address": 33871328,
+          "mnemonic": "mov",
+          "operands": "r2, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 33871332,
+          "mnemonic": "mla",
+          "operands": "r1, r5, r2, r1",
+          "size": 4
+        },
+        {
+          "address": 33871336,
+          "mnemonic": "ldrsh",
+          "operands": "r1, [r1, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 33871340,
+          "mnemonic": "cmp",
+          "operands": "r1, sl",
+          "size": 4
+        },
+        {
+          "address": 33871344,
+          "mnemonic": "bne",
+          "operands": "#0x204d614",
+          "size": 4
+        },
+        {
+          "address": 33871348,
+          "mnemonic": "mov",
+          "operands": "r1, sb",
+          "size": 4
+        },
+        {
+          "address": 33871352,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33871356,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33871360,
+          "mnemonic": "bne",
+          "operands": "#0x204d614",
+          "size": 4
+        },
+        {
+          "address": 33871364,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0xa84]",
+          "size": 4
+        },
+        {
+          "address": 33871368,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, r5, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33871372,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33871376,
+          "mnemonic": "bne",
+          "operands": "#0x204d624",
+          "size": 4
+        },
+        {
+          "address": 33871380,
+          "mnemonic": "mov",
+          "operands": "r5, sl",
+          "size": 4
+        },
+        {
+          "address": 33871384,
+          "mnemonic": "add",
+          "operands": "fp, fp, #1",
+          "size": 4
+        },
+        {
+          "address": 33871388,
+          "mnemonic": "cmp",
+          "operands": "fp, #6",
+          "size": 4
+        },
+        {
+          "address": 33871392,
+          "mnemonic": "blt",
+          "operands": "#0x204d570",
+          "size": 4
+        },
+        {
+          "address": 33871396,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0xa68]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #0xaac]",
+      "instruction_address": 33871320,
+      "instruction_set": "arm",
+      "literal_address": 33874060,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33874860,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0x8bc]",
+          "size": 4
+        },
+        {
+          "address": 33874864,
+          "mnemonic": "mov",
+          "operands": "sb, r0",
+          "size": 4
+        },
+        {
+          "address": 33874868,
+          "mnemonic": "mov",
+          "operands": "r2, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 33874872,
+          "mnemonic": "mla",
+          "operands": "r1, sb, r2, r1",
+          "size": 4
+        },
+        {
+          "address": 33874876,
+          "mnemonic": "ldrsh",
+          "operands": "r1, [r1, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 33874880,
+          "mnemonic": "cmp",
+          "operands": "r1, r8",
+          "size": 4
+        },
+        {
+          "address": 33874884,
+          "mnemonic": "bne",
+          "operands": "#0x204e3d8",
+          "size": 4
+        },
+        {
+          "address": 33874888,
+          "mnemonic": "mov",
+          "operands": "r1, r4",
+          "size": 4
+        },
+        {
+          "address": 33874892,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33874896,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33874900,
+          "mnemonic": "beq",
+          "operands": "#0x204e3e8",
+          "size": 4
+        },
+        {
+          "address": 33874904,
+          "mnemonic": "mov",
+          "operands": "sb, r8",
+          "size": 4
+        },
+        {
+          "address": 33874908,
+          "mnemonic": "add",
+          "operands": "sl, sl, #1",
+          "size": 4
+        },
+        {
+          "address": 33874912,
+          "mnemonic": "cmp",
+          "operands": "sl, #4",
+          "size": 4
+        },
+        {
+          "address": 33874916,
+          "mnemonic": "blt",
+          "operands": "#0x204e344",
+          "size": 4
+        },
+        {
+          "address": 33874920,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x85c]",
+          "size": 4
+        },
+        {
+          "address": 33874924,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, r4, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33874928,
+          "mnemonic": "cmp",
+          "operands": "r0, #0xe",
+          "size": 4
+        },
+        {
+          "address": 33874932,
+          "mnemonic": "beq",
+          "operands": "#0x204e5d8",
+          "size": 4
+        },
+        {
+          "address": 33874936,
+          "mnemonic": "cmp",
+          "operands": "fp, #6",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #0x8bc]",
+      "instruction_address": 33874860,
+      "instruction_set": "arm",
+      "literal_address": 33877104,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33886848,
+          "mnemonic": "ldr",
+          "operands": "sb, [pc, #0x64c]",
+          "size": 4
+        },
+        {
+          "address": 33886852,
+          "mnemonic": "str",
+          "operands": "fp, [sp, #0x1c]",
+          "size": 4
+        },
+        {
+          "address": 33886856,
+          "mnemonic": "str",
+          "operands": "fp, [r0, #0x1c]",
+          "size": 4
+        },
+        {
+          "address": 33886860,
+          "mnemonic": "mov",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 33886864,
+          "mnemonic": "mov",
+          "operands": "r4, fp",
+          "size": 4
+        },
+        {
+          "address": 33886868,
+          "mnemonic": "mov",
+          "operands": "r5, #1",
+          "size": 4
+        },
+        {
+          "address": 33886872,
+          "mnemonic": "mov",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 33886876,
+          "mnemonic": "mov",
+          "operands": "r1, sl",
+          "size": 4
+        },
+        {
+          "address": 33886880,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33886884,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33886888,
+          "mnemonic": "bne",
+          "operands": "#0x2051318",
+          "size": 4
+        },
+        {
+          "address": 33886892,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x624]",
+          "size": 4
+        },
+        {
+          "address": 33886896,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, sl, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33886900,
+          "mnemonic": "cmp",
+          "operands": "r6, r0",
+          "size": 4
+        },
+        {
+          "address": 33886904,
+          "mnemonic": "cmpne",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 33886908,
+          "mnemonic": "beq",
+          "operands": "#0x2051318",
+          "size": 4
+        },
+        {
+          "address": 33886912,
+          "mnemonic": "mov",
+          "operands": "r7, #0",
+          "size": 4
+        },
+        {
+          "address": 33886916,
+          "mnemonic": "mov",
+          "operands": "r8, r7",
+          "size": 4
+        },
+        {
+          "address": 33886920,
+          "mnemonic": "add",
+          "operands": "r0, sb, r8, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 33886924,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr sb, [pc, #0x64c]",
+      "instruction_address": 33886848,
+      "instruction_set": "arm",
+      "literal_address": 33888468,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 33988984,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #-0x108]",
+          "size": 4
+        },
+        {
+          "address": 33988988,
+          "mnemonic": "mov",
+          "operands": "r0, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 33988992,
+          "mnemonic": "mla",
+          "operands": "sb, r8, r0, r1",
+          "size": 4
+        },
+        {
+          "address": 33988996,
+          "mnemonic": "ldr",
+          "operands": "fp, [pc, #-0x110]",
+          "size": 4
+        },
+        {
+          "address": 33989000,
+          "mnemonic": "ldr",
+          "operands": "r7, [pc, #-0x110]",
+          "size": 4
+        },
+        {
+          "address": 33989004,
+          "mnemonic": "mov",
+          "operands": "r5, #1",
+          "size": 4
+        },
+        {
+          "address": 33989008,
+          "mnemonic": "mvn",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 33989012,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f0]",
+          "size": 4
+        },
+        {
+          "address": 33989016,
+          "mnemonic": "mov",
+          "operands": "r0, r8",
+          "size": 4
+        },
+        {
+          "address": 33989020,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33989024,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33989028,
+          "mnemonic": "beq",
+          "operands": "#0x206a21c",
+          "size": 4
+        },
+        {
+          "address": 33989032,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f4]",
+          "size": 4
+        },
+        {
+          "address": 33989036,
+          "mnemonic": "mov",
+          "operands": "r0, r8",
+          "size": 4
+        },
+        {
+          "address": 33989040,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 33989044,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 33989048,
+          "mnemonic": "bne",
+          "operands": "#0x206a21c",
+          "size": 4
+        },
+        {
+          "address": 33989052,
+          "mnemonic": "ldr",
+          "operands": "sl, [sp, #0x1f4]",
+          "size": 4
+        },
+        {
+          "address": 33989056,
+          "mnemonic": "ldr",
+          "operands": "r0, [r7, sl, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 33989060,
+          "mnemonic": "cmp",
+          "operands": "r8, r0",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #-0x108]",
+      "instruction_address": 33988984,
+      "instruction_set": "arm",
+      "literal_address": 33988728,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34009552,
+          "mnemonic": "ldr",
+          "operands": "r4, [pc, #0x618]",
+          "size": 4
+        },
+        {
+          "address": 34009556,
+          "mnemonic": "mov",
+          "operands": "r6, r5",
+          "size": 4
+        },
+        {
+          "address": 34009560,
+          "mnemonic": "mov",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 34009564,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f0]",
+          "size": 4
+        },
+        {
+          "address": 34009568,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34009572,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34009576,
+          "mnemonic": "beq",
+          "operands": "#0x206f344",
+          "size": 4
+        },
+        {
+          "address": 34009580,
+          "mnemonic": "mov",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 34009584,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f4]",
+          "size": 4
+        },
+        {
+          "address": 34009588,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34009592,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34009596,
+          "mnemonic": "bne",
+          "operands": "#0x206f344",
+          "size": 4
+        },
+        {
+          "address": 34009600,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f0]",
+          "size": 4
+        },
+        {
+          "address": 34009604,
+          "mnemonic": "mov",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 34009608,
+          "mnemonic": "bl",
+          "operands": "#0x209562c",
+          "size": 4
+        },
+        {
+          "address": 34009612,
+          "mnemonic": "ldr",
+          "operands": "r1, [sp, #0x1f4]",
+          "size": 4
+        },
+        {
+          "address": 34009616,
+          "mnemonic": "mov",
+          "operands": "sb, #0",
+          "size": 4
+        },
+        {
+          "address": 34009620,
+          "mnemonic": "ldr",
+          "operands": "r2, [fp, r1, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 34009624,
+          "mnemonic": "asr",
+          "operands": "r1, r2, #1",
+          "size": 4
+        },
+        {
+          "address": 34009628,
+          "mnemonic": "add",
+          "operands": "r1, r2, r1, lsr #30",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r4, [pc, #0x618]",
+      "instruction_address": 34009552,
+      "instruction_set": "arm",
+      "literal_address": 34011120,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34017900,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0x73c]",
+          "size": 4
+        },
+        {
+          "address": 34017904,
+          "mnemonic": "mov",
+          "operands": "r0, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34017908,
+          "mnemonic": "mla",
+          "operands": "r8, r1, r0, r2",
+          "size": 4
+        },
+        {
+          "address": 34017912,
+          "mnemonic": "mov",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 34017916,
+          "mnemonic": "mov",
+          "operands": "r7, r6",
+          "size": 4
+        },
+        {
+          "address": 34017920,
+          "mnemonic": "mvn",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 34017924,
+          "mnemonic": "add",
+          "operands": "r0, r8, r7, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34017928,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34017932,
+          "mnemonic": "cmp",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34017936,
+          "mnemonic": "beq",
+          "operands": "#0x20712a8",
+          "size": 4
+        },
+        {
+          "address": 34017940,
+          "mnemonic": "mov",
+          "operands": "r1, sl",
+          "size": 4
+        },
+        {
+          "address": 34017944,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34017948,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34017952,
+          "mnemonic": "movne",
+          "operands": "sb, #1",
+          "size": 4
+        },
+        {
+          "address": 34017956,
+          "mnemonic": "b",
+          "operands": "#0x20712ac",
+          "size": 4
+        },
+        {
+          "address": 34017960,
+          "mnemonic": "add",
+          "operands": "r6, r6, #1",
+          "size": 4
+        },
+        {
+          "address": 34017964,
+          "mnemonic": "add",
+          "operands": "r7, r7, #1",
+          "size": 4
+        },
+        {
+          "address": 34017968,
+          "mnemonic": "cmp",
+          "operands": "r7, #3",
+          "size": 4
+        },
+        {
+          "address": 34017972,
+          "mnemonic": "blt",
+          "operands": "#0x2071284",
+          "size": 4
+        },
+        {
+          "address": 34017976,
+          "mnemonic": "cmp",
+          "operands": "r6, #3",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r2, [pc, #0x73c]",
+      "instruction_address": 34017900,
+      "instruction_set": "arm",
+      "literal_address": 34019760,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34036180,
+          "mnemonic": "ldr",
+          "operands": "r4, [pc, #0x46c]",
+          "size": 4
+        },
+        {
+          "address": 34036184,
+          "mnemonic": "add",
+          "operands": "r0, r0, #0x90",
+          "size": 4
+        },
+        {
+          "address": 34036188,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #0x2dc]",
+          "size": 4
+        },
+        {
+          "address": 34036192,
+          "mnemonic": "mov",
+          "operands": "sb, #0",
+          "size": 4
+        },
+        {
+          "address": 34036196,
+          "mnemonic": "add",
+          "operands": "r8, sp, #0x2dc",
+          "size": 4
+        },
+        {
+          "address": 34036200,
+          "mnemonic": "mov",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34036204,
+          "mnemonic": "mov",
+          "operands": "r1, r6",
+          "size": 4
+        },
+        {
+          "address": 34036208,
+          "mnemonic": "mov",
+          "operands": "r2, r5",
+          "size": 4
+        },
+        {
+          "address": 34036212,
+          "mnemonic": "mov",
+          "operands": "r3, r7",
+          "size": 4
+        },
+        {
+          "address": 34036216,
+          "mnemonic": "str",
+          "operands": "r8, [sp]",
+          "size": 4
+        },
+        {
+          "address": 34036220,
+          "mnemonic": "bl",
+          "operands": "#0x20826d8",
+          "size": 4
+        },
+        {
+          "address": 34036224,
+          "mnemonic": "add",
+          "operands": "sb, sb, #1",
+          "size": 4
+        },
+        {
+          "address": 34036228,
+          "mnemonic": "cmp",
+          "operands": "sb, #0x30",
+          "size": 4
+        },
+        {
+          "address": 34036232,
+          "mnemonic": "add",
+          "operands": "r4, r4, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34036236,
+          "mnemonic": "blt",
+          "operands": "#0x20759e8",
+          "size": 4
+        },
+        {
+          "address": 34036240,
+          "mnemonic": "ldr",
+          "operands": "sb, [pc, #0x434]",
+          "size": 4
+        },
+        {
+          "address": 34036244,
+          "mnemonic": "mov",
+          "operands": "r8, #0",
+          "size": 4
+        },
+        {
+          "address": 34036248,
+          "mnemonic": "add",
+          "operands": "r4, sp, #0x2dc",
+          "size": 4
+        },
+        {
+          "address": 34036252,
+          "mnemonic": "mov",
+          "operands": "r0, sb",
+          "size": 4
+        },
+        {
+          "address": 34036256,
+          "mnemonic": "mov",
+          "operands": "r1, r6",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r4, [pc, #0x46c]",
+      "instruction_address": 34036180,
+      "instruction_set": "arm",
+      "literal_address": 34037320,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34094120,
+          "mnemonic": "ldr",
+          "operands": "r5, [pc, #0x9c]",
+          "size": 4
+        },
+        {
+          "address": 34094124,
+          "mnemonic": "mov",
+          "operands": "r2, #1",
+          "size": 4
+        },
+        {
+          "address": 34094128,
+          "mnemonic": "mov",
+          "operands": "r3, #0",
+          "size": 4
+        },
+        {
+          "address": 34094132,
+          "mnemonic": "mov",
+          "operands": "r4, r1",
+          "size": 4
+        },
+        {
+          "address": 34094136,
+          "mnemonic": "mvn",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 34094140,
+          "mnemonic": "ldrsb",
+          "operands": "sb, [r4]",
+          "size": 4
+        },
+        {
+          "address": 34094144,
+          "mnemonic": "cmp",
+          "operands": "sb, #0",
+          "size": 4
+        },
+        {
+          "address": 34094148,
+          "mnemonic": "bne",
+          "operands": "#0x2083c9c",
+          "size": 4
+        },
+        {
+          "address": 34094152,
+          "mnemonic": "mov",
+          "operands": "ip, r0",
+          "size": 4
+        },
+        {
+          "address": 34094156,
+          "mnemonic": "mov",
+          "operands": "lr, fp",
+          "size": 4
+        },
+        {
+          "address": 34094160,
+          "mnemonic": "add",
+          "operands": "sb, r5, lr, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34094164,
+          "mnemonic": "ldrsh",
+          "operands": "sb, [sb, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34094168,
+          "mnemonic": "cmp",
+          "operands": "sb, r6",
+          "size": 4
+        },
+        {
+          "address": 34094172,
+          "mnemonic": "beq",
+          "operands": "#0x2083c84",
+          "size": 4
+        },
+        {
+          "address": 34094176,
+          "mnemonic": "cmp",
+          "operands": "sb, #0x1c",
+          "size": 4
+        },
+        {
+          "address": 34094180,
+          "mnemonic": "cmpne",
+          "operands": "sb, #0x1d",
+          "size": 4
+        },
+        {
+          "address": 34094184,
+          "mnemonic": "cmpne",
+          "operands": "sb, #0x1e",
+          "size": 4
+        },
+        {
+          "address": 34094188,
+          "mnemonic": "cmpne",
+          "operands": "sb, #0x1f",
+          "size": 4
+        },
+        {
+          "address": 34094192,
+          "mnemonic": "cmpne",
+          "operands": "sb, #0x25",
+          "size": 4
+        },
+        {
+          "address": 34094196,
+          "mnemonic": "ldrsb",
+          "operands": "sb, [r1, sb]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r5, [pc, #0x9c]",
+      "instruction_address": 34094120,
+      "instruction_set": "arm",
+      "literal_address": 34094284,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34094396,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0x140]",
+          "size": 4
+        },
+        {
+          "address": 34094400,
+          "mnemonic": "str",
+          "operands": "r0, [sp]",
+          "size": 4
+        },
+        {
+          "address": 34094404,
+          "mnemonic": "mov",
+          "operands": "r7, r6",
+          "size": 4
+        },
+        {
+          "address": 34094408,
+          "mnemonic": "mov",
+          "operands": "r8, r6",
+          "size": 4
+        },
+        {
+          "address": 34094412,
+          "mnemonic": "str",
+          "operands": "r6, [r5]",
+          "size": 4
+        },
+        {
+          "address": 34094416,
+          "mnemonic": "add",
+          "operands": "sb, r1, r0",
+          "size": 4
+        },
+        {
+          "address": 34094420,
+          "mnemonic": "mvn",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 34094424,
+          "mnemonic": "add",
+          "operands": "r0, sb, r8, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34094428,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34094432,
+          "mnemonic": "cmp",
+          "operands": "r0, #0x63",
+          "size": 4
+        },
+        {
+          "address": 34094436,
+          "mnemonic": "addeq",
+          "operands": "sp, sp, #8",
+          "size": 4
+        },
+        {
+          "address": 34094440,
+          "mnemonic": "moveq",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34094444,
+          "mnemonic": "popeq",
+          "operands": "{r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}",
+          "size": 4
+        },
+        {
+          "address": 34094448,
+          "mnemonic": "cmp",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34094452,
+          "mnemonic": "beq",
+          "operands": "#0x2083d9c",
+          "size": 4
+        },
+        {
+          "address": 34094456,
+          "mnemonic": "mov",
+          "operands": "r1, sl",
+          "size": 4
+        },
+        {
+          "address": 34094460,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34094464,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34094468,
+          "mnemonic": "addne",
+          "operands": "r7, r7, #1",
+          "size": 4
+        },
+        {
+          "address": 34094472,
+          "mnemonic": "bne",
+          "operands": "#0x2083da0",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #0x140]",
+      "instruction_address": 34094396,
+      "instruction_set": "arm",
+      "literal_address": 34094724,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34096136,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x258]",
+          "size": 4
+        },
+        {
+          "address": 34096140,
+          "mnemonic": "mov",
+          "operands": "r1, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34096144,
+          "mnemonic": "mla",
+          "operands": "r0, sl, r1, r0",
+          "size": 4
+        },
+        {
+          "address": 34096148,
+          "mnemonic": "ldrsh",
+          "operands": "r1, [r0, #0x26]",
+          "size": 4
+        },
+        {
+          "address": 34096152,
+          "mnemonic": "cmp",
+          "operands": "r1, r4",
+          "size": 4
+        },
+        {
+          "address": 34096156,
+          "mnemonic": "beq",
+          "operands": "#0x208443c",
+          "size": 4
+        },
+        {
+          "address": 34096160,
+          "mnemonic": "ldr",
+          "operands": "r0, [sp, #0xc]",
+          "size": 4
+        },
+        {
+          "address": 34096164,
+          "mnemonic": "tst",
+          "operands": "r0, r1",
+          "size": 4
+        },
+        {
+          "address": 34096168,
+          "mnemonic": "beq",
+          "operands": "#0x208443c",
+          "size": 4
+        },
+        {
+          "address": 34096172,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x238]",
+          "size": 4
+        },
+        {
+          "address": 34096176,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0]",
+          "size": 4
+        },
+        {
+          "address": 34096180,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34096184,
+          "mnemonic": "addge",
+          "operands": "sb, sb, #0x32",
+          "size": 4
+        },
+        {
+          "address": 34096188,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x22c]",
+          "size": 4
+        },
+        {
+          "address": 34096192,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, r6, lsl #2]",
+          "size": 4
+        },
+        {
+          "address": 34096196,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34096200,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x224]",
+          "size": 4
+        },
+        {
+          "address": 34096204,
+          "mnemonic": "cmpeq",
+          "operands": "sl, #3",
+          "size": 4
+        },
+        {
+          "address": 34096208,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x12]",
+          "size": 4
+        },
+        {
+          "address": 34096212,
+          "mnemonic": "addeq",
+          "operands": "sb, sb, #0x32",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r0, [pc, #0x258]",
+      "instruction_address": 34096136,
+      "instruction_set": "arm",
+      "literal_address": 34096744,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34166220,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0x54]",
+          "size": 4
+        },
+        {
+          "address": 34166224,
+          "mnemonic": "mov",
+          "operands": "r1, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34166228,
+          "mnemonic": "mla",
+          "operands": "r7, r0, r1, r2",
+          "size": 4
+        },
+        {
+          "address": 34166232,
+          "mnemonic": "mov",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 34166236,
+          "mnemonic": "mvn",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 34166240,
+          "mnemonic": "add",
+          "operands": "r0, r7, r6, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34166244,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34166248,
+          "mnemonic": "cmp",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34166252,
+          "mnemonic": "cmpne",
+          "operands": "r0, #0x63",
+          "size": 4
+        },
+        {
+          "address": 34166256,
+          "mnemonic": "beq",
+          "operands": "#0x2095604",
+          "size": 4
+        },
+        {
+          "address": 34166260,
+          "mnemonic": "ldr",
+          "operands": "r1, [r5, #8]",
+          "size": 4
+        },
+        {
+          "address": 34166264,
+          "mnemonic": "add",
+          "operands": "r1, r1, #1",
+          "size": 4
+        },
+        {
+          "address": 34166268,
+          "mnemonic": "str",
+          "operands": "r1, [r5, #8]",
+          "size": 4
+        },
+        {
+          "address": 34166272,
+          "mnemonic": "bl",
+          "operands": "#0x20955a8",
+          "size": 4
+        },
+        {
+          "address": 34166276,
+          "mnemonic": "add",
+          "operands": "r6, r6, #1",
+          "size": 4
+        },
+        {
+          "address": 34166280,
+          "mnemonic": "cmp",
+          "operands": "r6, #3",
+          "size": 4
+        },
+        {
+          "address": 34166284,
+          "mnemonic": "blt",
+          "operands": "#0x20955e0",
+          "size": 4
+        },
+        {
+          "address": 34166288,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0xc]",
+          "size": 4
+        },
+        {
+          "address": 34166292,
+          "mnemonic": "ldr",
+          "operands": "r1, [r0]",
+          "size": 4
+        },
+        {
+          "address": 34166296,
+          "mnemonic": "sub",
+          "operands": "r1, r1, #1",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r2, [pc, #0x54]",
+      "instruction_address": 34166220,
+      "instruction_set": "arm",
+      "literal_address": 34166312,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34166360,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0xf0]",
+          "size": 4
+        },
+        {
+          "address": 34166364,
+          "mnemonic": "mov",
+          "operands": "r0, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34166368,
+          "mnemonic": "mla",
+          "operands": "r8, sl, r0, r1",
+          "size": 4
+        },
+        {
+          "address": 34166372,
+          "mnemonic": "ldr",
+          "operands": "r5, [pc, #0xe8]",
+          "size": 4
+        },
+        {
+          "address": 34166376,
+          "mnemonic": "mov",
+          "operands": "r7, #0",
+          "size": 4
+        },
+        {
+          "address": 34166380,
+          "mnemonic": "mov",
+          "operands": "fp, #1",
+          "size": 4
+        },
+        {
+          "address": 34166384,
+          "mnemonic": "mvn",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 34166388,
+          "mnemonic": "add",
+          "operands": "r0, r8, r7, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34166392,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34166396,
+          "mnemonic": "cmp",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34166400,
+          "mnemonic": "cmpne",
+          "operands": "r0, #0x63",
+          "size": 4
+        },
+        {
+          "address": 34166404,
+          "mnemonic": "beq",
+          "operands": "#0x20956b4",
+          "size": 4
+        },
+        {
+          "address": 34166408,
+          "mnemonic": "str",
+          "operands": "fp, [r5, #8]",
+          "size": 4
+        },
+        {
+          "address": 34166412,
+          "mnemonic": "bl",
+          "operands": "#0x20955a8",
+          "size": 4
+        },
+        {
+          "address": 34166416,
+          "mnemonic": "add",
+          "operands": "r0, r8, r7, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34166420,
+          "mnemonic": "ldr",
+          "operands": "r2, [r5, #8]",
+          "size": 4
+        },
+        {
+          "address": 34166424,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34166428,
+          "mnemonic": "mov",
+          "operands": "r1, sb",
+          "size": 4
+        },
+        {
+          "address": 34166432,
+          "mnemonic": "add",
+          "operands": "r6, r6, r2",
+          "size": 4
+        },
+        {
+          "address": 34166436,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #0xf0]",
+      "instruction_address": 34166360,
+      "instruction_set": "arm",
+      "literal_address": 34166608,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34292320,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x94]",
+          "size": 4
+        },
+        {
+          "address": 34292324,
+          "mnemonic": "mov",
+          "operands": "r7, #0",
+          "size": 4
+        },
+        {
+          "address": 34292328,
+          "mnemonic": "add",
+          "operands": "r8, r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34292332,
+          "mnemonic": "mvn",
+          "operands": "r6, #0",
+          "size": 4
+        },
+        {
+          "address": 34292336,
+          "mnemonic": "add",
+          "operands": "r0, r8, r7, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 34292340,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r0, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 34292344,
+          "mnemonic": "cmp",
+          "operands": "r0, r6",
+          "size": 4
+        },
+        {
+          "address": 34292348,
+          "mnemonic": "cmpne",
+          "operands": "r0, #0x63",
+          "size": 4
+        },
+        {
+          "address": 34292352,
+          "mnemonic": "beq",
+          "operands": "#0x20b42a8",
+          "size": 4
+        },
+        {
+          "address": 34292356,
+          "mnemonic": "mov",
+          "operands": "r1, r5",
+          "size": 4
+        },
+        {
+          "address": 34292360,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34292364,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34292368,
+          "mnemonic": "beq",
+          "operands": "#0x20b42a8",
+          "size": 4
+        },
+        {
+          "address": 34292372,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x64]",
+          "size": 4
+        },
+        {
+          "address": 34292376,
+          "mnemonic": "lsl",
+          "operands": "r1, r7, #1",
+          "size": 4
+        },
+        {
+          "address": 34292380,
+          "mnemonic": "add",
+          "operands": "r0, r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34292384,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r1, r0]",
+          "size": 4
+        },
+        {
+          "address": 34292388,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, r7, r8, pc}",
+          "size": 4
+        },
+        {
+          "address": 34292392,
+          "mnemonic": "add",
+          "operands": "r7, r7, #1",
+          "size": 4
+        },
+        {
+          "address": 34292396,
+          "mnemonic": "cmp",
+          "operands": "r7, #3",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r0, [pc, #0x94]",
+      "instruction_address": 34292320,
+      "instruction_set": "arm",
+      "literal_address": 34292476,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "forward_context": [
+        {
+          "address": 34292408,
+          "mnemonic": "ldr",
+          "operands": "r6, [pc, #0x48]",
+          "size": 4
+        },
+        {
+          "address": 34292412,
+          "mnemonic": "ldrsh",
+          "operands": "r7, [r0, r4]",
+          "size": 4
+        },
+        {
+          "address": 34292416,
+          "mnemonic": "mov",
+          "operands": "r4, #0x2f",
+          "size": 4
+        },
+        {
+          "address": 34292420,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r6, #0x26]",
+          "size": 4
+        },
+        {
+          "address": 34292424,
+          "mnemonic": "tst",
+          "operands": "r7, r0",
+          "size": 4
+        },
+        {
+          "address": 34292428,
+          "mnemonic": "beq",
+          "operands": "#0x20b42e8",
+          "size": 4
+        },
+        {
+          "address": 34292432,
+          "mnemonic": "mov",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34292436,
+          "mnemonic": "mov",
+          "operands": "r1, r5",
+          "size": 4
+        },
+        {
+          "address": 34292440,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0",
+          "size": 4
+        },
+        {
+          "address": 34292444,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34292448,
+          "mnemonic": "movne",
+          "operands": "r0, r4",
+          "size": 4
+        },
+        {
+          "address": 34292452,
+          "mnemonic": "popne",
+          "operands": "{r4, r5, r6, r7, r8, pc}",
+          "size": 4
+        },
+        {
+          "address": 34292456,
+          "mnemonic": "sub",
+          "operands": "r6, r6, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 34292460,
+          "mnemonic": "subs",
+          "operands": "r4, r4, #1",
+          "size": 4
+        },
+        {
+          "address": 34292464,
+          "mnemonic": "bpl",
+          "operands": "#0x20b42c4",
+          "size": 4
+        },
+        {
+          "address": 34292468,
+          "mnemonic": "mvn",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 34292472,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, r7, r8, pc}",
+          "size": 4
+        },
+        {
+          "address": 34292476,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #64, #22",
+          "size": 4
+        },
+        {
+          "address": 34292480,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #96, #22",
+          "size": 4
+        },
+        {
+          "address": 34292484,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #0x19800",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r6, [pc, #0x48]",
+      "instruction_address": 34292408,
+      "instruction_set": "arm",
+      "literal_address": 34292488,
+      "target_address": 35102390,
+      "target_name": "Future Technology",
+      "target_physical_index": 48,
+      "target_technology_ordinal": 46
+    },
+    {
+      "component": "overlay_006",
+      "forward_context": [
+        {
+          "address": 35674156,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0x30]",
+          "size": 4
+        },
+        {
+          "address": 35674160,
+          "mnemonic": "str",
+          "operands": "r0, [r6, #0x54]",
+          "size": 4
+        },
+        {
+          "address": 35674164,
+          "mnemonic": "mov",
+          "operands": "r1, #1",
+          "size": 4
+        },
+        {
+          "address": 35674168,
+          "mnemonic": "ldrsb",
+          "operands": "r0, [r2]",
+          "size": 4
+        },
+        {
+          "address": 35674172,
+          "mnemonic": "add",
+          "operands": "r1, r1, #1",
+          "size": 4
+        },
+        {
+          "address": 35674176,
+          "mnemonic": "add",
+          "operands": "r2, r2, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 35674180,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35674184,
+          "mnemonic": "ldrne",
+          "operands": "r0, [r6, #0x54]",
+          "size": 4
+        },
+        {
+          "address": 35674188,
+          "mnemonic": "addne",
+          "operands": "r0, r0, #1",
+          "size": 4
+        },
+        {
+          "address": 35674192,
+          "mnemonic": "strne",
+          "operands": "r0, [r6, #0x54]",
+          "size": 4
+        },
+        {
+          "address": 35674196,
+          "mnemonic": "cmp",
+          "operands": "r1, #0x30",
+          "size": 4
+        },
+        {
+          "address": 35674200,
+          "mnemonic": "blt",
+          "operands": "#0x2205838",
+          "size": 4
+        },
+        {
+          "address": 35674204,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, pc}",
+          "size": 4
+        },
+        {
+          "address": 35674208,
+          "mnemonic": "andseq",
+          "operands": "r8, ip, #188, #6",
+          "size": 4
+        },
+        {
+          "address": 35674212,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #0x2a800",
+          "size": 4
+        },
+        {
+          "address": 35674216,
+          "mnemonic": "bx",
+          "operands": "lr",
+          "size": 4
+        },
+        {
+          "address": 35674220,
+          "mnemonic": "push",
+          "operands": "{r3, r4, lr}",
+          "size": 4
+        },
+        {
+          "address": 35674224,
+          "mnemonic": "sub",
+          "operands": "sp, sp, #0xc",
+          "size": 4
+        },
+        {
+          "address": 35674228,
+          "mnemonic": "mov",
+          "operands": "r4, r0",
+          "size": 4
+        },
+        {
+          "address": 35674232,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x504]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r2, [pc, #0x30]",
+      "instruction_address": 35674156,
+      "instruction_set": "arm",
+      "literal_address": 35674212,
+      "target_address": 35097514,
+      "target_name": "Alphabet",
+      "target_physical_index": 2,
+      "target_technology_ordinal": 0
+    },
+    {
+      "component": "overlay_012",
+      "forward_context": [
+        {
+          "address": 35674892,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x3b0]",
+          "size": 4
+        },
+        {
+          "address": 35674896,
+          "mnemonic": "mov",
+          "operands": "r6, #1",
+          "size": 4
+        },
+        {
+          "address": 35674900,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #0xc]",
+          "size": 4
+        },
+        {
+          "address": 35674904,
+          "mnemonic": "mov",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35674908,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #8]",
+          "size": 4
+        },
+        {
+          "address": 35674912,
+          "mnemonic": "sub",
+          "operands": "r0, sp, #4",
+          "size": 4
+        },
+        {
+          "address": 35674916,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #0x1c]",
+          "size": 4
+        },
+        {
+          "address": 35674920,
+          "mnemonic": "mvn",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35674924,
+          "mnemonic": "mov",
+          "operands": "r7, #0",
+          "size": 4
+        },
+        {
+          "address": 35674928,
+          "mnemonic": "mov",
+          "operands": "r4, #6",
+          "size": 4
+        },
+        {
+          "address": 35674932,
+          "mnemonic": "mov",
+          "operands": "r5, #0xc",
+          "size": 4
+        },
+        {
+          "address": 35674936,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 35674940,
+          "mnemonic": "ldr",
+          "operands": "r0, [sp, #0x10]",
+          "size": 4
+        },
+        {
+          "address": 35674944,
+          "mnemonic": "ldrb",
+          "operands": "r0, [r0]",
+          "size": 4
+        },
+        {
+          "address": 35674948,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35674952,
+          "mnemonic": "bne",
+          "operands": "#0x2205d74",
+          "size": 4
+        },
+        {
+          "address": 35674956,
+          "mnemonic": "mov",
+          "operands": "r0, #1",
+          "size": 4
+        },
+        {
+          "address": 35674960,
+          "mnemonic": "str",
+          "operands": "r0, [sp, #0x14]",
+          "size": 4
+        },
+        {
+          "address": 35674964,
+          "mnemonic": "mov",
+          "operands": "fp, #0",
+          "size": 4
+        },
+        {
+          "address": 35674968,
+          "mnemonic": "ldr",
+          "operands": "r0, [sp, #0xc]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r0, [pc, #0x3b0]",
+      "instruction_address": 35674892,
+      "instruction_set": "arm",
+      "literal_address": 35675844,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "overlay_012",
+      "forward_context": [
+        {
+          "address": 35675936,
+          "mnemonic": "ldr",
+          "operands": "lr, [pc, #0x11c]",
+          "size": 4
+        },
+        {
+          "address": 35675940,
+          "mnemonic": "strb",
+          "operands": "r0, [sb, r4]",
+          "size": 4
+        },
+        {
+          "address": 35675944,
+          "mnemonic": "mov",
+          "operands": "r1, r0",
+          "size": 4
+        },
+        {
+          "address": 35675948,
+          "mnemonic": "mov",
+          "operands": "r2, r7",
+          "size": 4
+        },
+        {
+          "address": 35675952,
+          "mnemonic": "mov",
+          "operands": "r6, r7",
+          "size": 4
+        },
+        {
+          "address": 35675956,
+          "mnemonic": "mov",
+          "operands": "r8, r6",
+          "size": 4
+        },
+        {
+          "address": 35675960,
+          "mnemonic": "mov",
+          "operands": "ip, r6",
+          "size": 4
+        },
+        {
+          "address": 35675964,
+          "mnemonic": "add",
+          "operands": "r3, lr, ip, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 35675968,
+          "mnemonic": "ldrsh",
+          "operands": "r3, [r3, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 35675972,
+          "mnemonic": "cmp",
+          "operands": "r3, #0x63",
+          "size": 4
+        },
+        {
+          "address": 35675976,
+          "mnemonic": "moveq",
+          "operands": "r8, r2",
+          "size": 4
+        },
+        {
+          "address": 35675980,
+          "mnemonic": "beq",
+          "operands": "#0x2205f64",
+          "size": 4
+        },
+        {
+          "address": 35675984,
+          "mnemonic": "add",
+          "operands": "ip, ip, #1",
+          "size": 4
+        },
+        {
+          "address": 35675988,
+          "mnemonic": "cmp",
+          "operands": "r4, r3",
+          "size": 4
+        },
+        {
+          "address": 35675992,
+          "mnemonic": "moveq",
+          "operands": "r8, r1",
+          "size": 4
+        },
+        {
+          "address": 35675996,
+          "mnemonic": "cmp",
+          "operands": "ip, #3",
+          "size": 4
+        },
+        {
+          "address": 35676000,
+          "mnemonic": "blt",
+          "operands": "#0x2205f3c",
+          "size": 4
+        },
+        {
+          "address": 35676004,
+          "mnemonic": "add",
+          "operands": "r7, r7, #1",
+          "size": 4
+        },
+        {
+          "address": 35676008,
+          "mnemonic": "cmp",
+          "operands": "r8, #0",
+          "size": 4
+        },
+        {
+          "address": 35676012,
+          "mnemonic": "strbne",
+          "operands": "r0, [sb]",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr lr, [pc, #0x11c]",
+      "instruction_address": 35675936,
+      "instruction_set": "arm",
+      "literal_address": 35676228,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "overlay_012",
+      "forward_context": [
+        {
+          "address": 35676032,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0xbc]",
+          "size": 4
+        },
+        {
+          "address": 35676036,
+          "mnemonic": "mov",
+          "operands": "r0, #0x6a",
+          "size": 4
+        },
+        {
+          "address": 35676040,
+          "mnemonic": "mla",
+          "operands": "r6, r4, r0, r1",
+          "size": 4
+        },
+        {
+          "address": 35676044,
+          "mnemonic": "mov",
+          "operands": "r4, #0",
+          "size": 4
+        },
+        {
+          "address": 35676048,
+          "mnemonic": "mov",
+          "operands": "r2, #1",
+          "size": 4
+        },
+        {
+          "address": 35676052,
+          "mnemonic": "add",
+          "operands": "r1, sp, #0",
+          "size": 4
+        },
+        {
+          "address": 35676056,
+          "mnemonic": "mvn",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35676060,
+          "mnemonic": "add",
+          "operands": "r3, r6, r4, lsl #1",
+          "size": 4
+        },
+        {
+          "address": 35676064,
+          "mnemonic": "ldrsh",
+          "operands": "r3, [r3, #0x20]",
+          "size": 4
+        },
+        {
+          "address": 35676068,
+          "mnemonic": "add",
+          "operands": "r4, r4, #1",
+          "size": 4
+        },
+        {
+          "address": 35676072,
+          "mnemonic": "cmp",
+          "operands": "r3, #0x63",
+          "size": 4
+        },
+        {
+          "address": 35676076,
+          "mnemonic": "cmpne",
+          "operands": "r3, r0",
+          "size": 4
+        },
+        {
+          "address": 35676080,
+          "mnemonic": "strbne",
+          "operands": "r2, [r1, r3]",
+          "size": 4
+        },
+        {
+          "address": 35676084,
+          "mnemonic": "cmp",
+          "operands": "r4, #3",
+          "size": 4
+        },
+        {
+          "address": 35676088,
+          "mnemonic": "blt",
+          "operands": "#0x2205f9c",
+          "size": 4
+        },
+        {
+          "address": 35676092,
+          "mnemonic": "ldr",
+          "operands": "r0, [r5, #0x1c]",
+          "size": 4
+        },
+        {
+          "address": 35676096,
+          "mnemonic": "mov",
+          "operands": "r1, #0",
+          "size": 4
+        },
+        {
+          "address": 35676100,
+          "mnemonic": "cmp",
+          "operands": "r0, #0",
+          "size": 4
+        },
+        {
+          "address": 35676104,
+          "mnemonic": "addls",
+          "operands": "sp, sp, #0x30",
+          "size": 4
+        },
+        {
+          "address": 35676108,
+          "mnemonic": "popls",
+          "operands": "{r3, r4, r5, r6, r7, r8, sb, pc}",
+          "size": 4
+        }
+      ],
+      "instruction": "ldr r1, [pc, #0xbc]",
+      "instruction_address": 35676032,
+      "instruction_set": "arm",
+      "literal_address": 35676228,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    }
+  ],
+  "metadata_columns": [
+    {
+      "byte_offset": 32,
+      "column": 0,
+      "distinct_values": [
+        {
+          "count": 4,
+          "value": -1
+        },
+        {
+          "count": 2,
+          "value": 1
+        },
+        {
+          "count": 2,
+          "value": 2
+        },
+        {
+          "count": 1,
+          "value": 3
+        },
+        {
+          "count": 1,
+          "value": 4
+        },
+        {
+          "count": 3,
+          "value": 5
+        },
+        {
+          "count": 1,
+          "value": 6
+        },
+        {
+          "count": 1,
+          "value": 7
+        },
+        {
+          "count": 3,
+          "value": 8
+        },
+        {
+          "count": 1,
+          "value": 9
+        },
+        {
+          "count": 1,
+          "value": 10
+        },
+        {
+          "count": 3,
+          "value": 12
+        },
+        {
+          "count": 1,
+          "value": 14
+        },
+        {
+          "count": 1,
+          "value": 16
+        },
+        {
+          "count": 1,
+          "value": 20
+        },
+        {
+          "count": 2,
+          "value": 21
+        },
+        {
+          "count": 1,
+          "value": 22
+        },
+        {
+          "count": 2,
+          "value": 25
+        },
+        {
+          "count": 1,
+          "value": 26
+        },
+        {
+          "count": 3,
+          "value": 27
+        },
+        {
+          "count": 2,
+          "value": 28
+        },
+        {
+          "count": 1,
+          "value": 29
+        },
+        {
+          "count": 1,
+          "value": 30
+        },
+        {
+          "count": 1,
+          "value": 31
+        },
+        {
+          "count": 1,
+          "value": 33
+        },
+        {
+          "count": 1,
+          "value": 34
+        },
+        {
+          "count": 1,
+          "value": 37
+        },
+        {
+          "count": 1,
+          "value": 38
+        },
+        {
+          "count": 1,
+          "value": 39
+        },
+        {
+          "count": 1,
+          "value": 41
+        },
+        {
+          "count": 1,
+          "value": 46
+        }
+      ],
+      "maximum": 46,
+      "minimum": -1,
+      "minus_one_count": 4
+    },
+    {
+      "byte_offset": 34,
+      "column": 1,
+      "distinct_values": [
+        {
+          "count": 9,
+          "value": -1
+        },
+        {
+          "count": 2,
+          "value": 1
+        },
+        {
+          "count": 2,
+          "value": 6
+        },
+        {
+          "count": 2,
+          "value": 7
+        },
+        {
+          "count": 2,
+          "value": 8
+        },
+        {
+          "count": 2,
+          "value": 9
+        },
+        {
+          "count": 3,
+          "value": 13
+        },
+        {
+          "count": 2,
+          "value": 16
+        },
+        {
+          "count": 1,
+          "value": 17
+        },
+        {
+          "count": 2,
+          "value": 18
+        },
+        {
+          "count": 1,
+          "value": 19
+        },
+        {
+          "count": 1,
+          "value": 20
+        },
+        {
+          "count": 1,
+          "value": 21
+        },
+        {
+          "count": 2,
+          "value": 22
+        },
+        {
+          "count": 1,
+          "value": 24
+        },
+        {
+          "count": 1,
+          "value": 25
+        },
+        {
+          "count": 1,
+          "value": 27
+        },
+        {
+          "count": 3,
+          "value": 30
+        },
+        {
+          "count": 1,
+          "value": 34
+        },
+        {
+          "count": 1,
+          "value": 35
+        },
+        {
+          "count": 3,
+          "value": 36
+        },
+        {
+          "count": 1,
+          "value": 38
+        },
+        {
+          "count": 1,
+          "value": 43
+        },
+        {
+          "count": 1,
+          "value": 44
+        },
+        {
+          "count": 1,
+          "value": 45
+        }
+      ],
+      "maximum": 45,
+      "minimum": -1,
+      "minus_one_count": 9
+    },
+    {
+      "byte_offset": 36,
+      "column": 2,
+      "distinct_values": [
+        {
+          "count": 35,
+          "value": -1
+        },
+        {
+          "count": 1,
+          "value": 3
+        },
+        {
+          "count": 1,
+          "value": 9
+        },
+        {
+          "count": 1,
+          "value": 12
+        },
+        {
+          "count": 1,
+          "value": 15
+        },
+        {
+          "count": 1,
+          "value": 16
+        },
+        {
+          "count": 1,
+          "value": 21
+        },
+        {
+          "count": 1,
+          "value": 22
+        },
+        {
+          "count": 1,
+          "value": 25
+        },
+        {
+          "count": 1,
+          "value": 27
+        },
+        {
+          "count": 1,
+          "value": 29
+        },
+        {
+          "count": 1,
+          "value": 41
+        },
+        {
+          "count": 1,
+          "value": 42
+        }
+      ],
+      "maximum": 42,
+      "minimum": -1,
+      "minus_one_count": 35
+    },
+    {
+      "byte_offset": 38,
+      "column": 3,
+      "distinct_values": [
+        {
+          "count": 4,
+          "value": -1
+        },
+        {
+          "count": 18,
+          "value": 1
+        },
+        {
+          "count": 9,
+          "value": 2
+        },
+        {
+          "count": 3,
+          "value": 3
+        },
+        {
+          "count": 3,
+          "value": 4
+        },
+        {
+          "count": 1,
+          "value": 5
+        },
+        {
+          "count": 1,
+          "value": 7
+        },
+        {
+          "count": 7,
+          "value": 8
+        },
+        {
+          "count": 1,
+          "value": 15
+        }
+      ],
+      "maximum": 15,
+      "minimum": -1,
+      "minus_one_count": 4
+    },
+    {
+      "byte_offset": 40,
+      "column": 4,
+      "distinct_values": [
+        {
+          "count": 47,
+          "value": -1
+        }
+      ],
+      "maximum": -1,
+      "minimum": -1,
+      "minus_one_count": 47
+    }
+  ],
+  "pointer_words": [
+    {
+      "component": "arm9",
+      "source_address": 33816036,
+      "source_offset": 261604,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 33870688,
+      "source_offset": 316256,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 33874060,
+      "source_offset": 319628,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 33877104,
+      "source_offset": 322672,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 33888468,
+      "source_offset": 334036,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 33988728,
+      "source_offset": 434296,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34011120,
+      "source_offset": 456688,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34019760,
+      "source_offset": 465328,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34037320,
+      "source_offset": 482888,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34094284,
+      "source_offset": 539852,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34094724,
+      "source_offset": 540292,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34096744,
+      "source_offset": 542312,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34166312,
+      "source_offset": 611880,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34166608,
+      "source_offset": 612176,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34292476,
+      "source_offset": 738044,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "arm9",
+      "source_address": 34292488,
+      "source_offset": 738056,
+      "target_address": 35102390,
+      "target_name": "Future Technology",
+      "target_physical_index": 48,
+      "target_technology_ordinal": 46
+    },
+    {
+      "component": "overlay_006",
+      "source_address": 35674212,
+      "source_offset": 452,
+      "target_address": 35097514,
+      "target_name": "Alphabet",
+      "target_physical_index": 2,
+      "target_technology_ordinal": 0
+    },
+    {
+      "component": "overlay_012",
+      "source_address": 35675844,
+      "source_offset": 2084,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    },
+    {
+      "component": "overlay_012",
+      "source_address": 35676228,
+      "source_offset": 2468,
+      "target_address": 35097408,
+      "target_name": "never",
+      "target_physical_index": 1,
+      "target_technology_ordinal": null
+    }
+  ],
+  "prefix_candidates": [
     {
       "address": 35097302,
-      "effect_at_42": null,
-      "index": 0,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "on",
+          "physical_index": 0,
+          "technology_ordinal": null
+        },
+        {
+          "name": "on",
+          "physical_index": 0,
+          "technology_ordinal": null
+        },
+        {
+          "name": "on",
+          "physical_index": 0,
+          "technology_ordinal": null
+        },
+        {
+          "name": "on",
+          "physical_index": 0,
+          "technology_ordinal": null
+        },
+        {
+          "name": "on",
+          "physical_index": 0,
+          "technology_ordinal": null
+        }
+      ],
+      "metadata_s16": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "name": "on",
-      "nonzero_ranges": [
-        {
-          "end": 2,
-          "hex": "6f6e",
-          "start": 0
-        }
-      ],
       "offset": 1542870,
-      "printable_runs": [
-        {
-          "end_offset": 2,
-          "offset": 0,
-          "text": "on"
-        }
-      ],
-      "raw_hex": "6f6e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 0,
+      "raw_hex": "6f6e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": null
     },
     {
       "address": 35097408,
-      "effect_at_42": null,
-      "index": 1,
+      "effect": "",
+      "metadata_resolved_records": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "metadata_s16": [
+        99,
+        99,
+        99,
+        -1,
+        -1
+      ],
       "name": "never",
-      "nonzero_ranges": [
-        {
-          "end": 5,
-          "hex": "6e65766572",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "63",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "63",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "63",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffffffff",
-          "start": 38
-        }
-      ],
       "offset": 1542976,
-      "printable_runs": [
-        {
-          "end_offset": 5,
-          "offset": 0,
-          "text": "never"
-        }
-      ],
-      "raw_hex": "6e65766572000000000000000000000000000000000000000000000000000000630063006300ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    },
+      "physical_index": 1,
+      "raw_hex": "6e65766572000000000000000000000000000000000000000000000000000000630063006300ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": null
+    }
+  ],
+  "technologies": [
     {
       "address": 35097514,
-      "effect_at_42": null,
-      "index": 2,
+      "effect": "",
+      "metadata_resolved_records": [
+        null,
+        null,
+        null,
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        2,
+        -1
+      ],
       "name": "Alphabet",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "416c706861626574",
-          "start": 0
-        },
-        {
-          "end": 39,
-          "hex": "ffffffffffff02",
-          "start": 32
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543082,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Alphabet"
-        }
-      ],
-      "raw_hex": "416c706861626574000000000000000000000000000000000000000000000000ffffffffffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 2,
+      "raw_hex": "416c706861626574000000000000000000000000000000000000000000000000ffffffffffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 0
     },
     {
       "address": 35097620,
-      "effect_at_42": null,
-      "index": 3,
+      "effect": "",
+      "metadata_resolved_records": [
+        null,
+        null,
+        null,
+        {
+          "name": "Currency",
+          "physical_index": 15,
+          "technology_ordinal": 13
+        },
+        null
+      ],
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        15,
+        -1
+      ],
       "name": "Bronze Working",
-      "nonzero_ranges": [
-        {
-          "end": 14,
-          "hex": "42726f6e7a6520576f726b696e67",
-          "start": 0
-        },
-        {
-          "end": 39,
-          "hex": "ffffffffffff0f",
-          "start": 32
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543188,
-      "printable_runs": [
-        {
-          "end_offset": 14,
-          "offset": 0,
-          "text": "Bronze Working"
-        }
-      ],
-      "raw_hex": "42726f6e7a6520576f726b696e67000000000000000000000000000000000000ffffffffffff0f00ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 3,
+      "raw_hex": "42726f6e7a6520576f726b696e67000000000000000000000000000000000000ffffffffffff0f00ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 1
     },
     {
       "address": 35097726,
-      "effect_at_42": null,
-      "index": 4,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Horseback Riding",
+          "physical_index": 5,
+          "technology_ordinal": 3
+        },
+        null,
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        5,
+        -1,
+        -1,
+        8,
+        -1
+      ],
       "name": "Ceremonial Burial",
-      "nonzero_ranges": [
-        {
-          "end": 17,
-          "hex": "436572656d6f6e69616c2042757269616c",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "05",
-          "start": 32
-        },
-        {
-          "end": 39,
-          "hex": "ffffffff08",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543294,
-      "printable_runs": [
-        {
-          "end_offset": 17,
-          "offset": 0,
-          "text": "Ceremonial Burial"
-        }
-      ],
-      "raw_hex": "436572656d6f6e69616c2042757269616c0000000000000000000000000000000500ffffffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 4,
+      "raw_hex": "436572656d6f6e69616c2042757269616c0000000000000000000000000000000500ffffffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 2
     },
     {
       "address": 35097832,
-      "effect_at_42": null,
-      "index": 5,
+      "effect": "",
+      "metadata_resolved_records": [
+        null,
+        null,
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
       "name": "Horseback Riding",
-      "nonzero_ranges": [
-        {
-          "end": 16,
-          "hex": "486f7273656261636b20526964696e67",
-          "start": 0
-        },
-        {
-          "end": 39,
-          "hex": "ffffffffffff01",
-          "start": 32
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543400,
-      "printable_runs": [
-        {
-          "end_offset": 16,
-          "offset": 0,
-          "text": "Horseback Riding"
-        }
-      ],
-      "raw_hex": "486f7273656261636b20526964696e6700000000000000000000000000000000ffffffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 5,
+      "raw_hex": "486f7273656261636b20526964696e6700000000000000000000000000000000ffffffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 3
     },
     {
       "address": 35097938,
-      "effect_at_42": null,
-      "index": 6,
+      "effect": "",
+      "metadata_resolved_records": [
+        null,
+        null,
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        8,
+        -1
+      ],
       "name": "Pottery",
-      "nonzero_ranges": [
-        {
-          "end": 7,
-          "hex": "506f7474657279",
-          "start": 0
-        },
-        {
-          "end": 39,
-          "hex": "ffffffffffff08",
-          "start": 32
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543506,
-      "printable_runs": [
-        {
-          "end_offset": 7,
-          "offset": 0,
-          "text": "Pottery"
-        }
-      ],
-      "raw_hex": "506f747465727900000000000000000000000000000000000000000000000000ffffffffffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 6,
+      "raw_hex": "506f747465727900000000000000000000000000000000000000000000000000ffffffffffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 4
     },
     {
       "address": 35098044,
-      "effect_at_42": null,
-      "index": 7,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null,
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        2,
+        -1,
+        -1,
+        1,
+        -1
+      ],
       "name": "Iron Working",
-      "nonzero_ranges": [
-        {
-          "end": 12,
-          "hex": "49726f6e20576f726b696e67",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "02",
-          "start": 32
-        },
-        {
-          "end": 39,
-          "hex": "ffffffff01",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543612,
-      "printable_runs": [
-        {
-          "end_offset": 12,
-          "offset": 0,
-          "text": "Iron Working"
-        }
-      ],
-      "raw_hex": "49726f6e20576f726b696e6700000000000000000000000000000000000000000200ffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 7,
+      "raw_hex": "49726f6e20576f726b696e6700000000000000000000000000000000000000000200ffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 5
     },
     {
       "address": 35098150,
-      "effect_at_42": null,
-      "index": 8,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Horseback Riding",
+          "physical_index": 5,
+          "technology_ordinal": 3
+        },
+        null,
+        null,
+        {
+          "name": "Horseback Riding",
+          "physical_index": 5,
+          "technology_ordinal": 3
+        },
+        null
+      ],
+      "metadata_s16": [
+        5,
+        -1,
+        -1,
+        5,
+        -1
+      ],
       "name": "Masonry",
-      "nonzero_ranges": [
-        {
-          "end": 7,
-          "hex": "4d61736f6e7279",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "05",
-          "start": 32
-        },
-        {
-          "end": 39,
-          "hex": "ffffffff05",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543718,
-      "printable_runs": [
-        {
-          "end_offset": 7,
-          "offset": 0,
-          "text": "Masonry"
-        }
-      ],
-      "raw_hex": "4d61736f6e7279000000000000000000000000000000000000000000000000000500ffffffff0500ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 8,
+      "raw_hex": "4d61736f6e7279000000000000000000000000000000000000000000000000000500ffffffff0500ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 6
     },
     {
       "address": 35098256,
-      "effect_at_42": null,
-      "index": 9,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null,
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        1,
+        1,
+        -1,
+        2,
+        -1
+      ],
       "name": "Writing",
-      "nonzero_ranges": [
-        {
-          "end": 7,
-          "hex": "57726974696e67",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "01",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "01",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff02",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1543824,
-      "printable_runs": [
-        {
-          "end_offset": 7,
-          "offset": 0,
-          "text": "Writing"
-        }
-      ],
-      "raw_hex": "57726974696e670000000000000000000000000000000000000000000000000001000100ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 9,
+      "raw_hex": "57726974696e670000000000000000000000000000000000000000000000000001000100ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 7
     },
     {
       "address": 35098362,
-      "effect_at_42": "Govt: Republic",
-      "index": 10,
+      "effect": "Govt: Republic",
+      "metadata_resolved_records": [
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        8,
+        1,
+        -1,
+        1,
+        -1
+      ],
       "name": "Code of Laws",
-      "nonzero_ranges": [
-        {
-          "end": 12,
-          "hex": "436f6465206f66204c617773",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "08",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "01",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 56,
-          "hex": "ffff476f76743a2052657075626c6963",
-          "start": 40
-        }
-      ],
       "offset": 1543930,
-      "printable_runs": [
-        {
-          "end_offset": 12,
-          "offset": 0,
-          "text": "Code of Laws"
-        },
-        {
-          "end_offset": 56,
-          "offset": 42,
-          "text": "Govt: Republic"
-        }
-      ],
-      "raw_hex": "436f6465206f66204c617773000000000000000000000000000000000000000008000100ffff0100ffff476f76743a2052657075626c69630000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 10,
+      "raw_hex": "436f6465206f66204c617773000000000000000000000000000000000000000008000100ffff0100ffff476f76743a2052657075626c69630000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 8
     },
     {
       "address": 35098468,
-      "effect_at_42": null,
-      "index": 11,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Iron Working",
+          "physical_index": 7,
+          "technology_ordinal": 5
+        },
+        {
+          "name": "Pottery",
+          "physical_index": 6,
+          "technology_ordinal": 4
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        7,
+        6,
+        -1,
+        1,
+        -1
+      ],
       "name": "Construction",
-      "nonzero_ranges": [
-        {
-          "end": 12,
-          "hex": "436f6e737472756374696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "07",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "06",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544036,
-      "printable_runs": [
-        {
-          "end_offset": 12,
-          "offset": 0,
-          "text": "Construction"
-        }
-      ],
-      "raw_hex": "436f6e737472756374696f6e000000000000000000000000000000000000000007000600ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 11,
+      "raw_hex": "436f6e737472756374696f6e000000000000000000000000000000000000000007000600ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 9
     },
     {
       "address": 35098574,
-      "effect_at_42": "+1 food from river squares",
-      "index": 12,
+      "effect": "+1 food from river squares",
+      "metadata_resolved_records": [
+        {
+          "name": "Horseback Riding",
+          "physical_index": 5,
+          "technology_ordinal": 3
+        },
+        {
+          "name": "Iron Working",
+          "physical_index": 7,
+          "technology_ordinal": 5
+        },
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        5,
+        7,
+        -1,
+        8,
+        -1
+      ],
       "name": "Irrigation",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "49727269676174696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "05",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "07",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff08",
-          "start": 36
-        },
-        {
-          "end": 68,
-          "hex": "ffff2b3120666f6f642066726f6d2072697665722073717561726573",
-          "start": 40
-        }
-      ],
       "offset": 1544142,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Irrigation"
-        },
-        {
-          "end_offset": 68,
-          "offset": 42,
-          "text": "+1 food from river squares"
-        }
-      ],
-      "raw_hex": "49727269676174696f6e0000000000000000000000000000000000000000000005000700ffff0800ffff2b3120666f6f642066726f6d20726976657220737175617265730000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 12,
+      "raw_hex": "49727269676174696f6e0000000000000000000000000000000000000000000005000700ffff0800ffff2b3120666f6f642066726f6d20726976657220737175617265730000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 10
     },
     {
       "address": 35098680,
-      "effect_at_42": null,
-      "index": 13,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null,
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        1,
+        8,
+        -1,
+        2,
+        -1
+      ],
       "name": "Literacy",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "4c69746572616379",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "01",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "08",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff02",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544248,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Literacy"
-        }
-      ],
-      "raw_hex": "4c6974657261637900000000000000000000000000000000000000000000000001000800ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 13,
+      "raw_hex": "4c6974657261637900000000000000000000000000000000000000000000000001000800ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 11
     },
     {
       "address": 35098786,
-      "effect_at_42": null,
-      "index": 14,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        {
+          "name": "Iron Working",
+          "physical_index": 7,
+          "technology_ordinal": 5
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        8,
+        7,
+        -1,
+        1,
+        -1
+      ],
       "name": "Mathematics",
-      "nonzero_ranges": [
-        {
-          "end": 11,
-          "hex": "4d617468656d6174696373",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "08",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "07",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544354,
-      "printable_runs": [
-        {
-          "end_offset": 11,
-          "offset": 0,
-          "text": "Mathematics"
-        }
-      ],
-      "raw_hex": "4d617468656d617469637300000000000000000000000000000000000000000008000700ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 14,
+      "raw_hex": "4d617468656d617469637300000000000000000000000000000000000000000008000700ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 12
     },
     {
       "address": 35098892,
-      "effect_at_42": null,
-      "index": 15,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null,
+        {
+          "name": "Writing",
+          "physical_index": 9,
+          "technology_ordinal": 7
+        },
+        {
+          "name": "Ceremonial Burial",
+          "physical_index": 4,
+          "technology_ordinal": 2
+        },
+        null
+      ],
+      "metadata_s16": [
+        2,
+        -1,
+        9,
+        4,
+        -1
+      ],
       "name": "Currency",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "43757272656e6379",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "02",
-          "start": 32
-        },
-        {
-          "end": 37,
-          "hex": "ffff09",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "04",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544460,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Currency"
-        }
-      ],
-      "raw_hex": "43757272656e63790000000000000000000000000000000000000000000000000200ffff09000400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 15,
+      "raw_hex": "43757272656e63790000000000000000000000000000000000000000000000000200ffff09000400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 13
     },
     {
       "address": 35098998,
-      "effect_at_42": "Govt: Democracy",
-      "index": 16,
+      "effect": "Govt: Democracy",
+      "metadata_resolved_records": [
+        {
+          "name": "Irrigation",
+          "physical_index": 12,
+          "technology_ordinal": 10
+        },
+        {
+          "name": "Writing",
+          "physical_index": 9,
+          "technology_ordinal": 7
+        },
+        null,
+        {
+          "name": "Iron Working",
+          "physical_index": 7,
+          "technology_ordinal": 5
+        },
+        null
+      ],
+      "metadata_s16": [
+        12,
+        9,
+        -1,
+        7,
+        -1
+      ],
       "name": "Democracy",
-      "nonzero_ranges": [
-        {
-          "end": 9,
-          "hex": "44656d6f6372616379",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "0c",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "09",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff07",
-          "start": 36
-        },
-        {
-          "end": 57,
-          "hex": "ffff476f76743a2044656d6f6372616379",
-          "start": 40
-        }
-      ],
       "offset": 1544566,
-      "printable_runs": [
-        {
-          "end_offset": 9,
-          "offset": 0,
-          "text": "Democracy"
-        },
-        {
-          "end_offset": 57,
-          "offset": 42,
-          "text": "Govt: Democracy"
-        }
-      ],
-      "raw_hex": "44656d6f637261637900000000000000000000000000000000000000000000000c000900ffff0700ffff476f76743a2044656d6f637261637900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 16,
+      "raw_hex": "44656d6f637261637900000000000000000000000000000000000000000000000c000900ffff0700ffff476f76743a2044656d6f637261637900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 14
     },
     {
       "address": 35099104,
-      "effect_at_42": null,
-      "index": 17,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Code of Laws",
+          "physical_index": 10,
+          "technology_ordinal": 8
+        },
+        {
+          "name": "Literacy",
+          "physical_index": 13,
+          "technology_ordinal": 11
+        },
+        null,
+        {
+          "name": "Bronze Working",
+          "physical_index": 3,
+          "technology_ordinal": 1
+        },
+        null
+      ],
+      "metadata_s16": [
+        10,
+        13,
+        -1,
+        3,
+        -1
+      ],
       "name": "Engineering",
-      "nonzero_ranges": [
-        {
-          "end": 11,
-          "hex": "456e67696e656572696e67",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "0a",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "0d",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff03",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544672,
-      "printable_runs": [
-        {
-          "end_offset": 11,
-          "offset": 0,
-          "text": "Engineering"
-        }
-      ],
-      "raw_hex": "456e67696e656572696e670000000000000000000000000000000000000000000a000d00ffff0300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 17,
+      "raw_hex": "456e67696e656572696e670000000000000000000000000000000000000000000a000d00ffff0300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 15
     },
     {
       "address": 35099210,
-      "effect_at_42": null,
-      "index": 18,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Ceremonial Burial",
+          "physical_index": 4,
+          "technology_ordinal": 2
+        },
+        {
+          "name": "Feudalism",
+          "physical_index": 18,
+          "technology_ordinal": 16
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        4,
+        18,
+        -1,
+        1,
+        -1
+      ],
       "name": "Feudalism",
-      "nonzero_ranges": [
-        {
-          "end": 9,
-          "hex": "46657564616c69736d",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "04",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "12",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1544778,
-      "printable_runs": [
-        {
-          "end_offset": 9,
-          "offset": 0,
-          "text": "Feudalism"
-        }
-      ],
-      "raw_hex": "46657564616c69736d000000000000000000000000000000000000000000000004001200ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 18,
+      "raw_hex": "46657564616c69736d000000000000000000000000000000000000000000000004001200ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 16
     },
     {
       "address": 35099316,
-      "effect_at_42": "Govt: Monarchy",
-      "index": 19,
+      "effect": "Govt: Monarchy",
+      "metadata_resolved_records": [
+        {
+          "name": "Writing",
+          "physical_index": 9,
+          "technology_ordinal": 7
+        },
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        {
+          "name": "Bronze Working",
+          "physical_index": 3,
+          "technology_ordinal": 1
+        },
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        9,
+        8,
+        3,
+        8,
+        -1
+      ],
       "name": "Monarchy",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "4d6f6e6172636879",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "09",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "08",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "03",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "08",
-          "start": 38
-        },
-        {
-          "end": 56,
-          "hex": "ffff476f76743a204d6f6e6172636879",
-          "start": 40
-        }
-      ],
       "offset": 1544884,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Monarchy"
-        },
-        {
-          "end_offset": 56,
-          "offset": 42,
-          "text": "Govt: Monarchy"
-        }
-      ],
-      "raw_hex": "4d6f6e61726368790000000000000000000000000000000000000000000000000900080003000800ffff476f76743a204d6f6e61726368790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 19,
+      "raw_hex": "4d6f6e61726368790000000000000000000000000000000000000000000000000900080003000800ffff476f76743a204d6f6e61726368790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 17
     },
     {
       "address": 35099422,
-      "effect_at_42": "Govt: Fundementalism",
-      "index": 20,
+      "effect": "Govt: Fundementalism",
+      "metadata_resolved_records": [
+        {
+          "name": "Bronze Working",
+          "physical_index": 3,
+          "technology_ordinal": 1
+        },
+        {
+          "name": "Feudalism",
+          "physical_index": 18,
+          "technology_ordinal": 16
+        },
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        3,
+        18,
+        -1,
+        8,
+        -1
+      ],
       "name": "Religion",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "52656c6967696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "03",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "12",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff08",
-          "start": 36
-        },
-        {
-          "end": 62,
-          "hex": "ffff476f76743a2046756e64656d656e74616c69736d",
-          "start": 40
-        }
-      ],
       "offset": 1544990,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Religion"
-        },
-        {
-          "end_offset": 62,
-          "offset": 42,
-          "text": "Govt: Fundementalism"
-        }
-      ],
-      "raw_hex": "52656c6967696f6e00000000000000000000000000000000000000000000000003001200ffff0800ffff476f76743a2046756e64656d656e74616c69736d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 20,
+      "raw_hex": "52656c6967696f6e00000000000000000000000000000000000000000000000003001200ffff0800ffff476f76743a2046756e64656d656e74616c69736d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 18
     },
     {
       "address": 35099528,
-      "effect_at_42": null,
-      "index": 21,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Mathematics",
+          "physical_index": 14,
+          "technology_ordinal": 12
+        },
+        {
+          "name": "Writing",
+          "physical_index": 9,
+          "technology_ordinal": 7
+        },
+        {
+          "name": "Irrigation",
+          "physical_index": 12,
+          "technology_ordinal": 10
+        },
+        {
+          "name": "Ceremonial Burial",
+          "physical_index": 4,
+          "technology_ordinal": 2
+        },
+        null
+      ],
+      "metadata_s16": [
+        14,
+        9,
+        12,
+        4,
+        -1
+      ],
       "name": "Banking",
-      "nonzero_ranges": [
-        {
-          "end": 7,
-          "hex": "42616e6b696e67",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "0e",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "09",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "0c",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "04",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545096,
-      "printable_runs": [
-        {
-          "end_offset": 7,
-          "offset": 0,
-          "text": "Banking"
-        }
-      ],
-      "raw_hex": "42616e6b696e67000000000000000000000000000000000000000000000000000e0009000c000400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 21,
+      "raw_hex": "42616e6b696e67000000000000000000000000000000000000000000000000000e0009000c000400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 19
     },
     {
       "address": 35099634,
-      "effect_at_42": null,
-      "index": 22,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Irrigation",
+          "physical_index": 12,
+          "technology_ordinal": 10
+        },
+        {
+          "name": "Literacy",
+          "physical_index": 13,
+          "technology_ordinal": 11
+        },
+        {
+          "name": "Currency",
+          "physical_index": 15,
+          "technology_ordinal": 13
+        },
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        12,
+        13,
+        15,
+        2,
+        -1
+      ],
       "name": "University",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "556e6976657273697479",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "0c",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "0d",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "0f",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "02",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545202,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "University"
-        }
-      ],
-      "raw_hex": "556e6976657273697479000000000000000000000000000000000000000000000c000d000f000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 22,
+      "raw_hex": "556e6976657273697479000000000000000000000000000000000000000000000c000d000f000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 20
     },
     {
       "address": 35099740,
-      "effect_at_42": null,
-      "index": 23,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Irrigation",
+          "physical_index": 12,
+          "technology_ordinal": 10
+        },
+        {
+          "name": "Democracy",
+          "physical_index": 16,
+          "technology_ordinal": 14
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        12,
+        16,
+        -1,
+        1,
+        -1
+      ],
       "name": "Invention",
-      "nonzero_ranges": [
-        {
-          "end": 9,
-          "hex": "496e76656e74696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "0c",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "10",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545308,
-      "printable_runs": [
-        {
-          "end_offset": 9,
-          "offset": 0,
-          "text": "Invention"
-        }
-      ],
-      "raw_hex": "496e76656e74696f6e00000000000000000000000000000000000000000000000c001000ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 23,
+      "raw_hex": "496e76656e74696f6e00000000000000000000000000000000000000000000000c001000ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 21
     },
     {
       "address": 35099846,
-      "effect_at_42": null,
-      "index": 24,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        {
+          "name": "Literacy",
+          "physical_index": 13,
+          "technology_ordinal": 11
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        8,
+        13,
+        -1,
+        1,
+        -1
+      ],
       "name": "Navigation",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "4e617669676174696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "08",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "0d",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545414,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Navigation"
-        }
-      ],
-      "raw_hex": "4e617669676174696f6e0000000000000000000000000000000000000000000008000d00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 24,
+      "raw_hex": "4e617669676174696f6e0000000000000000000000000000000000000000000008000d00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 22
     },
     {
       "address": 35099952,
-      "effect_at_42": null,
-      "index": 25,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "University",
+          "physical_index": 22,
+          "technology_ordinal": 20
+        },
+        {
+          "name": "Engineering",
+          "physical_index": 17,
+          "technology_ordinal": 15
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        22,
+        17,
+        -1,
+        1,
+        -1
+      ],
       "name": "Gunpowder",
-      "nonzero_ranges": [
-        {
-          "end": 9,
-          "hex": "47756e706f77646572",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "16",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "11",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545520,
-      "printable_runs": [
-        {
-          "end_offset": 9,
-          "offset": 0,
-          "text": "Gunpowder"
-        }
-      ],
-      "raw_hex": "47756e706f77646572000000000000000000000000000000000000000000000016001100ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 25,
+      "raw_hex": "47756e706f77646572000000000000000000000000000000000000000000000016001100ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 23
     },
     {
       "address": 35100058,
-      "effect_at_42": null,
-      "index": 26,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Democracy",
+          "physical_index": 16,
+          "technology_ordinal": 14
+        },
+        {
+          "name": "Pottery",
+          "physical_index": 6,
+          "technology_ordinal": 4
+        },
+        {
+          "name": "Banking",
+          "physical_index": 21,
+          "technology_ordinal": 19
+        },
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        16,
+        6,
+        21,
+        1,
+        -1
+      ],
       "name": "Metallurgy",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "4d6574616c6c75726779",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "10",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "06",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "15",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "01",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545626,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Metallurgy"
-        }
-      ],
-      "raw_hex": "4d6574616c6c75726779000000000000000000000000000000000000000000001000060015000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 26,
+      "raw_hex": "4d6574616c6c75726779000000000000000000000000000000000000000000001000060015000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 24
     },
     {
       "address": 35100164,
-      "effect_at_42": null,
-      "index": 27,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Banking",
+          "physical_index": 21,
+          "technology_ordinal": 19
+        },
+        {
+          "name": "Monarchy",
+          "physical_index": 19,
+          "technology_ordinal": 17
+        },
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        21,
+        19,
+        -1,
+        8,
+        -1
+      ],
       "name": "Printing Press",
-      "nonzero_ranges": [
-        {
-          "end": 14,
-          "hex": "5072696e74696e67205072657373",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "15",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "13",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff08",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545732,
-      "printable_runs": [
-        {
-          "end_offset": 14,
-          "offset": 0,
-          "text": "Printing Press"
-        }
-      ],
-      "raw_hex": "5072696e74696e6720507265737300000000000000000000000000000000000015001300ffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 27,
+      "raw_hex": "5072696e74696e6720507265737300000000000000000000000000000000000015001300ffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 25
     },
     {
       "address": 35100270,
-      "effect_at_42": null,
-      "index": 28,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Pottery",
+          "physical_index": 6,
+          "technology_ordinal": 4
+        },
+        {
+          "name": "University",
+          "physical_index": 22,
+          "technology_ordinal": 20
+        },
+        {
+          "name": "Democracy",
+          "physical_index": 16,
+          "technology_ordinal": 14
+        },
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        6,
+        22,
+        16,
+        1,
+        -1
+      ],
       "name": "Steam Power",
-      "nonzero_ranges": [
-        {
-          "end": 11,
-          "hex": "537465616d20506f776572",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "06",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "16",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "10",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "01",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545838,
-      "printable_runs": [
-        {
-          "end_offset": 11,
-          "offset": 0,
-          "text": "Steam Power"
-        }
-      ],
-      "raw_hex": "537465616d20506f7765720000000000000000000000000000000000000000000600160010000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 28,
+      "raw_hex": "537465616d20506f7765720000000000000000000000000000000000000000000600160010000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 26
     },
     {
       "address": 35100376,
-      "effect_at_42": null,
-      "index": 29,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Printing Press",
+          "physical_index": 27,
+          "technology_ordinal": 25
+        },
+        {
+          "name": "Navigation",
+          "physical_index": 24,
+          "technology_ordinal": 22
+        },
+        {
+          "name": "Gunpowder",
+          "physical_index": 25,
+          "technology_ordinal": 23
+        },
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        27,
+        24,
+        25,
+        1,
+        -1
+      ],
       "name": "Combustion",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "436f6d62757374696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1b",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "18",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "19",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "01",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1545944,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Combustion"
-        }
-      ],
-      "raw_hex": "436f6d62757374696f6e000000000000000000000000000000000000000000001b00180019000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 29,
+      "raw_hex": "436f6d62757374696f6e000000000000000000000000000000000000000000001b00180019000100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 27
     },
     {
       "address": 35100482,
-      "effect_at_42": null,
-      "index": 30,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Gunpowder",
+          "physical_index": 25,
+          "technology_ordinal": 23
+        },
+        {
+          "name": "Democracy",
+          "physical_index": 16,
+          "technology_ordinal": 14
+        },
+        {
+          "name": "Printing Press",
+          "physical_index": 27,
+          "technology_ordinal": 25
+        },
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        25,
+        16,
+        27,
+        2,
+        -1
+      ],
       "name": "Electricity",
-      "nonzero_ranges": [
-        {
-          "end": 11,
-          "hex": "456c656374726963697479",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "19",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "10",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "1b",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "02",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546050,
-      "printable_runs": [
-        {
-          "end_offset": 11,
-          "offset": 0,
-          "text": "Electricity"
-        }
-      ],
-      "raw_hex": "456c656374726963697479000000000000000000000000000000000000000000190010001b000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 30,
+      "raw_hex": "456c656374726963697479000000000000000000000000000000000000000000190010001b000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 28
     },
     {
       "address": 35100588,
-      "effect_at_42": null,
-      "index": 31,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Printing Press",
+          "physical_index": 27,
+          "technology_ordinal": 25
+        },
+        {
+          "name": "Religion",
+          "physical_index": 20,
+          "technology_ordinal": 18
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        27,
+        20,
+        -1,
+        1,
+        -1
+      ],
       "name": "Industrialization",
-      "nonzero_ranges": [
-        {
-          "end": 17,
-          "hex": "496e647573747269616c697a6174696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1b",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "14",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546156,
-      "printable_runs": [
-        {
-          "end_offset": 17,
-          "offset": 0,
-          "text": "Industrialization"
-        }
-      ],
-      "raw_hex": "496e647573747269616c697a6174696f6e0000000000000000000000000000001b001400ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 31,
+      "raw_hex": "496e647573747269616c697a6174696f6e0000000000000000000000000000001b001400ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 29
     },
     {
       "address": 35100694,
-      "effect_at_42": null,
-      "index": 32,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Printing Press",
+          "physical_index": 27,
+          "technology_ordinal": 25
+        },
+        null,
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        27,
+        -1,
+        -1,
+        1,
+        -1
+      ],
       "name": "Railroad",
-      "nonzero_ranges": [
-        {
-          "end": 8,
-          "hex": "5261696c726f6164",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1b",
-          "start": 32
-        },
-        {
-          "end": 39,
-          "hex": "ffffffff01",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546262,
-      "printable_runs": [
-        {
-          "end_offset": 8,
-          "offset": 0,
-          "text": "Railroad"
-        }
-      ],
-      "raw_hex": "5261696c726f61640000000000000000000000000000000000000000000000001b00ffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 32,
+      "raw_hex": "5261696c726f61640000000000000000000000000000000000000000000000001b00ffffffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 30
     },
     {
       "address": 35100800,
-      "effect_at_42": "Govt: Communism",
-      "index": 33,
+      "effect": "Govt: Communism",
+      "metadata_resolved_records": [
+        {
+          "name": "Electricity",
+          "physical_index": 30,
+          "technology_ordinal": 28
+        },
+        {
+          "name": "Banking",
+          "physical_index": 21,
+          "technology_ordinal": 19
+        },
+        null,
+        null,
+        null
+      ],
+      "metadata_s16": [
+        30,
+        21,
+        -1,
+        -1,
+        -1
+      ],
       "name": "Communism",
-      "nonzero_ranges": [
-        {
-          "end": 9,
-          "hex": "436f6d6d756e69736d",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1e",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "15",
-          "start": 34
-        },
-        {
-          "end": 57,
-          "hex": "ffffffffffff476f76743a20436f6d6d756e69736d",
-          "start": 36
-        }
-      ],
       "offset": 1546368,
-      "printable_runs": [
-        {
-          "end_offset": 9,
-          "offset": 0,
-          "text": "Communism"
-        },
-        {
-          "end_offset": 57,
-          "offset": 42,
-          "text": "Govt: Communism"
-        }
-      ],
-      "raw_hex": "436f6d6d756e69736d00000000000000000000000000000000000000000000001e001500ffffffffffff476f76743a20436f6d6d756e69736d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 33,
+      "raw_hex": "436f6d6d756e69736d00000000000000000000000000000000000000000000001e001500ffffffffffff476f76743a20436f6d6d756e69736d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 31
     },
     {
       "address": 35100906,
-      "effect_at_42": null,
-      "index": 34,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Steam Power",
+          "physical_index": 28,
+          "technology_ordinal": 26
+        },
+        {
+          "name": "Gunpowder",
+          "physical_index": 25,
+          "technology_ordinal": 23
+        },
+        {
+          "name": "University",
+          "physical_index": 22,
+          "technology_ordinal": 20
+        },
+        {
+          "name": "Bronze Working",
+          "physical_index": 3,
+          "technology_ordinal": 1
+        },
+        null
+      ],
+      "metadata_s16": [
+        28,
+        25,
+        22,
+        3,
+        -1
+      ],
       "name": "Flight",
-      "nonzero_ranges": [
-        {
-          "end": 6,
-          "hex": "466c69676874",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1c",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "19",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "16",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "03",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546474,
-      "printable_runs": [
-        {
-          "end_offset": 6,
-          "offset": 0,
-          "text": "Flight"
-        }
-      ],
-      "raw_hex": "466c6967687400000000000000000000000000000000000000000000000000001c00190016000300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 34,
+      "raw_hex": "466c6967687400000000000000000000000000000000000000000000000000001c00190016000300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 32
     },
     {
       "address": 35101012,
-      "effect_at_42": null,
-      "index": 35,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Industrialization",
+          "physical_index": 31,
+          "technology_ordinal": 29
+        },
+        {
+          "name": "Electricity",
+          "physical_index": 30,
+          "technology_ordinal": 28
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        31,
+        30,
+        -1,
+        1,
+        -1
+      ],
       "name": "Mass Production",
-      "nonzero_ranges": [
-        {
-          "end": 15,
-          "hex": "4d6173732050726f64756374696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1f",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "1e",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546580,
-      "printable_runs": [
-        {
-          "end_offset": 15,
-          "offset": 0,
-          "text": "Mass Production"
-        }
-      ],
-      "raw_hex": "4d6173732050726f64756374696f6e00000000000000000000000000000000001f001e00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 35,
+      "raw_hex": "4d6173732050726f64756374696f6e00000000000000000000000000000000001f001e00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 33
     },
     {
       "address": 35101118,
-      "effect_at_42": null,
-      "index": 36,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Gunpowder",
+          "physical_index": 25,
+          "technology_ordinal": 23
+        },
+        {
+          "name": "Printing Press",
+          "physical_index": 27,
+          "technology_ordinal": 25
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        25,
+        27,
+        -1,
+        1,
+        -1
+      ],
       "name": "Steel",
-      "nonzero_ranges": [
-        {
-          "end": 5,
-          "hex": "537465656c",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "19",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "1b",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546686,
-      "printable_runs": [
-        {
-          "end_offset": 5,
-          "offset": 0,
-          "text": "Steel"
-        }
-      ],
-      "raw_hex": "537465656c00000000000000000000000000000000000000000000000000000019001b00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 36,
+      "raw_hex": "537465656c00000000000000000000000000000000000000000000000000000019001b00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 34
     },
     {
       "address": 35101224,
-      "effect_at_42": null,
-      "index": 37,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Religion",
+          "physical_index": 20,
+          "technology_ordinal": 18
+        },
+        {
+          "name": "Electricity",
+          "physical_index": 30,
+          "technology_ordinal": 28
+        },
+        null,
+        null,
+        null
+      ],
+      "metadata_s16": [
+        20,
+        30,
+        -1,
+        -1,
+        -1
+      ],
       "name": "The Corporation",
-      "nonzero_ranges": [
-        {
-          "end": 15,
-          "hex": "54686520436f72706f726174696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "14",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "1e",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffffffffffff",
-          "start": 36
-        }
-      ],
       "offset": 1546792,
-      "printable_runs": [
-        {
-          "end_offset": 15,
-          "offset": 0,
-          "text": "The Corporation"
-        }
-      ],
-      "raw_hex": "54686520436f72706f726174696f6e000000000000000000000000000000000014001e00ffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 37,
+      "raw_hex": "54686520436f72706f726174696f6e000000000000000000000000000000000014001e00ffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 35
     },
     {
       "address": 35101330,
-      "effect_at_42": null,
-      "index": 38,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Banking",
+          "physical_index": 21,
+          "technology_ordinal": 19
+        },
+        {
+          "name": "University",
+          "physical_index": 22,
+          "technology_ordinal": 20
+        },
+        {
+          "name": "Combustion",
+          "physical_index": 29,
+          "technology_ordinal": 27
+        },
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        21,
+        22,
+        29,
+        2,
+        -1
+      ],
       "name": "Atomic Theory",
-      "nonzero_ranges": [
-        {
-          "end": 13,
-          "hex": "41746f6d6963205468656f7279",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "15",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "16",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "1d",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "02",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1546898,
-      "printable_runs": [
-        {
-          "end_offset": 13,
-          "offset": 0,
-          "text": "Atomic Theory"
-        }
-      ],
-      "raw_hex": "41746f6d6963205468656f727900000000000000000000000000000000000000150016001d000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 38,
+      "raw_hex": "41746f6d6963205468656f727900000000000000000000000000000000000000150016001d000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 36
     },
     {
       "address": 35101436,
-      "effect_at_42": null,
-      "index": 39,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Combustion",
+          "physical_index": 29,
+          "technology_ordinal": 27
+        },
+        {
+          "name": "Steel",
+          "physical_index": 36,
+          "technology_ordinal": 34
+        },
+        null,
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        29,
+        36,
+        -1,
+        2,
+        -1
+      ],
       "name": "Electronics",
-      "nonzero_ranges": [
-        {
-          "end": 11,
-          "hex": "456c656374726f6e696373",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1d",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "24",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff02",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547004,
-      "printable_runs": [
-        {
-          "end_offset": 11,
-          "offset": 0,
-          "text": "Electronics"
-        }
-      ],
-      "raw_hex": "456c656374726f6e6963730000000000000000000000000000000000000000001d002400ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 39,
+      "raw_hex": "456c656374726f6e6963730000000000000000000000000000000000000000001d002400ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 37
     },
     {
       "address": 35101542,
-      "effect_at_42": null,
-      "index": 40,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Metallurgy",
+          "physical_index": 26,
+          "technology_ordinal": 24
+        },
+        {
+          "name": "Steel",
+          "physical_index": 36,
+          "technology_ordinal": 34
+        },
+        null,
+        {
+          "name": "Masonry",
+          "physical_index": 8,
+          "technology_ordinal": 6
+        },
+        null
+      ],
+      "metadata_s16": [
+        26,
+        36,
+        -1,
+        8,
+        -1
+      ],
       "name": "Mass Media",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "4d617373204d65646961",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1a",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "24",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff08",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547110,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Mass Media"
-        }
-      ],
-      "raw_hex": "4d617373204d65646961000000000000000000000000000000000000000000001a002400ffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 40,
+      "raw_hex": "4d617373204d65646961000000000000000000000000000000000000000000001a002400ffff0800ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 38
     },
     {
       "address": 35101648,
-      "effect_at_42": null,
-      "index": 41,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Steam Power",
+          "physical_index": 28,
+          "technology_ordinal": 26
+        },
+        {
+          "name": "Mass Production",
+          "physical_index": 35,
+          "technology_ordinal": 33
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        28,
+        35,
+        -1,
+        1,
+        -1
+      ],
       "name": "The Automobile",
-      "nonzero_ranges": [
-        {
-          "end": 14,
-          "hex": "546865204175746f6d6f62696c65",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "1c",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "23",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547216,
-      "printable_runs": [
-        {
-          "end_offset": 14,
-          "offset": 0,
-          "text": "The Automobile"
-        }
-      ],
-      "raw_hex": "546865204175746f6d6f62696c650000000000000000000000000000000000001c002300ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 41,
+      "raw_hex": "546865204175746f6d6f62696c650000000000000000000000000000000000001c002300ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 39
     },
     {
       "address": 35101754,
-      "effect_at_42": null,
-      "index": 42,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Communism",
+          "physical_index": 33,
+          "technology_ordinal": 31
+        },
+        {
+          "name": "Electricity",
+          "physical_index": 30,
+          "technology_ordinal": 28
+        },
+        null,
+        {
+          "name": "Bronze Working",
+          "physical_index": 3,
+          "technology_ordinal": 1
+        },
+        null
+      ],
+      "metadata_s16": [
+        33,
+        30,
+        -1,
+        3,
+        -1
+      ],
       "name": "Advanced Flight",
-      "nonzero_ranges": [
-        {
-          "end": 15,
-          "hex": "416476616e63656420466c69676874",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "21",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "1e",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff03",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547322,
-      "printable_runs": [
-        {
-          "end_offset": 15,
-          "offset": 0,
-          "text": "Advanced Flight"
-        }
-      ],
-      "raw_hex": "416476616e63656420466c69676874000000000000000000000000000000000021001e00ffff0300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 42,
+      "raw_hex": "416476616e63656420466c69676874000000000000000000000000000000000021001e00ffff0300ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 40
     },
     {
       "address": 35101860,
-      "effect_at_42": null,
-      "index": 43,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "The Corporation",
+          "physical_index": 37,
+          "technology_ordinal": 35
+        },
+        {
+          "name": "Flight",
+          "physical_index": 34,
+          "technology_ordinal": 32
+        },
+        null,
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        37,
+        34,
+        -1,
+        2,
+        -1
+      ],
       "name": "Nuclear Power",
-      "nonzero_ranges": [
-        {
-          "end": 13,
-          "hex": "4e75636c65617220506f776572",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "25",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "22",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff02",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547428,
-      "printable_runs": [
-        {
-          "end_offset": 13,
-          "offset": 0,
-          "text": "Nuclear Power"
-        }
-      ],
-      "raw_hex": "4e75636c65617220506f7765720000000000000000000000000000000000000025002200ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 43,
+      "raw_hex": "4e75636c65617220506f7765720000000000000000000000000000000000000025002200ffff0200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 41
     },
     {
       "address": 35101966,
-      "effect_at_42": null,
-      "index": 44,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Atomic Theory",
+          "physical_index": 38,
+          "technology_ordinal": 36
+        },
+        {
+          "name": "Steel",
+          "physical_index": 36,
+          "technology_ordinal": 34
+        },
+        null,
+        {
+          "name": "Ceremonial Burial",
+          "physical_index": 4,
+          "technology_ordinal": 2
+        },
+        null
+      ],
+      "metadata_s16": [
+        38,
+        36,
+        -1,
+        4,
+        -1
+      ],
       "name": "Networking",
-      "nonzero_ranges": [
-        {
-          "end": 10,
-          "hex": "4e6574776f726b696e67",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "26",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "24",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff04",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547534,
-      "printable_runs": [
-        {
-          "end_offset": 10,
-          "offset": 0,
-          "text": "Networking"
-        }
-      ],
-      "raw_hex": "4e6574776f726b696e670000000000000000000000000000000000000000000026002400ffff0400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 44,
+      "raw_hex": "4e6574776f726b696e670000000000000000000000000000000000000000000026002400ffff0400ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 42
     },
     {
       "address": 35102072,
-      "effect_at_42": null,
-      "index": 45,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "The Automobile",
+          "physical_index": 41,
+          "technology_ordinal": 39
+        },
+        {
+          "name": "Atomic Theory",
+          "physical_index": 38,
+          "technology_ordinal": 36
+        },
+        {
+          "name": "Advanced Flight",
+          "physical_index": 42,
+          "technology_ordinal": 40
+        },
+        {
+          "name": "Alphabet",
+          "physical_index": 2,
+          "technology_ordinal": 0
+        },
+        null
+      ],
+      "metadata_s16": [
+        41,
+        38,
+        42,
+        2,
+        -1
+      ],
       "name": "Space Flight",
-      "nonzero_ranges": [
-        {
-          "end": 12,
-          "hex": "537061636520466c69676874",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "29",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "26",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "2a",
-          "start": 36
-        },
-        {
-          "end": 39,
-          "hex": "02",
-          "start": 38
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547640,
-      "printable_runs": [
-        {
-          "end_offset": 12,
-          "offset": 0,
-          "text": "Space Flight"
-        }
-      ],
-      "raw_hex": "537061636520466c696768740000000000000000000000000000000000000000290026002a000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 45,
+      "raw_hex": "537061636520466c696768740000000000000000000000000000000000000000290026002a000200ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 43
     },
     {
       "address": 35102178,
-      "effect_at_42": null,
-      "index": 46,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Electronics",
+          "physical_index": 39,
+          "technology_ordinal": 37
+        },
+        {
+          "name": "Nuclear Power",
+          "physical_index": 43,
+          "technology_ordinal": 41
+        },
+        null,
+        {
+          "name": "never",
+          "physical_index": 1,
+          "technology_ordinal": null
+        },
+        null
+      ],
+      "metadata_s16": [
+        39,
+        43,
+        -1,
+        1,
+        -1
+      ],
       "name": "Globalization",
-      "nonzero_ranges": [
-        {
-          "end": 13,
-          "hex": "476c6f62616c697a6174696f6e",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "27",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "2b",
-          "start": 34
-        },
-        {
-          "end": 39,
-          "hex": "ffff01",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffff",
-          "start": 40
-        }
-      ],
       "offset": 1547746,
-      "printable_runs": [
-        {
-          "end_offset": 13,
-          "offset": 0,
-          "text": "Globalization"
-        }
-      ],
-      "raw_hex": "476c6f62616c697a6174696f6e0000000000000000000000000000000000000027002b00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 46,
+      "raw_hex": "476c6f62616c697a6174696f6e0000000000000000000000000000000000000027002b00ffff0100ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 44
     },
     {
       "address": 35102284,
-      "effect_at_42": null,
-      "index": 47,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Flight",
+          "physical_index": 34,
+          "technology_ordinal": 32
+        },
+        {
+          "name": "Networking",
+          "physical_index": 44,
+          "technology_ordinal": 42
+        },
+        null,
+        null,
+        null
+      ],
+      "metadata_s16": [
+        34,
+        44,
+        -1,
+        -1,
+        -1
+      ],
       "name": "Superconductor",
-      "nonzero_ranges": [
-        {
-          "end": 14,
-          "hex": "5375706572636f6e647563746f72",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "22",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "2c",
-          "start": 34
-        },
-        {
-          "end": 42,
-          "hex": "ffffffffffff",
-          "start": 36
-        }
-      ],
       "offset": 1547852,
-      "printable_runs": [
-        {
-          "end_offset": 14,
-          "offset": 0,
-          "text": "Superconductor"
-        }
-      ],
-      "raw_hex": "5375706572636f6e647563746f7200000000000000000000000000000000000022002c00ffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 47,
+      "raw_hex": "5375706572636f6e647563746f7200000000000000000000000000000000000022002c00ffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 45
     },
     {
       "address": 35102390,
-      "effect_at_42": null,
-      "index": 48,
+      "effect": "",
+      "metadata_resolved_records": [
+        {
+          "name": "Globalization",
+          "physical_index": 46,
+          "technology_ordinal": 44
+        },
+        {
+          "name": "Space Flight",
+          "physical_index": 45,
+          "technology_ordinal": 43
+        },
+        {
+          "name": "The Automobile",
+          "physical_index": 41,
+          "technology_ordinal": 39
+        },
+        null,
+        null
+      ],
+      "metadata_s16": [
+        46,
+        45,
+        41,
+        -1,
+        -1
+      ],
       "name": "Future Technology",
-      "nonzero_ranges": [
-        {
-          "end": 17,
-          "hex": "46757475726520546563686e6f6c6f6779",
-          "start": 0
-        },
-        {
-          "end": 33,
-          "hex": "2e",
-          "start": 32
-        },
-        {
-          "end": 35,
-          "hex": "2d",
-          "start": 34
-        },
-        {
-          "end": 37,
-          "hex": "29",
-          "start": 36
-        },
-        {
-          "end": 42,
-          "hex": "ffffffff",
-          "start": 38
-        }
-      ],
       "offset": 1547958,
-      "printable_runs": [
-        {
-          "end_offset": 17,
-          "offset": 0,
-          "text": "Future Technology"
-        }
-      ],
-      "raw_hex": "46757475726520546563686e6f6c6f67790000000000000000000000000000002e002d002900ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      "physical_index": 48,
+      "raw_hex": "46757475726520546563686e6f6c6f67790000000000000000000000000000002e002d002900ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "technology_ordinal": 46
     }
-  ],
-  "rejected_record_before_start": {
-    "address": 35097196,
-    "offset": 1542764,
-    "printable_runs": [
-      {
-        "end_offset": 21,
-        "offset": 8,
-        "text": "SS Habitation"
-      },
-      {
-        "end_offset": 53,
-        "offset": 40,
-        "text": "ApolloProgram"
-      },
-      {
-        "end_offset": 75,
-        "offset": 73,
-        "text": "(,"
-      },
-      {
-        "end_offset": 106,
-        "offset": 84,
-        "text": "Space Station Habitati"
-      }
-    ],
-    "raw_hex": "000000000000000053532048616269746174696f6e0000000000000000000000000000000000000041706f6c6c6f50726f6772616d0000000000000000000000000000000000000008282c00000000000000000053706163652053746174696f6e204861626974617469"
-  },
-  "secondary_printable_offset_counts": {
-    "42": 6
-  },
-  "table_end_address": 35102496,
-  "table_end_offset": 1548064,
-  "table_start_address": 35097302,
-  "table_start_offset": 1542870
+  ]
 }
