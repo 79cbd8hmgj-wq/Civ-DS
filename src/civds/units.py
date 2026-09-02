@@ -5,8 +5,10 @@ from dataclasses import dataclass
 
 UNIT_RECORD_SIZE = 0x94
 UNIT_RECORD_COUNT = 38
+UNIT_FLAG_SETTLER = 0x00000001
 UNIT_FLAG_NAVAL = 0x00000002
 UNIT_FLAG_AIR = 0x00000004
+UNIT_FLAG_GREAT_PERSON = 0x00000080
 _UNIT_START_ANCHOR = b"Settlers\0"
 _UNIT_END_ANCHOR = b"Pyramids of Egypt\0"
 
@@ -102,12 +104,20 @@ class UnitRecord:
         return self.formation_mask.bit_count()
 
     @property
+    def is_settler(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_SETTLER)
+
+    @property
     def is_naval(self) -> bool:
         return bool(self.flags & UNIT_FLAG_NAVAL)
 
     @property
     def is_air(self) -> bool:
         return bool(self.flags & UNIT_FLAG_AIR)
+
+    @property
+    def is_great_person(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_GREAT_PERSON)
 
 
 def _unique_offset(blob: bytes, needle: bytes, label: str) -> int:
