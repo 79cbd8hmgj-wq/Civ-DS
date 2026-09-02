@@ -36,29 +36,35 @@ jobs:
 
           python - "$WORK_DIR" <<'PY'
           import json
+          import re
+          import struct
           import subprocess
           import sys
-          from collections import Counter
+          from collections import Counter, defaultdict
           from pathlib import Path
 
           workspace = Path(sys.argv[1])
           manifest = json.loads((workspace / "manifests" / "workspace.json").read_text())
-          cmd = [
-              "civds",
-              "analyze",
-              "--component",
-              "arm9",
-              str(workspace / "original" / "arm9.bin"),
-              hex(manifest["arm9_ram_address"]),
+          component_specs = [
+              (
+                  "arm9",
+                  workspace / "original" / "arm9.bin",
+                  int(manifest["arm9_ram_address"]),
+              )
           ]
           for overlay in manifest["overlays"]:
               overlay_id = int(overlay["overlay_id"])
-              cmd += [
-                  "--component",
-                  f"overlay_{overlay_id:03d}",
-                  str(workspace / "original" / "decoded" / "overlays" / f"overlay_{overlay_id:03d}.bin"),
-                  hex(int(overlay["ram_address"])),
-              ]
+              component_specs.append(
+                  (
+                      f"overlay_{overlay_id:03d}",
+                      workspace / "original" / "decoded" / "overlays" / f"overlay_{overlay_id:03d}.bin",
+                      int(overlay["ram_address"]),
+                  )
+              )
+
+          cmd = ["civds", "analyze"]
+          for name, path, base in component_specs:
+              cmd += ["--component", name, str(path), hex(base)]
 
           groups = {
               "economy": ("gold", "trade", "food", "production", "science", "culture", "resource", "treasury"),
@@ -82,7 +88,8 @@ jobs:
           ]
           subprocess.run(cmd, check=True)
 
-          report = json.loads(Path("evidence/re/executable-keywords.json").read_text())
+          report_path = Path("evidence/re/executable-keywords.json")
+          report = json.loads(report_path.read_text())
           component_hits = Counter()
           category_hits = Counter()
           category_rows = {name: [] for name in groups}
@@ -136,6 +143,131 @@ jobs:
           Path("evidence/re/executable-survey-summary.json").write_text(
               json.dumps(summary, indent=2, sort_keys=True) + "\n"
           )
+
+          # Targeted unit-name anchor survey. The address is discovered from the
+          # keyword report rather than hard-coded so a changed ROM fails closed.
+          settlers_rows = [
+              row
+              for row in report["string_records"]
+              if row["component"] == "arm9" and row["text"] == "Settlers"
+          ]
+          if len(settlers_rows) != 1:
+              raise RuntimeError(f"expected one ARM9 Settlers anchor, found {len(settlers_rows)}")
+          settlers = settlers_rows[0]
+          target = int(settlers["address"])
+
+          components = {}
+          for name, path, base in component_specs:
+              data = path.read_bytes()
+              components[name] = {"base": base, "data": data, "end": base + len(data)}
+
+          def ascii_at(component, address):
+              base = component["base"]
+              data = component["data"]
+              offset = address - base
+              if offset < 0 or offset >= len(data):
+                  return None
+              end = data.find(b"\x00", offset, min(len(data), offset + 160))
+              if end < 0 or end == offset:
+                  return None
+              raw = data[offset:end]
+              if not all(0x20 <= byte <= 0x7e for byte in raw):
+                  return None
+              return raw.decode("ascii")
+
+          refs_by_component = defaultdict(list)
+          for ref in settlers["references"]:
+              refs_by_component[ref["component"]].append(int(ref["address"]))
+
+          clusters = []
+          for component_name, addresses in sorted(refs_by_component.items()):
+              ordered = sorted(addresses)
+              current = [ordered[0]]
+              for address in ordered[1:]:
+                  if address - current[-1] <= 0x100:
+                      current.append(address)
+                  else:
+                      clusters.append({
+                          "component": component_name,
+                          "start": current[0],
+                          "end": current[-1],
+                          "count": len(current),
+                          "addresses": current,
+                      })
+                      current = [address]
+              clusters.append({
+                  "component": component_name,
+                  "start": current[0],
+                  "end": current[-1],
+                  "count": len(current),
+                  "addresses": current,
+              })
+          clusters.sort(key=lambda row: (-row["count"], row["component"], row["start"]))
+
+          arm9 = components["arm9"]
+          context_start = max(arm9["base"], target - 0x1000)
+          context_end = min(arm9["end"], target + 0x1000)
+          context_data = arm9["data"][context_start - arm9["base"]:context_end - arm9["base"]]
+          nearby_strings = []
+          for match in re.finditer(rb"[ -~]{3,}\x00", context_data):
+              nearby_strings.append({
+                  "address": context_start + match.start(),
+                  "offset_from_anchor": context_start + match.start() - target,
+                  "text": match.group()[:-1].decode("ascii"),
+              })
+
+          reference_windows = []
+          for ref in settlers["references"]:
+              component_name = ref["component"]
+              component = components[component_name]
+              ref_address = int(ref["address"])
+              ref_offset = ref_address - component["base"]
+              start = max(0, ref_offset - 32)
+              end = min(len(component["data"]), ref_offset + 36)
+              aligned = start - (start % 4)
+              words = []
+              for offset in range(aligned, end - 3, 4):
+                  value = struct.unpack_from("<I", component["data"], offset)[0]
+                  resolved = []
+                  for target_name, target_component in components.items():
+                      if target_component["base"] <= value < target_component["end"]:
+                          text = ascii_at(target_component, value)
+                          if text is not None:
+                              resolved.append({"component": target_name, "text": text})
+                  words.append({
+                      "address": component["base"] + offset,
+                      "relative_to_reference": component["base"] + offset - ref_address,
+                      "value": value,
+                      "resolved_strings": resolved,
+                  })
+              reference_windows.append({
+                  "component": component_name,
+                  "reference_address": ref_address,
+                  "words": words,
+              })
+
+          unit_anchor = {
+              "format_version": 1,
+              "anchor": {
+                  "component": "arm9",
+                  "address": target,
+                  "text": settlers["text"],
+                  "reference_count": len(settlers["references"]),
+              },
+              "reference_component_counts": [
+                  {"component": name, "count": len(addresses)}
+                  for name, addresses in sorted(
+                      refs_by_component.items(),
+                      key=lambda item: (-len(item[1]), item[0]),
+                  )
+              ],
+              "reference_clusters": clusters,
+              "nearby_strings": nearby_strings,
+              "reference_windows": reference_windows,
+          }
+          Path("evidence/re/unit-anchor-settlers.json").write_text(
+              json.dumps(unit_anchor, indent=2, sort_keys=True) + "\n"
+          )
           PY
       - name: Commit derived survey
         shell: bash
@@ -143,9 +275,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/re/executable-keywords.json evidence/re/executable-survey-summary.json
+          git add \
+            evidence/re/executable-keywords.json \
+            evidence/re/executable-survey-summary.json \
+            evidence/re/unit-anchor-settlers.json
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "analysis: add Civ Rev executable survey summary [exec-survey-generated]"
+          git commit -m "analysis: trace Civ Rev Settlers anchor [exec-survey-generated]"
           git push origin HEAD:analysis/civrev-executable-survey
