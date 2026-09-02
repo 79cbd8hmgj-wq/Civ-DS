@@ -27,7 +27,7 @@ def _unit_record(
     defense: int = 0,
     movement: int = 0,
     fuel_turn_limit: int = 0,
-    unknown_0x44: int = 0,
+    production_cost_quanta: int = 0,
     unknown_0x45: int = -1,
     unknown_0x46: int = 0,
     unknown_0x47: int = 0,
@@ -49,7 +49,7 @@ def _unit_record(
         defense,
         movement,
         fuel_turn_limit,
-        unknown_0x44,
+        production_cost_quanta,
         unknown_0x45,
         unknown_0x46,
         unknown_0x47,
@@ -76,6 +76,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     model="settler_rom",
                     alt_a="Settler_Male",
                     alt_b="Settler_Male",
+                    production_cost_quanta=4,
                 )
             )
         elif index == 6:
@@ -88,7 +89,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     attack=1,
                     defense=1,
                     movement=1,
-                    unknown_0x44=2,
+                    production_cost_quanta=2,
                     unknown_0x46=1,
                     unknown_0x47=6,
                     formation_mask=7,
@@ -107,6 +108,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     defense=4,
                     movement=8,
                     fuel_turn_limit=2,
+                    production_cost_quanta=6,
                     formation_mask=6,
                     unlock_technology_id=33,
                     flags=0x0000200C,
@@ -125,13 +127,16 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert records[0].model_name == "settler_rom"
     assert records[0].model_alt_a == "Settler_Male"
     assert records[0].model_alt_b == "Settler_Male"
+    assert records[0].production_cost_quanta == 4
+    assert records[0].production_cost == 20
 
     warrior = records[6]
     assert warrior.index == 6
     assert warrior.name == "Warrior"
     assert (warrior.attack, warrior.defense, warrior.movement) == (1, 1, 1)
     assert warrior.fuel_turn_limit == 0
-    assert warrior.unknown_0x44 == 2
+    assert warrior.production_cost_quanta == 2
+    assert warrior.production_cost == 10
     assert warrior.formation_mask == 7
     assert warrior.formation_size == 3
     assert warrior.unknown_0x49 == 0
@@ -143,6 +148,8 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     fighter = records[26]
     assert fighter.name == "Fighter"
     assert fighter.fuel_turn_limit == 2
+    assert fighter.production_cost_quanta == 6
+    assert fighter.production_cost == 30
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
