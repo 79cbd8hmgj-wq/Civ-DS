@@ -36,6 +36,7 @@ jobs:
           from pathlib import Path
 
           from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_MEM
 
           rom = Path(sys.argv[1]).read_bytes()
           profile = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
@@ -68,4 +69,36 @@ jobs:
                       marks.append('CALL')
                   suffix = f" ; {'|'.join(marks)}" if marks else ''
                   print(f'{insn.address:#010x}: {insn.mnemonic:8} {insn.op_str}{suffix}')
+
+          print('\n=== EXPIRATION PATH LITERALS ===')
+          for address in (0x020569FC, 0x02056A00, 0x02056A10, 0x02056A14):
+              off = address - arm9_base
+              insn = next(md.disasm(arm9[off:off + 4], address))
+              mem = next((op.mem for op in insn.operands if op.type == ARM_OP_MEM), None)
+              if mem is None or insn.reg_name(mem.base) != 'pc':
+                  print(f'{address:#010x}: not PC-relative: {insn.mnemonic} {insn.op_str}')
+                  continue
+              literal_address = address + 8 + int(mem.disp)
+              literal_off = literal_address - arm9_base
+              value = int.from_bytes(arm9[literal_off:literal_off + 4], 'little')
+              print(
+                  f'{address:#010x}: {insn.mnemonic} {insn.op_str} '
+                  f'literal={literal_address:#010x} value={value:#010x}'
+              )
+              value_off = value - arm9_base
+              if not 0 <= value_off < len(arm9):
+                  continue
+              raw = arm9[value_off:value_off + 160]
+              ascii_part = raw.split(b'\0', 1)[0]
+              if ascii_part and all(0x20 <= b < 0x7f for b in ascii_part):
+                  print(f'  ascii={ascii_part.decode("ascii")!r}')
+              try:
+                  terminator = raw.find(b'\0\0')
+                  if terminator > 0:
+                      terminator -= terminator % 2
+                      utf16 = raw[:terminator].decode('utf-16-le')
+                      if utf16 and all(ch.isprintable() for ch in utf16):
+                          print(f'  utf16={utf16!r}')
+              except UnicodeDecodeError:
+                  pass
           PY
