@@ -15,12 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: analysis/civrev-unit-survey
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Install Civ-DS
-        run: python -m pip install -e .
-      - name: Trace field 0x43 functions
+      - name: Decode expiration message records
         shell: bash
         run: |
           set -euo pipefail
@@ -35,70 +30,48 @@ jobs:
           import sys
           from pathlib import Path
 
-          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
-          from capstone.arm import ARM_OP_MEM
-
           rom = Path(sys.argv[1]).read_bytes()
           profile = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
-          arm9_base = int(profile['arm9_ram_address'])
-          arm9_offset = int(profile['arm9_offset'])
-          arm9_size = int(profile['arm9_size'])
-          arm9 = rom[arm9_offset:arm9_offset + arm9_size]
+          base = int(profile['arm9_ram_address'])
+          off = int(profile['arm9_offset'])
+          size = int(profile['arm9_size'])
+          arm9 = rom[off:off + size]
 
-          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
-          md.detail = True
-          md.skipdata = True
+          def region(address, length):
+              start = address - base
+              return arm9[start:start + length]
 
-          windows = [
-              (0x02039440, 0x02039560, {0x020394C0, 0x020394EC}),
-              (0x020568E0, 0x02056AD0, {0x02056980, 0x020569C4}),
-          ]
-          for start, end, targets in windows:
-              start_off = start - arm9_base
-              end_off = end - arm9_base
-              print(f'\n=== WINDOW {start:#010x}..{end:#010x} ===')
-              for insn in md.disasm(arm9[start_off:end_off], start):
-                  marks = []
-                  if insn.address in targets:
-                      marks.append('TARGET')
-                  if '#0x43' in insn.op_str:
-                      marks.append('FIELD43')
-                  if '#0x32' in insn.op_str:
-                      marks.append('RUNTIME32')
-                  if insn.mnemonic in {'bl', 'blx'}:
-                      marks.append('CALL')
-                  suffix = f" ; {'|'.join(marks)}" if marks else ''
-                  print(f'{insn.address:#010x}: {insn.mnemonic:8} {insn.op_str}{suffix}')
+          def ascii_runs(raw, min_len=3):
+              runs=[]; start=None
+              for i,b in enumerate(raw + b'\0'):
+                  if 0x20 <= b < 0x7f:
+                      if start is None: start=i
+                  else:
+                      if start is not None and i-start >= min_len:
+                          runs.append((start, raw[start:i].decode('ascii')))
+                      start=None
+              return runs
 
-          print('\n=== EXPIRATION PATH LITERALS ===')
-          for address in (0x020569FC, 0x02056A00, 0x02056A10, 0x02056A14):
-              off = address - arm9_base
-              insn = next(md.disasm(arm9[off:off + 4], address))
-              mem = next((op.mem for op in insn.operands if op.type == ARM_OP_MEM), None)
-              if mem is None or insn.reg_name(mem.base) != 'pc':
-                  print(f'{address:#010x}: not PC-relative: {insn.mnemonic} {insn.op_str}')
-                  continue
-              literal_address = address + 8 + int(mem.disp)
-              literal_off = literal_address - arm9_base
-              value = int.from_bytes(arm9[literal_off:literal_off + 4], 'little')
-              print(
-                  f'{address:#010x}: {insn.mnemonic} {insn.op_str} '
-                  f'literal={literal_address:#010x} value={value:#010x}'
-              )
-              value_off = value - arm9_base
-              if not 0 <= value_off < len(arm9):
-                  continue
-              raw = arm9[value_off:value_off + 160]
-              ascii_part = raw.split(b'\0', 1)[0]
-              if ascii_part and all(0x20 <= b < 0x7f for b in ascii_part):
-                  print(f'  ascii={ascii_part.decode("ascii")!r}')
-              try:
-                  terminator = raw.find(b'\0\0')
-                  if terminator > 0:
-                      terminator -= terminator % 2
-                      utf16 = raw[:terminator].decode('utf-16-le')
-                      if utf16 and all(ch.isprintable() for ch in utf16):
-                          print(f'  utf16={utf16!r}')
-              except UnicodeDecodeError:
-                  pass
+          for address in (0x0216D6B8, 0x0216D71C):
+              raw = region(address, 0x64)
+              print(f'\n=== RECORD {address:#010x} size={len(raw):#x} ===')
+              for row in range(0, len(raw), 16):
+                  chunk = raw[row:row+16]
+                  text = ''.join(chr(b) if 0x20 <= b < 0x7f else '.' for b in chunk)
+                  print(f'{address+row:#010x}: {chunk.hex(" "):<47} |{text}|')
+              print('ascii runs:', ascii_runs(raw))
+              print('u32 words:')
+              for row in range(0, len(raw)-3, 4):
+                  value=int.from_bytes(raw[row:row+4], 'little')
+                  note=''
+                  if base <= value < base + len(arm9):
+                      target=region(value, 128)
+                      runs=ascii_runs(target)
+                      note=f' -> ARM9 {value:#010x} ascii={runs[:4]}'
+                  print(f'  +{row:#04x}: {value:#010x}{note}')
+
+          print('\n=== NEARBY RECORDS ===')
+          raw = region(0x0216D590, 0x300)
+          for rel,text in ascii_runs(raw, min_len=4):
+              print(f'{0x0216D590+rel:#010x}: {text!r}')
           PY
