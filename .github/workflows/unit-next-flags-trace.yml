@@ -1,0 +1,212 @@
+name: Civ Rev next unit flags trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+    paths:
+      - .github/workflows/unit-next-flags-trace.yml
+
+permissions:
+  contents: write
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Trace selected unit flags
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR"
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          python - "$ROM" <<'PY' > evidence/re/unit-next-flags-trace.txt
+          import json
+          import re
+          import struct
+          import sys
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_MEM, ARM_REG_PC
+          from civds.units import parse_unit_records
+
+          SELECTED = {0x2000, 0x80000, 0x100000, 0x200000}
+
+          rom = Path(sys.argv[1]).read_bytes()
+          expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(expected['arm9_ram_address'])
+          rom_off = int(expected['arm9_offset'])
+          size = int(expected['arm9_size'])
+          arm9 = rom[rom_off:rom_off + size]
+          end = base + len(arm9)
+          units = parse_unit_records(arm9)
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          insns = [i for i in md.disasm(arm9, base) if i.id != 0 and i.address % 4 == 0]
+          by_addr = {i.address: n for n, i in enumerate(insns)}
+
+          def is_prologue(i):
+              text = f'{i.mnemonic} {i.op_str}'.lower()
+              return (
+                  (i.mnemonic.lower() in {'push', 'stmdb'} and 'lr' in i.op_str.lower())
+                  or (text.startswith('stmdb sp!,') and 'lr' in text)
+              )
+
+          def is_return(i):
+              text = f'{i.mnemonic} {i.op_str}'.lower()
+              return (
+                  (i.mnemonic.lower() in {'pop', 'ldmia'} and 'pc' in i.op_str.lower())
+                  or text == 'bx lr'
+              )
+
+          def bounds(idx):
+              lo = max(0, idx - 350)
+              for j in range(idx, max(-1, idx - 350), -1):
+                  if is_prologue(insns[j]):
+                      lo = j
+                      break
+              hi = min(len(insns) - 1, idx + 450)
+              for j in range(idx, min(len(insns), idx + 450)):
+                  if is_return(insns[j]):
+                      hi = j
+                      break
+              return lo, hi
+
+          def ascii_at_ram(ptr):
+              if not (base <= ptr < end):
+                  return None
+              p = ptr - base
+              data = bytearray()
+              while p < len(arm9) and len(data) < 180:
+                  b = arm9[p]
+                  if b == 0:
+                      break
+                  if b in {9, 10, 13} or 0x20 <= b <= 0x7e:
+                      data.append(b)
+                      p += 1
+                      continue
+                  return None
+              if len(data) < 4:
+                  return None
+              return data.decode('ascii', errors='replace')
+
+          def literal_annotation(i):
+              if i.mnemonic.lower() != 'ldr':
+                  return None
+              for op in i.operands:
+                  if op.type == ARM_OP_MEM and op.mem.base == ARM_REG_PC:
+                      lit = ((i.address + 8) & ~3) + int(op.mem.disp)
+                      if not (base <= lit <= end - 4):
+                          return None
+                      value = struct.unpack_from('<I', arm9, lit - base)[0]
+                      text = ascii_at_ram(value)
+                      if text is not None:
+                          return f'{value:#010x} ASCII={text!r}'
+              return None
+
+          imm_re = re.compile(r'#(0x[0-9a-fA-F]+|\d+)')
+          uses = []
+          for idx, i in enumerate(insns):
+              if not i.mnemonic.lower().startswith(('tst', 'and')):
+                  continue
+              m = imm_re.search(i.op_str)
+              if not m:
+                  continue
+              mask = int(m.group(1), 0)
+              if mask not in SELECTED:
+                  continue
+              tested_reg = i.op_str.split(',', 1)[0].strip()
+              load = None
+              for j in range(idx - 1, max(-1, idx - 10), -1):
+                  y = insns[j]
+                  parts = [p.strip() for p in y.op_str.split(',', 1)]
+                  if y.mnemonic.lower() == 'ldr' and len(parts) == 2 and parts[0] == tested_reg and '#0x50' in parts[1]:
+                      load = y
+                      break
+              if load is None:
+                  continue
+              uses.append((mask, idx, load.address))
+
+          print('=== MEMBERSHIP ===')
+          for mask in sorted(SELECTED):
+              names = [u.name or f'<unnamed:{u.index}>' for u in units if u.flags & mask]
+              print(f'{mask:#010x}: {names}')
+
+          print('\n=== PROVENANCE-LIKE DIRECT USE SITES ===')
+          for mask in sorted(SELECTED):
+              sites = [(insns[idx].address, load) for m, idx, load in uses if m == mask]
+              print(f'{mask:#010x}: count={len(sites)} sites={[hex(a) for a, _ in sites]}')
+
+          grouped = {}
+          for mask, idx, load_addr in uses:
+              lo, hi = bounds(idx)
+              grouped.setdefault((lo, hi), {'masks': set(), 'sites': []})
+              grouped[(lo, hi)]['masks'].add(mask)
+              grouped[(lo, hi)]['sites'].append((mask, insns[idx].address, load_addr))
+
+          print('\n=== FUNCTION CONTEXTS ===')
+          for (lo, hi), meta in sorted(grouped.items(), key=lambda kv: insns[kv[0][0]].address):
+              start = insns[lo].address
+              stop = insns[hi].address
+              masks = ', '.join(f'{m:#010x}' for m in sorted(meta['masks']))
+              print(f'\nFUNCTION {start:#010x}..{stop:#010x} masks=[{masks}]')
+              literals = []
+              for y in insns[lo:hi + 1]:
+                  ann = literal_annotation(y)
+                  if ann:
+                      literals.append((y.address, ann))
+              if literals:
+                  print('  ASCII literals:')
+                  for addr, ann in literals:
+                      print(f'    {addr:#010x}: {ann}')
+              for mask, site, load_addr in sorted(meta['sites'], key=lambda x: x[1]):
+                  idx = by_addr[site]
+                  print(f'  -- mask {mask:#010x} site {site:#010x} load {load_addr:#010x} --')
+                  for y in insns[max(lo, idx - 40):min(hi + 1, idx + 70)]:
+                      mark = ' ; FLAG SITE' if y.address == site else ''
+                      ann = literal_annotation(y)
+                      extra = f' ; {ann}' if ann else ''
+                      print(f'    {y.address:#010x}: {y.mnemonic:8} {y.op_str}{mark}{extra}')
+
+          print('\n=== CALLERS OF FLAG FUNCTIONS ===')
+          function_starts = {insns[lo].address for lo, _ in grouped}
+          for target in sorted(function_starts):
+              print(f'\nTARGET {target:#010x}')
+              found = 0
+              for idx, i in enumerate(insns):
+                  if not i.mnemonic.lower().startswith('bl'):
+                      continue
+                  m = imm_re.search(i.op_str)
+                  if not m or int(m.group(1), 0) != target:
+                      continue
+                  found += 1
+                  print(f'  -- caller {i.address:#010x} --')
+                  for y in insns[max(0, idx - 20):min(len(insns), idx + 18)]:
+                      ann = literal_annotation(y)
+                      extra = f' ; {ann}' if ann else ''
+                      mark = ' ; CALL' if y.address == i.address else ''
+                      print(f'    {y.address:#010x}: {y.mnemonic:8} {y.op_str}{mark}{extra}')
+              print(f'  caller_count={found}')
+          PY
+      - name: Commit targeted trace
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-next-flags-trace.txt
+          git commit -m "analysis: trace next unit flag semantics"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
