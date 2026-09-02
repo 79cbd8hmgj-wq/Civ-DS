@@ -8,6 +8,7 @@ UNIT_RECORD_COUNT = 38
 UNIT_FLAG_SETTLER = 0x00000001
 UNIT_FLAG_NAVAL = 0x00000002
 UNIT_FLAG_AIR = 0x00000004
+UNIT_FLAG_CAN_CARRY_UNITS = 0x00000010
 UNIT_FLAG_GREAT_PERSON = 0x00000080
 UNIT_FLAG_GREAT_GENERAL = 0x00008000
 UNIT_FLAG_SPY = 0x00010000
@@ -117,6 +118,10 @@ class UnitRecord:
     @property
     def is_air(self) -> bool:
         return bool(self.flags & UNIT_FLAG_AIR)
+
+    @property
+    def can_carry_units(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_CAN_CARRY_UNITS)
 
     @property
     def is_great_person(self) -> bool:
