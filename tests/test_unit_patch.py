@@ -38,6 +38,8 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
         unit_name="Warrior",
         profile_id="synthetic_units",
         attack=3,
+        defense=4,
+        movement=2,
         production_cost=20,
     )
 
@@ -53,6 +55,24 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
                 "expected": "01",
                 "replacement": "03",
                 "rationale": "Set Warrior attack from 1 to 3",
+            },
+            {
+                "id": "unit-006-defense",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x41,
+                "expected": "01",
+                "replacement": "04",
+                "rationale": "Set Warrior defense from 1 to 4",
+            },
+            {
+                "id": "unit-006-movement",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x42,
+                "expected": "01",
+                "replacement": "02",
+                "rationale": "Set Warrior movement from 1 to 2",
             },
             {
                 "id": "unit-006-production-cost",
