@@ -1,0 +1,107 @@
+name: Civ Rev Tech Candidate Context
+
+on:
+  push:
+    branches:
+      - analysis/civrev-tech-metadata-usage
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-tech-metadata-usage
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e '.[dev]'
+      - name: Dump candidate instruction contexts
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          WORK_DIR="$RUNNER_TEMP/civrev-work"
+          mkdir -p "$ROM_DIR" evidence/re
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          civds extract "$ROM" "$WORK_DIR"
+
+          python - "$WORK_DIR" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+
+          workspace = Path(sys.argv[1])
+          manifest = json.loads((workspace / "manifests" / "workspace.json").read_text())
+          arm9_base = int(manifest["arm9_ram_address"])
+          arm9 = (workspace / "original" / "arm9.bin").read_bytes()
+
+          targets = [
+              0x0203F608, 0x0203F618, 0x0203F638,
+              0x0204CCFC, 0x0204D5E8, 0x0204E3BC,
+              0x02071288, 0x02083D5C, 0x02084414,
+              0x02089E0C, 0x02089E28, 0x02089E2C,
+              0x020955E4, 0x02095678,
+              0x020B4274, 0x020B42C4,
+              0x021492DC,
+          ]
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          rows = []
+          for target in targets:
+              center = target - arm9_base
+              start = max(0, center - 0x80)
+              end = min(len(arm9), center + 0x100)
+              context = []
+              for insn in md.disasm(arm9[start:end], arm9_base + start):
+                  if target - 0x60 <= insn.address <= target + 0xC0:
+                      context.append({
+                          "address": int(insn.address),
+                          "mnemonic": str(insn.mnemonic),
+                          "operands": str(insn.op_str),
+                          "is_target": int(insn.address) == target,
+                      })
+              rows.append({"target": target, "context": context})
+
+          # Include a wider coherent window for the two strongest functions.
+          wider = []
+          for start_addr, end_addr in ((0x0203F580, 0x0203F6C0), (0x020B4200, 0x020B4340), (0x02089D80, 0x02089EC0)):
+              start = start_addr - arm9_base
+              end = end_addr - arm9_base
+              insns = [
+                  {"address": int(i.address), "mnemonic": str(i.mnemonic), "operands": str(i.op_str)}
+                  for i in md.disasm(arm9[start:end], start_addr)
+              ]
+              wider.append({"start": start_addr, "end": end_addr, "instructions": insns})
+
+          out = {"format_version": 1, "targets": rows, "wider_windows": wider}
+          Path("evidence/re/tech-candidate-context.json").write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
+
+          for block in wider:
+              print(f"--- {block['start']:#010x}..{block['end']:#010x} ---")
+              for i in block["instructions"]:
+                  print(f"{i['address']:#010x}: {i['mnemonic']:<8} {i['operands']}")
+          PY
+      - name: Commit candidate contexts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/tech-candidate-context.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "analysis: isolate technology field access contexts [generated]"
+          git push origin HEAD:analysis/civrev-tech-metadata-usage
