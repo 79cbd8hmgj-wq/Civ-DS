@@ -84,6 +84,7 @@ def _add_units_parser(
     patch_manifest.add_argument("--attack", type=int)
     patch_manifest.add_argument("--defense", type=int)
     patch_manifest.add_argument("--movement", type=int)
+    patch_manifest.add_argument("--fuel-turn-limit", type=int)
     patch_manifest.add_argument("--production-cost", type=int)
     patch_manifest.add_argument("--output", type=Path, required=True)
 
@@ -166,6 +167,7 @@ def _run_units_command(arguments: argparse.Namespace) -> int:
             attack=arguments.attack,
             defense=arguments.defense,
             movement=arguments.movement,
+            fuel_turn_limit=arguments.fuel_turn_limit,
             production_cost=arguments.production_cost,
         )
         print(f"Wrote guarded unit patch manifest: {output}")
