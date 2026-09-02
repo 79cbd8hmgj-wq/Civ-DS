@@ -1,0 +1,1298 @@
+{
+  "format_version": 1,
+  "rows": [
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 4,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 1,
+      "formation_count_u16": 63,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 0,
+      "unit_name": "Settlers"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 1,
+      "formation_count_u16": 15,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 78,
+          "technology_name": null,
+          "value": -1
+        }
+      ],
+      "unit_index": 1,
+      "unit_name": "FSettler"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 1,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 1,
+      "flags_u32": 32,
+      "formation_count_u16": 7,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Gunpowder",
+          "value": 24
+        }
+      ],
+      "unit_index": 2,
+      "unit_name": "Naval Crew"
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 1,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 278568,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Iron Working",
+          "value": 6
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Construction",
+          "value": 10
+        }
+      ],
+      "unit_index": 3,
+      "unit_name": ""
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 1,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 278560,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Iron Working",
+          "value": 6
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Construction",
+          "value": 10
+        }
+      ],
+      "unit_index": 4,
+      "unit_name": ""
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 1,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 278560,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Iron Working",
+          "value": 6
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Construction",
+          "value": 10
+        }
+      ],
+      "unit_index": 5,
+      "unit_name": ""
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 2,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 262432,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Iron Working",
+          "value": 6
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Feudalism",
+          "value": 17
+        }
+      ],
+      "unit_index": 6,
+      "unit_name": "Warrior"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 1,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 1,
+      "flags_u32": 32,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Gunpowder",
+          "value": 24
+        }
+      ],
+      "unit_index": 7,
+      "unit_name": "Militia"
+    },
+    {
+      "attack": 2,
+      "byte_0x43": 0,
+      "byte_0x44": 2,
+      "byte_0x45": 1,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 262432,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Iron Working",
+          "value": 6
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Feudalism",
+          "value": 17
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Gunpowder",
+          "value": 24
+        }
+      ],
+      "unit_index": 8,
+      "unit_name": "Legion"
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 2,
+      "byte_0x45": 255,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 2,
+      "flags_u32": 263464,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Bronze Working",
+          "value": 2
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Democracy",
+          "value": 15
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Gunpowder",
+          "value": 24
+        }
+      ],
+      "unit_index": 9,
+      "unit_name": "Archer"
+    },
+    {
+      "attack": 3,
+      "byte_0x43": 0,
+      "byte_0x44": 4,
+      "byte_0x45": 2,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 5,
+      "flags_u32": 264232,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Gunpowder",
+          "value": 24
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Mass Production",
+          "value": 34
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 10,
+      "unit_name": "Riflemen"
+    },
+    {
+      "attack": 4,
+      "byte_0x43": 0,
+      "byte_0x44": 6,
+      "byte_0x45": 5,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 8,
+      "flags_u32": 262152,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Mass Production",
+          "value": 34
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 11,
+      "unit_name": "Modern Infantry"
+    },
+    {
+      "attack": 2,
+      "byte_0x43": 0,
+      "byte_0x44": 4,
+      "byte_0x45": 0,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 262752,
+      "formation_count_u16": 6,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Horseback Riding",
+          "value": 4
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Feudalism",
+          "value": 17
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Combustion",
+          "value": 28
+        }
+      ],
+      "unit_index": 12,
+      "unit_name": "Horsemen"
+    },
+    {
+      "attack": 4,
+      "byte_0x43": 0,
+      "byte_0x44": 5,
+      "byte_0x45": 0,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 2,
+      "flags_u32": 262688,
+      "formation_count_u16": 6,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Feudalism",
+          "value": 17
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Combustion",
+          "value": 28
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Advanced Flight",
+          "value": 41
+        }
+      ],
+      "unit_index": 13,
+      "unit_name": "Knights"
+    },
+    {
+      "attack": 10,
+      "byte_0x43": 0,
+      "byte_0x44": 10,
+      "byte_0x45": 4,
+      "byte_0x46": 2,
+      "byte_0x47": 5,
+      "defense": 6,
+      "flags_u32": 262216,
+      "formation_count_u16": 1,
+      "movement": 3,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Combustion",
+          "value": 28
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 14,
+      "unit_name": "Tank"
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 9,
+      "byte_0x46": 1,
+      "byte_0x47": 6,
+      "defense": 3,
+      "flags_u32": 262176,
+      "formation_count_u16": 7,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Democracy",
+          "value": 15
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Gunpowder",
+          "value": 24
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Mass Production",
+          "value": 34
+        }
+      ],
+      "unit_index": 15,
+      "unit_name": "Phalanx"
+    },
+    {
+      "attack": 4,
+      "byte_0x43": 0,
+      "byte_0x44": 4,
+      "byte_0x45": 9,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 1,
+      "flags_u32": 2097192,
+      "formation_count_u16": 1,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Mathematics",
+          "value": 13
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Metallurgy",
+          "value": 25
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "The Automobile",
+          "value": 40
+        }
+      ],
+      "unit_index": 16,
+      "unit_name": "Catapult"
+    },
+    {
+      "attack": 6,
+      "byte_0x43": 0,
+      "byte_0x44": 6,
+      "byte_0x45": 3,
+      "byte_0x46": 2,
+      "byte_0x47": 6,
+      "defense": 2,
+      "flags_u32": 2097160,
+      "formation_count_u16": 6,
+      "movement": 1,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Metallurgy",
+          "value": 25
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "The Automobile",
+          "value": 40
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Networking",
+          "value": 43
+        }
+      ],
+      "unit_index": 17,
+      "unit_name": "Cannon"
+    },
+    {
+      "attack": 16,
+      "byte_0x43": 0,
+      "byte_0x44": 10,
+      "byte_0x45": 6,
+      "byte_0x46": 2,
+      "byte_0x47": 10,
+      "defense": 2,
+      "flags_u32": 2097160,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "The Automobile",
+          "value": 40
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 18,
+      "unit_name": "Artillery"
+    },
+    {
+      "attack": 12,
+      "byte_0x43": 0,
+      "byte_0x44": 5,
+      "byte_0x45": 4,
+      "byte_0x46": 2,
+      "byte_0x47": 24,
+      "defense": 2,
+      "flags_u32": 10,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Electricity",
+          "value": 29
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 19,
+      "unit_name": "Submarine"
+    },
+    {
+      "attack": 1,
+      "byte_0x43": 0,
+      "byte_0x44": 6,
+      "byte_0x45": 255,
+      "byte_0x46": 2,
+      "byte_0x47": 3,
+      "defense": 1,
+      "flags_u32": 18,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 74,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Navigation",
+          "value": 23
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Combustion",
+          "value": 28
+        }
+      ],
+      "unit_index": 20,
+      "unit_name": "Galley"
+    },
+    {
+      "attack": 2,
+      "byte_0x43": 0,
+      "byte_0x44": 6,
+      "byte_0x45": 9,
+      "byte_0x46": 2,
+      "byte_0x47": 3,
+      "defense": 2,
+      "flags_u32": 26,
+      "formation_count_u16": 1,
+      "movement": 3,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Navigation",
+          "value": 23
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "Steam Power",
+          "value": 27
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "Industrialization",
+          "value": 30
+        }
+      ],
+      "unit_index": 21,
+      "unit_name": "Galleon"
+    },
+    {
+      "attack": 6,
+      "byte_0x43": 0,
+      "byte_0x44": 8,
+      "byte_0x45": 3,
+      "byte_0x46": 2,
+      "byte_0x47": 4,
+      "defense": 6,
+      "flags_u32": 26,
+      "formation_count_u16": 1,
+      "movement": 5,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Steam Power",
+          "value": 27
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 22,
+      "unit_name": "Cruiser"
+    },
+    {
+      "attack": 12,
+      "byte_0x43": 0,
+      "byte_0x44": 16,
+      "byte_0x45": 4,
+      "byte_0x46": 2,
+      "byte_0x47": 16,
+      "defense": 18,
+      "flags_u32": 26,
+      "formation_count_u16": 1,
+      "movement": 4,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Steel",
+          "value": 35
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 23,
+      "unit_name": "Battleship"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 5,
+      "byte_0x45": 3,
+      "byte_0x46": 2,
+      "byte_0x47": 24,
+      "defense": 3,
+      "flags_u32": 8,
+      "formation_count_u16": 1,
+      "movement": 4,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 24,
+      "unit_name": "Space Station"
+    },
+    {
+      "attack": 18,
+      "byte_0x43": 4,
+      "byte_0x44": 12,
+      "byte_0x45": 6,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 3,
+      "flags_u32": 12,
+      "formation_count_u16": 1,
+      "movement": 6,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Advanced Flight",
+          "value": 41
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 25,
+      "unit_name": "Bomber"
+    },
+    {
+      "attack": 6,
+      "byte_0x43": 2,
+      "byte_0x44": 6,
+      "byte_0x45": 6,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 4,
+      "flags_u32": 8204,
+      "formation_count_u16": 6,
+      "movement": 8,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Flight",
+          "value": 33
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 26,
+      "unit_name": "Fighter"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 50,
+      "byte_0x45": 7,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 131140,
+      "formation_count_u16": 1,
+      "movement": 40,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 27,
+      "unit_name": "ICBM"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 5,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 589888,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Writing",
+          "value": 8
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 28,
+      "unit_name": "Spy"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 6,
+      "byte_0x45": 255,
+      "byte_0x46": 1,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 1572928,
+      "formation_count_u16": 7,
+      "movement": 3,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "Currency",
+          "value": 14
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 29,
+      "unit_name": "Caravan"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 32768,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 76,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 30,
+      "unit_name": "Great General"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 31,
+      "unit_name": "Great Scientist"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 32,
+      "unit_name": "Great Humanitarian"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 33,
+      "unit_name": "Great Explorer"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 5,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 34,
+      "unit_name": "Great Builder"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 35,
+      "unit_name": "Great Artist"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 36,
+      "unit_name": "Great Leader"
+    },
+    {
+      "attack": 0,
+      "byte_0x43": 0,
+      "byte_0x44": 3,
+      "byte_0x45": 255,
+      "byte_0x46": 0,
+      "byte_0x47": 8,
+      "defense": 0,
+      "flags_u32": 524480,
+      "formation_count_u16": 1,
+      "movement": 2,
+      "technology_links": [
+        {
+          "kind": "technology_id",
+          "relative_offset": 74,
+          "technology_name": "never",
+          "value": 0
+        },
+        {
+          "kind": "minus_one_sentinel",
+          "relative_offset": 76,
+          "technology_name": null,
+          "value": -1
+        },
+        {
+          "kind": "technology_id",
+          "relative_offset": 78,
+          "technology_name": "never",
+          "value": 0
+        }
+      ],
+      "unit_index": 37,
+      "unit_name": "Great Tycoon"
+    }
+  ],
+  "technology_runtime_base": 35097408
+}
