@@ -100,6 +100,18 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     flags=0x00040120,
                 )
             )
+        elif index == 20:
+            encoded_records.append(
+                _unit_record(
+                    "Galley",
+                    attack=1,
+                    defense=1,
+                    movement=2,
+                    production_cost_quanta=4,
+                    formation_mask=1,
+                    flags=0x00000012,
+                )
+            )
         elif index == 26:
             encoded_records.append(
                 _unit_record(
@@ -144,12 +156,21 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
     assert warrior.flags == 0x00040120
+    assert warrior.is_naval is False
+    assert warrior.is_air is False
+
+    galley = records[20]
+    assert galley.name == "Galley"
+    assert galley.is_naval is True
+    assert galley.is_air is False
 
     fighter = records[26]
     assert fighter.name == "Fighter"
     assert fighter.fuel_turn_limit == 2
     assert fighter.production_cost_quanta == 6
     assert fighter.production_cost == 30
+    assert fighter.is_naval is False
+    assert fighter.is_air is True
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
