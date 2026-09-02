@@ -26,7 +26,7 @@ def _unit_record(
     attack: int = 0,
     defense: int = 0,
     movement: int = 0,
-    unknown_0x43: int = 0,
+    fuel_turn_limit: int = 0,
     unknown_0x44: int = 0,
     unknown_0x45: int = -1,
     unknown_0x46: int = 0,
@@ -48,7 +48,7 @@ def _unit_record(
         attack,
         defense,
         movement,
-        unknown_0x43,
+        fuel_turn_limit,
         unknown_0x44,
         unknown_0x45,
         unknown_0x46,
@@ -99,6 +99,19 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     flags=0x00040120,
                 )
             )
+        elif index == 26:
+            encoded_records.append(
+                _unit_record(
+                    "Fighter",
+                    attack=6,
+                    defense=4,
+                    movement=8,
+                    fuel_turn_limit=2,
+                    formation_mask=6,
+                    unlock_technology_id=33,
+                    flags=0x0000200C,
+                )
+            )
         else:
             encoded_records.append(_unit_record(f"Unit {index}"))
 
@@ -117,6 +130,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.index == 6
     assert warrior.name == "Warrior"
     assert (warrior.attack, warrior.defense, warrior.movement) == (1, 1, 1)
+    assert warrior.fuel_turn_limit == 0
     assert warrior.unknown_0x44 == 2
     assert warrior.formation_mask == 7
     assert warrior.formation_size == 3
@@ -125,6 +139,10 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
     assert warrior.flags == 0x00040120
+
+    fighter = records[26]
+    assert fighter.name == "Fighter"
+    assert fighter.fuel_turn_limit == 2
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
