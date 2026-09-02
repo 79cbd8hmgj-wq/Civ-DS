@@ -82,6 +82,8 @@ def _add_units_parser(
     patch_manifest.add_argument("unit")
     patch_manifest.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
     patch_manifest.add_argument("--attack", type=int)
+    patch_manifest.add_argument("--defense", type=int)
+    patch_manifest.add_argument("--movement", type=int)
     patch_manifest.add_argument("--production-cost", type=int)
     patch_manifest.add_argument("--output", type=Path, required=True)
 
@@ -162,6 +164,8 @@ def _run_units_command(arguments: argparse.Namespace) -> int:
             arguments.output,
             unit_name=arguments.unit,
             attack=arguments.attack,
+            defense=arguments.defense,
+            movement=arguments.movement,
             production_cost=arguments.production_cost,
         )
         print(f"Wrote guarded unit patch manifest: {output}")
