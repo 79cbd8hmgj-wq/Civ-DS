@@ -128,6 +128,36 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     flags=0x0000200C,
                 )
             )
+        elif index == 27:
+            encoded_records.append(
+                _unit_record(
+                    "ICBM",
+                    movement=40,
+                    production_cost_quanta=50,
+                    formation_mask=1,
+                    flags=0x00020004,
+                )
+            )
+        elif index == 28:
+            encoded_records.append(
+                _unit_record(
+                    "Spy",
+                    movement=2,
+                    production_cost_quanta=5,
+                    formation_mask=1,
+                    flags=0x00010000,
+                )
+            )
+        elif index == 30:
+            encoded_records.append(
+                _unit_record(
+                    "Great General",
+                    movement=2,
+                    production_cost_quanta=3,
+                    formation_mask=1,
+                    flags=0x00008000,
+                )
+            )
         elif index == 31:
             encoded_records.append(
                 _unit_record(
@@ -187,10 +217,29 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert fighter.is_naval is False
     assert fighter.is_air is True
 
+    icbm = records[27]
+    assert icbm.name == "ICBM"
+    assert icbm.is_icbm is True
+    assert icbm.is_spy is False
+    assert icbm.is_great_general is False
+
+    spy = records[28]
+    assert spy.name == "Spy"
+    assert spy.is_spy is True
+    assert spy.is_icbm is False
+    assert spy.is_great_general is False
+
+    great_general = records[30]
+    assert great_general.name == "Great General"
+    assert great_general.is_great_general is True
+    assert great_general.is_icbm is False
+    assert great_general.is_spy is False
+
     great_scientist = records[31]
     assert great_scientist.name == "Great Scientist"
     assert great_scientist.is_settler is False
     assert great_scientist.is_great_person is True
+    assert great_scientist.is_great_general is False
 
     summary_units = build_unit_summary(records)["units"]
     assert isinstance(summary_units, list)
@@ -204,8 +253,14 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert summary_units[20]["is_air"] is False
     assert summary_units[26]["is_naval"] is False
     assert summary_units[26]["is_air"] is True
+    assert summary_units[27]["is_icbm"] is True
+    assert summary_units[27]["is_spy"] is False
+    assert summary_units[28]["is_spy"] is True
+    assert summary_units[28]["is_icbm"] is False
+    assert summary_units[30]["is_great_general"] is True
     assert summary_units[31]["is_settler"] is False
     assert summary_units[31]["is_great_person"] is True
+    assert summary_units[31]["is_great_general"] is False
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
