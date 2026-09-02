@@ -63,7 +63,14 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     encoded_records = []
     for index in range(UNIT_RECORD_COUNT):
         if index == 0:
-            encoded_records.append(_unit_record("Settlers", model="settler_rom", alt_a="Settler_Male", alt_b="Settler_Male"))
+            encoded_records.append(
+                _unit_record(
+                    "Settlers",
+                    model="settler_rom",
+                    alt_a="Settler_Male",
+                    alt_b="Settler_Male",
+                )
+            )
         elif index == 6:
             encoded_records.append(
                 _unit_record(
