@@ -40,6 +40,7 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
         attack=3,
         defense=4,
         movement=2,
+        fuel_turn_limit=5,
         production_cost=20,
     )
 
@@ -73,6 +74,15 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
                 "expected": "01",
                 "replacement": "02",
                 "rationale": "Set Warrior movement from 1 to 2",
+            },
+            {
+                "id": "unit-006-fuel-turn-limit",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x43,
+                "expected": "00",
+                "replacement": "05",
+                "rationale": "Set Warrior fuel/turn limit from 0 to 5",
             },
             {
                 "id": "unit-006-production-cost",
