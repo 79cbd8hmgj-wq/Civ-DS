@@ -8,6 +8,65 @@ UNIT_RECORD_COUNT = 38
 _UNIT_START_ANCHOR = b"Settlers\0"
 _UNIT_END_ANCHOR = b"Pyramids of Egypt\0"
 
+TECHNOLOGY_NAMES = (
+    "never",
+    "Alphabet",
+    "Bronze Working",
+    "Ceremonial Burial",
+    "Horseback Riding",
+    "Pottery",
+    "Iron Working",
+    "Masonry",
+    "Writing",
+    "Code of Laws",
+    "Construction",
+    "Irrigation",
+    "Literacy",
+    "Mathematics",
+    "Currency",
+    "Democracy",
+    "Engineering",
+    "Feudalism",
+    "Monarchy",
+    "Religion",
+    "Banking",
+    "University",
+    "Invention",
+    "Navigation",
+    "Gunpowder",
+    "Metallurgy",
+    "Printing Press",
+    "Steam Power",
+    "Combustion",
+    "Electricity",
+    "Industrialization",
+    "Railroad",
+    "Communism",
+    "Flight",
+    "Mass Production",
+    "Steel",
+    "The Corporation",
+    "Atomic Theory",
+    "Electronics",
+    "Mass Media",
+    "The Automobile",
+    "Advanced Flight",
+    "Nuclear Power",
+    "Networking",
+    "Space Flight",
+    "Globalization",
+    "Superconductor",
+    "Future Technology",
+)
+
+
+def technology_name(technology_id: int) -> str | None:
+    if technology_id == -1:
+        return None
+    if not 0 <= technology_id < len(TECHNOLOGY_NAMES):
+        raise ValueError(f"technology id {technology_id} is outside the recovered runtime catalog")
+    return TECHNOLOGY_NAMES[technology_id]
+
 
 @dataclass(frozen=True)
 class UnitRecord:
