@@ -82,7 +82,7 @@ def test_build_unit_patch_set_rejects_non_quantized_production_cost() -> None:
 def test_build_unit_patch_set_rejects_values_outside_descriptor_byte() -> None:
     records = _records_with_warrior()
 
-    with pytest.raises(ValueError, match="attack.*signed byte"):
+    with pytest.raises(ValueError, match=r"attack.*signed byte"):
         units.build_unit_patch_set(
             records,
             unit_name="Warrior",
