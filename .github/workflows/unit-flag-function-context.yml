@@ -32,7 +32,6 @@ jobs:
           test -n "$ROM"
           python - "$ROM" <<'PY' > evidence/re/unit-flag-function-context.txt
           import json
-          import re
           import struct
           import sys
           from pathlib import Path
@@ -133,6 +132,9 @@ jobs:
               grouped.setdefault(key, {'masks': set(), 'sites': []})
               grouped[key]['masks'].add((mask, mask_hex))
               grouped[key]['sites'].append(addr)
+
+          if not grouped:
+              raise RuntimeError('selected flag sites were not present in the ARM9 disassembly')
 
           print('=== PROVENANCE-BACKED UNIT FLAG ROUTINES ===')
           print(f'routine_count={len(grouped)}')
