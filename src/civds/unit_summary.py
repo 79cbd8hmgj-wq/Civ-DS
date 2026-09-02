@@ -28,6 +28,7 @@ def build_unit_summary(records: tuple[UnitRecord, ...]) -> dict[str, object]:
         unit["is_settler"] = record.is_settler
         unit["is_naval"] = record.is_naval
         unit["is_air"] = record.is_air
+        unit["can_carry_units"] = record.can_carry_units
         unit["is_great_person"] = record.is_great_person
         unit["is_great_general"] = record.is_great_general
         unit["is_spy"] = record.is_spy
