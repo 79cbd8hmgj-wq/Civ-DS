@@ -78,6 +78,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     alt_a="Settler_Male",
                     alt_b="Settler_Male",
                     production_cost_quanta=4,
+                    flags=0x00000001,
                 )
             )
         elif index == 6:
@@ -127,6 +128,15 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     flags=0x0000200C,
                 )
             )
+        elif index == 31:
+            encoded_records.append(
+                _unit_record(
+                    "Great Scientist",
+                    production_cost_quanta=0,
+                    formation_mask=1,
+                    flags=0x00000080,
+                )
+            )
         else:
             encoded_records.append(_unit_record(f"Unit {index}"))
 
@@ -142,6 +152,8 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert records[0].model_alt_b == "Settler_Male"
     assert records[0].production_cost_quanta == 4
     assert records[0].production_cost == 20
+    assert records[0].is_settler is True
+    assert records[0].is_great_person is False
 
     warrior = records[6]
     assert warrior.index == 6
@@ -157,6 +169,8 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
     assert warrior.flags == 0x00040120
+    assert warrior.is_settler is False
+    assert warrior.is_great_person is False
     assert warrior.is_naval is False
     assert warrior.is_air is False
 
@@ -173,14 +187,25 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert fighter.is_naval is False
     assert fighter.is_air is True
 
+    great_scientist = records[31]
+    assert great_scientist.name == "Great Scientist"
+    assert great_scientist.is_settler is False
+    assert great_scientist.is_great_person is True
+
     summary_units = build_unit_summary(records)["units"]
     assert isinstance(summary_units, list)
+    assert summary_units[0]["is_settler"] is True
+    assert summary_units[0]["is_great_person"] is False
+    assert summary_units[6]["is_settler"] is False
+    assert summary_units[6]["is_great_person"] is False
     assert summary_units[6]["is_naval"] is False
     assert summary_units[6]["is_air"] is False
     assert summary_units[20]["is_naval"] is True
     assert summary_units[20]["is_air"] is False
     assert summary_units[26]["is_naval"] is False
     assert summary_units[26]["is_air"] is True
+    assert summary_units[31]["is_settler"] is False
+    assert summary_units[31]["is_great_person"] is True
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
