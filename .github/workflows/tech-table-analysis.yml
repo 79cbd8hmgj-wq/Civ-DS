@@ -36,6 +36,7 @@ jobs:
 
           python - "$WORK_DIR" <<'PY'
           import json
+          import re
           import sys
           from pathlib import Path
 
@@ -59,52 +60,110 @@ jobs:
           settlers_offset = matches[0]
 
           RECORD_SIZE = 106
-          NAME_SIZE = 42
-          EFFECT_SIZE = 64
+          NAME_WINDOW = 42
+          EFFECT_OFFSET = 42
 
-          def decode_field(field: bytes):
-              nul = field.find(b"\x00")
+          def c_string_at(blob: bytes, offset: int, limit: int):
+              if offset < 0 or offset >= len(blob):
+                  return None
+              end_limit = min(len(blob), offset + limit)
+              nul = blob.find(b"\x00", offset, end_limit)
               if nul < 0:
                   return None
-              raw = field[:nul]
-              if not raw:
-                  text = ""
-              else:
-                  if not all(0x20 <= byte <= 0x7e for byte in raw):
-                      return None
-                  text = raw.decode("ascii")
-              if any(field[nul + 1:]):
+              raw = blob[offset:nul]
+              if not raw or not all(0x20 <= byte <= 0x7e for byte in raw):
                   return None
-              return text
+              return raw.decode("ascii")
 
+          def printable_runs(blob: bytes):
+              return [
+                  {
+                      "offset": match.start(),
+                      "end_offset": match.end(),
+                      "text": match.group().decode("ascii"),
+                  }
+                  for match in re.finditer(rb"[ -~]{2,}", blob)
+              ]
+
+          def nonzero_ranges(blob: bytes):
+              ranges = []
+              start = None
+              for index, value in enumerate(blob):
+                  if value != 0 and start is None:
+                      start = index
+                  elif value == 0 and start is not None:
+                      ranges.append({
+                          "start": start,
+                          "end": index,
+                          "hex": blob[start:index].hex(),
+                      })
+                      start = None
+              if start is not None:
+                  ranges.append({
+                      "start": start,
+                      "end": len(blob),
+                      "hex": blob[start:].hex(),
+                  })
+              return ranges
+
+          # The observed names are exactly 106 bytes apart. Walk backward from the
+          # Settlers boundary using only the invariant actually proven by bytes:
+          # each candidate begins with a printable, NUL-terminated name within the
+          # first 42 bytes. Do not assume unused bytes are zero-filled.
           records_reversed = []
           cursor = settlers_offset - RECORD_SIZE
+          rejected_before = None
           while cursor >= 0:
               record = data[cursor:cursor + RECORD_SIZE]
               if len(record) != RECORD_SIZE:
                   break
-              name = decode_field(record[:NAME_SIZE])
-              effect = decode_field(record[NAME_SIZE:])
-              if name is None or effect is None or not name:
+              name = c_string_at(record, 0, NAME_WINDOW)
+              if name is None:
+                  rejected_before = {
+                      "offset": cursor,
+                      "address": base + cursor,
+                      "raw_hex": record.hex(),
+                      "printable_runs": printable_runs(record),
+                  }
                   break
-              records_reversed.append((cursor, name, effect))
+              effect = c_string_at(record, EFFECT_OFFSET, RECORD_SIZE - EFFECT_OFFSET)
+              records_reversed.append(
+                  {
+                      "offset": cursor,
+                      "address": base + cursor,
+                      "name": name,
+                      "effect_at_42": effect,
+                      "raw_hex": record.hex(),
+                      "printable_runs": printable_runs(record),
+                      "nonzero_ranges": nonzero_ranges(record),
+                  }
+              )
               cursor -= RECORD_SIZE
 
           records = list(reversed(records_reversed))
           if not records:
-              raise RuntimeError("no fixed-stride tech text records found before Settlers")
+              raise RuntimeError("no 106-byte name records found before Settlers")
+
+          for index, record in enumerate(records):
+              record["index"] = index
+
+          effect_offsets = {}
+          for record in records:
+              for run in record["printable_runs"]:
+                  offset = run["offset"]
+                  if offset == 0:
+                      continue
+                  effect_offsets[str(offset)] = effect_offsets.get(str(offset), 0) + 1
 
           payload = {
-              "format_version": 1,
+              "format_version": 2,
               "component": "arm9",
               "component_base": base,
               "record_size": RECORD_SIZE,
-              "field_layout": [
-                  {"name": "name", "offset": 0, "size": NAME_SIZE, "encoding": "ascii-nul-padded"},
-                  {"name": "effect", "offset": NAME_SIZE, "size": EFFECT_SIZE, "encoding": "ascii-nul-padded"},
-              ],
-              "table_start_offset": records[0][0],
-              "table_start_address": base + records[0][0],
+              "observed_name_window": NAME_WINDOW,
+              "candidate_effect_offset": EFFECT_OFFSET,
+              "table_start_offset": records[0]["offset"],
+              "table_start_address": records[0]["address"],
               "table_end_offset": settlers_offset,
               "table_end_address": base + settlers_offset,
               "record_count": len(records),
@@ -113,16 +172,9 @@ jobs:
                   "address": base + settlers_offset,
                   "ascii": "Settlers",
               },
-              "records": [
-                  {
-                      "index": index,
-                      "offset": offset,
-                      "address": base + offset,
-                      "name": name,
-                      "effect": effect,
-                  }
-                  for index, (offset, name, effect) in enumerate(records)
-              ],
+              "rejected_record_before_start": rejected_before,
+              "secondary_printable_offset_counts": effect_offsets,
+              "records": records,
           }
           Path("evidence/re/tech-text-table.json").write_text(
               json.dumps(payload, indent=2, sort_keys=True) + "\n",
@@ -132,8 +184,10 @@ jobs:
               "record_count": payload["record_count"],
               "start": hex(payload["table_start_address"]),
               "end": hex(payload["table_end_address"]),
-              "first": records[0][1],
-              "last": records[-1][1],
+              "first": records[0]["name"],
+              "last": records[-1]["name"],
+              "effect_at_42_count": sum(record["effect_at_42"] is not None for record in records),
+              "secondary_offsets": effect_offsets,
           }, sort_keys=True))
           PY
       - name: Commit derived tech table evidence
