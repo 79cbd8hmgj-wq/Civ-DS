@@ -46,41 +46,19 @@ jobs:
 
           md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
           md.detail = True
+          md.skipdata = True
 
-          targets = [0x020394C0, 0x020394EC, 0x02056980, 0x020569C4]
-          all_insns = list(md.disasm(arm9, arm9_base))
-          by_addr = {i.address: i for i in all_insns}
-
-          def is_prologue(insn):
-              return (
-                  (insn.mnemonic == 'push' and 'lr' in insn.op_str)
-                  or (insn.mnemonic.startswith('stm') and 'sp!' in insn.op_str and 'lr' in insn.op_str)
-              )
-
-          def is_return(insn):
-              return (
-                  (insn.mnemonic == 'pop' and 'pc' in insn.op_str)
-                  or (insn.mnemonic.startswith('ldm') and 'sp!' in insn.op_str and 'pc' in insn.op_str)
-                  or (insn.mnemonic == 'bx' and insn.op_str.strip() == 'lr')
-              )
-
-          addresses = [i.address for i in all_insns]
-          for target in targets:
-              idx = next(i for i, addr in enumerate(addresses) if addr == target)
-              start = idx
-              for pos in range(idx, max(-1, idx - 400), -1):
-                  if is_prologue(all_insns[pos]):
-                      start = pos
-                      break
-              end = min(len(all_insns), idx + 300)
-              for pos in range(idx, min(len(all_insns), idx + 300)):
-                  if is_return(all_insns[pos]):
-                      end = pos + 1
-                      break
-              print(f'\n=== TARGET {target:#010x} FUNCTION {all_insns[start].address:#010x}..{all_insns[end-1].address:#010x} ===')
-              for insn in all_insns[start:end]:
+          windows = [
+              (0x02039440, 0x02039560, {0x020394C0, 0x020394EC}),
+              (0x020568E0, 0x02056AD0, {0x02056980, 0x020569C4}),
+          ]
+          for start, end, targets in windows:
+              start_off = start - arm9_base
+              end_off = end - arm9_base
+              print(f'\n=== WINDOW {start:#010x}..{end:#010x} ===')
+              for insn in md.disasm(arm9[start_off:end_off], start):
                   marks = []
-                  if insn.address == target:
+                  if insn.address in targets:
                       marks.append('TARGET')
                   if '#0x43' in insn.op_str:
                       marks.append('FIELD43')
