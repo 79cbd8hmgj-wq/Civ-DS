@@ -1,0 +1,123 @@
+name: Civ Rev unit formation and flags trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+    paths:
+      - .github/workflows/unit-formation-flags-trace.yml
+
+permissions:
+  contents: write
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Trace formation field and unit flags
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR"
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          python - "$ROM" <<'PY' > evidence/re/unit-formation-flags-trace.txt
+          import json
+          import sys
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_MEM
+
+          rom = Path(sys.argv[1]).read_bytes()
+          expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(expected['arm9_ram_address'])
+          off = int(expected['arm9_offset'])
+          size = int(expected['arm9_size'])
+          arm9 = rom[off:off + size]
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          insns = [i for i in md.disasm(arm9, base) if i.id != 0 and i.address % 4 == 0]
+
+          def width(mnemonic: str) -> int:
+              m = mnemonic.lower()
+              if m.startswith(('ldrb', 'ldrsb', 'strb')):
+                  return 1
+              if m.startswith(('ldrh', 'ldrsh', 'strh')):
+                  return 2
+              if m.startswith(('ldr', 'str')):
+                  return 4
+              return 0
+
+          def mem_accesses(insn):
+              for op in getattr(insn, 'operands', ()):
+                  if op.type == ARM_OP_MEM:
+                      yield insn.reg_name(op.mem.base), int(op.mem.disp)
+
+          targets = {0x48, 0x49, 0x50}
+          known = {0x40, 0x41, 0x42, 0x43, 0x44, 0x4A, 0x4C, 0x4E}
+          rows = []
+          for idx, insn in enumerate(insns):
+              w = width(insn.mnemonic)
+              if not w:
+                  continue
+              for breg, disp in mem_accesses(insn):
+                  if breg in {'sp', 'pc'}:
+                      continue
+                  covered = set(range(disp, disp + w))
+                  hits = tuple(sorted(covered & targets))
+                  if not hits:
+                      continue
+                  shape = []
+                  for y in insns[max(0, idx - 36):min(len(insns), idx + 37)]:
+                      for yb, yd in mem_accesses(y):
+                          if yb == breg and yd in known:
+                              shape.append((y.address, y.mnemonic, y.op_str, yd))
+                  rows.append((idx, insn, breg, disp, w, hits, shape))
+
+          print('=== FORMATION +0x48/+0x49 AND FLAGS +0x50 ACCESS TRACE ===')
+          print(f'candidate_count={len(rows)}')
+          strong = [r for r in rows if r[6]]
+          print(f'same_base_unit_shape_candidates={len(strong)}')
+          print()
+
+          for idx, insn, breg, disp, w, hits, shape in strong:
+              print(
+                  f'CANDIDATE {insn.address:#010x}: {insn.mnemonic} {insn.op_str} '
+                  f'base={breg} disp={disp:#x} width={w} hits={hits}'
+              )
+              print('  same-base known-field accesses:')
+              for addr, mnem, opstr, yd in shape:
+                  print(f'    {addr:#010x}: {mnem:8} {opstr} field={yd:#04x}')
+              print('  context:')
+              for y in insns[max(0, idx - 18):min(len(insns), idx + 29)]:
+                  mark = ' ; CANDIDATE' if y.address == insn.address else ''
+                  print(f'    {y.address:#010x}: {y.mnemonic:8} {y.op_str}{mark}')
+              print()
+
+          print('=== COMPACT STRONG CANDIDATES ===')
+          for idx, insn, breg, disp, w, hits, shape in strong:
+              print(
+                  f'{insn.address:#010x}: {insn.mnemonic} {insn.op_str} '
+                  f'base={breg} disp={disp:#x} width={w} hits={hits} shape_hits={len(shape)}'
+              )
+          PY
+      - name: Commit trace evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-formation-flags-trace.txt
+          git commit -m "analysis: capture unit formation and flag accesses"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
