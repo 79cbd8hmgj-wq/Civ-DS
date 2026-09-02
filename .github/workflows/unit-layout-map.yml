@@ -1,0 +1,190 @@
+name: Civ Rev Unit Layout Map
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-unit-survey
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e '.[dev]'
+      - name: Map unit descriptor region
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          WORK_DIR="$RUNNER_TEMP/civrev-work"
+          mkdir -p "$ROM_DIR" evidence/re
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          civds extract "$ROM" "$WORK_DIR"
+
+          python - "$WORK_DIR" <<'PY'
+          import json
+          import sys
+          from collections import Counter, defaultdict
+          from pathlib import Path
+
+          workspace = Path(sys.argv[1])
+          manifest = json.loads((workspace / "manifests" / "workspace.json").read_text())
+          arm9_path = workspace / "original" / "arm9.bin"
+          arm9 = arm9_path.read_bytes()
+          base = int(manifest["arm9_ram_address"])
+
+          def unique(blob, needle, label):
+              hits=[]; p=0
+              while True:
+                  p=blob.find(needle,p)
+                  if p<0: break
+                  hits.append(p); p+=1
+              if len(hits)!=1:
+                  raise RuntimeError(f"expected one {label}, got {len(hits)}")
+              return hits[0]
+
+          settlers = unique(arm9, b"Settlers\x00", "Settlers")
+          start = settlers
+          stop = min(len(arm9), start + 0x6000)
+          region = arm9[start:stop]
+          start_addr = base + start
+          stop_addr = base + stop
+
+          # Extract every printable ASCII NUL-terminated string >= 4 bytes in the region.
+          strings=[]
+          i=0
+          while i < len(region):
+              if 0x20 <= region[i] <= 0x7e:
+                  j=i
+                  while j < len(region) and 0x20 <= region[j] <= 0x7e:
+                      j+=1
+                  if j-i >= 4 and j < len(region) and region[j] == 0:
+                      text=region[i:j].decode('ascii')
+                      strings.append({"offset_from_settlers":i,"address":start_addr+i,"length":j-i,"text":text})
+                      i=j+1
+                      continue
+              i+=1
+
+          string_by_addr={s['address']:s for s in strings}
+
+          components=[('arm9',arm9_path,base)]
+          for ov in manifest['overlays']:
+              oid=int(ov['overlay_id'])
+              components.append((f"overlay_{oid:03d}",workspace/'original'/'decoded'/'overlays'/f"overlay_{oid:03d}.bin",int(ov['ram_address'])))
+
+          pointer_refs=[]
+          target_counts=Counter()
+          source_groups=defaultdict(list)
+          for component,path,cbase in components:
+              blob=path.read_bytes()
+              for off in range(0,len(blob)-3,4):
+                  value=int.from_bytes(blob[off:off+4],'little')
+                  target=string_by_addr.get(value)
+                  if target is None:
+                      continue
+                  row={
+                      "component":component,
+                      "source_address":cbase+off,
+                      "source_offset":off,
+                      "target_address":value,
+                      "target_offset_from_settlers":target['offset_from_settlers'],
+                      "target_text":target['text'],
+                  }
+                  pointer_refs.append(row)
+                  target_counts[(value,target['text'])]+=1
+                  source_groups[component].append(row)
+
+          # Consecutive pointer runs are useful for identifying descriptor tables.
+          pointer_runs=[]
+          for component,rows in source_groups.items():
+              rows=sorted(rows,key=lambda r:r['source_address'])
+              run=[]
+              for row in rows:
+                  if run and row['source_address'] != run[-1]['source_address']+4:
+                      if len(run)>=2:
+                          pointer_runs.append({"component":component,"start_address":run[0]['source_address'],"entries":run})
+                      run=[]
+                  run.append(row)
+              if len(run)>=2:
+                  pointer_runs.append({"component":component,"start_address":run[0]['source_address'],"entries":run})
+
+          # Dense string clusters reveal variable-sized records / name+model bundles.
+          clusters=[]
+          cluster=[]
+          for s in strings:
+              if cluster and s['address'] - cluster[-1]['address'] > 0x80:
+                  if len(cluster)>=2:
+                      clusters.append(cluster)
+                  cluster=[]
+              cluster.append(s)
+          if len(cluster)>=2:
+              clusters.append(cluster)
+
+          # Raw first 0x400 bytes as 4-byte words plus ASCII hints. This captures the Settlers descriptor exactly.
+          first_words=[]
+          for rel in range(0,min(0x400,len(region)),4):
+              raw=region[rel:rel+4]
+              first_words.append({
+                  "offset":rel,
+                  "address":start_addr+rel,
+                  "u32":int.from_bytes(raw,'little'),
+                  "hex":raw.hex(),
+                  "ascii":"".join(chr(b) if 0x20<=b<=0x7e else '.' for b in raw),
+              })
+
+          known_prefixes=['Settler','Warrior','Swordsman','Legion','Archer','Phalanx','Horseman','Knight','Tank','Catapult','Cannon','Artillery','Galley','Galleon','Cruiser','Battleship','Submarine','Fighter','Bomber','Spy','Caravan']
+          known_region_strings=[s for s in strings if any(k.lower() in s['text'].lower() for k in known_prefixes)]
+
+          payload={
+              "format_version":1,
+              "region":{"start_address":start_addr,"stop_address":stop_addr,"size":len(region)},
+              "string_count":len(strings),
+              "strings":strings,
+              "known_unit_strings":known_region_strings,
+              "pointer_ref_count":len(pointer_refs),
+              "pointer_refs":sorted(pointer_refs,key=lambda r:(r['component'],r['source_address'])),
+              "top_string_xrefs":[
+                  {"address":addr,"text":text,"count":count}
+                  for (addr,text),count in target_counts.most_common(100)
+              ],
+              "pointer_runs":pointer_runs,
+              "dense_string_clusters":clusters,
+              "first_0x400_words":first_words,
+          }
+          Path('evidence/re/unit-layout-map.json').write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n')
+
+          print(json.dumps({
+              "region":payload['region'],
+              "string_count":len(strings),
+              "pointer_ref_count":len(pointer_refs),
+              "pointer_run_count":len(pointer_runs),
+              "known_unit_strings":known_region_strings[:120],
+              "top_string_xrefs":payload['top_string_xrefs'][:30],
+              "first_strings":strings[:80],
+          },sort_keys=True))
+          PY
+      - name: Commit derived unit layout evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-layout-map.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "analysis: map unit descriptor region [generated]"
+          git push origin HEAD:analysis/civrev-unit-survey
