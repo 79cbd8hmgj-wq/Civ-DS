@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
       - name: Install Civ-DS
         run: python -m pip install -e .
-      - name: Trace unresolved unit descriptor fields
+      - name: Trace unit metadata column 0x44-0x47
         shell: bash
         run: |
           set -euo pipefail
@@ -31,11 +31,9 @@ jobs:
           python - "$ROM" <<'PY' > evidence/re/unit-unresolved-trace.txt
           import json
           import sys
-          from collections import defaultdict
           from pathlib import Path
-
           from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
-          from capstone.arm import ARM_OP_IMM, ARM_OP_MEM
+          from capstone.arm import ARM_OP_IMM, ARM_OP_MEM, ARM_OP_REG
 
           rom = Path(sys.argv[1]).read_bytes()
           expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
@@ -44,9 +42,8 @@ jobs:
           size = int(expected['arm9_size'])
           arm9 = rom[off:off + size]
           table_base = 0x02179F20
+          column_base = table_base + 0x44
           record_size = 0x94
-          record_count = 38
-          table_end = table_base + record_size * record_count
 
           md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
           md.detail = True
@@ -66,142 +63,42 @@ jobs:
                   return None
               return int.from_bytes(arm9[pos:pos+4], 'little')
 
-          def has_imm(insn, value):
-              return any(
-                  op.type == ARM_OP_IMM and int(op.imm) == value
-                  for op in getattr(insn, 'operands', ())
-              )
+          def reg_name(insn, op):
+              return insn.reg_name(op.reg) if op.type == ARM_OP_REG else None
 
-          def slot(raw):
-              return raw.split(b'\0', 1)[0].decode('ascii', errors='replace')
-
-          def access_size(mnemonic):
-              m = mnemonic.lower()
-              if m.startswith(('ldrb', 'ldrsb', 'strb')):
-                  return 1
-              if m.startswith(('ldrh', 'ldrsh', 'strh')):
-                  return 2
-              if m.startswith(('ldr', 'str')):
-                  return 4
-              return None
-
-          def is_load(mnemonic):
-              return mnemonic.lower().startswith('ldr')
-
-          print('=== UNIT FIELD VALUE MATRIX ===')
-          for index in range(record_count):
-              pos = table_base - base + index * record_size
-              raw = arm9[pos:pos+record_size]
-              name = slot(raw[:0x20]) or f'<unnamed-{index}>'
-              b45 = int.from_bytes(raw[0x45:0x46], 'little', signed=True)
-              b46 = int.from_bytes(raw[0x46:0x47], 'little', signed=True)
-              b47 = int.from_bytes(raw[0x47:0x48], 'little', signed=True)
-              flags = int.from_bytes(raw[0x50:0x54], 'little')
-              print(f'{index:02d} {name:20} 45={b45:4d} 46={b46:4d} 47={b47:4d} flags={flags:#010x}')
-
-          print('\n=== FLAG BIT MEMBERSHIP ===')
-          memberships = defaultdict(list)
-          for index in range(record_count):
-              pos = table_base - base + index * record_size
-              raw = arm9[pos:pos+record_size]
-              name = slot(raw[:0x20]) or f'<unnamed-{index}>'
-              flags = int.from_bytes(raw[0x50:0x54], 'little')
-              for bit in range(32):
-                  if flags & (1 << bit):
-                      memberships[bit].append(name)
-          for bit, names in sorted(memberships.items()):
-              print(f'bit {bit:02d} mask={1<<bit:#010x}: {", ".join(names)}')
-
-          print('\n=== LITERAL REFERENCES INTO UNIT TABLE ===')
-          table_refs = []
+          refs=[]
           for idx, insn in enumerate(insns):
               target = literal_target(insn)
-              if target is not None and table_base <= target < table_end:
-                  table_refs.append((idx, insn, target))
-                  delta = target - table_base
-                  rec = delta // record_size
-                  rec_off = delta % record_size
-                  print(
-                      f'{insn.address:#010x}: {insn.mnemonic} {insn.op_str} -> {target:#010x} '
-                      f'record={rec} offset={rec_off:#04x}'
-                  )
-          print(f'table_literal_reference_count={len(table_refs)}')
+              if target in {column_base, column_base+1, column_base+2, column_base+3}:
+                  refs.append((idx, insn, target))
 
-          target_bytes = {0x45, 0x46, 0x47}
-          overlapping = defaultdict(list)
-          rejected = defaultdict(int)
-          for idx, insn in enumerate(insns):
-              if not is_load(insn.mnemonic):
-                  continue
-              width = access_size(insn.mnemonic)
-              if width is None:
-                  continue
-              memop = next((op for op in getattr(insn, 'operands', ()) if op.type == ARM_OP_MEM), None)
-              if memop is None:
-                  continue
-              disp = int(memop.mem.disp)
-              base_reg = insn.reg_name(memop.mem.base)
-              if base_reg in {'sp', 'pc'}:
-                  continue
-              covered = set(range(disp, disp + width))
-              hits = tuple(sorted(target_bytes & covered))
-              if not hits:
-                  continue
-              context = insns[max(0, idx-32):min(len(insns), idx+33)]
-              nearby_table = any(
-                  (lambda t: t is not None and table_base <= t < table_end)(literal_target(x))
-                  for x in context
-              )
-              nearby_stride = any(has_imm(x, record_size) for x in context)
-              key = hits
-              if nearby_table or nearby_stride:
-                  overlapping[key].append((idx, insn, base_reg, width, nearby_table, nearby_stride))
-              else:
-                  rejected[key] += 1
+          print('=== DIRECT COLUMN LITERAL REFERENCES ===')
+          print(f'count={len(refs)}')
+          for idx, insn, target in refs:
+              print(f'{insn.address:#010x}: {insn.mnemonic} {insn.op_str} -> {target:#010x} offset={target-table_base:#04x}')
 
-          print('\n=== OVERLAPPING LOAD SUMMARY FOR +0x45/+0x46/+0x47 ===')
-          all_keys = sorted(set(overlapping) | set(rejected))
-          for hits in all_keys:
-              print(
-                  f'bytes={hits}: proven={len(overlapping[hits])} '
-                  f'rejected={rejected[hits]}'
-              )
-
-          for hits in all_keys:
-              print(f'\n=== PROVEN OVERLAPPING LOADS bytes={hits} count={len(overlapping[hits])} ===')
-              for idx, insn, base_reg, width, nearby_table, nearby_stride in overlapping[hits]:
-                  print(
-                      f'\nACCESS @ {insn.address:#010x}: {insn.mnemonic} {insn.op_str} '
-                      f'base={base_reg} width={width} table={nearby_table} stride={nearby_stride}'
-                  )
-                  for x in insns[max(0, idx-22):min(len(insns), idx+27)]:
-                      marks=[]
-                      if x.address == insn.address: marks.append('ACCESS')
-                      lit = literal_target(x)
-                      if lit is not None and table_base <= lit < table_end: marks.append(f'TABLE->{lit:#x}')
-                      if has_imm(x, record_size): marks.append('STRIDE')
-                      if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs','lsr','lsl','asr','ubfx','sbfx'}: marks.append('EXTRACT/TEST')
-                      if x.mnemonic in {'bl','blx'}: marks.append('CALL')
-                      suffix=f" ; {'|'.join(marks)}" if marks else ''
-                      print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
-
-          print('\n=== UNIT TABLE LITERAL WINDOWS ===')
-          for idx, insn, target in table_refs:
-              print(f'\nTABLE REF @ {insn.address:#010x} -> {target:#010x}')
-              for x in insns[max(0, idx-28):min(len(insns), idx+37)]:
+          print('\n=== COLUMN-BASE WINDOWS ===')
+          for idx, insn, target in refs:
+              ops=getattr(insn,'operands',())
+              dst = reg_name(insn, ops[0]) if ops else None
+              print(f'\nREF {insn.address:#010x} target={target:#010x} record_offset={target-table_base:#04x} dst={dst}')
+              for x in insns[max(0,idx-18):min(len(insns),idx+55)]:
                   marks=[]
-                  if x.address == insn.address: marks.append('TABLE_REF')
-                  if has_imm(x, record_size): marks.append('STRIDE')
-                  memop = next((op for op in getattr(x, 'operands', ()) if op.type == ARM_OP_MEM), None)
-                  if memop is not None:
-                      d = int(memop.mem.disp)
-                      w = access_size(x.mnemonic)
-                      if w and any(b in range(d, d+w) for b in target_bytes):
-                          marks.append('TARGET_OVERLAP')
-                      if d == 0x50 and x.mnemonic == 'ldr':
-                          marks.append('FLAGS')
+                  if x.address == insn.address: marks.append('COLUMN_REF')
+                  if any(op.type == ARM_OP_IMM and int(op.imm) == record_size for op in getattr(x,'operands',())):
+                      marks.append('STRIDE_0x94')
+                  for op in getattr(x,'operands',()):
+                      if op.type == ARM_OP_MEM:
+                          b=x.reg_name(op.mem.base)
+                          d=int(op.mem.disp)
+                          if dst and b == dst and d in (0,1,2,3):
+                              marks.append(f'{dst}+{d}')
+                          if d in (0,1,2,3) and x.mnemonic.startswith(('ldr','str')):
+                              marks.append(f'MEM+{d}')
+                  if x.mnemonic in {'ldrb','ldrsb','ldrh','ldrsh','ldr','strb','strh','str','cmp','tst','and','ands','orr','orrs','eor','lsl','lsr','asr','ubfx','sbfx','mla','mul'}:
+                      marks.append('DATAFLOW')
                   if x.mnemonic in {'bl','blx'}: marks.append('CALL')
-                  suffix=f" ; {'|'.join(marks)}" if marks else ''
+                  suffix=f" ; {'|'.join(dict.fromkeys(marks))}" if marks else ''
                   print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
           PY
       - name: Commit trace for analysis
@@ -214,5 +111,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add evidence/re/unit-unresolved-trace.txt
-          git commit -m "analysis: capture overlapping unit metadata trace"
+          git commit -m "analysis: capture focused unit metadata trace"
           git push origin "HEAD:${GITHUB_REF_NAME}"
