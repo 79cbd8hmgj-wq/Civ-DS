@@ -86,6 +86,9 @@ def _add_units_parser(
     patch_manifest.add_argument("--movement", type=int)
     patch_manifest.add_argument("--fuel-turn-limit", type=int)
     patch_manifest.add_argument("--production-cost", type=int)
+    patch_manifest.add_argument("--unlock-technology-id", type=int)
+    patch_manifest.add_argument("--obsolete-technology-id-1", type=int)
+    patch_manifest.add_argument("--obsolete-technology-id-2", type=int)
     patch_manifest.add_argument("--output", type=Path, required=True)
 
 
@@ -169,6 +172,9 @@ def _run_units_command(arguments: argparse.Namespace) -> int:
             movement=arguments.movement,
             fuel_turn_limit=arguments.fuel_turn_limit,
             production_cost=arguments.production_cost,
+            unlock_technology_id=arguments.unlock_technology_id,
+            obsolete_technology_id_1=arguments.obsolete_technology_id_1,
+            obsolete_technology_id_2=arguments.obsolete_technology_id_2,
         )
         print(f"Wrote guarded unit patch manifest: {output}")
         return 0
