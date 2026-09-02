@@ -15,7 +15,7 @@ The `civds` command wraps the toolkit with stricter Civilization-specific defaul
 - reusable toolkit `patch`, `source-patch`, `analyze`, and persistent `.ndsre` project commands remain available;
 - exact-ROM profile generation is provided by Civ-DS so the project can lock onto the user's specific dump.
 
-The toolkit dependency is pinned to commit `d807e256f022016483d106c8802fa349ff16a42a` (Phase 7G) for reproducibility.
+The toolkit dependency is pinned to commit `50cede2494cbdcfe064b2efc84d172c1031f6851` for reproducibility.
 
 ## Setup
 
@@ -66,6 +66,33 @@ civds rebuild roms/CivRev.nds work/civrev build/CivRev-modded.nds
 ```
 
 The toolkit reparses and verifies the rebuilt ROM and emits a build report alongside it.
+
+### Guarded unit edits
+
+The recovered unit descriptor table can generate fail-closed patch manifests for confirmed gameplay fields. The ROM is validated against the exact profile before offsets or expected bytes are emitted.
+
+```bash
+mkdir -p patches
+civds units patch-manifest roms/CivRev.nds Warrior \
+  --attack 2 \
+  --defense 2 \
+  --movement 2 \
+  --production-cost 15 \
+  --output patches/warrior-balance.json
+
+civds patch work/civrev patches/warrior-balance.json
+civds rebuild roms/CivRev.nds work/civrev build/CivRev-warrior-balance.nds
+```
+
+Each generated edit targets `arm9` with the recovered ARM9-relative offset plus the exact expected original byte. If the workspace, ROM profile, unit table, or original field value does not match, patch application fails rather than writing through the mismatch.
+
+Use `civds units summarize` to inspect the recovered 38-record table before choosing values:
+
+```bash
+civds units summarize roms/CivRev.nds --output analysis/units.json
+```
+
+Current friendly patch fields are `attack`, `defense`, `movement`, and `production-cost`. Unresolved descriptor bytes and unresolved flag semantics remain available only as reverse-engineering evidence and are not exposed as named patch options.
 
 ### Guarded binary patches
 
