@@ -1,0 +1,29 @@
+{
+  "expected": {
+    "arm7_offset": 1886720,
+    "arm7_overlay_count": 0,
+    "arm7_overlay_offset": 0,
+    "arm7_overlay_size": 0,
+    "arm7_ram_address": 37224448,
+    "arm7_size": 159192,
+    "arm9_offset": 16384,
+    "arm9_overlay_count": 17,
+    "arm9_overlay_offset": 1656832,
+    "arm9_overlay_size": 544,
+    "arm9_ram_address": 33554432,
+    "arm9_size": 1640376,
+    "directory_count": 40,
+    "fat_offset": 2099200,
+    "fat_size": 22024,
+    "fnt_offset": 2045952,
+    "fnt_size": 52764,
+    "nitrofs_file_count": 2753
+  },
+  "game_code": "YS6E",
+  "id": "civrev-usa",
+  "maker_code": "54",
+  "revision": 0,
+  "sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "size": 67108864,
+  "title": "CIVREV"
+}
