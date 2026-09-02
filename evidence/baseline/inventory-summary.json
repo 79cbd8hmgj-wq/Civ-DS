@@ -1,0 +1,592 @@
+{
+  "asset_evidence": [
+    {
+      "count": 2488,
+      "name": "unknown"
+    },
+    {
+      "count": 212,
+      "name": "signature"
+    },
+    {
+      "count": 36,
+      "name": "extension"
+    }
+  ],
+  "compression": [
+    {
+      "count": 2736,
+      "name": "none"
+    }
+  ],
+  "detected_formats": [
+    {
+      "count": 2488,
+      "name": "unknown"
+    },
+    {
+      "count": 105,
+      "name": "NCGR"
+    },
+    {
+      "count": 105,
+      "name": "NCLR"
+    },
+    {
+      "count": 18,
+      "name": "NTFP"
+    },
+    {
+      "count": 18,
+      "name": "NTFT"
+    },
+    {
+      "count": 1,
+      "name": "NSBMD"
+    },
+    {
+      "count": 1,
+      "name": "SDAT"
+    }
+  ],
+  "extensions": [
+    {
+      "count": 743,
+      "decoded_bytes": 5798848,
+      "extension": ".nbfc"
+    },
+    {
+      "count": 743,
+      "decoded_bytes": 351482,
+      "extension": ".nbfs"
+    },
+    {
+      "count": 739,
+      "decoded_bytes": 75968,
+      "extension": ".nbfp"
+    },
+    {
+      "count": 105,
+      "decoded_bytes": 96614,
+      "extension": ".nanr"
+    },
+    {
+      "count": 105,
+      "decoded_bytes": 143134,
+      "extension": ".ncer"
+    },
+    {
+      "count": 105,
+      "decoded_bytes": 2854320,
+      "extension": ".ncgr"
+    },
+    {
+      "count": 105,
+      "decoded_bytes": 57960,
+      "extension": ".nclr"
+    },
+    {
+      "count": 46,
+      "decoded_bytes": 101657,
+      "extension": ".txt"
+    },
+    {
+      "count": 18,
+      "decoded_bytes": 514,
+      "extension": ".ntfp"
+    },
+    {
+      "count": 18,
+      "decoded_bytes": 151552,
+      "extension": ".ntft"
+    },
+    {
+      "count": 4,
+      "decoded_bytes": 3400375,
+      "extension": ".str"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 929892,
+      "extension": ".bin"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 21210,
+      "extension": ".ini"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 5544,
+      "extension": ".nftr"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 6132,
+      "extension": ".nsbmd"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 23967584,
+      "extension": ".sdat"
+    }
+  ],
+  "format_version": 1,
+  "largest_files": [
+    {
+      "compression": "none",
+      "decoded_size": 23967584,
+      "file_id": 38,
+      "path": "audio/CIV_sound_data.sdat"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 929892,
+      "file_id": 39,
+      "path": "dwc/utility.bin"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 861175,
+      "file_id": 1246,
+      "path": "Localization/str_FRA.STR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 854838,
+      "file_id": 1244,
+      "path": "Localization/str_DEU.STR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 844223,
+      "file_id": 1245,
+      "path": "Localization/str_ESP.STR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 840139,
+      "file_id": 1247,
+      "path": "Localization/str_ITA.STR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 96688,
+      "file_id": 1156,
+      "path": "leaders/Caesar.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 92720,
+      "file_id": 1208,
+      "path": "leaders/Shaka.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 91952,
+      "file_id": 1196,
+      "path": "leaders/Montezuma.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 85424,
+      "file_id": 1152,
+      "path": "leaders/Bismarck.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 83376,
+      "file_id": 1180,
+      "path": "leaders/GreyWolf.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 73520,
+      "file_id": 1176,
+      "path": "leaders/Genghis.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 72112,
+      "file_id": 36,
+      "path": "advisors/ScienceAdvisor.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 68400,
+      "file_id": 32,
+      "path": "advisors/MilitaryAdvisor.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 65840,
+      "file_id": 1168,
+      "path": "leaders/Elizabeth.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 63536,
+      "file_id": 1188,
+      "path": "leaders/Lincoln.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 63408,
+      "file_id": 1160,
+      "path": "leaders/catherine.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 60976,
+      "file_id": 1184,
+      "path": "leaders/Isabella.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 59568,
+      "file_id": 28,
+      "path": "advisors/ForeignAdvisor.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 56496,
+      "file_id": 1148,
+      "path": "leaders/Alexander.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 52656,
+      "file_id": 1200,
+      "path": "leaders/Napoleon.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 49584,
+      "file_id": 2415,
+      "path": "units/Combat/Barbarian.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 49200,
+      "file_id": 1212,
+      "path": "leaders/Tokugawa.NCGR"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 49152,
+      "file_id": 265,
+      "path": "interface/Credits/CivDS_TeamAM.nbfc"
+    },
+    {
+      "compression": "none",
+      "decoded_size": 48816,
+      "file_id": 2591,
+      "path": "units/Combat/militia.NCGR"
+    }
+  ],
+  "rare_extensions": [
+    {
+      "count": 1,
+      "extension": ".bin",
+      "paths": [
+        "dwc/utility.bin"
+      ]
+    },
+    {
+      "count": 1,
+      "extension": ".ini",
+      "paths": [
+        "Localization/Text.ini"
+      ]
+    },
+    {
+      "count": 1,
+      "extension": ".nftr",
+      "paths": [
+        "font/Arial14.nftr"
+      ]
+    },
+    {
+      "count": 1,
+      "extension": ".nsbmd",
+      "paths": [
+        "units/Combat/Missile.nsbmd"
+      ]
+    },
+    {
+      "count": 18,
+      "extension": ".ntfp",
+      "paths": [
+        "terrain/3dtilesets/Deep_Water_3d.ntfp",
+        "terrain/3dtilesets/Desert_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Fog.ntfp",
+        "terrain/3dtilesets/Grass_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Hills_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Mountains_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Plains_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Rivers_Alpha_3d.ntfp",
+        "terrain/3dtilesets/RoadsN01.ntfp",
+        "terrain/3dtilesets/RoadsN02.ntfp",
+        "terrain/3dtilesets/RoadsN03.ntfp",
+        "terrain/3dtilesets/RoadsNW01.ntfp",
+        "terrain/3dtilesets/RoadsNW02.ntfp",
+        "terrain/3dtilesets/RoadsNW03.ntfp",
+        "terrain/3dtilesets/Trees_Alpha_3d.ntfp",
+        "terrain/3dtilesets/Water_Grass_3d.ntfp",
+        "terrain/3dtilesets/Water_Ice_3d.ntfp",
+        "terrain/Borders/Border_3D.ntfp"
+      ]
+    },
+    {
+      "count": 18,
+      "extension": ".ntft",
+      "paths": [
+        "terrain/3dtilesets/Deep_Water_3d.ntft",
+        "terrain/3dtilesets/Desert_Alpha_3d.ntft",
+        "terrain/3dtilesets/Fog.ntft",
+        "terrain/3dtilesets/Grass_Alpha_3d.ntft",
+        "terrain/3dtilesets/Hills_Alpha_3d.ntft",
+        "terrain/3dtilesets/Mountains_Alpha_3d.ntft",
+        "terrain/3dtilesets/Plains_Alpha_3d.ntft",
+        "terrain/3dtilesets/Rivers_Alpha_3d.ntft",
+        "terrain/3dtilesets/RoadsN01.ntft",
+        "terrain/3dtilesets/RoadsN02.ntft",
+        "terrain/3dtilesets/RoadsN03.ntft",
+        "terrain/3dtilesets/RoadsNW01.ntft",
+        "terrain/3dtilesets/RoadsNW02.ntft",
+        "terrain/3dtilesets/RoadsNW03.ntft",
+        "terrain/3dtilesets/Trees_Alpha_3d.ntft",
+        "terrain/3dtilesets/Water_Grass_3d.ntft",
+        "terrain/3dtilesets/Water_Ice_3d.ntft",
+        "terrain/Borders/Border_3D.ntft"
+      ]
+    },
+    {
+      "count": 1,
+      "extension": ".sdat",
+      "paths": [
+        "audio/CIV_sound_data.sdat"
+      ]
+    },
+    {
+      "count": 4,
+      "extension": ".str",
+      "paths": [
+        "Localization/str_DEU.STR",
+        "Localization/str_ESP.STR",
+        "Localization/str_FRA.STR",
+        "Localization/str_ITA.STR"
+      ]
+    }
+  ],
+  "top_level_directories": [
+    {
+      "count": 1104,
+      "decoded_bytes": 3070752,
+      "directory": "interface"
+    },
+    {
+      "count": 1068,
+      "decoded_bytes": 2917584,
+      "directory": "structures"
+    },
+    {
+      "count": 382,
+      "decoded_bytes": 1903818,
+      "directory": "units"
+    },
+    {
+      "count": 68,
+      "decoded_bytes": 1168514,
+      "directory": "leaders"
+    },
+    {
+      "count": 50,
+      "decoded_bytes": 3523233,
+      "directory": "Localization"
+    },
+    {
+      "count": 36,
+      "decoded_bytes": 152066,
+      "directory": "terrain"
+    },
+    {
+      "count": 20,
+      "decoded_bytes": 307374,
+      "directory": "advisors"
+    },
+    {
+      "count": 3,
+      "decoded_bytes": 16384,
+      "directory": "title"
+    },
+    {
+      "count": 2,
+      "decoded_bytes": 5576,
+      "directory": "font"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 9,
+      "directory": "<root>"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 23967584,
+      "directory": "audio"
+    },
+    {
+      "count": 1,
+      "decoded_bytes": 929892,
+      "directory": "dwc"
+    }
+  ],
+  "totals": {
+    "assets": 2736,
+    "decoded_bytes": 37962786,
+    "extensions": 16,
+    "files": 2736,
+    "top_level_directories": 12
+  },
+  "unknown_extensions": [
+    {
+      "count": 743,
+      "example_paths": [
+        "interface/AdvisorScreen/ADV_AlexanderBG.nbfc",
+        "interface/AdvisorScreen/ADV_BismarckBG.nbfc",
+        "interface/AdvisorScreen/ADV_CaesarBG.nbfc",
+        "interface/AdvisorScreen/ADV_CatherineBG.nbfc",
+        "interface/AdvisorScreen/ADV_CleopatraBG.nbfc",
+        "interface/AdvisorScreen/ADV_ElizabethBG.nbfc",
+        "interface/AdvisorScreen/ADV_GandhiBG.nbfc",
+        "interface/AdvisorScreen/ADV_GenghisBG.nbfc",
+        "interface/AdvisorScreen/ADV_GreyWolfBG.nbfc",
+        "interface/AdvisorScreen/ADV_IsabellaBG.nbfc",
+        "interface/AdvisorScreen/ADV_LincolnBG.nbfc",
+        "interface/AdvisorScreen/ADV_MaoBG.nbfc"
+      ],
+      "extension": ".nbfc"
+    },
+    {
+      "count": 743,
+      "example_paths": [
+        "interface/AdvisorScreen/ADV_AlexanderBG.nbfs",
+        "interface/AdvisorScreen/ADV_BismarckBG.nbfs",
+        "interface/AdvisorScreen/ADV_CaesarBG.nbfs",
+        "interface/AdvisorScreen/ADV_CatherineBG.nbfs",
+        "interface/AdvisorScreen/ADV_CleopatraBG.nbfs",
+        "interface/AdvisorScreen/ADV_ElizabethBG.nbfs",
+        "interface/AdvisorScreen/ADV_GandhiBG.nbfs",
+        "interface/AdvisorScreen/ADV_GenghisBG.nbfs",
+        "interface/AdvisorScreen/ADV_GreyWolfBG.nbfs",
+        "interface/AdvisorScreen/ADV_IsabellaBG.nbfs",
+        "interface/AdvisorScreen/ADV_LincolnBG.nbfs",
+        "interface/AdvisorScreen/ADV_MaoBG.nbfs"
+      ],
+      "extension": ".nbfs"
+    },
+    {
+      "count": 739,
+      "example_paths": [
+        "font/FontPalette.nbfp",
+        "interface/AdvisorScreen/ADV_AlexanderBG.nbfp",
+        "interface/AdvisorScreen/ADV_BismarckBG.nbfp",
+        "interface/AdvisorScreen/ADV_CaesarBG.nbfp",
+        "interface/AdvisorScreen/ADV_CatherineBG.nbfp",
+        "interface/AdvisorScreen/ADV_CleopatraBG.nbfp",
+        "interface/AdvisorScreen/ADV_ElizabethBG.nbfp",
+        "interface/AdvisorScreen/ADV_GandhiBG.nbfp",
+        "interface/AdvisorScreen/ADV_GenghisBG.nbfp",
+        "interface/AdvisorScreen/ADV_GreyWolfBG.nbfp",
+        "interface/AdvisorScreen/ADV_IsabellaBG.nbfp",
+        "interface/AdvisorScreen/ADV_LincolnBG.nbfp"
+      ],
+      "extension": ".nbfp"
+    },
+    {
+      "count": 105,
+      "example_paths": [
+        "advisors/CulturalAdvisor.NANR",
+        "advisors/DomesticAdvisor.NANR",
+        "advisors/ForeignAdvisor.NANR",
+        "advisors/MilitaryAdvisor.NANR",
+        "advisors/ScienceAdvisor.NANR",
+        "interface/LeaderPics/Alexander_CHOOSE.NANR",
+        "interface/LeaderPics/Bismarck_CHOOSE.NANR",
+        "interface/LeaderPics/Caesar_CHOOSE.NANR",
+        "interface/LeaderPics/Catherine_CHOOSE.NANR",
+        "interface/LeaderPics/Cleopatra_CHOOSE.NANR",
+        "interface/LeaderPics/Elizabeth_CHOOSE.NANR",
+        "interface/LeaderPics/Gandhi_CHOOSE.NANR"
+      ],
+      "extension": ".nanr"
+    },
+    {
+      "count": 105,
+      "example_paths": [
+        "advisors/CulturalAdvisor.NCER",
+        "advisors/DomesticAdvisor.NCER",
+        "advisors/ForeignAdvisor.NCER",
+        "advisors/MilitaryAdvisor.NCER",
+        "advisors/ScienceAdvisor.NCER",
+        "interface/LeaderPics/Alexander_CHOOSE.NCER",
+        "interface/LeaderPics/Bismarck_CHOOSE.NCER",
+        "interface/LeaderPics/Caesar_CHOOSE.NCER",
+        "interface/LeaderPics/Catherine_CHOOSE.NCER",
+        "interface/LeaderPics/Cleopatra_CHOOSE.NCER",
+        "interface/LeaderPics/Elizabeth_CHOOSE.NCER",
+        "interface/LeaderPics/Gandhi_CHOOSE.NCER"
+      ],
+      "extension": ".ncer"
+    },
+    {
+      "count": 46,
+      "example_paths": [
+        "Localization/CityNames_DEU.txt",
+        "Localization/CityNames_ENU.txt",
+        "Localization/CityNames_ESP.txt",
+        "Localization/CityNames_FRA.txt",
+        "Localization/CityNames_ITA.txt",
+        "Localization/CivNames_DEU.txt",
+        "Localization/CivNames_ENU.txt",
+        "Localization/CivNames_ESP.txt",
+        "Localization/CivNames_FRA.txt",
+        "Localization/CivNames_ITA.txt",
+        "Localization/Credits_DEU.txt",
+        "Localization/Credits_ENU.txt"
+      ],
+      "extension": ".txt"
+    },
+    {
+      "count": 4,
+      "example_paths": [
+        "Localization/str_DEU.STR",
+        "Localization/str_ESP.STR",
+        "Localization/str_FRA.STR",
+        "Localization/str_ITA.STR"
+      ],
+      "extension": ".str"
+    },
+    {
+      "count": 1,
+      "example_paths": [
+        "dwc/utility.bin"
+      ],
+      "extension": ".bin"
+    },
+    {
+      "count": 1,
+      "example_paths": [
+        "Localization/Text.ini"
+      ],
+      "extension": ".ini"
+    },
+    {
+      "count": 1,
+      "example_paths": [
+        "font/Arial14.nftr"
+      ],
+      "extension": ".nftr"
+    }
+  ]
+}
