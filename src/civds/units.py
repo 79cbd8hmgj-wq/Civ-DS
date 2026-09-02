@@ -222,3 +222,58 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
         )
 
     return tuple(records)
+
+
+def _signed_byte_hex(value: int) -> str:
+    return struct.pack("<b", value).hex()
+
+
+def build_unit_patch_set(
+    records: tuple[UnitRecord, ...],
+    *,
+    unit_name: str,
+    profile_id: str,
+    attack: int | None = None,
+    production_cost: int | None = None,
+) -> dict[str, object]:
+    matches = [record for record in records if record.name == unit_name]
+    if len(matches) != 1:
+        raise ValueError(f"expected exactly one unit named {unit_name!r}, found {len(matches)}")
+    record = matches[0]
+
+    patches: list[dict[str, object]] = []
+    if attack is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-attack",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x40,
+                "expected": _signed_byte_hex(record.attack),
+                "replacement": _signed_byte_hex(attack),
+                "rationale": f"Set {record.name} attack from {record.attack} to {attack}",
+            }
+        )
+
+    if production_cost is not None:
+        quanta = production_cost // 5
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-production-cost",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x44,
+                "expected": _signed_byte_hex(record.production_cost_quanta),
+                "replacement": _signed_byte_hex(quanta),
+                "rationale": (
+                    f"Set {record.name} production cost from "
+                    f"{record.production_cost} to {production_cost}"
+                ),
+            }
+        )
+
+    return {
+        "format_version": 1,
+        "profile_id": profile_id,
+        "patches": patches,
+    }
