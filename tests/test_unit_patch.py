@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from civds import units
 from tests.test_units import _text_slot, _unit_record
 
@@ -63,3 +65,38 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
             },
         ],
     }
+
+
+def test_build_unit_patch_set_rejects_non_quantized_production_cost() -> None:
+    records = _records_with_warrior()
+
+    with pytest.raises(ValueError, match="multiple of 5"):
+        units.build_unit_patch_set(
+            records,
+            unit_name="Warrior",
+            profile_id="synthetic_units",
+            production_cost=21,
+        )
+
+
+def test_build_unit_patch_set_rejects_values_outside_descriptor_byte() -> None:
+    records = _records_with_warrior()
+
+    with pytest.raises(ValueError, match="attack.*signed byte"):
+        units.build_unit_patch_set(
+            records,
+            unit_name="Warrior",
+            profile_id="synthetic_units",
+            attack=128,
+        )
+
+
+def test_build_unit_patch_set_rejects_empty_edit_request() -> None:
+    records = _records_with_warrior()
+
+    with pytest.raises(ValueError, match="no unit fields"):
+        units.build_unit_patch_set(
+            records,
+            unit_name="Warrior",
+            profile_id="synthetic_units",
+        )
