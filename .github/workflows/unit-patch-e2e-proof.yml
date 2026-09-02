@@ -1,0 +1,146 @@
+name: Civ Rev unit patch end-to-end proof
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+    paths:
+      - .github/workflows/unit-patch-e2e-proof.yml
+
+permissions:
+  contents: write
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e '.[dev]'
+      - name: Recover exact supported ROM
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/civrev-rom"
+          unzip -q "SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip" -d "$RUNNER_TEMP/civrev-rom"
+          ROM="$(find "$RUNNER_TEMP/civrev-rom" -maxdepth 1 -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          echo "ROM=$ROM" >> "$GITHUB_ENV"
+      - name: Generate guarded Warrior manifest
+        run: |
+          civds units patch-manifest "$ROM" Warrior \
+            --profile profiles/civrev-us.json \
+            --attack 2 \
+            --output "$RUNNER_TEMP/warrior-attack.json"
+      - name: Extract and apply through toolkit
+        run: |
+          civds extract "$ROM" "$RUNNER_TEMP/workspace" --profile profiles/civrev-us.json
+          cp "$RUNNER_TEMP/workspace/modified/arm9.bin" "$RUNNER_TEMP/arm9-before.bin"
+          civds patch "$RUNNER_TEMP/workspace" "$RUNNER_TEMP/warrior-attack.json"
+      - name: Verify exact ARM9 mutation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          temp = Path(os.environ['RUNNER_TEMP'])
+          patch = json.loads((temp / 'warrior-attack.json').read_text(encoding='utf-8'))
+          before = (temp / 'arm9-before.bin').read_bytes()
+          after = (temp / 'workspace/modified/arm9.bin').read_bytes()
+
+          assert patch['profile_id'] == 'civrev-usa'
+          assert len(patch['patches']) == 1
+          item = patch['patches'][0]
+          assert item['target'] == 'arm9'
+          assert item['expected'] == '01'
+          assert item['replacement'] == '02'
+          offset = int(item['offset'])
+          assert before[offset:offset + 1] == bytes.fromhex(item['expected'])
+          assert after[offset:offset + 1] == bytes.fromhex(item['replacement'])
+          assert len(before) == len(after)
+          diffs = [index for index, (left, right) in enumerate(zip(before, after)) if left != right]
+          assert diffs == [offset], diffs[:20]
+
+          patch_report_path = temp / 'workspace/manifests/patch-warrior-attack.json'
+          patch_report = json.loads(patch_report_path.read_text(encoding='utf-8'))
+          assert patch_report['profile_id'] == 'civrev-usa'
+          assert len(patch_report['applied']) == 1
+          assert patch_report['applied'][0]['offset'] == offset
+
+          evidence = {
+              'format_version': 1,
+              'profile_id': patch['profile_id'],
+              'unit': 'Warrior',
+              'field': 'attack',
+              'original_value': 1,
+              'replacement_value': 2,
+              'arm9_relative_offset': offset,
+              'expected_hex': item['expected'],
+              'replacement_hex': item['replacement'],
+              'changed_byte_count': len(diffs),
+              'changed_offsets': diffs,
+              'arm9_before_sha256': hashlib.sha256(before).hexdigest(),
+              'arm9_after_sha256': hashlib.sha256(after).hexdigest(),
+              'patch_application': patch_report,
+          }
+          out = Path('evidence/re/unit-patch-e2e.json')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps(evidence, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          PY
+      - name: Rebuild and verify changed ROM
+        shell: bash
+        run: |
+          set -euo pipefail
+          civds rebuild "$ROM" "$RUNNER_TEMP/workspace" "$RUNNER_TEMP/CivRev-warrior-attack.nds" --profile profiles/civrev-us.json
+          civds inspect "$RUNNER_TEMP/CivRev-warrior-attack.nds" --profile profiles/civrev-us.json --allow-unsupported --output "$RUNNER_TEMP/rebuilt-inspection.json"
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import struct
+          from pathlib import Path
+
+          temp = Path(os.environ['RUNNER_TEMP'])
+          source = Path(os.environ['ROM']).read_bytes()
+          rebuilt_path = temp / 'CivRev-warrior-attack.nds'
+          rebuilt = rebuilt_path.read_bytes()
+          patch = json.loads((temp / 'warrior-attack.json').read_text(encoding='utf-8'))
+          evidence_path = Path('evidence/re/unit-patch-e2e.json')
+          evidence = json.loads(evidence_path.read_text(encoding='utf-8'))
+
+          arm9_offset = struct.unpack_from('<I', source, 0x20)[0]
+          relative = int(patch['patches'][0]['offset'])
+          absolute = arm9_offset + relative
+          assert source[absolute] == 1
+          assert rebuilt[absolute] == 2
+          assert len(source) == len(rebuilt)
+
+          inspection = json.loads((temp / 'rebuilt-inspection.json').read_text(encoding='utf-8'))
+          evidence['rebuilt_rom_sha256'] = hashlib.sha256(rebuilt).hexdigest()
+          evidence['source_rom_sha256'] = hashlib.sha256(source).hexdigest()
+          evidence['rom_absolute_offset'] = absolute
+          evidence['rebuilt_size'] = len(rebuilt)
+          evidence['rebuild_structural_inspection_completed'] = True
+          evidence['rebuilt_profile_supported'] = inspection.get('supported')
+          evidence_path.write_text(json.dumps(evidence, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          PY
+      - name: Commit compact proof evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add evidence/re/unit-patch-e2e.json
+          if git diff --cached --quiet; then
+            echo 'No evidence changes to commit'
+            exit 0
+          fi
+          git commit -m 'analysis: prove guarded unit patch pipeline'
+          git push
