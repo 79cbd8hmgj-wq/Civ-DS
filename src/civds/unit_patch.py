@@ -20,6 +20,9 @@ def write_unit_patch_manifest(
     movement: int | None = None,
     fuel_turn_limit: int | None = None,
     production_cost: int | None = None,
+    unlock_technology_id: int | None = None,
+    obsolete_technology_id_1: int | None = None,
+    obsolete_technology_id_2: int | None = None,
 ) -> Path:
     profile = load_profile(profile_path)
     validate_rom(rom, profile)
@@ -41,6 +44,9 @@ def write_unit_patch_manifest(
         movement=movement,
         fuel_turn_limit=fuel_turn_limit,
         production_cost=production_cost,
+        unlock_technology_id=unlock_technology_id,
+        obsolete_technology_id_1=obsolete_technology_id_1,
+        obsolete_technology_id_2=obsolete_technology_id_2,
     )
     write_json_atomic(output, payload)
     return output
