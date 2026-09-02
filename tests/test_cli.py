@@ -142,3 +142,58 @@ def test_units_summarize_validates_profile_and_resolves_technology_names(
     assert warrior["unlock_technology_name"] is None
     assert warrior["obsolete_technology_name_1"] == "Iron Working"
     assert warrior["obsolete_technology_name_2"] == "Feudalism"
+
+
+def test_units_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_unit_summary_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_units")
+    output = tmp_path / "warrior-patch.json"
+
+    result = main(
+        [
+            "units",
+            "patch-manifest",
+            str(rom),
+            "Warrior",
+            "--profile",
+            str(profile),
+            "--attack",
+            "3",
+            "--production-cost",
+            "20",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    warrior_offset = 6 * UNIT_RECORD_SIZE
+    assert payload == {
+        "format_version": 1,
+        "profile_id": "synthetic_units",
+        "patches": [
+            {
+                "id": "unit-006-attack",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x40,
+                "expected": "01",
+                "replacement": "03",
+                "rationale": "Set Warrior attack from 1 to 3",
+            },
+            {
+                "id": "unit-006-production-cost",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x44,
+                "expected": "02",
+                "replacement": "04",
+                "rationale": "Set Warrior production cost from 10 to 20",
+            },
+        ],
+    }
