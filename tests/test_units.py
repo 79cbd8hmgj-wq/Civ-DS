@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import struct
 
-from civds.units import UNIT_RECORD_COUNT, UNIT_RECORD_SIZE, parse_unit_records
+from civds.units import (
+    UNIT_RECORD_COUNT,
+    UNIT_RECORD_SIZE,
+    parse_unit_records,
+    technology_name,
+)
 
 
 def _text_slot(text: str) -> bytes:
@@ -115,3 +120,11 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
     assert warrior.flags == 0x00040120
+
+
+def test_technology_name_uses_recovered_runtime_ids() -> None:
+    assert technology_name(-1) is None
+    assert technology_name(0) == "never"
+    assert technology_name(1) == "Alphabet"
+    assert technology_name(24) == "Gunpowder"
+    assert technology_name(47) == "Future Technology"
