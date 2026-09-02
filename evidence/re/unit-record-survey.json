@@ -1,0 +1,942 @@
+{
+  "aligned_known_delta_gcd": 3816,
+  "boundary_previews": [
+    {
+      "address": 35102284,
+      "effect_best_effort": "",
+      "index_from_settlers": -2,
+      "metadata_s16": [
+        34,
+        44,
+        -1,
+        -1,
+        -1
+      ],
+      "name_best_effort": "Superconductor"
+    },
+    {
+      "address": 35102390,
+      "effect_best_effort": "",
+      "index_from_settlers": -1,
+      "metadata_s16": [
+        46,
+        45,
+        41,
+        -1,
+        -1
+      ],
+      "name_best_effort": "Future Technology"
+    },
+    {
+      "address": 35102496,
+      "effect_best_effort": "m",
+      "index_from_settlers": 0,
+      "metadata_s16": [
+        25971,
+        29812,
+        25964,
+        24434,
+        28530
+      ],
+      "name_best_effort": "Settlers"
+    },
+    {
+      "address": 35102602,
+      "effect_best_effort": "FSettler",
+      "index_from_settlers": 1,
+      "metadata_s16": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name_best_effort": ""
+    },
+    {
+      "address": 35102708,
+      "effect_best_effort": "",
+      "index_from_settlers": 2,
+      "metadata_s16": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name_best_effort": ""
+    },
+    {
+      "address": 35102814,
+      "effect_best_effort": "",
+      "index_from_settlers": 3,
+      "metadata_s16": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name_best_effort": ""
+    }
+  ],
+  "first_invalid_record": {
+    "address": 35102496,
+    "effect_slot_hex": "6d0000000000000000000000000000000000000000000000020004ff00083f00ffff0000000001000000536574746c65725f4d616c6500000000000000000000",
+    "index": 0,
+    "name_slot_hex": "536574746c657273000000000000000000000000000000000000000000000000",
+    "offset": 1548064,
+    "reason": "text_slot_validation_failed"
+  },
+  "format_version": 1,
+  "future_technology_address": 35102390,
+  "known_name_hits": [
+    {
+      "hits": [
+        {
+          "address": 35102496,
+          "aligned_106": true,
+          "delta_from_settlers": 0,
+          "offset": 1548064,
+          "record_index_from_settlers": 0
+        }
+      ],
+      "name": "Settlers"
+    },
+    {
+      "hits": [
+        {
+          "address": 35102876,
+          "aligned_106": false,
+          "delta_from_settlers": 380,
+          "offset": 1548444,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35102908,
+          "aligned_106": false,
+          "delta_from_settlers": 412,
+          "offset": 1548476,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103416,
+          "aligned_106": false,
+          "delta_from_settlers": 920,
+          "offset": 1548984,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103468,
+          "aligned_106": false,
+          "delta_from_settlers": 972,
+          "offset": 1549036,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103500,
+          "aligned_106": false,
+          "delta_from_settlers": 1004,
+          "offset": 1549068,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103616,
+          "aligned_106": false,
+          "delta_from_settlers": 1120,
+          "offset": 1549184,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103648,
+          "aligned_106": false,
+          "delta_from_settlers": 1152,
+          "offset": 1549216,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150408,
+          "aligned_106": true,
+          "delta_from_settlers": 47912,
+          "offset": 1595976,
+          "record_index_from_settlers": 452
+        }
+      ],
+      "name": "Swordsman"
+    },
+    {
+      "hits": [
+        {
+          "address": 35103384,
+          "aligned_106": false,
+          "delta_from_settlers": 888,
+          "offset": 1548952,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138183,
+          "aligned_106": false,
+          "delta_from_settlers": 35687,
+          "offset": 1583751,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138197,
+          "aligned_106": false,
+          "delta_from_settlers": 35701,
+          "offset": 1583765,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Warrior"
+    },
+    {
+      "hits": [
+        {
+          "address": 35103680,
+          "aligned_106": false,
+          "delta_from_settlers": 1184,
+          "offset": 1549248,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103712,
+          "aligned_106": false,
+          "delta_from_settlers": 1216,
+          "offset": 1549280,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103764,
+          "aligned_106": false,
+          "delta_from_settlers": 1268,
+          "offset": 1549332,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103796,
+          "aligned_106": false,
+          "delta_from_settlers": 1300,
+          "offset": 1549364,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150120,
+          "aligned_106": false,
+          "delta_from_settlers": 47624,
+          "offset": 1595688,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Legion"
+    },
+    {
+      "hits": [
+        {
+          "address": 35103828,
+          "aligned_106": false,
+          "delta_from_settlers": 1332,
+          "offset": 1549396,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103860,
+          "aligned_106": false,
+          "delta_from_settlers": 1364,
+          "offset": 1549428,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104800,
+          "aligned_106": false,
+          "delta_from_settlers": 2304,
+          "offset": 1550368,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104832,
+          "aligned_106": false,
+          "delta_from_settlers": 2336,
+          "offset": 1550400,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138244,
+          "aligned_106": false,
+          "delta_from_settlers": 35748,
+          "offset": 1583812,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138261,
+          "aligned_106": false,
+          "delta_from_settlers": 35765,
+          "offset": 1583829,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150064,
+          "aligned_106": false,
+          "delta_from_settlers": 47568,
+          "offset": 1595632,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Archer"
+    },
+    {
+      "hits": [
+        {
+          "address": 35103912,
+          "aligned_106": false,
+          "delta_from_settlers": 1416,
+          "offset": 1549480,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35103944,
+          "aligned_106": false,
+          "delta_from_settlers": 1448,
+          "offset": 1549512,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104716,
+          "aligned_106": false,
+          "delta_from_settlers": 2220,
+          "offset": 1550284,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104748,
+          "aligned_106": false,
+          "delta_from_settlers": 2252,
+          "offset": 1550316,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138217,
+          "aligned_106": false,
+          "delta_from_settlers": 35721,
+          "offset": 1583785,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150144,
+          "aligned_106": false,
+          "delta_from_settlers": 47648,
+          "offset": 1595712,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Phalanx"
+    },
+    {
+      "hits": [
+        {
+          "address": 35103976,
+          "aligned_106": false,
+          "delta_from_settlers": 1480,
+          "offset": 1549544,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Riflemen"
+    },
+    {
+      "hits": [
+        {
+          "address": 35104568,
+          "aligned_106": false,
+          "delta_from_settlers": 2072,
+          "offset": 1550136,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138335,
+          "aligned_106": false,
+          "delta_from_settlers": 35839,
+          "offset": 1583903,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138344,
+          "aligned_106": false,
+          "delta_from_settlers": 35848,
+          "offset": 1583912,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138360,
+          "aligned_106": false,
+          "delta_from_settlers": 35864,
+          "offset": 1583928,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Tank"
+    },
+    {
+      "hits": [
+        {
+          "address": 35104452,
+          "aligned_106": false,
+          "delta_from_settlers": 1956,
+          "offset": 1550020,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104504,
+          "aligned_106": false,
+          "delta_from_settlers": 2008,
+          "offset": 1550072,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104536,
+          "aligned_106": false,
+          "delta_from_settlers": 2040,
+          "offset": 1550104,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138308,
+          "aligned_106": false,
+          "delta_from_settlers": 35812,
+          "offset": 1583876,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150088,
+          "aligned_106": false,
+          "delta_from_settlers": 47592,
+          "offset": 1595656,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Knight"
+    },
+    {
+      "hits": [
+        {
+          "address": 35104304,
+          "aligned_106": false,
+          "delta_from_settlers": 1808,
+          "offset": 1549872,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104356,
+          "aligned_106": false,
+          "delta_from_settlers": 1860,
+          "offset": 1549924,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104388,
+          "aligned_106": false,
+          "delta_from_settlers": 1892,
+          "offset": 1549956,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35138288,
+          "aligned_106": false,
+          "delta_from_settlers": 35792,
+          "offset": 1583856,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150228,
+          "aligned_106": false,
+          "delta_from_settlers": 47732,
+          "offset": 1595796,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Horseman"
+    },
+    {
+      "hits": [
+        {
+          "address": 35150396,
+          "aligned_106": false,
+          "delta_from_settlers": 47900,
+          "offset": 1595964,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Barbarian"
+    },
+    {
+      "hits": [
+        {
+          "address": 35104864,
+          "aligned_106": false,
+          "delta_from_settlers": 2368,
+          "offset": 1550432,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104896,
+          "aligned_106": false,
+          "delta_from_settlers": 2400,
+          "offset": 1550464,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104948,
+          "aligned_106": false,
+          "delta_from_settlers": 2452,
+          "offset": 1550516,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35104980,
+          "aligned_106": false,
+          "delta_from_settlers": 2484,
+          "offset": 1550548,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150288,
+          "aligned_106": false,
+          "delta_from_settlers": 47792,
+          "offset": 1595856,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Catapult"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105012,
+          "aligned_106": false,
+          "delta_from_settlers": 2516,
+          "offset": 1550580,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105044,
+          "aligned_106": false,
+          "delta_from_settlers": 2548,
+          "offset": 1550612,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105096,
+          "aligned_106": false,
+          "delta_from_settlers": 2600,
+          "offset": 1550664,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105128,
+          "aligned_106": false,
+          "delta_from_settlers": 2632,
+          "offset": 1550696,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150104,
+          "aligned_106": false,
+          "delta_from_settlers": 47608,
+          "offset": 1595672,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Cannon"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105160,
+          "aligned_106": false,
+          "delta_from_settlers": 2664,
+          "offset": 1550728,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105192,
+          "aligned_106": false,
+          "delta_from_settlers": 2696,
+          "offset": 1550760,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105244,
+          "aligned_106": false,
+          "delta_from_settlers": 2748,
+          "offset": 1550812,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105276,
+          "aligned_106": false,
+          "delta_from_settlers": 2780,
+          "offset": 1550844,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150360,
+          "aligned_106": false,
+          "delta_from_settlers": 47864,
+          "offset": 1595928,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Artillery"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105456,
+          "aligned_106": false,
+          "delta_from_settlers": 2960,
+          "offset": 1551024,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105488,
+          "aligned_106": false,
+          "delta_from_settlers": 2992,
+          "offset": 1551056,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105540,
+          "aligned_106": false,
+          "delta_from_settlers": 3044,
+          "offset": 1551108,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105572,
+          "aligned_106": false,
+          "delta_from_settlers": 3076,
+          "offset": 1551140,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150112,
+          "aligned_106": false,
+          "delta_from_settlers": 47616,
+          "offset": 1595680,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Galley"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105604,
+          "aligned_106": false,
+          "delta_from_settlers": 3108,
+          "offset": 1551172,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105636,
+          "aligned_106": false,
+          "delta_from_settlers": 3140,
+          "offset": 1551204,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105688,
+          "aligned_106": false,
+          "delta_from_settlers": 3192,
+          "offset": 1551256,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105720,
+          "aligned_106": false,
+          "delta_from_settlers": 3224,
+          "offset": 1551288,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150184,
+          "aligned_106": false,
+          "delta_from_settlers": 47688,
+          "offset": 1595752,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Galleon"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105752,
+          "aligned_106": false,
+          "delta_from_settlers": 3256,
+          "offset": 1551320,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105784,
+          "aligned_106": false,
+          "delta_from_settlers": 3288,
+          "offset": 1551352,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105836,
+          "aligned_106": false,
+          "delta_from_settlers": 3340,
+          "offset": 1551404,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105868,
+          "aligned_106": false,
+          "delta_from_settlers": 3372,
+          "offset": 1551436,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150192,
+          "aligned_106": false,
+          "delta_from_settlers": 47696,
+          "offset": 1595760,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Cruiser"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105900,
+          "aligned_106": false,
+          "delta_from_settlers": 3404,
+          "offset": 1551468,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105932,
+          "aligned_106": false,
+          "delta_from_settlers": 3436,
+          "offset": 1551500,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105984,
+          "aligned_106": false,
+          "delta_from_settlers": 3488,
+          "offset": 1551552,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106016,
+          "aligned_106": false,
+          "delta_from_settlers": 3520,
+          "offset": 1551584,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150432,
+          "aligned_106": false,
+          "delta_from_settlers": 47936,
+          "offset": 1596000,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Battleship"
+    },
+    {
+      "hits": [
+        {
+          "address": 35105308,
+          "aligned_106": false,
+          "delta_from_settlers": 2812,
+          "offset": 1550876,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105340,
+          "aligned_106": false,
+          "delta_from_settlers": 2844,
+          "offset": 1550908,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105392,
+          "aligned_106": false,
+          "delta_from_settlers": 2896,
+          "offset": 1550960,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35105424,
+          "aligned_106": false,
+          "delta_from_settlers": 2928,
+          "offset": 1550992,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150384,
+          "aligned_106": false,
+          "delta_from_settlers": 47888,
+          "offset": 1595952,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Submarine"
+    },
+    {
+      "hits": [
+        {
+          "address": 35106344,
+          "aligned_106": false,
+          "delta_from_settlers": 3848,
+          "offset": 1551912,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106376,
+          "aligned_106": false,
+          "delta_from_settlers": 3880,
+          "offset": 1551944,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106428,
+          "aligned_106": false,
+          "delta_from_settlers": 3932,
+          "offset": 1551996,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106460,
+          "aligned_106": false,
+          "delta_from_settlers": 3964,
+          "offset": 1552028,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150128,
+          "aligned_106": false,
+          "delta_from_settlers": 47632,
+          "offset": 1595696,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Fighter"
+    },
+    {
+      "hits": [
+        {
+          "address": 35106196,
+          "aligned_106": false,
+          "delta_from_settlers": 3700,
+          "offset": 1551764,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106228,
+          "aligned_106": false,
+          "delta_from_settlers": 3732,
+          "offset": 1551796,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106280,
+          "aligned_106": false,
+          "delta_from_settlers": 3784,
+          "offset": 1551848,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106312,
+          "aligned_106": true,
+          "delta_from_settlers": 3816,
+          "offset": 1551880,
+          "record_index_from_settlers": 36
+        },
+        {
+          "address": 35150072,
+          "aligned_106": false,
+          "delta_from_settlers": 47576,
+          "offset": 1595640,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Bomber"
+    },
+    {
+      "hits": [
+        {
+          "address": 35106640,
+          "aligned_106": false,
+          "delta_from_settlers": 4144,
+          "offset": 1552208,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106672,
+          "aligned_106": false,
+          "delta_from_settlers": 4176,
+          "offset": 1552240,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106724,
+          "aligned_106": false,
+          "delta_from_settlers": 4228,
+          "offset": 1552292,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35106756,
+          "aligned_106": false,
+          "delta_from_settlers": 4260,
+          "offset": 1552324,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35134736,
+          "aligned_106": false,
+          "delta_from_settlers": 32240,
+          "offset": 1580304,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150028,
+          "aligned_106": false,
+          "delta_from_settlers": 47532,
+          "offset": 1595596,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Spy"
+    },
+    {
+      "hits": [
+        {
+          "address": 35106788,
+          "aligned_106": false,
+          "delta_from_settlers": 4292,
+          "offset": 1552356,
+          "record_index_from_settlers": null
+        },
+        {
+          "address": 35150160,
+          "aligned_106": false,
+          "delta_from_settlers": 47664,
+          "offset": 1595728,
+          "record_index_from_settlers": null
+        }
+      ],
+      "name": "Caravan"
+    }
+  ],
+  "record_size": 106,
+  "settlers_address": 35102496,
+  "validated_contiguous_records": [],
+  "validated_record_count": 0
+}
