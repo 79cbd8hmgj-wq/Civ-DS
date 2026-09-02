@@ -224,7 +224,9 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
     return tuple(records)
 
 
-def _signed_byte_hex(value: int) -> str:
+def _signed_byte_hex(value: int, *, label: str) -> str:
+    if not -128 <= value <= 127:
+        raise ValueError(f"{label} must fit in a signed byte (-128..127)")
     return struct.pack("<b", value).hex()
 
 
@@ -239,6 +241,8 @@ def build_unit_patch_set(
     matches = [record for record in records if record.name == unit_name]
     if len(matches) != 1:
         raise ValueError(f"expected exactly one unit named {unit_name!r}, found {len(matches)}")
+    if attack is None and production_cost is None:
+        raise ValueError("no unit fields were requested for patching")
     record = matches[0]
 
     patches: list[dict[str, object]] = []
@@ -249,13 +253,15 @@ def build_unit_patch_set(
                 "type": "binary_replace",
                 "target": "arm9",
                 "offset": record.offset + 0x40,
-                "expected": _signed_byte_hex(record.attack),
-                "replacement": _signed_byte_hex(attack),
+                "expected": _signed_byte_hex(record.attack, label="current attack"),
+                "replacement": _signed_byte_hex(attack, label="attack"),
                 "rationale": f"Set {record.name} attack from {record.attack} to {attack}",
             }
         )
 
     if production_cost is not None:
+        if production_cost % 5 != 0:
+            raise ValueError("production cost must be a multiple of 5 resources")
         quanta = production_cost // 5
         patches.append(
             {
@@ -263,8 +269,11 @@ def build_unit_patch_set(
                 "type": "binary_replace",
                 "target": "arm9",
                 "offset": record.offset + 0x44,
-                "expected": _signed_byte_hex(record.production_cost_quanta),
-                "replacement": _signed_byte_hex(quanta),
+                "expected": _signed_byte_hex(
+                    record.production_cost_quanta,
+                    label="current production cost quanta",
+                ),
+                "replacement": _signed_byte_hex(quanta, label="production cost quanta"),
                 "rationale": (
                     f"Set {record.name} production cost from "
                     f"{record.production_cost} to {production_cost}"
