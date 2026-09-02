@@ -33,7 +33,7 @@ def _unit_record(
     unknown_0x46: int = 0,
     unknown_0x47: int = 0,
     formation_mask: int = 1,
-    unknown_0x49: int = 0,
+    reserved_0x49: int = 0,
     unlock_technology_id: int = -1,
     obsolete_technology_id_1: int = -1,
     obsolete_technology_id_2: int = -1,
@@ -55,7 +55,7 @@ def _unit_record(
         unknown_0x46,
         unknown_0x47,
         formation_mask,
-        unknown_0x49,
+        reserved_0x49,
         unlock_technology_id,
         obsolete_technology_id_1,
         obsolete_technology_id_2,
@@ -94,7 +94,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     unknown_0x46=1,
                     unknown_0x47=6,
                     formation_mask=7,
-                    unknown_0x49=0,
+                    reserved_0x49=0,
                     unlock_technology_id=-1,
                     obsolete_technology_id_1=6,
                     obsolete_technology_id_2=17,
@@ -152,7 +152,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.production_cost == 10
     assert warrior.formation_mask == 7
     assert warrior.formation_size == 3
-    assert warrior.unknown_0x49 == 0
+    assert warrior.reserved_0x49 == 0
     assert warrior.unlock_technology_id == -1
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
