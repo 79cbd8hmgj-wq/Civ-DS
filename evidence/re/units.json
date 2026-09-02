@@ -5,6 +5,7 @@
   "units": [
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 1,
       "formation_mask": 63,
@@ -39,6 +40,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 1,
       "formation_mask": 15,
@@ -73,6 +75,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 32,
       "formation_mask": 7,
@@ -107,6 +110,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 278568,
       "formation_mask": 7,
@@ -141,6 +145,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 278560,
       "formation_mask": 7,
@@ -175,6 +180,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 278560,
       "formation_mask": 7,
@@ -209,6 +215,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 262432,
       "formation_mask": 7,
@@ -243,6 +250,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 32,
       "formation_mask": 7,
@@ -277,6 +285,7 @@
     },
     {
       "attack": 2,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 262432,
       "formation_mask": 7,
@@ -311,6 +320,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 2,
       "flags": 263464,
       "formation_mask": 7,
@@ -345,6 +355,7 @@
     },
     {
       "attack": 3,
+      "can_carry_units": false,
       "defense": 5,
       "flags": 264232,
       "formation_mask": 7,
@@ -379,6 +390,7 @@
     },
     {
       "attack": 4,
+      "can_carry_units": false,
       "defense": 8,
       "flags": 262152,
       "formation_mask": 7,
@@ -413,6 +425,7 @@
     },
     {
       "attack": 2,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 262752,
       "formation_mask": 6,
@@ -447,6 +460,7 @@
     },
     {
       "attack": 4,
+      "can_carry_units": false,
       "defense": 2,
       "flags": 262688,
       "formation_mask": 6,
@@ -481,6 +495,7 @@
     },
     {
       "attack": 10,
+      "can_carry_units": false,
       "defense": 6,
       "flags": 262216,
       "formation_mask": 1,
@@ -515,6 +530,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": false,
       "defense": 3,
       "flags": 262176,
       "formation_mask": 7,
@@ -549,6 +565,7 @@
     },
     {
       "attack": 4,
+      "can_carry_units": false,
       "defense": 1,
       "flags": 2097192,
       "formation_mask": 1,
@@ -583,6 +600,7 @@
     },
     {
       "attack": 6,
+      "can_carry_units": false,
       "defense": 2,
       "flags": 2097160,
       "formation_mask": 6,
@@ -617,6 +635,7 @@
     },
     {
       "attack": 16,
+      "can_carry_units": false,
       "defense": 2,
       "flags": 2097160,
       "formation_mask": 1,
@@ -651,6 +670,7 @@
     },
     {
       "attack": 12,
+      "can_carry_units": false,
       "defense": 2,
       "flags": 10,
       "formation_mask": 1,
@@ -685,6 +705,7 @@
     },
     {
       "attack": 1,
+      "can_carry_units": true,
       "defense": 1,
       "flags": 18,
       "formation_mask": 1,
@@ -719,6 +740,7 @@
     },
     {
       "attack": 2,
+      "can_carry_units": true,
       "defense": 2,
       "flags": 26,
       "formation_mask": 1,
@@ -753,6 +775,7 @@
     },
     {
       "attack": 6,
+      "can_carry_units": true,
       "defense": 6,
       "flags": 26,
       "formation_mask": 1,
@@ -787,6 +810,7 @@
     },
     {
       "attack": 12,
+      "can_carry_units": true,
       "defense": 18,
       "flags": 26,
       "formation_mask": 1,
@@ -821,6 +845,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 3,
       "flags": 8,
       "formation_mask": 1,
@@ -855,6 +880,7 @@
     },
     {
       "attack": 18,
+      "can_carry_units": false,
       "defense": 3,
       "flags": 12,
       "formation_mask": 1,
@@ -889,6 +915,7 @@
     },
     {
       "attack": 6,
+      "can_carry_units": false,
       "defense": 4,
       "flags": 8204,
       "formation_mask": 6,
@@ -923,6 +950,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 131140,
       "formation_mask": 1,
@@ -957,6 +985,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 589888,
       "formation_mask": 1,
@@ -991,6 +1020,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 1572928,
       "formation_mask": 7,
@@ -1025,6 +1055,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 32768,
       "formation_mask": 1,
@@ -1059,6 +1090,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1093,6 +1125,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1127,6 +1160,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1161,6 +1195,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1195,6 +1230,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1229,6 +1265,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
@@ -1263,6 +1300,7 @@
     },
     {
       "attack": 0,
+      "can_carry_units": false,
       "defense": 0,
       "flags": 524480,
       "formation_mask": 1,
