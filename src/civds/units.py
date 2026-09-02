@@ -230,6 +230,18 @@ def _signed_byte_hex(value: int, *, label: str) -> str:
     return struct.pack("<b", value).hex()
 
 
+def _technology_id_hex(value: int) -> str:
+    technology_name(value)
+    return struct.pack("<h", value).hex()
+
+
+def _technology_label(value: int) -> str:
+    name = technology_name(value)
+    if name is None:
+        return "none (-1)"
+    return f"{name} ({value})"
+
+
 def build_unit_patch_set(
     records: tuple[UnitRecord, ...],
     *,
@@ -240,13 +252,25 @@ def build_unit_patch_set(
     movement: int | None = None,
     fuel_turn_limit: int | None = None,
     production_cost: int | None = None,
+    unlock_technology_id: int | None = None,
+    obsolete_technology_id_1: int | None = None,
+    obsolete_technology_id_2: int | None = None,
 ) -> dict[str, object]:
     matches = [record for record in records if record.name == unit_name]
     if len(matches) != 1:
         raise ValueError(f"expected exactly one unit named {unit_name!r}, found {len(matches)}")
     if all(
         value is None
-        for value in (attack, defense, movement, fuel_turn_limit, production_cost)
+        for value in (
+            attack,
+            defense,
+            movement,
+            fuel_turn_limit,
+            production_cost,
+            unlock_technology_id,
+            obsolete_technology_id_1,
+            obsolete_technology_id_2,
+        )
     ):
         raise ValueError("no unit fields were requested for patching")
     record = matches[0]
@@ -328,6 +352,57 @@ def build_unit_patch_set(
                 "rationale": (
                     f"Set {record.name} production cost from "
                     f"{record.production_cost} to {production_cost}"
+                ),
+            }
+        )
+
+    if unlock_technology_id is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-unlock-technology",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x4A,
+                "expected": _technology_id_hex(record.unlock_technology_id),
+                "replacement": _technology_id_hex(unlock_technology_id),
+                "rationale": (
+                    f"Set {record.name} unlock technology from "
+                    f"{_technology_label(record.unlock_technology_id)} to "
+                    f"{_technology_label(unlock_technology_id)}"
+                ),
+            }
+        )
+
+    if obsolete_technology_id_1 is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-obsolete-technology-1",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x4C,
+                "expected": _technology_id_hex(record.obsolete_technology_id_1),
+                "replacement": _technology_id_hex(obsolete_technology_id_1),
+                "rationale": (
+                    f"Set {record.name} obsolete technology 1 from "
+                    f"{_technology_label(record.obsolete_technology_id_1)} to "
+                    f"{_technology_label(obsolete_technology_id_1)}"
+                ),
+            }
+        )
+
+    if obsolete_technology_id_2 is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-obsolete-technology-2",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x4E,
+                "expected": _technology_id_hex(record.obsolete_technology_id_2),
+                "replacement": _technology_id_hex(obsolete_technology_id_2),
+                "rationale": (
+                    f"Set {record.name} obsolete technology 2 from "
+                    f"{_technology_label(record.obsolete_technology_id_2)} to "
+                    f"{_technology_label(obsolete_technology_id_2)}"
                 ),
             }
         )
