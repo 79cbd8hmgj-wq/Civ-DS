@@ -9,6 +9,9 @@ UNIT_FLAG_SETTLER = 0x00000001
 UNIT_FLAG_NAVAL = 0x00000002
 UNIT_FLAG_AIR = 0x00000004
 UNIT_FLAG_GREAT_PERSON = 0x00000080
+UNIT_FLAG_GREAT_GENERAL = 0x00008000
+UNIT_FLAG_SPY = 0x00010000
+UNIT_FLAG_ICBM = 0x00020000
 _UNIT_START_ANCHOR = b"Settlers\0"
 _UNIT_END_ANCHOR = b"Pyramids of Egypt\0"
 
@@ -118,6 +121,18 @@ class UnitRecord:
     @property
     def is_great_person(self) -> bool:
         return bool(self.flags & UNIT_FLAG_GREAT_PERSON)
+
+    @property
+    def is_great_general(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_GREAT_GENERAL)
+
+    @property
+    def is_spy(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_SPY)
+
+    @property
+    def is_icbm(self) -> bool:
+        return bool(self.flags & UNIT_FLAG_ICBM)
 
 
 def _unique_offset(blob: bytes, needle: bytes, label: str) -> int:
