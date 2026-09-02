@@ -86,6 +86,7 @@ def _make_unit_summary_rom(path: Path) -> None:
                     attack=1,
                     defense=1,
                     movement=1,
+                    production_cost_quanta=2,
                     formation_mask=7,
                     unlock_technology_id=-1,
                     obsolete_technology_id_1=6,
@@ -133,6 +134,8 @@ def test_units_summarize_validates_profile_and_resolves_technology_names(
     assert payload["record_size"] == UNIT_RECORD_SIZE
     warrior = payload["units"][6]
     assert warrior["name"] == "Warrior"
+    assert warrior["production_cost_quanta"] == 2
+    assert warrior["production_cost"] == 10
     assert warrior["formation_mask"] == 7
     assert warrior["formation_size"] == 3
     assert warrior["unknown_0x49"] == 0
