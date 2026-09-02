@@ -238,12 +238,16 @@ def build_unit_patch_set(
     attack: int | None = None,
     defense: int | None = None,
     movement: int | None = None,
+    fuel_turn_limit: int | None = None,
     production_cost: int | None = None,
 ) -> dict[str, object]:
     matches = [record for record in records if record.name == unit_name]
     if len(matches) != 1:
         raise ValueError(f"expected exactly one unit named {unit_name!r}, found {len(matches)}")
-    if all(value is None for value in (attack, defense, movement, production_cost)):
+    if all(
+        value is None
+        for value in (attack, defense, movement, fuel_turn_limit, production_cost)
+    ):
         raise ValueError("no unit fields were requested for patching")
     record = matches[0]
 
@@ -284,6 +288,25 @@ def build_unit_patch_set(
                 "expected": _signed_byte_hex(record.movement, label="current movement"),
                 "replacement": _signed_byte_hex(movement, label="movement"),
                 "rationale": f"Set {record.name} movement from {record.movement} to {movement}",
+            }
+        )
+
+    if fuel_turn_limit is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-fuel-turn-limit",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x43,
+                "expected": _signed_byte_hex(
+                    record.fuel_turn_limit,
+                    label="current fuel/turn limit",
+                ),
+                "replacement": _signed_byte_hex(fuel_turn_limit, label="fuel/turn limit"),
+                "rationale": (
+                    f"Set {record.name} fuel/turn limit from "
+                    f"{record.fuel_turn_limit} to {fuel_turn_limit}"
+                ),
             }
         )
 
