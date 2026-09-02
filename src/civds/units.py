@@ -84,11 +84,16 @@ class UnitRecord:
     unknown_0x45: int
     unknown_0x46: int
     unknown_0x47: int
-    formation_count: int
+    formation_mask: int
+    unknown_0x49: int
     unlock_technology_id: int
     obsolete_technology_id_1: int
     obsolete_technology_id_2: int
     flags: int
+
+    @property
+    def formation_size(self) -> int:
+        return self.formation_mask.bit_count()
 
 
 def _unique_offset(blob: bytes, needle: bytes, label: str) -> int:
@@ -139,12 +144,13 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
             unknown_0x45,
             unknown_0x46,
             unknown_0x47,
-            formation_count,
+            formation_mask,
+            unknown_0x49,
             unlock_technology_id,
             obsolete_technology_id_1,
             obsolete_technology_id_2,
             flags,
-        ) = struct.unpack_from("<bbbbbbbbHhhhI", raw, 0x40)
+        ) = struct.unpack_from("<bbbbbbbbBBhhhI", raw, 0x40)
 
         records.append(
             UnitRecord(
@@ -162,7 +168,8 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
                 unknown_0x45=unknown_0x45,
                 unknown_0x46=unknown_0x46,
                 unknown_0x47=unknown_0x47,
-                formation_count=formation_count,
+                formation_mask=formation_mask,
+                unknown_0x49=unknown_0x49,
                 unlock_technology_id=unlock_technology_id,
                 obsolete_technology_id_1=obsolete_technology_id_1,
                 obsolete_technology_id_2=obsolete_technology_id_2,
