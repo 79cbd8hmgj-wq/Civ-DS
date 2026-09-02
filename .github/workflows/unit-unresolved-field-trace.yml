@@ -1,0 +1,138 @@
+name: Civ Rev unresolved unit field trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+
+permissions:
+  contents: read
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Trace unresolved unit descriptor fields
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR"
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          python - "$ROM" <<'PY'
+          import json
+          import sys
+          from collections import defaultdict
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_IMM, ARM_OP_MEM
+
+          rom = Path(sys.argv[1]).read_bytes()
+          expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(expected['arm9_ram_address'])
+          off = int(expected['arm9_offset'])
+          size = int(expected['arm9_size'])
+          arm9 = rom[off:off + size]
+          table_base = 0x02179F20
+          record_size = 0x94
+          record_count = 38
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          insns = [i for i in md.disasm(arm9, base) if i.id != 0 and i.address % 4 == 0]
+
+          def literal_target(insn):
+              ops = getattr(insn, 'operands', ())
+              if len(ops) < 2 or ops[1].type != ARM_OP_MEM:
+                  return None
+              mem = ops[1].mem
+              if insn.reg_name(mem.base) != 'pc' or mem.index != 0:
+                  return None
+              addr = insn.address + 8 + int(mem.disp)
+              pos = addr - base
+              if not 0 <= pos <= len(arm9) - 4:
+                  return None
+              return int.from_bytes(arm9[pos:pos+4], 'little')
+
+          def slot(raw):
+              return raw.split(b'\0', 1)[0].decode('ascii', errors='replace')
+
+          print('=== UNIT FIELD VALUE MATRIX ===')
+          for index in range(record_count):
+              pos = table_base - base + index * record_size
+              raw = arm9[pos:pos+record_size]
+              name = slot(raw[:0x20]) or f'<unnamed-{index}>'
+              b45 = int.from_bytes(raw[0x45:0x46], 'little', signed=True)
+              b46 = int.from_bytes(raw[0x46:0x47], 'little', signed=True)
+              b47 = int.from_bytes(raw[0x47:0x48], 'little', signed=True)
+              flags = int.from_bytes(raw[0x50:0x54], 'little')
+              print(f'{index:02d} {name:20} 45={b45:4d} 46={b46:4d} 47={b47:4d} flags={flags:#010x}')
+
+          print('\n=== FLAG BIT MEMBERSHIP ===')
+          memberships = defaultdict(list)
+          for index in range(record_count):
+              pos = table_base - base + index * record_size
+              raw = arm9[pos:pos+record_size]
+              name = slot(raw[:0x20]) or f'<unnamed-{index}>'
+              flags = int.from_bytes(raw[0x50:0x54], 'little')
+              for bit in range(32):
+                  if flags & (1 << bit):
+                      memberships[bit].append(name)
+          for bit, names in sorted(memberships.items()):
+              print(f'bit {bit:02d} mask={1<<bit:#010x}: {", ".join(names)}')
+
+          targets = {0x45, 0x46, 0x47, 0x50}
+          uses = defaultdict(list)
+          for idx, insn in enumerate(insns):
+              ops = getattr(insn, 'operands', ())
+              memops = [op for op in ops if op.type == ARM_OP_MEM]
+              if not memops:
+                  continue
+              for memop in memops:
+                  disp = int(memop.mem.disp)
+                  if disp not in targets:
+                      continue
+                  if disp == 0x50 and insn.mnemonic not in {'ldr'}:
+                      continue
+                  if disp != 0x50 and insn.mnemonic not in {'ldrb', 'ldrsb'}:
+                      continue
+                  uses[disp].append((idx, insn))
+
+          for disp in (0x45, 0x46, 0x47, 0x50):
+              print(f'\n=== GLOBAL CONSUMERS +{disp:#04x} count={len(uses[disp])} ===')
+              for idx, insn in uses[disp]:
+                  print(f'\nFIELD {disp:#04x} @ {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
+                  context = insns[max(0, idx-12):min(len(insns), idx+17)]
+                  for x in context:
+                      marks=[]
+                      if x.address == insn.address: marks.append('FIELD')
+                      lit = literal_target(x)
+                      if lit == table_base: marks.append('TABLE')
+                      if '#0x94' in x.op_str or '#148' in x.op_str: marks.append('STRIDE')
+                      if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}:
+                          marks.append('TEST')
+                      if x.mnemonic in {'bl','blx'}: marks.append('CALL')
+                      suffix=f" ; {'|'.join(marks)}" if marks else ''
+                      print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
+
+          print('\n=== FLAG TEST IMMEDIATES NEAR +0x50 LOADS ===')
+          for idx, insn in uses[0x50]:
+              print(f'LOAD {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
+              for x in insns[idx+1:min(len(insns), idx+10)]:
+                  if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}:
+                      imms=[int(op.imm) for op in getattr(x,'operands',()) if op.type == ARM_OP_IMM]
+                      print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str} immediates={imms}')
+                  if x.mnemonic in {'bx','pop'}:
+                      break
+          PY
