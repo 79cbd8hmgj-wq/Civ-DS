@@ -1,242 +1,3615 @@
-=== EFFECTIVE RECORD OFFSET ACCESS MAP ===
-offset=0x40 count=26
-  ref=0x0203a5d4 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0203a5dc ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0203bd7c literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203bd84 ldrsb r2, [r2, r3] disp=+0x0
-  ref=0x0203bf94 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203bfa0 ldrsb r2, [r2, r7] disp=+0x0
-  ref=0x0203d904 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0203d908 ldrsb r0, [r0, r1] disp=+0x0
-  ref=0x0203da08 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203da14 ldrsb r2, [r2, r0] disp=+0x0
-  ref=0x0203f7f4 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0203f7f8 ldrsb r0, [r0, r8] disp=+0x0
-  ref=0x0204d910 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0204d918 ldrsb r1, [r2, r1] disp=+0x0
-  ref=0x02053de0 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02053de8 ldrsb r1, [r1, r3] disp=+0x0
-  ref=0x0205c888 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0205c890 ldrsb r0, [r2, r0] disp=+0x0
-  ref=0x0205caf8 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0205cb04 ldrsb r1, [r1, r2] disp=+0x0
-  ref=0x0205fda0 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0205fda8 ldrsb r0, [r1, ip] disp=+0x0
-  ref=0x020877a4 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x020877a8 ldrsb r0, [r0, r8] disp=+0x0
-  ref=0x0208bfc0 literal=0x02179f60 base_offset=0x40 dst=r4 -> access=0x0208bfd0 ldrsb r3, [r4, r3] disp=+0x0
-  ref=0x0208dd04 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0208dd14 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208f058 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0208f05c ldrsbne r0, [r0, r1] disp=+0x0
-  ref=0x0208f4fc literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0208f500 ldrsbne r0, [r0, r3] disp=+0x0
-  ref=0x02094474 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0209447c ldrsb r4, [r1, r5] disp=+0x0
-  ref=0x02096c58 literal=0x02179f60 base_offset=0x40 dst=r3 -> access=0x02096c5c ldrsb r2, [r3, r2] disp=+0x0
-  ref=0x02096e98 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02096ea0 ldrsb r1, [r1, r2] disp=+0x0
-  ref=0x02096fb4 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02096fbc ldrsb r1, [r1, r0] disp=+0x0
-  ref=0x0209ac98 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0209ac9c ldrsb r0, [r0, r3] disp=+0x0
-  ref=0x0209ad4c literal=0x02179f60 base_offset=0x40 dst=r8 -> access=0x0209ad54 ldrsb r3, [r8, r3] disp=+0x0
-  ref=0x0209c7e8 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0209c7f0 ldrsb r1, [r2, r3] disp=+0x0
-  ref=0x020b8d84 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x020b8d90 ldrsb r1, [r1, r6] disp=+0x0
-  ref=0x020c3ae4 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x020c3af0 ldrsb r2, [r2, r0] disp=+0x0
-  ref=0x020c3b68 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x020c3b6c ldrsb r0, [r0, r1] disp=+0x0
-offset=0x41 count=18
-  ref=0x0203bd18 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0203bd1c ldrsbne r1, [r1, r4] disp=+0x0
-  ref=0x0203bf90 literal=0x02179f61 base_offset=0x41 dst=r6 -> access=0x0203bf9c ldrsb r3, [r6, r7] disp=+0x0
-  ref=0x0203d938 literal=0x02179f61 base_offset=0x41 dst=r2 -> access=0x0203d940 ldrsb r1, [r2, r1] disp=+0x0
-  ref=0x0203da0c literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0203da18 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x02053de4 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x02053dec ldrsb r0, [r0, r3] disp=+0x0
-  ref=0x0205b158 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205b160 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0205b244 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205b24c ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0205cb00 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x0205cb08 ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0205f634 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205f63c ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0205f778 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205f780 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208777c literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02087780 ldrsb r1, [r1, r8] disp=+0x0
-  ref=0x02090170 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02090178 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x02091fac literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02091fb4 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x020945f0 literal=0x02179f61 base_offset=0x41 dst=r2 -> access=0x02094600 ldrsb r4, [r2, r3] disp=+0x0
-  ref=0x02096e9c literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x02096ea4 ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0209c814 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x0209c818 ldrsb r0, [r0, r3] disp=+0x0
-  ref=0x020b8d8c literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x020b8d94 ldrsb r0, [r0, r6] disp=+0x0
-  ref=0x020c3ae8 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x020c3af4 ldrsb r0, [r1, r0] disp=+0x0
-offset=0x42 count=7
-  ref=0x02041618 literal=0x02179f62 base_offset=0x42 dst=r0 -> access=0x02041620 ldrsb r1, [r0, r1] disp=+0x0
-  ref=0x02051850 literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x02051858 ldrsb r2, [r2, r0] disp=+0x0
-  ref=0x0205ae64 literal=0x02179f62 base_offset=0x42 dst=r1 -> access=0x0205ae6c ldrsb r1, [r1, r3] disp=+0x0
-  ref=0x02094664 literal=0x02179f62 base_offset=0x42 dst=r3 -> access=0x02094674 ldrsb r4, [r3, r5] disp=+0x0
-  ref=0x02099b08 literal=0x02179f62 base_offset=0x42 dst=sl -> access=0x02099b2c ldrsb r2, [sl, r2] disp=+0x0
-  ref=0x02099d74 literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x02099d98 ldrsb ip, [r2, r3] disp=+0x0
-  ref=0x0209c7fc literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x0209c804 ldrsb r0, [r2, r3] disp=+0x0
-offset=0x43 count=2
-  ref=0x0203a6ac literal=0x02179f63 base_offset=0x43 dst=r1 -> access=0x0203a6b4 ldrsb r2, [r1, r0] disp=+0x0
-  ref=0x020604e8 literal=0x02179f63 base_offset=0x43 dst=r6 -> access=0x020604ec ldrsb r3, [r6, r3] disp=+0x0
-offset=0x44 count=9
-  ref=0x0203f890 literal=0x02179f64 base_offset=0x44 dst=r7 -> access=0x0203f898 ldrsb r7, [r7, r8] disp=+0x0
-  ref=0x02053d68 literal=0x02179f64 base_offset=0x44 dst=r1 -> access=0x02053d70 ldrsb r1, [r1, r4] disp=+0x0
-  ref=0x0205e51c literal=0x02179f64 base_offset=0x44 dst=r5 -> access=0x0205e528 ldrsb r5, [r5, r3] disp=+0x0
-  ref=0x0205f984 literal=0x02179f64 base_offset=0x44 dst=r4 -> access=0x0205f98c ldrsb r4, [r4, r5] disp=+0x0
-  ref=0x02085ac8 literal=0x02179f64 base_offset=0x44 dst=r3 -> access=0x02085ae0 ldrsb r3, [r3, sb] disp=+0x0
-  ref=0x020876c4 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020876cc ldrsb r2, [r2, r8] disp=+0x0
-  ref=0x02087ec4 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x02087ecc ldrsb r3, [r2, r3] disp=+0x0
-  ref=0x020930b0 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020930b8 ldrsb r2, [r2, r1] disp=+0x0
-  ref=0x020bbbb0 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020bbbb8 ldrsb r2, [r2, r1] disp=+0x0
-offset=0x48 count=31
-  ref=0x0203a7ac literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0203a7b4 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x02041598 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020415a0 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x020415d8 literal=0x02179f68 base_offset=0x48 dst=r3 -> access=0x020415e0 ldrsb r2, [r3, r2] disp=+0x0
-  ref=0x02053e74 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x02053e7c ldrsb r0, [r0, r4] disp=+0x0
-  ref=0x0208be00 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208be38 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208be70 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208be80 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208bec0 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208becc ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0208bf1c literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208bf28 ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0208c704 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208c714 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208c74c literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208c75c ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208c79c literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208c7a8 ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0208c7f8 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208c804 ldrsb r0, [r0, r2] disp=+0x0
-  ref=0x0208cb48 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208cb58 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x0208cba8 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208cbac ldrsb r0, [r0, r1] disp=+0x0
-  ref=0x0208cc80 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208cc90 ldrsb r1, [r1, r0] disp=+0x0
-  ref=0x0208ccc4 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208ccc8 ldrsb r1, [r0, r1] disp=+0x0
-  ref=0x0208e118 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e124 ldrsb r1, [r0, r1] disp=+0x0
-  ref=0x0208e118 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e154 ldrsb r1, [r0, r2] disp=+0x0
-  ref=0x0208e194 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e1a0 ldrsb r6, [r0, r5] disp=+0x0
-  ref=0x0208e194 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e1d0 ldrsb r1, [r0, r3] disp=+0x0
-  ref=0x0208e518 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e524 ldrsb r1, [r0, r1] disp=+0x0
-  ref=0x0208e518 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e554 ldrsb r1, [r0, r2] disp=+0x0
-  ref=0x0208e594 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e5a0 ldrsb r6, [r0, r5] disp=+0x0
-  ref=0x0208e594 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e5d0 ldrsb r1, [r0, r3] disp=+0x0
-  ref=0x0208ece4 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208ece8 ldrsb r3, [r1, r3] disp=+0x0
-  ref=0x0208ed14 literal=0x02179f68 base_offset=0x48 dst=r2 -> access=0x0208ed1c ldrsb r1, [r2, r1] disp=+0x0
-  ref=0x0209c6c0 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0209c6c4 ldrsb r1, [r1, r3] disp=+0x0
-  ref=0x020b7220 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020b7228 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x020b72b0 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020b72b8 ldrsb r0, [r1, r0] disp=+0x0
-  ref=0x020b8ed0 literal=0x02179f68 base_offset=0x48 dst=r2 -> access=0x020b8ed8 ldrsb r3, [r2, r0] disp=+0x0
-  ref=0x020c4210 literal=0x02179f68 base_offset=0x48 dst=r3 -> access=0x020c4218 ldrsb r5, [r3, r4] disp=+0x0
-offset=0x4c count=5
-  ref=0x02046f90 literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x02046fa4 ldrsh r1, [r1, r3] disp=+0x0
-  ref=0x02052cfc literal=0x02179f6c base_offset=0x4c dst=r0 -> access=0x02052d04 ldrsh r0, [r0, r2] disp=+0x0
-  ref=0x02052da4 literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x02052dac ldrsh r3, [r1, r2] disp=+0x0
-  ref=0x0205c9bc literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x0205c9dc ldrsh r0, [r1, r0] disp=+0x0
-  ref=0x0205cb14 literal=0x02179f6c base_offset=0x4c dst=r0 -> access=0x0205cb1c ldrsh r0, [r0, r2] disp=+0x0
-offset=0x4e count=3
-  ref=0x0205ca7c literal=0x02179f6e base_offset=0x4e dst=r1 -> access=0x0205ca84 ldrsh r0, [r1, r0] disp=+0x0
-  ref=0x0208bd30 literal=0x02179f6e base_offset=0x4e dst=r0 -> access=0x0208bd38 ldrsh r0, [r0, r2] disp=+0x0
-  ref=0x0208bdb0 literal=0x02179f6e base_offset=0x4e dst=r0 -> access=0x0208bdb8 ldrsh r0, [r0, r1] disp=+0x0
-offset=0x50 count=123
-  ref=0x02036138 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02036140 ldr r2, [r3, r2] disp=+0x0
-  ref=0x0203617c literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x02036184 ldr r1, [r4, r1] disp=+0x0
-  ref=0x0203a308 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0203a310 ldr r0, [r0, r4] disp=+0x0
-  ref=0x0203a7dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203a7e4 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0203a9d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203a9e0 ldr r1, [r1, r2] disp=+0x0
-  ref=0x0203aa14 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0203aa1c ldr r0, [r0, r1] disp=+0x0
-  ref=0x0203bcec literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0203bcf4 ldr r1, [r2, r4] disp=+0x0
-  ref=0x0203bffc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203c004 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0203cb40 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0203cb48 ldr r2, [r2, r1] disp=+0x0
-  ref=0x02046700 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x02046704 ldr r4, [r4, r5] disp=+0x0
-  ref=0x020468c8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020468d0 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02046a78 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02046a80 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02053ce4 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02053cec ldr r2, [r3, r2] disp=+0x0
-  ref=0x02053ce4 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02053cf0 ldr r3, [r3, r4] disp=+0x0
-  ref=0x02053f1c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02053f20 ldr r1, [r1, r4] disp=+0x0
-  ref=0x02053f5c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x02053f60 ldr r1, [r5, r1] disp=+0x0
-  ref=0x02053f5c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x02053f6c ldr r1, [r5, r4] disp=+0x0
-  ref=0x02054404 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02054410 ldr r0, [r2, r0] disp=+0x0
-  ref=0x02059a9c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02059aa4 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0205ade0 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0205ade8 ldr r2, [r6, r2] disp=+0x0
-  ref=0x0205bd34 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0205bd3c ldr r2, [r5, r2] disp=+0x0
-  ref=0x0205c7b4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205c7bc ldr r1, [r2, r1] disp=+0x0
-  ref=0x0205cc04 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205cc08 ldr r2, [r2, r3] disp=+0x0
-  ref=0x0205ddec literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0205ddf4 ldr r2, [r3, r2] disp=+0x0
-  ref=0x0205de48 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205de50 ldr r0, [r2, r0] disp=+0x0
-  ref=0x0205e064 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205e06c ldr r0, [r2, r0] disp=+0x0
-  ref=0x0205e270 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0205e278 ldr r3, [r4, r3] disp=+0x0
-  ref=0x0205e4d8 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0205e4e0 ldr r3, [r3, r2] disp=+0x0
-  ref=0x0205e83c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0205e844 ldr r1, [r5, r1] disp=+0x0
-  ref=0x0205eb50 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0205eb58 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0205f210 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f218 ldr r2, [r2, r3] disp=+0x0
-  ref=0x0205f4bc literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f4c4 ldr r0, [r2, r0] disp=+0x0
-  ref=0x0205f594 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f59c ldr r0, [r2, r0] disp=+0x0
-  ref=0x0205f89c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f8a4 ldr r0, [r2, r0] disp=+0x0
-  ref=0x0205f978 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0205f980 ldr r2, [r4, r5] disp=+0x0
-  ref=0x0205fe04 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0205fe08 ldr r0, [r0, ip] disp=+0x0
-  ref=0x0205ff60 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0205ff68 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02060190 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02060198 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02060240 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02060248 ldr r0, [r1, r0] disp=+0x0
-  ref=0x020602e4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x020602ec ldr r2, [r2, r1] disp=+0x0
-  ref=0x020603ec literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x020603f4 ldr r0, [r6, r0] disp=+0x0
-  ref=0x02060444 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206044c ldr r0, [r1, r0] disp=+0x0
-  ref=0x02060494 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0206049c ldr r6, [r6, r3] disp=+0x0
-  ref=0x02060508 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02060510 ldr r0, [r3, r0] disp=+0x0
-  ref=0x02060614 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206061c ldr r0, [r1, r0] disp=+0x0
-  ref=0x02060654 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206065c ldr r2, [r1, r2] disp=+0x0
-  ref=0x0206088c literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x02060894 ldr r3, [r6, r3] disp=+0x0
-  ref=0x020608d0 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020608d8 ldr r0, [r3, r0] disp=+0x0
-  ref=0x02085b04 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02085b08 ldr r0, [r0, sb] disp=+0x0
-  ref=0x02087794 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02087798 ldr r0, [r0, r8] disp=+0x0
-  ref=0x02089a30 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02089a38 ldr r0, [r0, r1] disp=+0x0
-  ref=0x02089b3c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089b4c ldr r0, [r1, r0] disp=+0x0
-  ref=0x02089bc4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089bd4 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02089c78 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089c88 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02089cc8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089cd8 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02089d18 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089d28 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02089db8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089dc8 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208a984 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208a988 ldr r0, [r0, r2] disp=+0x0
-  ref=0x0208aa10 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0208aa28 ldr r0, [r5, r0] disp=+0x0
-  ref=0x0208aa10 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0208aa54 ldr r0, [r5, r2] disp=+0x0
-  ref=0x0208abec literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208abf4 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0208af08 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208af10 ldr r0, [r0, r2] disp=+0x0
-  ref=0x0208b0ac literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b0bc ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208b0f8 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0208b108 ldr r3, [r6, r3] disp=+0x0
-  ref=0x0208b214 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b224 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208b2d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b2e8 ldr r1, [r1, r0] disp=+0x0
-  ref=0x0208b5b4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b5c4 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208b650 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208b658 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0208b9b4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b9c4 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208ba40 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208ba50 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208badc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208bae4 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0208bf60 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0208bf70 ldr r1, [r2, r1] disp=+0x0
-  ref=0x0208bff0 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0208c000 ldr r0, [r4, r0] disp=+0x0
-  ref=0x0208d1e0 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208d1f0 ldr r6, [r1, r0] disp=+0x0
-  ref=0x0208d318 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0208d328 ldr sl, [r4, sl] disp=+0x0
-  ref=0x0208d798 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208d7a4 ldr r2, [r3, r2] disp=+0x0
-  ref=0x0208dc3c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208dc4c ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208e9d0 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208e9d8 ldr r2, [r3, r2] disp=+0x0
-  ref=0x0208f040 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208f048 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0208f0ac literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208f0b4 ldr r2, [r3, r2] disp=+0x0
-  ref=0x0208f4dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208f4ec ldr r0, [r1, r3] disp=+0x0
-  ref=0x0208f540 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208f550 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208fae8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208faf0 ldr r0, [r1, r0] disp=+0x0
-  ref=0x0208fbb0 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208fbb8 ldr r1, [r1, r2] disp=+0x0
-  ref=0x0208fddc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208fde0 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0208fea4 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208fea8 ldr r0, [r0, r1] disp=+0x0
-  ref=0x020901dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020901ec ldr r0, [r1, r0] disp=+0x0
-  ref=0x02091388 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02091390 ldr r0, [r1, r0] disp=+0x0
-  ref=0x020928c8 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x020928d0 ldr r1, [r2, r1] disp=+0x0
-  ref=0x02092a34 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02092a3c ldr r1, [r1, r2] disp=+0x0
-  ref=0x0209449c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020944a4 ldr r1, [r1, r5] disp=+0x0
-  ref=0x020944cc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020944d4 ldr r0, [r0, r5] disp=+0x0
-  ref=0x020945ec literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020945f4 ldr r1, [r1, r3] disp=+0x0
-  ref=0x02094684 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02094688 ldr r0, [r0, r5] disp=+0x0
-  ref=0x02094694 literal=0x02179f70 base_offset=0x50 dst=r8 -> access=0x02094698 ldr r0, [r8, r5] disp=+0x0
-  ref=0x020952d0 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020952d4 ldr r0, [r0, r1] disp=+0x0
-  ref=0x0209606c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02096074 ldr r1, [r2, r1] disp=+0x0
-  ref=0x02096b70 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02096b78 ldr r3, [r3, r2] disp=+0x0
-  ref=0x02096e84 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02096e88 ldr r0, [r0, r2] disp=+0x0
-  ref=0x02096fc8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02096fcc ldr r1, [r1, r0] disp=+0x0
-  ref=0x02097018 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209701c ldr r0, [r1, r0] disp=+0x0
-  ref=0x0209706c literal=0x02179f70 base_offset=0x50 dst=r7 -> access=0x02097074 ldr r3, [r7, r3] disp=+0x0
-  ref=0x020973d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020973e0 ldr r1, [r1, r2] disp=+0x0
-  ref=0x02097588 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097590 ldr r0, [r1, r0] disp=+0x0
-  ref=0x020979e4 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x020979ec ldr r4, [r5, r4] disp=+0x0
-  ref=0x02097a48 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097a50 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02097a98 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097aa0 ldr r0, [r1, r0] disp=+0x0
-  ref=0x02097c58 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02097c60 ldr r1, [r2, r1] disp=+0x0
-  ref=0x02097d44 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097d4c ldr r1, [r1, r2] disp=+0x0
-  ref=0x0209ac10 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209ac18 ldr r1, [r1, r3] disp=+0x0
-  ref=0x0209adf8 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0209ae00 ldr r0, [r4, r0] disp=+0x0
-  ref=0x0209aec8 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209aed0 ldr r1, [r2, r1] disp=+0x0
-  ref=0x0209b128 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0209b130 ldr r4, [r3, r4] disp=+0x0
-  ref=0x0209b29c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209b2ac ldr r4, [r2, r3] disp=+0x0
-  ref=0x0209b3ac literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209b3bc ldr r4, [r1, r3] disp=+0x0
-  ref=0x0209c6a4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209c6ac ldr r2, [r2, r3] disp=+0x0
-  ref=0x020b1958 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020b195c ldr r0, [r0, r1] disp=+0x0
-  ref=0x020b2b40 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020b2b44 ldr r0, [r0, r1] disp=+0x0
-  ref=0x020b7f40 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020b7f48 ldr r3, [r3, r0] disp=+0x0
-  ref=0x020b8ee8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020b8ef0 ldr r2, [r1, r0] disp=+0x0
-  ref=0x020c3468 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020c3470 ldr r0, [r0, r2] disp=+0x0
-  ref=0x020c359c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020c35a4 ldr r0, [r1, r2] disp=+0x0
-  ref=0x020c3d4c literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020c3d50 ldr r3, [r3, r4] disp=+0x0
+=== WIDE/NARROW LOADS WHOSE BYTE RANGE COVERS 0x45-0x47 ===
+candidate_count=93
+same_base_unit_shape_candidates=84
 
-=== UNRESOLVED FIELD DETAIL ===
+CANDIDATE 0x020070d8: ldr r5, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020070d8: ldr      r5, [r0, #0x44] field=0x44
+    0x020070dc: ldr      r3, [r0, #0x40] field=0x40
+  context:
+    0x020070a0: lsl      r1, r1, #5
+    0x020070a4: bl       #0x20066ac
+    0x020070a8: add      r6, r6, #1
+    0x020070ac: cmp      r6, #5
+    0x020070b0: blt      #0x2007024
+    0x020070b4: ldr      r1, [sp, #0x18]
+    0x020070b8: ldr      r0, [sp, #0x44]
+    0x020070bc: add      r0, r1, r0, lsl #5
+    0x020070c0: add      r0, r0, #0x2000
+    0x020070c4: ldrb     r1, [r0, #0x82f]
+    0x020070c8: cmp      r1, #0
+    0x020070cc: beq      #0x2007168
+    0x020070d0: ldr      r0, [pc, #0x868]
+    0x020070d4: cmp      r1, #0xc
+    0x020070d8: ldr      r5, [r0, #0x44] ; CANDIDATE
+    0x020070dc: ldr      r3, [r0, #0x40]
+    0x020070e0: blt      #0x20070fc
+    0x020070e4: ldr      r0, [pc, #0x87c]
+    0x020070e8: add      r0, r0, r1, lsl #1
+    0x020070ec: ldrsb    r2, [r0, #-0x18]
+    0x020070f0: ldrsb    r0, [r0, #-0x17]
+    0x020070f4: add      r5, r5, r2, lsl #7
+    0x020070f8: add      r3, r3, r0, lsl #7
+    0x020070fc: ldr      r0, [pc, #0x83c]
+    0x02007100: add      r2, sb, r5
+    0x02007104: ldr      r5, [r0, #0x80]
+    0x02007108: add      r3, r8, r3
+    0x0200710c: str      r2, [sp, #0x80]
+    0x02007110: add      r2, r7, r5
+    0x02007114: str      r2, [sp, #0x78]
+    0x02007118: str      r3, [sp, #0x7c]
+    0x0200711c: mov      r2, #5
+    0x02007120: str      r2, [sp]
+    0x02007124: str      r1, [sp, #4]
+    0x02007128: add      r1, sp, #0x80
 
-FIELD 0x45 direct_pointer_accesses=0
+CANDIDATE 0x02009054: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02009054: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x0200901c: str      r5, [sp, #0x80]
+    0x02009020: strb     r5, [sp, #0x9c]
+    0x02009024: str      r2, [sp, #0x78]
+    0x02009028: str      r1, [sp, #0xa0]
+    0x0200902c: str      r3, [sp, #0x84]
+    0x02009030: str      r3, [sp, #0x88]
+    0x02009034: str      r3, [sp, #0x8c]
+    0x02009038: str      r3, [sp, #0x90]
+    0x0200903c: str      r3, [sp, #0x98]
+    0x02009040: str      r3, [sp, #0x94]
+    0x02009044: str      r3, [sp, #0xa4]
+    0x02009048: ldr      r3, [r0]
+    0x0200904c: ldr      r1, [r4, #0x38]
+    0x02009050: ldr      r2, [r4, #0x3c]
+    0x02009054: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x02009058: blx      r3
+    0x0200905c: ldr      r0, [r4, #0x34]
+    0x02009060: add      r2, sp, #0x78
+    0x02009064: mov      r1, r5
+    0x02009068: mov      r3, #0
+    0x0200906c: bl       #0x207af88
+    0x02009070: mov      r0, #0
+    0x02009074: str      r0, [r4, #0x3c]
+    0x02009078: ldr      r0, [pc, #0x110]
+    0x0200907c: ldr      r5, [r4, #0x34]
+    0x02009080: ldr      r0, [r0]
+    0x02009084: bl       #0x200d5b0
+    0x02009088: ldr      r1, [pc, #0x100]
+    0x0200908c: mov      r2, #1
+    0x02009090: ldr      r3, [r1]
+    0x02009094: mvn      r2, r2, lsl r5
+    0x02009098: add      r5, r3, #0x14
+    0x0200909c: ldr      r3, [r5, r0, lsl #2]
+    0x020090a0: and      r2, r3, r2
+    0x020090a4: str      r2, [r5, r0, lsl #2]
 
-FIELD 0x46 direct_pointer_accesses=0
+CANDIDATE 0x0200bd90: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0200bd90: ldr      r1, [r1, #0x44] field=0x44
+  context:
+    0x0200bd58: andseq   r6, r6, #240, #2
+    0x0200bd5c: andseq   r6, r6, #104, #2
+    0x0200bd60: andseq   r7, r6, #0xb4
+    0x0200bd64: andeq    r0, r0, pc, asr #8
+    0x0200bd68: andseq   r7, r6, #156, #2
+    0x0200bd6c: andseq   r7, r6, #164, #2
+    0x0200bd70: andseq   r7, r6, #188, #2
+    0x0200bd74: bx       lr
+    0x0200bd78: push     {r3, lr}
+    0x0200bd7c: ldr      r0, [r0, #0x38]
+    0x0200bd80: mov      r1, #0
+    0x0200bd84: cmp      r0, #0
+    0x0200bd88: beq      #0x200bd9c
+    0x0200bd8c: ldr      r1, [r0]
+    0x0200bd90: ldr      r1, [r1, #0x44] ; CANDIDATE
+    0x0200bd94: blx      r1
+    0x0200bd98: mov      r1, r0
+    0x0200bd9c: mov      r0, r1
+    0x0200bda0: pop      {r3, pc}
+    0x0200bda4: mov      r0, #0
+    0x0200bda8: bx       lr
+    0x0200bdac: push     {r4, lr}
+    0x0200bdb0: ldr      r1, [pc, #0x44]
+    0x0200bdb4: mov      r4, r0
+    0x0200bdb8: ldr      r0, [r1]
+    0x0200bdbc: ldr      r1, [r4, #0x34]
+    0x0200bdc0: bl       #0x202a8c4
+    0x0200bdc4: ldr      r0, [r4, #0x3c]
+    0x0200bdc8: cmp      r0, #0
+    0x0200bdcc: beq      #0x200bde8
+    0x0200bdd0: beq      #0x200bde0
+    0x0200bdd4: ldr      r1, [r0]
+    0x0200bdd8: ldr      r1, [r1, #4]
+    0x0200bddc: blx      r1
+    0x0200bde0: mov      r0, #0
 
-FIELD 0x47 direct_pointer_accesses=0
+CANDIDATE 0x0200c1ac: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0200c150: ldr      r2, [r4, #0x48] field=0x48
+    0x0200c16c: ldr      r0, [r4, #0x48] field=0x48
+    0x0200c1a4: str      r0, [r4, #0x44] field=0x44
+    0x0200c1ac: ldr      r1, [r4, #0x44] field=0x44
+    0x0200c1b8: str      r0, [r4, #0x48] field=0x48
+    0x0200c1c8: ldr      r0, [r4, #0x48] field=0x48
+    0x0200c1f4: ldr      r1, [r4, #0x44] field=0x44
+  context:
+    0x0200c174: bne      #0x200c1c8
+    0x0200c178: mov      r0, #4
+    0x0200c17c: bl       #0x20281f8
+    0x0200c180: cmp      r0, #0
+    0x0200c184: ldrne    r1, [pc, #0x50]
+    0x0200c188: mov      r2, r5
+    0x0200c18c: strne    r1, [r0]
+    0x0200c190: ldr      r1, [pc, #0x48]
+    0x0200c194: str      r0, [r4, #0x4c]
+    0x0200c198: ldr      r0, [r1]
+    0x0200c19c: ldr      r1, [r4, #0x4c]
+    0x0200c1a0: bl       #0x202a958
+    0x0200c1a4: str      r0, [r4, #0x44]
+    0x0200c1a8: ldr      r0, [pc, #0x30]
+    0x0200c1ac: ldr      r1, [r4, #0x44] ; CANDIDATE
+    0x0200c1b0: ldr      r0, [r0]
+    0x0200c1b4: bl       #0x202a99c
+    0x0200c1b8: str      r0, [r4, #0x48]
+    0x0200c1bc: cmp      r0, #0
+    0x0200c1c0: ldrne    r1, [r4, #0x54]
+    0x0200c1c4: strne    r1, [r0, #0x10]
+    0x0200c1c8: ldr      r0, [r4, #0x48]
+    0x0200c1cc: cmp      r0, #0
+    0x0200c1d0: movne    r0, #1
+    0x0200c1d4: moveq    r0, #0
+    0x0200c1d8: pop      {r3, r4, r5, pc}
+    0x0200c1dc: andseq   r7, r6, #136, #8
+    0x0200c1e0: andseq   r5, sb, #164, #8
+    0x0200c1e4: push     {r4, lr}
+    0x0200c1e8: ldr      r1, [pc, #0x4c]
+    0x0200c1ec: mov      r4, r0
+    0x0200c1f0: ldr      r0, [r1]
+    0x0200c1f4: ldr      r1, [r4, #0x44]
+    0x0200c1f8: bl       #0x202a9dc
+    0x0200c1fc: ldr      r0, [r4, #0x4c]
+
+CANDIDATE 0x0200c1f4: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0200c1a4: str      r0, [r4, #0x44] field=0x44
+    0x0200c1ac: ldr      r1, [r4, #0x44] field=0x44
+    0x0200c1b8: str      r0, [r4, #0x48] field=0x48
+    0x0200c1c8: ldr      r0, [r4, #0x48] field=0x48
+    0x0200c1f4: ldr      r1, [r4, #0x44] field=0x44
+    0x0200c22c: str      r0, [r4, #0x44] field=0x44
+    0x0200c234: str      r0, [r4, #0x48] field=0x48
+  context:
+    0x0200c1bc: cmp      r0, #0
+    0x0200c1c0: ldrne    r1, [r4, #0x54]
+    0x0200c1c4: strne    r1, [r0, #0x10]
+    0x0200c1c8: ldr      r0, [r4, #0x48]
+    0x0200c1cc: cmp      r0, #0
+    0x0200c1d0: movne    r0, #1
+    0x0200c1d4: moveq    r0, #0
+    0x0200c1d8: pop      {r3, r4, r5, pc}
+    0x0200c1dc: andseq   r7, r6, #136, #8
+    0x0200c1e0: andseq   r5, sb, #164, #8
+    0x0200c1e4: push     {r4, lr}
+    0x0200c1e8: ldr      r1, [pc, #0x4c]
+    0x0200c1ec: mov      r4, r0
+    0x0200c1f0: ldr      r0, [r1]
+    0x0200c1f4: ldr      r1, [r4, #0x44] ; CANDIDATE
+    0x0200c1f8: bl       #0x202a9dc
+    0x0200c1fc: ldr      r0, [r4, #0x4c]
+    0x0200c200: cmp      r0, #0
+    0x0200c204: beq      #0x200c220
+    0x0200c208: beq      #0x200c218
+    0x0200c20c: ldr      r1, [r0]
+    0x0200c210: ldr      r1, [r1, #4]
+    0x0200c214: blx      r1
+    0x0200c218: mov      r0, #0
+    0x0200c21c: str      r0, [r4, #0x4c]
+    0x0200c220: mov      r0, r4
+    0x0200c224: bl       #0x200d158
+    0x0200c228: mvn      r0, #0
+    0x0200c22c: str      r0, [r4, #0x44]
+    0x0200c230: mov      r0, #0
+    0x0200c234: str      r0, [r4, #0x48]
+    0x0200c238: pop      {r4, pc}
+    0x0200c23c: andseq   r5, sb, #164, #8
+    0x0200c240: push     {r4, lr}
+    0x0200c244: mov      r4, r0
+
+CANDIDATE 0x02012f50: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02012f50: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x02012f18: blx      r1
+    0x02012f1c: cmp      r0, #0
+    0x02012f20: beq      #0x2012f44
+    0x02012f24: mov      r0, r4
+    0x02012f28: ldr      r1, [r0]
+    0x02012f2c: ldr      r1, [r1, #0x20]
+    0x02012f30: blx      r1
+    0x02012f34: mov      r2, r0
+    0x02012f38: ldr      r1, [r4, #0x18]
+    0x02012f3c: mov      r0, r6
+    0x02012f40: bl       #0x214caa8
+    0x02012f44: mov      r0, r4
+    0x02012f48: ldr      r3, [r0]
+    0x02012f4c: mov      r1, r5
+    0x02012f50: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x02012f54: mov      r2, r6
+    0x02012f58: blx      r3
+    0x02012f5c: mov      r0, r4
+    0x02012f60: ldr      r1, [r0]
+    0x02012f64: ldr      r1, [r1, #0x20]
+    0x02012f68: blx      r1
+    0x02012f6c: ldr      r1, [r4, #0x18]
+    0x02012f70: add      r0, r1, r0
+    0x02012f74: str      r0, [r4, #0x1c]
+    0x02012f78: pop      {r4, r5, r6, pc}
+    0x02012f7c: ldr      r1, [r0, #0x20]
+    0x02012f80: ldr      r0, [r0, #0x18]
+    0x02012f84: sub      r0, r1, r0
+    0x02012f88: bx       lr
+    0x02012f8c: push     {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+    0x02012f90: sub      sp, sp, #0x100
+    0x02012f94: ldr      r3, [r0]
+    0x02012f98: mov      r8, r2
+    0x02012f9c: ldr      r3, [r3, #0x20]
+    0x02012fa0: mov      sl, r0
+
+CANDIDATE 0x0202b1e0: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0202b1e0: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x0202b1a8: ldr      r3, [pc, #0x6c]
+    0x0202b1ac: mov      lr, r0
+    0x0202b1b0: add      r0, sp, #0
+    0x0202b1b4: mov      r5, r2
+    0x0202b1b8: strb     ip, [sp, #4]
+    0x0202b1bc: str      ip, [sp, #8]
+    0x0202b1c0: str      r4, [sp, #0xc]
+    0x0202b1c4: str      r4, [sp, #0x10]
+    0x0202b1c8: str      r4, [sp, #0x14]
+    0x0202b1cc: strb     r4, [sp, #0x24]
+    0x0202b1d0: str      r4, [sp, #0x18]
+    0x0202b1d4: str      r3, [sp]
+    0x0202b1d8: ldr      r3, [r0]
+    0x0202b1dc: mov      r2, lr
+    0x0202b1e0: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x0202b1e4: blx      r3
+    0x0202b1e8: add      r0, sp, #0
+    0x0202b1ec: mov      r1, r5
+    0x0202b1f0: bl       #0x202b220
+    0x0202b1f4: ldr      r1, [pc, #0x20]
+    0x0202b1f8: mov      r4, r0
+    0x0202b1fc: add      r0, sp, #0
+    0x0202b200: str      r1, [sp]
+    0x0202b204: ldr      r1, [r0]
+    0x0202b208: ldr      r1, [r1, #0x48]
+    0x0202b20c: blx      r1
+    0x0202b210: mov      r0, r4
+    0x0202b214: add      sp, sp, #0x28
+    0x0202b218: pop      {r3, r4, r5, pc}
+    0x0202b21c: andseq   r7, r6, #172, #30
+    0x0202b220: push     {r0, r1, r2, r3}
+    0x0202b224: push     {r3, r4, r5, r6, r7, lr}
+    0x0202b228: sub      sp, sp, #0x28
+    0x0202b22c: ldr      r1, [pc, #0x1dc]
+    0x0202b230: mov      r5, r0
+
+CANDIDATE 0x0202b304: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0202b304: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x0202b2cc: mov      r0, r5
+    0x0202b2d0: mov      r2, r1
+    0x0202b2d4: str      r1, [sp, #0x10]
+    0x0202b2d8: bl       #0x202b8ac
+    0x0202b2dc: ldr      r0, [sp, #0x24]
+    0x0202b2e0: cmp      r0, #1
+    0x0202b2e4: bls      #0x202b360
+    0x0202b2e8: ldr      r0, [pc, #0x120]
+    0x0202b2ec: add      r1, sp, #0x44
+    0x0202b2f0: bl       #0x202b4a8
+    0x0202b2f4: mov      r4, r0
+    0x0202b2f8: add      r0, r4, #4
+    0x0202b2fc: ldr      r3, [r0]
+    0x0202b300: ldr      r1, [sp, #0x24]
+    0x0202b304: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x0202b308: lsl      r1, r1, #7
+    0x0202b30c: mov      r2, #0
+    0x0202b310: blx      r3
+    0x0202b314: mov      r0, r5
+    0x0202b318: ldr      r1, [r0]
+    0x0202b31c: ldr      r1, [r1, #0x38]
+    0x0202b320: blx      r1
+    0x0202b324: mov      r1, r0
+    0x0202b328: add      r0, r4, #4
+    0x0202b32c: ldr      r3, [r0]
+    0x0202b330: ldr      r2, [r5, #0x18]
+    0x0202b334: ldr      r3, [r3, #0xc]
+    0x0202b338: blx      r3
+    0x0202b33c: ldr      r1, [sp, #0x24]
+    0x0202b340: mov      r0, #0
+    0x0202b344: sub      r1, r1, #1
+    0x0202b348: str      r1, [sp, #0x24]
+    0x0202b34c: add      sp, sp, #0x28
+    0x0202b350: str      r1, [r4, #0x2c]
+    0x0202b354: pop      {r3, r4, r5, r6, r7, lr}
+
+CANDIDATE 0x020315e4: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020315e4: ldr      r0, [r0, #0x44] field=0x44
+    0x020315ec: ldr      r0, [r0, #0x48] field=0x48
+  context:
+    0x020315ac: mov      r5, r0
+    0x020315b0: ldr      r1, [r1, #0x98]
+    0x020315b4: blx      r1
+    0x020315b8: movs     r4, r0
+    0x020315bc: bmi      #0x20315dc
+    0x020315c0: mov      r0, r5
+    0x020315c4: ldr      r1, [r0]
+    0x020315c8: ldr      r1, [r1, #0x9c]
+    0x020315cc: blx      r1
+    0x020315d0: cmp      r4, r0
+    0x020315d4: moveq    r0, #1
+    0x020315d8: popeq    {r3, r4, r5, pc}
+    0x020315dc: mov      r0, #0
+    0x020315e0: pop      {r3, r4, r5, pc}
+    0x020315e4: ldr      r0, [r0, #0x44] ; CANDIDATE
+    0x020315e8: bx       lr
+    0x020315ec: ldr      r0, [r0, #0x48]
+    0x020315f0: cmp      r0, #1
+    0x020315f4: moveq    r0, #1
+    0x020315f8: movne    r0, #0
+    0x020315fc: bx       lr
+    0x02031600: cmp      r1, #0
+    0x02031604: mov      r2, #0
+    0x02031608: blt      #0x2031624
+    0x0203160c: cmp      r1, #8
+    0x02031610: bge      #0x2031624
+    0x02031614: add      r0, r0, r1, lsl #2
+    0x02031618: ldr      r0, [r0, #0x1c]
+    0x0203161c: cmp      r0, #0
+    0x02031620: movne    r2, #1
+    0x02031624: mov      r0, r2
+    0x02031628: bx       lr
+    0x0203162c: str      r1, [r0, #0x54]
+    0x02031630: str      r2, [r0, #0x58]
+    0x02031634: bx       lr
+
+CANDIDATE 0x02031c0c: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02031c0c: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x02031bd4: ldr      r1, [pc, #0x7c]
+    0x02031bd8: mov      r2, #0
+    0x02031bdc: mov      r3, #1
+    0x02031be0: str      r1, [sp, #4]
+    0x02031be4: add      r0, sp, #4
+    0x02031be8: str      r2, [sp, #0x10]
+    0x02031bec: str      r2, [sp, #0x14]
+    0x02031bf0: str      r2, [sp, #0x18]
+    0x02031bf4: str      r2, [sp, #0x1c]
+    0x02031bf8: strb     r3, [sp, #8]
+    0x02031bfc: str      r3, [sp, #0xc]
+    0x02031c00: strb     r3, [sp, #0x28]
+    0x02031c04: ldr      r3, [r0]
+    0x02031c08: mov      r1, #0x80
+    0x02031c0c: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x02031c10: blx      r3
+    0x02031c14: add      r1, sp, #4
+    0x02031c18: mov      r0, r6
+    0x02031c1c: bl       #0x202b630
+    0x02031c20: str      r4, [sp]
+    0x02031c24: mov      r2, r0
+    0x02031c28: ldr      r0, [r7, #0x14]
+    0x02031c2c: ldr      r1, [sp, #0x1c]
+    0x02031c30: mov      r3, r5
+    0x02031c34: bl       #0x202eda0
+    0x02031c38: ldr      r1, [pc, #0x18]
+    0x02031c3c: add      r0, sp, #4
+    0x02031c40: str      r1, [sp, #4]
+    0x02031c44: ldr      r1, [r0]
+    0x02031c48: ldr      r1, [r1, #0x48]
+    0x02031c4c: blx      r1
+    0x02031c50: add      sp, sp, #0x2c
+    0x02031c54: pop      {r4, r5, r6, r7, pc}
+    0x02031c58: andseq   r7, r6, #172, #30
+    0x02031c5c: push     {r3, r4, r5, r6, lr}
+
+CANDIDATE 0x02031cf8: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02031cf8: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x02031cc0: ldr      r1, [pc, #0x7c]
+    0x02031cc4: mov      r2, #0
+    0x02031cc8: mov      r3, #1
+    0x02031ccc: str      r1, [sp, #4]
+    0x02031cd0: add      r0, sp, #4
+    0x02031cd4: str      r2, [sp, #0x10]
+    0x02031cd8: str      r2, [sp, #0x14]
+    0x02031cdc: str      r2, [sp, #0x18]
+    0x02031ce0: str      r2, [sp, #0x1c]
+    0x02031ce4: strb     r3, [sp, #8]
+    0x02031ce8: str      r3, [sp, #0xc]
+    0x02031cec: strb     r3, [sp, #0x28]
+    0x02031cf0: ldr      r3, [r0]
+    0x02031cf4: mov      r1, #0x80
+    0x02031cf8: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x02031cfc: blx      r3
+    0x02031d00: add      r1, sp, #4
+    0x02031d04: mov      r0, r5
+    0x02031d08: bl       #0x202b630
+    0x02031d0c: str      r4, [sp]
+    0x02031d10: mov      r2, r0
+    0x02031d14: ldr      r1, [sp, #0x1c]
+    0x02031d18: ldr      r3, [r5, #0x2c]
+    0x02031d1c: mov      r0, r6
+    0x02031d20: bl       #0x2031d48
+    0x02031d24: ldr      r1, [pc, #0x18]
+    0x02031d28: add      r0, sp, #4
+    0x02031d2c: str      r1, [sp, #4]
+    0x02031d30: ldr      r1, [r0]
+    0x02031d34: ldr      r1, [r1, #0x48]
+    0x02031d38: blx      r1
+    0x02031d3c: add      sp, sp, #0x2c
+    0x02031d40: pop      {r3, r4, r5, r6, pc}
+    0x02031d44: andseq   r7, r6, #172, #30
+    0x02031d48: push     {r4, r5, r6, r7, r8, sb, sl, lr}
+
+CANDIDATE 0x02031f38: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02031f38: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x02031f00: mov      r0, r5
+    0x02031f04: mov      r1, r4
+    0x02031f08: bl       #0x2031f60
+    0x02031f0c: cmp      r0, #0
+    0x02031f10: beq      #0x2031f24
+    0x02031f14: ldr      r1, [r5, #4]
+    0x02031f18: mov      r0, r4
+    0x02031f1c: bl       #0x202b160
+    0x02031f20: b        #0x2031f44
+    0x02031f24: ldr      r0, [r5, #0x10]
+    0x02031f28: cmp      r0, #0
+    0x02031f2c: beq      #0x2031f44
+    0x02031f30: ldr      r3, [r0]
+    0x02031f34: ldr      r1, [r5, #4]
+    0x02031f38: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x02031f3c: mov      r2, r4
+    0x02031f40: blx      r3
+    0x02031f44: cmp      r4, #0
+    0x02031f48: popeq    {r4, r5, r6, pc}
+    0x02031f4c: mov      r0, r4
+    0x02031f50: ldr      r1, [r0]
+    0x02031f54: ldr      r1, [r1, #4]
+    0x02031f58: blx      r1
+    0x02031f5c: pop      {r4, r5, r6, pc}
+    0x02031f60: ldr      r0, [r1, #0x10]
+    0x02031f64: cmp      r0, #0x3e8
+    0x02031f68: movge    r0, #1
+    0x02031f6c: movlt    r0, #0
+    0x02031f70: bx       lr
+    0x02031f74: push     {r3, r4, r5, lr}
+    0x02031f78: ldr      r2, [r0]
+    0x02031f7c: mov      r5, r0
+    0x02031f80: ldr      r2, [r2, #0x120]
+    0x02031f84: mov      r4, r1
+    0x02031f88: blx      r2
+
+CANDIDATE 0x0203d030: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x0203d030: ldrsh    r0, [r7, #0x44] field=0x44
+    0x0203d03c: ldrsh    r0, [r7, #0x40] field=0x40
+    0x0203d054: ldrsh    r0, [r7, #0x42] field=0x42
+    0x0203d060: ldrsh    r0, [r7, #0x48] field=0x48
+    0x0203d07c: ldrsh    r0, [r7, #0x42] field=0x42
+    0x0203d09c: ldrsh    r0, [r7, #0x42] field=0x42
+  context:
+    0x0203cff8: mov      r0, #1
+    0x0203cffc: tst      r1, r0, lsl r2
+    0x0203d000: bne      #0x203d0b4
+    0x0203d004: cmp      r2, #6
+    0x0203d008: mov      r1, r4
+    0x0203d00c: addls    pc, pc, r2, lsl #2
+    0x0203d010: b        #0x203d0a8
+    0x0203d014: b        #0x203d030
+    0x0203d018: b        #0x203d03c
+    0x0203d01c: b        #0x203d048
+    0x0203d020: b        #0x203d06c
+    0x0203d024: b        #0x203d060
+    0x0203d028: b        #0x203d090
+    0x0203d02c: b        #0x203d054
+    0x0203d030: ldrsh    r0, [r7, #0x44] ; CANDIDATE
+    0x0203d034: add      r1, r4, r0
+    0x0203d038: b        #0x203d0a8
+    0x0203d03c: ldrsh    r0, [r7, #0x40]
+    0x0203d040: add      r1, r4, r0
+    0x0203d044: b        #0x203d0a8
+    0x0203d048: ldrsh    r0, [r7, #0x46]
+    0x0203d04c: add      r1, r4, r0
+    0x0203d050: b        #0x203d0a8
+    0x0203d054: ldrsh    r0, [r7, #0x42]
+    0x0203d058: add      r1, r4, r0
+    0x0203d05c: b        #0x203d0a8
+    0x0203d060: ldrsh    r0, [r7, #0x48]
+    0x0203d064: add      r1, r4, r0
+    0x0203d068: b        #0x203d0a8
+    0x0203d06c: ldr      r0, [r7, #0x10]
+    0x0203d070: mov      r1, #0x10
+    0x0203d074: bl       #0x209bf7c
+    0x0203d078: add      r1, r0, #2
+    0x0203d07c: ldrsh    r0, [r7, #0x42]
+    0x0203d080: lsl      r0, r0, #2
+
+CANDIDATE 0x0203d048: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x0203d030: ldrsh    r0, [r7, #0x44] field=0x44
+    0x0203d03c: ldrsh    r0, [r7, #0x40] field=0x40
+    0x0203d054: ldrsh    r0, [r7, #0x42] field=0x42
+    0x0203d060: ldrsh    r0, [r7, #0x48] field=0x48
+    0x0203d07c: ldrsh    r0, [r7, #0x42] field=0x42
+    0x0203d09c: ldrsh    r0, [r7, #0x42] field=0x42
+  context:
+    0x0203d010: b        #0x203d0a8
+    0x0203d014: b        #0x203d030
+    0x0203d018: b        #0x203d03c
+    0x0203d01c: b        #0x203d048
+    0x0203d020: b        #0x203d06c
+    0x0203d024: b        #0x203d060
+    0x0203d028: b        #0x203d090
+    0x0203d02c: b        #0x203d054
+    0x0203d030: ldrsh    r0, [r7, #0x44]
+    0x0203d034: add      r1, r4, r0
+    0x0203d038: b        #0x203d0a8
+    0x0203d03c: ldrsh    r0, [r7, #0x40]
+    0x0203d040: add      r1, r4, r0
+    0x0203d044: b        #0x203d0a8
+    0x0203d048: ldrsh    r0, [r7, #0x46] ; CANDIDATE
+    0x0203d04c: add      r1, r4, r0
+    0x0203d050: b        #0x203d0a8
+    0x0203d054: ldrsh    r0, [r7, #0x42]
+    0x0203d058: add      r1, r4, r0
+    0x0203d05c: b        #0x203d0a8
+    0x0203d060: ldrsh    r0, [r7, #0x48]
+    0x0203d064: add      r1, r4, r0
+    0x0203d068: b        #0x203d0a8
+    0x0203d06c: ldr      r0, [r7, #0x10]
+    0x0203d070: mov      r1, #0x10
+    0x0203d074: bl       #0x209bf7c
+    0x0203d078: add      r1, r0, #2
+    0x0203d07c: ldrsh    r0, [r7, #0x42]
+    0x0203d080: lsl      r0, r0, #2
+    0x0203d084: bl       #0x2159728
+    0x0203d088: add      r1, r4, r0
+    0x0203d08c: b        #0x203d0a8
+    0x0203d090: ldr      r0, [r7, #0x10]
+    0x0203d094: tst      r0, #2
+    0x0203d098: movne    r2, #2
+
+CANDIDATE 0x020456ac: ldrsh r0, [r1, #0x44] base=r1 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x020456ac: ldrsh    r0, [r1, #0x44] field=0x44
+    0x020456b8: strhlt   r2, [r1, #0x44] field=0x44
+  context:
+    0x02045674: ldr      r8, [pc, #0x3b4]
+    0x02045678: ldr      r7, [pc, #0x3c8]
+    0x0204567c: ldr      fp, [pc, #0x3b4]
+    0x02045680: ldr      r4, [pc, #0x3c4]
+    0x02045684: ldr      r5, [pc, #0x3a0]
+    0x02045688: ldr      r0, [r5]
+    0x0204568c: bl       #0x200d5b0
+    0x02045690: cmp      sb, r0
+    0x02045694: ldrne    r0, [r4]
+    0x02045698: cmpne    sb, r0
+    0x0204569c: beq      #0x20456bc
+    0x020456a0: ldr      r0, [r8, sb, lsl #2]
+    0x020456a4: ldr      r2, [fp]
+    0x020456a8: add      r1, r7, r0, lsl #1
+    0x020456ac: ldrsh    r0, [r1, #0x44] ; CANDIDATE
+    0x020456b0: add      r2, r2, #1
+    0x020456b4: cmp      r0, r2
+    0x020456b8: strhlt   r2, [r1, #0x44]
+    0x020456bc: ldr      r0, [r6]
+    0x020456c0: add      sb, sb, #1
+    0x020456c4: cmp      sb, r0
+    0x020456c8: blt      #0x2045688
+    0x020456cc: cmp      sl, #1
+    0x020456d0: bne      #0x2045758
+    0x020456d4: mov      r0, #0x1a
+    0x020456d8: bl       #0x209a4e0
+    0x020456dc: ldr      r0, [pc, #0x354]
+    0x020456e0: ldr      r0, [r0]
+    0x020456e4: cmp      r0, #2
+    0x020456e8: blt      #0x20456f4
+    0x020456ec: mov      r0, #0x20
+    0x020456f0: bl       #0x209a4e0
+    0x020456f4: ldr      r0, [pc, #0x33c]
+    0x020456f8: ldr      r0, [r0]
+    0x020456fc: cmp      r0, #4
+
+CANDIDATE 0x02047da8: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02047da8: ldr      r1, [r1, #0x44] field=0x44
+  context:
+    0x02047d70: ldr      r1, [r0]
+    0x02047d74: ldr      r1, [r1, #0xa0]
+    0x02047d78: blx      r1
+    0x02047d7c: ldr      r1, [pc, #0x414]
+    0x02047d80: str      r0, [r1]
+    0x02047d84: ldr      r0, [pc, #0x40c]
+    0x02047d88: ldr      r1, [pc, #0x40c]
+    0x02047d8c: ldr      r0, [r0]
+    0x02047d90: mov      r2, #1
+    0x02047d94: str      r2, [r1]
+    0x02047d98: cmp      r0, #2
+    0x02047d9c: ble      #0x2047f38
+    0x02047da0: bl       #0x20bd2e8
+    0x02047da4: ldr      r1, [r0]
+    0x02047da8: ldr      r1, [r1, #0x44] ; CANDIDATE
+    0x02047dac: blx      r1
+    0x02047db0: cmp      r0, #3
+    0x02047db4: bne      #0x2047e40
+    0x02047db8: ldr      r2, [pc, #0x3b4]
+    0x02047dbc: ldr      r0, [pc, #0x3b8]
+    0x02047dc0: ldr      r3, [r2, #4]
+    0x02047dc4: ldr      r1, [pc, #0x3b4]
+    0x02047dc8: add      r3, r3, #1
+    0x02047dcc: str      r3, [r2, #4]
+    0x02047dd0: ldr      r3, [r2]
+    0x02047dd4: mla      r0, r3, r0, r1
+    0x02047dd8: str      r0, [r2]
+    0x02047ddc: ldr      r1, [r2, #8]
+    0x02047de0: cmp      r1, #0
+    0x02047de4: beq      #0x2047df4
+    0x02047de8: bl       #0x2159934
+    0x02047dec: ldr      r0, [pc, #0x380]
+    0x02047df0: str      r1, [r0]
+    0x02047df4: ldr      r0, [pc, #0x378]
+    0x02047df8: ldr      r0, [r0]
+
+CANDIDATE 0x020566fc: ldrsh r0, [r6, #0x44] base=r6 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x020566fc: ldrsh    r0, [r6, #0x44] field=0x44
+    0x0205670c: ldrsh    r0, [r6, #0x48] field=0x48
+  context:
+    0x020566c4: ldr      r0, [r0]
+    0x020566c8: tst      r0, #1
+    0x020566cc: bne      #0x20566d8
+    0x020566d0: cmp      r0, #0x14
+    0x020566d4: bge      #0x205671c
+    0x020566d8: mov      r0, sb
+    0x020566dc: mov      r1, #0
+    0x020566e0: bl       #0x205195c
+    0x020566e4: b        #0x205671c
+    0x020566e8: ldr      r1, [pc, #0x58c]
+    0x020566ec: mvn      r0, #0
+    0x020566f0: ldr      r2, [r1, sl, lsl #2]
+    0x020566f4: cmp      r2, r0
+    0x020566f8: beq      #0x205670c
+    0x020566fc: ldrsh    r0, [r6, #0x44] ; CANDIDATE
+    0x02056700: ldr      r1, [r7, r2, lsl #2]
+    0x02056704: add      r0, r1, r0
+    0x02056708: str      r0, [r7, r2, lsl #2]
+    0x0205670c: ldrsh    r0, [r6, #0x48]
+    0x02056710: ldr      r1, [r8, #0x10]
+    0x02056714: add      r0, r1, r0
+    0x02056718: str      r0, [r8, #0x10]
+    0x0205671c: ldr      r0, [pc, #0x550]
+    0x02056720: ldr      r0, [r0]
+    0x02056724: bl       #0x200d5b0
+    0x02056728: cmp      sl, r0
+    0x0205672c: ldrne    r0, [pc, #0x54c]
+    0x02056730: ldrne    r0, [r0]
+    0x02056734: cmpne    sl, r0
+    0x02056738: beq      #0x2056850
+    0x0205673c: ldr      r1, [pc, #0x4c8]
+    0x02056740: ldr      r0, [pc, #0x53c]
+    0x02056744: ldr      r1, [r1]
+    0x02056748: ldr      r0, [r0]
+    0x0205674c: sub      r0, r1, r0
+
+CANDIDATE 0x02083480: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x02083448: ldr      r0, [r0]
+    0x0208344c: bl       #0x2023acc
+    0x02083450: ldr      sb, [pc, #0x710]
+    0x02083454: ldr      fp, [pc, #0x710]
+    0x02083458: ldr      sl, [pc, #0x6cc]
+    0x0208345c: mov      r7, #0
+    0x02083460: mvn      r6, #0
+    0x02083464: mov      r0, r7
+    0x02083468: bl       #0x2095894
+    0x0208346c: cmp      r0, #0
+    0x02083470: beq      #0x20834ec
+    0x02083474: ldr      r0, [fp, r7, lsl #3]
+    0x02083478: cmp      r0, r6
+    0x0208347c: bne      #0x20834ec
+    0x02083480: ldrsh    r0, [sb, #0x44] ; CANDIDATE
+    0x02083484: cmp      r5, r0
+    0x02083488: beq      #0x20834a8
+    0x0208348c: ldr      r0, [sl]
+    0x02083490: bl       #0x200d5b0
+    0x02083494: mov      r1, r0
+    0x02083498: ldrsh    r0, [sb, #0x44]
+    0x0208349c: bl       #0x20957a0
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46]
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46]
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44]
+
+CANDIDATE 0x02083498: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x02083460: mvn      r6, #0
+    0x02083464: mov      r0, r7
+    0x02083468: bl       #0x2095894
+    0x0208346c: cmp      r0, #0
+    0x02083470: beq      #0x20834ec
+    0x02083474: ldr      r0, [fp, r7, lsl #3]
+    0x02083478: cmp      r0, r6
+    0x0208347c: bne      #0x20834ec
+    0x02083480: ldrsh    r0, [sb, #0x44]
+    0x02083484: cmp      r5, r0
+    0x02083488: beq      #0x20834a8
+    0x0208348c: ldr      r0, [sl]
+    0x02083490: bl       #0x200d5b0
+    0x02083494: mov      r1, r0
+    0x02083498: ldrsh    r0, [sb, #0x44] ; CANDIDATE
+    0x0208349c: bl       #0x20957a0
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46]
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46]
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44]
+    0x020834d4: cmp      r5, r0
+    0x020834d8: ldrshne  r0, [sb, #0x46]
+    0x020834dc: cmpne    r5, r0
+    0x020834e0: orreq    r0, r7, #0x600
+    0x020834e4: streq    r0, [r8, r4, lsl #2]
+    0x020834e8: addeq    r4, r4, #1
+
+CANDIDATE 0x020834a8: ldrsh r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x02083470: beq      #0x20834ec
+    0x02083474: ldr      r0, [fp, r7, lsl #3]
+    0x02083478: cmp      r0, r6
+    0x0208347c: bne      #0x20834ec
+    0x02083480: ldrsh    r0, [sb, #0x44]
+    0x02083484: cmp      r5, r0
+    0x02083488: beq      #0x20834a8
+    0x0208348c: ldr      r0, [sl]
+    0x02083490: bl       #0x200d5b0
+    0x02083494: mov      r1, r0
+    0x02083498: ldrsh    r0, [sb, #0x44]
+    0x0208349c: bl       #0x20957a0
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46] ; CANDIDATE
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46]
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44]
+    0x020834d4: cmp      r5, r0
+    0x020834d8: ldrshne  r0, [sb, #0x46]
+    0x020834dc: cmpne    r5, r0
+    0x020834e0: orreq    r0, r7, #0x600
+    0x020834e4: streq    r0, [r8, r4, lsl #2]
+    0x020834e8: addeq    r4, r4, #1
+    0x020834ec: add      r7, r7, #1
+    0x020834f0: cmp      r7, #0x15
+    0x020834f4: add      sb, sb, #0x14c
+    0x020834f8: blt      #0x2083464
+
+CANDIDATE 0x020834c0: ldrsh r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x02083488: beq      #0x20834a8
+    0x0208348c: ldr      r0, [sl]
+    0x02083490: bl       #0x200d5b0
+    0x02083494: mov      r1, r0
+    0x02083498: ldrsh    r0, [sb, #0x44]
+    0x0208349c: bl       #0x20957a0
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46]
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46] ; CANDIDATE
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44]
+    0x020834d4: cmp      r5, r0
+    0x020834d8: ldrshne  r0, [sb, #0x46]
+    0x020834dc: cmpne    r5, r0
+    0x020834e0: orreq    r0, r7, #0x600
+    0x020834e4: streq    r0, [r8, r4, lsl #2]
+    0x020834e8: addeq    r4, r4, #1
+    0x020834ec: add      r7, r7, #1
+    0x020834f0: cmp      r7, #0x15
+    0x020834f4: add      sb, sb, #0x14c
+    0x020834f8: blt      #0x2083464
+    0x020834fc: ldr      r0, [pc, #0x66c]
+    0x02083500: mov      r6, #0
+    0x02083504: ldr      r0, [r0]
+    0x02083508: mov      sb, r6
+    0x0208350c: cmp      r0, #0
+    0x02083510: ble      #0x20835b4
+
+CANDIDATE 0x020834d0: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x02083498: ldrsh    r0, [sb, #0x44]
+    0x0208349c: bl       #0x20957a0
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46]
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46]
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44] ; CANDIDATE
+    0x020834d4: cmp      r5, r0
+    0x020834d8: ldrshne  r0, [sb, #0x46]
+    0x020834dc: cmpne    r5, r0
+    0x020834e0: orreq    r0, r7, #0x600
+    0x020834e4: streq    r0, [r8, r4, lsl #2]
+    0x020834e8: addeq    r4, r4, #1
+    0x020834ec: add      r7, r7, #1
+    0x020834f0: cmp      r7, #0x15
+    0x020834f4: add      sb, sb, #0x14c
+    0x020834f8: blt      #0x2083464
+    0x020834fc: ldr      r0, [pc, #0x66c]
+    0x02083500: mov      r6, #0
+    0x02083504: ldr      r0, [r0]
+    0x02083508: mov      sb, r6
+    0x0208350c: cmp      r0, #0
+    0x02083510: ble      #0x20835b4
+    0x02083514: ldr      r7, [pc, #0x658]
+    0x02083518: ldr      fp, [pc, #0x61c]
+    0x0208351c: ldrsh    r0, [r7, #0x4a]
+    0x02083520: cmp      r5, r0
+
+CANDIDATE 0x020834d8: ldrshne r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083480: ldrsh    r0, [sb, #0x44] field=0x44
+    0x02083498: ldrsh    r0, [sb, #0x44] field=0x44
+    0x020834d0: ldrsh    r0, [sb, #0x44] field=0x44
+  context:
+    0x020834a0: cmp      r0, #0
+    0x020834a4: beq      #0x20834ec
+    0x020834a8: ldrsh    r0, [sb, #0x46]
+    0x020834ac: cmp      r5, r0
+    0x020834b0: beq      #0x20834d0
+    0x020834b4: ldr      r0, [sl]
+    0x020834b8: bl       #0x200d5b0
+    0x020834bc: mov      r1, r0
+    0x020834c0: ldrsh    r0, [sb, #0x46]
+    0x020834c4: bl       #0x20957a0
+    0x020834c8: cmp      r0, #0
+    0x020834cc: beq      #0x20834ec
+    0x020834d0: ldrsh    r0, [sb, #0x44]
+    0x020834d4: cmp      r5, r0
+    0x020834d8: ldrshne  r0, [sb, #0x46] ; CANDIDATE
+    0x020834dc: cmpne    r5, r0
+    0x020834e0: orreq    r0, r7, #0x600
+    0x020834e4: streq    r0, [r8, r4, lsl #2]
+    0x020834e8: addeq    r4, r4, #1
+    0x020834ec: add      r7, r7, #1
+    0x020834f0: cmp      r7, #0x15
+    0x020834f4: add      sb, sb, #0x14c
+    0x020834f8: blt      #0x2083464
+    0x020834fc: ldr      r0, [pc, #0x66c]
+    0x02083500: mov      r6, #0
+    0x02083504: ldr      r0, [r0]
+    0x02083508: mov      sb, r6
+    0x0208350c: cmp      r0, #0
+    0x02083510: ble      #0x20835b4
+    0x02083514: ldr      r7, [pc, #0x658]
+    0x02083518: ldr      fp, [pc, #0x61c]
+    0x0208351c: ldrsh    r0, [r7, #0x4a]
+    0x02083520: cmp      r5, r0
+    0x02083524: bne      #0x208359c
+    0x02083528: cmp      r6, #0
+
+CANDIDATE 0x02083674: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x0208363c: add      r7, r7, #0xcc
+    0x02083640: cmp      sb, r0
+    0x02083644: blt      #0x20835d4
+    0x02083648: ldr      r7, [pc, #0x518]
+    0x0208364c: mov      sb, #0
+    0x02083650: mvn      fp, #0
+    0x02083654: mov      r0, sb
+    0x02083658: bl       #0x2095894
+    0x0208365c: cmp      r0, #0
+    0x02083660: beq      #0x2083730
+    0x02083664: ldr      r0, [pc, #0x500]
+    0x02083668: ldr      r0, [r0, sb, lsl #3]
+    0x0208366c: cmp      r0, fp
+    0x02083670: bne      #0x2083730
+    0x02083674: ldrsh    r0, [r7, #0x44] ; CANDIDATE
+    0x02083678: cmp      r5, r0
+    0x0208367c: beq      #0x20836a0
+    0x02083680: ldr      r0, [pc, #0x4a4]
+    0x02083684: ldr      r0, [r0]
+    0x02083688: bl       #0x200d5b0
+    0x0208368c: mov      r1, r0
+    0x02083690: ldrsh    r0, [r7, #0x44]
+    0x02083694: bl       #0x20957a0
+    0x02083698: cmp      r0, #0
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46]
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46]
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+
+CANDIDATE 0x02083690: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x02083658: bl       #0x2095894
+    0x0208365c: cmp      r0, #0
+    0x02083660: beq      #0x2083730
+    0x02083664: ldr      r0, [pc, #0x500]
+    0x02083668: ldr      r0, [r0, sb, lsl #3]
+    0x0208366c: cmp      r0, fp
+    0x02083670: bne      #0x2083730
+    0x02083674: ldrsh    r0, [r7, #0x44]
+    0x02083678: cmp      r5, r0
+    0x0208367c: beq      #0x20836a0
+    0x02083680: ldr      r0, [pc, #0x4a4]
+    0x02083684: ldr      r0, [r0]
+    0x02083688: bl       #0x200d5b0
+    0x0208368c: mov      r1, r0
+    0x02083690: ldrsh    r0, [r7, #0x44] ; CANDIDATE
+    0x02083694: bl       #0x20957a0
+    0x02083698: cmp      r0, #0
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46]
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46]
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+    0x020836c8: beq      #0x2083730
+    0x020836cc: ldrsh    r0, [r7, #0x44]
+    0x020836d0: cmp      r5, r0
+    0x020836d4: ldrshne  r0, [r7, #0x46]
+    0x020836d8: cmpne    r5, r0
+    0x020836dc: bne      #0x2083730
+    0x020836e0: cmp      r6, #0
+
+CANDIDATE 0x020836a0: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x02083668: ldr      r0, [r0, sb, lsl #3]
+    0x0208366c: cmp      r0, fp
+    0x02083670: bne      #0x2083730
+    0x02083674: ldrsh    r0, [r7, #0x44]
+    0x02083678: cmp      r5, r0
+    0x0208367c: beq      #0x20836a0
+    0x02083680: ldr      r0, [pc, #0x4a4]
+    0x02083684: ldr      r0, [r0]
+    0x02083688: bl       #0x200d5b0
+    0x0208368c: mov      r1, r0
+    0x02083690: ldrsh    r0, [r7, #0x44]
+    0x02083694: bl       #0x20957a0
+    0x02083698: cmp      r0, #0
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46] ; CANDIDATE
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46]
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+    0x020836c8: beq      #0x2083730
+    0x020836cc: ldrsh    r0, [r7, #0x44]
+    0x020836d0: cmp      r5, r0
+    0x020836d4: ldrshne  r0, [r7, #0x46]
+    0x020836d8: cmpne    r5, r0
+    0x020836dc: bne      #0x2083730
+    0x020836e0: cmp      r6, #0
+    0x020836e4: bne      #0x2083710
+    0x020836e8: ldr      r0, [pc, #0x44c]
+    0x020836ec: ldr      r6, [r0]
+    0x020836f0: mov      r0, sb
+
+CANDIDATE 0x020836bc: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x02083684: ldr      r0, [r0]
+    0x02083688: bl       #0x200d5b0
+    0x0208368c: mov      r1, r0
+    0x02083690: ldrsh    r0, [r7, #0x44]
+    0x02083694: bl       #0x20957a0
+    0x02083698: cmp      r0, #0
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46]
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46] ; CANDIDATE
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+    0x020836c8: beq      #0x2083730
+    0x020836cc: ldrsh    r0, [r7, #0x44]
+    0x020836d0: cmp      r5, r0
+    0x020836d4: ldrshne  r0, [r7, #0x46]
+    0x020836d8: cmpne    r5, r0
+    0x020836dc: bne      #0x2083730
+    0x020836e0: cmp      r6, #0
+    0x020836e4: bne      #0x2083710
+    0x020836e8: ldr      r0, [pc, #0x44c]
+    0x020836ec: ldr      r6, [r0]
+    0x020836f0: mov      r0, sb
+    0x020836f4: bl       #0x2095d60
+    0x020836f8: mov      r2, r0
+    0x020836fc: ldr      r1, [pc, #0x48c]
+    0x02083700: mov      r0, r6
+    0x02083704: bl       #0x2023acc
+    0x02083708: mov      r6, #1
+    0x0208370c: b        #0x2083730
+
+CANDIDATE 0x020836cc: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x02083694: bl       #0x20957a0
+    0x02083698: cmp      r0, #0
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46]
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46]
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+    0x020836c8: beq      #0x2083730
+    0x020836cc: ldrsh    r0, [r7, #0x44] ; CANDIDATE
+    0x020836d0: cmp      r5, r0
+    0x020836d4: ldrshne  r0, [r7, #0x46]
+    0x020836d8: cmpne    r5, r0
+    0x020836dc: bne      #0x2083730
+    0x020836e0: cmp      r6, #0
+    0x020836e4: bne      #0x2083710
+    0x020836e8: ldr      r0, [pc, #0x44c]
+    0x020836ec: ldr      r6, [r0]
+    0x020836f0: mov      r0, sb
+    0x020836f4: bl       #0x2095d60
+    0x020836f8: mov      r2, r0
+    0x020836fc: ldr      r1, [pc, #0x48c]
+    0x02083700: mov      r0, r6
+    0x02083704: bl       #0x2023acc
+    0x02083708: mov      r6, #1
+    0x0208370c: b        #0x2083730
+    0x02083710: ldr      r0, [pc, #0x424]
+    0x02083714: ldr      sl, [r0]
+    0x02083718: mov      r0, sb
+    0x0208371c: bl       #0x2095d60
+
+CANDIDATE 0x020836d4: ldrshne r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x02083674: ldrsh    r0, [r7, #0x44] field=0x44
+    0x02083690: ldrsh    r0, [r7, #0x44] field=0x44
+    0x020836cc: ldrsh    r0, [r7, #0x44] field=0x44
+  context:
+    0x0208369c: beq      #0x2083730
+    0x020836a0: ldrsh    r0, [r7, #0x46]
+    0x020836a4: cmp      r5, r0
+    0x020836a8: beq      #0x20836cc
+    0x020836ac: ldr      r0, [pc, #0x478]
+    0x020836b0: ldr      r0, [r0]
+    0x020836b4: bl       #0x200d5b0
+    0x020836b8: mov      r1, r0
+    0x020836bc: ldrsh    r0, [r7, #0x46]
+    0x020836c0: bl       #0x20957a0
+    0x020836c4: cmp      r0, #0
+    0x020836c8: beq      #0x2083730
+    0x020836cc: ldrsh    r0, [r7, #0x44]
+    0x020836d0: cmp      r5, r0
+    0x020836d4: ldrshne  r0, [r7, #0x46] ; CANDIDATE
+    0x020836d8: cmpne    r5, r0
+    0x020836dc: bne      #0x2083730
+    0x020836e0: cmp      r6, #0
+    0x020836e4: bne      #0x2083710
+    0x020836e8: ldr      r0, [pc, #0x44c]
+    0x020836ec: ldr      r6, [r0]
+    0x020836f0: mov      r0, sb
+    0x020836f4: bl       #0x2095d60
+    0x020836f8: mov      r2, r0
+    0x020836fc: ldr      r1, [pc, #0x48c]
+    0x02083700: mov      r0, r6
+    0x02083704: bl       #0x2023acc
+    0x02083708: mov      r6, #1
+    0x0208370c: b        #0x2083730
+    0x02083710: ldr      r0, [pc, #0x424]
+    0x02083714: ldr      sl, [r0]
+    0x02083718: mov      r0, sb
+    0x0208371c: bl       #0x2095d60
+    0x02083720: mov      r2, r0
+    0x02083724: ldr      r1, [pc, #0x468]
+
+CANDIDATE 0x02084cb8: ldrsh r1, [r8, #0x44] base=r8 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x02084cb8: ldrsh    r1, [r8, #0x44] field=0x44
+  context:
+    0x02084c80: ldr      r0, [r5]
+    0x02084c84: add      r8, r8, #0xcc
+    0x02084c88: add      sl, sl, #1
+    0x02084c8c: cmp      sl, r0
+    0x02084c90: blt      #0x2084c38
+    0x02084c94: ldr      r8, [pc, #0x3f0]
+    0x02084c98: ldr      fp, [pc, #0x3f0]
+    0x02084c9c: ldr      r5, [pc, #0x35c]
+    0x02084ca0: mov      sl, #0
+    0x02084ca4: mvn      r4, #0
+    0x02084ca8: mov      r0, sl
+    0x02084cac: bl       #0x2095894
+    0x02084cb0: cmp      r0, #0
+    0x02084cb4: beq      #0x2084d28
+    0x02084cb8: ldrsh    r1, [r8, #0x44] ; CANDIDATE
+    0x02084cbc: ldr      r0, [sp]
+    0x02084cc0: cmp      r0, r1
+    0x02084cc4: ldreq    r0, [fp, sl, lsl #3]
+    0x02084cc8: cmpeq    r0, r4
+    0x02084ccc: bne      #0x2084d28
+    0x02084cd0: ldr      r0, [pc, #0x348]
+    0x02084cd4: orr      r1, sl, #0x600
+    0x02084cd8: str      r1, [r0, sb, lsl #2]
+    0x02084cdc: cmp      r6, #0
+    0x02084ce0: add      sb, sb, #1
+    0x02084ce4: beq      #0x2084d08
+    0x02084ce8: ldr      r7, [r5]
+    0x02084cec: mov      r0, sl
+    0x02084cf0: bl       #0x2095d60
+    0x02084cf4: mov      r2, r0
+    0x02084cf8: ldr      r1, [pc, #0x394]
+    0x02084cfc: mov      r0, r7
+    0x02084d00: bl       #0x2023acc
+    0x02084d04: b        #0x2084d28
+    0x02084d08: ldr      r6, [r5]
+
+CANDIDATE 0x02086ed0: ldr r1, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02086e80: ldrsh    r0, [r6, #0x42] field=0x42
+    0x02086ebc: ldr      r1, [r6, #0x48] field=0x48
+    0x02086ed0: ldr      r1, [r6, #0x44] field=0x44
+  context:
+    0x02086e98: beq      #0x2086ff0
+    0x02086e9c: ldr      r0, [r8, #0x10]
+    0x02086ea0: mov      r1, #1
+    0x02086ea4: tst      r0, r1, lsl sb
+    0x02086ea8: bne      #0x2086ff0
+    0x02086eac: ldrsh    r1, [r8, #0x38]
+    0x02086eb0: sub      r1, r1, #0x64
+    0x02086eb4: cmp      sb, r1
+    0x02086eb8: beq      #0x2086ff0
+    0x02086ebc: ldr      r1, [r6, #0x48]
+    0x02086ec0: cmp      r1, #0
+    0x02086ec4: beq      #0x2086ed0
+    0x02086ec8: tst      r0, r1
+    0x02086ecc: bne      #0x2086ff0
+    0x02086ed0: ldr      r1, [r6, #0x44] ; CANDIDATE
+    0x02086ed4: cmp      r1, #0
+    0x02086ed8: beq      #0x2086ee4
+    0x02086edc: tst      r1, r0
+    0x02086ee0: beq      #0x2086ff0
+    0x02086ee4: cmp      sb, #0x13
+    0x02086ee8: blt      #0x2086f7c
+    0x02086eec: cmp      sb, #0x17
+    0x02086ef0: bge      #0x2086f7c
+    0x02086ef4: ldrsb    r1, [r8]
+    0x02086ef8: ldr      r0, [pc, #0x3a4]
+    0x02086efc: add      r0, r0, r1, lsl #3
+    0x02086f00: ldr      r0, [r0, #4]
+    0x02086f04: cmp      r0, fp
+    0x02086f08: ldreq    r0, [pc, #0x398]
+    0x02086f0c: ldrsheq  r0, [r0, #0x24]
+    0x02086f10: cmpeq    r0, #0
+    0x02086f14: bne      #0x2086ff0
+    0x02086f18: mov      r0, #2
+    0x02086f1c: bl       #0x2096db8
+    0x02086f20: cmp      r0, #0
+
+CANDIDATE 0x020a0574: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020a0560: ldr      r1, [r1, #0x40] field=0x40
+    0x020a0574: ldr      r1, [r1, #0x44] field=0x44
+  context:
+    0x020a053c: beq      #0x20a0600
+    0x020a0540: ldr      r1, [sp, #0x10]
+    0x020a0544: add      r6, r1, r0, lsl #5
+    0x020a0548: ldr      r1, [pc, #0x29c]
+    0x020a054c: ldr      r0, [pc, #0x298]
+    0x020a0550: ldr      r1, [r1, #4]
+    0x020a0554: ldr      r0, [r0]
+    0x020a0558: str      r1, [sp, #0x20]
+    0x020a055c: ldr      r1, [sl, #4]
+    0x020a0560: ldr      r1, [r1, #0x40]
+    0x020a0564: bl       #0x2134110
+    0x020a0568: ldr      r1, [sl, #4]
+    0x020a056c: str      r0, [sp, #0x38]
+    0x020a0570: ldr      r0, [sp, #0x20]
+    0x020a0574: ldr      r1, [r1, #0x44] ; CANDIDATE
+    0x020a0578: bl       #0x2134110
+    0x020a057c: str      r0, [sp, #0x3c]
+    0x020a0580: add      r0, sp, #0x54
+    0x020a0584: bl       #0x2132dd0
+    0x020a0588: ldr      r1, [sp, #0x38]
+    0x020a058c: ldr      r2, [sp, #0x3c]
+    0x020a0590: add      r0, sp, #0x54
+    0x020a0594: blx      #0x2132de8
+    0x020a0598: ldr      r1, [sp, #0x54]
+    0x020a059c: ldr      r0, [sp, #0x58]
+    0x020a05a0: asr      r1, r1, #4
+    0x020a05a4: strh     r1, [r6, #6]
+    0x020a05a8: asr      r0, r0, #4
+    0x020a05ac: ldr      r1, [sp, #0x5c]
+    0x020a05b0: strh     r0, [r6, #0xe]
+    0x020a05b4: ldr      r0, [sp, #0x60]
+    0x020a05b8: asr      r1, r1, #4
+    0x020a05bc: cmp      r5, #0x100
+    0x020a05c0: strh     r1, [r6, #0x16]
+    0x020a05c4: asr      r0, r0, #4
+
+CANDIDATE 0x020a062c: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020a0604: ldrsh    r1, [r3, #0x48] field=0x48
+    0x020a0608: ldr      r2, [r3, #0x40] field=0x40
+    0x020a062c: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x020a05f4: ldr      r0, [sp, #0x24]
+    0x020a05f8: orr      r0, r1, r0, lsl #25
+    0x020a05fc: str      r0, [r4]
+    0x020a0600: ldr      r3, [sl, #4]
+    0x020a0604: ldrsh    r1, [r3, #0x48]
+    0x020a0608: ldr      r2, [r3, #0x40]
+    0x020a060c: ldrsh    r0, [r3, #0x4a]
+    0x020a0610: sub      fp, fp, r1, lsl #12
+    0x020a0614: smull    r6, r5, fp, r2
+    0x020a0618: adds     r6, r6, #0x800
+    0x020a061c: adc      r2, r5, #0
+    0x020a0620: lsr      r5, r6, #0xc
+    0x020a0624: orr      r5, r5, r2, lsl #20
+    0x020a0628: add      fp, r5, r1, lsl #12
+    0x020a062c: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x020a0630: sub      r1, r7, r0, lsl #12
+    0x020a0634: smull    r3, r2, r1, r3
+    0x020a0638: adds     r3, r3, #0x800
+    0x020a063c: adc      r1, r2, #0
+    0x020a0640: lsr      r2, r3, #0xc
+    0x020a0644: orr      r2, r2, r1, lsl #20
+    0x020a0648: add      r7, r2, r0, lsl #12
+    0x020a064c: ldr      r3, [r4]
+    0x020a0650: ldr      r0, [pc, #0x19c]
+    0x020a0654: asr      r2, fp, #0xc
+    0x020a0658: and      r5, r3, r0
+    0x020a065c: lsl      r0, r3, #7
+    0x020a0660: add      r0, r2, r0, lsr #23
+    0x020a0664: lsl      r0, r0, #0x17
+    0x020a0668: orr      r0, r5, r0, lsr #7
+    0x020a066c: bic      r2, r0, #0xff
+    0x020a0670: asr      r1, r7, #0xc
+    0x020a0674: lsl      r0, r0, #0x18
+    0x020a0678: add      r0, r1, r0, lsr #24
+    0x020a067c: and      r0, r0, #0xff
+
+CANDIDATE 0x020a3868: ldrsh r2, [r1, #0x44] base=r1 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x020a3824: ldrsh    r2, [r1, #0x40] field=0x40
+    0x020a3864: ldrsh    r3, [r1, #0x42] field=0x42
+    0x020a3868: ldrsh    r2, [r1, #0x44] field=0x44
+    0x020a38c4: ldrsh    r5, [r1, #0x48] field=0x48
+  context:
+    0x020a3830: and      r1, r1, r2, lsl #16
+    0x020a3834: ldr      r0, [pc, #0x4f0]
+    0x020a3838: orr      r1, r3, r1
+    0x020a383c: str      r1, [r0]
+    0x020a3840: ldr      r1, [r7, #4]
+    0x020a3844: ldr      r0, [r7, #8]
+    0x020a3848: and      r1, r1, #0x400000
+    0x020a384c: and      r0, r0, #0
+    0x020a3850: cmp      r0, #0
+    0x020a3854: cmpeq    r1, #0
+    0x020a3858: beq      #0x20a3884
+    0x020a385c: add      r1, r7, #0x800
+    0x020a3860: ldr      r0, [pc, #0x4a8]
+    0x020a3864: ldrsh    r3, [r1, #0x42]
+    0x020a3868: ldrsh    r2, [r1, #0x44] ; CANDIDATE
+    0x020a386c: lsl      r1, r0, #0x10
+    0x020a3870: and      r3, r3, r0
+    0x020a3874: and      r1, r1, r2, lsl #16
+    0x020a3878: ldr      r0, [pc, #0x4b0]
+    0x020a387c: orr      r1, r3, r1
+    0x020a3880: str      r1, [r0]
+    0x020a3884: ldr      r1, [r7, #4]
+    0x020a3888: ldr      r0, [r7, #8]
+    0x020a388c: and      r1, r1, #0x800000
+    0x020a3890: and      r0, r0, #0
+    0x020a3894: cmp      r0, #0
+    0x020a3898: cmpeq    r1, #0
+    0x020a389c: mov      r2, #0
+    0x020a38a0: beq      #0x20a3900
+    0x020a38a4: ldr      r0, [r7, #0x14]
+    0x020a38a8: add      r1, r7, #0x800
+    0x020a38ac: tst      r0, #4
+    0x020a38b0: beq      #0x20a38dc
+    0x020a38b4: ldrsh    r3, [r1, #0x46]
+    0x020a38b8: add      r4, r7, #0x118
+
+CANDIDATE 0x020a38b4: ldrsh r3, [r1, #0x46] base=r1 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x020a3864: ldrsh    r3, [r1, #0x42] field=0x42
+    0x020a3868: ldrsh    r2, [r1, #0x44] field=0x44
+    0x020a38c4: ldrsh    r5, [r1, #0x48] field=0x48
+    0x020a38e4: ldrsh    r2, [r1, #0x48] field=0x48
+  context:
+    0x020a387c: orr      r1, r3, r1
+    0x020a3880: str      r1, [r0]
+    0x020a3884: ldr      r1, [r7, #4]
+    0x020a3888: ldr      r0, [r7, #8]
+    0x020a388c: and      r1, r1, #0x800000
+    0x020a3890: and      r0, r0, #0
+    0x020a3894: cmp      r0, #0
+    0x020a3898: cmpeq    r1, #0
+    0x020a389c: mov      r2, #0
+    0x020a38a0: beq      #0x20a3900
+    0x020a38a4: ldr      r0, [r7, #0x14]
+    0x020a38a8: add      r1, r7, #0x800
+    0x020a38ac: tst      r0, #4
+    0x020a38b0: beq      #0x20a38dc
+    0x020a38b4: ldrsh    r3, [r1, #0x46] ; CANDIDATE
+    0x020a38b8: add      r4, r7, #0x118
+    0x020a38bc: ldr      r0, [pc, #0x470]
+    0x020a38c0: str      r3, [sp]
+    0x020a38c4: ldrsh    r5, [r1, #0x48]
+    0x020a38c8: mov      r3, r2
+    0x020a38cc: add      r1, r4, #0x1000
+    0x020a38d0: str      r5, [sp, #4]
+    0x020a38d4: bl       #0x2135dec
+    0x020a38d8: b        #0x20a3900
+    0x020a38dc: ldr      r0, [pc, #0x42c]
+    0x020a38e0: ldrsh    r3, [r1, #0x46]
+    0x020a38e4: ldrsh    r2, [r1, #0x48]
+    0x020a38e8: lsl      r1, r0, #0x10
+    0x020a38ec: and      r3, r3, r0
+    0x020a38f0: and      r1, r1, r2, lsl #16
+    0x020a38f4: ldr      r0, [pc, #0x43c]
+    0x020a38f8: orr      r1, r3, r1
+    0x020a38fc: str      r1, [r0]
+    0x020a3900: ldr      r1, [r7, #4]
+    0x020a3904: ldr      r0, [r7, #8]
+
+CANDIDATE 0x020a38e0: ldrsh r3, [r1, #0x46] base=r1 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x020a38c4: ldrsh    r5, [r1, #0x48] field=0x48
+    0x020a38e4: ldrsh    r2, [r1, #0x48] field=0x48
+  context:
+    0x020a38a8: add      r1, r7, #0x800
+    0x020a38ac: tst      r0, #4
+    0x020a38b0: beq      #0x20a38dc
+    0x020a38b4: ldrsh    r3, [r1, #0x46]
+    0x020a38b8: add      r4, r7, #0x118
+    0x020a38bc: ldr      r0, [pc, #0x470]
+    0x020a38c0: str      r3, [sp]
+    0x020a38c4: ldrsh    r5, [r1, #0x48]
+    0x020a38c8: mov      r3, r2
+    0x020a38cc: add      r1, r4, #0x1000
+    0x020a38d0: str      r5, [sp, #4]
+    0x020a38d4: bl       #0x2135dec
+    0x020a38d8: b        #0x20a3900
+    0x020a38dc: ldr      r0, [pc, #0x42c]
+    0x020a38e0: ldrsh    r3, [r1, #0x46] ; CANDIDATE
+    0x020a38e4: ldrsh    r2, [r1, #0x48]
+    0x020a38e8: lsl      r1, r0, #0x10
+    0x020a38ec: and      r3, r3, r0
+    0x020a38f0: and      r1, r1, r2, lsl #16
+    0x020a38f4: ldr      r0, [pc, #0x43c]
+    0x020a38f8: orr      r1, r3, r1
+    0x020a38fc: str      r1, [r0]
+    0x020a3900: ldr      r1, [r7, #4]
+    0x020a3904: ldr      r0, [r7, #8]
+    0x020a3908: and      r1, r1, #0x1000000
+    0x020a390c: and      r0, r0, #0
+    0x020a3910: cmp      r0, #0
+    0x020a3914: cmpeq    r1, #0
+    0x020a3918: mov      r2, #0
+    0x020a391c: beq      #0x20a397c
+    0x020a3920: ldr      r0, [r7, #0x14]
+    0x020a3924: add      r1, r7, #0x800
+    0x020a3928: tst      r0, #8
+    0x020a392c: beq      #0x20a3958
+    0x020a3930: ldrsh    r3, [r1, #0x4a]
+
+CANDIDATE 0x020a9bc0: ldrsh r6, [r3, #0x44] base=r3 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x020a9bb8: ldrsh    r4, [r3, #0x40] field=0x40
+    0x020a9bbc: ldrsh    r5, [r3, #0x42] field=0x42
+    0x020a9bc0: ldrsh    r6, [r3, #0x44] field=0x44
+    0x020a9bc8: ldrsh    r8, [r3, #0x48] field=0x48
+  context:
+    0x020a9b88: str      r1, [r0, #8]
+    0x020a9b8c: ldr      sl, [sb, #0x120]
+    0x020a9b90: mvn      r1, #0
+    0x020a9b94: mov      r0, sl
+    0x020a9b98: bl       #0x205195c
+    0x020a9b9c: ldr      r3, [sb, #0x124]
+    0x020a9ba0: ldr      r0, [pc, #0x7f4]
+    0x020a9ba4: ldrsb    r2, [r3]
+    0x020a9ba8: ldr      r1, [pc, #0x7f0]
+    0x020a9bac: ldr      r0, [r0]
+    0x020a9bb0: ldr      r2, [r1, r2, lsl #2]
+    0x020a9bb4: ldr      r1, [pc, #0x7e8]
+    0x020a9bb8: ldrsh    r4, [r3, #0x40]
+    0x020a9bbc: ldrsh    r5, [r3, #0x42]
+    0x020a9bc0: ldrsh    r6, [r3, #0x44] ; CANDIDATE
+    0x020a9bc4: ldrsh    r7, [r3, #0x46]
+    0x020a9bc8: ldrsh    r8, [r3, #0x48]
+    0x020a9bcc: bl       #0x2023a5c
+    0x020a9bd0: ldr      r1, [pc, #0x7d0]
+    0x020a9bd4: mov      r0, #6
+    0x020a9bd8: str      r1, [sp]
+    0x020a9bdc: str      r0, [sp, #4]
+    0x020a9be0: mov      r0, #0x25
+    0x020a9be4: str      r0, [sp, #8]
+    0x020a9be8: mov      r0, #0
+    0x020a9bec: str      r0, [sp, #0xc]
+    0x020a9bf0: str      r0, [sp, #0x10]
+    0x020a9bf4: ldr      r2, [pc, #0x7b0]
+    0x020a9bf8: ldr      r0, [pc, #0x7b0]
+    0x020a9bfc: ldr      r2, [r2]
+    0x020a9c00: ldr      r0, [r0]
+    0x020a9c04: add      r2, r2, r2, lsr #31
+    0x020a9c08: mov      r1, #1
+    0x020a9c0c: mov      r3, #9
+    0x020a9c10: asr      r2, r2, #1
+
+CANDIDATE 0x020a9bc4: ldrsh r7, [r3, #0x46] base=r3 disp=0x46 width=2 hits=(70, 71)
+  same-base known-field accesses:
+    0x020a9bb8: ldrsh    r4, [r3, #0x40] field=0x40
+    0x020a9bbc: ldrsh    r5, [r3, #0x42] field=0x42
+    0x020a9bc0: ldrsh    r6, [r3, #0x44] field=0x44
+    0x020a9bc8: ldrsh    r8, [r3, #0x48] field=0x48
+  context:
+    0x020a9b8c: ldr      sl, [sb, #0x120]
+    0x020a9b90: mvn      r1, #0
+    0x020a9b94: mov      r0, sl
+    0x020a9b98: bl       #0x205195c
+    0x020a9b9c: ldr      r3, [sb, #0x124]
+    0x020a9ba0: ldr      r0, [pc, #0x7f4]
+    0x020a9ba4: ldrsb    r2, [r3]
+    0x020a9ba8: ldr      r1, [pc, #0x7f0]
+    0x020a9bac: ldr      r0, [r0]
+    0x020a9bb0: ldr      r2, [r1, r2, lsl #2]
+    0x020a9bb4: ldr      r1, [pc, #0x7e8]
+    0x020a9bb8: ldrsh    r4, [r3, #0x40]
+    0x020a9bbc: ldrsh    r5, [r3, #0x42]
+    0x020a9bc0: ldrsh    r6, [r3, #0x44]
+    0x020a9bc4: ldrsh    r7, [r3, #0x46] ; CANDIDATE
+    0x020a9bc8: ldrsh    r8, [r3, #0x48]
+    0x020a9bcc: bl       #0x2023a5c
+    0x020a9bd0: ldr      r1, [pc, #0x7d0]
+    0x020a9bd4: mov      r0, #6
+    0x020a9bd8: str      r1, [sp]
+    0x020a9bdc: str      r0, [sp, #4]
+    0x020a9be0: mov      r0, #0x25
+    0x020a9be4: str      r0, [sp, #8]
+    0x020a9be8: mov      r0, #0
+    0x020a9bec: str      r0, [sp, #0xc]
+    0x020a9bf0: str      r0, [sp, #0x10]
+    0x020a9bf4: ldr      r2, [pc, #0x7b0]
+    0x020a9bf8: ldr      r0, [pc, #0x7b0]
+    0x020a9bfc: ldr      r2, [r2]
+    0x020a9c00: ldr      r0, [r0]
+    0x020a9c04: add      r2, r2, r2, lsr #31
+    0x020a9c08: mov      r1, #1
+    0x020a9c0c: mov      r3, #9
+    0x020a9c10: asr      r2, r2, #1
+    0x020a9c14: bl       #0x2002878
+
+CANDIDATE 0x020bef54: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020bef54: ldr      r3, [r3, #0x44] field=0x44
+  context:
+    0x020bef1c: mov      r1, #0
+    0x020bef20: bl       #0x2001e90
+    0x020bef24: ldr      r0, [pc, #0xc4]
+    0x020bef28: bl       #0x2001ae4
+    0x020bef2c: add      r0, sp, #0xc
+    0x020bef30: add      r1, sp, #8
+    0x020bef34: mov      r2, r6
+    0x020bef38: bl       #0x20b4f28
+    0x020bef3c: cmp      r0, #0
+    0x020bef40: beq      #0x20befb0
+    0x020bef44: add      r0, sp, #0x10
+    0x020bef48: ldr      r3, [r0]
+    0x020bef4c: ldr      r1, [sp, #8]
+    0x020bef50: ldr      r2, [sp, #0xc]
+    0x020bef54: ldr      r3, [r3, #0x44] ; CANDIDATE
+    0x020bef58: blx      r3
+    0x020bef5c: mvn      r0, #0
+    0x020bef60: str      r0, [sp]
+    0x020bef64: ldr      r1, [sp, #0x58]
+    0x020bef68: mov      r0, r7
+    0x020bef6c: str      r1, [sp, #4]
+    0x020bef70: ldr      r6, [r0]
+    0x020bef74: add      r1, sp, #0x10
+    0x020bef78: ldr      r6, [r6, #0x68]
+    0x020bef7c: mov      r2, r5
+    0x020bef80: mov      r3, r4
+    0x020bef84: blx      r6
+    0x020bef88: ldr      r1, [pc, #0x64]
+    0x020bef8c: mov      r4, r0
+    0x020bef90: add      r0, sp, #0x10
+    0x020bef94: str      r1, [sp, #0x10]
+    0x020bef98: ldr      r1, [r0]
+    0x020bef9c: ldr      r1, [r1, #0x48]
+    0x020befa0: blx      r1
+    0x020befa4: add      sp, sp, #0x40
+
+CANDIDATE 0x020d279c: ldr r2, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020d279c: ldr      r2, [r3, #0x44] field=0x44
+    0x020d27b0: ldr      r1, [r3, #0x48] field=0x48
+  context:
+    0x020d2764: ldr      r0, [pc, #0x18]
+    0x020d2768: mov      r1, r6
+    0x020d276c: ldr      r0, [r0, #8]
+    0x020d2770: mov      r2, r5
+    0x020d2774: ldr      r0, [r0, #4]
+    0x020d2778: mov      r3, r4
+    0x020d277c: bl       #0x2100f2c
+    0x020d2780: pop      {r4, r5, r6, pc}
+    0x020d2784: andseq   pc, lr, #224, #2
+    0x020d2788: push     {r4, lr}
+    0x020d278c: sub      sp, sp, #0x210
+    0x020d2790: ldr      r1, [pc, #0x74]
+    0x020d2794: mov      r4, r0
+    0x020d2798: ldr      r3, [r1, #8]
+    0x020d279c: ldr      r2, [r3, #0x44] ; CANDIDATE
+    0x020d27a0: cmp      r2, #0
+    0x020d27a4: ldrne    r1, [r3]
+    0x020d27a8: cmpne    r1, #1
+    0x020d27ac: beq      #0x20d27b8
+    0x020d27b0: ldr      r1, [r3, #0x48]
+    0x020d27b4: blx      r2
+    0x020d27b8: ldr      r0, [pc, #0x4c]
+    0x020d27bc: ldr      r1, [r0, #8]
+    0x020d27c0: ldr      r0, [r1, #0x34]
+    0x020d27c4: cmp      r0, #0
+    0x020d27c8: addeq    sp, sp, #0x210
+    0x020d27cc: popeq    {r4, pc}
+    0x020d27d0: ldr      r1, [r1, #0x18]
+    0x020d27d4: mov      r0, #0xc
+    0x020d27d8: mla      r0, r4, r0, r1
+    0x020d27dc: add      r1, sp, #0x108
+    0x020d27e0: bl       #0x20d1fb4
+    0x020d27e4: ldr      r2, [pc, #0x20]
+    0x020d27e8: mov      r1, r0
+    0x020d27ec: ldr      r0, [r2, #8]
+
+CANDIDATE 0x020eed88: ldrbeq r0, [r1, #0x45] base=r1 disp=0x45 width=1 hits=(69,)
+  same-base known-field accesses:
+    0x020eede8: strb     r2, [r1, #0x40] field=0x40
+  context:
+    0x020eed50: popne    {r3, pc}
+    0x020eed54: ldr      r0, [pc, #4]
+    0x020eed58: bl       #0x20e7374
+    0x020eed5c: pop      {r3, pc}
+    0x020eed60: andeq    lr, lr, #100, #26
+    0x020eed64: push     {r3, lr}
+    0x020eed68: bl       #0x20eed74
+    0x020eed6c: bl       #0x20ef29c
+    0x020eed70: pop      {r3, pc}
+    0x020eed74: push     {r3, lr}
+    0x020eed78: ldr      r0, [pc, #0x264]
+    0x020eed7c: ldr      r1, [r0, #8]
+    0x020eed80: ldr      r0, [r1, #0x38]
+    0x020eed84: cmp      r0, #0
+    0x020eed88: ldrbeq   r0, [r1, #0x45] ; CANDIDATE
+    0x020eed8c: cmpeq    r0, #0
+    0x020eed90: popne    {r3, pc}
+    0x020eed94: bl       #0x20eeff4
+    0x020eed98: cmp      r0, #0
+    0x020eed9c: popne    {r3, pc}
+    0x020eeda0: mov      r0, #1
+    0x020eeda4: bl       #0x20fd120
+    0x020eeda8: cmp      r0, #0
+    0x020eedac: beq      #0x20eedc0
+    0x020eedb0: ldr      r0, [pc, #0x22c]
+    0x020eedb4: ldrb     r0, [r0]
+    0x020eedb8: bl       #0x20ef078
+    0x020eedbc: pop      {r3, pc}
+    0x020eedc0: mov      r0, #2
+    0x020eedc4: bl       #0x20fd120
+    0x020eedc8: cmp      r0, #0
+    0x020eedcc: beq      #0x20eedf4
+    0x020eedd0: mov      r0, #7
+    0x020eedd4: bl       #0x20f6644
+    0x020eedd8: ldr      r1, [pc, #0x204]
+
+CANDIDATE 0x020f95d8: ldr r0, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020f95d8: ldr      r0, [r1, #0x44] field=0x44
+    0x020f95e4: ldr      r0, [r1, #0x40] field=0x40
+  context:
+    0x020f95a0: mov      r0, #9
+    0x020f95a4: bl       #0x20f9134
+    0x020f95a8: pop      {r3, pc}
+    0x020f95ac: ldrh     r2, [r0, #4]
+    0x020f95b0: sub      r0, r2, #0xa
+    0x020f95b4: cmp      r0, #3
+    0x020f95b8: addls    pc, pc, r0, lsl #2
+    0x020f95bc: b        #0x20f9688
+    0x020f95c0: b        #0x20f95d0
+    0x020f95c4: pop      {r3, pc}
+    0x020f95c8: b        #0x20f9688
+    0x020f95cc: b        #0x20f9688
+    0x020f95d0: ldr      r0, [pc, #0xd0]
+    0x020f95d4: ldr      r1, [r0, #4]
+    0x020f95d8: ldr      r0, [r1, #0x44] ; CANDIDATE
+    0x020f95dc: cmp      r0, #2
+    0x020f95e0: bne      #0x20f9630
+    0x020f95e4: ldr      r0, [r1, #0x40]
+    0x020f95e8: cmp      r0, #4
+    0x020f95ec: bne      #0x20f9624
+    0x020f95f0: bl       #0x20f96b4
+    0x020f95f4: cmp      r0, #0
+    0x020f95f8: popne    {r3, pc}
+    0x020f95fc: ldr      r0, [pc, #0xa4]
+    0x020f9600: ldr      r2, [r0]
+    0x020f9604: cmp      r2, #0
+    0x020f9608: beq      #0x20f9618
+    0x020f960c: ldr      r1, [pc, #0x98]
+    0x020f9610: mov      r0, #0x8000000
+    0x020f9614: blx      r2
+    0x020f9618: mov      r0, #9
+    0x020f961c: bl       #0x20f9134
+    0x020f9620: pop      {r3, pc}
+    0x020f9624: cmp      r0, #6
+    0x020f9628: bne      #0x20f967c
+
+CANDIDATE 0x020fa1c4: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x020fa194: ldr      r0, [r0, #0x40] field=0x40
+    0x020fa1c4: ldr      r0, [r0, #0x44] field=0x44
+  context:
+    0x020fa18c: ldr      r0, [pc, #0xa8]
+    0x020fa190: ldr      r0, [r0, #4]
+    0x020fa194: ldr      r0, [r0, #0x40]
+    0x020fa198: cmp      r0, #6
+    0x020fa19c: cmpne    r0, #5
+    0x020fa1a0: cmpne    r0, #4
+    0x020fa1a4: mov      r0, #3
+    0x020fa1a8: beq      #0x20fa1b8
+    0x020fa1ac: bl       #0x20f9134
+    0x020fa1b0: bl       #0x20fa124
+    0x020fa1b4: pop      {r3, pc}
+    0x020fa1b8: bl       #0x20f9134
+    0x020fa1bc: ldr      r0, [pc, #0x78]
+    0x020fa1c0: ldr      r0, [r0, #4]
+    0x020fa1c4: ldr      r0, [r0, #0x44] ; CANDIDATE
+    0x020fa1c8: cmp      r0, #5
+    0x020fa1cc: addls    pc, pc, r0, lsl #2
+    0x020fa1d0: pop      {r3, pc}
+    0x020fa1d4: b        #0x20fa228
+    0x020fa1d8: b        #0x20fa200
+    0x020fa1dc: b        #0x20fa214
+    0x020fa1e0: b        #0x20fa1ec
+    0x020fa1e4: b        #0x20fa228
+    0x020fa1e8: b        #0x20fa200
+    0x020fa1ec: bl       #0x20f97f0
+    0x020fa1f0: cmp      r0, #0
+    0x020fa1f4: popne    {r3, pc}
+    0x020fa1f8: bl       #0x20fa124
+    0x020fa1fc: pop      {r3, pc}
+    0x020fa200: bl       #0x20f9840
+    0x020fa204: cmp      r0, #0
+    0x020fa208: popne    {r3, pc}
+    0x020fa20c: bl       #0x20fa124
+    0x020fa210: pop      {r3, pc}
+    0x020fa214: bl       #0x20f96f0
+
+CANDIDATE 0x020fb0e4: ldrh r0, [r0, #0x44] base=r0 disp=0x44 width=2 hits=(69,)
+  same-base known-field accesses:
+    0x020fb0e4: ldrh     r0, [r0, #0x44] field=0x44
+  context:
+    0x020fb0ac: strb     r0, [r3, #0xa93]
+    0x020fb0b0: ldr      r3, [r4]
+    0x020fb0b4: add      r3, r3, #0x200
+    0x020fb0b8: strh     r5, [r3]
+    0x020fb0bc: ldr      r3, [r4]
+    0x020fb0c0: str      r5, [r3, #0xa94]
+    0x020fb0c4: add      ip, ip, #1
+    0x020fb0c8: cmp      ip, #0x10
+    0x020fb0cc: blt      #0x20fb014
+    0x020fb0d0: pop      {r4, r5, r6, r7, r8, pc}
+    0x020fb0d4: andseq   r1, pc, #136, #30
+    0x020fb0d8: ldr      r0, [pc, #0xc]
+    0x020fb0dc: ldr      r0, [r0]
+    0x020fb0e0: add      r0, r0, #0x100
+    0x020fb0e4: ldrh     r0, [r0, #0x44] ; CANDIDATE
+    0x020fb0e8: bx       lr
+    0x020fb0ec: andseq   r1, pc, #136, #30
+    0x020fb0f0: push     {r4, lr}
+    0x020fb0f4: sub      sp, sp, #0xe8
+    0x020fb0f8: mov      r0, #0xe8
+    0x020fb0fc: mov      r1, #4
+    0x020fb100: bl       #0x20fcd18
+    0x020fb104: ldr      r1, [pc, #0x174]
+    0x020fb108: str      r0, [r1]
+    0x020fb10c: add      r0, sp, #0xa0
+    0x020fb110: bl       #0x213db88
+    0x020fb114: ldr      r1, [pc, #0x168]
+    0x020fb118: add      r0, sp, #0xa0
+    0x020fb11c: bl       #0x213dee4
+    0x020fb120: cmp      r0, #0
+    0x020fb124: bne      #0x20fb12c
+    0x020fb128: bl       #0x213a284
+    0x020fb12c: bl       #0x2137ba4
+    0x020fb130: ldr      r2, [pc, #0x148]
+    0x020fb134: add      r1, sp, #0x18
+
+CANDIDATE 0x0210d804: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0210d804: ldr      r0, [r4, #0x44] field=0x44
+    0x0210d814: ldr      r0, [r4, #0x50] field=0x50
+  context:
+    0x0210d7cc: ldr      r0, [sp, #8]
+    0x0210d7d0: add      r1, sp, #8
+    0x0210d7d4: ldr      r0, [r0, #8]
+    0x0210d7d8: ldr      r0, [r0, #0x10]
+    0x0210d7dc: bl       #0x20ff130
+    0x0210d7e0: pop      {r3, lr}
+    0x0210d7e4: add      sp, sp, #0x10
+    0x0210d7e8: bx       lr
+    0x0210d7ec: push     {r4, lr}
+    0x0210d7f0: mov      r4, r0
+    0x0210d7f4: ldr      r0, [r4, #0x38]
+    0x0210d7f8: cmp      r0, #0
+    0x0210d7fc: beq      #0x210d804
+    0x0210d800: bl       #0x20cf1e4
+    0x0210d804: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0210d808: cmp      r0, #0
+    0x0210d80c: beq      #0x210d814
+    0x0210d810: bl       #0x20cf1e4
+    0x0210d814: ldr      r0, [r4, #0x50]
+    0x0210d818: cmp      r0, #0
+    0x0210d81c: beq      #0x210d824
+    0x0210d820: bl       #0x20cf1e4
+    0x0210d824: ldr      r0, [r4, #0x5c]
+    0x0210d828: cmp      r0, #0
+    0x0210d82c: beq      #0x210d834
+    0x0210d830: bl       #0x20ff054
+    0x0210d834: ldr      r0, [r4, #0x60]
+    0x0210d838: cmp      r0, #0
+    0x0210d83c: beq      #0x210d844
+    0x0210d840: bl       #0x20ff054
+    0x0210d844: ldr      r0, [r4, #0x98]
+    0x0210d848: cmp      r0, #0
+    0x0210d84c: beq      #0x210d854
+    0x0210d850: bl       #0x20ff054
+    0x0210d854: ldr      r0, [r4, #0x9c]
+
+CANDIDATE 0x0210e644: ldr ip, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0210e644: ldr      ip, [r6, #0x44] field=0x44
+  context:
+    0x0210e60c: push     {r4, r5, r6, lr}
+    0x0210e610: mov      r6, r0
+    0x0210e614: ldr      r0, [r6, #0x5c]
+    0x0210e618: bl       #0x20ff0c0
+    0x0210e61c: subs     r5, r0, #1
+    0x0210e620: bmi      #0x210e684
+    0x0210e624: ldr      r0, [r6, #0x5c]
+    0x0210e628: mov      r1, r5
+    0x0210e62c: bl       #0x20ff0c8
+    0x0210e630: mov      r4, r0
+    0x0210e634: ldrh     r1, [r4, #0xc]
+    0x0210e638: ldrh     r0, [r6, #0x66]
+    0x0210e63c: cmp      r1, r0
+    0x0210e640: bne      #0x210e67c
+    0x0210e644: ldr      ip, [r6, #0x44] ; CANDIDATE
+    0x0210e648: ldr      r1, [r4, #8]
+    0x0210e64c: ldm      r4, {r2, r3}
+    0x0210e650: mov      r0, r6
+    0x0210e654: add      r2, ip, r2
+    0x0210e658: bl       #0x210e2c0
+    0x0210e65c: cmp      r0, #0
+    0x0210e660: moveq    r0, #0
+    0x0210e664: popeq    {r4, r5, r6, pc}
+    0x0210e668: mov      r0, r6
+    0x0210e66c: mov      r1, r4
+    0x0210e670: mov      r2, r5
+    0x0210e674: bl       #0x210e588
+    0x0210e678: b        #0x210e614
+    0x0210e67c: subs     r5, r5, #1
+    0x0210e680: bpl      #0x210e624
+    0x0210e684: mov      r0, #1
+    0x0210e688: pop      {r4, r5, r6, pc}
+    0x0210e68c: push     {r4, lr}
+    0x0210e690: mov      r4, r0
+    0x0210e694: ldr      r0, [r4, #0x90]
+
+CANDIDATE 0x0210fc14: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0210fc14: ldr      r0, [r0, #0x44] field=0x44
+    0x0210fc20: ldr      r0, [r0, #0x50] field=0x50
+  context:
+    0x0210fbdc: ldr      r0, [r7, #0xc]
+    0x0210fbe0: add      r1, sp, #0
+    0x0210fbe4: bl       #0x20ff8e4
+    0x0210fbe8: mov      r0, r7
+    0x0210fbec: mov      r1, r5
+    0x0210fbf0: mov      r2, r4
+    0x0210fbf4: bl       #0x210f7c4
+    0x0210fbf8: str      r0, [r6]
+    0x0210fbfc: cmp      r0, #0
+    0x0210fc00: movne    r0, #0
+    0x0210fc04: popne    {r3, r4, r5, r6, r7, pc}
+    0x0210fc08: ldr      r0, [sp]
+    0x0210fc0c: cmp      r0, #0
+    0x0210fc10: beq      #0x210fc80
+    0x0210fc14: ldr      r0, [r0, #0x44] ; CANDIDATE
+    0x0210fc18: bl       #0x20cf1e4
+    0x0210fc1c: ldr      r0, [sp]
+    0x0210fc20: ldr      r0, [r0, #0x50]
+    0x0210fc24: bl       #0x20cf1e4
+    0x0210fc28: ldr      r0, [sp]
+    0x0210fc2c: ldr      r0, [r0, #0x5c]
+    0x0210fc30: cmp      r0, #0
+    0x0210fc34: beq      #0x210fc3c
+    0x0210fc38: bl       #0x20ff054
+    0x0210fc3c: ldr      r0, [sp]
+    0x0210fc40: ldr      r0, [r0, #0x60]
+    0x0210fc44: cmp      r0, #0
+    0x0210fc48: beq      #0x210fc50
+    0x0210fc4c: bl       #0x20ff054
+    0x0210fc50: ldr      r0, [sp]
+    0x0210fc54: ldr      r0, [r0, #0x98]
+    0x0210fc58: cmp      r0, #0
+    0x0210fc5c: beq      #0x210fc64
+    0x0210fc60: bl       #0x20ff054
+    0x0210fc64: ldr      r0, [sp]
+
+CANDIDATE 0x021130e0: ldr r4, [sl, #0x44] base=sl disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02113070: ldr      r0, [sl, #0x40] field=0x40
+    0x021130dc: ldr      r3, [sl, #0x48] field=0x48
+    0x021130e0: ldr      r4, [sl, #0x44] field=0x44
+  context:
+    0x021130a8: ldrb     r0, [sb, #0x14]
+    0x021130ac: orr      r0, r0, #0x43
+    0x021130b0: strb     r0, [sb, #0x14]
+    0x021130b4: ldrb     r0, [sb, #0x14]
+    0x021130b8: and      r0, r0, #0xf3
+    0x021130bc: strb     r0, [sb, #0x14]
+    0x021130c0: bl       #0x20ffc40
+    0x021130c4: ldr      r2, [sb, #0x1c]
+    0x021130c8: mov      r1, sb
+    0x021130cc: sub      r0, r0, r2
+    0x021130d0: str      r0, [sb, #0x1c]
+    0x021130d4: add      r0, sl, #8
+    0x021130d8: bl       #0x2112c5c
+    0x021130dc: ldr      r3, [sl, #0x48]
+    0x021130e0: ldr      r4, [sl, #0x44] ; CANDIDATE
+    0x021130e4: mov      r0, sl
+    0x021130e8: mov      r2, sb
+    0x021130ec: mov      r1, #0
+    0x021130f0: blx      r4
+    0x021130f4: pop      {r4, r5, r6, r7, r8, sb, sl, pc}
+    0x021130f8: andseq   pc, r8, #0x24
+    0x021130fc: push     {r3, r4, r5, r6, r7, lr}
+    0x02113100: mov      r4, r1
+    0x02113104: mov      r7, r2
+    0x02113108: mov      r5, r0
+    0x0211310c: ldr      r1, [pc, #0x7c]
+    0x02113110: mov      r0, r7
+    0x02113114: bl       #0x2150994
+    0x02113118: cmp      r0, #0
+    0x0211311c: movne    r6, #1
+    0x02113120: moveq    r6, #0
+    0x02113124: mov      r0, r4
+    0x02113128: mov      r1, r7
+    0x0211312c: bl       #0x211389c
+    0x02113130: cmp      r6, #0
+
+CANDIDATE 0x02113178: ldr ip, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02113174: ldr      r3, [r5, #0x48] field=0x48
+    0x02113178: ldr      ip, [r5, #0x44] field=0x44
+  context:
+    0x02113140: orrne    r0, r0, #0x41
+    0x02113144: orreq    r0, r0, #0x42
+    0x02113148: strb     r0, [r4, #0x14]
+    0x0211314c: ldrb     r0, [r4, #0x14]
+    0x02113150: and      r0, r0, #0xf3
+    0x02113154: strb     r0, [r4, #0x14]
+    0x02113158: bl       #0x20ffc40
+    0x0211315c: ldr      r2, [r4, #0x1c]
+    0x02113160: mov      r1, r4
+    0x02113164: sub      r0, r0, r2
+    0x02113168: str      r0, [r4, #0x1c]
+    0x0211316c: add      r0, r5, #8
+    0x02113170: bl       #0x2112c5c
+    0x02113174: ldr      r3, [r5, #0x48]
+    0x02113178: ldr      ip, [r5, #0x44] ; CANDIDATE
+    0x0211317c: mov      r0, r5
+    0x02113180: mov      r2, r4
+    0x02113184: mov      r1, #0
+    0x02113188: blx      ip
+    0x0211318c: pop      {r3, r4, r5, r6, r7, pc}
+    0x02113190: andseq   pc, r8, #56, #8
+    0x02113194: mov      r0, #1
+    0x02113198: bx       lr
+    0x0211319c: push     {r4, r5, r6, r7, r8, sb, lr}
+    0x021131a0: sub      sp, sp, #0x14
+    0x021131a4: sub      sp, sp, #0x800
+    0x021131a8: movs     r8, r1
+    0x021131ac: mov      r1, #8
+    0x021131b0: mov      sb, r0
+    0x021131b4: str      r1, [sp, #8]
+    0x021131b8: ldrne    r7, [sb, #0x24]
+    0x021131bc: ldreq    r7, [sb, #0x20]
+    0x021131c0: mov      r0, r7
+    0x021131c4: bl       #0x20fff6c
+    0x021131c8: cmp      r0, #0
+
+CANDIDATE 0x0211339c: ldr ip, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02113398: ldr      r3, [r6, #0x48] field=0x48
+    0x0211339c: ldr      ip, [r6, #0x44] field=0x44
+  context:
+    0x02113364: popls    {r3, r4, r5, r6, r7, pc}
+    0x02113368: ldrb     r2, [r3, #0x15]
+    0x0211336c: mov      r0, r6
+    0x02113370: mov      r1, r7
+    0x02113374: orr      r2, r2, #0x10
+    0x02113378: strb     r2, [r3, #0x15]
+    0x0211337c: ldr      r2, [r6, #8]
+    0x02113380: str      r4, [r2, #0x1c]
+    0x02113384: ldr      r3, [r6, #8]
+    0x02113388: ldrb     r2, [r3, #0x15]
+    0x0211338c: and      r2, r2, #0xd3
+    0x02113390: strb     r2, [r3, #0x15]
+    0x02113394: ldr      r2, [r6, #8]
+    0x02113398: ldr      r3, [r6, #0x48]
+    0x0211339c: ldr      ip, [r6, #0x44] ; CANDIDATE
+    0x021133a0: blx      ip
+    0x021133a4: add      r0, r6, #8
+    0x021133a8: bl       #0x2112c28
+    0x021133ac: ldr      r3, [r6, #8]
+    0x021133b0: cmp      r3, #0
+    0x021133b4: bne      #0x2113354
+    0x021133b8: pop      {r3, r4, r5, r6, r7, pc}
+    0x021133bc: andeq    r0, r0, r4, asr #19
+    0x021133c0: push     {r4, lr}
+    0x021133c4: mov      r4, r0
+    0x021133c8: b        #0x21133e0
+    0x021133cc: add      r0, r4, #0x14
+    0x021133d0: bl       #0x2112c28
+    0x021133d4: mov      r1, r0
+    0x021133d8: mov      r0, r4
+    0x021133dc: bl       #0x2112cdc
+    0x021133e0: ldr      r1, [r4, #0x10]
+    0x021133e4: ldr      r0, [r4, #4]
+    0x021133e8: cmp      r1, r0
+    0x021133ec: popge    {r4, pc}
+
+CANDIDATE 0x02113448: ldr ip, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02113444: ldr      r3, [r4, #0x48] field=0x48
+    0x02113448: ldr      ip, [r4, #0x44] field=0x44
+  context:
+    0x02113410: popeq    {r4, pc}
+    0x02113414: mov      r1, #0
+    0x02113418: bl       #0x211319c
+    0x0211341c: mov      r0, r4
+    0x02113420: bl       #0x2113330
+    0x02113424: ldr      r0, [r4, #0x1c]
+    0x02113428: cmp      r0, #0
+    0x0211342c: ble      #0x2113438
+    0x02113430: mov      r0, r4
+    0x02113434: bl       #0x21133c0
+    0x02113438: ldr      r0, [r4, #0x10]
+    0x0211343c: cmp      r0, #0
+    0x02113440: popne    {r4, pc}
+    0x02113444: ldr      r3, [r4, #0x48]
+    0x02113448: ldr      ip, [r4, #0x44] ; CANDIDATE
+    0x0211344c: mov      r0, r4
+    0x02113450: mov      r1, #2
+    0x02113454: mov      r2, #0
+    0x02113458: blx      ip
+    0x0211345c: pop      {r4, pc}
+    0x02113460: ldr      r3, [r0, #0x40]
+    0x02113464: cmp      r3, #0x14
+    0x02113468: bxge     lr
+    0x0211346c: add      r2, r3, #1
+    0x02113470: str      r2, [r0, #0x40]
+    0x02113474: add      r0, r0, r3
+    0x02113478: strb     r1, [r0, #0x2c]
+    0x0211347c: bx       lr
+    0x02113480: push     {r3, r4, r5, lr}
+    0x02113484: mov      r5, r0
+    0x02113488: add      r0, r5, #8
+    0x0211348c: mov      r4, r1
+    0x02113490: bl       #0x2112c5c
+    0x02113494: cmp      r0, #0
+    0x02113498: popne    {r3, r4, r5, pc}
+
+CANDIDATE 0x02117a34: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02117a34: ldr      r0, [r4, #0x44] field=0x44
+    0x02117a8c: ldr      r0, [r4, #0x40] field=0x40
+  context:
+    0x021179fc: str      r0, [r1]
+    0x02117a00: ldrh     r0, [sb, #0x74]
+    0x02117a04: cmp      r0, #0
+    0x02117a08: ldrheq   r0, [sp, #6]
+    0x02117a0c: strheq   r0, [sb, #0x74]
+    0x02117a10: mov      r0, r4
+    0x02117a14: bl       #0x2139f44
+    0x02117a18: mov      r0, r5
+    0x02117a1c: add      sp, sp, #0x10
+    0x02117a20: pop      {r3, r4, r5, r6, r7, r8, sb, pc}
+    0x02117a24: push     {r3, r4, r5, lr}
+    0x02117a28: ldr      r0, [r0, #0x64]
+    0x02117a2c: ldr      r4, [r0, #0xc4]
+    0x02117a30: ldr      r5, [r0, #0xf8]
+    0x02117a34: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x02117a38: subs     lr, r0, r5
+    0x02117a3c: bmi      #0x2117a7c
+    0x02117a40: ldrh     ip, [r4, #0xa]
+    0x02117a44: ldr      r0, [sp, #0x10]
+    0x02117a48: cmp      lr, #0
+    0x02117a4c: strh     ip, [r2]
+    0x02117a50: ldrh     r2, [r4, #0x18]
+    0x02117a54: strh     r2, [r3]
+    0x02117a58: ldr      r2, [r4, #0x1c]
+    0x02117a5c: str      r2, [r0]
+    0x02117a60: str      lr, [r1]
+    0x02117a64: bne      #0x2117a8c
+    0x02117a68: ldrb     r0, [r4, #8]
+    0x02117a6c: cmp      r0, #4
+    0x02117a70: beq      #0x2117a8c
+    0x02117a74: mov      r0, #0
+    0x02117a78: pop      {r3, r4, r5, pc}
+    0x02117a7c: mvn      r0, #0
+    0x02117a80: str      r0, [r1]
+    0x02117a84: mov      r0, #0
+
+CANDIDATE 0x02118e7c: ldreq r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02118e7c: ldreq    r1, [r0, #0x44] field=0x44
+  context:
+    0x02118e44: pop      {r4, r5, r6, pc}
+    0x02118e48: ldr      r2, [r0, #0x64]
+    0x02118e4c: mov      r3, #0
+    0x02118e50: cmp      r2, #0
+    0x02118e54: beq      #0x2118e88
+    0x02118e58: ldrsb    r1, [r0, #0x73]
+    0x02118e5c: cmp      r1, #1
+    0x02118e60: bne      #0x2118e74
+    0x02118e64: ldr      r0, [r2, #0x104]
+    0x02118e68: cmp      r0, #0
+    0x02118e6c: ldrhne   r3, [r0, #4]
+    0x02118e70: b        #0x2118e88
+    0x02118e74: cmp      r1, #0
+    0x02118e78: cmpne    r1, #4
+    0x02118e7c: ldreq    r1, [r0, #0x44] ; CANDIDATE
+    0x02118e80: ldreq    r0, [r2, #0xf8]
+    0x02118e84: subeq    r3, r1, r0
+    0x02118e88: mov      r0, r3
+    0x02118e8c: bx       lr
+    0x02118e90: add      r0, r0, #3
+    0x02118e94: bic      r0, r0, #3
+    0x02118e98: bx       lr
+    0x02118e9c: ldr      ip, [pc, #8]
+    0x02118ea0: mov      r1, r0
+    0x02118ea4: ldr      r0, [pc, #4]
+    0x02118ea8: bx       ip
+    0x02118eac: andseq   r8, r1, #180, #28
+    0x02118eb0: andseq   r2, pc, #136, #18
+    0x02118eb4: ldr      r2, [r0]
+    0x02118eb8: str      r2, [r1, #0x7c]
+    0x02118ebc: str      r1, [r0]
+    0x02118ec0: bx       lr
+    0x02118ec4: ldr      ip, [pc, #8]
+    0x02118ec8: mov      r1, r0
+    0x02118ecc: ldr      r0, [pc, #4]
+
+CANDIDATE 0x02119be4: ldreq r0, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02119be4: ldreq    r0, [r1, #0x44] field=0x44
+    0x02119bf8: str      r2, [r1, #0x44] field=0x44
+  context:
+    0x02119bac: andseq   pc, r8, #48, #12
+    0x02119bb0: andseq   ip, r1, #252, #12
+    0x02119bb4: andseq   r2, pc, #132, #26
+    0x02119bb8: andseq   r4, pc, #96, #6
+    0x02119bbc: andseq   r2, pc, #196, #24
+    0x02119bc0: andseq   sp, r1, #40, #8
+    0x02119bc4: andseq   r3, pc, #96, #22
+    0x02119bc8: push     {r3, r4, r5, lr}
+    0x02119bcc: bl       #0x2139f30
+    0x02119bd0: mov      r4, r0
+    0x02119bd4: ldr      r0, [pc, #0x34]
+    0x02119bd8: bl       #0x213846c
+    0x02119bdc: movs     r5, r0
+    0x02119be0: ldreq    r1, [pc, #0x2c]
+    0x02119be4: ldreq    r0, [r1, #0x44] ; CANDIDATE
+    0x02119be8: cmpeq    r0, #0
+    0x02119bec: bne      #0x2119c00
+    0x02119bf0: ldr      r0, [pc, #0x18]
+    0x02119bf4: mov      r2, #1
+    0x02119bf8: str      r2, [r1, #0x44]
+    0x02119bfc: bl       #0x213857c
+    0x02119c00: mov      r0, r4
+    0x02119c04: bl       #0x2139f44
+    0x02119c08: mov      r0, r5
+    0x02119c0c: pop      {r3, r4, r5, pc}
+    0x02119c10: andseq   r2, pc, #196, #24
+    0x02119c14: andseq   r2, pc, #28, #22
+    0x02119c18: ldr      r1, [pc, #4]
+    0x02119c1c: str      r0, [r1, #0x3c]
+    0x02119c20: bx       lr
+    0x02119c24: andseq   r2, pc, #28, #22
+    0x02119c28: push     {r3, lr}
+    0x02119c2c: bl       #0x2119bc8
+    0x02119c30: ldr      r0, [pc, #0x2c]
+    0x02119c34: bl       #0x213843c
+
+CANDIDATE 0x0211adc0: ldr r1, [r7, #0x44] base=r7 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211adc0: ldr      r1, [r7, #0x44] field=0x44
+  context:
+    0x0211ad88: lsl      r1, r1, #0x10
+    0x0211ad8c: lsr      ip, r1, #0x10
+    0x0211ad90: lsl      r1, ip, #8
+    0x0211ad94: orr      r1, r1, ip, asr #8
+    0x0211ad98: strh     r1, [r4, #8]
+    0x0211ad9c: ldr      r1, [r7, #0x24]
+    0x0211ada0: lsl      r1, r1, #0x10
+    0x0211ada4: lsr      ip, r1, #0x10
+    0x0211ada8: lsl      r1, ip, #8
+    0x0211adac: orr      r1, r1, ip, asr #8
+    0x0211adb0: strh     r1, [r4, #0xa]
+    0x0211adb4: strb     r3, [r4, #0xc]
+    0x0211adb8: strb     r6, [r4, #0xd]
+    0x0211adbc: ldr      r3, [r7, #0x3c]
+    0x0211adc0: ldr      r1, [r7, #0x44] ; CANDIDATE
+    0x0211adc4: sub      r1, r3, r1
+    0x0211adc8: lsl      r1, r1, #0x10
+    0x0211adcc: lsr      r3, r1, #0x10
+    0x0211add0: lsl      r1, r3, #8
+    0x0211add4: orr      r1, r1, r3, asr #8
+    0x0211add8: strh     r1, [r4, #0xe]
+    0x0211addc: mov      r1, #0
+    0x0211ade0: strh     r1, [r4, #0x10]
+    0x0211ade4: strh     r1, [r4, #0x12]
+    0x0211ade8: beq      #0x211ae28
+    0x0211adec: ldrh     r1, [r0, #2]
+    0x0211adf0: add      r1, r1, #0x2040000
+    0x0211adf4: lsr      r1, r1, #0x10
+    0x0211adf8: lsl      r1, r1, #0x10
+    0x0211adfc: lsr      r2, r1, #0x10
+    0x0211ae00: lsl      r1, r2, #8
+    0x0211ae04: orr      r1, r1, r2, asr #8
+    0x0211ae08: strh     r1, [r4, #0x14]
+    0x0211ae0c: ldrh     r0, [r0, #2]
+    0x0211ae10: add      r0, r0, #0x2040000
+
+CANDIDATE 0x0211b1e4: ldreq r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211b1e4: ldreq    r0, [r4, #0x44] field=0x44
+    0x0211b234: strhi    r1, [r4, #0x44] field=0x44
+    0x0211b238: strls    r0, [r4, #0x44] field=0x44
+    0x0211b23c: ldr      r1, [r4, #0x40] field=0x40
+    0x0211b240: ldr      r2, [r4, #0x44] field=0x44
+  context:
+    0x0211b1ac: beq      #0x211b278
+    0x0211b1b0: ldr      r4, [r1, #0xa4]
+    0x0211b1b4: cmp      r4, #0
+    0x0211b1b8: ldrne    r3, [r4]
+    0x0211b1bc: cmpne    r3, #0
+    0x0211b1c0: beq      #0x211b26c
+    0x0211b1c4: ldrb     r0, [r4, #8]
+    0x0211b1c8: cmp      r0, #0xb
+    0x0211b1cc: ldrheq   r2, [r7, #4]
+    0x0211b1d0: lsleq    r0, r3, #0x10
+    0x0211b1d4: cmpeq    r2, r0, lsr #16
+    0x0211b1d8: ldrheq   r2, [r4, #0xa]
+    0x0211b1dc: ldrheq   r0, [r7, #6]
+    0x0211b1e0: cmpeq    r2, r0
+    0x0211b1e4: ldreq    r0, [r4, #0x44] ; CANDIDATE
+    0x0211b1e8: cmpeq    r0, #0
+    0x0211b1ec: bne      #0x211b26c
+    0x0211b1f0: ldrh     lr, [r8, #0xe]
+    0x0211b1f4: ldrh     ip, [r8, #0xc]
+    0x0211b1f8: ldr      r0, [r4, #0x1c]
+    0x0211b1fc: lsl      r2, lr, #8
+    0x0211b200: lsl      r3, ip, #8
+    0x0211b204: orr      ip, r3, ip, asr #8
+    0x0211b208: orr      r3, r2, lr, asr #8
+    0x0211b20c: lsl      r2, ip, #0x10
+    0x0211b210: lsl      r3, r3, #0x10
+    0x0211b214: lsr      ip, r2, #0x10
+    0x0211b218: lsr      r2, r3, #0x10
+    0x0211b21c: orr      r2, r2, ip, lsl #16
+    0x0211b220: cmp      r0, r2
+    0x0211b224: bne      #0x211b26c
+    0x0211b228: ldr      r1, [r4, #0x3c]
+    0x0211b22c: sub      r0, r6, #8
+    0x0211b230: cmp      r0, r1
+    0x0211b234: strhi    r1, [r4, #0x44]
+
+CANDIDATE 0x0211b240: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211b1e4: ldreq    r0, [r4, #0x44] field=0x44
+    0x0211b234: strhi    r1, [r4, #0x44] field=0x44
+    0x0211b238: strls    r0, [r4, #0x44] field=0x44
+    0x0211b23c: ldr      r1, [r4, #0x40] field=0x40
+    0x0211b240: ldr      r2, [r4, #0x44] field=0x44
+  context:
+    0x0211b208: orr      r3, r2, lr, asr #8
+    0x0211b20c: lsl      r2, ip, #0x10
+    0x0211b210: lsl      r3, r3, #0x10
+    0x0211b214: lsr      ip, r2, #0x10
+    0x0211b218: lsr      r2, r3, #0x10
+    0x0211b21c: orr      r2, r2, ip, lsl #16
+    0x0211b220: cmp      r0, r2
+    0x0211b224: bne      #0x211b26c
+    0x0211b228: ldr      r1, [r4, #0x3c]
+    0x0211b22c: sub      r0, r6, #8
+    0x0211b230: cmp      r0, r1
+    0x0211b234: strhi    r1, [r4, #0x44]
+    0x0211b238: strls    r0, [r4, #0x44]
+    0x0211b23c: ldr      r1, [r4, #0x40]
+    0x0211b240: ldr      r2, [r4, #0x44] ; CANDIDATE
+    0x0211b244: add      r0, r7, #8
+    0x0211b248: bl       #0x213acb0
+    0x0211b24c: ldr      r0, [r4, #4]
+    0x0211b250: cmp      r0, #3
+    0x0211b254: bne      #0x211b278
+    0x0211b258: mov      r0, #0
+    0x0211b25c: str      r0, [r4, #4]
+    0x0211b260: ldr      r0, [r4]
+    0x0211b264: bl       #0x213857c
+    0x0211b268: b        #0x211b278
+    0x0211b26c: ldr      r1, [r1, #0x68]
+    0x0211b270: cmp      r1, #0
+    0x0211b274: bne      #0x211b1b0
+    0x0211b278: mov      r0, r5
+    0x0211b27c: bl       #0x2139f44
+    0x0211b280: pop      {r4, r5, r6, r7, r8, pc}
+    0x0211b284: andseq   fp, pc, #4, #22
+    0x0211b288: cmp      r0, #0
+    0x0211b28c: mvnne    r2, #0
+    0x0211b290: cmpne    r0, r2
+
+CANDIDATE 0x0211bc84: ldr r0, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211bc84: ldr      r0, [r5, #0x44] field=0x44
+    0x0211bcac: ldr      ip, [r5, #0x40] field=0x40
+    0x0211bcb0: ldr      r3, [r5, #0x44] field=0x44
+    0x0211bcd4: ldr      r1, [r5, #0x44] field=0x44
+    0x0211bce0: str      r1, [r5, #0x44] field=0x44
+  context:
+    0x0211bc4c: strb     r0, [r5, #8]
+    0x0211bc50: ldr      r0, [r5, #4]
+    0x0211bc54: cmp      r0, #1
+    0x0211bc58: bne      #0x211bc6c
+    0x0211bc5c: mov      r0, #0
+    0x0211bc60: str      r0, [r5, #4]
+    0x0211bc64: ldr      r0, [r5]
+    0x0211bc68: bl       #0x213857c
+    0x0211bc6c: cmp      r8, #0
+    0x0211bc70: beq      #0x211be30
+    0x0211bc74: ldr      r0, [r5, #0x34]
+    0x0211bc78: add      r0, r0, #1
+    0x0211bc7c: str      r0, [r5, #0x34]
+    0x0211bc80: ldr      r1, [r5, #0x3c]
+    0x0211bc84: ldr      r0, [r5, #0x44] ; CANDIDATE
+    0x0211bc88: sub      r0, r1, r0
+    0x0211bc8c: cmp      r8, r0
+    0x0211bc90: movhi    r7, #0
+    0x0211bc94: movhi    r8, r0
+    0x0211bc98: movls    r7, #1
+    0x0211bc9c: cmp      r8, #0
+    0x0211bca0: beq      #0x211bd10
+    0x0211bca4: bl       #0x2139f30
+    0x0211bca8: ldrb     r1, [sb, #0xc]
+    0x0211bcac: ldr      ip, [r5, #0x40]
+    0x0211bcb0: ldr      r3, [r5, #0x44]
+    0x0211bcb4: and      r2, r1, #0xf0
+    0x0211bcb8: asr      r1, r2, #1
+    0x0211bcbc: add      r1, r2, r1, lsr #30
+    0x0211bcc0: mov      r4, r0
+    0x0211bcc4: mov      r2, r8
+    0x0211bcc8: add      r0, sb, r1, asr #2
+    0x0211bccc: add      r1, ip, r3
+    0x0211bcd0: bl       #0x213acb0
+    0x0211bcd4: ldr      r1, [r5, #0x44]
+
+CANDIDATE 0x0211bcb0: ldr r3, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211bc84: ldr      r0, [r5, #0x44] field=0x44
+    0x0211bcac: ldr      ip, [r5, #0x40] field=0x40
+    0x0211bcb0: ldr      r3, [r5, #0x44] field=0x44
+    0x0211bcd4: ldr      r1, [r5, #0x44] field=0x44
+    0x0211bce0: str      r1, [r5, #0x44] field=0x44
+  context:
+    0x0211bc78: add      r0, r0, #1
+    0x0211bc7c: str      r0, [r5, #0x34]
+    0x0211bc80: ldr      r1, [r5, #0x3c]
+    0x0211bc84: ldr      r0, [r5, #0x44]
+    0x0211bc88: sub      r0, r1, r0
+    0x0211bc8c: cmp      r8, r0
+    0x0211bc90: movhi    r7, #0
+    0x0211bc94: movhi    r8, r0
+    0x0211bc98: movls    r7, #1
+    0x0211bc9c: cmp      r8, #0
+    0x0211bca0: beq      #0x211bd10
+    0x0211bca4: bl       #0x2139f30
+    0x0211bca8: ldrb     r1, [sb, #0xc]
+    0x0211bcac: ldr      ip, [r5, #0x40]
+    0x0211bcb0: ldr      r3, [r5, #0x44] ; CANDIDATE
+    0x0211bcb4: and      r2, r1, #0xf0
+    0x0211bcb8: asr      r1, r2, #1
+    0x0211bcbc: add      r1, r2, r1, lsr #30
+    0x0211bcc0: mov      r4, r0
+    0x0211bcc4: mov      r2, r8
+    0x0211bcc8: add      r0, sb, r1, asr #2
+    0x0211bccc: add      r1, ip, r3
+    0x0211bcd0: bl       #0x213acb0
+    0x0211bcd4: ldr      r1, [r5, #0x44]
+    0x0211bcd8: mov      r0, r4
+    0x0211bcdc: add      r1, r1, r8
+    0x0211bce0: str      r1, [r5, #0x44]
+    0x0211bce4: ldr      r1, [r5, #0x24]
+    0x0211bce8: add      r1, r1, r8
+    0x0211bcec: str      r1, [r5, #0x24]
+    0x0211bcf0: bl       #0x2139f44
+    0x0211bcf4: ldr      r0, [r5, #4]
+    0x0211bcf8: cmp      r0, #2
+    0x0211bcfc: bne      #0x211bd10
+    0x0211bd00: mov      r0, #0
+
+CANDIDATE 0x0211bcd4: ldr r1, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211bc84: ldr      r0, [r5, #0x44] field=0x44
+    0x0211bcac: ldr      ip, [r5, #0x40] field=0x40
+    0x0211bcb0: ldr      r3, [r5, #0x44] field=0x44
+    0x0211bcd4: ldr      r1, [r5, #0x44] field=0x44
+    0x0211bce0: str      r1, [r5, #0x44] field=0x44
+  context:
+    0x0211bc9c: cmp      r8, #0
+    0x0211bca0: beq      #0x211bd10
+    0x0211bca4: bl       #0x2139f30
+    0x0211bca8: ldrb     r1, [sb, #0xc]
+    0x0211bcac: ldr      ip, [r5, #0x40]
+    0x0211bcb0: ldr      r3, [r5, #0x44]
+    0x0211bcb4: and      r2, r1, #0xf0
+    0x0211bcb8: asr      r1, r2, #1
+    0x0211bcbc: add      r1, r2, r1, lsr #30
+    0x0211bcc0: mov      r4, r0
+    0x0211bcc4: mov      r2, r8
+    0x0211bcc8: add      r0, sb, r1, asr #2
+    0x0211bccc: add      r1, ip, r3
+    0x0211bcd0: bl       #0x213acb0
+    0x0211bcd4: ldr      r1, [r5, #0x44] ; CANDIDATE
+    0x0211bcd8: mov      r0, r4
+    0x0211bcdc: add      r1, r1, r8
+    0x0211bce0: str      r1, [r5, #0x44]
+    0x0211bce4: ldr      r1, [r5, #0x24]
+    0x0211bce8: add      r1, r1, r8
+    0x0211bcec: str      r1, [r5, #0x24]
+    0x0211bcf0: bl       #0x2139f44
+    0x0211bcf4: ldr      r0, [r5, #4]
+    0x0211bcf8: cmp      r0, #2
+    0x0211bcfc: bne      #0x211bd10
+    0x0211bd00: mov      r0, #0
+    0x0211bd04: str      r0, [r5, #4]
+    0x0211bd08: ldr      r0, [r5]
+    0x0211bd0c: bl       #0x213857c
+    0x0211bd10: cmp      r7, #0
+    0x0211bd14: beq      #0x211bd64
+    0x0211bd18: tst      r6, #1
+    0x0211bd1c: beq      #0x211bd64
+    0x0211bd20: mov      r0, #6
+    0x0211bd24: strb     r0, [r5, #8]
+
+CANDIDATE 0x0211c1d4: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211c1d4: ldr      r0, [r4, #0x44] field=0x44
+    0x0211c1ec: strhi    r1, [r4, #0x44] field=0x44
+    0x0211c1f0: strls    r0, [r4, #0x44] field=0x44
+    0x0211c1f4: ldr      r1, [r4, #0x40] field=0x40
+    0x0211c1f8: ldr      r2, [r4, #0x44] field=0x44
+    0x0211c230: ldr      r0, [r4, #0x40] field=0x40
+    0x0211c234: ldr      r1, [r4, #0x44] field=0x44
+  context:
+    0x0211c19c: lsl      r0, r3, #8
+    0x0211c1a0: lsl      r1, r2, #8
+    0x0211c1a4: orr      r2, r1, r2, asr #8
+    0x0211c1a8: orr      r1, r0, r3, asr #8
+    0x0211c1ac: lsl      r0, r2, #0x10
+    0x0211c1b0: lsl      r1, r1, #0x10
+    0x0211c1b4: lsr      r2, r0, #0x10
+    0x0211c1b8: lsr      r0, r1, #0x10
+    0x0211c1bc: orr      r0, r0, r2, lsl #16
+    0x0211c1c0: str      r0, [r4, #0x1c]
+    0x0211c1c4: ldrh     r1, [r7]
+    0x0211c1c8: lsl      r0, r1, #8
+    0x0211c1cc: orr      r0, r0, r1, asr #8
+    0x0211c1d0: strh     r0, [r4, #0x18]
+    0x0211c1d4: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0211c1d8: cmp      r0, #0
+    0x0211c1dc: bne      #0x211c25c
+    0x0211c1e0: ldr      r1, [r4, #0x3c]
+    0x0211c1e4: sub      r0, r6, #8
+    0x0211c1e8: cmp      r0, r1
+    0x0211c1ec: strhi    r1, [r4, #0x44]
+    0x0211c1f0: strls    r0, [r4, #0x44]
+    0x0211c1f4: ldr      r1, [r4, #0x40]
+    0x0211c1f8: ldr      r2, [r4, #0x44]
+    0x0211c1fc: add      r0, r7, #8
+    0x0211c200: bl       #0x213acb0
+    0x0211c204: ldr      r0, [r4, #4]
+    0x0211c208: cmp      r0, #3
+    0x0211c20c: bne      #0x211c224
+    0x0211c210: mov      r0, #0
+    0x0211c214: str      r0, [r4, #4]
+    0x0211c218: ldr      r0, [r4]
+    0x0211c21c: bl       #0x213857c
+    0x0211c220: b        #0x211c25c
+    0x0211c224: ldr      r3, [r4, #0x38]
+
+CANDIDATE 0x0211c1f8: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211c1d4: ldr      r0, [r4, #0x44] field=0x44
+    0x0211c1ec: strhi    r1, [r4, #0x44] field=0x44
+    0x0211c1f0: strls    r0, [r4, #0x44] field=0x44
+    0x0211c1f4: ldr      r1, [r4, #0x40] field=0x40
+    0x0211c1f8: ldr      r2, [r4, #0x44] field=0x44
+    0x0211c230: ldr      r0, [r4, #0x40] field=0x40
+    0x0211c234: ldr      r1, [r4, #0x44] field=0x44
+    0x0211c248: strne    r0, [r4, #0x44] field=0x44
+  context:
+    0x0211c1c0: str      r0, [r4, #0x1c]
+    0x0211c1c4: ldrh     r1, [r7]
+    0x0211c1c8: lsl      r0, r1, #8
+    0x0211c1cc: orr      r0, r0, r1, asr #8
+    0x0211c1d0: strh     r0, [r4, #0x18]
+    0x0211c1d4: ldr      r0, [r4, #0x44]
+    0x0211c1d8: cmp      r0, #0
+    0x0211c1dc: bne      #0x211c25c
+    0x0211c1e0: ldr      r1, [r4, #0x3c]
+    0x0211c1e4: sub      r0, r6, #8
+    0x0211c1e8: cmp      r0, r1
+    0x0211c1ec: strhi    r1, [r4, #0x44]
+    0x0211c1f0: strls    r0, [r4, #0x44]
+    0x0211c1f4: ldr      r1, [r4, #0x40]
+    0x0211c1f8: ldr      r2, [r4, #0x44] ; CANDIDATE
+    0x0211c1fc: add      r0, r7, #8
+    0x0211c200: bl       #0x213acb0
+    0x0211c204: ldr      r0, [r4, #4]
+    0x0211c208: cmp      r0, #3
+    0x0211c20c: bne      #0x211c224
+    0x0211c210: mov      r0, #0
+    0x0211c214: str      r0, [r4, #4]
+    0x0211c218: ldr      r0, [r4]
+    0x0211c21c: bl       #0x213857c
+    0x0211c220: b        #0x211c25c
+    0x0211c224: ldr      r3, [r4, #0x38]
+    0x0211c228: cmp      r3, #0
+    0x0211c22c: beq      #0x211c25c
+    0x0211c230: ldr      r0, [r4, #0x40]
+    0x0211c234: ldr      r1, [r4, #0x44]
+    0x0211c238: mov      r2, r4
+    0x0211c23c: blx      r3
+    0x0211c240: cmp      r0, #0
+    0x0211c244: movne    r0, #0
+    0x0211c248: strne    r0, [r4, #0x44]
+
+CANDIDATE 0x0211c234: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211c1d4: ldr      r0, [r4, #0x44] field=0x44
+    0x0211c1ec: strhi    r1, [r4, #0x44] field=0x44
+    0x0211c1f0: strls    r0, [r4, #0x44] field=0x44
+    0x0211c1f4: ldr      r1, [r4, #0x40] field=0x40
+    0x0211c1f8: ldr      r2, [r4, #0x44] field=0x44
+    0x0211c230: ldr      r0, [r4, #0x40] field=0x40
+    0x0211c234: ldr      r1, [r4, #0x44] field=0x44
+    0x0211c248: strne    r0, [r4, #0x44] field=0x44
+  context:
+    0x0211c1fc: add      r0, r7, #8
+    0x0211c200: bl       #0x213acb0
+    0x0211c204: ldr      r0, [r4, #4]
+    0x0211c208: cmp      r0, #3
+    0x0211c20c: bne      #0x211c224
+    0x0211c210: mov      r0, #0
+    0x0211c214: str      r0, [r4, #4]
+    0x0211c218: ldr      r0, [r4]
+    0x0211c21c: bl       #0x213857c
+    0x0211c220: b        #0x211c25c
+    0x0211c224: ldr      r3, [r4, #0x38]
+    0x0211c228: cmp      r3, #0
+    0x0211c22c: beq      #0x211c25c
+    0x0211c230: ldr      r0, [r4, #0x40]
+    0x0211c234: ldr      r1, [r4, #0x44] ; CANDIDATE
+    0x0211c238: mov      r2, r4
+    0x0211c23c: blx      r3
+    0x0211c240: cmp      r0, #0
+    0x0211c244: movne    r0, #0
+    0x0211c248: strne    r0, [r4, #0x44]
+    0x0211c24c: b        #0x211c25c
+    0x0211c250: ldr      r1, [r1, #0x68]
+    0x0211c254: cmp      r1, #0
+    0x0211c258: bne      #0x211c0b4
+    0x0211c25c: mov      r0, r5
+    0x0211c260: bl       #0x2139f44
+    0x0211c264: pop      {r3, r4, r5, r6, r7, r8, sb, pc}
+    0x0211c268: andseq   fp, pc, #4, #22
+    0x0211c26c: push     {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+    0x0211c270: sub      sp, sp, #0xc
+    0x0211c274: mov      r6, #0
+    0x0211c278: mov      sl, r0
+    0x0211c27c: str      r6, [r1]
+    0x0211c280: ldrh     r3, [sl, #6]
+    0x0211c284: str      r1, [sp]
+
+CANDIDATE 0x0211cc78: ldr r6, [r8, #0x44] base=r8 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211cc78: ldr      r6, [r8, #0x44] field=0x44
+    0x0211cc9c: ldr      r6, [r8, #0x44] field=0x44
+    0x0211ccb4: ldr      r0, [r8, #0x40] field=0x40
+  context:
+    0x0211cc40: lsr      r0, r0, #0x10
+    0x0211cc44: orr      r0, r0, r1, lsl #16
+    0x0211cc48: sub      r0, r0, r6
+    0x0211cc4c: cmp      r0, #0x27
+    0x0211cc50: blt      #0x211cc20
+    0x0211cc54: mov      r0, #0
+    0x0211cc58: strb     r0, [r4, #8]
+    0x0211cc5c: pop      {r4, r5, r6, pc}
+    0x0211cc60: andseq   fp, pc, #4, #22
+    0x0211cc64: andseq   r2, pc, #28, #22
+    0x0211cc68: push     {r3, r4, r5, r6, r7, r8, sb, lr}
+    0x0211cc6c: mov      r8, r1
+    0x0211cc70: mov      sb, r0
+    0x0211cc74: bl       #0x2139f30
+    0x0211cc78: ldr      r6, [r8, #0x44] ; CANDIDATE
+    0x0211cc7c: mov      r7, r0
+    0x0211cc80: cmp      r6, #0
+    0x0211cc84: bne      #0x211cca8
+    0x0211cc88: mov      r5, #3
+    0x0211cc8c: mov      r4, #0
+    0x0211cc90: mov      r0, r4
+    0x0211cc94: str      r5, [r8, #4]
+    0x0211cc98: bl       #0x21384c4
+    0x0211cc9c: ldr      r6, [r8, #0x44]
+    0x0211cca0: cmp      r6, #0
+    0x0211cca4: beq      #0x211cc90
+    0x0211cca8: mov      r0, r7
+    0x0211ccac: bl       #0x2139f44
+    0x0211ccb0: str      r6, [sb]
+    0x0211ccb4: ldr      r0, [r8, #0x40]
+    0x0211ccb8: pop      {r3, r4, r5, r6, r7, r8, sb, pc}
+    0x0211ccbc: push     {r4, r5, r6, r7, r8, lr}
+    0x0211ccc0: mov      r4, r1
+    0x0211ccc4: ldr      r1, [r4, #0x44]
+    0x0211ccc8: mov      r5, r0
+
+CANDIDATE 0x0211cc9c: ldr r6, [r8, #0x44] base=r8 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211cc78: ldr      r6, [r8, #0x44] field=0x44
+    0x0211cc9c: ldr      r6, [r8, #0x44] field=0x44
+    0x0211ccb4: ldr      r0, [r8, #0x40] field=0x40
+  context:
+    0x0211cc64: andseq   r2, pc, #28, #22
+    0x0211cc68: push     {r3, r4, r5, r6, r7, r8, sb, lr}
+    0x0211cc6c: mov      r8, r1
+    0x0211cc70: mov      sb, r0
+    0x0211cc74: bl       #0x2139f30
+    0x0211cc78: ldr      r6, [r8, #0x44]
+    0x0211cc7c: mov      r7, r0
+    0x0211cc80: cmp      r6, #0
+    0x0211cc84: bne      #0x211cca8
+    0x0211cc88: mov      r5, #3
+    0x0211cc8c: mov      r4, #0
+    0x0211cc90: mov      r0, r4
+    0x0211cc94: str      r5, [r8, #4]
+    0x0211cc98: bl       #0x21384c4
+    0x0211cc9c: ldr      r6, [r8, #0x44] ; CANDIDATE
+    0x0211cca0: cmp      r6, #0
+    0x0211cca4: beq      #0x211cc90
+    0x0211cca8: mov      r0, r7
+    0x0211ccac: bl       #0x2139f44
+    0x0211ccb0: str      r6, [sb]
+    0x0211ccb4: ldr      r0, [r8, #0x40]
+    0x0211ccb8: pop      {r3, r4, r5, r6, r7, r8, sb, pc}
+    0x0211ccbc: push     {r4, r5, r6, r7, r8, lr}
+    0x0211ccc0: mov      r4, r1
+    0x0211ccc4: ldr      r1, [r4, #0x44]
+    0x0211ccc8: mov      r5, r0
+    0x0211cccc: cmp      r1, #0
+    0x0211ccd0: ldrbeq   r0, [r4, #8]
+    0x0211ccd4: cmpeq    r0, #4
+    0x0211ccd8: bne      #0x211cd1c
+    0x0211ccdc: bl       #0x2139f30
+    0x0211cce0: mov      r8, r0
+    0x0211cce4: mov      r7, #2
+    0x0211cce8: mov      r6, #0
+    0x0211ccec: b        #0x211ccfc
+
+CANDIDATE 0x0211ccc4: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211ccc4: ldr      r1, [r4, #0x44] field=0x44
+    0x0211ccfc: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd20: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd2c: ldrne    r0, [r4, #0x40] field=0x40
+  context:
+    0x0211cc8c: mov      r4, #0
+    0x0211cc90: mov      r0, r4
+    0x0211cc94: str      r5, [r8, #4]
+    0x0211cc98: bl       #0x21384c4
+    0x0211cc9c: ldr      r6, [r8, #0x44]
+    0x0211cca0: cmp      r6, #0
+    0x0211cca4: beq      #0x211cc90
+    0x0211cca8: mov      r0, r7
+    0x0211ccac: bl       #0x2139f44
+    0x0211ccb0: str      r6, [sb]
+    0x0211ccb4: ldr      r0, [r8, #0x40]
+    0x0211ccb8: pop      {r3, r4, r5, r6, r7, r8, sb, pc}
+    0x0211ccbc: push     {r4, r5, r6, r7, r8, lr}
+    0x0211ccc0: mov      r4, r1
+    0x0211ccc4: ldr      r1, [r4, #0x44] ; CANDIDATE
+    0x0211ccc8: mov      r5, r0
+    0x0211cccc: cmp      r1, #0
+    0x0211ccd0: ldrbeq   r0, [r4, #8]
+    0x0211ccd4: cmpeq    r0, #4
+    0x0211ccd8: bne      #0x211cd1c
+    0x0211ccdc: bl       #0x2139f30
+    0x0211cce0: mov      r8, r0
+    0x0211cce4: mov      r7, #2
+    0x0211cce8: mov      r6, #0
+    0x0211ccec: b        #0x211ccfc
+    0x0211ccf0: mov      r0, r6
+    0x0211ccf4: str      r7, [r4, #4]
+    0x0211ccf8: bl       #0x21384c4
+    0x0211ccfc: ldr      r0, [r4, #0x44]
+    0x0211cd00: cmp      r0, #0
+    0x0211cd04: ldrbeq   r0, [r4, #8]
+    0x0211cd08: cmpeq    r0, #4
+    0x0211cd0c: beq      #0x211ccf0
+    0x0211cd10: mov      r0, r8
+    0x0211cd14: bl       #0x2139f44
+
+CANDIDATE 0x0211ccfc: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211ccc4: ldr      r1, [r4, #0x44] field=0x44
+    0x0211ccfc: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd20: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd2c: ldrne    r0, [r4, #0x40] field=0x40
+  context:
+    0x0211ccc4: ldr      r1, [r4, #0x44]
+    0x0211ccc8: mov      r5, r0
+    0x0211cccc: cmp      r1, #0
+    0x0211ccd0: ldrbeq   r0, [r4, #8]
+    0x0211ccd4: cmpeq    r0, #4
+    0x0211ccd8: bne      #0x211cd1c
+    0x0211ccdc: bl       #0x2139f30
+    0x0211cce0: mov      r8, r0
+    0x0211cce4: mov      r7, #2
+    0x0211cce8: mov      r6, #0
+    0x0211ccec: b        #0x211ccfc
+    0x0211ccf0: mov      r0, r6
+    0x0211ccf4: str      r7, [r4, #4]
+    0x0211ccf8: bl       #0x21384c4
+    0x0211ccfc: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0211cd00: cmp      r0, #0
+    0x0211cd04: ldrbeq   r0, [r4, #8]
+    0x0211cd08: cmpeq    r0, #4
+    0x0211cd0c: beq      #0x211ccf0
+    0x0211cd10: mov      r0, r8
+    0x0211cd14: bl       #0x2139f44
+    0x0211cd18: b        #0x211cd20
+    0x0211cd1c: bl       #0x21385e8
+    0x0211cd20: ldr      r0, [r4, #0x44]
+    0x0211cd24: str      r0, [r5]
+    0x0211cd28: cmp      r0, #0
+    0x0211cd2c: ldrne    r0, [r4, #0x40]
+    0x0211cd30: moveq    r0, #0
+    0x0211cd34: pop      {r4, r5, r6, r7, r8, pc}
+    0x0211cd38: push     {r3, lr}
+    0x0211cd3c: ldr      r1, [pc, #0x54]
+    0x0211cd40: ldr      r1, [r1, #4]
+    0x0211cd44: ldr      r1, [r1, #0xa4]
+    0x0211cd48: cmp      r1, #0
+    0x0211cd4c: beq      #0x211cd88
+
+CANDIDATE 0x0211cd20: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211ccc4: ldr      r1, [r4, #0x44] field=0x44
+    0x0211ccfc: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd20: ldr      r0, [r4, #0x44] field=0x44
+    0x0211cd2c: ldrne    r0, [r4, #0x40] field=0x40
+  context:
+    0x0211cce8: mov      r6, #0
+    0x0211ccec: b        #0x211ccfc
+    0x0211ccf0: mov      r0, r6
+    0x0211ccf4: str      r7, [r4, #4]
+    0x0211ccf8: bl       #0x21384c4
+    0x0211ccfc: ldr      r0, [r4, #0x44]
+    0x0211cd00: cmp      r0, #0
+    0x0211cd04: ldrbeq   r0, [r4, #8]
+    0x0211cd08: cmpeq    r0, #4
+    0x0211cd0c: beq      #0x211ccf0
+    0x0211cd10: mov      r0, r8
+    0x0211cd14: bl       #0x2139f44
+    0x0211cd18: b        #0x211cd20
+    0x0211cd1c: bl       #0x21385e8
+    0x0211cd20: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0211cd24: str      r0, [r5]
+    0x0211cd28: cmp      r0, #0
+    0x0211cd2c: ldrne    r0, [r4, #0x40]
+    0x0211cd30: moveq    r0, #0
+    0x0211cd34: pop      {r4, r5, r6, r7, r8, pc}
+    0x0211cd38: push     {r3, lr}
+    0x0211cd3c: ldr      r1, [pc, #0x54]
+    0x0211cd40: ldr      r1, [r1, #4]
+    0x0211cd44: ldr      r1, [r1, #0xa4]
+    0x0211cd48: cmp      r1, #0
+    0x0211cd4c: beq      #0x211cd88
+    0x0211cd50: ldrb     r2, [r1, #8]
+    0x0211cd54: add      r2, r2, #0xf6
+    0x0211cd58: and      r2, r2, #0xff
+    0x0211cd5c: cmp      r2, #1
+    0x0211cd60: bhi      #0x211cd6c
+    0x0211cd64: bl       #0x211cc68
+    0x0211cd68: pop      {r3, pc}
+    0x0211cd6c: ldrb     r2, [r1, #9]
+    0x0211cd70: cmp      r2, #0
+
+CANDIDATE 0x0211cdac: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211cdac: ldr      r2, [r4, #0x44] field=0x44
+    0x0211cdd4: strhs    r0, [r4, #0x44] field=0x44
+    0x0211cddc: ldr      r0, [r4, #0x40] field=0x40
+    0x0211cde8: str      r2, [r4, #0x44] field=0x44
+    0x0211ce08: ldr      r0, [r4, #0x44] field=0x44
+  context:
+    0x0211cd74: beq      #0x211cd80
+    0x0211cd78: bl       #0x2121444
+    0x0211cd7c: pop      {r3, pc}
+    0x0211cd80: bl       #0x211ccbc
+    0x0211cd84: pop      {r3, pc}
+    0x0211cd88: mov      r1, #0
+    0x0211cd8c: str      r1, [r0]
+    0x0211cd90: mov      r0, r1
+    0x0211cd94: pop      {r3, pc}
+    0x0211cd98: andseq   fp, pc, #4, #22
+    0x0211cd9c: push     {r3, r4, r5, r6, r7, lr}
+    0x0211cda0: mov      r4, r1
+    0x0211cda4: mov      r7, r0
+    0x0211cda8: bl       #0x2139f30
+    0x0211cdac: ldr      r2, [r4, #0x44] ; CANDIDATE
+    0x0211cdb0: ldr      r1, [r4, #0x3c]
+    0x0211cdb4: mov      r5, r0
+    0x0211cdb8: cmp      r2, r1
+    0x0211cdbc: mov      r6, #0
+    0x0211cdc0: bne      #0x211cdcc
+    0x0211cdc4: cmp      r7, #0
+    0x0211cdc8: movne    r6, #1
+    0x0211cdcc: cmp      r7, r2
+    0x0211cdd0: movhs    r0, #0
+    0x0211cdd4: strhs    r0, [r4, #0x44]
+    0x0211cdd8: bhs      #0x211cdf0
+    0x0211cddc: ldr      r0, [r4, #0x40]
+    0x0211cde0: sub      r2, r2, r7
+    0x0211cde4: add      r1, r0, r7
+    0x0211cde8: str      r2, [r4, #0x44]
+    0x0211cdec: bl       #0x214cac8
+    0x0211cdf0: mov      r0, r5
+    0x0211cdf4: bl       #0x2139f44
+    0x0211cdf8: ldrb     r0, [r4, #8]
+    0x0211cdfc: cmp      r0, #0xa
+
+CANDIDATE 0x0211ce08: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211cdac: ldr      r2, [r4, #0x44] field=0x44
+    0x0211cdd4: strhs    r0, [r4, #0x44] field=0x44
+    0x0211cddc: ldr      r0, [r4, #0x40] field=0x40
+    0x0211cde8: str      r2, [r4, #0x44] field=0x44
+    0x0211ce08: ldr      r0, [r4, #0x44] field=0x44
+  context:
+    0x0211cdd0: movhs    r0, #0
+    0x0211cdd4: strhs    r0, [r4, #0x44]
+    0x0211cdd8: bhs      #0x211cdf0
+    0x0211cddc: ldr      r0, [r4, #0x40]
+    0x0211cde0: sub      r2, r2, r7
+    0x0211cde4: add      r1, r0, r7
+    0x0211cde8: str      r2, [r4, #0x44]
+    0x0211cdec: bl       #0x214cac8
+    0x0211cdf0: mov      r0, r5
+    0x0211cdf4: bl       #0x2139f44
+    0x0211cdf8: ldrb     r0, [r4, #8]
+    0x0211cdfc: cmp      r0, #0xa
+    0x0211ce00: cmpne    r0, #0xb
+    0x0211ce04: popeq    {r3, r4, r5, r6, r7, pc}
+    0x0211ce08: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0211ce0c: cmp      r0, #0
+    0x0211ce10: beq      #0x211ce1c
+    0x0211ce14: cmp      r6, #0
+    0x0211ce18: popeq    {r3, r4, r5, r6, r7, pc}
+    0x0211ce1c: mov      r0, r4
+    0x0211ce20: mov      r1, #0x1b
+    0x0211ce24: bl       #0x211b678
+    0x0211ce28: pop      {r3, r4, r5, r6, r7, pc}
+    0x0211ce2c: push     {r3, lr}
+    0x0211ce30: ldr      r1, [pc, #0x28]
+    0x0211ce34: ldr      r1, [r1, #4]
+    0x0211ce38: ldr      r1, [r1, #0xa4]
+    0x0211ce3c: cmp      r1, #0
+    0x0211ce40: popeq    {r3, pc}
+    0x0211ce44: ldrb     r2, [r1, #9]
+    0x0211ce48: cmp      r2, #0
+    0x0211ce4c: beq      #0x211ce58
+    0x0211ce50: bl       #0x212151c
+    0x0211ce54: pop      {r3, pc}
+    0x0211ce58: bl       #0x211cd9c
+
+CANDIDATE 0x0211d304: ldr r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211d304: ldr      r1, [r0, #0x44] field=0x44
+  context:
+    0x0211d2cc: mov      r0, #0
+    0x0211d2d0: pop      {r3, r4, r5, pc}
+    0x0211d2d4: andseq   fp, pc, #4, #22
+    0x0211d2d8: push     {r3, lr}
+    0x0211d2dc: ldr      r0, [pc, #0x60]
+    0x0211d2e0: ldr      r0, [r0, #4]
+    0x0211d2e4: ldr      r0, [r0, #0xa4]
+    0x0211d2e8: cmp      r0, #0
+    0x0211d2ec: beq      #0x211d33c
+    0x0211d2f0: ldrb     r1, [r0, #9]
+    0x0211d2f4: cmp      r1, #0
+    0x0211d2f8: beq      #0x211d304
+    0x0211d2fc: bl       #0x21216b0
+    0x0211d300: pop      {r3, pc}
+    0x0211d304: ldr      r1, [r0, #0x44] ; CANDIDATE
+    0x0211d308: cmp      r1, #0
+    0x0211d30c: bne      #0x211d32c
+    0x0211d310: ldrb     r0, [r0, #8]
+    0x0211d314: cmp      r0, #4
+    0x0211d318: beq      #0x211d32c
+    0x0211d31c: add      r0, r0, #0xf6
+    0x0211d320: and      r0, r0, #0xff
+    0x0211d324: cmp      r0, #1
+    0x0211d328: bhi      #0x211d334
+    0x0211d32c: mov      r0, r1
+    0x0211d330: pop      {r3, pc}
+    0x0211d334: mvn      r0, #0
+    0x0211d338: pop      {r3, pc}
+    0x0211d33c: mov      r0, #0
+    0x0211d340: pop      {r3, pc}
+    0x0211d344: andseq   fp, pc, #4, #22
+    0x0211d348: push     {r4, lr}
+    0x0211d34c: ldr      r0, [pc, #0x30]
+    0x0211d350: ldr      r0, [r0, #4]
+    0x0211d354: ldr      r4, [r0, #0xa4]
+
+CANDIDATE 0x0211d490: ldr r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0211d490: ldr      r1, [r0, #0x44] field=0x44
+  context:
+    0x0211d458: ldr      r2, [pc, #0x324]
+    0x0211d45c: str      r3, [r1, #0x128]
+    0x0211d460: ldr      r0, [pc, #0x314]
+    0x0211d464: str      r2, [r1, #0x12c]
+    0x0211d468: bl       #0x211c858
+    0x0211d46c: mov      sl, #1
+    0x0211d470: ldr      r0, [pc, #0x300]
+    0x0211d474: mov      fp, sl
+    0x0211d478: str      sl, [sp]
+    0x0211d47c: str      sl, [r0, #0xc]
+    0x0211d480: mov      r4, #0
+    0x0211d484: mov      r0, #0x3e8
+    0x0211d488: bl       #0x2138750
+    0x0211d48c: ldr      r0, [pc, #0x2e4]
+    0x0211d490: ldr      r1, [r0, #0x44] ; CANDIDATE
+    0x0211d494: cmp      r1, #0
+    0x0211d498: bne      #0x211d758
+    0x0211d49c: bl       #0x2139a18
+    0x0211d4a0: ldr      r2, [pc, #0x2d0]
+    0x0211d4a4: lsr      r5, r0, #0x10
+    0x0211d4a8: ldr      r0, [r2, #0x48]
+    0x0211d4ac: orr      r5, r5, r1, lsl #16
+    0x0211d4b0: blx      r0
+    0x0211d4b4: cmp      r0, #0
+    0x0211d4b8: beq      #0x211d5b0
+    0x0211d4bc: ldr      r0, [sp]
+    0x0211d4c0: subs     r0, r0, #1
+    0x0211d4c4: str      r0, [sp]
+    0x0211d4c8: bne      #0x211d5c4
+    0x0211d4cc: ldr      r0, [pc, #0x2a4]
+    0x0211d4d0: ldr      r1, [r0, #0x10]
+    0x0211d4d4: tst      r1, #1
+    0x0211d4d8: beq      #0x211d4f0
+    0x0211d4dc: cmp      r4, #0
+    0x0211d4e0: bne      #0x211d5c4
+
+CANDIDATE 0x02121584: ldr r0, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x02121584: ldr      r0, [r5, #0x44] field=0x44
+  context:
+    0x0212154c: blx      r1
+    0x02121550: mov      r0, #0
+    0x02121554: str      r0, [r4, #0x824]
+    0x02121558: pop      {r4, pc}
+    0x0212155c: add      r0, r1, r0
+    0x02121560: str      r0, [r4, #0x82c]
+    0x02121564: pop      {r4, pc}
+    0x02121568: andseq   r2, pc, #92, #22
+    0x0212156c: push     {r3, r4, r5, r6, lr}
+    0x02121570: sub      sp, sp, #4
+    0x02121574: mov      r5, r0
+    0x02121578: ldr      r4, [r5, #0xc]
+    0x0212157c: ldr      r0, [r4, #0x824]
+    0x02121580: cmp      r0, #0
+    0x02121584: ldr      r0, [r5, #0x44] ; CANDIDATE
+    0x02121588: bne      #0x212160c
+    0x0212158c: cmp      r0, #5
+    0x02121590: addlo    sp, sp, #4
+    0x02121594: poplo    {r3, r4, r5, r6, pc}
+    0x02121598: add      r0, sp, #0
+    0x0212159c: mov      r1, r5
+    0x021215a0: bl       #0x211ccbc
+    0x021215a4: ldrb     r2, [r0, #3]
+    0x021215a8: ldrb     r0, [r0, #4]
+    0x021215ac: ldr      r1, [pc, #0xf4]
+    0x021215b0: add      r0, r0, r2, lsl #8
+    0x021215b4: add      r0, r0, #5
+    0x021215b8: str      r0, [sp]
+    0x021215bc: cmp      r0, r1
+    0x021215c0: movhi    r0, #9
+    0x021215c4: addhi    sp, sp, #4
+    0x021215c8: strbhi   r0, [r4, #0x455]
+    0x021215cc: pophi    {r3, r4, r5, r6, pc}
+    0x021215d0: ldr      r1, [pc, #0xd4]
+    0x021215d4: ldr      r1, [r1]
+
+CANDIDATE 0x0212f66c: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0212f66c: ldr      r0, [r4, #0x44] field=0x44
+    0x0212f680: str      r0, [r4, #0x44] field=0x44
+    0x0212f684: str      r0, [r4, #0x48] field=0x48
+  context:
+    0x0212f634: add      ip, ip, #1
+    0x0212f638: cmp      ip, r4
+    0x0212f63c: orr      r6, r6, r1, lsl r0
+    0x0212f640: blt      #0x212f624
+    0x0212f644: mov      r0, r6
+    0x0212f648: bl       #0x212ec28
+    0x0212f64c: cmp      r0, #0
+    0x0212f650: moveq    r0, #0
+    0x0212f654: strne    r4, [r5, #0x48]
+    0x0212f658: strne    r6, [r5, #0x44]
+    0x0212f65c: movne    r0, #1
+    0x0212f660: pop      {r4, r5, r6, pc}
+    0x0212f664: push     {r4, lr}
+    0x0212f668: mov      r4, r0
+    0x0212f66c: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0212f670: cmp      r0, #0
+    0x0212f674: popeq    {r4, pc}
+    0x0212f678: bl       #0x212ec70
+    0x0212f67c: mov      r0, #0
+    0x0212f680: str      r0, [r4, #0x44]
+    0x0212f684: str      r0, [r4, #0x48]
+    0x0212f688: pop      {r4, pc}
+    0x0212f68c: push     {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+    0x0212f690: sub      sp, sp, #0x1c
+    0x0212f694: mov      sl, r0
+    0x0212f698: ldr      r4, [sl, #0x24]
+    0x0212f69c: mov      sb, r1
+    0x0212f6a0: lsl      r1, r4, #0x1f
+    0x0212f6a4: mov      r8, r2
+    0x0212f6a8: mov      r4, r3
+    0x0212f6ac: asrs     r1, r1, #0x1f
+    0x0212f6b0: ldr      fp, [sp, #0x44]
+    0x0212f6b4: beq      #0x212f6bc
+    0x0212f6b8: bl       #0x212f880
+    0x0212f6bc: ldr      r2, [sl, #0x48]
+
+CANDIDATE 0x0212f844: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0212f834: ldr      r0, [r4, #0x40] field=0x40
+    0x0212f844: ldr      r0, [r4, #0x44] field=0x44
+  context:
+    0x0212f80c: str      fp, [sl, #0x2c]
+    0x0212f810: bl       #0x2139f44
+    0x0212f814: mov      r0, #1
+    0x0212f818: add      sp, sp, #0x1c
+    0x0212f81c: pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+    0x0212f820: andseq   sl, pc, #244, #2
+    0x0212f824: andseq   pc, r2, #220, #18
+    0x0212f828: andseq   sl, pc, #168, #2
+    0x0212f82c: push     {r4, lr}
+    0x0212f830: mov      r4, r0
+    0x0212f834: ldr      r0, [r4, #0x40]
+    0x0212f838: mov      r2, #1
+    0x0212f83c: mov      r1, #0
+    0x0212f840: lsl      r2, r2, r0
+    0x0212f844: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0212f848: mov      r3, r1
+    0x0212f84c: bl       #0x213b068
+    0x0212f850: ldr      r0, [r4, #0x24]
+    0x0212f854: lsl      r0, r0, #0x1e
+    0x0212f858: asrs     r0, r0, #0x1f
+    0x0212f85c: popne    {r4, pc}
+    0x0212f860: add      r0, r4, #8
+    0x0212f864: bl       #0x2140ef0
+    0x0212f868: add      r0, r4, #0x14
+    0x0212f86c: bl       #0x2140f08
+    0x0212f870: ldr      r0, [r4, #0x24]
+    0x0212f874: orr      r0, r0, #2
+    0x0212f878: str      r0, [r4, #0x24]
+    0x0212f87c: pop      {r4, pc}
+    0x0212f880: push     {r3, lr}
+    0x0212f884: ldr      r1, [r0, #0x24]
+    0x0212f888: lsl      r1, r1, #0x1f
+    0x0212f88c: asrs     r1, r1, #0x1f
+    0x0212f890: popeq    {r3, pc}
+    0x0212f894: bl       #0x212f938
+
+CANDIDATE 0x0212f960: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0212f950: ldr      r0, [r4, #0x40] field=0x40
+    0x0212f960: ldr      r0, [r4, #0x44] field=0x44
+    0x0212f9b4: ldr      r0, [r4, #0x40] field=0x40
+  context:
+    0x0212f928: mov      r1, r2
+    0x0212f92c: lsl      r0, r3, r0
+    0x0212f930: bl       #0x213b19c
+    0x0212f934: pop      {r3, pc}
+    0x0212f938: push     {r3, r4, r5, lr}
+    0x0212f93c: mov      r4, r0
+    0x0212f940: ldr      r0, [r4, #0x24]
+    0x0212f944: lsl      r0, r0, #0x1e
+    0x0212f948: asrs     r0, r0, #0x1f
+    0x0212f94c: beq      #0x212f9a0
+    0x0212f950: ldr      r0, [r4, #0x40]
+    0x0212f954: mov      r2, #1
+    0x0212f958: mov      r1, #0
+    0x0212f95c: lsl      r2, r2, r0
+    0x0212f960: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0212f964: mov      r3, r1
+    0x0212f968: bl       #0x213b090
+    0x0212f96c: add      r0, r4, #8
+    0x0212f970: bl       #0x2140f20
+    0x0212f974: add      r0, r4, #0x14
+    0x0212f978: bl       #0x2140f38
+    0x0212f97c: ldr      r0, [r4, #0x24]
+    0x0212f980: bic      r0, r0, #2
+    0x0212f984: str      r0, [r4, #0x24]
+    0x0212f988: bl       #0x213b870
+    0x0212f98c: mov      r5, r0
+    0x0212f990: mov      r0, #1
+    0x0212f994: bl       #0x213b648
+    0x0212f998: mov      r0, r5
+    0x0212f99c: bl       #0x213b804
+    0x0212f9a0: mov      r0, r4
+    0x0212f9a4: bl       #0x212f9ac
+    0x0212f9a8: pop      {r3, r4, r5, pc}
+    0x0212f9ac: push     {r4, lr}
+    0x0212f9b0: mov      r4, r0
+
+CANDIDATE 0x0212fac0: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0212fab0: ldr      r2, [r0, #0x40] field=0x40
+    0x0212fac0: ldr      r0, [r0, #0x44] field=0x44
+  context:
+    0x0212fa88: strge    r0, [r5, #0x38]
+    0x0212fa8c: add      sp, sp, #8
+    0x0212fa90: pop      {r3, r4, r5, pc}
+    0x0212fa94: andseq   sl, pc, #244, #2
+    0x0212fa98: andseq   sl, pc, #180, #2
+    0x0212fa9c: push     {r4, lr}
+    0x0212faa0: ldr      r1, [r0, #0x24]
+    0x0212faa4: lsl      r1, r1, #0x1e
+    0x0212faa8: asrs     r1, r1, #0x1f
+    0x0212faac: popeq    {r4, pc}
+    0x0212fab0: ldr      r2, [r0, #0x40]
+    0x0212fab4: mov      r3, #1
+    0x0212fab8: mov      r1, #0
+    0x0212fabc: lsl      r2, r3, r2
+    0x0212fac0: ldr      r0, [r0, #0x44] ; CANDIDATE
+    0x0212fac4: mov      r3, r1
+    0x0212fac8: bl       #0x213b090
+    0x0212facc: bl       #0x213b870
+    0x0212fad0: mov      r4, r0
+    0x0212fad4: mov      r0, #1
+    0x0212fad8: bl       #0x213b648
+    0x0212fadc: mov      r0, r4
+    0x0212fae0: bl       #0x213b804
+    0x0212fae4: pop      {r4, pc}
+    0x0212fae8: push     {r4, r5, r6, lr}
+    0x0212faec: mov      r4, r0
+    0x0212faf0: ldr      r0, [r4, #0x24]
+    0x0212faf4: lsl      r0, r0, #0x1e
+    0x0212faf8: asrs     r0, r0, #0x1f
+    0x0212fafc: popeq    {r4, r5, r6, pc}
+    0x0212fb00: ldr      r0, [r4, #0x38]
+    0x0212fb04: cmp      r0, #0
+    0x0212fb08: beq      #0x212fb38
+    0x0212fb0c: mov      r5, #1
+    0x0212fb10: bl       #0x2139f30
+
+CANDIDATE 0x0212fb48: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0212fb38: ldr      r0, [r4, #0x40] field=0x40
+    0x0212fb48: ldr      r0, [r4, #0x44] field=0x44
+  context:
+    0x0212fb10: bl       #0x2139f30
+    0x0212fb14: mov      r6, r0
+    0x0212fb18: mov      r0, r4
+    0x0212fb1c: mov      r1, r5
+    0x0212fb20: bl       #0x212f9ec
+    0x0212fb24: mov      r0, r6
+    0x0212fb28: bl       #0x2139f44
+    0x0212fb2c: ldr      r0, [r4, #0x38]
+    0x0212fb30: cmp      r0, #0
+    0x0212fb34: bne      #0x212fb10
+    0x0212fb38: ldr      r0, [r4, #0x40]
+    0x0212fb3c: mov      r2, #1
+    0x0212fb40: mov      r1, #0
+    0x0212fb44: lsl      r2, r2, r0
+    0x0212fb48: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0212fb4c: mov      r3, r1
+    0x0212fb50: bl       #0x213b068
+    0x0212fb54: pop      {r4, r5, r6, pc}
+    0x0212fb58: ldr      r0, [pc, #0xc]
+    0x0212fb5c: mov      r1, #0
+    0x0212fb60: str      r1, [r0]
+    0x0212fb64: str      r1, [r0, #0x48]
+    0x0212fb68: bx       lr
+    0x0212fb6c: andseq   sl, pc, #116, #4
+    0x0212fb70: push     {r3, r4, r5, lr}
+    0x0212fb74: ldr      r0, [pc, #0x74]
+    0x0212fb78: ldr      r4, [pc, #0x74]
+    0x0212fb7c: ldr      r0, [r0, #0x48]
+    0x0212fb80: cmp      r0, #0
+    0x0212fb84: popeq    {r3, r4, r5, pc}
+    0x0212fb88: ldr      r0, [r4, #4]
+    0x0212fb8c: cmp      r0, #0
+    0x0212fb90: popne    {r3, r4, r5, pc}
+    0x0212fb94: add      r0, r4, #0x3c
+    0x0212fb98: bl       #0x2132da0
+
+CANDIDATE 0x0213ca90: ldr r3, [sb, #0x44] base=sb disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0213ca90: ldr      r3, [sb, #0x44] field=0x44
+    0x0213cadc: ldr      r3, [sb, #0x44] field=0x44
+  context:
+    0x0213ca58: beq      #0x213ca80
+    0x0213ca5c: add      r0, sp, #0
+    0x0213ca60: add      r3, sb, #0x30
+    0x0213ca64: ldm      r0, {r0, r1, r2}
+    0x0213ca68: stm      r3, {r0, r1, r2}
+    0x0213ca6c: mov      r0, sb
+    0x0213ca70: mov      r1, #2
+    0x0213ca74: add      r5, r5, r8
+    0x0213ca78: bl       #0x213c424
+    0x0213ca7c: b        #0x213cab0
+    0x0213ca80: cmp      r6, #0
+    0x0213ca84: addne    sp, sp, #0x94
+    0x0213ca88: movne    r0, #1
+    0x0213ca8c: popne    {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213ca90: ldr      r3, [sb, #0x44] ; CANDIDATE
+    0x0213ca94: ldr      r2, [sp]
+    0x0213ca98: ldr      r1, [sp, #4]
+    0x0213ca9c: add      sp, sp, #0x94
+    0x0213caa0: str      r2, [r3]
+    0x0213caa4: mov      r0, #0
+    0x0213caa8: str      r1, [r3, #4]
+    0x0213caac: pop      {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213cab0: ldrb     r0, [r5]
+    0x0213cab4: cmp      r0, #0
+    0x0213cab8: movne    r0, #1
+    0x0213cabc: moveq    r0, #0
+    0x0213cac0: ldrb     r3, [r5, r0]!
+    0x0213cac4: cmp      r3, #0
+    0x0213cac8: bne      #0x213c93c
+    0x0213cacc: cmp      r6, #0
+    0x0213cad0: addeq    sp, sp, #0x94
+    0x0213cad4: moveq    r0, #1
+    0x0213cad8: popeq    {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213cadc: ldr      r3, [sb, #0x44]
+    0x0213cae0: add      r0, sb, #0x20
+
+CANDIDATE 0x0213cadc: ldr r3, [sb, #0x44] base=sb disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0213ca90: ldr      r3, [sb, #0x44] field=0x44
+    0x0213cadc: ldr      r3, [sb, #0x44] field=0x44
+  context:
+    0x0213caa4: mov      r0, #0
+    0x0213caa8: str      r1, [r3, #4]
+    0x0213caac: pop      {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213cab0: ldrb     r0, [r5]
+    0x0213cab4: cmp      r0, #0
+    0x0213cab8: movne    r0, #1
+    0x0213cabc: moveq    r0, #0
+    0x0213cac0: ldrb     r3, [r5, r0]!
+    0x0213cac4: cmp      r3, #0
+    0x0213cac8: bne      #0x213c93c
+    0x0213cacc: cmp      r6, #0
+    0x0213cad0: addeq    sp, sp, #0x94
+    0x0213cad4: moveq    r0, #1
+    0x0213cad8: popeq    {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213cadc: ldr      r3, [sb, #0x44] ; CANDIDATE
+    0x0213cae0: add      r0, sb, #0x20
+    0x0213cae4: ldm      r0, {r0, r1, r2}
+    0x0213cae8: stm      r3, {r0, r1, r2}
+    0x0213caec: mov      r0, #0
+    0x0213caf0: add      sp, sp, #0x94
+    0x0213caf4: pop      {r3, r4, r5, r6, r7, r8, sb, sl, pc}
+    0x0213caf8: push     {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+    0x0213cafc: sub      sp, sp, #0xe0
+    0x0213cb00: mov      sl, r0
+    0x0213cb04: ldr      r1, [sl, #8]
+    0x0213cb08: add      r0, sp, #4
+    0x0213cb0c: str      r1, [sp]
+    0x0213cb10: bl       #0x213db88
+    0x0213cb14: ldr      r0, [sl, #8]
+    0x0213cb18: str      r0, [sp, #0xc]
+    0x0213cb1c: ldr      r0, [sl, #0xc]
+    0x0213cb20: tst      r0, #0x20
+    0x0213cb24: movne    r0, #1
+    0x0213cb28: moveq    r0, #0
+    0x0213cb2c: cmp      r0, #0
+
+CANDIDATE 0x0213d924: ldr r4, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0213d924: ldr      r4, [r5, #0x44] field=0x44
+    0x0213d928: str      r1, [r5, #0x44] field=0x44
+    0x0213d934: ldr      r1, [r5, #0x40] field=0x40
+    0x0213d93c: ldr      r1, [r5, #0x48] field=0x48
+    0x0213d940: str      r1, [r5, #0x50] field=0x50
+  context:
+    0x0213d8ec: cmp      r0, #0
+    0x0213d8f0: beq      #0x213d954
+    0x0213d8f4: mov      r0, r5
+    0x0213d8f8: bl       #0x213d95c
+    0x0213d8fc: ldr      r1, [r5, #0x1c]
+    0x0213d900: tst      r1, #4
+    0x0213d904: movne    r1, #1
+    0x0213d908: moveq    r1, #0
+    0x0213d90c: cmp      r1, #0
+    0x0213d910: beq      #0x213d944
+    0x0213d914: ldr      r2, [r5, #0x1c]
+    0x0213d918: mov      r1, #0
+    0x0213d91c: bic      r2, r2, #4
+    0x0213d920: str      r2, [r5, #0x1c]
+    0x0213d924: ldr      r4, [r5, #0x44] ; CANDIDATE
+    0x0213d928: str      r1, [r5, #0x44]
+    0x0213d92c: ldr      r1, [r5, #0x3c]
+    0x0213d930: str      r1, [r5, #0x2c]
+    0x0213d934: ldr      r1, [r5, #0x40]
+    0x0213d938: str      r1, [r5, #0x34]
+    0x0213d93c: ldr      r1, [r5, #0x48]
+    0x0213d940: str      r1, [r5, #0x50]
+    0x0213d944: cmp      r0, #0
+    0x0213d948: beq      #0x213d954
+    0x0213d94c: mov      r0, r5
+    0x0213d950: bl       #0x213d9f8
+    0x0213d954: mov      r0, r4
+    0x0213d958: pop      {r3, r4, r5, pc}
+    0x0213d95c: push     {r4, r5, r6, r7, r8, lr}
+    0x0213d960: mov      r6, r0
+    0x0213d964: bl       #0x2139f30
+    0x0213d968: ldr      r1, [r6, #0x1c]
+    0x0213d96c: mov      r4, r0
+    0x0213d970: tst      r1, #8
+    0x0213d974: movne    r0, #1
+
+CANDIDATE 0x0214b6ec: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0214b6ec: ldr      r0, [r4, #0x44] field=0x44
+  context:
+    0x0214b6b4: moveq    r0, #0
+    0x0214b6b8: popeq    {r4, pc}
+    0x0214b6bc: ldrh     r0, [r4, #0x3c]
+    0x0214b6c0: cmp      r0, #0
+    0x0214b6c4: addeq    sp, sp, #8
+    0x0214b6c8: moveq    r0, #0
+    0x0214b6cc: popeq    {r4, pc}
+    0x0214b6d0: add      r1, sp, #0
+    0x0214b6d4: add      r0, r4, #0x50
+    0x0214b6d8: mov      r2, #8
+    0x0214b6dc: bl       #0x213acb0
+    0x0214b6e0: add      r0, sp, #0
+    0x0214b6e4: mov      r1, #8
+    0x0214b6e8: bl       #0x2138eac
+    0x0214b6ec: ldr      r0, [r4, #0x44] ; CANDIDATE
+    0x0214b6f0: cmp      r0, #0
+    0x0214b6f4: bne      #0x214b728
+    0x0214b6f8: ldrh     r1, [sp]
+    0x0214b6fc: ldr      r0, [pc, #0x30]
+    0x0214b700: cmp      r1, r0
+    0x0214b704: ldrhne   r1, [sp]
+    0x0214b708: ldrne    r0, [pc, #0x28]
+    0x0214b70c: cmpne    r1, r0
+    0x0214b710: bne      #0x214b728
+    0x0214b714: ldrh     r0, [sp, #6]
+    0x0214b718: cmp      r0, #4
+    0x0214b71c: addeq    sp, sp, #8
+    0x0214b720: moveq    r0, #1
+    0x0214b724: popeq    {r4, pc}
+    0x0214b728: mov      r0, #0
+    0x0214b72c: add      sp, sp, #8
+    0x0214b730: pop      {r4, pc}
+    0x0214b734: andeq    r2, r0, r8, asr #6
+    0x0214b738: andeq    fp, r0, sl, lsl #27
+    0x0214b73c: push     {r4, lr}
+
+CANDIDATE 0x0215bd28: ldr sl, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x0215bd24: ldr      sb, [r0, #0x40] field=0x40
+    0x0215bd28: ldr      sl, [r0, #0x44] field=0x44
+    0x0215bd2c: ldr      fp, [r0, #0x48] field=0x48
+  context:
+    0x0215bcf0: bl       #0x215a1c8
+    0x0215bcf4: tst      r4, #0x40
+    0x0215bcf8: addeq    sp, sp, #4
+    0x0215bcfc: popeq    {r3, r4, pc}
+    0x0215bd00: add      r1, sp, #0
+    0x0215bd04: bl       #0x215a1c8
+    0x0215bd08: add      sp, sp, #4
+    0x0215bd0c: pop      {r3, r4, pc}
+    0x0215bd10: ldr      r4, [r0, #0x2c]
+    0x0215bd14: ldr      r5, [r0, #0x30]
+    0x0215bd18: ldr      r6, [r0, #0x34]
+    0x0215bd1c: ldr      r7, [r0, #0x38]
+    0x0215bd20: ldr      r8, [r0, #0x3c]
+    0x0215bd24: ldr      sb, [r0, #0x40]
+    0x0215bd28: ldr      sl, [r0, #0x44] ; CANDIDATE
+    0x0215bd2c: ldr      fp, [r0, #0x48]
+    0x0215bd30: ldr      sp, [r0, #0x5c]
+    0x0215bd34: ldr      ip, [r0, #0x64]
+    0x0215bd38: sub      sp, sp, ip
+    0x0215bd3c: bx       r2
+    0x0215bd40: mov      ip, sp
+    0x0215bd44: sub      sp, sp, #0x70
+    0x0215bd48: str      r4, [sp, #0x2c]
+    0x0215bd4c: str      r5, [sp, #0x30]
+    0x0215bd50: str      r6, [sp, #0x34]
+    0x0215bd54: str      r7, [sp, #0x38]
+    0x0215bd58: str      r8, [sp, #0x3c]
+    0x0215bd5c: str      sb, [sp, #0x40]
+    0x0215bd60: str      sl, [sp, #0x44]
+    0x0215bd64: str      fp, [sp, #0x48]
+    0x0215bd68: str      ip, [sp, #0x14]
+    0x0215bd6c: str      ip, [sp, #0x5c]
+    0x0215bd70: str      lr, [sp, #0x10]
+    0x0215bd74: mov      ip, #0
+    0x0215bd78: str      ip, [sp]
+
+CANDIDATE 0x021905cc: ldr sp, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71)
+  same-base known-field accesses:
+    0x021905cc: ldr      sp, [r1, #0x44] field=0x44
+    0x021905e0: ldr      lr, [r1, #0x40] field=0x40
+  context:
+    0x02190594: ldmib    sp!, {r2, r3}
+    0x02190598: stmib    r0!, {r2, r3}
+    0x0219059c: ldmib    sp!, {r2, r3, ip, lr}
+    0x021905a0: stmib    r0!, {r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^
+    0x021905a4: stmib    r0!, {lr}
+    0x021905a8: mov      r3, #0xd3
+    0x021905ac: msr      cpsr_c, r3
+    0x021905b0: stmib    r0!, {sp}
+    0x021905b4: stmdb    sp!, {r1}
+    0x021905b8: add      r0, r1, #0
+    0x021905bc: add      r0, r0, #0x48
+    0x021905c0: ldr      r1, [pc, #0x38]
+    0x021905c4: blx      r1
+    0x021905c8: ldm      sp!, {r1}
+    0x021905cc: ldr      sp, [r1, #0x44] ; CANDIDATE
+    0x021905d0: mov      r3, #0xd2
+    0x021905d4: msr      cpsr_c, r3
+    0x021905d8: ldr      r2, [r1, #0]!
+    0x021905dc: msr      spsr_fc, r2
+    0x021905e0: ldr      lr, [r1, #0x40]
+    0x021905e4: ldmib    r1, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^
+    0x021905e8: mov      r0, r0
+    0x021905ec: stmda    sp!, {r0, r1, r2, r3, ip, lr}
+    0x021905f0: ldm      sp!, {pc}
+    0x021905f4: rsbseq   r0, ip, #0x60
+    0x021905f8: andseq   fp, pc, #4, #22
+    0x021905fc: andseq   pc, r3, #212, #16
+    0x02190600: andseq   pc, r3, #20, #18
+    0x02190604: push     {r3, r4, r5, r6, r7, lr}
+    0x02190608: mov      r7, r0
+    0x0219060c: mov      r6, r1
+    0x02190610: mov      r5, r2
+    0x02190614: mov      r4, r3
+    0x02190618: bl       #0x22d2350
+    0x0219061c: mov      r1, #0xc
+
+=== ALL NONSTACK CANDIDATES (COMPACT) ===
+0x020070d8: ldr r5, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x02009054: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0200bd90: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0200c1ac: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=7
+0x0200c1f4: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=7
+0x02012f50: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0202b1e0: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0202b304: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x020315e4: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x02031c0c: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x02031cf8: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x02031f38: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0203d030: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,) shape_hits=6
+0x0203d048: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71) shape_hits=6
+0x020456ac: ldrsh r0, [r1, #0x44] base=r1 disp=0x44 width=2 hits=(69,) shape_hits=2
+0x020459c0: ldrsh r3, [r3, #0x46] base=r3 disp=0x46 width=2 hits=(70, 71) shape_hits=0
+0x02047da8: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x020566fc: ldrsh r0, [r6, #0x44] base=r6 disp=0x44 width=2 hits=(69,) shape_hits=2
+0x020624ac: ldrsh r1, [r3, #0x46] base=r3 disp=0x46 width=2 hits=(70, 71) shape_hits=0
+0x02083480: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,) shape_hits=3
+0x02083498: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,) shape_hits=3
+0x020834a8: ldrsh r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x020834c0: ldrsh r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x020834d0: ldrsh r0, [sb, #0x44] base=sb disp=0x44 width=2 hits=(69,) shape_hits=3
+0x020834d8: ldrshne r0, [sb, #0x46] base=sb disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x02083674: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,) shape_hits=3
+0x02083690: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,) shape_hits=3
+0x020836a0: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x020836bc: ldrsh r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x020836cc: ldrsh r0, [r7, #0x44] base=r7 disp=0x44 width=2 hits=(69,) shape_hits=3
+0x020836d4: ldrshne r0, [r7, #0x46] base=r7 disp=0x46 width=2 hits=(70, 71) shape_hits=3
+0x02084cb8: ldrsh r1, [r8, #0x44] base=r8 disp=0x44 width=2 hits=(69,) shape_hits=1
+0x02086ed0: ldr r1, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x020a0574: ldr r1, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x020a062c: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x020a3868: ldrsh r2, [r1, #0x44] base=r1 disp=0x44 width=2 hits=(69,) shape_hits=4
+0x020a38b4: ldrsh r3, [r1, #0x46] base=r1 disp=0x46 width=2 hits=(70, 71) shape_hits=4
+0x020a38e0: ldrsh r3, [r1, #0x46] base=r1 disp=0x46 width=2 hits=(70, 71) shape_hits=2
+0x020a9bc0: ldrsh r6, [r3, #0x44] base=r3 disp=0x44 width=2 hits=(69,) shape_hits=4
+0x020a9bc4: ldrsh r7, [r3, #0x46] base=r3 disp=0x46 width=2 hits=(70, 71) shape_hits=4
+0x020bef54: ldr r3, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x020d279c: ldr r2, [r3, #0x44] base=r3 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x020eed88: ldrbeq r0, [r1, #0x45] base=r1 disp=0x45 width=1 hits=(69,) shape_hits=1
+0x020eee18: ldrb r0, [r0, #0x47] base=r0 disp=0x47 width=1 hits=(71,) shape_hits=0
+0x020eeeb4: ldrb r0, [r0, #0x47] base=r0 disp=0x47 width=1 hits=(71,) shape_hits=0
+0x020ef418: ldrb r0, [r0, #0x46] base=r0 disp=0x46 width=1 hits=(70,) shape_hits=0
+0x020ef480: ldrb r0, [r0, #0x46] base=r0 disp=0x46 width=1 hits=(70,) shape_hits=0
+0x020f08f8: ldrb r0, [r0, #0x47] base=r0 disp=0x47 width=1 hits=(71,) shape_hits=0
+0x020f0998: ldrb r0, [r0, #0x47] base=r0 disp=0x47 width=1 hits=(71,) shape_hits=0
+0x020f95d8: ldr r0, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x020fa1c4: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x020fb0e4: ldrh r0, [r0, #0x44] base=r0 disp=0x44 width=2 hits=(69,) shape_hits=1
+0x02108f74: ldrsb r0, [r6, #0x47] base=r6 disp=0x47 width=1 hits=(71,) shape_hits=0
+0x0210d804: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0210e644: ldr ip, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0210fc14: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x021130e0: ldr r4, [sl, #0x44] base=sl disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x02113178: ldr ip, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0211339c: ldr ip, [r6, #0x44] base=r6 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x02113448: ldr ip, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x02117a34: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x02118e7c: ldreq r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x02119be4: ldreq r0, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0211adc0: ldr r1, [r7, #0x44] base=r7 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0211b1e4: ldreq r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211b240: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211bc84: ldr r0, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211bcb0: ldr r3, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211bcd4: ldr r1, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211c1d4: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=7
+0x0211c1f8: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=8
+0x0211c234: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=8
+0x0211cc78: ldr r6, [r8, #0x44] base=r8 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x0211cc9c: ldr r6, [r8, #0x44] base=r8 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x0211ccc4: ldr r1, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=4
+0x0211ccfc: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=4
+0x0211cd20: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=4
+0x0211cdac: ldr r2, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211ce08: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0211d304: ldr r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0211d490: ldr r1, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x02121584: ldr r0, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0212f66c: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x0212f844: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0212f960: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x0212fac0: ldr r0, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0212fb48: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0213ca90: ldr r3, [sb, #0x44] base=sb disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0213cadc: ldr r3, [sb, #0x44] base=sb disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
+0x0213d924: ldr r4, [r5, #0x44] base=r5 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=5
+0x0214b6ec: ldr r0, [r4, #0x44] base=r4 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=1
+0x0215bd28: ldr sl, [r0, #0x44] base=r0 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=3
+0x021905cc: ldr sp, [r1, #0x44] base=r1 disp=0x44 width=4 hits=(69, 70, 71) shape_hits=2
