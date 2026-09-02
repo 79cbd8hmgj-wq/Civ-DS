@@ -138,7 +138,7 @@ def test_units_summarize_validates_profile_and_resolves_technology_names(
     assert warrior["production_cost"] == 10
     assert warrior["formation_mask"] == 7
     assert warrior["formation_size"] == 3
-    assert warrior["unknown_0x49"] == 0
+    assert warrior["reserved_0x49"] == 0
     assert warrior["unlock_technology_name"] is None
     assert warrior["obsolete_technology_name_1"] == "Iron Working"
     assert warrior["obsolete_technology_name_2"] == "Feudalism"
