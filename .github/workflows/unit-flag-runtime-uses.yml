@@ -1,0 +1,72 @@
+name: Compact Civ Rev unit flag runtime uses
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+    paths:
+      - .github/workflows/unit-flag-runtime-uses.yml
+
+permissions:
+  contents: write
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build compact runtime-use evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          source = json.loads(Path('evidence/re/unit-flag-bit-survey.json').read_text())
+          by_mask = {}
+          for row in source['flag_accesses']:
+              context = row['context']
+              by_addr = {entry['address']: i for i, entry in enumerate(context)}
+              for mask_use in row.get('nearby_masks', []):
+                  mask = mask_use['mask']
+                  idx = by_addr.get(mask_use['address'])
+                  if idx is None:
+                      window = []
+                  else:
+                      window = context[max(0, idx - 5):min(len(context), idx + 7)]
+                  by_mask.setdefault(mask, []).append({
+                      'flag_load_address': row['address'],
+                      'flag_load_instruction': row['instruction'],
+                      'mask_address': mask_use['address'],
+                      'mask_instruction': mask_use['instruction'],
+                      'record_stride_provenance': row['provenance'],
+                      'window': window,
+                  })
+
+          membership = source['bit_membership']
+          payload = {
+              'format_version': 1,
+              'masks': [
+                  {
+                      'mask': mask,
+                      'mask_hex': f'0x{mask:08X}',
+                      'direct_runtime_use_count': len(by_mask[mask]),
+                      'single_bit_membership': membership.get(f'0x{mask:08X}'),
+                      'uses': by_mask[mask],
+                  }
+                  for mask in sorted(by_mask)
+              ],
+          }
+          Path('evidence/re/unit-flag-runtime-uses.json').write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + '\n'
+          )
+          PY
+      - name: Commit compact evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-flag-runtime-uses.json
+          git commit -m "analysis: compact unit flag runtime uses"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
