@@ -6,11 +6,10 @@ on:
       - analysis/civrev-unit-survey
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   trace:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,70 +20,103 @@ jobs:
           python-version: '3.11'
       - name: Install Civ-DS
         run: python -m pip install -e .
-      - name: Refresh unit evidence and trace field 0x44
+      - name: Resolve field 0x44 scaling
         shell: bash
         run: |
           set -euo pipefail
           ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
           ROM_DIR="$RUNNER_TEMP/civrev-rom"
-          mkdir -p "$ROM_DIR" evidence/re
+          mkdir -p "$ROM_DIR"
           unzip -q "$ROM_ZIP" -d "$ROM_DIR"
           ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
           test -n "$ROM"
-          civds units summarize "$ROM" --output evidence/re/units.json
           python - "$ROM" <<'PY'
           import json
           import sys
           from pathlib import Path
 
           from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_IMM, ARM_OP_MEM
 
           rom = Path(sys.argv[1]).read_bytes()
-          profile = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
-          base = int(profile['arm9_ram_address'])
-          off = int(profile['arm9_offset'])
-          size = int(profile['arm9_size'])
+          expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(expected['arm9_ram_address'])
+          off = int(expected['arm9_offset'])
+          size = int(expected['arm9_size'])
           arm9 = rom[off:off + size]
-          units = json.loads(Path('evidence/re/units.json').read_text())['units']
-
-          fighter = units[26]
-          bomber = units[25]
-          assert fighter['fuel_turn_limit'] == 2
-          assert bomber['fuel_turn_limit'] == 4
-          assert 'unknown_0x43' not in fighter
-
-          print('=== FIELD 0x44 VALUE / X5 MATRIX ===')
-          for unit in units:
-              value = unit['unknown_0x44']
-              print(f"{unit['index']:02d} {unit['name']!r:22} raw={value:>3} x5={value*5:>3}")
+          table_base = 0x02179F20
 
           md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
           md.detail = True
           md.skipdata = True
-          windows = [
-              (0x0203A0D0, 0x0203A260),
-              (0x0203B580, 0x0203B780),
-              (0x02086920, 0x02086A50),
-          ]
-          for start, end in windows:
-              print(f'\n=== CODE {start:#010x}..{end:#010x} ===')
-              start_off = start - base
-              end_off = end - base
-              for insn in md.disasm(arm9[start_off:end_off], start):
+          insns = [i for i in md.disasm(arm9, base) if i.id != 0 and i.address % 4 == 0]
+
+          def literal_target(insn):
+              ops = getattr(insn, 'operands', ())
+              if len(ops) < 2 or ops[1].type != ARM_OP_MEM:
+                  return None
+              mem = ops[1].mem
+              if insn.reg_name(mem.base) != 'pc' or mem.index != 0:
+                  return None
+              addr = insn.address + 8 + int(mem.disp)
+              pos = addr - base
+              if not 0 <= pos <= len(arm9) - 4:
+                  return None
+              return int.from_bytes(arm9[pos:pos+4], 'little')
+
+          print('=== ALL CONFIRMED FIELD 0x44 CONSUMER WINDOWS ===')
+          for idx, insn in enumerate(insns):
+              if insn.mnemonic not in {'ldrsb', 'ldrb'}:
+                  continue
+              ops = getattr(insn, 'operands', ())
+              memop = next((op for op in ops if op.type == ARM_OP_MEM), None)
+              if memop is None or int(memop.mem.disp) != 0x44:
+                  continue
+              context = insns[max(0, idx-18):min(len(insns), idx+24)]
+              text = ' '.join(f'{x.mnemonic} {x.op_str}' for x in context)
+              nearby_table = any(literal_target(x) == table_base for x in context)
+              nearby_stride = '#0x94' in text or '#148' in text
+              if not (nearby_table or nearby_stride):
+                  continue
+              print(f'\nFIELD44 {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
+              for x in context:
                   marks=[]
-                  if '#0x44' in insn.op_str: marks.append('FIELD44')
-                  if '#0x94' in insn.op_str: marks.append('STRIDE')
-                  if insn.mnemonic in {'bl','blx'}: marks.append('CALL')
+                  if x.address == insn.address: marks.append('FIELD44')
+                  if literal_target(x) == table_base: marks.append('TABLE')
+                  if '#0x94' in x.op_str or '#148' in x.op_str: marks.append('STRIDE')
+                  if '#5' in x.op_str: marks.append('IMM5')
+                  if 'lsl #2' in x.op_str: marks.append('LSL2')
                   suffix=f" ; {'|'.join(marks)}" if marks else ''
-                  print(f'{insn.address:#010x}: {insn.mnemonic:8} {insn.op_str}{suffix}')
+                  print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
+
+          print('\n=== FUNCTION 0x02095250 ===')
+          start=0x020951E0; end=0x02095320
+          for x in md.disasm(arm9[start-base:end-base], start):
+              marks=[]
+              if x.address == 0x02095250: marks.append('ENTRY')
+              if '#5' in x.op_str: marks.append('IMM5')
+              if 'lsl #2' in x.op_str: marks.append('LSL2')
+              if x.mnemonic in {'bl','blx'}: marks.append('CALL')
+              suffix=f" ; {'|'.join(marks)}" if marks else ''
+              print(f'{x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
+
+          print('\n=== ARM9 COST / PRODUCTION STRINGS ===')
+          lower = arm9.lower()
+          seen=set()
+          for needle in (b'production', b'cost', b'build'):
+              pos=0
+              while True:
+                  pos=lower.find(needle,pos)
+                  if pos < 0: break
+                  start=max(0, arm9.rfind(b'\0', max(0,pos-160), pos)+1)
+                  end=arm9.find(b'\0', pos)
+                  if end < 0 or end-pos > 220: end=min(len(arm9),pos+220)
+                  raw=arm9[start:end]
+                  if raw and all((0x20 <= b < 0x7f) or b in (9,10,13) for b in raw):
+                      text=raw.decode('ascii',errors='replace')
+                      key=(base+start,text)
+                      if key not in seen:
+                          seen.add(key)
+                          print(f'{base+start:#010x}: {text!r}')
+                  pos += len(needle)
           PY
-      - name: Commit refreshed canonical evidence
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/re/units.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "analysis: record recovered unit fuel limits [generated]"
-          git push origin HEAD:analysis/civrev-unit-survey
