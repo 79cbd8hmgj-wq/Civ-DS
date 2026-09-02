@@ -58,7 +58,7 @@ jobs:
 
           md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
           md.detail = True
-          md.skipdata = False
+          md.skipdata = True
           insns = list(md.disasm(arm9, base))
           by_addr = {i.address: n for n, i in enumerate(insns)}
 
