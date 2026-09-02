@@ -1,0 +1,67 @@
+name: Civ Rev Unit Tech Link Resolution
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-unit-survey
+      - name: Resolve unit metadata technology IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          units=json.loads(Path('evidence/re/unit-struct-resolution.json').read_text())
+          tech=json.loads(Path('evidence/re/tech-semantics-resolution.json').read_text())
+          tech_by_id={int(r['runtime_id']):r['name'] for r in tech['records']}
+
+          rows=[]
+          for rec in units['records']:
+              b=rec['metadata_u8']
+              vals=[]
+              for off in (10,12,14):
+                  v=int.from_bytes(bytes(b[off:off+2]),'little',signed=True)
+                  vals.append({
+                      'relative_offset':0x40+off,
+                      'value':v,
+                      'technology_name':tech_by_id.get(v),
+                      'kind':'technology_id' if v in tech_by_id else ('minus_one_sentinel' if v==-1 else 'other'),
+                  })
+              rows.append({
+                  'unit_index':rec['index'],'unit_name':rec['slot0'],
+                  'attack':b[0],'defense':b[1],'movement':b[2],
+                  'byte_0x43':b[3],'byte_0x44':b[4],'byte_0x45':b[5],'byte_0x46':b[6],'byte_0x47':b[7],
+                  'formation_count_u16':int.from_bytes(bytes(b[8:10]),'little'),
+                  'technology_links':vals,
+                  'flags_u32':int.from_bytes(bytes(b[16:20]),'little'),
+              })
+
+          payload={'format_version':1,'technology_runtime_base':tech['runtime_mapping']['base_address'],'rows':rows}
+          Path('evidence/re/unit-tech-links.json').write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n')
+          for r in rows:
+              links=', '.join(f"{x['value']}:{x['technology_name'] or x['kind']}" for x in r['technology_links'])
+              print(f"{r['unit_index']:02d} {r['unit_name']!r:22} A/D/M={r['attack']}/{r['defense']}/{r['movement']} b43={r['byte_0x43']} b44={r['byte_0x44']} b45={r['byte_0x45']} b46={r['byte_0x46']} b47={r['byte_0x47']} formation={r['formation_count_u16']} tech=[{links}] flags={r['flags_u32']:#010x}")
+          PY
+      - name: Commit resolved unit tech links
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-tech-links.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "analysis: resolve unit technology links [generated]"
+          git push origin HEAD:analysis/civrev-unit-survey
