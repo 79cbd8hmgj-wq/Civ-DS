@@ -25,8 +25,10 @@ def build_unit_summary(records: tuple[UnitRecord, ...]) -> dict[str, object]:
         unit = asdict(record)
         unit["production_cost"] = record.production_cost
         unit["formation_size"] = record.formation_size
+        unit["is_settler"] = record.is_settler
         unit["is_naval"] = record.is_naval
         unit["is_air"] = record.is_air
+        unit["is_great_person"] = record.is_great_person
         unit["unlock_technology_name"] = technology_name(record.unlock_technology_id)
         unit["obsolete_technology_name_1"] = technology_name(
             record.obsolete_technology_id_1
