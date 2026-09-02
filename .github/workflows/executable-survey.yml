@@ -38,6 +38,7 @@ jobs:
           import json
           import subprocess
           import sys
+          from collections import Counter
           from pathlib import Path
 
           workspace = Path(sys.argv[1])
@@ -59,17 +60,20 @@ jobs:
                   hex(int(overlay["ram_address"])),
               ]
 
-          keywords = [
-              "gold", "trade", "food", "production", "science", "culture", "resource",
-              "treasury", "technology", "research", "tech", "population", "building",
-              "wonder", "combat", "attack", "defense", "damage", "army", "unit", "veteran",
-              "diplomacy", "diplomatic", "treaty", "peace", "government", "democracy",
-              "monarchy", "republic", "communism", "fundamentalism", "despotism",
-              "civilization", "leader", "victory", "defeat", "barbarian", "settler",
-              "save", "autosave", "profile", "CvCity", "CvUnit", "CvPlayer", "CvGame",
-              "CvTeam", "CvMap", "CvPlot", "CvInfo", "GameCore", "Firaxis",
-              "assert", "invalid", "failed", "error",
-          ]
+          groups = {
+              "economy": ("gold", "trade", "food", "production", "science", "culture", "resource", "treasury"),
+              "technology": ("technology", "research", "tech"),
+              "city": ("population", "building", "wonder", "cvcity"),
+              "combat_units": ("combat", "attack", "defense", "damage", "army", "unit", "veteran", "settler", "barbarian", "cvunit"),
+              "diplomacy": ("diplomacy", "diplomatic", "treaty", "peace"),
+              "government": ("government", "democracy", "monarchy", "republic", "communism", "fundamentalism", "despotism"),
+              "civilization_player": ("civilization", "leader", "cvplayer", "cvteam"),
+              "game_victory": ("victory", "defeat", "cvgame", "gamecore"),
+              "save_profile": ("save", "autosave", "profile"),
+              "firaxis_lineage": ("cvcity", "cvunit", "cvplayer", "cvgame", "cvteam", "cvmap", "cvplot", "cvinfo", "gamecore", "firaxis"),
+              "diagnostics": ("assert", "invalid", "failed", "error"),
+          }
+          keywords = sorted({term for terms in groups.values() for term in terms})
           for keyword in keywords:
               cmd += ["--keyword", keyword]
           cmd += [
@@ -77,6 +81,61 @@ jobs:
               "--output", "evidence/re/executable-keywords.json",
           ]
           subprocess.run(cmd, check=True)
+
+          report = json.loads(Path("evidence/re/executable-keywords.json").read_text())
+          component_hits = Counter()
+          category_hits = Counter()
+          category_rows = {name: [] for name in groups}
+          for row in report["string_records"]:
+              text = row["text"]
+              lowered = text.lower()
+              component_hits[row["component"]] += 1
+              for category, terms in groups.items():
+                  if any(term in lowered for term in terms):
+                      category_hits[category] += 1
+                      category_rows[category].append({
+                          "component": row["component"],
+                          "address": row["address"],
+                          "offset": row["offset"],
+                          "text": text,
+                          "reference_count": len(row["references"]),
+                          "references": row["references"],
+                      })
+
+          for rows in category_rows.values():
+              rows.sort(key=lambda row: (-row["reference_count"], row["component"], row["address"], row["text"]))
+
+          top_xrefs = [
+              {
+                  "component": row["component"],
+                  "address": row["address"],
+                  "text": row["text"],
+                  "reference_count": len(row["references"]),
+                  "references": row["references"],
+              }
+              for row in sorted(
+                  report["string_records"],
+                  key=lambda row: (-len(row["references"]), row["component"], row["address"], row["text"]),
+              )[:50]
+          ]
+          summary = {
+              "format_version": 1,
+              "components": report["components"],
+              "total_keyword_strings": len(report["string_records"]),
+              "component_hits": [
+                  {"component": name, "count": count}
+                  for name, count in sorted(component_hits.items(), key=lambda item: (-item[1], item[0]))
+              ],
+              "category_hits": [
+                  {"category": name, "count": category_hits[name]}
+                  for name in groups
+              ],
+              "categories": category_rows,
+              "top_xref_strings": top_xrefs,
+          }
+          Path("evidence/re/executable-survey-summary.json").write_text(
+              json.dumps(summary, indent=2, sort_keys=True) + "\n"
+          )
           PY
       - name: Commit derived survey
         shell: bash
@@ -84,9 +143,9 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/re/executable-keywords.json
+          git add evidence/re/executable-keywords.json evidence/re/executable-survey-summary.json
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "analysis: add Civ Rev executable keyword survey [exec-survey-generated]"
+          git commit -m "analysis: add Civ Rev executable survey summary [exec-survey-generated]"
           git push origin HEAD:analysis/civrev-executable-survey
