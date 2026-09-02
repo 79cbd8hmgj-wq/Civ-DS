@@ -1,0 +1,7605 @@
+{
+  "anchor": {
+    "address": 35102496,
+    "component": "arm9",
+    "reference_count": 53,
+    "text": "Settlers"
+  },
+  "format_version": 1,
+  "nearby_strings": [
+    {
+      "address": 35098404,
+      "offset_from_anchor": -4092,
+      "text": "Govt: Republic"
+    },
+    {
+      "address": 35098468,
+      "offset_from_anchor": -4028,
+      "text": "Construction"
+    },
+    {
+      "address": 35098574,
+      "offset_from_anchor": -3922,
+      "text": "Irrigation"
+    },
+    {
+      "address": 35098616,
+      "offset_from_anchor": -3880,
+      "text": "+1 food from river squares"
+    },
+    {
+      "address": 35098680,
+      "offset_from_anchor": -3816,
+      "text": "Literacy"
+    },
+    {
+      "address": 35098786,
+      "offset_from_anchor": -3710,
+      "text": "Mathematics"
+    },
+    {
+      "address": 35098892,
+      "offset_from_anchor": -3604,
+      "text": "Currency"
+    },
+    {
+      "address": 35098998,
+      "offset_from_anchor": -3498,
+      "text": "Democracy"
+    },
+    {
+      "address": 35099040,
+      "offset_from_anchor": -3456,
+      "text": "Govt: Democracy"
+    },
+    {
+      "address": 35099104,
+      "offset_from_anchor": -3392,
+      "text": "Engineering"
+    },
+    {
+      "address": 35099210,
+      "offset_from_anchor": -3286,
+      "text": "Feudalism"
+    },
+    {
+      "address": 35099316,
+      "offset_from_anchor": -3180,
+      "text": "Monarchy"
+    },
+    {
+      "address": 35099358,
+      "offset_from_anchor": -3138,
+      "text": "Govt: Monarchy"
+    },
+    {
+      "address": 35099422,
+      "offset_from_anchor": -3074,
+      "text": "Religion"
+    },
+    {
+      "address": 35099464,
+      "offset_from_anchor": -3032,
+      "text": "Govt: Fundementalism"
+    },
+    {
+      "address": 35099528,
+      "offset_from_anchor": -2968,
+      "text": "Banking"
+    },
+    {
+      "address": 35099634,
+      "offset_from_anchor": -2862,
+      "text": "University"
+    },
+    {
+      "address": 35099740,
+      "offset_from_anchor": -2756,
+      "text": "Invention"
+    },
+    {
+      "address": 35099846,
+      "offset_from_anchor": -2650,
+      "text": "Navigation"
+    },
+    {
+      "address": 35099952,
+      "offset_from_anchor": -2544,
+      "text": "Gunpowder"
+    },
+    {
+      "address": 35100058,
+      "offset_from_anchor": -2438,
+      "text": "Metallurgy"
+    },
+    {
+      "address": 35100164,
+      "offset_from_anchor": -2332,
+      "text": "Printing Press"
+    },
+    {
+      "address": 35100270,
+      "offset_from_anchor": -2226,
+      "text": "Steam Power"
+    },
+    {
+      "address": 35100376,
+      "offset_from_anchor": -2120,
+      "text": "Combustion"
+    },
+    {
+      "address": 35100482,
+      "offset_from_anchor": -2014,
+      "text": "Electricity"
+    },
+    {
+      "address": 35100588,
+      "offset_from_anchor": -1908,
+      "text": "Industrialization"
+    },
+    {
+      "address": 35100694,
+      "offset_from_anchor": -1802,
+      "text": "Railroad"
+    },
+    {
+      "address": 35100800,
+      "offset_from_anchor": -1696,
+      "text": "Communism"
+    },
+    {
+      "address": 35100842,
+      "offset_from_anchor": -1654,
+      "text": "Govt: Communism"
+    },
+    {
+      "address": 35100906,
+      "offset_from_anchor": -1590,
+      "text": "Flight"
+    },
+    {
+      "address": 35101012,
+      "offset_from_anchor": -1484,
+      "text": "Mass Production"
+    },
+    {
+      "address": 35101118,
+      "offset_from_anchor": -1378,
+      "text": "Steel"
+    },
+    {
+      "address": 35101224,
+      "offset_from_anchor": -1272,
+      "text": "The Corporation"
+    },
+    {
+      "address": 35101330,
+      "offset_from_anchor": -1166,
+      "text": "Atomic Theory"
+    },
+    {
+      "address": 35101436,
+      "offset_from_anchor": -1060,
+      "text": "Electronics"
+    },
+    {
+      "address": 35101542,
+      "offset_from_anchor": -954,
+      "text": "Mass Media"
+    },
+    {
+      "address": 35101648,
+      "offset_from_anchor": -848,
+      "text": "The Automobile"
+    },
+    {
+      "address": 35101754,
+      "offset_from_anchor": -742,
+      "text": "Advanced Flight"
+    },
+    {
+      "address": 35101860,
+      "offset_from_anchor": -636,
+      "text": "Nuclear Power"
+    },
+    {
+      "address": 35101966,
+      "offset_from_anchor": -530,
+      "text": "Networking"
+    },
+    {
+      "address": 35102072,
+      "offset_from_anchor": -424,
+      "text": "Space Flight"
+    },
+    {
+      "address": 35102178,
+      "offset_from_anchor": -318,
+      "text": "Globalization"
+    },
+    {
+      "address": 35102284,
+      "offset_from_anchor": -212,
+      "text": "Superconductor"
+    },
+    {
+      "address": 35102390,
+      "offset_from_anchor": -106,
+      "text": "Future Technology"
+    },
+    {
+      "address": 35102496,
+      "offset_from_anchor": 0,
+      "text": "Settlers"
+    },
+    {
+      "address": 35102528,
+      "offset_from_anchor": 32,
+      "text": "settler_rom"
+    },
+    {
+      "address": 35102580,
+      "offset_from_anchor": 84,
+      "text": "Settler_Male"
+    },
+    {
+      "address": 35102612,
+      "offset_from_anchor": 116,
+      "text": "Settler_Male"
+    },
+    {
+      "address": 35102644,
+      "offset_from_anchor": 148,
+      "text": "FSettler"
+    },
+    {
+      "address": 35102728,
+      "offset_from_anchor": 232,
+      "text": "Settler"
+    },
+    {
+      "address": 35102760,
+      "offset_from_anchor": 264,
+      "text": "Settler_Female"
+    },
+    {
+      "address": 35102792,
+      "offset_from_anchor": 296,
+      "text": "Naval Crew"
+    },
+    {
+      "address": 35102824,
+      "offset_from_anchor": 328,
+      "text": "worker_rom_m"
+    },
+    {
+      "address": 35102876,
+      "offset_from_anchor": 380,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35102908,
+      "offset_from_anchor": 412,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35102972,
+      "offset_from_anchor": 476,
+      "text": "Barbarian_Hot"
+    },
+    {
+      "address": 35103024,
+      "offset_from_anchor": 528,
+      "text": "Barbarian_Hot"
+    },
+    {
+      "address": 35103056,
+      "offset_from_anchor": 560,
+      "text": "Barbarian_Hot"
+    },
+    {
+      "address": 35103120,
+      "offset_from_anchor": 624,
+      "text": "Barbarian_Temperate"
+    },
+    {
+      "address": 35103172,
+      "offset_from_anchor": 676,
+      "text": "Barbarian_Temperate"
+    },
+    {
+      "address": 35103204,
+      "offset_from_anchor": 708,
+      "text": "Barbarian_Temperate"
+    },
+    {
+      "address": 35103268,
+      "offset_from_anchor": 772,
+      "text": "Barbarian_Cold"
+    },
+    {
+      "address": 35103320,
+      "offset_from_anchor": 824,
+      "text": "Barbarian_Cold"
+    },
+    {
+      "address": 35103352,
+      "offset_from_anchor": 856,
+      "text": "Barbarian_Cold"
+    },
+    {
+      "address": 35103384,
+      "offset_from_anchor": 888,
+      "text": "Warrior"
+    },
+    {
+      "address": 35103416,
+      "offset_from_anchor": 920,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35103468,
+      "offset_from_anchor": 972,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35103500,
+      "offset_from_anchor": 1004,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35103532,
+      "offset_from_anchor": 1036,
+      "text": "Militia"
+    },
+    {
+      "address": 35103564,
+      "offset_from_anchor": 1068,
+      "text": "worker_rom_m"
+    },
+    {
+      "address": 35103616,
+      "offset_from_anchor": 1120,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35103648,
+      "offset_from_anchor": 1152,
+      "text": "Swordsman"
+    },
+    {
+      "address": 35103680,
+      "offset_from_anchor": 1184,
+      "text": "Legion"
+    },
+    {
+      "address": 35103712,
+      "offset_from_anchor": 1216,
+      "text": "Legion"
+    },
+    {
+      "address": 35103764,
+      "offset_from_anchor": 1268,
+      "text": "Legion"
+    },
+    {
+      "address": 35103796,
+      "offset_from_anchor": 1300,
+      "text": "Legion"
+    },
+    {
+      "address": 35103828,
+      "offset_from_anchor": 1332,
+      "text": "Archer"
+    },
+    {
+      "address": 35103860,
+      "offset_from_anchor": 1364,
+      "text": "Archer"
+    },
+    {
+      "address": 35103912,
+      "offset_from_anchor": 1416,
+      "text": "Phalanx"
+    },
+    {
+      "address": 35103944,
+      "offset_from_anchor": 1448,
+      "text": "Phalanx"
+    },
+    {
+      "address": 35103976,
+      "offset_from_anchor": 1480,
+      "text": "Riflemen"
+    },
+    {
+      "address": 35104008,
+      "offset_from_anchor": 1512,
+      "text": "Rifleman"
+    },
+    {
+      "address": 35104060,
+      "offset_from_anchor": 1564,
+      "text": "Rifleman"
+    },
+    {
+      "address": 35104092,
+      "offset_from_anchor": 1596,
+      "text": "Rifleman"
+    },
+    {
+      "address": 35104124,
+      "offset_from_anchor": 1628,
+      "text": "Modern Infantry"
+    },
+    {
+      "address": 35104156,
+      "offset_from_anchor": 1660,
+      "text": "Modern_Soldier"
+    },
+    {
+      "address": 35104208,
+      "offset_from_anchor": 1712,
+      "text": "Modern_Soldier"
+    },
+    {
+      "address": 35104240,
+      "offset_from_anchor": 1744,
+      "text": "Modern_Soldier"
+    },
+    {
+      "address": 35104272,
+      "offset_from_anchor": 1776,
+      "text": "Horsemen"
+    },
+    {
+      "address": 35104304,
+      "offset_from_anchor": 1808,
+      "text": "Horseman"
+    },
+    {
+      "address": 35104356,
+      "offset_from_anchor": 1860,
+      "text": "Horseman"
+    },
+    {
+      "address": 35104388,
+      "offset_from_anchor": 1892,
+      "text": "Horseman"
+    },
+    {
+      "address": 35104420,
+      "offset_from_anchor": 1924,
+      "text": "Knights"
+    },
+    {
+      "address": 35104452,
+      "offset_from_anchor": 1956,
+      "text": "Knight"
+    },
+    {
+      "address": 35104504,
+      "offset_from_anchor": 2008,
+      "text": "Knight"
+    },
+    {
+      "address": 35104536,
+      "offset_from_anchor": 2040,
+      "text": "Knight"
+    },
+    {
+      "address": 35104568,
+      "offset_from_anchor": 2072,
+      "text": "Tank"
+    },
+    {
+      "address": 35104600,
+      "offset_from_anchor": 2104,
+      "text": "Armor"
+    },
+    {
+      "address": 35104652,
+      "offset_from_anchor": 2156,
+      "text": "Armor"
+    },
+    {
+      "address": 35104684,
+      "offset_from_anchor": 2188,
+      "text": "Armor"
+    },
+    {
+      "address": 35104716,
+      "offset_from_anchor": 2220,
+      "text": "Phalanx"
+    },
+    {
+      "address": 35104748,
+      "offset_from_anchor": 2252,
+      "text": "Phalanx"
+    },
+    {
+      "address": 35104800,
+      "offset_from_anchor": 2304,
+      "text": "Archer"
+    },
+    {
+      "address": 35104832,
+      "offset_from_anchor": 2336,
+      "text": "Archer"
+    },
+    {
+      "address": 35104864,
+      "offset_from_anchor": 2368,
+      "text": "Catapult"
+    },
+    {
+      "address": 35104896,
+      "offset_from_anchor": 2400,
+      "text": "Catapult"
+    },
+    {
+      "address": 35104948,
+      "offset_from_anchor": 2452,
+      "text": "Catapult"
+    },
+    {
+      "address": 35104980,
+      "offset_from_anchor": 2484,
+      "text": "Catapult"
+    },
+    {
+      "address": 35105012,
+      "offset_from_anchor": 2516,
+      "text": "Cannon"
+    },
+    {
+      "address": 35105044,
+      "offset_from_anchor": 2548,
+      "text": "Cannon"
+    },
+    {
+      "address": 35105096,
+      "offset_from_anchor": 2600,
+      "text": "Cannon"
+    },
+    {
+      "address": 35105128,
+      "offset_from_anchor": 2632,
+      "text": "Cannon"
+    },
+    {
+      "address": 35105160,
+      "offset_from_anchor": 2664,
+      "text": "Artillery"
+    },
+    {
+      "address": 35105192,
+      "offset_from_anchor": 2696,
+      "text": "Artillery"
+    },
+    {
+      "address": 35105244,
+      "offset_from_anchor": 2748,
+      "text": "Artillery"
+    },
+    {
+      "address": 35105276,
+      "offset_from_anchor": 2780,
+      "text": "Artillery"
+    },
+    {
+      "address": 35105308,
+      "offset_from_anchor": 2812,
+      "text": "Submarine"
+    },
+    {
+      "address": 35105340,
+      "offset_from_anchor": 2844,
+      "text": "Submarine"
+    },
+    {
+      "address": 35105392,
+      "offset_from_anchor": 2896,
+      "text": "Submarine"
+    },
+    {
+      "address": 35105424,
+      "offset_from_anchor": 2928,
+      "text": "Submarine"
+    },
+    {
+      "address": 35105456,
+      "offset_from_anchor": 2960,
+      "text": "Galley"
+    },
+    {
+      "address": 35105488,
+      "offset_from_anchor": 2992,
+      "text": "Galley"
+    },
+    {
+      "address": 35105540,
+      "offset_from_anchor": 3044,
+      "text": "Galley"
+    },
+    {
+      "address": 35105572,
+      "offset_from_anchor": 3076,
+      "text": "Galley"
+    },
+    {
+      "address": 35105604,
+      "offset_from_anchor": 3108,
+      "text": "Galleon"
+    },
+    {
+      "address": 35105636,
+      "offset_from_anchor": 3140,
+      "text": "Galleon"
+    },
+    {
+      "address": 35105688,
+      "offset_from_anchor": 3192,
+      "text": "Galleon"
+    },
+    {
+      "address": 35105720,
+      "offset_from_anchor": 3224,
+      "text": "Galleon"
+    },
+    {
+      "address": 35105752,
+      "offset_from_anchor": 3256,
+      "text": "Cruiser"
+    },
+    {
+      "address": 35105784,
+      "offset_from_anchor": 3288,
+      "text": "Cruiser"
+    },
+    {
+      "address": 35105836,
+      "offset_from_anchor": 3340,
+      "text": "Cruiser"
+    },
+    {
+      "address": 35105868,
+      "offset_from_anchor": 3372,
+      "text": "Cruiser"
+    },
+    {
+      "address": 35105900,
+      "offset_from_anchor": 3404,
+      "text": "Battleship"
+    },
+    {
+      "address": 35105932,
+      "offset_from_anchor": 3436,
+      "text": "Battleship"
+    },
+    {
+      "address": 35105984,
+      "offset_from_anchor": 3488,
+      "text": "Battleship"
+    },
+    {
+      "address": 35106016,
+      "offset_from_anchor": 3520,
+      "text": "Battleship"
+    },
+    {
+      "address": 35106048,
+      "offset_from_anchor": 3552,
+      "text": "Space Station"
+    },
+    {
+      "address": 35106080,
+      "offset_from_anchor": 3584,
+      "text": "LaunchVehicle"
+    },
+    {
+      "address": 35106132,
+      "offset_from_anchor": 3636,
+      "text": "Transport"
+    },
+    {
+      "address": 35106164,
+      "offset_from_anchor": 3668,
+      "text": "Transport"
+    },
+    {
+      "address": 35106196,
+      "offset_from_anchor": 3700,
+      "text": "Bomber"
+    },
+    {
+      "address": 35106228,
+      "offset_from_anchor": 3732,
+      "text": "Bomber"
+    },
+    {
+      "address": 35106280,
+      "offset_from_anchor": 3784,
+      "text": "Bomber"
+    },
+    {
+      "address": 35106312,
+      "offset_from_anchor": 3816,
+      "text": "Bomber"
+    },
+    {
+      "address": 35106344,
+      "offset_from_anchor": 3848,
+      "text": "Fighter"
+    },
+    {
+      "address": 35106376,
+      "offset_from_anchor": 3880,
+      "text": "Fighter"
+    },
+    {
+      "address": 35106428,
+      "offset_from_anchor": 3932,
+      "text": "Fighter"
+    },
+    {
+      "address": 35106460,
+      "offset_from_anchor": 3964,
+      "text": "Fighter"
+    },
+    {
+      "address": 35106492,
+      "offset_from_anchor": 3996,
+      "text": "ICBM"
+    },
+    {
+      "address": 35106524,
+      "offset_from_anchor": 4028,
+      "text": "ICBM_Silo"
+    },
+    {
+      "address": 35106576,
+      "offset_from_anchor": 4080,
+      "text": "ICBM"
+    }
+  ],
+  "reference_clusters": [
+    {
+      "addresses": [
+        33773708
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33773708,
+      "start": 33773708
+    },
+    {
+      "addresses": [
+        33780504
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33780504,
+      "start": 33780504
+    },
+    {
+      "addresses": [
+        33789080
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33789080,
+      "start": 33789080
+    },
+    {
+      "addresses": [
+        33795596
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33795596,
+      "start": 33795596
+    },
+    {
+      "addresses": [
+        33804720
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33804720,
+      "start": 33804720
+    },
+    {
+      "addresses": [
+        33811928
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33811928,
+      "start": 33811928
+    },
+    {
+      "addresses": [
+        33816512
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33816512,
+      "start": 33816512
+    },
+    {
+      "addresses": [
+        33820012
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33820012,
+      "start": 33820012
+    },
+    {
+      "addresses": [
+        33821972
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33821972,
+      "start": 33821972
+    },
+    {
+      "addresses": [
+        33825884
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33825884,
+      "start": 33825884
+    },
+    {
+      "addresses": [
+        33840236
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33840236,
+      "start": 33840236
+    },
+    {
+      "addresses": [
+        33844088
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33844088,
+      "start": 33844088
+    },
+    {
+      "addresses": [
+        33845408
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33845408,
+      "start": 33845408
+    },
+    {
+      "addresses": [
+        33859704
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33859704,
+      "start": 33859704
+    },
+    {
+      "addresses": [
+        33877316
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33877316,
+      "start": 33877316
+    },
+    {
+      "addresses": [
+        33882500
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33882500,
+      "start": 33882500
+    },
+    {
+      "addresses": [
+        33888452
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33888452,
+      "start": 33888452
+    },
+    {
+      "addresses": [
+        33896968
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33896968,
+      "start": 33896968
+    },
+    {
+      "addresses": [
+        33897460
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33897460,
+      "start": 33897460
+    },
+    {
+      "addresses": [
+        33900720
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33900720,
+      "start": 33900720
+    },
+    {
+      "addresses": [
+        33904820
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33904820,
+      "start": 33904820
+    },
+    {
+      "addresses": [
+        33909924
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33909924,
+      "start": 33909924
+    },
+    {
+      "addresses": [
+        33925780
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33925780,
+      "start": 33925780
+    },
+    {
+      "addresses": [
+        33943228
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33943228,
+      "start": 33943228
+    },
+    {
+      "addresses": [
+        33967648
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33967648,
+      "start": 33967648
+    },
+    {
+      "addresses": [
+        33974284
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33974284,
+      "start": 33974284
+    },
+    {
+      "addresses": [
+        33994824
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 33994824,
+      "start": 33994824
+    },
+    {
+      "addresses": [
+        34017356
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34017356,
+      "start": 34017356
+    },
+    {
+      "addresses": [
+        34093940
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34093940,
+      "start": 34093940
+    },
+    {
+      "addresses": [
+        34099312
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34099312,
+      "start": 34099312
+    },
+    {
+      "addresses": [
+        34108016
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34108016,
+      "start": 34108016
+    },
+    {
+      "addresses": [
+        34112516
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34112516,
+      "start": 34112516
+    },
+    {
+      "addresses": [
+        34121668
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34121668,
+      "start": 34121668
+    },
+    {
+      "addresses": [
+        34125736
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34125736,
+      "start": 34125736
+    },
+    {
+      "addresses": [
+        34134344
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34134344,
+      "start": 34134344
+    },
+    {
+      "addresses": [
+        34141880
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34141880,
+      "start": 34141880
+    },
+    {
+      "addresses": [
+        34158940
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34158940,
+      "start": 34158940
+    },
+    {
+      "addresses": [
+        34170644
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34170644,
+      "start": 34170644
+    },
+    {
+      "addresses": [
+        34175260
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34175260,
+      "start": 34175260
+    },
+    {
+      "addresses": [
+        34184988
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34184988,
+      "start": 34184988
+    },
+    {
+      "addresses": [
+        34191604
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34191604,
+      "start": 34191604
+    },
+    {
+      "addresses": [
+        34197268
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34197268,
+      "start": 34197268
+    },
+    {
+      "addresses": [
+        34198376
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34198376,
+      "start": 34198376
+    },
+    {
+      "addresses": [
+        34203332
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34203332,
+      "start": 34203332
+    },
+    {
+      "addresses": [
+        34306232
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34306232,
+      "start": 34306232
+    },
+    {
+      "addresses": [
+        34309868
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34309868,
+      "start": 34309868
+    },
+    {
+      "addresses": [
+        34317336
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34317336,
+      "start": 34317336
+    },
+    {
+      "addresses": [
+        34333848
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34333848,
+      "start": 34333848
+    },
+    {
+      "addresses": [
+        34339448
+      ],
+      "component": "arm9",
+      "count": 1,
+      "end": 34339448,
+      "start": 34339448
+    },
+    {
+      "addresses": [
+        35676864
+      ],
+      "component": "overlay_003",
+      "count": 1,
+      "end": 35676864,
+      "start": 35676864
+    },
+    {
+      "addresses": [
+        35690472
+      ],
+      "component": "overlay_015",
+      "count": 1,
+      "end": 35690472,
+      "start": 35690472
+    },
+    {
+      "addresses": [
+        35692948
+      ],
+      "component": "overlay_015",
+      "count": 1,
+      "end": 35692948,
+      "start": 35692948
+    },
+    {
+      "addresses": [
+        35693584
+      ],
+      "component": "overlay_015",
+      "count": 1,
+      "end": 35693584,
+      "start": 35693584
+    }
+  ],
+  "reference_component_counts": [
+    {
+      "component": "arm9",
+      "count": 49
+    },
+    {
+      "component": "overlay_015",
+      "count": 3
+    },
+    {
+      "component": "overlay_003",
+      "count": 1
+    }
+  ],
+  "reference_windows": [
+    {
+      "component": "arm9",
+      "reference_address": 33773708,
+      "words": [
+        {
+          "address": 33773676,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800457217
+        },
+        {
+          "address": 33773680,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3814067201
+        },
+        {
+          "address": 33773684,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3800526932
+        },
+        {
+          "address": 33773688,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3137339353
+        },
+        {
+          "address": 33773692,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3852271616
+        },
+        {
+          "address": 33773696,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3904737272
+        },
+        {
+          "address": 33773700,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 33773704,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33773708,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33773712,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 3912057336
+        },
+        {
+          "address": 33773716,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3796750340
+        },
+        {
+          "address": 33773720,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3852411416
+        },
+        {
+          "address": 33773724,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3785392128
+        },
+        {
+          "address": 33773728,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3851550720
+        },
+        {
+          "address": 33773732,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3785379841
+        },
+        {
+          "address": 33773736,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3959381824
+        },
+        {
+          "address": 33773740,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818917972
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33780504,
+      "words": [
+        {
+          "address": 33780472,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35434644
+        },
+        {
+          "address": 33780476,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35437716
+        },
+        {
+          "address": 33780480,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35438740
+        },
+        {
+          "address": 33780484,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35435668
+        },
+        {
+          "address": 33780488,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35440788
+        },
+        {
+          "address": 33780492,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35467352
+        },
+        {
+          "address": 33780496,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35043008
+        },
+        {
+          "address": 33780500,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33780504,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33780508,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 3852271656
+        },
+        {
+          "address": 33780512,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3780116490
+        },
+        {
+          "address": 33780516,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 167772187
+        },
+        {
+          "address": 33780520,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3818913816
+        },
+        {
+          "address": 33780524,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3758162074
+        },
+        {
+          "address": 33780528,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3844014240
+        },
+        {
+          "address": 33780532,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3766485252
+        },
+        {
+          "address": 33780536,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3885039616
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33789080,
+      "words": [
+        {
+          "address": 33789048,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 33789052,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33789056,
+          "relative_to_reference": -24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120404
+        },
+        {
+          "address": 33789060,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35257172
+        },
+        {
+          "address": 33789064,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35218768
+        },
+        {
+          "address": 33789068,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35424792
+        },
+        {
+          "address": 33789072,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33789076,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35467352
+        },
+        {
+          "address": 33789080,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33789084,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 655489
+        },
+        {
+          "address": 33789088,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 33789092,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35442836
+        },
+        {
+          "address": 33789096,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33789100,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 33789104,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "arine"
+            }
+          ],
+          "value": 35105312
+        },
+        {
+          "address": 33789108,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35256872
+        },
+        {
+          "address": 33789112,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818913940
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33795596,
+      "words": [
+        {
+          "address": 33795564,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33795568,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35425564
+        },
+        {
+          "address": 33795572,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 33795576,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35432596
+        },
+        {
+          "address": 33795580,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 33795584,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 33795588,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 33795592,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35197676
+        },
+        {
+          "address": 33795596,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33795600,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 33795604,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35424792
+        },
+        {
+          "address": 33795608,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35256940
+        },
+        {
+          "address": 33795612,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 4294957297
+        },
+        {
+          "address": 33795616,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35256876
+        },
+        {
+          "address": 33795620,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35256872
+        },
+        {
+          "address": 33795624,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33795628,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35088604
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33804720,
+      "words": [
+        {
+          "address": 33804688,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35293097
+        },
+        {
+          "address": 33804692,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293126
+        },
+        {
+          "address": 33804696,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35293128
+        },
+        {
+          "address": 33804700,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33804704,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35256940
+        },
+        {
+          "address": 33804708,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 33804712,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35259684
+        },
+        {
+          "address": 33804716,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33804720,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33804724,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35201796
+        },
+        {
+          "address": 33804728,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 214013
+        },
+        {
+          "address": 33804732,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 2531011
+        },
+        {
+          "address": 33804736,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 1076101120
+        },
+        {
+          "address": 33804740,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35293104
+        },
+        {
+          "address": 33804744,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 33804748,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 33804752,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35257172
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33811928,
+      "words": [
+        {
+          "address": 33811896,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 33811900,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 33811904,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35201796
+        },
+        {
+          "address": 33811908,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 214013
+        },
+        {
+          "address": 33811912,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 2531011
+        },
+        {
+          "address": 33811916,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35432596
+        },
+        {
+          "address": 33811920,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33811924,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35446932
+        },
+        {
+          "address": 33811928,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33811932,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 1076101120
+        },
+        {
+          "address": 33811936,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35424984
+        },
+        {
+          "address": 33811940,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35257000
+        },
+        {
+          "address": 33811944,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35256948
+        },
+        {
+          "address": 33811948,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 1075052544
+        },
+        {
+          "address": 33811952,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35422560
+        },
+        {
+          "address": 33811956,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 33811960,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 274877907
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33816512,
+      "words": [
+        {
+          "address": 33816480,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3785367556
+        },
+        {
+          "address": 33816484,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3785371655
+        },
+        {
+          "address": 33816488,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3818913797
+        },
+        {
+          "address": 33816492,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3942721013
+        },
+        {
+          "address": 33816496,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3942731429
+        },
+        {
+          "address": 33816500,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3904735216
+        },
+        {
+          "address": 33816504,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 33816508,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33816512,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33816516,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 4294901757
+        },
+        {
+          "address": 33816520,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35256932
+        },
+        {
+          "address": 33816524,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35269076
+        },
+        {
+          "address": 33816528,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35269078
+        },
+        {
+          "address": 33816532,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33816536,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 33816540,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35269064
+        },
+        {
+          "address": 33816544,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35269084
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33820012,
+      "words": [
+        {
+          "address": 33819980,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35444884
+        },
+        {
+          "address": 33819984,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35445908
+        },
+        {
+          "address": 33819988,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33819992,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33819996,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 33820000,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35257172
+        },
+        {
+          "address": 33820004,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35256964
+        },
+        {
+          "address": 33820008,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33820012,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33820016,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35249489
+        },
+        {
+          "address": 33820020,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33820024,
+          "relative_to_reference": 12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Sea"
+            }
+          ],
+          "value": 35088652
+        },
+        {
+          "address": 33820028,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3912060912
+        },
+        {
+          "address": 33820032,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3796754243
+        },
+        {
+          "address": 33820036,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3818913792
+        },
+        {
+          "address": 33820040,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3800936688
+        },
+        {
+          "address": 33820044,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3800932564
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33821972,
+      "words": [
+        {
+          "address": 33821940,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 33821944,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35426276
+        },
+        {
+          "address": 33821948,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33821952,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33821956,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 33821960,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 33821964,
+          "relative_to_reference": -8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Barracks"
+            }
+          ],
+          "value": 35092920
+        },
+        {
+          "address": 33821968,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35258788
+        },
+        {
+          "address": 33821972,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33821976,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35422632
+        },
+        {
+          "address": 33821980,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422824
+        },
+        {
+          "address": 33821984,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35423008
+        },
+        {
+          "address": 33821988,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 999
+        },
+        {
+          "address": 33821992,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35422980
+        },
+        {
+          "address": 33821996,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 33822000,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35257120
+        },
+        {
+          "address": 33822004,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35088588
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33825884,
+      "words": [
+        {
+          "address": 33825852,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3778019102
+        },
+        {
+          "address": 33825856,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35257172
+        },
+        {
+          "address": 33825860,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 33825864,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35423808
+        },
+        {
+          "address": 33825868,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35423664
+        },
+        {
+          "address": 33825872,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35256940
+        },
+        {
+          "address": 33825876,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33825880,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35256964
+        },
+        {
+          "address": 33825884,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33825888,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35259684
+        },
+        {
+          "address": 33825892,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33825896,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33825900,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422488
+        },
+        {
+          "address": 33825904,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3852415020
+        },
+        {
+          "address": 33825908,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3818962944
+        },
+        {
+          "address": 33825912,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3823112192
+        },
+        {
+          "address": 33825916,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3885179148
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33840236,
+      "words": [
+        {
+          "address": 33840204,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3852406820
+        },
+        {
+          "address": 33840208,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3785359366
+        },
+        {
+          "address": 33840212,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3850457088
+        },
+        {
+          "address": 33840216,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3800944648
+        },
+        {
+          "address": 33840220,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3904737272
+        },
+        {
+          "address": 33840224,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33840228,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 999
+        },
+        {
+          "address": 33840232,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33840236,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33840240,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35442836
+        },
+        {
+          "address": 33840244,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422284
+        },
+        {
+          "address": 33840248,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35256900
+        },
+        {
+          "address": 33840252,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3912060920
+        },
+        {
+          "address": 33840256,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3852419268
+        },
+        {
+          "address": 33840260,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3852435652
+        },
+        {
+          "address": 33840264,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3796131834
+        },
+        {
+          "address": 33840268,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3852452032
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33844088,
+      "words": [
+        {
+          "address": 33844056,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800387668
+        },
+        {
+          "address": 33844060,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3137339370
+        },
+        {
+          "address": 33844064,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3904737272
+        },
+        {
+          "address": 33844068,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293104
+        },
+        {
+          "address": 33844072,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35293130
+        },
+        {
+          "address": 33844076,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 33844080,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 33844084,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33844088,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33844092,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 3912060920
+        },
+        {
+          "address": 33844096,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3852419220
+        },
+        {
+          "address": 33844100,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3818942464
+        },
+        {
+          "address": 33844104,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3851681792
+        },
+        {
+          "address": 33844108,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3813670912
+        },
+        {
+          "address": 33844112,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3636301816
+        },
+        {
+          "address": 33844116,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3852439684
+        },
+        {
+          "address": 33844120,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3823132672
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33845408,
+      "words": [
+        {
+          "address": 33845376,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800596481
+        },
+        {
+          "address": 33845380,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3814195231
+        },
+        {
+          "address": 33845384,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3800109204
+        },
+        {
+          "address": 33845388,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3137339348
+        },
+        {
+          "address": 33845392,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3904735216
+        },
+        {
+          "address": 33845396,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 33845400,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102572
+        },
+        {
+          "address": 33845404,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33845408,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33845412,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35293096
+        },
+        {
+          "address": 33845416,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3778019102
+        },
+        {
+          "address": 33845420,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3813670912
+        },
+        {
+          "address": 33845424,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 324009986
+        },
+        {
+          "address": 33845428,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 324009985
+        },
+        {
+          "address": 33845432,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 167772162
+        },
+        {
+          "address": 33845436,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3795845132
+        },
+        {
+          "address": 33845440,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3813670913
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33859704,
+      "words": [
+        {
+          "address": 33859672,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 33859676,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33859680,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35257000
+        },
+        {
+          "address": 33859684,
+          "relative_to_reference": -20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "c"
+            }
+          ],
+          "value": 35097440
+        },
+        {
+          "address": 33859688,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "c"
+            }
+          ],
+          "value": 35097442
+        },
+        {
+          "address": 33859692,
+          "relative_to_reference": -12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "c"
+            }
+          ],
+          "value": 35097444
+        },
+        {
+          "address": 33859696,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 33859700,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33859704,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33859708,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 33859712,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35249680
+        },
+        {
+          "address": 33859716,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 33859720,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "@UNITNAME built in @CITYNAME. "
+            }
+          ],
+          "value": 35044168
+        },
+        {
+          "address": 33859724,
+          "relative_to_reference": 20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Palace"
+            }
+          ],
+          "value": 35092716
+        },
+        {
+          "address": 33859728,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 33859732,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 33859736,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35024684
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33877316,
+      "words": [
+        {
+          "address": 33877284,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35269080
+        },
+        {
+          "address": 33877288,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35269088
+        },
+        {
+          "address": 33877292,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35269034
+        },
+        {
+          "address": 33877296,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 4294965111
+        },
+        {
+          "address": 33877300,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35269152
+        },
+        {
+          "address": 33877304,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35269086
+        },
+        {
+          "address": 33877308,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269084
+        },
+        {
+          "address": 33877312,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33877316,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33877320,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 32770
+        },
+        {
+          "address": 33877324,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3844018372
+        },
+        {
+          "address": 33877328,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3785359369
+        },
+        {
+          "address": 33877332,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3851509760
+        },
+        {
+          "address": 33877336,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3942718434
+        },
+        {
+          "address": 33877340,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3785367552
+        },
+        {
+          "address": 33877344,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3844018324
+        },
+        {
+          "address": 33877348,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3785359366
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33882500,
+      "words": [
+        {
+          "address": 33882468,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35269034
+        },
+        {
+          "address": 33882472,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35269080
+        },
+        {
+          "address": 33882476,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35269082
+        },
+        {
+          "address": 33882480,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35269152
+        },
+        {
+          "address": 33882484,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35269086
+        },
+        {
+          "address": 33882488,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35249488
+        },
+        {
+          "address": 33882492,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269084
+        },
+        {
+          "address": 33882496,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33882500,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33882504,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35424240
+        },
+        {
+          "address": 33882508,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35269064
+        },
+        {
+          "address": 33882512,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33882516,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35445908
+        },
+        {
+          "address": 33882520,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 33882524,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 33882528,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 33882532,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35194064
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33888452,
+      "words": [
+        {
+          "address": 33888420,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35424240
+        },
+        {
+          "address": 33888424,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35424244
+        },
+        {
+          "address": 33888428,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33888432,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35422172
+        },
+        {
+          "address": 33888436,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35256940
+        },
+        {
+          "address": 33888440,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35422216
+        },
+        {
+          "address": 33888444,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269031
+        },
+        {
+          "address": 33888448,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35422248
+        },
+        {
+          "address": 33888452,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33888456,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33888460,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 32897
+        },
+        {
+          "address": 33888464,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35249488
+        },
+        {
+          "address": 33888468,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "never"
+            }
+          ],
+          "value": 35097408
+        },
+        {
+          "address": 33888472,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35257000
+        },
+        {
+          "address": 33888476,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35427972
+        },
+        {
+          "address": 33888480,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35269076
+        },
+        {
+          "address": 33888484,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35088604
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33896968,
+      "words": [
+        {
+          "address": 33896936,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 33896940,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35423312
+        },
+        {
+          "address": 33896944,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35423316
+        },
+        {
+          "address": 33896948,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35423324
+        },
+        {
+          "address": 33896952,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35423320
+        },
+        {
+          "address": 33896956,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35423072
+        },
+        {
+          "address": 33896960,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102572
+        },
+        {
+          "address": 33896964,
+          "relative_to_reference": -4,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "@UNITNAME units are obsolete, what shall we build?"
+            }
+          ],
+          "value": 35050820
+        },
+        {
+          "address": 33896968,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33896972,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35249488
+        },
+        {
+          "address": 33896976,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 33896980,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35422304
+        },
+        {
+          "address": 33896984,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "@UNITNAME built in @CITYNAME. "
+            }
+          ],
+          "value": 35044168
+        },
+        {
+          "address": 33896988,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35422312
+        },
+        {
+          "address": 33896992,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35422560
+        },
+        {
+          "address": 33896996,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35269086
+        },
+        {
+          "address": 33897000,
+          "relative_to_reference": 32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "@BLDGNAME built in @CITYNAME. "
+            }
+          ],
+          "value": 35044200
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33897460,
+      "words": [
+        {
+          "address": 33897428,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800178689
+        },
+        {
+          "address": 33897432,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3813805057
+        },
+        {
+          "address": 33897436,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3800248404
+        },
+        {
+          "address": 33897440,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3137339370
+        },
+        {
+          "address": 33897444,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3823108096
+        },
+        {
+          "address": 33897448,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3904733296
+        },
+        {
+          "address": 33897452,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 33897456,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33897460,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33897464,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 3912058864
+        },
+        {
+          "address": 33897468,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3852439700
+        },
+        {
+          "address": 33897472,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3818934272
+        },
+        {
+          "address": 33897476,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3852025856
+        },
+        {
+          "address": 33897480,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3785416709
+        },
+        {
+          "address": 33897484,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3813933056
+        },
+        {
+          "address": 33897488,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3657433118
+        },
+        {
+          "address": 33897492,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3852427392
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33900720,
+      "words": [
+        {
+          "address": 33900688,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800944684
+        },
+        {
+          "address": 33900692,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 33900696,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33900700,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293097
+        },
+        {
+          "address": 33900704,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35293174
+        },
+        {
+          "address": 33900708,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293146
+        },
+        {
+          "address": 33900712,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293094
+        },
+        {
+          "address": 33900716,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293108
+        },
+        {
+          "address": 33900720,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33900724,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35293096
+        },
+        {
+          "address": 33900728,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35293126
+        },
+        {
+          "address": 33900732,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33900736,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3912058864
+        },
+        {
+          "address": 33900740,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3785392128
+        },
+        {
+          "address": 33900744,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3818924821
+        },
+        {
+          "address": 33900748,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3785388033
+        },
+        {
+          "address": 33900752,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818913876
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33904820,
+      "words": [
+        {
+          "address": 33904788,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 33904792,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35256940
+        },
+        {
+          "address": 33904796,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 33904800,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 33904804,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33904808,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35422320
+        },
+        {
+          "address": 33904812,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 33904816,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 16512
+        },
+        {
+          "address": 33904820,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33904824,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 33904828,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 33904832,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 33904836,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422172
+        },
+        {
+          "address": 33904840,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 33904844,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 33904848,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 33904852,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35256872
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33909924,
+      "words": [
+        {
+          "address": 33909892,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35422216
+        },
+        {
+          "address": 33909896,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 1717986919
+        },
+        {
+          "address": 33909900,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35422924
+        },
+        {
+          "address": 33909904,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35422800
+        },
+        {
+          "address": 33909908,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35422608
+        },
+        {
+          "address": 33909912,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33909916,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35422980
+        },
+        {
+          "address": 33909920,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33909924,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33909928,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 33909932,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35051192
+        },
+        {
+          "address": 33909936,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35051292
+        },
+        {
+          "address": 33909940,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 33909944,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 33909948,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 33909952,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 33909956,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35422316
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33925780,
+      "words": [
+        {
+          "address": 33925748,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35256932
+        },
+        {
+          "address": 33925752,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35197668
+        },
+        {
+          "address": 33925756,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35422240
+        },
+        {
+          "address": 33925760,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35043344
+        },
+        {
+          "address": 33925764,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35293104
+        },
+        {
+          "address": 33925768,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35422176
+        },
+        {
+          "address": 33925772,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 20000
+        },
+        {
+          "address": 33925776,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33925780,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33925784,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35422172
+        },
+        {
+          "address": 33925788,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422536
+        },
+        {
+          "address": 33925792,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 33925796,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 65540
+        },
+        {
+          "address": 33925800,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35197656
+        },
+        {
+          "address": 33925804,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35422268
+        },
+        {
+          "address": 33925808,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35293126
+        },
+        {
+          "address": 33925812,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35293128
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33943228,
+      "words": [
+        {
+          "address": 33943196,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35054196
+        },
+        {
+          "address": 33943200,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 33943204,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35422204
+        },
+        {
+          "address": 33943208,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35249728
+        },
+        {
+          "address": 33943212,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35422164
+        },
+        {
+          "address": 33943216,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35256892
+        },
+        {
+          "address": 33943220,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35257892
+        },
+        {
+          "address": 33943224,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35102564
+        },
+        {
+          "address": 33943228,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33943232,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35054308
+        },
+        {
+          "address": 33943236,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422176
+        },
+        {
+          "address": 33943240,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35293134
+        },
+        {
+          "address": 33943244,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35293126
+        },
+        {
+          "address": 33943248,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35293136
+        },
+        {
+          "address": 33943252,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35293128
+        },
+        {
+          "address": 33943256,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35054424
+        },
+        {
+          "address": 33943260,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35054480
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33967648,
+      "words": [
+        {
+          "address": 33967616,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 214013
+        },
+        {
+          "address": 33967620,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 2531011
+        },
+        {
+          "address": 33967624,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 1074266112
+        },
+        {
+          "address": 33967628,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 33967632,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " I'm certain you have no intention of launching your Nuclear Missiles."
+            }
+          ],
+          "value": 35059620
+        },
+        {
+          "address": 33967636,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 9999
+        },
+        {
+          "address": 33967640,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 33967644,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33967648,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33967652,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35422316
+        },
+        {
+          "address": 33967656,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35293122
+        },
+        {
+          "address": 33967660,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35293120
+        },
+        {
+          "address": 33967664,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " I noticed your @UNITNAME unit is obstructing my favorite city of @CITYNAME. "
+            }
+          ],
+          "value": 35059692
+        },
+        {
+          "address": 33967668,
+          "relative_to_reference": 20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " I noticed your @UNITNAME unit is lurking near my favorite city of @CITYNAME. "
+            }
+          ],
+          "value": 35059772
+        },
+        {
+          "address": 33967672,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " I noticed your @UNITNAME unit is in the vicinity of my favorite city of @CITYNAME. "
+            }
+          ],
+          "value": 35059852
+        },
+        {
+          "address": 33967676,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "I trust that your intentions are honorable. "
+            }
+          ],
+          "value": 35059940
+        },
+        {
+          "address": 33967680,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35088604
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33974284,
+      "words": [
+        {
+          "address": 33974252,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3884130570
+        },
+        {
+          "address": 33974256,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3818921984
+        },
+        {
+          "address": 33974260,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3785371650
+        },
+        {
+          "address": 33974264,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3959385555
+        },
+        {
+          "address": 33974268,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3800944652
+        },
+        {
+          "address": 33974272,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 33974276,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 33974280,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35426660
+        },
+        {
+          "address": 33974284,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33974288,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35423164
+        },
+        {
+          "address": 33974292,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 33974296,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35249489
+        },
+        {
+          "address": 33974300,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35428116
+        },
+        {
+          "address": 33974304,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 33974308,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 33974312,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " Your futile quest for an Economic Victory will be dashed by our mighty armies!"
+            }
+          ],
+          "value": 35065012
+        },
+        {
+          "address": 33974316,
+          "relative_to_reference": 32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " Your misguided fantasies of a Cultural Victory will be dashed by our mighty armies!"
+            }
+          ],
+          "value": 35065092
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 33994824,
+      "words": [
+        {
+          "address": 33994792,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3851419648
+        },
+        {
+          "address": 33994796,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3959349414
+        },
+        {
+          "address": 33994800,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3852402800
+        },
+        {
+          "address": 33994804,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3852407028
+        },
+        {
+          "address": 33994808,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3851419648
+        },
+        {
+          "address": 33994812,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3959349410
+        },
+        {
+          "address": 33994816,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 3925868613
+        },
+        {
+          "address": 33994820,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35256876
+        },
+        {
+          "address": 33994824,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 33994828,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 20000
+        },
+        {
+          "address": 33994832,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 33994836,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35422924
+        },
+        {
+          "address": 33994840,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35096556
+        },
+        {
+          "address": 33994844,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35423072
+        },
+        {
+          "address": 33994848,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35249489
+        },
+        {
+          "address": 33994852,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 999
+        },
+        {
+          "address": 33994856,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35423068
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34017356,
+      "words": [
+        {
+          "address": 34017324,
+          "relative_to_reference": -32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "The @CIVNAME are not to be feared. War may be costly but we will surely emerge victorious. "
+            }
+          ],
+          "value": 35084540
+        },
+        {
+          "address": 34017328,
+          "relative_to_reference": -28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "The @CIVNAME have built a formidable army.  Defeating them will require skill and perseverance. "
+            }
+          ],
+          "value": 35084632
+        },
+        {
+          "address": 34017332,
+          "relative_to_reference": -24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "The @CIVNAME are quite powerful.  Peace may be our best option. "
+            }
+          ],
+          "value": 35084732
+        },
+        {
+          "address": 34017336,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35430676
+        },
+        {
+          "address": 34017340,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35429780
+        },
+        {
+          "address": 34017344,
+          "relative_to_reference": -12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Their armies are poised to attack. "
+            }
+          ],
+          "value": 35084800
+        },
+        {
+          "address": 34017348,
+          "relative_to_reference": -8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Their troops are dug in for defense. "
+            }
+          ],
+          "value": 35084836
+        },
+        {
+          "address": 34017352,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34017356,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34017360,
+          "relative_to_reference": 4,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Their most advanced unit is the @UNITNAME. "
+            }
+          ],
+          "value": 35084876
+        },
+        {
+          "address": 34017364,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 34017368,
+          "relative_to_reference": 12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Warrior"
+            }
+          ],
+          "value": 35103384
+        },
+        {
+          "address": 34017372,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422752
+        },
+        {
+          "address": 34017376,
+          "relative_to_reference": 20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "However, their people are @HAPPY and may be lured into joining our civilization. "
+            }
+          ],
+          "value": 35084920
+        },
+        {
+          "address": 34017380,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "However, their people are unsophisticated and may be lured into joining our civilization. "
+            }
+          ],
+          "value": 35085004
+        },
+        {
+          "address": 34017384,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "The city of @CITYNAME is particularly vulnerable. "
+            }
+          ],
+          "value": 35085096
+        },
+        {
+          "address": 34017388,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35422632
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34093940,
+      "words": [
+        {
+          "address": 34093908,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35097446
+        },
+        {
+          "address": 34093912,
+          "relative_to_reference": -28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "It's mainly a military technology. "
+            }
+          ],
+          "value": 35120796
+        },
+        {
+          "address": 34093916,
+          "relative_to_reference": -24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "It's an especially economic technology. "
+            }
+          ],
+          "value": 35120832
+        },
+        {
+          "address": 34093920,
+          "relative_to_reference": -20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "It can lead to culture. "
+            }
+          ],
+          "value": 35120876
+        },
+        {
+          "address": 34093924,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "It's a scientifically significant technology. "
+            }
+          ],
+          "value": 35120904
+        },
+        {
+          "address": 34093928,
+          "relative_to_reference": -12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Pyramids of Egypt"
+            }
+          ],
+          "value": 35108120
+        },
+        {
+          "address": 34093932,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35424240
+        },
+        {
+          "address": 34093936,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35422248
+        },
+        {
+          "address": 34093940,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34093944,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35120952
+        },
+        {
+          "address": 34093948,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35120988
+        },
+        {
+          "address": 34093952,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35422236
+        },
+        {
+          "address": 34093956,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Palace"
+            }
+          ],
+          "value": 35092716
+        },
+        {
+          "address": 34093960,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35121028
+        },
+        {
+          "address": 34093964,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35121060
+        },
+        {
+          "address": 34093968,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35121096
+        },
+        {
+          "address": 34093972,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35121132
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34099312,
+      "words": [
+        {
+          "address": 34099280,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35445908
+        },
+        {
+          "address": 34099284,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 34099288,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 34099292,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 34099296,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 34099300,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35256956
+        },
+        {
+          "address": 34099304,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35422256
+        },
+        {
+          "address": 34099308,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35422248
+        },
+        {
+          "address": 34099312,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34099316,
+          "relative_to_reference": 4,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " Now we can build @UNITNAME units!"
+            }
+          ],
+          "value": 35122916
+        },
+        {
+          "address": 34099320,
+          "relative_to_reference": 8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " We can also build @UNITNAME units!"
+            }
+          ],
+          "value": 35122952
+        },
+        {
+          "address": 34099324,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35422236
+        },
+        {
+          "address": 34099328,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Palace"
+            }
+          ],
+          "value": 35092716
+        },
+        {
+          "address": 34099332,
+          "relative_to_reference": 20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " We can also build @A_BLDGNAME!"
+            }
+          ],
+          "value": 35122988
+        },
+        {
+          "address": 34099336,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " Now we can build @A_BLDGNAME!"
+            }
+          ],
+          "value": 35123020
+        },
+        {
+          "address": 34099340,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Pyramids of Egypt"
+            }
+          ],
+          "value": 35108120
+        },
+        {
+          "address": 34099344,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35424240
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34108016,
+      "words": [
+        {
+          "address": 34107984,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35130196
+        },
+        {
+          "address": 34107988,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34107992,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35130232
+        },
+        {
+          "address": 34107996,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 34108000,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35257892
+        },
+        {
+          "address": 34108004,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35130260
+        },
+        {
+          "address": 34108008,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35478224
+        },
+        {
+          "address": 34108012,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 34108016,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34108020,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35130292
+        },
+        {
+          "address": 34108024,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35130332
+        },
+        {
+          "address": 34108028,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35424240
+        },
+        {
+          "address": 34108032,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35130372
+        },
+        {
+          "address": 34108036,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35130424
+        },
+        {
+          "address": 34108040,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35422248
+        },
+        {
+          "address": 34108044,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 34108048,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35257024
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34112516,
+      "words": [
+        {
+          "address": 34112484,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3823112192
+        },
+        {
+          "address": 34112488,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3780116481
+        },
+        {
+          "address": 34112492,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 146640888
+        },
+        {
+          "address": 34112496,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3959374598
+        },
+        {
+          "address": 34112500,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3904737272
+        },
+        {
+          "address": 34112504,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34112508,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 34112512,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 1717986919
+        },
+        {
+          "address": 34112516,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34112520,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 65542
+        },
+        {
+          "address": 34112524,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3912056944
+        },
+        {
+          "address": 34112528,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3852407444
+        },
+        {
+          "address": 34112532,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3785379840
+        },
+        {
+          "address": 34112536,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3855679488
+        },
+        {
+          "address": 34112540,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3813670912
+        },
+        {
+          "address": 34112544,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 167772171
+        },
+        {
+          "address": 34112548,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818913980
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34121668,
+      "words": [
+        {
+          "address": 34121636,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3814329345
+        },
+        {
+          "address": 34121640,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3137339296
+        },
+        {
+          "address": 34121644,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3785359367
+        },
+        {
+          "address": 34121648,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3800944660
+        },
+        {
+          "address": 34121652,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 34121656,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 34121660,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34121664,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 34121668,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34121672,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 34121676,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 34121680,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35135140
+        },
+        {
+          "address": 34121684,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3912040463
+        },
+        {
+          "address": 34121688,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3912060912
+        },
+        {
+          "address": 34121692,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3796754247
+        },
+        {
+          "address": 34121696,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3796753153
+        },
+        {
+          "address": 34121700,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818933013
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34125736,
+      "words": [
+        {
+          "address": 34125704,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 34125708,
+          "relative_to_reference": -28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 34125712,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35293122
+        },
+        {
+          "address": 34125716,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 34125720,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 34125724,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 34125728,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 34125732,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34125736,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34125740,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35293096
+        },
+        {
+          "address": 34125744,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 34125748,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35135172
+        },
+        {
+          "address": 34125752,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 34125756,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35135192
+        },
+        {
+          "address": 34125760,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35263780
+        },
+        {
+          "address": 34125764,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 34125768,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35423164
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34134344,
+      "words": [
+        {
+          "address": 34134312,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3925868577
+        },
+        {
+          "address": 34134316,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293120
+        },
+        {
+          "address": 34134320,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 34134324,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35422584
+        },
+        {
+          "address": 34134328,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 1120403456
+        },
+        {
+          "address": 34134332,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 1073112678
+        },
+        {
+          "address": 34134336,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 34134340,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293096
+        },
+        {
+          "address": 34134344,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34134348,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35201796
+        },
+        {
+          "address": 34134352,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 214013
+        },
+        {
+          "address": 34134356,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 2531011
+        },
+        {
+          "address": 34134360,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 1075970048
+        },
+        {
+          "address": 34134364,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 1089470432
+        },
+        {
+          "address": 34134368,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 34134372,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 34134376,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35446932
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34141880,
+      "words": [
+        {
+          "address": 34141848,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 34141852,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 34141856,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 34141860,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 34141864,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35422848
+        },
+        {
+          "address": 34141868,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35422872
+        },
+        {
+          "address": 34141872,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 34141876,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34141880,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34141884,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35293174
+        },
+        {
+          "address": 34141888,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 4095
+        },
+        {
+          "address": 34141892,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35293096
+        },
+        {
+          "address": 34141896,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 34141900,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35293094
+        },
+        {
+          "address": 34141904,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35423164
+        },
+        {
+          "address": 34141908,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35293148
+        },
+        {
+          "address": 34141912,
+          "relative_to_reference": 32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "?"
+            }
+          ],
+          "value": 35102568
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34158940,
+      "words": [
+        {
+          "address": 34158908,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35137236
+        },
+        {
+          "address": 34158912,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35269084
+        },
+        {
+          "address": 34158916,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35102564
+        },
+        {
+          "address": 34158920,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35269082
+        },
+        {
+          "address": 34158924,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35269086
+        },
+        {
+          "address": 34158928,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35137300
+        },
+        {
+          "address": 34158932,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35137388
+        },
+        {
+          "address": 34158936,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 34158940,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34158944,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35137468
+        },
+        {
+          "address": 34158948,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422132
+        },
+        {
+          "address": 34158952,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35422244
+        },
+        {
+          "address": 34158956,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422160
+        },
+        {
+          "address": 34158960,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35451772
+        },
+        {
+          "address": 34158964,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 515
+        },
+        {
+          "address": 34158968,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 34017464
+        },
+        {
+          "address": 34158972,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35137544
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34170644,
+      "words": [
+        {
+          "address": 34170612,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800891392
+        },
+        {
+          "address": 34170616,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3942836193
+        },
+        {
+          "address": 34170620,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3852402700
+        },
+        {
+          "address": 34170624,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3800895488
+        },
+        {
+          "address": 34170628,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3942836120
+        },
+        {
+          "address": 34170632,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3800948349
+        },
+        {
+          "address": 34170636,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 3904733240
+        },
+        {
+          "address": 34170640,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 34170644,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34170648,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35257048
+        },
+        {
+          "address": 34170652,
+          "relative_to_reference": 8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Jaguar Warrior"
+            }
+          ],
+          "value": 35138176
+        },
+        {
+          "address": 34170656,
+          "relative_to_reference": 12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Impi Warrior"
+            }
+          ],
+          "value": 35138192
+        },
+        {
+          "address": 34170660,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Ashigaru Phalanx"
+            }
+          ],
+          "value": 35138208
+        },
+        {
+          "address": 34170664,
+          "relative_to_reference": 20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Hoplite"
+            }
+          ],
+          "value": 35138228
+        },
+        {
+          "address": 34170668,
+          "relative_to_reference": 24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Longbow Archer"
+            }
+          ],
+          "value": 35138236
+        },
+        {
+          "address": 34170672,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Crossbow Archer"
+            }
+          ],
+          "value": 35138252
+        },
+        {
+          "address": 34170676,
+          "relative_to_reference": 32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Trebuchet"
+            }
+          ],
+          "value": 35138268
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34175260,
+      "words": [
+        {
+          "address": 34175228,
+          "relative_to_reference": -32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Current Upgrades: "
+            }
+          ],
+          "value": 35138728
+        },
+        {
+          "address": 34175232,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34175236,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 34175240,
+          "relative_to_reference": -20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": ", "
+            }
+          ],
+          "value": 35138748
+        },
+        {
+          "address": 34175244,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "@POWERUP"
+            }
+          ],
+          "value": 35138752
+        },
+        {
+          "address": 34175248,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35138764
+        },
+        {
+          "address": 34175252,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 954437177
+        },
+        {
+          "address": 34175256,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35451772
+        },
+        {
+          "address": 34175260,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34175264,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35138768
+        },
+        {
+          "address": 34175268,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 34175272,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 34175276,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 34175280,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35197668
+        },
+        {
+          "address": 34175284,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35256956
+        },
+        {
+          "address": 34175288,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 34175292,
+          "relative_to_reference": 32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "PowerUp.wav"
+            }
+          ],
+          "value": 35138780
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34184988,
+      "words": [
+        {
+          "address": 34184956,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34184960,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 34184964,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35293104
+        },
+        {
+          "address": 34184968,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 34184972,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 34184976,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35269076
+        },
+        {
+          "address": 34184980,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269078
+        },
+        {
+          "address": 34184984,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35197680
+        },
+        {
+          "address": 34184988,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34184992,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 34184996,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35139624
+        },
+        {
+          "address": 34185000,
+          "relative_to_reference": 12,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Fortify.wav"
+            }
+          ],
+          "value": 35139684
+        },
+        {
+          "address": 34185004,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35139696
+        },
+        {
+          "address": 34185008,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35269082
+        },
+        {
+          "address": 34185012,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35139764
+        },
+        {
+          "address": 34185016,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "StopMove.wav"
+            }
+          ],
+          "value": 35139812
+        },
+        {
+          "address": 34185020,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35139828
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34191604,
+      "words": [
+        {
+          "address": 34191572,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 9999
+        },
+        {
+          "address": 34191576,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35486384
+        },
+        {
+          "address": 34191580,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35261732
+        },
+        {
+          "address": 34191584,
+          "relative_to_reference": -20,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 34191588,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 34191592,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 34191596,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34191600,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 34191604,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34191608,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 34191612,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3912056848
+        },
+        {
+          "address": 34191616,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3785375744
+        },
+        {
+          "address": 34191620,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3852403612
+        },
+        {
+          "address": 34191624,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3818917888
+        },
+        {
+          "address": 34191628,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3818922048
+        },
+        {
+          "address": 34191632,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3942827135
+        },
+        {
+          "address": 34191636,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818921986
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34197268,
+      "words": [
+        {
+          "address": 34197236,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35102560
+        },
+        {
+          "address": 34197240,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35102562
+        },
+        {
+          "address": 34197244,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35102561
+        },
+        {
+          "address": 34197248,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35487404
+        },
+        {
+          "address": 34197252,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35489452
+        },
+        {
+          "address": 34197256,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35487408
+        },
+        {
+          "address": 34197260,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35489456
+        },
+        {
+          "address": 34197264,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 1023
+        },
+        {
+          "address": 34197268,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34197272,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35257172
+        },
+        {
+          "address": 34197276,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35444884
+        },
+        {
+          "address": 34197280,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35261732
+        },
+        {
+          "address": 34197284,
+          "relative_to_reference": 16,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 34197288,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 34197292,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 34197296,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35422172
+        },
+        {
+          "address": 34197300,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35445908
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34198376,
+      "words": [
+        {
+          "address": 34198344,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 34198348,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35259684
+        },
+        {
+          "address": 34198352,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 34198356,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35266980
+        },
+        {
+          "address": 34198360,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35144800
+        },
+        {
+          "address": 34198364,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35194064
+        },
+        {
+          "address": 34198368,
+          "relative_to_reference": -8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Sea"
+            }
+          ],
+          "value": 35088652
+        },
+        {
+          "address": 34198372,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 34198376,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34198380,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 3912060912
+        },
+        {
+          "address": 34198384,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3796750356
+        },
+        {
+          "address": 34198388,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3818933013
+        },
+        {
+          "address": 34198392,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3758621840
+        },
+        {
+          "address": 34198396,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3818926164
+        },
+        {
+          "address": 34198400,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3852419576
+        },
+        {
+          "address": 34198404,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3852403192
+        },
+        {
+          "address": 34198408,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3758293905
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34203332,
+      "words": [
+        {
+          "address": 34203300,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3785363456
+        },
+        {
+          "address": 34203304,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3785359364
+        },
+        {
+          "address": 34203308,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3785367557
+        },
+        {
+          "address": 34203312,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3818926080
+        },
+        {
+          "address": 34203316,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3959283703
+        },
+        {
+          "address": 34203320,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3904733240
+        },
+        {
+          "address": 34203324,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 34203328,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35144948
+        },
+        {
+          "address": 34203332,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34203336,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35120545
+        },
+        {
+          "address": 34203340,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 34203344,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3912057080
+        },
+        {
+          "address": 34203348,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3786432514
+        },
+        {
+          "address": 34203352,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 1134583808
+        },
+        {
+          "address": 34203356,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3852288024
+        },
+        {
+          "address": 34203360,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3785388033
+        },
+        {
+          "address": 34203364,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3813867538
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34306232,
+      "words": [
+        {
+          "address": 34306200,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3780116481
+        },
+        {
+          "address": 34306204,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3137339318
+        },
+        {
+          "address": 34306208,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3800944676
+        },
+        {
+          "address": 34306212,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 34306216,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 34306220,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34306224,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35150020
+        },
+        {
+          "address": 34306228,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35505404
+        },
+        {
+          "address": 34306232,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34306236,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35024860
+        },
+        {
+          "address": 34306240,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35024684
+        },
+        {
+          "address": 34306244,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 34306248,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422344
+        },
+        {
+          "address": 34306252,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35422356
+        },
+        {
+          "address": 34306256,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3912060920
+        },
+        {
+          "address": 34306260,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3796750520
+        },
+        {
+          "address": 34306264,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818937109
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34309868,
+      "words": [
+        {
+          "address": 34309836,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 35422292
+        },
+        {
+          "address": 34309840,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34309844,
+          "relative_to_reference": -24,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 34309848,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35505404
+        },
+        {
+          "address": 34309852,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 2290649225
+        },
+        {
+          "address": 34309856,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293093
+        },
+        {
+          "address": 34309860,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35102576
+        },
+        {
+          "address": 34309864,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35201776
+        },
+        {
+          "address": 34309868,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34309872,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 214013
+        },
+        {
+          "address": 34309876,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 2531011
+        },
+        {
+          "address": 34309880,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35579160
+        },
+        {
+          "address": 34309884,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35193888
+        },
+        {
+          "address": 34309888,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35422184
+        },
+        {
+          "address": 34309892,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3912056856
+        },
+        {
+          "address": 34309896,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3796750340
+        },
+        {
+          "address": 34309900,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3852451876
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34317336,
+      "words": [
+        {
+          "address": 34317304,
+          "relative_to_reference": -32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": " "
+            }
+          ],
+          "value": 35120412
+        },
+        {
+          "address": 34317308,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 35422320
+        },
+        {
+          "address": 34317312,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35197672
+        },
+        {
+          "address": 34317316,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35197656
+        },
+        {
+          "address": 34317320,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35197660
+        },
+        {
+          "address": 34317324,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35088604
+        },
+        {
+          "address": 34317328,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35088592
+        },
+        {
+          "address": 34317332,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35150016
+        },
+        {
+          "address": 34317336,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34317340,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35505404
+        },
+        {
+          "address": 34317344,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35505332
+        },
+        {
+          "address": 34317348,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35154980
+        },
+        {
+          "address": 34317352,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 34317356,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35505268
+        },
+        {
+          "address": 34317360,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 34317364,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35505264
+        },
+        {
+          "address": 34317368,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 2863311531
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34333848,
+      "words": [
+        {
+          "address": 34333816,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3818913793
+        },
+        {
+          "address": 34333820,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3800944656
+        },
+        {
+          "address": 34333824,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3904733432
+        },
+        {
+          "address": 34333828,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35256872
+        },
+        {
+          "address": 34333832,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35256876
+        },
+        {
+          "address": 34333836,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35485284
+        },
+        {
+          "address": 34333840,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35032512
+        },
+        {
+          "address": 34333844,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35505240
+        },
+        {
+          "address": 34333848,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34333852,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 34364984
+        },
+        {
+          "address": 34333856,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 34367392
+        },
+        {
+          "address": 34333860,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35505288
+        },
+        {
+          "address": 34333864,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35505316
+        },
+        {
+          "address": 34333868,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35193904
+        },
+        {
+          "address": 34333872,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 1077248
+        },
+        {
+          "address": 34333876,
+          "relative_to_reference": 28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "/audio/CIV_sound_data.sdat"
+            }
+          ],
+          "value": 35156384
+        },
+        {
+          "address": 34333880,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35150024
+        }
+      ]
+    },
+    {
+      "component": "arm9",
+      "reference_address": 34339448,
+      "words": [
+        {
+          "address": 34339416,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3137339349
+        },
+        {
+          "address": 34339420,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3818913792
+        },
+        {
+          "address": 34339424,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3904737272
+        },
+        {
+          "address": 34339428,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35260708
+        },
+        {
+          "address": 34339432,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 34339436,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35262756
+        },
+        {
+          "address": 34339440,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35256932
+        },
+        {
+          "address": 34339444,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 34339448,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 34339452,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35256924
+        },
+        {
+          "address": 34339456,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 4294901757
+        },
+        {
+          "address": 34339460,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35256936
+        },
+        {
+          "address": 34339464,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 35422268
+        },
+        {
+          "address": 34339468,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3818913792
+        },
+        {
+          "address": 34339472,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3778019102
+        },
+        {
+          "address": 34339476,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3778019102
+        },
+        {
+          "address": 34339480,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3778019102
+        }
+      ]
+    },
+    {
+      "component": "overlay_003",
+      "reference_address": 35676864,
+      "words": [
+        {
+          "address": 35676832,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800944668
+        },
+        {
+          "address": 35676836,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 35676840,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 35088600
+        },
+        {
+          "address": 35676844,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 35676848,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 35257144
+        },
+        {
+          "address": 35676852,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35269028
+        },
+        {
+          "address": 35676856,
+          "relative_to_reference": -8,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Palace"
+            }
+          ],
+          "value": 35092716
+        },
+        {
+          "address": 35676860,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35258788
+        },
+        {
+          "address": 35676864,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 35676868,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35422632
+        },
+        {
+          "address": 35676872,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35422824
+        },
+        {
+          "address": 35676876,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 35423008
+        },
+        {
+          "address": 35676880,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 999
+        },
+        {
+          "address": 35676884,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 35422980
+        },
+        {
+          "address": 35676888,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 35257072
+        },
+        {
+          "address": 35676892,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 35202540
+        },
+        {
+          "address": 35676896,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 35256940
+        }
+      ]
+    },
+    {
+      "component": "overlay_015",
+      "reference_address": 35690472,
+      "words": [
+        {
+          "address": 35690440,
+          "relative_to_reference": -32,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "!IsLocked() && \"Don't forget to call ReleaseBuffer\""
+            }
+          ],
+          "value": 35021296
+        },
+        {
+          "address": 35690444,
+          "relative_to_reference": -28,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "FStringA.inl"
+            }
+          ],
+          "value": 35021160
+        },
+        {
+          "address": 35690448,
+          "relative_to_reference": -24,
+          "resolved_strings": [
+            {
+              "component": "overlay_015",
+              "text": "GetCString"
+            }
+          ],
+          "value": 35718212
+        },
+        {
+          "address": 35690452,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 1103
+        },
+        {
+          "address": 35690456,
+          "relative_to_reference": -16,
+          "resolved_strings": [
+            {
+              "component": "overlay_015",
+              "text": "_FX"
+            }
+          ],
+          "value": 35718256
+        },
+        {
+          "address": 35690460,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35088588
+        },
+        {
+          "address": 35690464,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35257048
+        },
+        {
+          "address": 35690468,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35497676
+        },
+        {
+          "address": 35690472,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 35690476,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 1431655766
+        },
+        {
+          "address": 35690480,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35687200
+        },
+        {
+          "address": 35690484,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3912056944
+        },
+        {
+          "address": 35690488,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3785379840
+        },
+        {
+          "address": 35690492,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3785375745
+        },
+        {
+          "address": 35690496,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3766813316
+        },
+        {
+          "address": 35690500,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3851444348
+        },
+        {
+          "address": 35690504,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3814064128
+        }
+      ]
+    },
+    {
+      "component": "overlay_015",
+      "reference_address": 35692948,
+      "words": [
+        {
+          "address": 35692916,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3813673985
+        },
+        {
+          "address": 35692920,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3800248404
+        },
+        {
+          "address": 35692924,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3137339371
+        },
+        {
+          "address": 35692928,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3823108096
+        },
+        {
+          "address": 35692932,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3904733432
+        },
+        {
+          "address": 35692936,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 35293120
+        },
+        {
+          "address": 35692940,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 35293122
+        },
+        {
+          "address": 35692944,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35293092
+        },
+        {
+          "address": 35692948,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 35692952,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 2147500032
+        },
+        {
+          "address": 35692956,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 3912060912
+        },
+        {
+          "address": 35692960,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3796750388
+        },
+        {
+          "address": 35692964,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3851223068
+        },
+        {
+          "address": 35692968,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3800039620
+        },
+        {
+          "address": 35692972,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3851227168
+        },
+        {
+          "address": 35692976,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3851223076
+        },
+        {
+          "address": 35692980,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3818938368
+        }
+      ]
+    },
+    {
+      "component": "overlay_015",
+      "reference_address": 35693584,
+      "words": [
+        {
+          "address": 35693552,
+          "relative_to_reference": -32,
+          "resolved_strings": [],
+          "value": 3800457217
+        },
+        {
+          "address": 35693556,
+          "relative_to_reference": -28,
+          "resolved_strings": [],
+          "value": 3800039520
+        },
+        {
+          "address": 35693560,
+          "relative_to_reference": -24,
+          "resolved_strings": [],
+          "value": 3814064130
+        },
+        {
+          "address": 35693564,
+          "relative_to_reference": -20,
+          "resolved_strings": [],
+          "value": 3851223076
+        },
+        {
+          "address": 35693568,
+          "relative_to_reference": -16,
+          "resolved_strings": [],
+          "value": 3137339244
+        },
+        {
+          "address": 35693572,
+          "relative_to_reference": -12,
+          "resolved_strings": [],
+          "value": 3800944692
+        },
+        {
+          "address": 35693576,
+          "relative_to_reference": -8,
+          "resolved_strings": [],
+          "value": 3904737264
+        },
+        {
+          "address": 35693580,
+          "relative_to_reference": -4,
+          "resolved_strings": [],
+          "value": 35197660
+        },
+        {
+          "address": 35693584,
+          "relative_to_reference": 0,
+          "resolved_strings": [
+            {
+              "component": "arm9",
+              "text": "Settlers"
+            }
+          ],
+          "value": 35102496
+        },
+        {
+          "address": 35693588,
+          "relative_to_reference": 4,
+          "resolved_strings": [],
+          "value": 35197656
+        },
+        {
+          "address": 35693592,
+          "relative_to_reference": 8,
+          "resolved_strings": [],
+          "value": 35717952
+        },
+        {
+          "address": 35693596,
+          "relative_to_reference": 12,
+          "resolved_strings": [],
+          "value": 3912060920
+        },
+        {
+          "address": 35693600,
+          "relative_to_reference": 16,
+          "resolved_strings": [],
+          "value": 3800056004
+        },
+        {
+          "address": 35693604,
+          "relative_to_reference": 20,
+          "resolved_strings": [],
+          "value": 3818913888
+        },
+        {
+          "address": 35693608,
+          "relative_to_reference": 24,
+          "resolved_strings": [],
+          "value": 3760668818
+        },
+        {
+          "address": 35693612,
+          "relative_to_reference": 28,
+          "resolved_strings": [],
+          "value": 3852419204
+        },
+        {
+          "address": 35693616,
+          "relative_to_reference": 32,
+          "resolved_strings": [],
+          "value": 3823153152
+        }
+      ]
+    }
+  ]
+}
