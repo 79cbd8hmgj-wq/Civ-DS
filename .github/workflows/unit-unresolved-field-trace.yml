@@ -65,6 +65,12 @@ jobs:
                   return None
               return int.from_bytes(arm9[pos:pos+4], 'little')
 
+          def has_imm(insn, value):
+              return any(
+                  op.type == ARM_OP_IMM and int(op.imm) == value
+                  for op in getattr(insn, 'operands', ())
+              )
+
           def slot(raw):
               return raw.split(b'\0', 1)[0].decode('ascii', errors='replace')
 
@@ -93,39 +99,67 @@ jobs:
               print(f'bit {bit:02d} mask={1<<bit:#010x}: {", ".join(names)}')
 
           targets = {0x45, 0x46, 0x47, 0x50}
-          uses = defaultdict(list)
+          proven = defaultdict(list)
+          rejected = defaultdict(int)
           for idx, insn in enumerate(insns):
+              matching = False
+              disp = None
+              base_reg = None
               for op in getattr(insn, 'operands', ()):
                   if op.type != ARM_OP_MEM:
                       continue
-                  disp = int(op.mem.disp)
-                  if disp not in targets:
+                  candidate = int(op.mem.disp)
+                  if candidate not in targets:
                       continue
-                  if disp == 0x50 and insn.mnemonic != 'ldr':
+                  if candidate == 0x50 and insn.mnemonic != 'ldr':
                       continue
-                  if disp != 0x50 and insn.mnemonic not in {'ldrb', 'ldrsb'}:
+                  if candidate != 0x50 and insn.mnemonic not in {'ldrb', 'ldrsb'}:
                       continue
-                  uses[disp].append((idx, insn))
+                  matching = True
+                  disp = candidate
+                  base_reg = insn.reg_name(op.mem.base)
+                  break
+              if not matching:
+                  continue
+
+              context = insns[max(0, idx-24):min(len(insns), idx+25)]
+              nearby_table = any(literal_target(x) == table_base for x in context)
+              nearby_stride = any(has_imm(x, record_size) for x in context)
+              if nearby_table or nearby_stride:
+                  proven[disp].append((idx, insn, base_reg, nearby_table, nearby_stride))
+              else:
+                  rejected[disp] += 1
+
+          print('\n=== UNIT-TABLE-PROVEN CONSUMER SUMMARY ===')
+          for disp in (0x45, 0x46, 0x47, 0x50):
+              print(
+                  f'+{disp:#04x}: proven={len(proven[disp])} '
+                  f'rejected_global_offset_matches={rejected[disp]}'
+              )
 
           for disp in (0x45, 0x46, 0x47, 0x50):
-              print(f'\n=== GLOBAL CONSUMERS +{disp:#04x} count={len(uses[disp])} ===')
-              for idx, insn in uses[disp]:
-                  print(f'\nFIELD {disp:#04x} @ {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
-                  for x in insns[max(0, idx-8):min(len(insns), idx+11)]:
+              print(f'\n=== UNIT-TABLE-PROVEN CONSUMERS +{disp:#04x} count={len(proven[disp])} ===')
+              for idx, insn, base_reg, nearby_table, nearby_stride in proven[disp]:
+                  print(
+                      f'\nFIELD {disp:#04x} @ {insn.address:#010x}: '
+                      f'{insn.mnemonic} {insn.op_str} base={base_reg} '
+                      f'table={nearby_table} stride={nearby_stride}'
+                  )
+                  for x in insns[max(0, idx-18):min(len(insns), idx+21)]:
                       marks=[]
                       if x.address == insn.address: marks.append('FIELD')
                       lit = literal_target(x)
                       if lit == table_base: marks.append('TABLE')
-                      if '#0x94' in x.op_str or '#148' in x.op_str: marks.append('STRIDE')
+                      if has_imm(x, record_size): marks.append('STRIDE')
                       if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}: marks.append('TEST')
                       if x.mnemonic in {'bl','blx'}: marks.append('CALL')
                       suffix=f" ; {'|'.join(marks)}" if marks else ''
                       print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
 
-          print('\n=== FLAG TEST IMMEDIATES NEAR +0x50 LOADS ===')
-          for idx, insn in uses[0x50]:
-              print(f'LOAD {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
-              for x in insns[idx+1:min(len(insns), idx+10)]:
+          print('\n=== FLAG TEST IMMEDIATES FOR UNIT-TABLE-PROVEN +0x50 LOADS ===')
+          for idx, insn, base_reg, nearby_table, nearby_stride in proven[0x50]:
+              print(f'LOAD {insn.address:#010x}: {insn.mnemonic} {insn.op_str} base={base_reg}')
+              for x in insns[idx+1:min(len(insns), idx+16)]:
                   if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}:
                       imms=[int(op.imm) for op in getattr(x,'operands',()) if op.type == ARM_OP_IMM]
                       print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str} immediates={imms}')
@@ -142,5 +176,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add evidence/re/unit-unresolved-trace.txt
-          git commit -m "analysis: capture unresolved unit field trace"
+          git commit -m "analysis: capture provenance-gated unit field trace"
           git push origin "HEAD:${GITHUB_REF_NAME}"
