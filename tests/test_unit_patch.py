@@ -20,6 +20,9 @@ def _records_with_warrior() -> tuple[units.UnitRecord, ...]:
                     defense=1,
                     movement=1,
                     production_cost_quanta=2,
+                    unlock_technology_id=-1,
+                    obsolete_technology_id_1=6,
+                    obsolete_technology_id_2=17,
                     flags=0x00040120,
                 )
             )
@@ -42,6 +45,9 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
         movement=2,
         fuel_turn_limit=5,
         production_cost=20,
+        unlock_technology_id=6,
+        obsolete_technology_id_1=17,
+        obsolete_technology_id_2=-1,
     )
 
     assert patch_set == {
@@ -93,6 +99,36 @@ def test_build_unit_patch_set_guards_recovered_fields_with_exact_bytes() -> None
                 "replacement": "04",
                 "rationale": "Set Warrior production cost from 10 to 20",
             },
+            {
+                "id": "unit-006-unlock-technology",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x4A,
+                "expected": "ffff",
+                "replacement": "0600",
+                "rationale": "Set Warrior unlock technology from none (-1) to Iron Working (6)",
+            },
+            {
+                "id": "unit-006-obsolete-technology-1",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x4C,
+                "expected": "0600",
+                "replacement": "1100",
+                "rationale": (
+                    "Set Warrior obsolete technology 1 from Iron Working (6) "
+                    "to Feudalism (17)"
+                ),
+            },
+            {
+                "id": "unit-006-obsolete-technology-2",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior.offset + 0x4E,
+                "expected": "1100",
+                "replacement": "ffff",
+                "rationale": "Set Warrior obsolete technology 2 from Feudalism (17) to none (-1)",
+            },
         ],
     }
 
@@ -118,6 +154,18 @@ def test_build_unit_patch_set_rejects_values_outside_descriptor_byte() -> None:
             unit_name="Warrior",
             profile_id="synthetic_units",
             attack=128,
+        )
+
+
+def test_build_unit_patch_set_rejects_unknown_technology_ids() -> None:
+    records = _records_with_warrior()
+
+    with pytest.raises(ValueError, match="technology id"):
+        units.build_unit_patch_set(
+            records,
+            unit_name="Warrior",
+            profile_id="synthetic_units",
+            unlock_technology_id=len(units.TECHNOLOGY_NAMES),
         )
 
 
