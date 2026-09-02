@@ -6,7 +6,7 @@ on:
       - analysis/civrev-unit-survey
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   trace:
@@ -28,7 +28,7 @@ jobs:
           unzip -q "$ROM_ZIP" -d "$ROM_DIR"
           ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
           test -n "$ROM"
-          python - "$ROM" <<'PY'
+          python - "$ROM" <<'PY' > evidence/re/unit-unresolved-trace.txt
           import json
           import sys
           from collections import defaultdict
@@ -95,15 +95,13 @@ jobs:
           targets = {0x45, 0x46, 0x47, 0x50}
           uses = defaultdict(list)
           for idx, insn in enumerate(insns):
-              ops = getattr(insn, 'operands', ())
-              memops = [op for op in ops if op.type == ARM_OP_MEM]
-              if not memops:
-                  continue
-              for memop in memops:
-                  disp = int(memop.mem.disp)
+              for op in getattr(insn, 'operands', ()):
+                  if op.type != ARM_OP_MEM:
+                      continue
+                  disp = int(op.mem.disp)
                   if disp not in targets:
                       continue
-                  if disp == 0x50 and insn.mnemonic not in {'ldr'}:
+                  if disp == 0x50 and insn.mnemonic != 'ldr':
                       continue
                   if disp != 0x50 and insn.mnemonic not in {'ldrb', 'ldrsb'}:
                       continue
@@ -113,15 +111,13 @@ jobs:
               print(f'\n=== GLOBAL CONSUMERS +{disp:#04x} count={len(uses[disp])} ===')
               for idx, insn in uses[disp]:
                   print(f'\nFIELD {disp:#04x} @ {insn.address:#010x}: {insn.mnemonic} {insn.op_str}')
-                  context = insns[max(0, idx-12):min(len(insns), idx+17)]
-                  for x in context:
+                  for x in insns[max(0, idx-8):min(len(insns), idx+11)]:
                       marks=[]
                       if x.address == insn.address: marks.append('FIELD')
                       lit = literal_target(x)
                       if lit == table_base: marks.append('TABLE')
                       if '#0x94' in x.op_str or '#148' in x.op_str: marks.append('STRIDE')
-                      if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}:
-                          marks.append('TEST')
+                      if x.mnemonic in {'tst','teq','cmp','and','ands','bic','orr','orrs'}: marks.append('TEST')
                       if x.mnemonic in {'bl','blx'}: marks.append('CALL')
                       suffix=f" ; {'|'.join(marks)}" if marks else ''
                       print(f'  {x.address:#010x}: {x.mnemonic:8} {x.op_str}{suffix}')
@@ -136,3 +132,15 @@ jobs:
                   if x.mnemonic in {'bx','pop'}:
                       break
           PY
+      - name: Commit trace for analysis
+        shell: bash
+        run: |
+          if git diff --quiet -- evidence/re/unit-unresolved-trace.txt; then
+            echo "Trace is unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-unresolved-trace.txt
+          git commit -m "analysis: capture unresolved unit field trace"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
