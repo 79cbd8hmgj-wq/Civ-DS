@@ -236,12 +236,14 @@ def build_unit_patch_set(
     unit_name: str,
     profile_id: str,
     attack: int | None = None,
+    defense: int | None = None,
+    movement: int | None = None,
     production_cost: int | None = None,
 ) -> dict[str, object]:
     matches = [record for record in records if record.name == unit_name]
     if len(matches) != 1:
         raise ValueError(f"expected exactly one unit named {unit_name!r}, found {len(matches)}")
-    if attack is None and production_cost is None:
+    if all(value is None for value in (attack, defense, movement, production_cost)):
         raise ValueError("no unit fields were requested for patching")
     record = matches[0]
 
@@ -256,6 +258,32 @@ def build_unit_patch_set(
                 "expected": _signed_byte_hex(record.attack, label="current attack"),
                 "replacement": _signed_byte_hex(attack, label="attack"),
                 "rationale": f"Set {record.name} attack from {record.attack} to {attack}",
+            }
+        )
+
+    if defense is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-defense",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x41,
+                "expected": _signed_byte_hex(record.defense, label="current defense"),
+                "replacement": _signed_byte_hex(defense, label="defense"),
+                "rationale": f"Set {record.name} defense from {record.defense} to {defense}",
+            }
+        )
+
+    if movement is not None:
+        patches.append(
+            {
+                "id": f"unit-{record.index:03d}-movement",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": record.offset + 0x42,
+                "expected": _signed_byte_hex(record.movement, label="current movement"),
+                "replacement": _signed_byte_hex(movement, label="movement"),
+                "rationale": f"Set {record.name} movement from {record.movement} to {movement}",
             }
         )
 
