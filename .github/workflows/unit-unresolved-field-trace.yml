@@ -135,7 +135,7 @@ jobs:
       - name: Commit trace for analysis
         shell: bash
         run: |
-          if git diff --quiet -- evidence/re/unit-unresolved-trace.txt; then
+          if [ -z "$(git status --porcelain -- evidence/re/unit-unresolved-trace.txt)" ]; then
             echo "Trace is unchanged."
             exit 0
           fi
