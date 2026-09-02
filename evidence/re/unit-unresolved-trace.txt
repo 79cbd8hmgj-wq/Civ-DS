@@ -1,688 +1,242 @@
-=== DIRECT COLUMN LITERAL REFERENCES ===
-count=9
-0x0203f890: ldr r7, [pc, #0x55c] -> 0x02179f64 offset=0x44
-0x02053d68: ldr r1, [pc, #0x254] -> 0x02179f64 offset=0x44
-0x0205e51c: ldr r5, [pc, #0x994] -> 0x02179f64 offset=0x44
-0x0205f984: ldr r4, [pc, #-0xad4] -> 0x02179f64 offset=0x44
-0x02085ac8: ldr r3, [pc, #0x5d0] -> 0x02179f64 offset=0x44
-0x020876c4: ldr r2, [pc, #0x37c] -> 0x02179f64 offset=0x44
-0x02087ec4: ldr r2, [pc, #0x174] -> 0x02179f64 offset=0x44
-0x020930b0: ldr r2, [pc, #0x88c] -> 0x02179f64 offset=0x44
-0x020bbbb0: ldr r2, [pc, #0x3e0] -> 0x02179f64 offset=0x44
+=== EFFECTIVE RECORD OFFSET ACCESS MAP ===
+offset=0x40 count=26
+  ref=0x0203a5d4 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0203a5dc ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0203bd7c literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203bd84 ldrsb r2, [r2, r3] disp=+0x0
+  ref=0x0203bf94 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203bfa0 ldrsb r2, [r2, r7] disp=+0x0
+  ref=0x0203d904 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0203d908 ldrsb r0, [r0, r1] disp=+0x0
+  ref=0x0203da08 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0203da14 ldrsb r2, [r2, r0] disp=+0x0
+  ref=0x0203f7f4 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0203f7f8 ldrsb r0, [r0, r8] disp=+0x0
+  ref=0x0204d910 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0204d918 ldrsb r1, [r2, r1] disp=+0x0
+  ref=0x02053de0 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02053de8 ldrsb r1, [r1, r3] disp=+0x0
+  ref=0x0205c888 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0205c890 ldrsb r0, [r2, r0] disp=+0x0
+  ref=0x0205caf8 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0205cb04 ldrsb r1, [r1, r2] disp=+0x0
+  ref=0x0205fda0 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0205fda8 ldrsb r0, [r1, ip] disp=+0x0
+  ref=0x020877a4 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x020877a8 ldrsb r0, [r0, r8] disp=+0x0
+  ref=0x0208bfc0 literal=0x02179f60 base_offset=0x40 dst=r4 -> access=0x0208bfd0 ldrsb r3, [r4, r3] disp=+0x0
+  ref=0x0208dd04 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0208dd14 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208f058 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0208f05c ldrsbne r0, [r0, r1] disp=+0x0
+  ref=0x0208f4fc literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0208f500 ldrsbne r0, [r0, r3] disp=+0x0
+  ref=0x02094474 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x0209447c ldrsb r4, [r1, r5] disp=+0x0
+  ref=0x02096c58 literal=0x02179f60 base_offset=0x40 dst=r3 -> access=0x02096c5c ldrsb r2, [r3, r2] disp=+0x0
+  ref=0x02096e98 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02096ea0 ldrsb r1, [r1, r2] disp=+0x0
+  ref=0x02096fb4 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x02096fbc ldrsb r1, [r1, r0] disp=+0x0
+  ref=0x0209ac98 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x0209ac9c ldrsb r0, [r0, r3] disp=+0x0
+  ref=0x0209ad4c literal=0x02179f60 base_offset=0x40 dst=r8 -> access=0x0209ad54 ldrsb r3, [r8, r3] disp=+0x0
+  ref=0x0209c7e8 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x0209c7f0 ldrsb r1, [r2, r3] disp=+0x0
+  ref=0x020b8d84 literal=0x02179f60 base_offset=0x40 dst=r1 -> access=0x020b8d90 ldrsb r1, [r1, r6] disp=+0x0
+  ref=0x020c3ae4 literal=0x02179f60 base_offset=0x40 dst=r2 -> access=0x020c3af0 ldrsb r2, [r2, r0] disp=+0x0
+  ref=0x020c3b68 literal=0x02179f60 base_offset=0x40 dst=r0 -> access=0x020c3b6c ldrsb r0, [r0, r1] disp=+0x0
+offset=0x41 count=18
+  ref=0x0203bd18 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0203bd1c ldrsbne r1, [r1, r4] disp=+0x0
+  ref=0x0203bf90 literal=0x02179f61 base_offset=0x41 dst=r6 -> access=0x0203bf9c ldrsb r3, [r6, r7] disp=+0x0
+  ref=0x0203d938 literal=0x02179f61 base_offset=0x41 dst=r2 -> access=0x0203d940 ldrsb r1, [r2, r1] disp=+0x0
+  ref=0x0203da0c literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0203da18 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x02053de4 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x02053dec ldrsb r0, [r0, r3] disp=+0x0
+  ref=0x0205b158 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205b160 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0205b244 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205b24c ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0205cb00 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x0205cb08 ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0205f634 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205f63c ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0205f778 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x0205f780 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208777c literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02087780 ldrsb r1, [r1, r8] disp=+0x0
+  ref=0x02090170 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02090178 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x02091fac literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x02091fb4 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x020945f0 literal=0x02179f61 base_offset=0x41 dst=r2 -> access=0x02094600 ldrsb r4, [r2, r3] disp=+0x0
+  ref=0x02096e9c literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x02096ea4 ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0209c814 literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x0209c818 ldrsb r0, [r0, r3] disp=+0x0
+  ref=0x020b8d8c literal=0x02179f61 base_offset=0x41 dst=r0 -> access=0x020b8d94 ldrsb r0, [r0, r6] disp=+0x0
+  ref=0x020c3ae8 literal=0x02179f61 base_offset=0x41 dst=r1 -> access=0x020c3af4 ldrsb r0, [r1, r0] disp=+0x0
+offset=0x42 count=7
+  ref=0x02041618 literal=0x02179f62 base_offset=0x42 dst=r0 -> access=0x02041620 ldrsb r1, [r0, r1] disp=+0x0
+  ref=0x02051850 literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x02051858 ldrsb r2, [r2, r0] disp=+0x0
+  ref=0x0205ae64 literal=0x02179f62 base_offset=0x42 dst=r1 -> access=0x0205ae6c ldrsb r1, [r1, r3] disp=+0x0
+  ref=0x02094664 literal=0x02179f62 base_offset=0x42 dst=r3 -> access=0x02094674 ldrsb r4, [r3, r5] disp=+0x0
+  ref=0x02099b08 literal=0x02179f62 base_offset=0x42 dst=sl -> access=0x02099b2c ldrsb r2, [sl, r2] disp=+0x0
+  ref=0x02099d74 literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x02099d98 ldrsb ip, [r2, r3] disp=+0x0
+  ref=0x0209c7fc literal=0x02179f62 base_offset=0x42 dst=r2 -> access=0x0209c804 ldrsb r0, [r2, r3] disp=+0x0
+offset=0x43 count=2
+  ref=0x0203a6ac literal=0x02179f63 base_offset=0x43 dst=r1 -> access=0x0203a6b4 ldrsb r2, [r1, r0] disp=+0x0
+  ref=0x020604e8 literal=0x02179f63 base_offset=0x43 dst=r6 -> access=0x020604ec ldrsb r3, [r6, r3] disp=+0x0
+offset=0x44 count=9
+  ref=0x0203f890 literal=0x02179f64 base_offset=0x44 dst=r7 -> access=0x0203f898 ldrsb r7, [r7, r8] disp=+0x0
+  ref=0x02053d68 literal=0x02179f64 base_offset=0x44 dst=r1 -> access=0x02053d70 ldrsb r1, [r1, r4] disp=+0x0
+  ref=0x0205e51c literal=0x02179f64 base_offset=0x44 dst=r5 -> access=0x0205e528 ldrsb r5, [r5, r3] disp=+0x0
+  ref=0x0205f984 literal=0x02179f64 base_offset=0x44 dst=r4 -> access=0x0205f98c ldrsb r4, [r4, r5] disp=+0x0
+  ref=0x02085ac8 literal=0x02179f64 base_offset=0x44 dst=r3 -> access=0x02085ae0 ldrsb r3, [r3, sb] disp=+0x0
+  ref=0x020876c4 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020876cc ldrsb r2, [r2, r8] disp=+0x0
+  ref=0x02087ec4 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x02087ecc ldrsb r3, [r2, r3] disp=+0x0
+  ref=0x020930b0 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020930b8 ldrsb r2, [r2, r1] disp=+0x0
+  ref=0x020bbbb0 literal=0x02179f64 base_offset=0x44 dst=r2 -> access=0x020bbbb8 ldrsb r2, [r2, r1] disp=+0x0
+offset=0x48 count=31
+  ref=0x0203a7ac literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0203a7b4 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x02041598 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020415a0 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x020415d8 literal=0x02179f68 base_offset=0x48 dst=r3 -> access=0x020415e0 ldrsb r2, [r3, r2] disp=+0x0
+  ref=0x02053e74 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x02053e7c ldrsb r0, [r0, r4] disp=+0x0
+  ref=0x0208be00 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208be38 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208be70 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208be80 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208bec0 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208becc ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0208bf1c literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208bf28 ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0208c704 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208c714 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208c74c literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208c75c ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208c79c literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208c7a8 ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0208c7f8 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208c804 ldrsb r0, [r0, r2] disp=+0x0
+  ref=0x0208cb48 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208cb58 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x0208cba8 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208cbac ldrsb r0, [r0, r1] disp=+0x0
+  ref=0x0208cc80 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208cc90 ldrsb r1, [r1, r0] disp=+0x0
+  ref=0x0208ccc4 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208ccc8 ldrsb r1, [r0, r1] disp=+0x0
+  ref=0x0208e118 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e124 ldrsb r1, [r0, r1] disp=+0x0
+  ref=0x0208e118 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e154 ldrsb r1, [r0, r2] disp=+0x0
+  ref=0x0208e194 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e1a0 ldrsb r6, [r0, r5] disp=+0x0
+  ref=0x0208e194 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e1d0 ldrsb r1, [r0, r3] disp=+0x0
+  ref=0x0208e518 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e524 ldrsb r1, [r0, r1] disp=+0x0
+  ref=0x0208e518 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e554 ldrsb r1, [r0, r2] disp=+0x0
+  ref=0x0208e594 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e5a0 ldrsb r6, [r0, r5] disp=+0x0
+  ref=0x0208e594 literal=0x02179f68 base_offset=0x48 dst=r0 -> access=0x0208e5d0 ldrsb r1, [r0, r3] disp=+0x0
+  ref=0x0208ece4 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0208ece8 ldrsb r3, [r1, r3] disp=+0x0
+  ref=0x0208ed14 literal=0x02179f68 base_offset=0x48 dst=r2 -> access=0x0208ed1c ldrsb r1, [r2, r1] disp=+0x0
+  ref=0x0209c6c0 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x0209c6c4 ldrsb r1, [r1, r3] disp=+0x0
+  ref=0x020b7220 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020b7228 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x020b72b0 literal=0x02179f68 base_offset=0x48 dst=r1 -> access=0x020b72b8 ldrsb r0, [r1, r0] disp=+0x0
+  ref=0x020b8ed0 literal=0x02179f68 base_offset=0x48 dst=r2 -> access=0x020b8ed8 ldrsb r3, [r2, r0] disp=+0x0
+  ref=0x020c4210 literal=0x02179f68 base_offset=0x48 dst=r3 -> access=0x020c4218 ldrsb r5, [r3, r4] disp=+0x0
+offset=0x4c count=5
+  ref=0x02046f90 literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x02046fa4 ldrsh r1, [r1, r3] disp=+0x0
+  ref=0x02052cfc literal=0x02179f6c base_offset=0x4c dst=r0 -> access=0x02052d04 ldrsh r0, [r0, r2] disp=+0x0
+  ref=0x02052da4 literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x02052dac ldrsh r3, [r1, r2] disp=+0x0
+  ref=0x0205c9bc literal=0x02179f6c base_offset=0x4c dst=r1 -> access=0x0205c9dc ldrsh r0, [r1, r0] disp=+0x0
+  ref=0x0205cb14 literal=0x02179f6c base_offset=0x4c dst=r0 -> access=0x0205cb1c ldrsh r0, [r0, r2] disp=+0x0
+offset=0x4e count=3
+  ref=0x0205ca7c literal=0x02179f6e base_offset=0x4e dst=r1 -> access=0x0205ca84 ldrsh r0, [r1, r0] disp=+0x0
+  ref=0x0208bd30 literal=0x02179f6e base_offset=0x4e dst=r0 -> access=0x0208bd38 ldrsh r0, [r0, r2] disp=+0x0
+  ref=0x0208bdb0 literal=0x02179f6e base_offset=0x4e dst=r0 -> access=0x0208bdb8 ldrsh r0, [r0, r1] disp=+0x0
+offset=0x50 count=123
+  ref=0x02036138 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02036140 ldr r2, [r3, r2] disp=+0x0
+  ref=0x0203617c literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x02036184 ldr r1, [r4, r1] disp=+0x0
+  ref=0x0203a308 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0203a310 ldr r0, [r0, r4] disp=+0x0
+  ref=0x0203a7dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203a7e4 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0203a9d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203a9e0 ldr r1, [r1, r2] disp=+0x0
+  ref=0x0203aa14 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0203aa1c ldr r0, [r0, r1] disp=+0x0
+  ref=0x0203bcec literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0203bcf4 ldr r1, [r2, r4] disp=+0x0
+  ref=0x0203bffc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0203c004 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0203cb40 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0203cb48 ldr r2, [r2, r1] disp=+0x0
+  ref=0x02046700 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x02046704 ldr r4, [r4, r5] disp=+0x0
+  ref=0x020468c8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020468d0 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02046a78 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02046a80 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02053ce4 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02053cec ldr r2, [r3, r2] disp=+0x0
+  ref=0x02053ce4 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02053cf0 ldr r3, [r3, r4] disp=+0x0
+  ref=0x02053f1c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02053f20 ldr r1, [r1, r4] disp=+0x0
+  ref=0x02053f5c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x02053f60 ldr r1, [r5, r1] disp=+0x0
+  ref=0x02053f5c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x02053f6c ldr r1, [r5, r4] disp=+0x0
+  ref=0x02054404 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02054410 ldr r0, [r2, r0] disp=+0x0
+  ref=0x02059a9c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02059aa4 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0205ade0 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0205ade8 ldr r2, [r6, r2] disp=+0x0
+  ref=0x0205bd34 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0205bd3c ldr r2, [r5, r2] disp=+0x0
+  ref=0x0205c7b4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205c7bc ldr r1, [r2, r1] disp=+0x0
+  ref=0x0205cc04 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205cc08 ldr r2, [r2, r3] disp=+0x0
+  ref=0x0205ddec literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0205ddf4 ldr r2, [r3, r2] disp=+0x0
+  ref=0x0205de48 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205de50 ldr r0, [r2, r0] disp=+0x0
+  ref=0x0205e064 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205e06c ldr r0, [r2, r0] disp=+0x0
+  ref=0x0205e270 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0205e278 ldr r3, [r4, r3] disp=+0x0
+  ref=0x0205e4d8 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0205e4e0 ldr r3, [r3, r2] disp=+0x0
+  ref=0x0205e83c literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0205e844 ldr r1, [r5, r1] disp=+0x0
+  ref=0x0205eb50 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0205eb58 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0205f210 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f218 ldr r2, [r2, r3] disp=+0x0
+  ref=0x0205f4bc literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f4c4 ldr r0, [r2, r0] disp=+0x0
+  ref=0x0205f594 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f59c ldr r0, [r2, r0] disp=+0x0
+  ref=0x0205f89c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0205f8a4 ldr r0, [r2, r0] disp=+0x0
+  ref=0x0205f978 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0205f980 ldr r2, [r4, r5] disp=+0x0
+  ref=0x0205fe04 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0205fe08 ldr r0, [r0, ip] disp=+0x0
+  ref=0x0205ff60 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0205ff68 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02060190 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02060198 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02060240 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02060248 ldr r0, [r1, r0] disp=+0x0
+  ref=0x020602e4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x020602ec ldr r2, [r2, r1] disp=+0x0
+  ref=0x020603ec literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x020603f4 ldr r0, [r6, r0] disp=+0x0
+  ref=0x02060444 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206044c ldr r0, [r1, r0] disp=+0x0
+  ref=0x02060494 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0206049c ldr r6, [r6, r3] disp=+0x0
+  ref=0x02060508 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02060510 ldr r0, [r3, r0] disp=+0x0
+  ref=0x02060614 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206061c ldr r0, [r1, r0] disp=+0x0
+  ref=0x02060654 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0206065c ldr r2, [r1, r2] disp=+0x0
+  ref=0x0206088c literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x02060894 ldr r3, [r6, r3] disp=+0x0
+  ref=0x020608d0 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020608d8 ldr r0, [r3, r0] disp=+0x0
+  ref=0x02085b04 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02085b08 ldr r0, [r0, sb] disp=+0x0
+  ref=0x02087794 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02087798 ldr r0, [r0, r8] disp=+0x0
+  ref=0x02089a30 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02089a38 ldr r0, [r0, r1] disp=+0x0
+  ref=0x02089b3c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089b4c ldr r0, [r1, r0] disp=+0x0
+  ref=0x02089bc4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089bd4 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02089c78 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089c88 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02089cc8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089cd8 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02089d18 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089d28 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02089db8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02089dc8 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208a984 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208a988 ldr r0, [r0, r2] disp=+0x0
+  ref=0x0208aa10 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0208aa28 ldr r0, [r5, r0] disp=+0x0
+  ref=0x0208aa10 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x0208aa54 ldr r0, [r5, r2] disp=+0x0
+  ref=0x0208abec literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208abf4 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0208af08 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208af10 ldr r0, [r0, r2] disp=+0x0
+  ref=0x0208b0ac literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b0bc ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208b0f8 literal=0x02179f70 base_offset=0x50 dst=r6 -> access=0x0208b108 ldr r3, [r6, r3] disp=+0x0
+  ref=0x0208b214 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b224 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208b2d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b2e8 ldr r1, [r1, r0] disp=+0x0
+  ref=0x0208b5b4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b5c4 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208b650 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208b658 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0208b9b4 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208b9c4 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208ba40 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208ba50 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208badc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208bae4 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0208bf60 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0208bf70 ldr r1, [r2, r1] disp=+0x0
+  ref=0x0208bff0 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0208c000 ldr r0, [r4, r0] disp=+0x0
+  ref=0x0208d1e0 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208d1f0 ldr r6, [r1, r0] disp=+0x0
+  ref=0x0208d318 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0208d328 ldr sl, [r4, sl] disp=+0x0
+  ref=0x0208d798 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208d7a4 ldr r2, [r3, r2] disp=+0x0
+  ref=0x0208dc3c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208dc4c ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208e9d0 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208e9d8 ldr r2, [r3, r2] disp=+0x0
+  ref=0x0208f040 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208f048 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0208f0ac literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0208f0b4 ldr r2, [r3, r2] disp=+0x0
+  ref=0x0208f4dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208f4ec ldr r0, [r1, r3] disp=+0x0
+  ref=0x0208f540 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208f550 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208fae8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208faf0 ldr r0, [r1, r0] disp=+0x0
+  ref=0x0208fbb0 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0208fbb8 ldr r1, [r1, r2] disp=+0x0
+  ref=0x0208fddc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208fde0 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0208fea4 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x0208fea8 ldr r0, [r0, r1] disp=+0x0
+  ref=0x020901dc literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020901ec ldr r0, [r1, r0] disp=+0x0
+  ref=0x02091388 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02091390 ldr r0, [r1, r0] disp=+0x0
+  ref=0x020928c8 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x020928d0 ldr r1, [r2, r1] disp=+0x0
+  ref=0x02092a34 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02092a3c ldr r1, [r1, r2] disp=+0x0
+  ref=0x0209449c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020944a4 ldr r1, [r1, r5] disp=+0x0
+  ref=0x020944cc literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020944d4 ldr r0, [r0, r5] disp=+0x0
+  ref=0x020945ec literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020945f4 ldr r1, [r1, r3] disp=+0x0
+  ref=0x02094684 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02094688 ldr r0, [r0, r5] disp=+0x0
+  ref=0x02094694 literal=0x02179f70 base_offset=0x50 dst=r8 -> access=0x02094698 ldr r0, [r8, r5] disp=+0x0
+  ref=0x020952d0 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020952d4 ldr r0, [r0, r1] disp=+0x0
+  ref=0x0209606c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02096074 ldr r1, [r2, r1] disp=+0x0
+  ref=0x02096b70 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x02096b78 ldr r3, [r3, r2] disp=+0x0
+  ref=0x02096e84 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x02096e88 ldr r0, [r0, r2] disp=+0x0
+  ref=0x02096fc8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02096fcc ldr r1, [r1, r0] disp=+0x0
+  ref=0x02097018 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209701c ldr r0, [r1, r0] disp=+0x0
+  ref=0x0209706c literal=0x02179f70 base_offset=0x50 dst=r7 -> access=0x02097074 ldr r3, [r7, r3] disp=+0x0
+  ref=0x020973d8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020973e0 ldr r1, [r1, r2] disp=+0x0
+  ref=0x02097588 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097590 ldr r0, [r1, r0] disp=+0x0
+  ref=0x020979e4 literal=0x02179f70 base_offset=0x50 dst=r5 -> access=0x020979ec ldr r4, [r5, r4] disp=+0x0
+  ref=0x02097a48 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097a50 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02097a98 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097aa0 ldr r0, [r1, r0] disp=+0x0
+  ref=0x02097c58 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x02097c60 ldr r1, [r2, r1] disp=+0x0
+  ref=0x02097d44 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x02097d4c ldr r1, [r1, r2] disp=+0x0
+  ref=0x0209ac10 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209ac18 ldr r1, [r1, r3] disp=+0x0
+  ref=0x0209adf8 literal=0x02179f70 base_offset=0x50 dst=r4 -> access=0x0209ae00 ldr r0, [r4, r0] disp=+0x0
+  ref=0x0209aec8 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209aed0 ldr r1, [r2, r1] disp=+0x0
+  ref=0x0209b128 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x0209b130 ldr r4, [r3, r4] disp=+0x0
+  ref=0x0209b29c literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209b2ac ldr r4, [r2, r3] disp=+0x0
+  ref=0x0209b3ac literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x0209b3bc ldr r4, [r1, r3] disp=+0x0
+  ref=0x0209c6a4 literal=0x02179f70 base_offset=0x50 dst=r2 -> access=0x0209c6ac ldr r2, [r2, r3] disp=+0x0
+  ref=0x020b1958 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020b195c ldr r0, [r0, r1] disp=+0x0
+  ref=0x020b2b40 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020b2b44 ldr r0, [r0, r1] disp=+0x0
+  ref=0x020b7f40 literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020b7f48 ldr r3, [r3, r0] disp=+0x0
+  ref=0x020b8ee8 literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020b8ef0 ldr r2, [r1, r0] disp=+0x0
+  ref=0x020c3468 literal=0x02179f70 base_offset=0x50 dst=r0 -> access=0x020c3470 ldr r0, [r0, r2] disp=+0x0
+  ref=0x020c359c literal=0x02179f70 base_offset=0x50 dst=r1 -> access=0x020c35a4 ldr r0, [r1, r2] disp=+0x0
+  ref=0x020c3d4c literal=0x02179f70 base_offset=0x50 dst=r3 -> access=0x020c3d50 ldr r3, [r3, r4] disp=+0x0
 
-=== COLUMN-BASE WINDOWS ===
+=== UNRESOLVED FIELD DETAIL ===
 
-REF 0x0203f890 target=0x02179f64 record_offset=0x44 dst=r7
-  0x0203f848: mov      r2, #0
-  0x0203f84c: movgt    r7, #0x63
-  0x0203f850: bl       #0x2096a58 ; CALL
-  0x0203f854: cmp      r0, #0 ; DATAFLOW
-  0x0203f858: movne    sl, #2
-  0x0203f85c: moveq    sl, #1
-  0x0203f860: mov      r0, #0x23
-  0x0203f864: mov      r1, sb
-  0x0203f868: mov      r2, #0
-  0x0203f86c: bl       #0x2096a58 ; CALL
-  0x0203f870: cmp      r0, #0 ; DATAFLOW
-  0x0203f874: mul      r0, r7, sl ; DATAFLOW
-  0x0203f878: movne    r1, #2
-  0x0203f87c: mov      r2, #0xbc
-  0x0203f880: moveq    r1, #1
-  0x0203f884: add      r0, r0, #2
-  0x0203f888: mul      sl, r4, r2 ; DATAFLOW
-  0x0203f88c: bl       #0x2159728 ; CALL
-  0x0203f890: ldr      r7, [pc, #0x55c] ; COLUMN_REF|DATAFLOW
-  0x0203f894: ldr      r2, [pc, #-0xb24] ; DATAFLOW
-  0x0203f898: ldrsb    r7, [r7, r8] ; r7+0|MEM+0|DATAFLOW
-  0x0203f89c: ldr      r1, [sp, #0x10] ; DATAFLOW
-  0x0203f8a0: ldr      r3, [pc, #-0xb2c] ; DATAFLOW
-  0x0203f8a4: ldrsh    r2, [r2, r1] ; MEM+0|DATAFLOW
-  0x0203f8a8: ldrsh    r1, [r3, r1] ; MEM+0|DATAFLOW
-  0x0203f8ac: ldr      r3, [pc, #0x544] ; DATAFLOW
-  0x0203f8b0: mul      r7, fp, r7 ; DATAFLOW
-  0x0203f8b4: ldrsh    r3, [r3, sl] ; MEM+0|DATAFLOW
-  0x0203f8b8: sub      r3, r7, r3
-  0x0203f8bc: mul      r0, r3, r0 ; DATAFLOW
-  0x0203f8c0: add      r0, r0, r0, lsr #31
-  0x0203f8c4: asr      r7, r0, #1 ; DATAFLOW
-  0x0203f8c8: cmp      r7, #0 ; DATAFLOW
-  0x0203f8cc: bgt      #0x203f8ec
-  0x0203f8d0: ldr      r3, [pc, #0x524] ; DATAFLOW
-  0x0203f8d4: ldr      r2, [sp, #0x10] ; DATAFLOW
-  0x0203f8d8: mov      r0, r4
-  0x0203f8dc: mov      r1, #1
-  0x0203f8e0: strh     r6, [r3, r2] ; MEM+0|DATAFLOW
-  0x0203f8e4: bl       #0x205195c ; CALL
-  0x0203f8e8: b        #0x203fab4
-  0x0203f8ec: ldr      r0, [pc, #-0xb40] ; DATAFLOW
-  0x0203f8f0: add      r0, r0, r2, lsl #5
-  0x0203f8f4: ldrb     r0, [r1, r0] ; MEM+0|DATAFLOW
-  0x0203f8f8: cmp      r0, #0 ; DATAFLOW
-  0x0203f8fc: beq      #0x203f914
-  0x0203f900: ldr      r0, [sp, #0x58] ; DATAFLOW
-  0x0203f904: cmp      r0, #2 ; DATAFLOW
-  0x0203f908: bge      #0x203f914
-  0x0203f90c: cmp      r6, #0x1c ; DATAFLOW
-  0x0203f910: bne      #0x203f9dc
-  0x0203f914: ldr      r0, [pc, #-0xb28] ; DATAFLOW
-  0x0203f918: ldr      r0, [r0, sb, lsl #2] ; MEM+0|DATAFLOW
-  0x0203f91c: cmp      r7, r0 ; DATAFLOW
-  0x0203f920: bge      #0x203f9dc
-  0x0203f924: ldr      r0, [pc, #0x4c4] ; DATAFLOW
-  0x0203f928: mov      r1, sb
-  0x0203f92c: ldr      r8, [r0, sb, lsl #2] ; MEM+0|DATAFLOW
-  0x0203f930: mov      r0, #0x19
-  0x0203f934: cmp      r8, #0 ; DATAFLOW
-  0x0203f938: movlt    r8, #0
-  0x0203f93c: cmp      r8, #0x63 ; DATAFLOW
-  0x0203f940: mov      r2, #0
-  0x0203f944: movgt    r8, #0x63
-  0x0203f948: bl       #0x2096a58 ; CALL
-  0x0203f94c: cmp      r0, #0 ; DATAFLOW
-  0x0203f950: movne    fp, #2
-  0x0203f954: moveq    fp, #1
-  0x0203f958: mov      r1, sb
-  0x0203f95c: mov      r0, #0x23
-  0x0203f960: mov      r2, #0
-  0x0203f964: bl       #0x2096a58 ; CALL
-  0x0203f968: cmp      r0, #0 ; DATAFLOW
+FIELD 0x45 direct_pointer_accesses=0
 
-REF 0x02053d68 target=0x02179f64 record_offset=0x44 dst=r1
-  0x02053d20: lsl      r3, r2, #1 ; DATAFLOW
-  0x02053d24: add      r2, r4, r5, lsl #6
-  0x02053d28: ldrsh    r2, [r3, r2] ; MEM+0|DATAFLOW
-  0x02053d2c: tst      r2, #1 ; DATAFLOW
-  0x02053d30: addeq    sp, sp, #8
-  0x02053d34: subeq    r0, r0, #0x95
-  0x02053d38: popeq    {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-  0x02053d3c: ldr      r0, [pc, #0x27c] ; DATAFLOW
-  0x02053d40: add      r0, r0, r7
-  0x02053d44: ldrsb    r0, [r8, r0] ; MEM+0|DATAFLOW
-  0x02053d48: cmp      r0, #0 ; DATAFLOW
-  0x02053d4c: mov      r0, #0x94 ; STRIDE_0x94
-  0x02053d50: mul      r4, r1, r0 ; DATAFLOW
-  0x02053d54: movne    r5, #0x12c
-  0x02053d58: moveq    r5, #0x64
-  0x02053d5c: mov      r0, sl
-  0x02053d60: bl       #0x20945dc ; CALL
-  0x02053d64: mul      r2, r0, r5 ; DATAFLOW
-  0x02053d68: ldr      r1, [pc, #0x254] ; COLUMN_REF|DATAFLOW
-  0x02053d6c: mov      r0, r2
-  0x02053d70: ldrsb    r1, [r1, r4] ; r1+0|MEM+0|DATAFLOW
-  0x02053d74: add      r1, r1, #4
-  0x02053d78: bl       #0x2159728 ; CALL
-  0x02053d7c: mov      r2, #0x5400
-  0x02053d80: mov      r1, #0x54
-  0x02053d84: mul      r6, sl, r2 ; DATAFLOW
-  0x02053d88: mul      r5, fp, r1 ; DATAFLOW
-  0x02053d8c: ldr      r2, [pc, #0x234] ; DATAFLOW
-  0x02053d90: str      r0, [sp] ; MEM+0|DATAFLOW
-  0x02053d94: add      r1, r2, r6
-  0x02053d98: ldr      r0, [r5, r1] ; MEM+0|DATAFLOW
-  0x02053d9c: mov      r1, #0x10
-  0x02053da0: bl       #0x209bf7c ; CALL
-  0x02053da4: add      r1, r0, #0xa
-  0x02053da8: ldr      r2, [sp] ; MEM+0|DATAFLOW
-  0x02053dac: mov      r0, #0xa
-  0x02053db0: mul      r0, r2, r0 ; DATAFLOW
-  0x02053db4: bl       #0x2159728 ; CALL
-  0x02053db8: ldr      r2, [pc, #0x20c] ; DATAFLOW
-  0x02053dbc: ldr      r1, [pc, #0x1e8] ; DATAFLOW
-  0x02053dc0: add      r2, r2, r6
-  0x02053dc4: ldrsb    r2, [r5, r2] ; MEM+0|DATAFLOW
-  0x02053dc8: add      r1, r1, r6
-  0x02053dcc: ldrsb    r1, [r5, r1] ; MEM+0|DATAFLOW
-  0x02053dd0: add      r2, r2, #1
-  0x02053dd4: mul      r2, r0, r2 ; DATAFLOW
-  0x02053dd8: mov      r0, #0x94 ; STRIDE_0x94
-  0x02053ddc: smulbb   r3, r1, r0
-  0x02053de0: ldr      r1, [pc, #0x1e8] ; DATAFLOW
-  0x02053de4: ldr      r0, [pc, #0x1e8] ; DATAFLOW
-  0x02053de8: ldrsb    r1, [r1, r3] ; r1+0|MEM+0|DATAFLOW
-  0x02053dec: ldrsb    r0, [r0, r3] ; MEM+0|DATAFLOW
-  0x02053df0: cmp      r1, r0 ; DATAFLOW
-  0x02053df4: ble      #0x2053e38
-  0x02053df8: ldr      r1, [pc, #0x1b4] ; DATAFLOW
-  0x02053dfc: ldr      r0, [pc, #0x1b4] ; DATAFLOW
-  0x02053e00: add      r1, r1, r6
-  0x02053e04: add      r0, r0, r6
-  0x02053e08: ldrsh    r0, [r5, r0] ; MEM+0|DATAFLOW
-  0x02053e0c: ldrsh    ip, [r5, r1] ; MEM+0|DATAFLOW
-  0x02053e10: ldr      r3, [pc, #0x1a4] ; DATAFLOW
-  0x02053e14: lsl      r1, r0, #1 ; DATAFLOW
-  0x02053e18: add      r0, r3, ip, lsl #6
-  0x02053e1c: ldrsh    r0, [r1, r0] ; r1+0|MEM+0|DATAFLOW
-  0x02053e20: tst      r0, #1 ; DATAFLOW
-  0x02053e24: movne    r1, #1
-  0x02053e28: moveq    r1, #3
-  0x02053e2c: mov      r0, r2
-  0x02053e30: bl       #0x2159728 ; CALL
-  0x02053e34: mov      r2, r0
-  0x02053e38: ldr      r0, [pc, #0x198] ; DATAFLOW
-  0x02053e3c: add      r0, r0, r7
-  0x02053e40: str      r0, [sp, #4] ; DATAFLOW
+FIELD 0x46 direct_pointer_accesses=0
 
-REF 0x0205e51c target=0x02179f64 record_offset=0x44 dst=r5
-  0x0205e4d4: mov      r2, #0x94 ; STRIDE_0x94
-  0x0205e4d8: ldr      r3, [pc, #-0x504] ; DATAFLOW
-  0x0205e4dc: smulbb   r2, r0, r2
-  0x0205e4e0: ldr      r3, [r3, r2] ; MEM+0|DATAFLOW
-  0x0205e4e4: cmp      r3, #0 ; DATAFLOW
-  0x0205e4e8: moveq    r2, #1
-  0x0205e4ec: movne    r2, #0
-  0x0205e4f0: cmp      r2, #0 ; DATAFLOW
-  0x0205e4f4: ldreq    r2, [pc, #0x9b8]
-  0x0205e4f8: ldreq    r2, [r2, r1, lsl #7] ; MEM+0
-  0x0205e4fc: cmpeq    r2, #0
-  0x0205e500: beq      #0x205fafc
-  0x0205e504: mov      r2, #0x5400
-  0x0205e508: mul      r2, r1, r2 ; DATAFLOW
-  0x0205e50c: ldr      r5, [pc, #-0x53c] ; DATAFLOW
-  0x0205e510: mov      r4, #0x94 ; STRIDE_0x94
-  0x0205e514: add      r5, r5, r2
-  0x0205e518: ldrsb    r6, [fp, r5] ; MEM+0|DATAFLOW
-  0x0205e51c: ldr      r5, [pc, #0x994] ; COLUMN_REF|DATAFLOW
-  0x0205e520: tst      r3, #0x10 ; DATAFLOW
-  0x0205e524: smulbb   r3, r6, r4
-  0x0205e528: ldrsb    r5, [r5, r3] ; r5+0|MEM+0|DATAFLOW
-  0x0205e52c: beq      #0x205e58c
-  0x0205e530: ldr      r3, [pc, #-0x564] ; DATAFLOW
-  0x0205e534: ldr      ip, [pc, #0x980] ; DATAFLOW
-  0x0205e538: add      r8, r3, r2
-  0x0205e53c: mov      r6, #0
-  0x0205e540: mov      lr, r4
-  0x0205e544: mvn      r2, #0
-  0x0205e548: ldrsb    r3, [r8] ; MEM+0|DATAFLOW
-  0x0205e54c: cmp      r3, r2 ; DATAFLOW
-  0x0205e550: ldrne    r3, [r8, #0xc]
-  0x0205e554: andne    r3, r3, #0x80000000
-  0x0205e558: cmpne    r3, #0x80000000
-  0x0205e55c: beq      #0x205e57c
-  0x0205e560: ldrsh    r3, [r8, #0x26] ; DATAFLOW
-  0x0205e564: cmp      sl, r3 ; DATAFLOW
-  0x0205e568: bne      #0x205e57c
-  0x0205e56c: ldrsb    r4, [r8, #1] ; MEM+1|DATAFLOW
-  0x0205e570: mla      r3, r4, lr, ip ; DATAFLOW
-  0x0205e574: ldrsb    r3, [r3, #0x44] ; DATAFLOW
-  0x0205e578: add      r5, r5, r3
-  0x0205e57c: add      r8, r8, #0x54
-  0x0205e580: add      r6, r6, #1
-  0x0205e584: cmp      r6, #0x100 ; DATAFLOW
-  0x0205e588: blt      #0x205e548
-  0x0205e58c: ldr      r3, [pc, #0x8e4] ; DATAFLOW
-  0x0205e590: ldr      r2, [sp, #0x18] ; DATAFLOW
-  0x0205e594: add      r2, r3, r2
-  0x0205e598: ldrsb    r2, [fp, r2] ; MEM+0|DATAFLOW
-  0x0205e59c: cmp      r2, #0 ; DATAFLOW
-  0x0205e5a0: ldr      r2, [pc, #0x8f0] ; DATAFLOW
-  0x0205e5a4: movne    r4, #3
-  0x0205e5a8: moveq    r4, #1
-  0x0205e5ac: ldr      r6, [r2] ; MEM+0|DATAFLOW
-  0x0205e5b0: bl       #0x2095ca8 ; CALL
-  0x0205e5b4: add      r1, r5, r5, lsl #2
-  0x0205e5b8: mul      r3, r1, r4 ; DATAFLOW
-  0x0205e5bc: mov      r2, r0
-  0x0205e5c0: ldr      r1, [pc, #0x8f8] ; DATAFLOW
-  0x0205e5c4: mov      r0, r6
-  0x0205e5c8: bl       #0x2023a5c ; CALL
-  0x0205e5cc: mov      r1, #0
-  0x0205e5d0: mov      r2, r1
-  0x0205e5d4: mov      r0, #1
-  0x0205e5d8: bl       #0x2083024 ; CALL
-  0x0205e5dc: cmp      r0, #0 ; DATAFLOW
-  0x0205e5e0: beq      #0x205f948
-  0x0205e5e4: b        #0x205fafc
-  0x0205e5e8: ldr      r2, [pc, #0x898] ; DATAFLOW
-  0x0205e5ec: ldr      r0, [pc, #-0x6dc] ; DATAFLOW
-  0x0205e5f0: add      r2, r2, r1
-  0x0205e5f4: ldrsh    r2, [r8, r2] ; MEM+0|DATAFLOW
-
-REF 0x0205f984 target=0x02179f64 record_offset=0x44 dst=r4
-  0x0205f93c: add      r0, r0, r1
-  0x0205f940: strb     r2, [r8, r0] ; MEM+0|DATAFLOW
-  0x0205f944: b        #0x205fafc
-  0x0205f948: ldr      r0, [pc, #-0xa10] ; DATAFLOW
-  0x0205f94c: ldr      r2, [pc, #-0xa20] ; DATAFLOW
-  0x0205f950: ldr      r0, [r0] ; MEM+0|DATAFLOW
-  0x0205f954: mov      r1, #0x5400
-  0x0205f958: ldr      r3, [r2] ; MEM+0|DATAFLOW
-  0x0205f95c: mov      r2, #0x54
-  0x0205f960: mul      r1, r0, r1 ; DATAFLOW
-  0x0205f964: ldr      r5, [pc, #0x730] ; DATAFLOW
-  0x0205f968: mul      r4, r3, r2 ; DATAFLOW
-  0x0205f96c: add      r2, r5, r1
-  0x0205f970: ldrsb    r5, [r4, r2] ; r4+0|MEM+0|DATAFLOW
-  0x0205f974: mov      r2, #0x94 ; STRIDE_0x94
-  0x0205f978: ldr      r4, [pc, #0x720] ; DATAFLOW
-  0x0205f97c: smulbb   r5, r5, r2
-  0x0205f980: ldr      r2, [r4, r5] ; r4+0|MEM+0|DATAFLOW
-  0x0205f984: ldr      r4, [pc, #-0xad4] ; COLUMN_REF|DATAFLOW
-  0x0205f988: tst      r2, #0x10 ; DATAFLOW
-  0x0205f98c: ldrsb    r4, [r4, r5] ; r4+0|MEM+0|DATAFLOW
-  0x0205f990: beq      #0x205f9f0
-  0x0205f994: ldr      r5, [pc, #-0xa60] ; DATAFLOW
-  0x0205f998: ldr      sl, [pc, #-0xae4] ; DATAFLOW
-  0x0205f99c: add      r1, r5, r1
-  0x0205f9a0: mov      r2, #0
-  0x0205f9a4: mov      r5, #0x94 ; STRIDE_0x94
-  0x0205f9a8: mvn      r6, #0
-  0x0205f9ac: ldrsb    r8, [r1] ; MEM+0|DATAFLOW
-  0x0205f9b0: cmp      r8, r6 ; DATAFLOW
-  0x0205f9b4: ldrne    r8, [r1, #0xc]
-  0x0205f9b8: andne    r8, r8, #0x80000000
-  0x0205f9bc: cmpne    r8, #0x80000000
-  0x0205f9c0: beq      #0x205f9e0
-  0x0205f9c4: ldrsh    r8, [r1, #0x26] ; DATAFLOW
-  0x0205f9c8: cmp      r3, r8 ; DATAFLOW
-  0x0205f9cc: bne      #0x205f9e0
-  0x0205f9d0: ldrsb    fp, [r1, #1] ; MEM+1|DATAFLOW
-  0x0205f9d4: mla      r8, fp, r5, sl ; DATAFLOW
-  0x0205f9d8: ldrsb    r8, [r8, #0x44] ; DATAFLOW
-  0x0205f9dc: add      r4, r4, r8
-  0x0205f9e0: add      r2, r2, #1
-  0x0205f9e4: cmp      r2, #0x100 ; DATAFLOW
-  0x0205f9e8: add      r1, r1, #0x54
-  0x0205f9ec: blt      #0x205f9ac
-  0x0205f9f0: bl       #0x2090460 ; CALL
-  0x0205f9f4: ldr      r1, [pc, #-0xabc] ; DATAFLOW
-  0x0205f9f8: ldr      r2, [pc, #-0xacc] ; DATAFLOW
-  0x0205f9fc: ldr      r1, [r1] ; MEM+0|DATAFLOW
-  0x0205fa00: ldr      r5, [r2] ; MEM+0|DATAFLOW
-  0x0205fa04: mov      r3, #0x54
-  0x0205fa08: ldr      r6, [pc, #-0xb98] ; DATAFLOW
-  0x0205fa0c: mov      r2, #0x5400
-  0x0205fa10: mul      r3, r5, r3 ; DATAFLOW
-  0x0205fa14: mla      r2, r1, r2, r6 ; DATAFLOW
-  0x0205fa18: cmp      r0, #0 ; DATAFLOW
-  0x0205fa1c: movne    r0, #1
-  0x0205fa20: ldrsb    r2, [r3, r2] ; MEM+0|DATAFLOW
-  0x0205fa24: moveq    r0, #2
-  0x0205fa28: cmp      r2, #0 ; DATAFLOW
-  0x0205fa2c: movne    r3, #3
-  0x0205fa30: moveq    r3, #1
-  0x0205fa34: add      r2, r4, r4, lsl #2
-  0x0205fa38: mul      r3, r2, r3 ; DATAFLOW
-  0x0205fa3c: mul      r2, r3, r0 ; DATAFLOW
-  0x0205fa40: mov      r0, #0x29
-  0x0205fa44: sub      r3, r0, #0x2a
-  0x0205fa48: bl       #0x2089788 ; CALL
-  0x0205fa4c: ldr      r0, [pc, #-0xbd4] ; DATAFLOW
-  0x0205fa50: ldr      r0, [r0] ; MEM+0|DATAFLOW
-  0x0205fa54: bl       #0x200d5b0 ; CALL
-  0x0205fa58: cmp      sb, r0 ; DATAFLOW
-  0x0205fa5c: bne      #0x205fa88
-
-REF 0x02085ac8 target=0x02179f64 record_offset=0x44 dst=r3
-  0x02085a80: mvn      r1, #0
-  0x02085a84: bl       #0x2095250 ; CALL
-  0x02085a88: mov      r6, r0
-  0x02085a8c: mov      r0, sl
-  0x02085a90: bl       #0x200d5b0 ; CALL
-  0x02085a94: mov      r1, r8
-  0x02085a98: bl       #0x2094464 ; CALL
-  0x02085a9c: str      r0, [sp, #0x14] ; DATAFLOW
-  0x02085aa0: mov      r0, sl
-  0x02085aa4: bl       #0x200d5b0 ; CALL
-  0x02085aa8: mov      r1, r8
-  0x02085aac: bl       #0x20945dc ; CALL
-  0x02085ab0: str      r0, [sp, #0x18] ; DATAFLOW
-  0x02085ab4: mov      r0, sl
-  0x02085ab8: bl       #0x200d5b0 ; CALL
-  0x02085abc: mov      r1, r8
-  0x02085ac0: bl       #0x2094650 ; CALL
-  0x02085ac4: ldr      r1, [sp, #0x14] ; DATAFLOW
-  0x02085ac8: ldr      r3, [pc, #0x5d0] ; COLUMN_REF|DATAFLOW
-  0x02085acc: str      r1, [sp] ; MEM+0|DATAFLOW
-  0x02085ad0: ldr      r1, [sp, #0x18] ; DATAFLOW
-  0x02085ad4: ldr      r2, [sp, #0x10] ; DATAFLOW
-  0x02085ad8: str      r1, [sp, #4] ; DATAFLOW
-  0x02085adc: str      r0, [sp, #8] ; DATAFLOW
-  0x02085ae0: ldrsb    r3, [r3, sb] ; r3+0|MEM+0|DATAFLOW
-  0x02085ae4: ldr      r0, [sp, #0xc] ; DATAFLOW
-  0x02085ae8: ldr      r1, [pc, #0x5b4] ; DATAFLOW
-  0x02085aec: mul      r6, r3, r6 ; DATAFLOW
-  0x02085af0: add      r3, r6, r6, lsr #31
-  0x02085af4: asr      r3, r3, #1 ; DATAFLOW
-  0x02085af8: bl       #0x2023acc ; CALL
-  0x02085afc: ldr      r0, [pc, #0x598] ; DATAFLOW
-  0x02085b00: strh     fp, [r0, r5] ; MEM+0|DATAFLOW
-  0x02085b04: ldr      r0, [pc, #0x59c] ; DATAFLOW
-  0x02085b08: ldr      r0, [r0, sb] ; MEM+0|DATAFLOW
-  0x02085b0c: tst      r0, #1 ; DATAFLOW
-  0x02085b10: beq      #0x2085b24
-  0x02085b14: ldr      r0, [pc, #0x4c8] ; DATAFLOW
-  0x02085b18: ldr      r1, [pc, #0x58c] ; DATAFLOW
-  0x02085b1c: ldr      r0, [r0] ; MEM+0|DATAFLOW
-  0x02085b20: bl       #0x2023acc ; CALL
-  0x02085b24: mvn      r0, #0
-  0x02085b28: cmp      r4, r0 ; DATAFLOW
-  0x02085b2c: addne    sp, sp, #0x1c
-  0x02085b30: popne    {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-  0x02085b34: mov      r0, #0x14
-  0x02085b38: mul      r1, r7, r0 ; DATAFLOW
-  0x02085b3c: ldr      r0, [pc, #0x56c] ; DATAFLOW
-  0x02085b40: orr      r2, r8, #0x100 ; DATAFLOW
-  0x02085b44: str      r2, [r0, r1] ; MEM+0|DATAFLOW
-  0x02085b48: add      sp, sp, #0x1c
-  0x02085b4c: pop      {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-  0x02085b50: cmp      r8, #0xc8 ; DATAFLOW
-  0x02085b54: bge      #0x2085e90
-  0x02085b58: mov      r1, #0xbc
-  0x02085b5c: mul      r5, r6, r1 ; DATAFLOW
-  0x02085b60: ldr      sb, [pc, #0x534] ; DATAFLOW
-  0x02085b64: ldr      r2, [pc, #0x478] ; DATAFLOW
-  0x02085b68: sub      r8, r8, #0x64
-  0x02085b6c: ldrsh    sl, [sb, r5] ; MEM+0|DATAFLOW
-  0x02085b70: add      r3, r8, #0x64
-  0x02085b74: mov      r0, r6
-  0x02085b78: sub      r1, r1, #0xbd
-  0x02085b7c: ldr      r6, [r2] ; MEM+0|DATAFLOW
-  0x02085b80: strh     r3, [sb, r5] ; MEM+0|DATAFLOW
-  0x02085b84: bl       #0x209503c ; CALL
-  0x02085b88: mov      r3, r0
-  0x02085b8c: ldr      r1, [pc, #0x520] ; DATAFLOW
-  0x02085b90: mov      r0, r6
-  0x02085b94: mov      r2, r8
-  0x02085b98: bl       #0x2023a5c ; CALL
-  0x02085b9c: mov      r0, #1
-  0x02085ba0: lsl      r0, r0, r8 ; DATAFLOW
-
-REF 0x020876c4 target=0x02179f64 record_offset=0x44 dst=r2
-  0x0208767c: bge      #0x208783c
-  0x02087680: ldr      r0, [pc, #0x3b8] ; DATAFLOW
-  0x02087684: ldr      fp, [pc, #0x3b8] ; DATAFLOW
-  0x02087688: ldr      r3, [r0, #0xc] ; DATAFLOW
-  0x0208768c: mov      r6, #0
-  0x02087690: cmp      r3, #0 ; DATAFLOW
-  0x02087694: strne    r6, [r0, #0xc]
-  0x02087698: ldrsh    r0, [fp, sb] ; MEM+0|DATAFLOW
-  0x0208769c: ldr      r1, [pc, #0x37c] ; DATAFLOW
-  0x020876a0: strb     r6, [r1] ; MEM+0|DATAFLOW
-  0x020876a4: cmp      r0, #0 ; DATAFLOW
-  0x020876a8: beq      #0x2087818
-  0x020876ac: ldrsh    r6, [r4, sb] ; MEM+0|DATAFLOW
-  0x020876b0: mov      r2, #0x94 ; STRIDE_0x94
-  0x020876b4: mov      r0, sl
-  0x020876b8: sub      r1, r2, #0x95
-  0x020876bc: smulbb   r8, r6, r2
-  0x020876c0: bl       #0x2095250 ; CALL
-  0x020876c4: ldr      r2, [pc, #0x37c] ; COLUMN_REF|DATAFLOW
-  0x020876c8: ldr      r1, [pc, #0x37c] ; DATAFLOW
-  0x020876cc: ldrsb    r2, [r2, r8] ; r2+0|MEM+0|DATAFLOW
-  0x020876d0: ldrsh    r7, [r1, sb] ; MEM+0|DATAFLOW
-  0x020876d4: ldrsh    fp, [fp, sb] ; MEM+0|DATAFLOW
-  0x020876d8: mul      r0, r2, r0 ; DATAFLOW
-  0x020876dc: add      r2, r0, r0, lsr #31
-  0x020876e0: rsb      r0, r7, r2, asr #1
-  0x020876e4: asr      r2, r2, #1 ; DATAFLOW
-  0x020876e8: mov      r1, fp
-  0x020876ec: sub      r0, r0, #1
-  0x020876f0: str      r2, [sp] ; MEM+0|DATAFLOW
-  0x020876f4: bl       #0x2159728 ; CALL
-  0x020876f8: add      r0, r0, #1
-  0x020876fc: str      r0, [sp, #4] ; DATAFLOW
-  0x02087700: cmp      r0, #1 ; DATAFLOW
-  0x02087704: ble      #0x2087770
-  0x02087708: ldr      r0, [pc, #0x340] ; DATAFLOW
-  0x0208770c: ldr      r0, [r0, sb] ; MEM+0|DATAFLOW
-  0x02087710: tst      r0, #0x400 ; DATAFLOW
-  0x02087714: beq      #0x2087744
-  0x02087718: ldr      r2, [pc, #0x308] ; DATAFLOW
-  0x0208771c: mov      r1, r5
-  0x02087720: mov      r0, r6
-  0x02087724: ldr      r5, [r2] ; r2+0|MEM+0|DATAFLOW
-  0x02087728: bl       #0x2095ca8 ; CALL
-  0x0208772c: mov      r2, r0
-  0x02087730: ldr      r1, [pc, #0x31c] ; DATAFLOW
-  0x02087734: ldr      r3, [sp, #4] ; DATAFLOW
-  0x02087738: mov      r0, r5
-  0x0208773c: bl       #0x2023acc ; CALL
-  0x02087740: b        #0x208783c
-  0x02087744: ldr      r2, [pc, #0x2dc] ; DATAFLOW
-  0x02087748: mov      r1, r5
-  0x0208774c: mov      r0, r6
-  0x02087750: ldr      r5, [r2] ; r2+0|MEM+0|DATAFLOW
-  0x02087754: bl       #0x2095ca8 ; CALL
-  0x02087758: mov      r2, r0
-  0x0208775c: ldr      r1, [pc, #0x2f4] ; DATAFLOW
-  0x02087760: ldr      r3, [sp, #4] ; DATAFLOW
-  0x02087764: mov      r0, r5
-  0x02087768: bl       #0x2023acc ; CALL
-  0x0208776c: b        #0x208783c
-  0x02087770: ldr      r1, [sp] ; MEM+0|DATAFLOW
-  0x02087774: add      r0, r7, fp
-  0x02087778: bl       #0x2159728 ; CALL
-  0x0208777c: ldr      r1, [pc, #0x2d8] ; DATAFLOW
-  0x02087780: ldrsb    r1, [r1, r8] ; MEM+0|DATAFLOW
-  0x02087784: cmp      r1, #0 ; DATAFLOW
-  0x02087788: moveq    r0, #1
-  0x0208778c: cmp      r0, #1 ; DATAFLOW
-  0x02087790: ble      #0x20877b4
-  0x02087794: ldr      r0, [pc, #0x2c4] ; DATAFLOW
-  0x02087798: ldr      r0, [r0, r8] ; MEM+0|DATAFLOW
-  0x0208779c: tst      r0, #2 ; DATAFLOW
-
-REF 0x02087ec4 target=0x02179f64 record_offset=0x44 dst=r2
-  0x02087e7c: mov      r2, #0
-  0x02087e80: movgt    r7, #0x63
-  0x02087e84: bl       #0x2096a58 ; CALL
-  0x02087e88: cmp      r0, #0 ; DATAFLOW
-  0x02087e8c: movne    sb, #2
-  0x02087e90: moveq    sb, #1
-  0x02087e94: mov      r1, r6
-  0x02087e98: mov      r0, #0x23
-  0x02087e9c: mov      r2, #0
-  0x02087ea0: bl       #0x2096a58 ; CALL
-  0x02087ea4: cmp      r0, #0 ; DATAFLOW
-  0x02087ea8: mul      r0, r7, sb ; DATAFLOW
-  0x02087eac: movne    r1, #2
-  0x02087eb0: moveq    r1, #1
-  0x02087eb4: add      r0, r0, #2
-  0x02087eb8: bl       #0x2159728 ; CALL
-  0x02087ebc: mov      r1, #0x94 ; STRIDE_0x94
-  0x02087ec0: mul      r3, r5, r1 ; DATAFLOW
-  0x02087ec4: ldr      r2, [pc, #0x174] ; COLUMN_REF|DATAFLOW
-  0x02087ec8: cmp      r5, #0x1d ; DATAFLOW
-  0x02087ecc: ldrsb    r3, [r2, r3] ; r2+0|MEM+0|DATAFLOW
-  0x02087ed0: ldr      r1, [pc, #0x16c] ; DATAFLOW
-  0x02087ed4: moveq    r4, #0
-  0x02087ed8: ldrsh    r2, [r1, r8] ; MEM+0|DATAFLOW
-  0x02087edc: mul      r1, fp, r3 ; DATAFLOW
-  0x02087ee0: add      r1, r1, r1, lsr #31
-  0x02087ee4: rsb      r2, r2, r1, asr #1
-  0x02087ee8: mul      r1, r2, r0 ; DATAFLOW
-  0x02087eec: b        #0x2087ff8
-  0x02087ef0: cmp      r5, #0xc8 ; DATAFLOW
-  0x02087ef4: bge      #0x2087f78
-  0x02087ef8: sub      r1, r4, #2
-  0x02087efc: bl       #0x209503c ; CALL
-  0x02087f00: ldr      r1, [pc, #0x134] ; DATAFLOW
-  0x02087f04: mov      r7, r0
-  0x02087f08: ldr      sb, [r1, r6, lsl #2] ; MEM+0|DATAFLOW
-  0x02087f0c: mov      r1, r6
-  0x02087f10: cmp      sb, #0 ; DATAFLOW
-  0x02087f14: movlt    sb, #0
-  0x02087f18: cmp      sb, #0x63 ; DATAFLOW
-  0x02087f1c: mov      r0, #0x19
-  0x02087f20: mov      r2, #0
-  0x02087f24: movgt    sb, #0x63
-  0x02087f28: bl       #0x2096a58 ; CALL
-  0x02087f2c: cmp      r0, #0 ; DATAFLOW
-  0x02087f30: movne    r0, #2
-  0x02087f34: moveq    r0, #1
-  0x02087f38: mul      r1, sb, r0 ; DATAFLOW
-  0x02087f3c: ldr      r2, [pc, #0x100] ; DATAFLOW
-  0x02087f40: ldr      r0, [pc, #0x100] ; DATAFLOW
-  0x02087f44: ldrsh    r2, [r2, r8] ; r2+0|MEM+0|DATAFLOW
-  0x02087f48: add      r1, r1, #2
-  0x02087f4c: ldr      r0, [r0, r8] ; MEM+0|DATAFLOW
-  0x02087f50: sub      r2, r7, r2
-  0x02087f54: mul      r1, r2, r1 ; DATAFLOW
-  0x02087f58: sub      r2, r5, #0x64
-  0x02087f5c: mov      r3, #1
-  0x02087f60: tst      r0, r3, lsl r2 ; DATAFLOW
-  0x02087f64: bne      #0x2087f70
-  0x02087f68: cmp      r1, #0 ; DATAFLOW
-  0x02087f6c: bge      #0x2087ff8
-  0x02087f70: mov      r4, #0
-  0x02087f74: b        #0x2087ff8
-  0x02087f78: ldr      r2, [pc, #0xcc] ; DATAFLOW
-  0x02087f7c: sub      r5, r5, #0xc8
-  0x02087f80: ldr      r3, [r2, r5, lsl #3] ; r2+0|MEM+0|DATAFLOW
-  0x02087f84: sub      r2, r4, #2
-  0x02087f88: cmp      r3, r2 ; DATAFLOW
-  0x02087f8c: bne      #0x2087fec
-  0x02087f90: mov      r1, r2
-  0x02087f94: bl       #0x209503c ; CALL
-  0x02087f98: ldr      r1, [pc, #0x9c] ; DATAFLOW
-  0x02087f9c: mov      r7, r0
-
-REF 0x020930b0 target=0x02179f64 record_offset=0x44 dst=r2
-  0x02093068: mov      r0, r4
-  0x0209306c: ldr      r2, [fp, r4, lsl #2] ; MEM+0|DATAFLOW
-  0x02093070: mov      r1, sb
-  0x02093074: add      r3, r2, #1
-  0x02093078: mov      r2, #0
-  0x0209307c: str      r3, [fp, r4, lsl #2] ; MEM+0|DATAFLOW
-  0x02093080: bl       #0x20469f8 ; CALL
-  0x02093084: ldr      sb, [pc, #0x8b4] ; DATAFLOW
-  0x02093088: ldrsh    r0, [sb, r6] ; MEM+0|DATAFLOW
-  0x0209308c: cmp      r0, #0 ; DATAFLOW
-  0x02093090: blt      #0x20930d0
-  0x02093094: cmp      r0, #0x64 ; DATAFLOW
-  0x02093098: bge      #0x20930d0
-  0x0209309c: mov      r0, sl
-  0x020930a0: mvn      r1, #0
-  0x020930a4: bl       #0x2095250 ; CALL
-  0x020930a8: ldrsh    r3, [sb, r6] ; MEM+0|DATAFLOW
-  0x020930ac: mov      r1, #0x94 ; STRIDE_0x94
-  0x020930b0: ldr      r2, [pc, #0x88c] ; COLUMN_REF|DATAFLOW
-  0x020930b4: smulbb   r1, r3, r1
-  0x020930b8: ldrsb    r2, [r2, r1] ; r2+0|MEM+0|DATAFLOW
-  0x020930bc: ldr      r1, [pc, #0x884] ; DATAFLOW
-  0x020930c0: mul      r0, r2, r0 ; DATAFLOW
-  0x020930c4: add      r0, r0, r0, lsr #31
-  0x020930c8: asr      r0, r0, #1 ; DATAFLOW
-  0x020930cc: strh     r0, [r1, r6] ; MEM+0|DATAFLOW
-  0x020930d0: ldrsh    r1, [sb, r6] ; MEM+0|DATAFLOW
-  0x020930d4: cmp      r1, #0x64 ; DATAFLOW
-  0x020930d8: blt      #0x209310c
-  0x020930dc: cmp      r1, #0xc8 ; DATAFLOW
-  0x020930e0: bge      #0x209310c
-  0x020930e4: mov      r0, sl
-  0x020930e8: sub      r1, r1, #0x64
-  0x020930ec: bl       #0x204bc70 ; CALL
-  0x020930f0: ldr      r1, [pc, #0x850] ; DATAFLOW
-  0x020930f4: mov      r2, #0
-  0x020930f8: ldr      r0, [pc, #0x840] ; DATAFLOW
-  0x020930fc: strh     r2, [r1, r6] ; MEM+0|DATAFLOW
-  0x02093100: ldrsh    r1, [r0, r6] ; MEM+0|DATAFLOW
-  0x02093104: ldr      r0, [pc, #0x840] ; DATAFLOW
-  0x02093108: strh     r1, [r0, r6] ; MEM+0|DATAFLOW
-  0x0209310c: ldrsh    r0, [sb, r6] ; MEM+0|DATAFLOW
-  0x02093110: cmp      r0, #0xc8 ; DATAFLOW
-  0x02093114: blt      #0x209344c
-  0x02093118: cmp      r0, #0x12c ; DATAFLOW
-  0x0209311c: bge      #0x209344c
-  0x02093120: ldrsb    r1, [r5, r6] ; MEM+0|DATAFLOW
-  0x02093124: sub      r5, r0, #0xc8
-  0x02093128: mov      r0, r5
-  0x0209312c: mov      r2, sl
-  0x02093130: bl       #0x20958c0 ; CALL
-  0x02093134: cmp      r0, #0 ; DATAFLOW
-  0x02093138: moveq    r0, #0
-  0x0209313c: streq    r0, [sp, #0x10]
-  0x02093140: beq      #0x209344c
-  0x02093144: mvn      r2, #0
-  0x02093148: ldr      r3, [pc, #0x7f8] ; DATAFLOW
-  0x0209314c: mov      r0, r5
-  0x02093150: mov      r1, sl
-  0x02093154: strh     r2, [sb, r6] ; MEM+0|DATAFLOW
-  0x02093158: mov      sb, #0
-  0x0209315c: mov      r2, #3
-  0x02093160: strh     sb, [r3, r6] ; MEM+0|DATAFLOW
-  0x02093164: bl       #0x2050f30 ; CALL
-  0x02093168: ldr      r0, [pc, #-0x930] ; DATAFLOW
-  0x0209316c: ldr      r1, [pc, #-0x930] ; DATAFLOW
-  0x02093170: ldr      r0, [r0, r4, lsl #2] ; MEM+0|DATAFLOW
-  0x02093174: ldr      sb, [r1] ; MEM+0|DATAFLOW
-  0x02093178: bl       #0x2095ea4 ; CALL
-  0x0209317c: mov      r6, r0
-  0x02093180: ldrb     r0, [r7, r8] ; MEM+0|DATAFLOW
-  0x02093184: bl       #0x2095d00 ; CALL
-  0x02093188: mov      r7, r0
-
-REF 0x020bbbb0 target=0x02179f64 record_offset=0x44 dst=r2
-  0x020bbb68: cmp      r1, r2 ; DATAFLOW
-  0x020bbb6c: beq      #0x20bbd40
-  0x020bbb70: ldr      r4, [pc, #0x418] ; DATAFLOW
-  0x020bbb74: ldrsh    r0, [r4, r7] ; MEM+0|DATAFLOW
-  0x020bbb78: cmp      r0, #0 ; DATAFLOW
-  0x020bbb7c: ldreq    r0, [pc, #0x410]
-  0x020bbb80: ldrsheq  r0, [r0, r7] ; MEM+0
-  0x020bbb84: cmpeq    r0, #0
-  0x020bbb88: beq      #0x20bbd40
-  0x020bbb8c: mov      r2, #0x33
-  0x020bbb90: mov      r3, #0x44
-  0x020bbb94: mov      r0, r6
-  0x020bbb98: sub      r1, r2, #0x34
-  0x020bbb9c: strb     r3, [sp, #0x3b] ; DATAFLOW
-  0x020bbba0: strb     r2, [sp, #0x39] ; DATAFLOW
-  0x020bbba4: bl       #0x2095250 ; CALL
-  0x020bbba8: ldrsh    r3, [r5, r7] ; MEM+0|DATAFLOW
-  0x020bbbac: mov      r1, #0x94 ; STRIDE_0x94
-  0x020bbbb0: ldr      r2, [pc, #0x3e0] ; COLUMN_REF|DATAFLOW
-  0x020bbbb4: smulbb   r1, r3, r1
-  0x020bbbb8: ldrsb    r2, [r2, r1] ; r2+0|MEM+0|DATAFLOW
-  0x020bbbbc: ldr      r1, [pc, #0x3d0] ; DATAFLOW
-  0x020bbbc0: ldrsh    r4, [r4, r7] ; MEM+0|DATAFLOW
-  0x020bbbc4: mul      r2, r0, r2 ; DATAFLOW
-  0x020bbbc8: add      r0, r2, r2, lsr #31
-  0x020bbbcc: ldrsh    r1, [r1, r7] ; MEM+0|DATAFLOW
-  0x020bbbd0: asr      r5, r0, #1 ; DATAFLOW
-  0x020bbbd4: add      r0, r4, r1
-  0x020bbbd8: mov      r1, r5
-  0x020bbbdc: lsl      r0, r0, #5 ; DATAFLOW
-  0x020bbbe0: bl       #0x2159728 ; CALL
-  0x020bbbe4: cmp      r0, #0 ; DATAFLOW
-  0x020bbbe8: movlt    r0, #0
-  0x020bbbec: cmp      r0, #0x20 ; DATAFLOW
-  0x020bbbf0: movgt    r0, #0x20
-  0x020bbbf4: str      r0, [sp, #0x48] ; DATAFLOW
-  0x020bbbf8: mov      r1, r5
-  0x020bbbfc: lsl      r0, r4, #5 ; DATAFLOW
-  0x020bbc00: bl       #0x2159728 ; CALL
-  0x020bbc04: cmp      r0, #0 ; DATAFLOW
-  0x020bbc08: movlt    r0, #0
-  0x020bbc0c: cmp      r0, #0x20 ; DATAFLOW
-  0x020bbc10: movgt    r0, #0x20
-  0x020bbc14: str      r0, [sp, #0x40] ; DATAFLOW
-  0x020bbc18: b        #0x20bbd40
-  0x020bbc1c: cmp      r1, #0xc8 ; DATAFLOW
-  0x020bbc20: bge      #0x20bbcb4
-  0x020bbc24: ldr      r4, [pc, #0x364] ; DATAFLOW
-  0x020bbc28: ldrsh    r0, [r4, r7] ; MEM+0|DATAFLOW
-  0x020bbc2c: cmp      r0, #0 ; DATAFLOW
-  0x020bbc30: ldreq    r0, [pc, #0x35c]
-  0x020bbc34: ldrsheq  r0, [r0, r7] ; MEM+0
-  0x020bbc38: cmpeq    r0, #0
-  0x020bbc3c: beq      #0x20bbd40
-  0x020bbc40: mov      r2, #0x55
-  0x020bbc44: mov      r3, #0x66
-  0x020bbc48: mov      r0, r6
-  0x020bbc4c: sub      r1, r2, #0x56
-  0x020bbc50: strb     r3, [sp, #0x3b] ; DATAFLOW
-  0x020bbc54: strb     r2, [sp, #0x39] ; DATAFLOW
-  0x020bbc58: bl       #0x209503c ; CALL
-  0x020bbc5c: ldr      r1, [pc, #0x330] ; DATAFLOW
-  0x020bbc60: mov      r5, r0
-  0x020bbc64: ldrsh    r0, [r1, r7] ; MEM+0|DATAFLOW
-  0x020bbc68: ldrsh    r4, [r4, r7] ; MEM+0|DATAFLOW
-  0x020bbc6c: mov      r1, r5
-  0x020bbc70: add      r0, r4, r0
-  0x020bbc74: lsl      r0, r0, #5 ; DATAFLOW
-  0x020bbc78: bl       #0x2159728 ; CALL
-  0x020bbc7c: cmp      r0, #0 ; DATAFLOW
-  0x020bbc80: movlt    r0, #0
-  0x020bbc84: cmp      r0, #0x20 ; DATAFLOW
-  0x020bbc88: movgt    r0, #0x20
+FIELD 0x47 direct_pointer_accesses=0
