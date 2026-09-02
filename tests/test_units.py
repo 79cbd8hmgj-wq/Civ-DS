@@ -31,7 +31,8 @@ def _unit_record(
     unknown_0x45: int = -1,
     unknown_0x46: int = 0,
     unknown_0x47: int = 0,
-    formation_count: int = 1,
+    formation_mask: int = 1,
+    unknown_0x49: int = 0,
     unlock_technology_id: int = -1,
     obsolete_technology_id_1: int = -1,
     obsolete_technology_id_2: int = -1,
@@ -41,7 +42,7 @@ def _unit_record(
     raw[0x00:0x20] = _text_slot(name)
     raw[0x20:0x40] = _text_slot(model)
     struct.pack_into(
-        "<bbbbbbbbHhhhI",
+        "<bbbbbbbbBBhhhI",
         raw,
         0x40,
         attack,
@@ -52,7 +53,8 @@ def _unit_record(
         unknown_0x45,
         unknown_0x46,
         unknown_0x47,
-        formation_count,
+        formation_mask,
+        unknown_0x49,
         unlock_technology_id,
         obsolete_technology_id_1,
         obsolete_technology_id_2,
@@ -89,7 +91,8 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
                     unknown_0x44=2,
                     unknown_0x46=1,
                     unknown_0x47=6,
-                    formation_count=7,
+                    formation_mask=7,
+                    unknown_0x49=0,
                     unlock_technology_id=-1,
                     obsolete_technology_id_1=6,
                     obsolete_technology_id_2=17,
@@ -115,7 +118,9 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.name == "Warrior"
     assert (warrior.attack, warrior.defense, warrior.movement) == (1, 1, 1)
     assert warrior.unknown_0x44 == 2
-    assert warrior.formation_count == 7
+    assert warrior.formation_mask == 7
+    assert warrior.formation_size == 3
+    assert warrior.unknown_0x49 == 0
     assert warrior.unlock_technology_id == -1
     assert warrior.obsolete_technology_id_1 == 6
     assert warrior.obsolete_technology_id_2 == 17
