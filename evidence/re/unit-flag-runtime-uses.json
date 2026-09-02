@@ -1,0 +1,3773 @@
+{
+  "format_version": 1,
+  "masks": [
+    {
+      "direct_runtime_use_count": 4,
+      "mask": 1,
+      "mask_hex": "0x00000001",
+      "single_bit_membership": [
+        "Settlers",
+        "FSettler"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33783060,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33783064,
+          "mask_instruction": "tst r1, #1",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r2, r1",
+            "mla_address": 33783056,
+            "stride_load": "mov r2, #0x94",
+            "stride_load_address": 33783052
+          },
+          "window": [
+            {
+              "address": 33783044,
+              "instruction": "ldrsb r3, [sl, #1]"
+            },
+            {
+              "address": 33783048,
+              "instruction": "ldr r1, [pc, #-0x9f8]"
+            },
+            {
+              "address": 33783052,
+              "instruction": "mov r2, #0x94"
+            },
+            {
+              "address": 33783056,
+              "instruction": "mla r1, r3, r2, r1"
+            },
+            {
+              "address": 33783060,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33783064,
+              "instruction": "tst r1, #1"
+            },
+            {
+              "address": 33783068,
+              "instruction": "beq #0x2037d74"
+            },
+            {
+              "address": 33783072,
+              "instruction": "tst r0, #0x100"
+            },
+            {
+              "address": 33783076,
+              "instruction": "bne #0x2037d74"
+            },
+            {
+              "address": 33783080,
+              "instruction": "ldrsh r1, [sl, #0x1e]"
+            },
+            {
+              "address": 33783084,
+              "instruction": "ldrsh r0, [sl, #0x1c]"
+            },
+            {
+              "address": 33783088,
+              "instruction": "sub r1, r1, r6"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33783412,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33783416,
+          "mask_instruction": "tst r0, #1",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r8",
+            "mla_address": 33783408,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33783404
+          },
+          "window": [
+            {
+              "address": 33783396,
+              "instruction": "beq #0x2037eb0"
+            },
+            {
+              "address": 33783400,
+              "instruction": "ldrsb r1, [sl, #1]"
+            },
+            {
+              "address": 33783404,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33783408,
+              "instruction": "mla r0, r1, r0, r8"
+            },
+            {
+              "address": 33783412,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33783416,
+              "instruction": "tst r0, #1"
+            },
+            {
+              "address": 33783420,
+              "instruction": "beq #0x2037eb0"
+            },
+            {
+              "address": 33783424,
+              "instruction": "str r7, [sp]"
+            },
+            {
+              "address": 33783428,
+              "instruction": "ldrsh r2, [sl, #0x1c]"
+            },
+            {
+              "address": 33783432,
+              "instruction": "ldrsh r3, [sl, #0x1e]"
+            },
+            {
+              "address": 33783436,
+              "instruction": "mov r0, r4"
+            },
+            {
+              "address": 33783440,
+              "instruction": "mov r1, #0x108"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33901748,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33901776,
+          "mask_instruction": "tst r0, #1",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33901744,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33901740
+          },
+          "window": [
+            {
+              "address": 33901756,
+              "instruction": "beq #0x2054ce0"
+            },
+            {
+              "address": 33901760,
+              "instruction": "ldr r0, [pc, #0xbc4]"
+            },
+            {
+              "address": 33901764,
+              "instruction": "lsl r2, r8, #1"
+            },
+            {
+              "address": 33901768,
+              "instruction": "add r1, r0, fp, lsl #6"
+            },
+            {
+              "address": 33901772,
+              "instruction": "ldrsh r0, [r2, r1]"
+            },
+            {
+              "address": 33901776,
+              "instruction": "tst r0, #1"
+            },
+            {
+              "address": 33901780,
+              "instruction": "ldrsheq r0, [r1, r2]"
+            },
+            {
+              "address": 33901784,
+              "instruction": "orreq r0, r0, #4"
+            },
+            {
+              "address": 33901788,
+              "instruction": "strheq r0, [r1, r2]"
+            },
+            {
+              "address": 33901792,
+              "instruction": "ldr r0, [r7, #0xc]"
+            },
+            {
+              "address": 33901796,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33901800,
+              "instruction": "beq #0x2054d04"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33904676,
+          "flag_load_instruction": "ldr r1, [r2, #0x50]",
+          "mask_address": 33904688,
+          "mask_instruction": "tst r1, #1",
+          "record_stride_provenance": {
+            "mla": "mla r2, r1, r3, r2",
+            "mla_address": 33904668,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33904664
+          },
+          "window": [
+            {
+              "address": 33904668,
+              "instruction": "mla r2, r1, r3, r2"
+            },
+            {
+              "address": 33904672,
+              "instruction": "ldr r3, [r0, #0x390]"
+            },
+            {
+              "address": 33904676,
+              "instruction": "ldr r1, [r2, #0x50]"
+            },
+            {
+              "address": 33904680,
+              "instruction": "add r3, r3, #1"
+            },
+            {
+              "address": 33904684,
+              "instruction": "str r3, [r0, #0x390]"
+            },
+            {
+              "address": 33904688,
+              "instruction": "tst r1, #1"
+            },
+            {
+              "address": 33904692,
+              "instruction": "beq #0x2055920"
+            },
+            {
+              "address": 33904696,
+              "instruction": "ldr r0, [pc, #0xd0]"
+            },
+            {
+              "address": 33904700,
+              "instruction": "ldr r2, [r5]"
+            },
+            {
+              "address": 33904704,
+              "instruction": "add r1, r0, sb, lsl #2"
+            },
+            {
+              "address": 33904708,
+              "instruction": "add r0, r2, #1"
+            },
+            {
+              "address": 33904712,
+              "instruction": "str r0, [r5]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 3,
+      "mask": 2,
+      "mask_hex": "0x00000002",
+      "single_bit_membership": [
+        "Submarine",
+        "Galley",
+        "Galleon",
+        "Cruiser",
+        "Battleship"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33783508,
+          "flag_load_instruction": "ldr r0, [r2, #0x50]",
+          "mask_address": 33783512,
+          "mask_instruction": "tst r0, #2",
+          "record_stride_provenance": {
+            "mla": "mla r2, r1, r0, r8",
+            "mla_address": 33783504,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33783500
+          },
+          "window": [
+            {
+              "address": 33783492,
+              "instruction": "beq #0x2037f10"
+            },
+            {
+              "address": 33783496,
+              "instruction": "ldrsb r1, [sl, #1]"
+            },
+            {
+              "address": 33783500,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33783504,
+              "instruction": "mla r2, r1, r0, r8"
+            },
+            {
+              "address": 33783508,
+              "instruction": "ldr r0, [r2, #0x50]"
+            },
+            {
+              "address": 33783512,
+              "instruction": "tst r0, #2"
+            },
+            {
+              "address": 33783516,
+              "instruction": "beq #0x2037f10"
+            },
+            {
+              "address": 33783520,
+              "instruction": "ldrsh r0, [r2, #0x4e]"
+            },
+            {
+              "address": 33783524,
+              "instruction": "mov r1, r4"
+            },
+            {
+              "address": 33783528,
+              "instruction": "bl #0x20957a0"
+            },
+            {
+              "address": 33783532,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33783536,
+              "instruction": "bne #0x2037f10"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33964256,
+          "flag_load_instruction": "ldr r0, [r2, #0x50]",
+          "mask_address": 33964260,
+          "mask_instruction": "tst r0, #2",
+          "record_stride_provenance": {
+            "mla": "mla r2, r1, r3, r2",
+            "mla_address": 33964232,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33964228
+          },
+          "window": [
+            {
+              "address": 33964240,
+              "instruction": "ldr r0, [r0]"
+            },
+            {
+              "address": 33964244,
+              "instruction": "add r1, sl, sl, lsl #1"
+            },
+            {
+              "address": 33964248,
+              "instruction": "sub r3, r0, r1"
+            },
+            {
+              "address": 33964252,
+              "instruction": "ldrsb r1, [r2, #0x40]"
+            },
+            {
+              "address": 33964256,
+              "instruction": "ldr r0, [r2, #0x50]"
+            },
+            {
+              "address": 33964260,
+              "instruction": "tst r0, #2"
+            },
+            {
+              "address": 33964264,
+              "instruction": "sub r1, r3, r1"
+            },
+            {
+              "address": 33964268,
+              "instruction": "ldr r0, [sp, #0x10]"
+            },
+            {
+              "address": 33964272,
+              "instruction": "addne r1, r1, #3"
+            },
+            {
+              "address": 33964276,
+              "instruction": "cmp r1, r0"
+            },
+            {
+              "address": 33964280,
+              "instruction": "strlt r1, [sp, #0x10]"
+            },
+            {
+              "address": 33964284,
+              "instruction": "strlt r5, [sp, #0xc]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34123052,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 34123056,
+          "mask_instruction": "tst r0, #2",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 34123048,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 34123044
+          },
+          "window": [
+            {
+              "address": 34123036,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 34123040,
+              "instruction": "ldr r0, [pc, #0xa80]"
+            },
+            {
+              "address": 34123044,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 34123048,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 34123052,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 34123056,
+              "instruction": "tst r0, #2"
+            },
+            {
+              "address": 34123060,
+              "instruction": "cmpne r2, #0x13"
+            },
+            {
+              "address": 34123064,
+              "instruction": "cmpne r2, #0x14"
+            },
+            {
+              "address": 34123068,
+              "instruction": "beq #0x208ae30"
+            },
+            {
+              "address": 34123072,
+              "instruction": "ldr r0, [sp, #0x2c]"
+            },
+            {
+              "address": 34123076,
+              "instruction": "cmp r7, r0"
+            },
+            {
+              "address": 34123080,
+              "instruction": "bne #0x208ada8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 9,
+      "mask": 4,
+      "mask_hex": "0x00000004",
+      "single_bit_membership": [
+        "Bomber",
+        "Fighter",
+        "ICBM"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33780896,
+          "flag_load_instruction": "ldr r0, [r2, #0x50]",
+          "mask_address": 33780900,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r2, r3, r1, r0",
+            "mla_address": 33780892,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33780888
+          },
+          "window": [
+            {
+              "address": 33780880,
+              "instruction": "ldrsb r3, [r7, #1]"
+            },
+            {
+              "address": 33780884,
+              "instruction": "ldr r0, [pc, #-0x184]"
+            },
+            {
+              "address": 33780888,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33780892,
+              "instruction": "mla r2, r3, r1, r0"
+            },
+            {
+              "address": 33780896,
+              "instruction": "ldr r0, [r2, #0x50]"
+            },
+            {
+              "address": 33780900,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33780904,
+              "instruction": "beq #0x20374e8"
+            },
+            {
+              "address": 33780908,
+              "instruction": "ldrsb r1, [r2, #0x40]"
+            },
+            {
+              "address": 33780912,
+              "instruction": "ldrsb r0, [r2, #0x41]"
+            },
+            {
+              "address": 33780916,
+              "instruction": "cmp r1, r0"
+            },
+            {
+              "address": 33780920,
+              "instruction": "blt #0x20374e8"
+            },
+            {
+              "address": 33780924,
+              "instruction": "ldr r0, [pc, #0xe94]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33788468,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33788476,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r5",
+            "mla_address": 33788464,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33788456
+          },
+          "window": [
+            {
+              "address": 33788456,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33788460,
+              "instruction": "ldr r2, [pc, #-0xedc]"
+            },
+            {
+              "address": 33788464,
+              "instruction": "mla r0, r1, r0, r5"
+            },
+            {
+              "address": 33788468,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33788472,
+              "instruction": "ldrsh r1, [sb, #0x1c]"
+            },
+            {
+              "address": 33788476,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33788480,
+              "instruction": "asrne r0, r6, #1"
+            },
+            {
+              "address": 33788484,
+              "instruction": "addne r0, r6, r0, lsr #30"
+            },
+            {
+              "address": 33788488,
+              "instruction": "asrne r6, r0, #2"
+            },
+            {
+              "address": 33788492,
+              "instruction": "ldrsh r0, [sb, #0x1e]"
+            },
+            {
+              "address": 33788496,
+              "instruction": "add r2, r2, r1, lsl #6"
+            },
+            {
+              "address": 33788500,
+              "instruction": "lsl r3, r0, #1"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33796400,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33796404,
+          "mask_instruction": "tst r1, #4",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r3",
+            "mla_address": 33796380,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33796376
+          },
+          "window": [
+            {
+              "address": 33796384,
+              "instruction": "ldrsb r3, [r1, #0x40]"
+            },
+            {
+              "address": 33796388,
+              "instruction": "ldrsb r2, [r1, #0x41]"
+            },
+            {
+              "address": 33796392,
+              "instruction": "cmp r3, r2"
+            },
+            {
+              "address": 33796396,
+              "instruction": "blt #0x203b14c"
+            },
+            {
+              "address": 33796400,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33796404,
+              "instruction": "tst r1, #4"
+            },
+            {
+              "address": 33796408,
+              "instruction": "beq #0x203b148"
+            },
+            {
+              "address": 33796412,
+              "instruction": "ldr r1, [sp, #0x50]"
+            },
+            {
+              "address": 33796416,
+              "instruction": "cmp r1, #0"
+            },
+            {
+              "address": 33796420,
+              "instruction": "beq #0x203b14c"
+            },
+            {
+              "address": 33796424,
+              "instruction": "add r5, r5, #0x19"
+            },
+            {
+              "address": 33796428,
+              "instruction": "ldr r3, [pc, #-0x3a0]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33796748,
+          "flag_load_instruction": "ldr r1, [r2, #0x50]",
+          "mask_address": 33796752,
+          "mask_instruction": "tst r1, #4",
+          "record_stride_provenance": {
+            "mla": "mla r2, r1, r3, r2",
+            "mla_address": 33796744,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33796736
+          },
+          "window": [
+            {
+              "address": 33796732,
+              "instruction": "ldrsb r1, [r6, #1]"
+            },
+            {
+              "address": 33796736,
+              "instruction": "mov r3, #0x94"
+            },
+            {
+              "address": 33796740,
+              "instruction": "ldr r2, [pc, #-0x480]"
+            },
+            {
+              "address": 33796744,
+              "instruction": "mla r2, r1, r3, r2"
+            },
+            {
+              "address": 33796748,
+              "instruction": "ldr r1, [r2, #0x50]"
+            },
+            {
+              "address": 33796752,
+              "instruction": "tst r1, #4"
+            },
+            {
+              "address": 33796756,
+              "instruction": "beq #0x203b2d4"
+            },
+            {
+              "address": 33796760,
+              "instruction": "sub r2, r3, #0x95"
+            },
+            {
+              "address": 33796764,
+              "instruction": "ldrsh r3, [r6, #0x22]"
+            },
+            {
+              "address": 33796768,
+              "instruction": "cmp r3, r2"
+            },
+            {
+              "address": 33796772,
+              "instruction": "ldrne r3, [sp, #0x84]"
+            },
+            {
+              "address": 33796776,
+              "instruction": "ldrne r2, [sp, #0x64]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33797472,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33797476,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r0, r1",
+            "mla_address": 33797468,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33797460
+          },
+          "window": [
+            {
+              "address": 33797456,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33797460,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33797464,
+              "instruction": "ldr r1, [pc, #-0x754]"
+            },
+            {
+              "address": 33797468,
+              "instruction": "mla r0, r2, r0, r1"
+            },
+            {
+              "address": 33797472,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33797476,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33797480,
+              "instruction": "beq #0x203b578"
+            },
+            {
+              "address": 33797484,
+              "instruction": "ldr r0, [sp, #0x50]"
+            },
+            {
+              "address": 33797488,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33797492,
+              "instruction": "beq #0x203b664"
+            },
+            {
+              "address": 33797496,
+              "instruction": "ldr r2, [pc, #0xcf8]"
+            },
+            {
+              "address": 33797500,
+              "instruction": "ldr r0, [pc, #0xcf8]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33798508,
+          "flag_load_instruction": "ldr r0, [r3, #0x50]",
+          "mask_address": 33798524,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r3, r0, r3, fp",
+            "mla_address": 33798504,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33798492
+          },
+          "window": [
+            {
+              "address": 33798504,
+              "instruction": "mla r3, r0, r3, fp"
+            },
+            {
+              "address": 33798508,
+              "instruction": "ldr r0, [r3, #0x50]"
+            },
+            {
+              "address": 33798512,
+              "instruction": "str r3, [sp, #0x30]"
+            },
+            {
+              "address": 33798516,
+              "instruction": "tst r0, #0x80000"
+            },
+            {
+              "address": 33798520,
+              "instruction": "bne #0x203bae8"
+            },
+            {
+              "address": 33798524,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33798528,
+              "instruction": "ldreq r0, [sp, #0xa8]"
+            },
+            {
+              "address": 33798532,
+              "instruction": "ldrsbeq r0, [r0, sl]"
+            },
+            {
+              "address": 33798536,
+              "instruction": "cmpeq r0, #0"
+            },
+            {
+              "address": 33798540,
+              "instruction": "beq #0x203bae8"
+            },
+            {
+              "address": 33798544,
+              "instruction": "mov r3, #0xbc"
+            },
+            {
+              "address": 33798548,
+              "instruction": "mul r3, r1, r3"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33902656,
+          "flag_load_instruction": "ldr sb, [sb, #0x50]",
+          "mask_address": 33902676,
+          "mask_instruction": "tst sb, #4",
+          "record_stride_provenance": {
+            "mla": "mla sb, r0, ip, sb",
+            "mla_address": 33902652,
+            "stride_load": "mov ip, #0x94",
+            "stride_load_address": 33902648
+          },
+          "window": [
+            {
+              "address": 33902656,
+              "instruction": "ldr sb, [sb, #0x50]"
+            },
+            {
+              "address": 33902660,
+              "instruction": "mov r1, #1"
+            },
+            {
+              "address": 33902664,
+              "instruction": "mov r2, r1"
+            },
+            {
+              "address": 33902668,
+              "instruction": "mov r3, r1"
+            },
+            {
+              "address": 33902672,
+              "instruction": "mov sl, r1"
+            },
+            {
+              "address": 33902676,
+              "instruction": "tst sb, #4"
+            },
+            {
+              "address": 33902680,
+              "instruction": "bne #0x2055068"
+            },
+            {
+              "address": 33902684,
+              "instruction": "ldr r0, [r7, #0x10]"
+            },
+            {
+              "address": 33902688,
+              "instruction": "tst r0, #0x100"
+            },
+            {
+              "address": 33902692,
+              "instruction": "moveq sl, #0"
+            },
+            {
+              "address": 33902696,
+              "instruction": "cmp sl, #0"
+            },
+            {
+              "address": 33902700,
+              "instruction": "bne #0x2055080"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33904352,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33904368,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33904348,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33904344
+          },
+          "window": [
+            {
+              "address": 33904348,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33904352,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33904356,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33904360,
+              "instruction": "beq #0x2055744"
+            },
+            {
+              "address": 33904364,
+              "instruction": "ldr r0, [r6, #0xc]"
+            },
+            {
+              "address": 33904368,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33904372,
+              "instruction": "beq #0x2055744"
+            },
+            {
+              "address": 33904376,
+              "instruction": "ldrsh r0, [r6, #0x1e]"
+            },
+            {
+              "address": 33904380,
+              "instruction": "ldrsh r1, [r6, #0x1c]"
+            },
+            {
+              "address": 33904384,
+              "instruction": "ldr r3, [pc, #0x184]"
+            },
+            {
+              "address": 33904388,
+              "instruction": "lsl sb, r0, #1"
+            },
+            {
+              "address": 33904392,
+              "instruction": "add r3, r3, r1, lsl #6"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34123208,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 34123212,
+          "mask_instruction": "tst r0, #4",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 34123204,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 34123192
+          },
+          "window": [
+            {
+              "address": 34123192,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 34123196,
+              "instruction": "ldrsb r2, [r0, #1]"
+            },
+            {
+              "address": 34123200,
+              "instruction": "ldr r0, [pc, #0x9e0]"
+            },
+            {
+              "address": 34123204,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 34123208,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 34123212,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 34123216,
+              "instruction": "bne #0x208ae30"
+            },
+            {
+              "address": 34123220,
+              "instruction": "ldrsb r0, [r6, #4]"
+            },
+            {
+              "address": 34123224,
+              "instruction": "mov r1, r7"
+            },
+            {
+              "address": 34123228,
+              "instruction": "mov r2, #0"
+            },
+            {
+              "address": 34123232,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 34123236,
+              "instruction": "movne r8, #3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 8,
+      "mask": 6,
+      "mask_hex": "0x00000006",
+      "single_bit_membership": null,
+      "uses": [
+        {
+          "flag_load_address": 33781004,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33781008,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r2, r0",
+            "mla_address": 33781000,
+            "stride_load": "mov r2, #0x94",
+            "stride_load_address": 33780996
+          },
+          "window": [
+            {
+              "address": 33780988,
+              "instruction": "ldrsb r1, [r7, #1]"
+            },
+            {
+              "address": 33780992,
+              "instruction": "ldr r0, [pc, #-0x1f0]"
+            },
+            {
+              "address": 33780996,
+              "instruction": "mov r2, #0x94"
+            },
+            {
+              "address": 33781000,
+              "instruction": "mla r0, r1, r2, r0"
+            },
+            {
+              "address": 33781004,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33781008,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33781012,
+              "instruction": "bne #0x2037648"
+            },
+            {
+              "address": 33781016,
+              "instruction": "ldr r0, [pc, #-0x224]"
+            },
+            {
+              "address": 33781020,
+              "instruction": "add r3, r0, fp, lsl #5"
+            },
+            {
+              "address": 33781024,
+              "instruction": "ldrb r2, [r3, r5]"
+            },
+            {
+              "address": 33781028,
+              "instruction": "mov r0, sb"
+            },
+            {
+              "address": 33781032,
+              "instruction": "orr r2, r2, #2"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33788604,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33788608,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r5",
+            "mla_address": 33788600,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33788596
+          },
+          "window": [
+            {
+              "address": 33788588,
+              "instruction": "asrne r6, r0, #1"
+            },
+            {
+              "address": 33788592,
+              "instruction": "ldrsb r1, [sb, #1]"
+            },
+            {
+              "address": 33788596,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33788600,
+              "instruction": "mla r0, r1, r0, r5"
+            },
+            {
+              "address": 33788604,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33788608,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33788612,
+              "instruction": "bne #0x2039380"
+            },
+            {
+              "address": 33788616,
+              "instruction": "ldrsh sl, [sb, #0x1c]"
+            },
+            {
+              "address": 33788620,
+              "instruction": "ldr r3, [pc, #0x1d0]"
+            },
+            {
+              "address": 33788624,
+              "instruction": "ldrsb r1, [r8, #3]"
+            },
+            {
+              "address": 33788628,
+              "instruction": "ldr r0, [pc, #0x1c8]"
+            },
+            {
+              "address": 33788632,
+              "instruction": "add r3, r3, sl, lsl #5"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33789268,
+          "flag_load_instruction": "ldr r2, [r0, #0x50]",
+          "mask_address": 33789272,
+          "mask_instruction": "tst r2, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r0, r1",
+            "mla_address": 33789264,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33789260
+          },
+          "window": [
+            {
+              "address": 33789252,
+              "instruction": "ldrsb r2, [r5, #1]"
+            },
+            {
+              "address": 33789256,
+              "instruction": "ldr r1, [pc, #-0xb8]"
+            },
+            {
+              "address": 33789260,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33789264,
+              "instruction": "mla r0, r2, r0, r1"
+            },
+            {
+              "address": 33789268,
+              "instruction": "ldr r2, [r0, #0x50]"
+            },
+            {
+              "address": 33789272,
+              "instruction": "tst r2, #6"
+            },
+            {
+              "address": 33789276,
+              "instruction": "bne #0x2039b80"
+            },
+            {
+              "address": 33789280,
+              "instruction": "ldrsh r1, [r5, #0x1e]"
+            },
+            {
+              "address": 33789284,
+              "instruction": "ldrsh r0, [r5, #0x1c]"
+            },
+            {
+              "address": 33789288,
+              "instruction": "ldr r3, [pc, #-0xc8]"
+            },
+            {
+              "address": 33789292,
+              "instruction": "lsl r7, r1, #1"
+            },
+            {
+              "address": 33789296,
+              "instruction": "add r3, r3, r0, lsl #6"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33795192,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33795196,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r2",
+            "mla_address": 33795112,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33795108
+          },
+          "window": [
+            {
+              "address": 33795176,
+              "instruction": "add r1, r1, r8, lsl #5"
+            },
+            {
+              "address": 33795180,
+              "instruction": "ldrb r1, [r7, r1]"
+            },
+            {
+              "address": 33795184,
+              "instruction": "cmp r1, #0"
+            },
+            {
+              "address": 33795188,
+              "instruction": "bne #0x203ae30"
+            },
+            {
+              "address": 33795192,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33795196,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33795200,
+              "instruction": "bne #0x203ae30"
+            },
+            {
+              "address": 33795204,
+              "instruction": "ldr r2, [pc, #0xf8]"
+            },
+            {
+              "address": 33795208,
+              "instruction": "ldr r1, [pc, #0x12c]"
+            },
+            {
+              "address": 33795212,
+              "instruction": "mov r0, #0xbc"
+            },
+            {
+              "address": 33795216,
+              "instruction": "add r1, r1, r8, lsl #5"
+            },
+            {
+              "address": 33795220,
+              "instruction": "ldrsb r1, [r7, r1]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33798872,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33798876,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r0, r1",
+            "mla_address": 33798868,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33798860
+          },
+          "window": [
+            {
+              "address": 33798856,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33798860,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33798864,
+              "instruction": "ldr r1, [pc, #-0xccc]"
+            },
+            {
+              "address": 33798868,
+              "instruction": "mla r0, r2, r0, r1"
+            },
+            {
+              "address": 33798872,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33798876,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33798880,
+              "instruction": "bne #0x203bbac"
+            },
+            {
+              "address": 33798884,
+              "instruction": "b #0x203bb84"
+            },
+            {
+              "address": 33798888,
+              "instruction": "mvn r2, #0"
+            },
+            {
+              "address": 33798892,
+              "instruction": "cmp r1, r2"
+            },
+            {
+              "address": 33798896,
+              "instruction": "beq #0x203bb84"
+            },
+            {
+              "address": 33798900,
+              "instruction": "mov r0, #0xbc"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33857388,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33857392,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r2, r0",
+            "mla_address": 33857384,
+            "stride_load": "mov r2, #0x94",
+            "stride_load_address": 33857364
+          },
+          "window": [
+            {
+              "address": 33857372,
+              "instruction": "strb r0, [r1, #5]"
+            },
+            {
+              "address": 33857376,
+              "instruction": "ldrsb r1, [r3, #1]"
+            },
+            {
+              "address": 33857380,
+              "instruction": "ldr r0, [sp, #0x4c]"
+            },
+            {
+              "address": 33857384,
+              "instruction": "mla r0, r1, r2, r0"
+            },
+            {
+              "address": 33857388,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33857392,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33857396,
+              "instruction": "bne #0x2049f88"
+            },
+            {
+              "address": 33857400,
+              "instruction": "ldr r0, [sp, #4]"
+            },
+            {
+              "address": 33857404,
+              "instruction": "bl #0x2094464"
+            },
+            {
+              "address": 33857408,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33857412,
+              "instruction": "bne #0x2049fa4"
+            },
+            {
+              "address": 33857416,
+              "instruction": "ldrsb r2, [sb]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33894232,
+          "flag_load_instruction": "ldr r0, [r1, #0x50]",
+          "mask_address": 33894236,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r0",
+            "mla_address": 33894228,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33894224
+          },
+          "window": [
+            {
+              "address": 33894216,
+              "instruction": "ldrsb r2, [r7, #1]"
+            },
+            {
+              "address": 33894220,
+              "instruction": "ldr r0, [pc, #0xab4]"
+            },
+            {
+              "address": 33894224,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33894228,
+              "instruction": "mla r1, r2, r1, r0"
+            },
+            {
+              "address": 33894232,
+              "instruction": "ldr r0, [r1, #0x50]"
+            },
+            {
+              "address": 33894236,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33894240,
+              "instruction": "bne #0x2052f74"
+            },
+            {
+              "address": 33894244,
+              "instruction": "ldrsb r0, [r1, #0x40]"
+            },
+            {
+              "address": 33894248,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33894252,
+              "instruction": "movne r0, #1"
+            },
+            {
+              "address": 33894256,
+              "instruction": "strne r0, [sp, #0x28]"
+            },
+            {
+              "address": 33894260,
+              "instruction": "ldr r0, [sp, #0x28]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33909416,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33909420,
+          "mask_instruction": "tst r0, #6",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r6",
+            "mla_address": 33909412,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33909408
+          },
+          "window": [
+            {
+              "address": 33909400,
+              "instruction": "bne #0x2056b00"
+            },
+            {
+              "address": 33909404,
+              "instruction": "ldrsb r1, [r8, #1]"
+            },
+            {
+              "address": 33909408,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33909412,
+              "instruction": "mla r0, r1, r0, r6"
+            },
+            {
+              "address": 33909416,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33909420,
+              "instruction": "tst r0, #6"
+            },
+            {
+              "address": 33909424,
+              "instruction": "bne #0x2056b00"
+            },
+            {
+              "address": 33909428,
+              "instruction": "ldrsh r0, [r8, #0x1c]"
+            },
+            {
+              "address": 33909432,
+              "instruction": "ldr r2, [pc, #0x1fc]"
+            },
+            {
+              "address": 33909436,
+              "instruction": "ldrsh r1, [r8, #0x1e]"
+            },
+            {
+              "address": 33909440,
+              "instruction": "add r2, r2, r0, lsl #5"
+            },
+            {
+              "address": 33909444,
+              "instruction": "ldrsb r2, [r1, r2]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 1,
+      "mask": 8,
+      "mask_hex": "0x00000008",
+      "single_bit_membership": [
+        "<unnamed:3>",
+        "Archer",
+        "Riflemen",
+        "Modern Infantry",
+        "Tank",
+        "Catapult",
+        "Cannon",
+        "Artillery",
+        "Submarine",
+        "Galleon",
+        "Cruiser",
+        "Battleship",
+        "Space Station",
+        "Bomber",
+        "Fighter"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33788016,
+          "flag_load_instruction": "ldr r2, [r1, #0x50]",
+          "mask_address": 33788020,
+          "mask_instruction": "tst r2, #8",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r5",
+            "mla_address": 33787992,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33787984
+          },
+          "window": [
+            {
+              "address": 33788000,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33788004,
+              "instruction": "tst r1, #0x2000"
+            },
+            {
+              "address": 33788008,
+              "instruction": "beq #0x20393b4"
+            },
+            {
+              "address": 33788012,
+              "instruction": "b #0x20390c4"
+            },
+            {
+              "address": 33788016,
+              "instruction": "ldr r2, [r1, #0x50]"
+            },
+            {
+              "address": 33788020,
+              "instruction": "tst r2, #8"
+            },
+            {
+              "address": 33788024,
+              "instruction": "beq #0x203909c"
+            },
+            {
+              "address": 33788028,
+              "instruction": "ldrsb r7, [r8, #4]"
+            },
+            {
+              "address": 33788032,
+              "instruction": "ldrsb sl, [r8, #3]"
+            },
+            {
+              "address": 33788036,
+              "instruction": "ldr r2, [pc, #-0xd34]"
+            },
+            {
+              "address": 33788040,
+              "instruction": "lsl r7, r7, #1"
+            },
+            {
+              "address": 33788044,
+              "instruction": "add r2, r2, sl, lsl #6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 3,
+      "mask": 16,
+      "mask_hex": "0x00000010",
+      "single_bit_membership": [
+        "Galley",
+        "Galleon",
+        "Cruiser",
+        "Battleship"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33843908,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33843912,
+          "mask_instruction": "tst r0, #0x10",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, fp, r5",
+            "mla_address": 33843904,
+            "stride_load": "mov fp, #0x94",
+            "stride_load_address": 33843868
+          },
+          "window": [
+            {
+              "address": 33843892,
+              "instruction": "cmpne r0, #0x80000000"
+            },
+            {
+              "address": 33843896,
+              "instruction": "beq #0x2046ae8"
+            },
+            {
+              "address": 33843900,
+              "instruction": "ldrsb r1, [r7, #1]"
+            },
+            {
+              "address": 33843904,
+              "instruction": "mla r0, r1, fp, r5"
+            },
+            {
+              "address": 33843908,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33843912,
+              "instruction": "tst r0, #0x10"
+            },
+            {
+              "address": 33843916,
+              "instruction": "ldrsheq r0, [r7, #0x26]"
+            },
+            {
+              "address": 33843920,
+              "instruction": "cmpeq sb, r0"
+            },
+            {
+              "address": 33843924,
+              "instruction": "bne #0x2046ae8"
+            },
+            {
+              "address": 33843928,
+              "instruction": "mov r0, sl"
+            },
+            {
+              "address": 33843932,
+              "instruction": "mov r1, r6"
+            },
+            {
+              "address": 33843936,
+              "instruction": "mov r2, #0"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33900360,
+          "flag_load_instruction": "ldr r0, [r1, #0x50]",
+          "mask_address": 33900364,
+          "mask_instruction": "tst r0, #0x10",
+          "record_stride_provenance": {
+            "mla": "mla r1, r0, r1, r2",
+            "mla_address": 33900356,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33900352
+          },
+          "window": [
+            {
+              "address": 33900344,
+              "instruction": "strgt r2, [sp, #0x10]"
+            },
+            {
+              "address": 33900348,
+              "instruction": "ldr r2, [pc, #0x16c]"
+            },
+            {
+              "address": 33900352,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33900356,
+              "instruction": "mla r1, r0, r1, r2"
+            },
+            {
+              "address": 33900360,
+              "instruction": "ldr r0, [r1, #0x50]"
+            },
+            {
+              "address": 33900364,
+              "instruction": "tst r0, #0x10"
+            },
+            {
+              "address": 33900368,
+              "instruction": "beq #0x205479c"
+            },
+            {
+              "address": 33900372,
+              "instruction": "lsl r2, sl, #0x10"
+            },
+            {
+              "address": 33900376,
+              "instruction": "asr r3, r2, #0x10"
+            },
+            {
+              "address": 33900380,
+              "instruction": "ldr r1, [sp, #0xc]"
+            },
+            {
+              "address": 33900384,
+              "instruction": "mov r0, #0"
+            },
+            {
+              "address": 33900388,
+              "instruction": "mvn r2, #0"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33901748,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33901752,
+          "mask_instruction": "tst r0, #0x10",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33901744,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33901740
+          },
+          "window": [
+            {
+              "address": 33901732,
+              "instruction": "ldrsb r2, [r7, #1]"
+            },
+            {
+              "address": 33901736,
+              "instruction": "ldr r0, [pc, #0xc04]"
+            },
+            {
+              "address": 33901740,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33901744,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33901748,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33901752,
+              "instruction": "tst r0, #0x10"
+            },
+            {
+              "address": 33901756,
+              "instruction": "beq #0x2054ce0"
+            },
+            {
+              "address": 33901760,
+              "instruction": "ldr r0, [pc, #0xbc4]"
+            },
+            {
+              "address": 33901764,
+              "instruction": "lsl r2, r8, #1"
+            },
+            {
+              "address": 33901768,
+              "instruction": "add r1, r0, fp, lsl #6"
+            },
+            {
+              "address": 33901772,
+              "instruction": "ldrsh r0, [r2, r1]"
+            },
+            {
+              "address": 33901776,
+              "instruction": "tst r0, #1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 13,
+      "mask": 128,
+      "mask_hex": "0x00000080",
+      "single_bit_membership": [
+        "Great Scientist",
+        "Great Humanitarian",
+        "Great Explorer",
+        "Great Builder",
+        "Great Artist",
+        "Great Leader",
+        "Great Tycoon"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33825308,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33825320,
+          "mask_instruction": "tst r1, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r1, r5",
+            "mla_address": 33825304,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33825300
+          },
+          "window": [
+            {
+              "address": 33825300,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33825304,
+              "instruction": "mla r1, r3, r1, r5"
+            },
+            {
+              "address": 33825308,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33825312,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33825316,
+              "instruction": "bne #0x2042240"
+            },
+            {
+              "address": 33825320,
+              "instruction": "tst r1, #0x80"
+            },
+            {
+              "address": 33825324,
+              "instruction": "ldrsheq r1, [r2, #0x26]"
+            },
+            {
+              "address": 33825328,
+              "instruction": "cmpeq r1, r4"
+            },
+            {
+              "address": 33825332,
+              "instruction": "bne #0x2042240"
+            },
+            {
+              "address": 33825336,
+              "instruction": "mov r1, r8"
+            },
+            {
+              "address": 33825340,
+              "instruction": "bl #0x2097ad8"
+            },
+            {
+              "address": 33825344,
+              "instruction": "add r8, r8, #1"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33825464,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33825476,
+          "mask_instruction": "tst r1, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r1, r5",
+            "mla_address": 33825460,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33825456
+          },
+          "window": [
+            {
+              "address": 33825456,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33825460,
+              "instruction": "mla r1, r3, r1, r5"
+            },
+            {
+              "address": 33825464,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33825468,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33825472,
+              "instruction": "bne #0x20422dc"
+            },
+            {
+              "address": 33825476,
+              "instruction": "tst r1, #0x80"
+            },
+            {
+              "address": 33825480,
+              "instruction": "ldrsheq r1, [r2, #0x26]"
+            },
+            {
+              "address": 33825484,
+              "instruction": "cmpeq r1, r4"
+            },
+            {
+              "address": 33825488,
+              "instruction": "bne #0x20422dc"
+            },
+            {
+              "address": 33825492,
+              "instruction": "mov r1, r8"
+            },
+            {
+              "address": 33825496,
+              "instruction": "bl #0x2097ad8"
+            },
+            {
+              "address": 33825500,
+              "instruction": "add r8, r8, #1"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33840024,
+          "flag_load_instruction": "ldr sl, [sl, #0x50]",
+          "mask_address": 33840028,
+          "mask_instruction": "tst sl, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla sl, lr, sl, fp",
+            "mla_address": 33840020,
+            "stride_load": "mov sl, #0x94",
+            "stride_load_address": 33840016
+          },
+          "window": [
+            {
+              "address": 33840008,
+              "instruction": "beq #0x2045c20"
+            },
+            {
+              "address": 33840012,
+              "instruction": "ldrsb lr, [sb, #1]"
+            },
+            {
+              "address": 33840016,
+              "instruction": "mov sl, #0x94"
+            },
+            {
+              "address": 33840020,
+              "instruction": "mla sl, lr, sl, fp"
+            },
+            {
+              "address": 33840024,
+              "instruction": "ldr sl, [sl, #0x50]"
+            },
+            {
+              "address": 33840028,
+              "instruction": "tst sl, #0x80"
+            },
+            {
+              "address": 33840032,
+              "instruction": "beq #0x2045bac"
+            },
+            {
+              "address": 33840036,
+              "instruction": "tst r4, #4"
+            },
+            {
+              "address": 33840040,
+              "instruction": "bne #0x2045c20"
+            },
+            {
+              "address": 33840044,
+              "instruction": "cmp r3, ip"
+            },
+            {
+              "address": 33840048,
+              "instruction": "beq #0x2045bd0"
+            },
+            {
+              "address": 33840052,
+              "instruction": "ldrsh lr, [sb, #0x1c]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33878500,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33878504,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, ip, r0",
+            "mla_address": 33878496,
+            "stride_load": "mov ip, #0x94",
+            "stride_load_address": 33878492
+          },
+          "window": [
+            {
+              "address": 33878484,
+              "instruction": "ldrsb r1, [r6, #1]"
+            },
+            {
+              "address": 33878488,
+              "instruction": "ldr r0, [pc, #-0x49c]"
+            },
+            {
+              "address": 33878492,
+              "instruction": "mov ip, #0x94"
+            },
+            {
+              "address": 33878496,
+              "instruction": "mla r0, r1, ip, r0"
+            },
+            {
+              "address": 33878500,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33878504,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33878508,
+              "instruction": "ldrne r0, [pc, #-0x5d0]"
+            },
+            {
+              "address": 33878512,
+              "instruction": "ldrne r0, [r0]"
+            },
+            {
+              "address": 33878516,
+              "instruction": "cmpne r4, r0"
+            },
+            {
+              "address": 33878520,
+              "instruction": "beq #0x204f250"
+            },
+            {
+              "address": 33878524,
+              "instruction": "mov r0, r4"
+            },
+            {
+              "address": 33878528,
+              "instruction": "bl #0x20466c8"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33878588,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33878592,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r3, r2, r0",
+            "mla_address": 33878584,
+            "stride_load": "mov r2, #0x94",
+            "stride_load_address": 33878580
+          },
+          "window": [
+            {
+              "address": 33878572,
+              "instruction": "ldrsb r3, [r6, #1]"
+            },
+            {
+              "address": 33878576,
+              "instruction": "ldr r0, [pc, #-0x4f4]"
+            },
+            {
+              "address": 33878580,
+              "instruction": "mov r2, #0x94"
+            },
+            {
+              "address": 33878584,
+              "instruction": "mla r0, r3, r2, r0"
+            },
+            {
+              "address": 33878588,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33878592,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33878596,
+              "instruction": "ldrne r0, [r1, #0xc]"
+            },
+            {
+              "address": 33878600,
+              "instruction": "orrne r0, r0, #6"
+            },
+            {
+              "address": 33878604,
+              "instruction": "strne r0, [r1, #0xc]"
+            },
+            {
+              "address": 33878608,
+              "instruction": "mov r0, r7"
+            },
+            {
+              "address": 33878612,
+              "instruction": "mov r1, fp"
+            },
+            {
+              "address": 33878616,
+              "instruction": "mov r2, #0"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33879468,
+          "flag_load_instruction": "ldr r0, [r1, #0x50]",
+          "mask_address": 33879472,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r0",
+            "mla_address": 33879452,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33879448
+          },
+          "window": [
+            {
+              "address": 33879452,
+              "instruction": "mla r1, r2, r1, r0"
+            },
+            {
+              "address": 33879456,
+              "instruction": "ldrsb r0, [r1, #0x41]"
+            },
+            {
+              "address": 33879460,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33879464,
+              "instruction": "bne #0x204f5d8"
+            },
+            {
+              "address": 33879468,
+              "instruction": "ldr r0, [r1, #0x50]"
+            },
+            {
+              "address": 33879472,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33879476,
+              "instruction": "beq #0x204f5d8"
+            },
+            {
+              "address": 33879480,
+              "instruction": "ldr r0, [pc, #-0x930]"
+            },
+            {
+              "address": 33879484,
+              "instruction": "ldr fp, [r0]"
+            },
+            {
+              "address": 33879488,
+              "instruction": "ldrb r0, [sb, #3]"
+            },
+            {
+              "address": 33879492,
+              "instruction": "bl #0x2095d00"
+            },
+            {
+              "address": 33879496,
+              "instruction": "mov r2, r0"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33881588,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33881592,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33881584,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33881580
+          },
+          "window": [
+            {
+              "address": 33881572,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33881576,
+              "instruction": "ldr r0, [pc, #0x394]"
+            },
+            {
+              "address": 33881580,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33881584,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33881588,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33881592,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33881596,
+              "instruction": "beq #0x204fe44"
+            },
+            {
+              "address": 33881600,
+              "instruction": "ldrsb r5, [r6, #1]"
+            },
+            {
+              "address": 33881604,
+              "instruction": "ldr r2, [pc, #0x378]"
+            },
+            {
+              "address": 33881608,
+              "instruction": "mov r3, #0x94"
+            },
+            {
+              "address": 33881612,
+              "instruction": "mla r2, r5, r3, r2"
+            },
+            {
+              "address": 33881616,
+              "instruction": "ldr r5, [r2, #0x50]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33881616,
+          "flag_load_instruction": "ldr r5, [r2, #0x50]",
+          "mask_address": 33881636,
+          "mask_instruction": "tst r5, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r2, r5, r3, r2",
+            "mla_address": 33881612,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33881608
+          },
+          "window": [
+            {
+              "address": 33881616,
+              "instruction": "ldr r5, [r2, #0x50]"
+            },
+            {
+              "address": 33881620,
+              "instruction": "mov r0, r8"
+            },
+            {
+              "address": 33881624,
+              "instruction": "mov r1, r4"
+            },
+            {
+              "address": 33881628,
+              "instruction": "mov r2, sb"
+            },
+            {
+              "address": 33881632,
+              "instruction": "bl #0x204f9ec"
+            },
+            {
+              "address": 33881636,
+              "instruction": "tst r5, #0x80"
+            },
+            {
+              "address": 33881640,
+              "instruction": "beq #0x204fe54"
+            },
+            {
+              "address": 33881644,
+              "instruction": "mov r1, #0x54"
+            },
+            {
+              "address": 33881648,
+              "instruction": "mla r1, r0, r1, fp"
+            },
+            {
+              "address": 33881652,
+              "instruction": "ldr r0, [r1, #0xc]"
+            },
+            {
+              "address": 33881656,
+              "instruction": "orr r0, r0, #6"
+            },
+            {
+              "address": 33881660,
+              "instruction": "str r0, [r1, #0xc]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33904352,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33904356,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33904348,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33904344
+          },
+          "window": [
+            {
+              "address": 33904336,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33904340,
+              "instruction": "ldr r0, [pc, #0x1d8]"
+            },
+            {
+              "address": 33904344,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33904348,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33904352,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33904356,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33904360,
+              "instruction": "beq #0x2055744"
+            },
+            {
+              "address": 33904364,
+              "instruction": "ldr r0, [r6, #0xc]"
+            },
+            {
+              "address": 33904368,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33904372,
+              "instruction": "beq #0x2055744"
+            },
+            {
+              "address": 33904376,
+              "instruction": "ldrsh r0, [r6, #0x1e]"
+            },
+            {
+              "address": 33904380,
+              "instruction": "ldrsh r1, [r6, #0x1c]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33924528,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33924532,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, sl",
+            "mla_address": 33924524,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33924520
+          },
+          "window": [
+            {
+              "address": 33924512,
+              "instruction": "ble #0x205a5c0"
+            },
+            {
+              "address": 33924516,
+              "instruction": "ldrsb r1, [r7, #1]"
+            },
+            {
+              "address": 33924520,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33924524,
+              "instruction": "mla r0, r1, r0, sl"
+            },
+            {
+              "address": 33924528,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33924532,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 33924536,
+              "instruction": "moveq r0, #1"
+            },
+            {
+              "address": 33924540,
+              "instruction": "streq r0, [sp, #0x34]"
+            },
+            {
+              "address": 33924544,
+              "instruction": "add r5, r5, #1"
+            },
+            {
+              "address": 33924548,
+              "instruction": "cmp r5, #0x100"
+            },
+            {
+              "address": 33924552,
+              "instruction": "blt #0x205a270"
+            },
+            {
+              "address": 33924556,
+              "instruction": "ldr r3, [pc, #0x4a0]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33971428,
+          "flag_load_instruction": "ldr r5, [r5, #0x50]",
+          "mask_address": 33971432,
+          "mask_instruction": "tst r5, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r5, r7, r2, r6",
+            "mla_address": 33971424,
+            "stride_load": "mov r2, #0x94",
+            "stride_load_address": 33971388
+          },
+          "window": [
+            {
+              "address": 33971412,
+              "instruction": "cmpne r5, #0x80000000"
+            },
+            {
+              "address": 33971416,
+              "instruction": "beq #0x2065cf0"
+            },
+            {
+              "address": 33971420,
+              "instruction": "ldrsb r7, [r4, #1]"
+            },
+            {
+              "address": 33971424,
+              "instruction": "mla r5, r7, r2, r6"
+            },
+            {
+              "address": 33971428,
+              "instruction": "ldr r5, [r5, #0x50]"
+            },
+            {
+              "address": 33971432,
+              "instruction": "tst r5, #0x80"
+            },
+            {
+              "address": 33971436,
+              "instruction": "movne r0, r1"
+            },
+            {
+              "address": 33971440,
+              "instruction": "add r1, r1, #1"
+            },
+            {
+              "address": 33971444,
+              "instruction": "cmp r1, #0x100"
+            },
+            {
+              "address": 33971448,
+              "instruction": "add r4, r4, #0x54"
+            },
+            {
+              "address": 33971452,
+              "instruction": "blt #0x2065cc4"
+            },
+            {
+              "address": 33971456,
+              "instruction": "ldr r1, [pc, #0xb08]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34112336,
+          "flag_load_instruction": "ldr r6, [ip, #0x50]",
+          "mask_address": 34112340,
+          "mask_instruction": "tst r6, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla ip, r6, lr, ip",
+            "mla_address": 34112332,
+            "stride_load": "mov lr, #0x94",
+            "stride_load_address": 34112328
+          },
+          "window": [
+            {
+              "address": 34112320,
+              "instruction": "beq #0x20883d4"
+            },
+            {
+              "address": 34112324,
+              "instruction": "ldr ip, [pc, #0xb8]"
+            },
+            {
+              "address": 34112328,
+              "instruction": "mov lr, #0x94"
+            },
+            {
+              "address": 34112332,
+              "instruction": "mla ip, r6, lr, ip"
+            },
+            {
+              "address": 34112336,
+              "instruction": "ldr r6, [ip, #0x50]"
+            },
+            {
+              "address": 34112340,
+              "instruction": "tst r6, #0x80"
+            },
+            {
+              "address": 34112344,
+              "instruction": "beq #0x2088364"
+            },
+            {
+              "address": 34112348,
+              "instruction": "tst sl, #4"
+            },
+            {
+              "address": 34112352,
+              "instruction": "bne #0x20883d4"
+            },
+            {
+              "address": 34112356,
+              "instruction": "cmp r3, #0"
+            },
+            {
+              "address": 34112360,
+              "instruction": "beq #0x2088374"
+            },
+            {
+              "address": 34112364,
+              "instruction": "tst sl, #0x10000"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34339332,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 34339336,
+          "mask_instruction": "tst r0, #0x80",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, r7",
+            "mla_address": 34339328,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 34339324
+          },
+          "window": [
+            {
+              "address": 34339316,
+              "instruction": "bne #0x20bfa4c"
+            },
+            {
+              "address": 34339320,
+              "instruction": "ldrsb r1, [sl, #1]"
+            },
+            {
+              "address": 34339324,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 34339328,
+              "instruction": "mla r0, r1, r0, r7"
+            },
+            {
+              "address": 34339332,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 34339336,
+              "instruction": "tst r0, #0x80"
+            },
+            {
+              "address": 34339340,
+              "instruction": "bne #0x20bfa4c"
+            },
+            {
+              "address": 34339344,
+              "instruction": "ldr r2, [sl, #0xc]"
+            },
+            {
+              "address": 34339348,
+              "instruction": "ldr r1, [pc, #0x64]"
+            },
+            {
+              "address": 34339352,
+              "instruction": "ldr r0, [pc, #0x64]"
+            },
+            {
+              "address": 34339356,
+              "instruction": "and r1, r2, r1"
+            },
+            {
+              "address": 34339360,
+              "instruction": "str r1, [sl, #0xc]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 1,
+      "mask": 129,
+      "mask_hex": "0x00000081",
+      "single_bit_membership": null,
+      "uses": [
+        {
+          "flag_load_address": 33923812,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33923816,
+          "mask_instruction": "tst r1, #0x81",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, sl",
+            "mla_address": 33923808,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33923804
+          },
+          "window": [
+            {
+              "address": 33923796,
+              "instruction": "bne #0x205a2f0"
+            },
+            {
+              "address": 33923800,
+              "instruction": "ldrsb r2, [r7, #1]"
+            },
+            {
+              "address": 33923804,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33923808,
+              "instruction": "mla r1, r2, r1, sl"
+            },
+            {
+              "address": 33923812,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33923816,
+              "instruction": "tst r1, #0x81"
+            },
+            {
+              "address": 33923820,
+              "instruction": "beq #0x205a5c0"
+            },
+            {
+              "address": 33923824,
+              "instruction": "cmp r0, #1"
+            },
+            {
+              "address": 33923828,
+              "instruction": "bne #0x205a318"
+            },
+            {
+              "address": 33923832,
+              "instruction": "add r1, r6, r8"
+            },
+            {
+              "address": 33923836,
+              "instruction": "ldrsb r2, [r1, #1]"
+            },
+            {
+              "address": 33923840,
+              "instruction": "mov r1, #0x94"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 1,
+      "mask": 8192,
+      "mask_hex": "0x00002000",
+      "single_bit_membership": [
+        "Fighter"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33788000,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33788004,
+          "mask_instruction": "tst r1, #0x2000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r5",
+            "mla_address": 33787992,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33787984
+          },
+          "window": [
+            {
+              "address": 33787984,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33787988,
+              "instruction": "tst r3, #0x40"
+            },
+            {
+              "address": 33787992,
+              "instruction": "mla r1, r2, r1, r5"
+            },
+            {
+              "address": 33787996,
+              "instruction": "beq #0x2039070"
+            },
+            {
+              "address": 33788000,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33788004,
+              "instruction": "tst r1, #0x2000"
+            },
+            {
+              "address": 33788008,
+              "instruction": "beq #0x20393b4"
+            },
+            {
+              "address": 33788012,
+              "instruction": "b #0x20390c4"
+            },
+            {
+              "address": 33788016,
+              "instruction": "ldr r2, [r1, #0x50]"
+            },
+            {
+              "address": 33788020,
+              "instruction": "tst r2, #8"
+            },
+            {
+              "address": 33788024,
+              "instruction": "beq #0x203909c"
+            },
+            {
+              "address": 33788028,
+              "instruction": "ldrsb r7, [r8, #4]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 2,
+      "mask": 32768,
+      "mask_hex": "0x00008000",
+      "single_bit_membership": [
+        "Great General"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33901844,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33901848,
+          "mask_instruction": "tst r0, #0x8000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33901840,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33901836
+          },
+          "window": [
+            {
+              "address": 33901828,
+              "instruction": "ldrsb r2, [r7, #1]"
+            },
+            {
+              "address": 33901832,
+              "instruction": "ldr r0, [pc, #0xba4]"
+            },
+            {
+              "address": 33901836,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33901840,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33901844,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33901848,
+              "instruction": "tst r0, #0x8000"
+            },
+            {
+              "address": 33901852,
+              "instruction": "beq #0x2054d4c"
+            },
+            {
+              "address": 33901856,
+              "instruction": "ldr r0, [pc, #0xb90]"
+            },
+            {
+              "address": 33901860,
+              "instruction": "add r0, r0, fp, lsl #5"
+            },
+            {
+              "address": 33901864,
+              "instruction": "ldrsb r0, [r8, r0]"
+            },
+            {
+              "address": 33901868,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33901872,
+              "instruction": "beq #0x2054d4c"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33923884,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33923888,
+          "mask_instruction": "tst r0, #0x8000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, sl",
+            "mla_address": 33923880,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33923876
+          },
+          "window": [
+            {
+              "address": 33923868,
+              "instruction": "bge #0x205a338"
+            },
+            {
+              "address": 33923872,
+              "instruction": "ldrsb r1, [r7, #1]"
+            },
+            {
+              "address": 33923876,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33923880,
+              "instruction": "mla r0, r1, r0, sl"
+            },
+            {
+              "address": 33923884,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33923888,
+              "instruction": "tst r0, #0x8000"
+            },
+            {
+              "address": 33923892,
+              "instruction": "bne #0x205a5c0"
+            },
+            {
+              "address": 33923896,
+              "instruction": "ldrsb r0, [r7]"
+            },
+            {
+              "address": 33923900,
+              "instruction": "cmp r0, r4"
+            },
+            {
+              "address": 33923904,
+              "instruction": "ldrne r0, [r7, #0xc]"
+            },
+            {
+              "address": 33923908,
+              "instruction": "andne r1, r0, #0x80000000"
+            },
+            {
+              "address": 33923912,
+              "instruction": "cmpne r1, #0x80000000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 4,
+      "mask": 65536,
+      "mask_hex": "0x00010000",
+      "single_bit_membership": [
+        "Spy"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33796004,
+          "flag_load_instruction": "ldr r2, [r1, #0x50]",
+          "mask_address": 33796008,
+          "mask_instruction": "tst r2, #0x10000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r0, r1, r2",
+            "mla_address": 33796000,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33795996
+          },
+          "window": [
+            {
+              "address": 33795988,
+              "instruction": "str r1, [sp, #0x38]"
+            },
+            {
+              "address": 33795992,
+              "instruction": "ldr r2, [pc, #-0x194]"
+            },
+            {
+              "address": 33795996,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33796000,
+              "instruction": "mla r1, r0, r1, r2"
+            },
+            {
+              "address": 33796004,
+              "instruction": "ldr r2, [r1, #0x50]"
+            },
+            {
+              "address": 33796008,
+              "instruction": "tst r2, #0x10000"
+            },
+            {
+              "address": 33796012,
+              "instruction": "beq #0x203afc8"
+            },
+            {
+              "address": 33796016,
+              "instruction": "ldr r2, [pc, #-0x1f8]"
+            },
+            {
+              "address": 33796020,
+              "instruction": "add r2, r2, r8, lsl #5"
+            },
+            {
+              "address": 33796024,
+              "instruction": "ldrb r2, [r7, r2]"
+            },
+            {
+              "address": 33796028,
+              "instruction": "cmp r2, #0"
+            },
+            {
+              "address": 33796032,
+              "instruction": "moveq r2, #1"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33901696,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33901700,
+          "mask_instruction": "tst r0, #0x10000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33901692,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33901688
+          },
+          "window": [
+            {
+              "address": 33901680,
+              "instruction": "ldrsb r2, [r7, #1]"
+            },
+            {
+              "address": 33901684,
+              "instruction": "ldr r0, [pc, #0xc38]"
+            },
+            {
+              "address": 33901688,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33901692,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33901696,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33901700,
+              "instruction": "tst r0, #0x10000"
+            },
+            {
+              "address": 33901704,
+              "instruction": "beq #0x2054ca4"
+            },
+            {
+              "address": 33901708,
+              "instruction": "ldr r0, [pc, #0xbd4]"
+            },
+            {
+              "address": 33901712,
+              "instruction": "add r2, r0, fp, lsl #5"
+            },
+            {
+              "address": 33901716,
+              "instruction": "ldrsb r1, [r2, r8]"
+            },
+            {
+              "address": 33901720,
+              "instruction": "mov r0, #1"
+            },
+            {
+              "address": 33901724,
+              "instruction": "orr r0, r1, r0, lsl r5"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34122204,
+          "flag_load_instruction": "ldr r8, [r8, #0x50]",
+          "mask_address": 34122208,
+          "mask_instruction": "tst r8, #0x10000",
+          "record_stride_provenance": {
+            "mla": "mla r8, sl, r6, sb",
+            "mla_address": 34122200,
+            "stride_load": "mov r6, #0x94",
+            "stride_load_address": 34122180
+          },
+          "window": [
+            {
+              "address": 34122188,
+              "instruction": "add r3, r3, #1"
+            },
+            {
+              "address": 34122192,
+              "instruction": "mla r8, r0, r5, r4"
+            },
+            {
+              "address": 34122196,
+              "instruction": "ldrsb sl, [r8, #1]"
+            },
+            {
+              "address": 34122200,
+              "instruction": "mla r8, sl, r6, sb"
+            },
+            {
+              "address": 34122204,
+              "instruction": "ldr r8, [r8, #0x50]"
+            },
+            {
+              "address": 34122208,
+              "instruction": "tst r8, #0x10000"
+            },
+            {
+              "address": 34122212,
+              "instruction": "strne r0, [sp, #0x550]"
+            },
+            {
+              "address": 34122216,
+              "instruction": "ldr r0, [sp, #0xd0]"
+            },
+            {
+              "address": 34122220,
+              "instruction": "strne r7, [sp, #0xd8]"
+            },
+            {
+              "address": 34122224,
+              "instruction": "cmp r3, r0"
+            },
+            {
+              "address": 34122228,
+              "instruction": "blt #0x208a9c8"
+            },
+            {
+              "address": 34122232,
+              "instruction": "b #0x208aa64"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 34138652,
+          "flag_load_instruction": "ldr r2, [r2, #0x50]",
+          "mask_address": 34138656,
+          "mask_instruction": "tst r2, #0x10000",
+          "record_stride_provenance": {
+            "mla": "mla r2, r4, lr, r3",
+            "mla_address": 34138648,
+            "stride_load": "mov lr, #0x94",
+            "stride_load_address": 34138624
+          },
+          "window": [
+            {
+              "address": 34138636,
+              "instruction": "mla r2, r8, r2, ip"
+            },
+            {
+              "address": 34138640,
+              "instruction": "ldrsb r4, [r2, #1]"
+            },
+            {
+              "address": 34138644,
+              "instruction": "add fp, fp, #1"
+            },
+            {
+              "address": 34138648,
+              "instruction": "mla r2, r4, lr, r3"
+            },
+            {
+              "address": 34138652,
+              "instruction": "ldr r2, [r2, #0x50]"
+            },
+            {
+              "address": 34138656,
+              "instruction": "tst r2, #0x10000"
+            },
+            {
+              "address": 34138660,
+              "instruction": "movne r2, #1"
+            },
+            {
+              "address": 34138664,
+              "instruction": "movne r7, r8"
+            },
+            {
+              "address": 34138668,
+              "instruction": "strne r2, [sp, #0x54]"
+            },
+            {
+              "address": 34138672,
+              "instruction": "cmp fp, r0"
+            },
+            {
+              "address": 34138676,
+              "instruction": "blt #0x208ea04"
+            },
+            {
+              "address": 34138680,
+              "instruction": "ldr r3, [pc, #0xc7c]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 1,
+      "mask": 131072,
+      "mask_hex": "0x00020000",
+      "single_bit_membership": [
+        "ICBM"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 34191196,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 34191200,
+          "mask_instruction": "tst r1, #0x20000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r1, r2",
+            "mla_address": 34191192,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 34191188
+          },
+          "window": [
+            {
+              "address": 34191180,
+              "instruction": "ldrsb r3, [r1, #1]"
+            },
+            {
+              "address": 34191184,
+              "instruction": "ldr r2, [pc, #0x19c]"
+            },
+            {
+              "address": 34191188,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 34191192,
+              "instruction": "mla r1, r3, r1, r2"
+            },
+            {
+              "address": 34191196,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 34191200,
+              "instruction": "tst r1, #0x20000"
+            },
+            {
+              "address": 34191204,
+              "instruction": "movne r1, #1"
+            },
+            {
+              "address": 34191208,
+              "instruction": "strne r1, [r0, #4]"
+            },
+            {
+              "address": 34191212,
+              "instruction": "ldr r1, [pc, #0x170]"
+            },
+            {
+              "address": 34191216,
+              "instruction": "ldr r0, [pc, #0x168]"
+            },
+            {
+              "address": 34191220,
+              "instruction": "ldr r2, [r1, r4, lsl #2]"
+            },
+            {
+              "address": 34191224,
+              "instruction": "ldr r1, [r0]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 7,
+      "mask": 524288,
+      "mask_hex": "0x00080000",
+      "single_bit_membership": [
+        "Spy",
+        "Caravan",
+        "Great Scientist",
+        "Great Humanitarian",
+        "Great Explorer",
+        "Great Builder",
+        "Great Artist",
+        "Great Leader",
+        "Great Tycoon"
+      ],
+      "uses": [
+        {
+          "flag_load_address": 33795876,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33795880,
+          "mask_instruction": "tst r1, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r2, r1, r3",
+            "mla_address": 33795872,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33795864
+          },
+          "window": [
+            {
+              "address": 33795860,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33795864,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33795868,
+              "instruction": "ldr r3, [pc, #-0x118]"
+            },
+            {
+              "address": 33795872,
+              "instruction": "mla r1, r2, r1, r3"
+            },
+            {
+              "address": 33795876,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33795880,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33795884,
+              "instruction": "beq #0x203af38"
+            },
+            {
+              "address": 33795888,
+              "instruction": "tst r0, #1"
+            },
+            {
+              "address": 33795892,
+              "instruction": "bne #0x203b924"
+            },
+            {
+              "address": 33795896,
+              "instruction": "ldr r1, [pc, #-0x130]"
+            },
+            {
+              "address": 33795900,
+              "instruction": "add fp, r1, r8, lsl #5"
+            },
+            {
+              "address": 33795904,
+              "instruction": "ldrsb r1, [fp, r7]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33798508,
+          "flag_load_instruction": "ldr r0, [r3, #0x50]",
+          "mask_address": 33798516,
+          "mask_instruction": "tst r0, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r3, r0, r3, fp",
+            "mla_address": 33798504,
+            "stride_load": "mov r3, #0x94",
+            "stride_load_address": 33798492
+          },
+          "window": [
+            {
+              "address": 33798496,
+              "instruction": "str r0, [sp, #0x18]"
+            },
+            {
+              "address": 33798500,
+              "instruction": "mov r0, r0"
+            },
+            {
+              "address": 33798504,
+              "instruction": "mla r3, r0, r3, fp"
+            },
+            {
+              "address": 33798508,
+              "instruction": "ldr r0, [r3, #0x50]"
+            },
+            {
+              "address": 33798512,
+              "instruction": "str r3, [sp, #0x30]"
+            },
+            {
+              "address": 33798516,
+              "instruction": "tst r0, #0x80000"
+            },
+            {
+              "address": 33798520,
+              "instruction": "bne #0x203bae8"
+            },
+            {
+              "address": 33798524,
+              "instruction": "tst r0, #4"
+            },
+            {
+              "address": 33798528,
+              "instruction": "ldreq r0, [sp, #0xa8]"
+            },
+            {
+              "address": 33798532,
+              "instruction": "ldrsbeq r0, [r0, sl]"
+            },
+            {
+              "address": 33798536,
+              "instruction": "cmpeq r0, #0"
+            },
+            {
+              "address": 33798540,
+              "instruction": "beq #0x203bae8"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33798960,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33798964,
+          "mask_instruction": "tst r0, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r0, r1",
+            "mla_address": 33798956,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33798952
+          },
+          "window": [
+            {
+              "address": 33798944,
+              "instruction": "ldrsb r2, [r6, #1]"
+            },
+            {
+              "address": 33798948,
+              "instruction": "ldr r1, [pc, #-0xd20]"
+            },
+            {
+              "address": 33798952,
+              "instruction": "mov r0, #0x94"
+            },
+            {
+              "address": 33798956,
+              "instruction": "mla r0, r2, r0, r1"
+            },
+            {
+              "address": 33798960,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33798964,
+              "instruction": "tst r0, #0x80000"
+            },
+            {
+              "address": 33798968,
+              "instruction": "subeq r4, r4, #0x64"
+            },
+            {
+              "address": 33798972,
+              "instruction": "b #0x203bb84"
+            },
+            {
+              "address": 33798976,
+              "instruction": "ldrsh r1, [r6, #0x22]"
+            },
+            {
+              "address": 33798980,
+              "instruction": "cmp r1, r2"
+            },
+            {
+              "address": 33798984,
+              "instruction": "ldr r1, [pc, #-0xda0]"
+            },
+            {
+              "address": 33798988,
+              "instruction": "addeq r4, r4, #5"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33819132,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33819136,
+          "mask_instruction": "tst r0, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r2, r1, r0",
+            "mla_address": 33819128,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33819124
+          },
+          "window": [
+            {
+              "address": 33819116,
+              "instruction": "ldrsb r2, [sb, #1]"
+            },
+            {
+              "address": 33819120,
+              "instruction": "ldr r0, [pc, #0x374]"
+            },
+            {
+              "address": 33819124,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33819128,
+              "instruction": "mla r0, r2, r1, r0"
+            },
+            {
+              "address": 33819132,
+              "instruction": "ldr r0, [r0, #0x50]"
+            },
+            {
+              "address": 33819136,
+              "instruction": "tst r0, #0x80000"
+            },
+            {
+              "address": 33819140,
+              "instruction": "bne #0x2040a68"
+            },
+            {
+              "address": 33819144,
+              "instruction": "ldr r0, [pc, #0x360]"
+            },
+            {
+              "address": 33819148,
+              "instruction": "ldrb r0, [r0]"
+            },
+            {
+              "address": 33819152,
+              "instruction": "cmp r0, #0"
+            },
+            {
+              "address": 33819156,
+              "instruction": "bne #0x2040a54"
+            },
+            {
+              "address": 33819160,
+              "instruction": "ldr r0, [pc, #0x354]"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33825308,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33825312,
+          "mask_instruction": "tst r1, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r1, r5",
+            "mla_address": 33825304,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33825300
+          },
+          "window": [
+            {
+              "address": 33825292,
+              "instruction": "bne #0x2042240"
+            },
+            {
+              "address": 33825296,
+              "instruction": "ldrsb r3, [r2, #1]"
+            },
+            {
+              "address": 33825300,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33825304,
+              "instruction": "mla r1, r3, r1, r5"
+            },
+            {
+              "address": 33825308,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33825312,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33825316,
+              "instruction": "bne #0x2042240"
+            },
+            {
+              "address": 33825320,
+              "instruction": "tst r1, #0x80"
+            },
+            {
+              "address": 33825324,
+              "instruction": "ldrsheq r1, [r2, #0x26]"
+            },
+            {
+              "address": 33825328,
+              "instruction": "cmpeq r1, r4"
+            },
+            {
+              "address": 33825332,
+              "instruction": "bne #0x2042240"
+            },
+            {
+              "address": 33825336,
+              "instruction": "mov r1, r8"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33825464,
+          "flag_load_instruction": "ldr r1, [r1, #0x50]",
+          "mask_address": 33825468,
+          "mask_instruction": "tst r1, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r1, r3, r1, r5",
+            "mla_address": 33825460,
+            "stride_load": "mov r1, #0x94",
+            "stride_load_address": 33825456
+          },
+          "window": [
+            {
+              "address": 33825448,
+              "instruction": "bne #0x20422dc"
+            },
+            {
+              "address": 33825452,
+              "instruction": "ldrsb r3, [r2, #1]"
+            },
+            {
+              "address": 33825456,
+              "instruction": "mov r1, #0x94"
+            },
+            {
+              "address": 33825460,
+              "instruction": "mla r1, r3, r1, r5"
+            },
+            {
+              "address": 33825464,
+              "instruction": "ldr r1, [r1, #0x50]"
+            },
+            {
+              "address": 33825468,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33825472,
+              "instruction": "bne #0x20422dc"
+            },
+            {
+              "address": 33825476,
+              "instruction": "tst r1, #0x80"
+            },
+            {
+              "address": 33825480,
+              "instruction": "ldrsheq r1, [r2, #0x26]"
+            },
+            {
+              "address": 33825484,
+              "instruction": "cmpeq r1, r4"
+            },
+            {
+              "address": 33825488,
+              "instruction": "bne #0x20422dc"
+            },
+            {
+              "address": 33825492,
+              "instruction": "mov r1, r8"
+            }
+          ]
+        },
+        {
+          "flag_load_address": 33943684,
+          "flag_load_instruction": "ldr r1, [r3, #0x50]",
+          "mask_address": 33943688,
+          "mask_instruction": "tst r1, #0x80000",
+          "record_stride_provenance": {
+            "mla": "mla r3, r1, sl, r3",
+            "mla_address": 33943680,
+            "stride_load": "mov sl, #0x94",
+            "stride_load_address": 33943676
+          },
+          "window": [
+            {
+              "address": 33943668,
+              "instruction": "ldrsb r1, [r1, #1]"
+            },
+            {
+              "address": 33943672,
+              "instruction": "ldr r3, [pc, #-0x1c4]"
+            },
+            {
+              "address": 33943676,
+              "instruction": "mov sl, #0x94"
+            },
+            {
+              "address": 33943680,
+              "instruction": "mla r3, r1, sl, r3"
+            },
+            {
+              "address": 33943684,
+              "instruction": "ldr r1, [r3, #0x50]"
+            },
+            {
+              "address": 33943688,
+              "instruction": "tst r1, #0x80000"
+            },
+            {
+              "address": 33943692,
+              "instruction": "bne #0x205f134"
+            },
+            {
+              "address": 33943696,
+              "instruction": "ldr r1, [pc, #-0x164]"
+            },
+            {
+              "address": 33943700,
+              "instruction": "mov r3, #0x54"
+            },
+            {
+              "address": 33943704,
+              "instruction": "ldr sl, [r1]"
+            },
+            {
+              "address": 33943708,
+              "instruction": "mov r1, r5"
+            },
+            {
+              "address": 33943712,
+              "instruction": "mla r3, sl, r3, r2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direct_runtime_use_count": 1,
+      "mask": 2147483648,
+      "mask_hex": "0x80000000",
+      "single_bit_membership": null,
+      "uses": [
+        {
+          "flag_load_address": 33923884,
+          "flag_load_instruction": "ldr r0, [r0, #0x50]",
+          "mask_address": 33923908,
+          "mask_instruction": "andne r1, r0, #0x80000000",
+          "record_stride_provenance": {
+            "mla": "mla r0, r1, r0, sl",
+            "mla_address": 33923880,
+            "stride_load": "mov r0, #0x94",
+            "stride_load_address": 33923876
+          },
+          "window": [
+            {
+              "address": 33923888,
+              "instruction": "tst r0, #0x8000"
+            },
+            {
+              "address": 33923892,
+              "instruction": "bne #0x205a5c0"
+            },
+            {
+              "address": 33923896,
+              "instruction": "ldrsb r0, [r7]"
+            },
+            {
+              "address": 33923900,
+              "instruction": "cmp r0, r4"
+            },
+            {
+              "address": 33923904,
+              "instruction": "ldrne r0, [r7, #0xc]"
+            },
+            {
+              "address": 33923908,
+              "instruction": "andne r1, r0, #0x80000000"
+            },
+            {
+              "address": 33923912,
+              "instruction": "cmpne r1, #0x80000000"
+            },
+            {
+              "address": 33923916,
+              "instruction": "beq #0x205a580"
+            },
+            {
+              "address": 33923920,
+              "instruction": "add fp, r6, r8"
+            },
+            {
+              "address": 33923924,
+              "instruction": "ldrsh r2, [fp, #0x1e]"
+            },
+            {
+              "address": 33923928,
+              "instruction": "ldrsh r3, [fp, #0x1c]"
+            },
+            {
+              "address": 33923932,
+              "instruction": "ldr r1, [pc, #0x73c]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
