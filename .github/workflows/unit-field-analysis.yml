@@ -1,0 +1,94 @@
+name: Civ Rev Unit Field Analysis
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-unit-survey
+      - name: Summarize unresolved fields and strongest code candidates
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          units = json.loads(Path('evidence/re/units.json').read_text())['units']
+          usage = json.loads(Path('evidence/re/unit-field-usage.json').read_text())
+
+          print('=== UNIT FIELD MATRIX ===')
+          for unit in units:
+              print(
+                  f"{unit['index']:02d} {unit['name']!r:22} "
+                  f"adm={unit['attack']}/{unit['defense']}/{unit['movement']} "
+                  f"43={unit['unknown_0x43']:>3} 44={unit['unknown_0x44']:>3} "
+                  f"45={unit['unknown_0x45']:>3} 46={unit['unknown_0x46']:>3} "
+                  f"47={unit['unknown_0x47']:>3} form={unit['formation_count']:>2} "
+                  f"flags={unit['flags']:#010x}"
+              )
+
+          unresolved = {0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x50, 0x51, 0x52, 0x53}
+          base_uses = [
+              row for row in usage['literal_load_uses']
+              if row.get('nearby_stride_0x94')
+          ]
+          accesses = []
+          for row in usage['metadata_accesses']:
+              if row['field_offset'] not in unresolved:
+                  continue
+              nearest = None
+              for base_use in base_uses:
+                  if base_use['component'] != row['component']:
+                      continue
+                  if base_use['instruction_set'] != row['instruction_set']:
+                      continue
+                  distance = row['address'] - base_use['instruction_address']
+                  if abs(distance) > 0x180:
+                      continue
+                  if nearest is None or abs(distance) < abs(nearest[0]):
+                      nearest = (distance, base_use)
+              if nearest is None:
+                  continue
+              accesses.append((row, nearest[0], nearest[1]))
+
+          print('\n=== STRONG CANDIDATE ACCESSES ===')
+          by_field = {}
+          for row, distance, base_use in accesses:
+              by_field.setdefault(row['field_offset'], []).append((row, distance, base_use))
+
+          for field in sorted(by_field):
+              candidates = sorted(by_field[field], key=lambda item: abs(item[1]))
+              print(f'FIELD {field:#04x} candidates={len(candidates)}')
+              emitted = 0
+              seen = set()
+              for row, distance, base_use in candidates:
+                  key = (row['component'], row['address'], row['instruction_set'])
+                  if key in seen:
+                      continue
+                  seen.add(key)
+                  print(
+                      f"  {row['component']} {row['instruction_set']} "
+                      f"{row['address']:#010x} {row['instruction']} "
+                      f"base={base_use['instruction_address']:#010x} delta={distance:+#x}"
+                  )
+                  context = row['context']
+                  for insn in context:
+                      if abs(insn['address'] - row['address']) <= 28:
+                          mark = '>>' if insn['is_access'] else '  '
+                          print(
+                              f"    {mark} {insn['address']:#010x} "
+                              f"{insn['mnemonic']} {insn['operands']}"
+                          )
+                  emitted += 1
+                  if emitted >= 8:
+                      break
+          PY
