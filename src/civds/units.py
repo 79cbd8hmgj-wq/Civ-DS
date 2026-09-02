@@ -79,7 +79,7 @@ class UnitRecord:
     attack: int
     defense: int
     movement: int
-    unknown_0x43: int
+    fuel_turn_limit: int
     unknown_0x44: int
     unknown_0x45: int
     unknown_0x46: int
@@ -139,7 +139,7 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
             attack,
             defense,
             movement,
-            unknown_0x43,
+            fuel_turn_limit,
             unknown_0x44,
             unknown_0x45,
             unknown_0x46,
@@ -163,7 +163,7 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
                 attack=attack,
                 defense=defense,
                 movement=movement,
-                unknown_0x43=unknown_0x43,
+                fuel_turn_limit=fuel_turn_limit,
                 unknown_0x44=unknown_0x44,
                 unknown_0x45=unknown_0x45,
                 unknown_0x46=unknown_0x46,
