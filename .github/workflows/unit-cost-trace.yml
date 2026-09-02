@@ -1,0 +1,90 @@
+name: Civ Rev Unit Cost Trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+
+permissions:
+  contents: write
+
+jobs:
+  trace:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-unit-survey
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Refresh unit evidence and trace field 0x44
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR" evidence/re
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          civds units summarize "$ROM" --output evidence/re/units.json
+          python - "$ROM" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+
+          rom = Path(sys.argv[1]).read_bytes()
+          profile = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(profile['arm9_ram_address'])
+          off = int(profile['arm9_offset'])
+          size = int(profile['arm9_size'])
+          arm9 = rom[off:off + size]
+          units = json.loads(Path('evidence/re/units.json').read_text())['units']
+
+          fighter = units[26]
+          bomber = units[25]
+          assert fighter['fuel_turn_limit'] == 2
+          assert bomber['fuel_turn_limit'] == 4
+          assert 'unknown_0x43' not in fighter
+
+          print('=== FIELD 0x44 VALUE / X5 MATRIX ===')
+          for unit in units:
+              value = unit['unknown_0x44']
+              print(f"{unit['index']:02d} {unit['name']!r:22} raw={value:>3} x5={value*5:>3}")
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          windows = [
+              (0x0203A0D0, 0x0203A260),
+              (0x0203B580, 0x0203B780),
+              (0x02086920, 0x02086A50),
+          ]
+          for start, end in windows:
+              print(f'\n=== CODE {start:#010x}..{end:#010x} ===')
+              start_off = start - base
+              end_off = end - base
+              for insn in md.disasm(arm9[start_off:end_off], start):
+                  marks=[]
+                  if '#0x44' in insn.op_str: marks.append('FIELD44')
+                  if '#0x94' in insn.op_str: marks.append('STRIDE')
+                  if insn.mnemonic in {'bl','blx'}: marks.append('CALL')
+                  suffix=f" ; {'|'.join(marks)}" if marks else ''
+                  print(f'{insn.address:#010x}: {insn.mnemonic:8} {insn.op_str}{suffix}')
+          PY
+      - name: Commit refreshed canonical evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/units.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "analysis: record recovered unit fuel limits [generated]"
+          git push origin HEAD:analysis/civrev-unit-survey
