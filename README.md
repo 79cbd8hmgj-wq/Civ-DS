@@ -77,6 +77,7 @@ civds units patch-manifest roms/CivRev.nds Warrior \
   --attack 2 \
   --defense 2 \
   --movement 2 \
+  --fuel-turn-limit 5 \
   --production-cost 15 \
   --output patches/warrior-balance.json
 
@@ -92,7 +93,7 @@ Use `civds units summarize` to inspect the recovered 38-record table before choo
 civds units summarize roms/CivRev.nds --output analysis/units.json
 ```
 
-Current friendly patch fields are `attack`, `defense`, `movement`, and `production-cost`. Unresolved descriptor bytes and unresolved flag semantics remain available only as reverse-engineering evidence and are not exposed as named patch options.
+Current friendly byte-sized patch fields are `attack`, `defense`, `movement`, `fuel-turn-limit`, and `production-cost`. `fuel-turn-limit` is primarily relevant to units whose runtime behavior consumes that descriptor field, especially air units; changing it on other units should be treated as experimental rather than assumed to create air-style fuel behavior. Unresolved descriptor bytes and unresolved flag semantics remain available only as reverse-engineering evidence and are not exposed as named patch options.
 
 ### Guarded binary patches
 
