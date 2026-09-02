@@ -18,6 +18,7 @@ def write_unit_patch_manifest(
     attack: int | None = None,
     defense: int | None = None,
     movement: int | None = None,
+    fuel_turn_limit: int | None = None,
     production_cost: int | None = None,
 ) -> Path:
     profile = load_profile(profile_path)
@@ -38,6 +39,7 @@ def write_unit_patch_manifest(
         attack=attack,
         defense=defense,
         movement=movement,
+        fuel_turn_limit=fuel_turn_limit,
         production_cost=production_cost,
     )
     write_json_atomic(output, payload)
