@@ -1,0 +1,93 @@
+name: Civ Rev Unit 0x43 Trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+
+permissions:
+  contents: read
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/civrev-unit-survey
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Trace field 0x43 functions
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR"
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          python - "$ROM" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+
+          rom = Path(sys.argv[1]).read_bytes()
+          profile = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          arm9_base = int(profile['arm9_ram_address'])
+          arm9_offset = int(profile['arm9_offset'])
+          arm9_size = int(profile['arm9_size'])
+          arm9 = rom[arm9_offset:arm9_offset + arm9_size]
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+
+          targets = [0x020394C0, 0x020394EC, 0x02056980, 0x020569C4]
+          all_insns = list(md.disasm(arm9, arm9_base))
+          by_addr = {i.address: i for i in all_insns}
+
+          def is_prologue(insn):
+              return (
+                  (insn.mnemonic == 'push' and 'lr' in insn.op_str)
+                  or (insn.mnemonic.startswith('stm') and 'sp!' in insn.op_str and 'lr' in insn.op_str)
+              )
+
+          def is_return(insn):
+              return (
+                  (insn.mnemonic == 'pop' and 'pc' in insn.op_str)
+                  or (insn.mnemonic.startswith('ldm') and 'sp!' in insn.op_str and 'pc' in insn.op_str)
+                  or (insn.mnemonic == 'bx' and insn.op_str.strip() == 'lr')
+              )
+
+          addresses = [i.address for i in all_insns]
+          for target in targets:
+              idx = next(i for i, addr in enumerate(addresses) if addr == target)
+              start = idx
+              for pos in range(idx, max(-1, idx - 400), -1):
+                  if is_prologue(all_insns[pos]):
+                      start = pos
+                      break
+              end = min(len(all_insns), idx + 300)
+              for pos in range(idx, min(len(all_insns), idx + 300)):
+                  if is_return(all_insns[pos]):
+                      end = pos + 1
+                      break
+              print(f'\n=== TARGET {target:#010x} FUNCTION {all_insns[start].address:#010x}..{all_insns[end-1].address:#010x} ===')
+              for insn in all_insns[start:end]:
+                  marks = []
+                  if insn.address == target:
+                      marks.append('TARGET')
+                  if '#0x43' in insn.op_str:
+                      marks.append('FIELD43')
+                  if '#0x32' in insn.op_str:
+                      marks.append('RUNTIME32')
+                  if insn.mnemonic in {'bl', 'blx'}:
+                      marks.append('CALL')
+                  suffix = f" ; {'|'.join(marks)}" if marks else ''
+                  print(f'{insn.address:#010x}: {insn.mnemonic:8} {insn.op_str}{suffix}')
+          PY
