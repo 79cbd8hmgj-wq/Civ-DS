@@ -80,7 +80,7 @@ class UnitRecord:
     defense: int
     movement: int
     fuel_turn_limit: int
-    unknown_0x44: int
+    production_cost_quanta: int
     unknown_0x45: int
     unknown_0x46: int
     unknown_0x47: int
@@ -90,6 +90,10 @@ class UnitRecord:
     obsolete_technology_id_1: int
     obsolete_technology_id_2: int
     flags: int
+
+    @property
+    def production_cost(self) -> int:
+        return self.production_cost_quanta * 5
 
     @property
     def formation_size(self) -> int:
@@ -140,7 +144,7 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
             defense,
             movement,
             fuel_turn_limit,
-            unknown_0x44,
+            production_cost_quanta,
             unknown_0x45,
             unknown_0x46,
             unknown_0x47,
@@ -164,7 +168,7 @@ def parse_unit_records(blob: bytes) -> tuple[UnitRecord, ...]:
                 defense=defense,
                 movement=movement,
                 fuel_turn_limit=fuel_turn_limit,
-                unknown_0x44=unknown_0x44,
+                production_cost_quanta=production_cost_quanta,
                 unknown_0x45=unknown_0x45,
                 unknown_0x46=unknown_0x46,
                 unknown_0x47=unknown_0x47,
