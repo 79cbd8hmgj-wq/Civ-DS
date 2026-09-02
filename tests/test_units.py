@@ -203,11 +203,13 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert warrior.is_great_person is False
     assert warrior.is_naval is False
     assert warrior.is_air is False
+    assert warrior.can_carry_units is False
 
     galley = records[20]
     assert galley.name == "Galley"
     assert galley.is_naval is True
     assert galley.is_air is False
+    assert galley.can_carry_units is True
 
     fighter = records[26]
     assert fighter.name == "Fighter"
@@ -216,6 +218,7 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert fighter.production_cost == 30
     assert fighter.is_naval is False
     assert fighter.is_air is True
+    assert fighter.can_carry_units is False
 
     icbm = records[27]
     assert icbm.name == "ICBM"
@@ -249,10 +252,13 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert summary_units[6]["is_great_person"] is False
     assert summary_units[6]["is_naval"] is False
     assert summary_units[6]["is_air"] is False
+    assert summary_units[6]["can_carry_units"] is False
     assert summary_units[20]["is_naval"] is True
     assert summary_units[20]["is_air"] is False
+    assert summary_units[20]["can_carry_units"] is True
     assert summary_units[26]["is_naval"] is False
     assert summary_units[26]["is_air"] is True
+    assert summary_units[26]["can_carry_units"] is False
     assert summary_units[27]["is_icbm"] is True
     assert summary_units[27]["is_spy"] is False
     assert summary_units[28]["is_spy"] is True
