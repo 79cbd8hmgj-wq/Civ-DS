@@ -189,3 +189,22 @@ def test_technology_name_uses_recovered_runtime_ids() -> None:
     assert technology_name(1) == "Alphabet"
     assert technology_name(24) == "Gunpowder"
     assert technology_name(47) == "Future Technology"
+
+
+def test_formation_mask_is_followed_by_a_reserved_zero_byte() -> None:
+    prefix = b"header bytes\0" + b"\0" * 73
+    encoded_records = [_unit_record("Settlers", formation_mask=0x3F)]
+    encoded_records.extend(
+        _unit_record(f"Unit {index}") for index in range(1, UNIT_RECORD_COUNT)
+    )
+    blob = prefix + b"".join(encoded_records) + _text_slot("Pyramids of Egypt") + b"tail"
+
+    records = parse_unit_records(blob)
+    settler = records[0]
+
+    assert settler.formation_mask == 0x3F
+    assert settler.reserved_0x49 == 0
+    unit_summary = build_unit_summary(records)["units"]
+    assert isinstance(unit_summary, list)
+    assert unit_summary[0]["reserved_0x49"] == 0
+    assert "unknown_0x49" not in unit_summary[0]
