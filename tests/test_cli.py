@@ -171,6 +171,12 @@ def test_units_patch_manifest_validates_profile_and_writes_guarded_edits(
             "5",
             "--production-cost",
             "20",
+            "--unlock-technology-id",
+            "6",
+            "--obsolete-technology-id-1",
+            "17",
+            "--obsolete-technology-id-2",
+            "-1",
             "--output",
             str(output),
         ]
@@ -227,6 +233,36 @@ def test_units_patch_manifest_validates_profile_and_writes_guarded_edits(
                 "expected": "02",
                 "replacement": "04",
                 "rationale": "Set Warrior production cost from 10 to 20",
+            },
+            {
+                "id": "unit-006-unlock-technology",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4A,
+                "expected": "ffff",
+                "replacement": "0600",
+                "rationale": "Set Warrior unlock technology from none (-1) to Iron Working (6)",
+            },
+            {
+                "id": "unit-006-obsolete-technology-1",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4C,
+                "expected": "0600",
+                "replacement": "1100",
+                "rationale": (
+                    "Set Warrior obsolete technology 1 from Iron Working (6) "
+                    "to Feudalism (17)"
+                ),
+            },
+            {
+                "id": "unit-006-obsolete-technology-2",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4E,
+                "expected": "1100",
+                "replacement": "ffff",
+                "rationale": "Set Warrior obsolete technology 2 from Feudalism (17) to none (-1)",
             },
         ],
     }
