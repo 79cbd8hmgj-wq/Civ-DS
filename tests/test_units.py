@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import struct
 
+from civds.unit_summary import build_unit_summary
 from civds.units import (
     UNIT_RECORD_COUNT,
     UNIT_RECORD_SIZE,
@@ -171,6 +172,15 @@ def test_parse_unit_records_recovers_confirmed_descriptor_layout() -> None:
     assert fighter.production_cost == 30
     assert fighter.is_naval is False
     assert fighter.is_air is True
+
+    summary_units = build_unit_summary(records)["units"]
+    assert isinstance(summary_units, list)
+    assert summary_units[6]["is_naval"] is False
+    assert summary_units[6]["is_air"] is False
+    assert summary_units[20]["is_naval"] is True
+    assert summary_units[20]["is_air"] is False
+    assert summary_units[26]["is_naval"] is False
+    assert summary_units[26]["is_air"] is True
 
 
 def test_technology_name_uses_recovered_runtime_ids() -> None:
