@@ -1,0 +1,145 @@
+name: Civ Rev high-byte unit flag trace
+
+on:
+  push:
+    branches:
+      - analysis/civrev-unit-survey
+    paths:
+      - .github/workflows/unit-high-byte-flag-trace.yml
+
+permissions:
+  contents: write
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Civ-DS
+        run: python -m pip install -e .
+      - name: Trace high-byte unit flags
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROM_ZIP="SidMeier'sCivilizationRevolution(USA)(En,Fr,De,Es,It).zip"
+          ROM_DIR="$RUNNER_TEMP/civrev-rom"
+          mkdir -p "$ROM_DIR"
+          unzip -q "$ROM_ZIP" -d "$ROM_DIR"
+          ROM="$(find "$ROM_DIR" -type f -iname '*.nds' -print -quit)"
+          test -n "$ROM"
+          python - "$ROM" <<'PY' > evidence/re/unit-high-byte-flag-trace.txt
+          import json
+          import re
+          import sys
+          from pathlib import Path
+
+          from capstone import CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_LITTLE_ENDIAN, Cs
+          from capstone.arm import ARM_OP_IMM, ARM_OP_MEM
+          from civds.units import parse_unit_records
+
+          SELECTED = {0x00100000, 0x00200000}
+          rom = Path(sys.argv[1]).read_bytes()
+          expected = json.loads(Path('profiles/civrev-us.json').read_text())['expected']
+          base = int(expected['arm9_ram_address'])
+          rom_off = int(expected['arm9_offset'])
+          size = int(expected['arm9_size'])
+          arm9 = rom[rom_off:rom_off + size]
+          units = parse_unit_records(arm9)
+
+          md = Cs(CS_ARCH_ARM, CS_MODE_ARM | CS_MODE_LITTLE_ENDIAN)
+          md.detail = True
+          md.skipdata = True
+          insns = [i for i in md.disasm(arm9, base) if i.id != 0 and i.address % 4 == 0]
+
+          print('=== MEMBERSHIP ===')
+          for mask in sorted(SELECTED):
+              names = [u.name or f'<unnamed:{u.index}>' for u in units if u.flags & mask]
+              print(f'{mask:#010x}: {names}')
+
+          def mem_disp(i):
+              if not i.mnemonic.lower().startswith('ldr'):
+                  return None
+              for op in i.operands:
+                  if op.type == ARM_OP_MEM:
+                      return int(op.mem.disp)
+              return None
+
+          def dest_reg(i):
+              if not i.operands:
+                  return None
+              op = i.operands[0]
+              return i.reg_name(op.reg) if getattr(op, 'reg', 0) else None
+
+          def imm_values(i):
+              return [int(op.imm) & 0xFFFFFFFF for op in i.operands if op.type == ARM_OP_IMM]
+
+          def near_stride(idx, radius=18):
+              lo = max(0, idx - radius)
+              return any('#0x94' in insns[j].op_str.lower() or '#148' in insns[j].op_str.lower() for j in range(lo, idx + 1))
+
+          high_loads = []
+          for idx, i in enumerate(insns):
+              if mem_disp(i) == 0x52 and i.mnemonic.lower() in {'ldrb', 'ldrsb', 'ldrh', 'ldrsh', 'ldr'}:
+                  high_loads.append((idx, i, near_stride(idx)))
+
+          print('\n=== RAW +0x52 LOADS ===')
+          print(f'count={len(high_loads)}')
+          for idx, i, stride in high_loads:
+              print(f'\nLOAD {i.address:#010x} {i.mnemonic} {i.op_str} near_0x94_stride={stride}')
+              for y in insns[max(0, idx - 14):min(len(insns), idx + 18)]:
+                  mark = ' ; LOAD' if y.address == i.address else ''
+                  print(f'  {y.address:#010x}: {y.mnemonic:8} {y.op_str}{mark}')
+
+          print('\n=== NORMALIZED HIGH-BIT TEST CANDIDATES ===')
+          candidates = []
+          for idx, load, stride in high_loads:
+              reg = dest_reg(load)
+              if not reg:
+                  continue
+              for j in range(idx + 1, min(len(insns), idx + 14)):
+                  y = insns[j]
+                  text = y.op_str.lower()
+                  if reg not in text:
+                      continue
+                  for imm in imm_values(y):
+                      normalized = imm << 16
+                      overlap = normalized & 0x00300000
+                      if overlap:
+                          candidates.append((load.address, y.address, load.mnemonic, y.mnemonic, y.op_str, normalized, stride))
+          if not candidates:
+              print('none')
+          for load_addr, test_addr, load_mn, test_mn, test_ops, normalized, stride in candidates:
+              print(f'load={load_addr:#010x} test={test_addr:#010x} {load_mn} -> {test_mn} {test_ops} normalized_mask={normalized:#010x} near_0x94_stride={stride}')
+
+          print('\n=== WORD +0x50 HIGH-BIT TEST CANDIDATES ===')
+          word_candidates = []
+          for idx, load in enumerate(insns):
+              if load.mnemonic.lower() != 'ldr' or mem_disp(load) != 0x50:
+                  continue
+              reg = dest_reg(load)
+              if not reg:
+                  continue
+              for j in range(idx + 1, min(len(insns), idx + 14)):
+                  y = insns[j]
+                  if reg not in y.op_str.lower():
+                      continue
+                  for imm in imm_values(y):
+                      if imm & 0x00300000:
+                          word_candidates.append((load.address, y.address, y.mnemonic, y.op_str, imm, near_stride(idx)))
+          if not word_candidates:
+              print('none')
+          for load_addr, test_addr, mn, ops, imm, stride in word_candidates:
+              print(f'load={load_addr:#010x} test={test_addr:#010x} {mn} {ops} mask={imm:#010x} near_0x94_stride={stride}')
+          PY
+      - name: Commit high-byte trace
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/re/unit-high-byte-flag-trace.txt
+          git commit -m "analysis: trace high-byte unit flag semantics"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
