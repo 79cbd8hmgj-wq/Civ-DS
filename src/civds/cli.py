@@ -17,6 +17,7 @@ from nds_disassembly_toolkit.errors import NdsToolkitError
 
 from civds.inventory import write_inventory_summary
 from civds.profile import write_profile
+from civds.unit_summary import write_unit_summary
 
 DEFAULT_PROFILE = Path("profiles/civrev-us.json")
 _ROM_COMMANDS = frozenset({"inspect", "extract", "rebuild"})
@@ -56,6 +57,23 @@ def _add_inventory_parser(
     summarize.add_argument("--output", type=Path, required=True)
 
 
+def _add_units_parser(
+    subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+) -> None:
+    parser = subparsers.add_parser(
+        "units",
+        help="inspect recovered Civilization Revolution unit descriptors",
+    )
+    commands = parser.add_subparsers(dest="units_command")
+    summarize = commands.add_parser(
+        "summarize",
+        help="write deterministic recovered unit metadata from the exact ROM",
+    )
+    summarize.add_argument("rom", type=Path)
+    summarize.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    summarize.add_argument("--output", type=Path, required=True)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="civds",
@@ -65,6 +83,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     _add_profile_parser(subparsers)
     _add_inventory_parser(subparsers)
+    _add_units_parser(subparsers)
     add_rom_parsers(
         subparsers,
         default_profile=DEFAULT_PROFILE,
@@ -115,6 +134,18 @@ def _run_inventory_command(arguments: argparse.Namespace) -> int:
     return 0
 
 
+def _run_units_command(arguments: argparse.Namespace) -> int:
+    if arguments.units_command != "summarize":
+        raise NdsToolkitError("a units subcommand is required")
+    output = write_unit_summary(
+        arguments.rom.expanduser().resolve(),
+        arguments.profile.expanduser().resolve(),
+        arguments.output,
+    )
+    print(f"Wrote unit summary: {output}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     parser = build_parser()
@@ -131,6 +162,8 @@ def main(argv: list[str] | None = None) -> int:
             return _run_profile_command(arguments)
         if arguments.command == "inventory":
             return _run_inventory_command(arguments)
+        if arguments.command == "units":
+            return _run_units_command(arguments)
         if arguments.command == "disasm":
             return disassembly_cli.run_disassembly_command(arguments)
         if arguments.command == "analyze":
