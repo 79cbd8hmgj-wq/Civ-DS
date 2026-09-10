@@ -6,8 +6,12 @@ __pycache__/
 
 # User-supplied ROMs and generated/rebuilt ROMs
 *.nds
+*.zip
 roms/
 build/
+
+# Third-party emulator/debugger tooling; fetch locally, do not commit
+desmume-linux-gdb-x86_64*
 
 # Extracted copyrighted assets and mutable workspaces
 work/
@@ -15,3 +19,4 @@ work/
 # Generated analysis output; durable annotations/projects can be committed selectively later
 analysis/*.json
 *.ndsre/
+src/*.egg-info/
