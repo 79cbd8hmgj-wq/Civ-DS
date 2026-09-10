@@ -1,0 +1,2728 @@
+{
+  "field_offsets": [
+    32,
+    34,
+    36,
+    38,
+    40
+  ],
+  "format_version": 1,
+  "literal_load_uses": [
+    {
+      "component": "arm9",
+      "context": [
+        {
+          "address": 34292360,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0"
+        },
+        {
+          "address": 34292364,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 34292368,
+          "is_literal_load": false,
+          "mnemonic": "beq",
+          "operands": "#0x20b42a8"
+        },
+        {
+          "address": 34292372,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x64]"
+        },
+        {
+          "address": 34292376,
+          "is_literal_load": false,
+          "mnemonic": "lsl",
+          "operands": "r1, r7, #1"
+        },
+        {
+          "address": 34292380,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r0, r0, r4"
+        },
+        {
+          "address": 34292384,
+          "is_literal_load": false,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r1, r0]"
+        },
+        {
+          "address": 34292388,
+          "is_literal_load": false,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, r7, r8, pc}"
+        },
+        {
+          "address": 34292392,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r7, r7, #1"
+        },
+        {
+          "address": 34292396,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r7, #3"
+        },
+        {
+          "address": 34292400,
+          "is_literal_load": false,
+          "mnemonic": "blt",
+          "operands": "#0x20b4270"
+        },
+        {
+          "address": 34292404,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x48]"
+        },
+        {
+          "address": 34292408,
+          "is_literal_load": true,
+          "mnemonic": "ldr",
+          "operands": "r6, [pc, #0x48]"
+        },
+        {
+          "address": 34292412,
+          "is_literal_load": false,
+          "mnemonic": "ldrsh",
+          "operands": "r7, [r0, r4]"
+        },
+        {
+          "address": 34292416,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r4, #0x2f"
+        },
+        {
+          "address": 34292420,
+          "is_literal_load": false,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r6, #0x26]"
+        },
+        {
+          "address": 34292424,
+          "is_literal_load": false,
+          "mnemonic": "tst",
+          "operands": "r7, r0"
+        },
+        {
+          "address": 34292428,
+          "is_literal_load": false,
+          "mnemonic": "beq",
+          "operands": "#0x20b42e8"
+        },
+        {
+          "address": 34292432,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r0, r4"
+        },
+        {
+          "address": 34292436,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r1, r5"
+        },
+        {
+          "address": 34292440,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x20957a0"
+        },
+        {
+          "address": 34292444,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 34292448,
+          "is_literal_load": false,
+          "mnemonic": "movne",
+          "operands": "r0, r4"
+        },
+        {
+          "address": 34292452,
+          "is_literal_load": false,
+          "mnemonic": "popne",
+          "operands": "{r4, r5, r6, r7, r8, pc}"
+        },
+        {
+          "address": 34292456,
+          "is_literal_load": false,
+          "mnemonic": "sub",
+          "operands": "r6, r6, #0x6a"
+        },
+        {
+          "address": 34292460,
+          "is_literal_load": false,
+          "mnemonic": "subs",
+          "operands": "r4, r4, #1"
+        },
+        {
+          "address": 34292464,
+          "is_literal_load": false,
+          "mnemonic": "bpl",
+          "operands": "#0x20b42c4"
+        },
+        {
+          "address": 34292468,
+          "is_literal_load": false,
+          "mnemonic": "mvn",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 34292472,
+          "is_literal_load": false,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, r7, r8, pc}"
+        },
+        {
+          "address": 34292476,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #64, #22"
+        },
+        {
+          "address": 34292480,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #96, #22"
+        },
+        {
+          "address": 34292484,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #0x19800"
+        },
+        {
+          "address": 34292488,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "sb, r7, #0xb60"
+        },
+        {
+          "address": 34292492,
+          "is_literal_load": false,
+          "mnemonic": "push",
+          "operands": "{r3, r4, r5, r6, r7, lr}"
+        },
+        {
+          "address": 34292496,
+          "is_literal_load": false,
+          "mnemonic": "sub",
+          "operands": "sp, sp, #0x48"
+        },
+        {
+          "address": 34292500,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r6, r1"
+        },
+        {
+          "address": 34292504,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r7, r0"
+        },
+        {
+          "address": 34292508,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r5, r2"
+        },
+        {
+          "address": 34292512,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0xd8]"
+        },
+        {
+          "address": 34292516,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r0, sp, #8"
+        },
+        {
+          "address": 34292520,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r2, #0x40"
+        },
+        {
+          "address": 34292524,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x214cac8"
+        },
+        {
+          "address": 34292528,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r1, [pc, #0xcc]"
+        },
+        {
+          "address": 34292532,
+          "is_literal_load": false,
+          "mnemonic": "mvn",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 34292536,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r7, r0"
+        }
+      ],
+      "instruction": "ldr r6, [pc, #0x48]",
+      "instruction_address": 34292408,
+      "instruction_set": "arm",
+      "literal_address": 34292488,
+      "literal_offset": 738056,
+      "loaded_register": "r6",
+      "nearby_accesses_via_loaded_register": [
+        {
+          "address": 34292420,
+          "is_literal_load": false,
+          "mnemonic": "ldrsh",
+          "operands": "r0, [r6, #0x26]"
+        }
+      ],
+      "target_address": 35102390,
+      "target_intra_record_offset": 0,
+      "target_name": "Future Technology",
+      "target_ordinal": 46
+    },
+    {
+      "component": "overlay_006",
+      "context": [
+        {
+          "address": 35674108,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 35674112,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r2, #0"
+        },
+        {
+          "address": 35674116,
+          "is_literal_load": false,
+          "mnemonic": "ble",
+          "operands": "#0x2205828"
+        },
+        {
+          "address": 35674120,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r0, r6, r1, lsl #2"
+        },
+        {
+          "address": 35674124,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, #0x40]"
+        },
+        {
+          "address": 35674128,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r5, r0"
+        },
+        {
+          "address": 35674132,
+          "is_literal_load": false,
+          "mnemonic": "stmibeq",
+          "operands": "r6, {r1, r4}"
+        },
+        {
+          "address": 35674136,
+          "is_literal_load": false,
+          "mnemonic": "beq",
+          "operands": "#0x2205828"
+        },
+        {
+          "address": 35674140,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r1, r1, #1"
+        },
+        {
+          "address": 35674144,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r1, r2"
+        },
+        {
+          "address": 35674148,
+          "is_literal_load": false,
+          "mnemonic": "blt",
+          "operands": "#0x2205808"
+        },
+        {
+          "address": 35674152,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 35674156,
+          "is_literal_load": true,
+          "mnemonic": "ldr",
+          "operands": "r2, [pc, #0x30]"
+        },
+        {
+          "address": 35674160,
+          "is_literal_load": false,
+          "mnemonic": "str",
+          "operands": "r0, [r6, #0x54]"
+        },
+        {
+          "address": 35674164,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r1, #1"
+        },
+        {
+          "address": 35674168,
+          "is_literal_load": false,
+          "mnemonic": "ldrsb",
+          "operands": "r0, [r2]"
+        },
+        {
+          "address": 35674172,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r1, r1, #1"
+        },
+        {
+          "address": 35674176,
+          "is_literal_load": false,
+          "mnemonic": "add",
+          "operands": "r2, r2, #0x6a"
+        },
+        {
+          "address": 35674180,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r0, #0"
+        },
+        {
+          "address": 35674184,
+          "is_literal_load": false,
+          "mnemonic": "ldrne",
+          "operands": "r0, [r6, #0x54]"
+        },
+        {
+          "address": 35674188,
+          "is_literal_load": false,
+          "mnemonic": "addne",
+          "operands": "r0, r0, #1"
+        },
+        {
+          "address": 35674192,
+          "is_literal_load": false,
+          "mnemonic": "strne",
+          "operands": "r0, [r6, #0x54]"
+        },
+        {
+          "address": 35674196,
+          "is_literal_load": false,
+          "mnemonic": "cmp",
+          "operands": "r1, #0x30"
+        },
+        {
+          "address": 35674200,
+          "is_literal_load": false,
+          "mnemonic": "blt",
+          "operands": "#0x2205838"
+        },
+        {
+          "address": 35674204,
+          "is_literal_load": false,
+          "mnemonic": "pop",
+          "operands": "{r4, r5, r6, pc}"
+        },
+        {
+          "address": 35674208,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "r8, ip, #188, #6"
+        },
+        {
+          "address": 35674212,
+          "is_literal_load": false,
+          "mnemonic": "andseq",
+          "operands": "r8, r7, #0x2a800"
+        },
+        {
+          "address": 35674216,
+          "is_literal_load": false,
+          "mnemonic": "bx",
+          "operands": "lr"
+        },
+        {
+          "address": 35674220,
+          "is_literal_load": false,
+          "mnemonic": "push",
+          "operands": "{r3, r4, lr}"
+        },
+        {
+          "address": 35674224,
+          "is_literal_load": false,
+          "mnemonic": "sub",
+          "operands": "sp, sp, #0xc"
+        },
+        {
+          "address": 35674228,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r4, r0"
+        },
+        {
+          "address": 35674232,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x504]"
+        },
+        {
+          "address": 35674236,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x20c28d0"
+        },
+        {
+          "address": 35674240,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r0, #0x17"
+        },
+        {
+          "address": 35674244,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x20c0a44"
+        },
+        {
+          "address": 35674248,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x4f8]"
+        },
+        {
+          "address": 35674252,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r1, #1"
+        },
+        {
+          "address": 35674256,
+          "is_literal_load": false,
+          "mnemonic": "ldrb",
+          "operands": "r3, [r0, #0x84]"
+        },
+        {
+          "address": 35674260,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x4f0]"
+        },
+        {
+          "address": 35674264,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r2, r1"
+        },
+        {
+          "address": 35674268,
+          "is_literal_load": false,
+          "mnemonic": "str",
+          "operands": "r3, [r4, #0xc]"
+        },
+        {
+          "address": 35674272,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 35674276,
+          "is_literal_load": false,
+          "mnemonic": "bl",
+          "operands": "#0x20a51e8"
+        },
+        {
+          "address": 35674280,
+          "is_literal_load": false,
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x4dc]"
+        },
+        {
+          "address": 35674284,
+          "is_literal_load": false,
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        }
+      ],
+      "instruction": "ldr r2, [pc, #0x30]",
+      "instruction_address": 35674156,
+      "instruction_set": "arm",
+      "literal_address": 35674212,
+      "literal_offset": 452,
+      "loaded_register": "r2",
+      "nearby_accesses_via_loaded_register": [
+        {
+          "address": 35674168,
+          "is_literal_load": false,
+          "mnemonic": "ldrsb",
+          "operands": "r0, [r2]"
+        }
+      ],
+      "target_address": 35097514,
+      "target_intra_record_offset": 0,
+      "target_name": "Alphabet",
+      "target_ordinal": 0
+    }
+  ],
+  "metadata_columns": [
+    {
+      "column": 0,
+      "field_offset": 32,
+      "non_minus_one_count": 43,
+      "rows": [
+        {
+          "name": "Alphabet",
+          "ordinal": 0,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Bronze Working",
+          "ordinal": 1,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Ceremonial Burial",
+          "ordinal": 2,
+          "resolved_technology": "Iron Working",
+          "value": 5
+        },
+        {
+          "name": "Horseback Riding",
+          "ordinal": 3,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Pottery",
+          "ordinal": 4,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Iron Working",
+          "ordinal": 5,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Masonry",
+          "ordinal": 6,
+          "resolved_technology": "Iron Working",
+          "value": 5
+        },
+        {
+          "name": "Writing",
+          "ordinal": 7,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Code of Laws",
+          "ordinal": 8,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Construction",
+          "ordinal": 9,
+          "resolved_technology": "Writing",
+          "value": 7
+        },
+        {
+          "name": "Irrigation",
+          "ordinal": 10,
+          "resolved_technology": "Iron Working",
+          "value": 5
+        },
+        {
+          "name": "Literacy",
+          "ordinal": 11,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Mathematics",
+          "ordinal": 12,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Currency",
+          "ordinal": 13,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Democracy",
+          "ordinal": 14,
+          "resolved_technology": "Mathematics",
+          "value": 12
+        },
+        {
+          "name": "Engineering",
+          "ordinal": 15,
+          "resolved_technology": "Irrigation",
+          "value": 10
+        },
+        {
+          "name": "Feudalism",
+          "ordinal": 16,
+          "resolved_technology": "Pottery",
+          "value": 4
+        },
+        {
+          "name": "Monarchy",
+          "ordinal": 17,
+          "resolved_technology": "Construction",
+          "value": 9
+        },
+        {
+          "name": "Religion",
+          "ordinal": 18,
+          "resolved_technology": "Horseback Riding",
+          "value": 3
+        },
+        {
+          "name": "Banking",
+          "ordinal": 19,
+          "resolved_technology": "Democracy",
+          "value": 14
+        },
+        {
+          "name": "University",
+          "ordinal": 20,
+          "resolved_technology": "Mathematics",
+          "value": 12
+        },
+        {
+          "name": "Invention",
+          "ordinal": 21,
+          "resolved_technology": "Mathematics",
+          "value": 12
+        },
+        {
+          "name": "Navigation",
+          "ordinal": 22,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Gunpowder",
+          "ordinal": 23,
+          "resolved_technology": "Navigation",
+          "value": 22
+        },
+        {
+          "name": "Metallurgy",
+          "ordinal": 24,
+          "resolved_technology": "Feudalism",
+          "value": 16
+        },
+        {
+          "name": "Printing Press",
+          "ordinal": 25,
+          "resolved_technology": "Invention",
+          "value": 21
+        },
+        {
+          "name": "Steam Power",
+          "ordinal": 26,
+          "resolved_technology": "Masonry",
+          "value": 6
+        },
+        {
+          "name": "Combustion",
+          "ordinal": 27,
+          "resolved_technology": "Combustion",
+          "value": 27
+        },
+        {
+          "name": "Electricity",
+          "ordinal": 28,
+          "resolved_technology": "Printing Press",
+          "value": 25
+        },
+        {
+          "name": "Industrialization",
+          "ordinal": 29,
+          "resolved_technology": "Combustion",
+          "value": 27
+        },
+        {
+          "name": "Railroad",
+          "ordinal": 30,
+          "resolved_technology": "Combustion",
+          "value": 27
+        },
+        {
+          "name": "Communism",
+          "ordinal": 31,
+          "resolved_technology": "Railroad",
+          "value": 30
+        },
+        {
+          "name": "Flight",
+          "ordinal": 32,
+          "resolved_technology": "Electricity",
+          "value": 28
+        },
+        {
+          "name": "Mass Production",
+          "ordinal": 33,
+          "resolved_technology": "Communism",
+          "value": 31
+        },
+        {
+          "name": "Steel",
+          "ordinal": 34,
+          "resolved_technology": "Printing Press",
+          "value": 25
+        },
+        {
+          "name": "The Corporation",
+          "ordinal": 35,
+          "resolved_technology": "University",
+          "value": 20
+        },
+        {
+          "name": "Atomic Theory",
+          "ordinal": 36,
+          "resolved_technology": "Invention",
+          "value": 21
+        },
+        {
+          "name": "Electronics",
+          "ordinal": 37,
+          "resolved_technology": "Industrialization",
+          "value": 29
+        },
+        {
+          "name": "Mass Media",
+          "ordinal": 38,
+          "resolved_technology": "Steam Power",
+          "value": 26
+        },
+        {
+          "name": "The Automobile",
+          "ordinal": 39,
+          "resolved_technology": "Electricity",
+          "value": 28
+        },
+        {
+          "name": "Advanced Flight",
+          "ordinal": 40,
+          "resolved_technology": "Mass Production",
+          "value": 33
+        },
+        {
+          "name": "Nuclear Power",
+          "ordinal": 41,
+          "resolved_technology": "Electronics",
+          "value": 37
+        },
+        {
+          "name": "Networking",
+          "ordinal": 42,
+          "resolved_technology": "Mass Media",
+          "value": 38
+        },
+        {
+          "name": "Space Flight",
+          "ordinal": 43,
+          "resolved_technology": "Nuclear Power",
+          "value": 41
+        },
+        {
+          "name": "Globalization",
+          "ordinal": 44,
+          "resolved_technology": "The Automobile",
+          "value": 39
+        },
+        {
+          "name": "Superconductor",
+          "ordinal": 45,
+          "resolved_technology": "Steel",
+          "value": 34
+        },
+        {
+          "name": "Future Technology",
+          "ordinal": 46,
+          "resolved_technology": "Future Technology",
+          "value": 46
+        }
+      ]
+    },
+    {
+      "column": 1,
+      "field_offset": 34,
+      "non_minus_one_count": 38,
+      "rows": [
+        {
+          "name": "Alphabet",
+          "ordinal": 0,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Bronze Working",
+          "ordinal": 1,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Ceremonial Burial",
+          "ordinal": 2,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Horseback Riding",
+          "ordinal": 3,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Pottery",
+          "ordinal": 4,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Iron Working",
+          "ordinal": 5,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Masonry",
+          "ordinal": 6,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Writing",
+          "ordinal": 7,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Code of Laws",
+          "ordinal": 8,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Construction",
+          "ordinal": 9,
+          "resolved_technology": "Masonry",
+          "value": 6
+        },
+        {
+          "name": "Irrigation",
+          "ordinal": 10,
+          "resolved_technology": "Writing",
+          "value": 7
+        },
+        {
+          "name": "Literacy",
+          "ordinal": 11,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Mathematics",
+          "ordinal": 12,
+          "resolved_technology": "Writing",
+          "value": 7
+        },
+        {
+          "name": "Currency",
+          "ordinal": 13,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Democracy",
+          "ordinal": 14,
+          "resolved_technology": "Construction",
+          "value": 9
+        },
+        {
+          "name": "Engineering",
+          "ordinal": 15,
+          "resolved_technology": "Currency",
+          "value": 13
+        },
+        {
+          "name": "Feudalism",
+          "ordinal": 16,
+          "resolved_technology": "Religion",
+          "value": 18
+        },
+        {
+          "name": "Monarchy",
+          "ordinal": 17,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Religion",
+          "ordinal": 18,
+          "resolved_technology": "Religion",
+          "value": 18
+        },
+        {
+          "name": "Banking",
+          "ordinal": 19,
+          "resolved_technology": "Construction",
+          "value": 9
+        },
+        {
+          "name": "University",
+          "ordinal": 20,
+          "resolved_technology": "Currency",
+          "value": 13
+        },
+        {
+          "name": "Invention",
+          "ordinal": 21,
+          "resolved_technology": "Feudalism",
+          "value": 16
+        },
+        {
+          "name": "Navigation",
+          "ordinal": 22,
+          "resolved_technology": "Currency",
+          "value": 13
+        },
+        {
+          "name": "Gunpowder",
+          "ordinal": 23,
+          "resolved_technology": "Monarchy",
+          "value": 17
+        },
+        {
+          "name": "Metallurgy",
+          "ordinal": 24,
+          "resolved_technology": "Masonry",
+          "value": 6
+        },
+        {
+          "name": "Printing Press",
+          "ordinal": 25,
+          "resolved_technology": "Banking",
+          "value": 19
+        },
+        {
+          "name": "Steam Power",
+          "ordinal": 26,
+          "resolved_technology": "Navigation",
+          "value": 22
+        },
+        {
+          "name": "Combustion",
+          "ordinal": 27,
+          "resolved_technology": "Metallurgy",
+          "value": 24
+        },
+        {
+          "name": "Electricity",
+          "ordinal": 28,
+          "resolved_technology": "Feudalism",
+          "value": 16
+        },
+        {
+          "name": "Industrialization",
+          "ordinal": 29,
+          "resolved_technology": "University",
+          "value": 20
+        },
+        {
+          "name": "Railroad",
+          "ordinal": 30,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Communism",
+          "ordinal": 31,
+          "resolved_technology": "Invention",
+          "value": 21
+        },
+        {
+          "name": "Flight",
+          "ordinal": 32,
+          "resolved_technology": "Printing Press",
+          "value": 25
+        },
+        {
+          "name": "Mass Production",
+          "ordinal": 33,
+          "resolved_technology": "Railroad",
+          "value": 30
+        },
+        {
+          "name": "Steel",
+          "ordinal": 34,
+          "resolved_technology": "Combustion",
+          "value": 27
+        },
+        {
+          "name": "The Corporation",
+          "ordinal": 35,
+          "resolved_technology": "Railroad",
+          "value": 30
+        },
+        {
+          "name": "Atomic Theory",
+          "ordinal": 36,
+          "resolved_technology": "Navigation",
+          "value": 22
+        },
+        {
+          "name": "Electronics",
+          "ordinal": 37,
+          "resolved_technology": "Atomic Theory",
+          "value": 36
+        },
+        {
+          "name": "Mass Media",
+          "ordinal": 38,
+          "resolved_technology": "Atomic Theory",
+          "value": 36
+        },
+        {
+          "name": "The Automobile",
+          "ordinal": 39,
+          "resolved_technology": "The Corporation",
+          "value": 35
+        },
+        {
+          "name": "Advanced Flight",
+          "ordinal": 40,
+          "resolved_technology": "Railroad",
+          "value": 30
+        },
+        {
+          "name": "Nuclear Power",
+          "ordinal": 41,
+          "resolved_technology": "Steel",
+          "value": 34
+        },
+        {
+          "name": "Networking",
+          "ordinal": 42,
+          "resolved_technology": "Atomic Theory",
+          "value": 36
+        },
+        {
+          "name": "Space Flight",
+          "ordinal": 43,
+          "resolved_technology": "Mass Media",
+          "value": 38
+        },
+        {
+          "name": "Globalization",
+          "ordinal": 44,
+          "resolved_technology": "Space Flight",
+          "value": 43
+        },
+        {
+          "name": "Superconductor",
+          "ordinal": 45,
+          "resolved_technology": "Globalization",
+          "value": 44
+        },
+        {
+          "name": "Future Technology",
+          "ordinal": 46,
+          "resolved_technology": "Superconductor",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "column": 2,
+      "field_offset": 36,
+      "non_minus_one_count": 12,
+      "rows": [
+        {
+          "name": "Alphabet",
+          "ordinal": 0,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Bronze Working",
+          "ordinal": 1,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Ceremonial Burial",
+          "ordinal": 2,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Horseback Riding",
+          "ordinal": 3,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Pottery",
+          "ordinal": 4,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Iron Working",
+          "ordinal": 5,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Masonry",
+          "ordinal": 6,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Writing",
+          "ordinal": 7,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Code of Laws",
+          "ordinal": 8,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Construction",
+          "ordinal": 9,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Irrigation",
+          "ordinal": 10,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Literacy",
+          "ordinal": 11,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Mathematics",
+          "ordinal": 12,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Currency",
+          "ordinal": 13,
+          "resolved_technology": "Construction",
+          "value": 9
+        },
+        {
+          "name": "Democracy",
+          "ordinal": 14,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Engineering",
+          "ordinal": 15,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Feudalism",
+          "ordinal": 16,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Monarchy",
+          "ordinal": 17,
+          "resolved_technology": "Horseback Riding",
+          "value": 3
+        },
+        {
+          "name": "Religion",
+          "ordinal": 18,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Banking",
+          "ordinal": 19,
+          "resolved_technology": "Mathematics",
+          "value": 12
+        },
+        {
+          "name": "University",
+          "ordinal": 20,
+          "resolved_technology": "Engineering",
+          "value": 15
+        },
+        {
+          "name": "Invention",
+          "ordinal": 21,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Navigation",
+          "ordinal": 22,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Gunpowder",
+          "ordinal": 23,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Metallurgy",
+          "ordinal": 24,
+          "resolved_technology": "Invention",
+          "value": 21
+        },
+        {
+          "name": "Printing Press",
+          "ordinal": 25,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Steam Power",
+          "ordinal": 26,
+          "resolved_technology": "Feudalism",
+          "value": 16
+        },
+        {
+          "name": "Combustion",
+          "ordinal": 27,
+          "resolved_technology": "Printing Press",
+          "value": 25
+        },
+        {
+          "name": "Electricity",
+          "ordinal": 28,
+          "resolved_technology": "Combustion",
+          "value": 27
+        },
+        {
+          "name": "Industrialization",
+          "ordinal": 29,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Railroad",
+          "ordinal": 30,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Communism",
+          "ordinal": 31,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Flight",
+          "ordinal": 32,
+          "resolved_technology": "Navigation",
+          "value": 22
+        },
+        {
+          "name": "Mass Production",
+          "ordinal": 33,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Steel",
+          "ordinal": 34,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "The Corporation",
+          "ordinal": 35,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Atomic Theory",
+          "ordinal": 36,
+          "resolved_technology": "Industrialization",
+          "value": 29
+        },
+        {
+          "name": "Electronics",
+          "ordinal": 37,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Mass Media",
+          "ordinal": 38,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "The Automobile",
+          "ordinal": 39,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Advanced Flight",
+          "ordinal": 40,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Nuclear Power",
+          "ordinal": 41,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Networking",
+          "ordinal": 42,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Space Flight",
+          "ordinal": 43,
+          "resolved_technology": "Networking",
+          "value": 42
+        },
+        {
+          "name": "Globalization",
+          "ordinal": 44,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Superconductor",
+          "ordinal": 45,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Future Technology",
+          "ordinal": 46,
+          "resolved_technology": "Nuclear Power",
+          "value": 41
+        }
+      ]
+    },
+    {
+      "column": 3,
+      "field_offset": 38,
+      "non_minus_one_count": 43,
+      "rows": [
+        {
+          "name": "Alphabet",
+          "ordinal": 0,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Bronze Working",
+          "ordinal": 1,
+          "resolved_technology": "Engineering",
+          "value": 15
+        },
+        {
+          "name": "Ceremonial Burial",
+          "ordinal": 2,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Horseback Riding",
+          "ordinal": 3,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Pottery",
+          "ordinal": 4,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Iron Working",
+          "ordinal": 5,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Masonry",
+          "ordinal": 6,
+          "resolved_technology": "Iron Working",
+          "value": 5
+        },
+        {
+          "name": "Writing",
+          "ordinal": 7,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Code of Laws",
+          "ordinal": 8,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Construction",
+          "ordinal": 9,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Irrigation",
+          "ordinal": 10,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Literacy",
+          "ordinal": 11,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Mathematics",
+          "ordinal": 12,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Currency",
+          "ordinal": 13,
+          "resolved_technology": "Pottery",
+          "value": 4
+        },
+        {
+          "name": "Democracy",
+          "ordinal": 14,
+          "resolved_technology": "Writing",
+          "value": 7
+        },
+        {
+          "name": "Engineering",
+          "ordinal": 15,
+          "resolved_technology": "Horseback Riding",
+          "value": 3
+        },
+        {
+          "name": "Feudalism",
+          "ordinal": 16,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Monarchy",
+          "ordinal": 17,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Religion",
+          "ordinal": 18,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Banking",
+          "ordinal": 19,
+          "resolved_technology": "Pottery",
+          "value": 4
+        },
+        {
+          "name": "University",
+          "ordinal": 20,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Invention",
+          "ordinal": 21,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Navigation",
+          "ordinal": 22,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Gunpowder",
+          "ordinal": 23,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Metallurgy",
+          "ordinal": 24,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Printing Press",
+          "ordinal": 25,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "Steam Power",
+          "ordinal": 26,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Combustion",
+          "ordinal": 27,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Electricity",
+          "ordinal": 28,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Industrialization",
+          "ordinal": 29,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Railroad",
+          "ordinal": 30,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Communism",
+          "ordinal": 31,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Flight",
+          "ordinal": 32,
+          "resolved_technology": "Horseback Riding",
+          "value": 3
+        },
+        {
+          "name": "Mass Production",
+          "ordinal": 33,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Steel",
+          "ordinal": 34,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "The Corporation",
+          "ordinal": 35,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Atomic Theory",
+          "ordinal": 36,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Electronics",
+          "ordinal": 37,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Mass Media",
+          "ordinal": 38,
+          "resolved_technology": "Code of Laws",
+          "value": 8
+        },
+        {
+          "name": "The Automobile",
+          "ordinal": 39,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Advanced Flight",
+          "ordinal": 40,
+          "resolved_technology": "Horseback Riding",
+          "value": 3
+        },
+        {
+          "name": "Nuclear Power",
+          "ordinal": 41,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Networking",
+          "ordinal": 42,
+          "resolved_technology": "Pottery",
+          "value": 4
+        },
+        {
+          "name": "Space Flight",
+          "ordinal": 43,
+          "resolved_technology": "Ceremonial Burial",
+          "value": 2
+        },
+        {
+          "name": "Globalization",
+          "ordinal": 44,
+          "resolved_technology": "Bronze Working",
+          "value": 1
+        },
+        {
+          "name": "Superconductor",
+          "ordinal": 45,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Future Technology",
+          "ordinal": 46,
+          "resolved_technology": null,
+          "value": -1
+        }
+      ]
+    },
+    {
+      "column": 4,
+      "field_offset": 40,
+      "non_minus_one_count": 0,
+      "rows": [
+        {
+          "name": "Alphabet",
+          "ordinal": 0,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Bronze Working",
+          "ordinal": 1,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Ceremonial Burial",
+          "ordinal": 2,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Horseback Riding",
+          "ordinal": 3,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Pottery",
+          "ordinal": 4,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Iron Working",
+          "ordinal": 5,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Masonry",
+          "ordinal": 6,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Writing",
+          "ordinal": 7,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Code of Laws",
+          "ordinal": 8,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Construction",
+          "ordinal": 9,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Irrigation",
+          "ordinal": 10,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Literacy",
+          "ordinal": 11,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Mathematics",
+          "ordinal": 12,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Currency",
+          "ordinal": 13,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Democracy",
+          "ordinal": 14,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Engineering",
+          "ordinal": 15,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Feudalism",
+          "ordinal": 16,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Monarchy",
+          "ordinal": 17,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Religion",
+          "ordinal": 18,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Banking",
+          "ordinal": 19,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "University",
+          "ordinal": 20,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Invention",
+          "ordinal": 21,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Navigation",
+          "ordinal": 22,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Gunpowder",
+          "ordinal": 23,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Metallurgy",
+          "ordinal": 24,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Printing Press",
+          "ordinal": 25,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Steam Power",
+          "ordinal": 26,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Combustion",
+          "ordinal": 27,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Electricity",
+          "ordinal": 28,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Industrialization",
+          "ordinal": 29,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Railroad",
+          "ordinal": 30,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Communism",
+          "ordinal": 31,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Flight",
+          "ordinal": 32,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Mass Production",
+          "ordinal": 33,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Steel",
+          "ordinal": 34,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "The Corporation",
+          "ordinal": 35,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Atomic Theory",
+          "ordinal": 36,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Electronics",
+          "ordinal": 37,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Mass Media",
+          "ordinal": 38,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "The Automobile",
+          "ordinal": 39,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Advanced Flight",
+          "ordinal": 40,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Nuclear Power",
+          "ordinal": 41,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Networking",
+          "ordinal": 42,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Space Flight",
+          "ordinal": 43,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Globalization",
+          "ordinal": 44,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Superconductor",
+          "ordinal": 45,
+          "resolved_technology": null,
+          "value": -1
+        },
+        {
+          "name": "Future Technology",
+          "ordinal": 46,
+          "resolved_technology": null,
+          "value": -1
+        }
+      ]
+    }
+  ],
+  "pointer_literals": [
+    {
+      "component": "arm9",
+      "literal_address": 34292488,
+      "literal_offset": 738056,
+      "target_address": 35102390,
+      "target_intra_record_offset": 0,
+      "target_name": "Future Technology",
+      "target_ordinal": 46
+    },
+    {
+      "component": "overlay_006",
+      "literal_address": 35674212,
+      "literal_offset": 452,
+      "target_address": 35097514,
+      "target_intra_record_offset": 0,
+      "target_name": "Alphabet",
+      "target_ordinal": 0
+    }
+  ],
+  "records": [
+    {
+      "address": 35097514,
+      "effect": "",
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        2,
+        -1
+      ],
+      "name": "Alphabet",
+      "offset": 1543082,
+      "ordinal": 0
+    },
+    {
+      "address": 35097620,
+      "effect": "",
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        15,
+        -1
+      ],
+      "name": "Bronze Working",
+      "offset": 1543188,
+      "ordinal": 1
+    },
+    {
+      "address": 35097726,
+      "effect": "",
+      "metadata_s16": [
+        5,
+        -1,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Ceremonial Burial",
+      "offset": 1543294,
+      "ordinal": 2
+    },
+    {
+      "address": 35097832,
+      "effect": "",
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Horseback Riding",
+      "offset": 1543400,
+      "ordinal": 3
+    },
+    {
+      "address": 35097938,
+      "effect": "",
+      "metadata_s16": [
+        -1,
+        -1,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Pottery",
+      "offset": 1543506,
+      "ordinal": 4
+    },
+    {
+      "address": 35098044,
+      "effect": "",
+      "metadata_s16": [
+        2,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Iron Working",
+      "offset": 1543612,
+      "ordinal": 5
+    },
+    {
+      "address": 35098150,
+      "effect": "",
+      "metadata_s16": [
+        5,
+        -1,
+        -1,
+        5,
+        -1
+      ],
+      "name": "Masonry",
+      "offset": 1543718,
+      "ordinal": 6
+    },
+    {
+      "address": 35098256,
+      "effect": "",
+      "metadata_s16": [
+        1,
+        1,
+        -1,
+        2,
+        -1
+      ],
+      "name": "Writing",
+      "offset": 1543824,
+      "ordinal": 7
+    },
+    {
+      "address": 35098362,
+      "effect": "Govt: Republic",
+      "metadata_s16": [
+        8,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Code of Laws",
+      "offset": 1543930,
+      "ordinal": 8
+    },
+    {
+      "address": 35098468,
+      "effect": "",
+      "metadata_s16": [
+        7,
+        6,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Construction",
+      "offset": 1544036,
+      "ordinal": 9
+    },
+    {
+      "address": 35098574,
+      "effect": "+1 food from river squares",
+      "metadata_s16": [
+        5,
+        7,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Irrigation",
+      "offset": 1544142,
+      "ordinal": 10
+    },
+    {
+      "address": 35098680,
+      "effect": "",
+      "metadata_s16": [
+        1,
+        8,
+        -1,
+        2,
+        -1
+      ],
+      "name": "Literacy",
+      "offset": 1544248,
+      "ordinal": 11
+    },
+    {
+      "address": 35098786,
+      "effect": "",
+      "metadata_s16": [
+        8,
+        7,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Mathematics",
+      "offset": 1544354,
+      "ordinal": 12
+    },
+    {
+      "address": 35098892,
+      "effect": "",
+      "metadata_s16": [
+        2,
+        -1,
+        9,
+        4,
+        -1
+      ],
+      "name": "Currency",
+      "offset": 1544460,
+      "ordinal": 13
+    },
+    {
+      "address": 35098998,
+      "effect": "Govt: Democracy",
+      "metadata_s16": [
+        12,
+        9,
+        -1,
+        7,
+        -1
+      ],
+      "name": "Democracy",
+      "offset": 1544566,
+      "ordinal": 14
+    },
+    {
+      "address": 35099104,
+      "effect": "",
+      "metadata_s16": [
+        10,
+        13,
+        -1,
+        3,
+        -1
+      ],
+      "name": "Engineering",
+      "offset": 1544672,
+      "ordinal": 15
+    },
+    {
+      "address": 35099210,
+      "effect": "",
+      "metadata_s16": [
+        4,
+        18,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Feudalism",
+      "offset": 1544778,
+      "ordinal": 16
+    },
+    {
+      "address": 35099316,
+      "effect": "Govt: Monarchy",
+      "metadata_s16": [
+        9,
+        8,
+        3,
+        8,
+        -1
+      ],
+      "name": "Monarchy",
+      "offset": 1544884,
+      "ordinal": 17
+    },
+    {
+      "address": 35099422,
+      "effect": "Govt: Fundementalism",
+      "metadata_s16": [
+        3,
+        18,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Religion",
+      "offset": 1544990,
+      "ordinal": 18
+    },
+    {
+      "address": 35099528,
+      "effect": "",
+      "metadata_s16": [
+        14,
+        9,
+        12,
+        4,
+        -1
+      ],
+      "name": "Banking",
+      "offset": 1545096,
+      "ordinal": 19
+    },
+    {
+      "address": 35099634,
+      "effect": "",
+      "metadata_s16": [
+        12,
+        13,
+        15,
+        2,
+        -1
+      ],
+      "name": "University",
+      "offset": 1545202,
+      "ordinal": 20
+    },
+    {
+      "address": 35099740,
+      "effect": "",
+      "metadata_s16": [
+        12,
+        16,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Invention",
+      "offset": 1545308,
+      "ordinal": 21
+    },
+    {
+      "address": 35099846,
+      "effect": "",
+      "metadata_s16": [
+        8,
+        13,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Navigation",
+      "offset": 1545414,
+      "ordinal": 22
+    },
+    {
+      "address": 35099952,
+      "effect": "",
+      "metadata_s16": [
+        22,
+        17,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Gunpowder",
+      "offset": 1545520,
+      "ordinal": 23
+    },
+    {
+      "address": 35100058,
+      "effect": "",
+      "metadata_s16": [
+        16,
+        6,
+        21,
+        1,
+        -1
+      ],
+      "name": "Metallurgy",
+      "offset": 1545626,
+      "ordinal": 24
+    },
+    {
+      "address": 35100164,
+      "effect": "",
+      "metadata_s16": [
+        21,
+        19,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Printing Press",
+      "offset": 1545732,
+      "ordinal": 25
+    },
+    {
+      "address": 35100270,
+      "effect": "",
+      "metadata_s16": [
+        6,
+        22,
+        16,
+        1,
+        -1
+      ],
+      "name": "Steam Power",
+      "offset": 1545838,
+      "ordinal": 26
+    },
+    {
+      "address": 35100376,
+      "effect": "",
+      "metadata_s16": [
+        27,
+        24,
+        25,
+        1,
+        -1
+      ],
+      "name": "Combustion",
+      "offset": 1545944,
+      "ordinal": 27
+    },
+    {
+      "address": 35100482,
+      "effect": "",
+      "metadata_s16": [
+        25,
+        16,
+        27,
+        2,
+        -1
+      ],
+      "name": "Electricity",
+      "offset": 1546050,
+      "ordinal": 28
+    },
+    {
+      "address": 35100588,
+      "effect": "",
+      "metadata_s16": [
+        27,
+        20,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Industrialization",
+      "offset": 1546156,
+      "ordinal": 29
+    },
+    {
+      "address": 35100694,
+      "effect": "",
+      "metadata_s16": [
+        27,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Railroad",
+      "offset": 1546262,
+      "ordinal": 30
+    },
+    {
+      "address": 35100800,
+      "effect": "Govt: Communism",
+      "metadata_s16": [
+        30,
+        21,
+        -1,
+        -1,
+        -1
+      ],
+      "name": "Communism",
+      "offset": 1546368,
+      "ordinal": 31
+    },
+    {
+      "address": 35100906,
+      "effect": "",
+      "metadata_s16": [
+        28,
+        25,
+        22,
+        3,
+        -1
+      ],
+      "name": "Flight",
+      "offset": 1546474,
+      "ordinal": 32
+    },
+    {
+      "address": 35101012,
+      "effect": "",
+      "metadata_s16": [
+        31,
+        30,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Mass Production",
+      "offset": 1546580,
+      "ordinal": 33
+    },
+    {
+      "address": 35101118,
+      "effect": "",
+      "metadata_s16": [
+        25,
+        27,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Steel",
+      "offset": 1546686,
+      "ordinal": 34
+    },
+    {
+      "address": 35101224,
+      "effect": "",
+      "metadata_s16": [
+        20,
+        30,
+        -1,
+        -1,
+        -1
+      ],
+      "name": "The Corporation",
+      "offset": 1546792,
+      "ordinal": 35
+    },
+    {
+      "address": 35101330,
+      "effect": "",
+      "metadata_s16": [
+        21,
+        22,
+        29,
+        2,
+        -1
+      ],
+      "name": "Atomic Theory",
+      "offset": 1546898,
+      "ordinal": 36
+    },
+    {
+      "address": 35101436,
+      "effect": "",
+      "metadata_s16": [
+        29,
+        36,
+        -1,
+        2,
+        -1
+      ],
+      "name": "Electronics",
+      "offset": 1547004,
+      "ordinal": 37
+    },
+    {
+      "address": 35101542,
+      "effect": "",
+      "metadata_s16": [
+        26,
+        36,
+        -1,
+        8,
+        -1
+      ],
+      "name": "Mass Media",
+      "offset": 1547110,
+      "ordinal": 38
+    },
+    {
+      "address": 35101648,
+      "effect": "",
+      "metadata_s16": [
+        28,
+        35,
+        -1,
+        1,
+        -1
+      ],
+      "name": "The Automobile",
+      "offset": 1547216,
+      "ordinal": 39
+    },
+    {
+      "address": 35101754,
+      "effect": "",
+      "metadata_s16": [
+        33,
+        30,
+        -1,
+        3,
+        -1
+      ],
+      "name": "Advanced Flight",
+      "offset": 1547322,
+      "ordinal": 40
+    },
+    {
+      "address": 35101860,
+      "effect": "",
+      "metadata_s16": [
+        37,
+        34,
+        -1,
+        2,
+        -1
+      ],
+      "name": "Nuclear Power",
+      "offset": 1547428,
+      "ordinal": 41
+    },
+    {
+      "address": 35101966,
+      "effect": "",
+      "metadata_s16": [
+        38,
+        36,
+        -1,
+        4,
+        -1
+      ],
+      "name": "Networking",
+      "offset": 1547534,
+      "ordinal": 42
+    },
+    {
+      "address": 35102072,
+      "effect": "",
+      "metadata_s16": [
+        41,
+        38,
+        42,
+        2,
+        -1
+      ],
+      "name": "Space Flight",
+      "offset": 1547640,
+      "ordinal": 43
+    },
+    {
+      "address": 35102178,
+      "effect": "",
+      "metadata_s16": [
+        39,
+        43,
+        -1,
+        1,
+        -1
+      ],
+      "name": "Globalization",
+      "offset": 1547746,
+      "ordinal": 44
+    },
+    {
+      "address": 35102284,
+      "effect": "",
+      "metadata_s16": [
+        34,
+        44,
+        -1,
+        -1,
+        -1
+      ],
+      "name": "Superconductor",
+      "offset": 1547852,
+      "ordinal": 45
+    },
+    {
+      "address": 35102390,
+      "effect": "",
+      "metadata_s16": [
+        46,
+        45,
+        41,
+        -1,
+        -1
+      ],
+      "name": "Future Technology",
+      "offset": 1547958,
+      "ordinal": 46
+    }
+  ],
+  "table_end": 35102496,
+  "table_start": 35097514,
+  "technology_count": 47
+}

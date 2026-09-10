@@ -1,0 +1,3663 @@
+{
+  "candidate_layout": {
+    "metadata": {
+      "offset": 64,
+      "size": 20
+    },
+    "record_size": 148,
+    "slot0": {
+      "offset": 0,
+      "size": 32
+    },
+    "slot1": {
+      "offset": 32,
+      "size": 32
+    },
+    "slot2": {
+      "offset": 84,
+      "size": 32
+    },
+    "slot3": {
+      "offset": 116,
+      "size": 32
+    }
+  },
+  "first_invalid_record": {
+    "address": 35108120,
+    "index": 38,
+    "reason": "slot_validation_failed",
+    "slot_hex": [
+      "507972616d696473206f66204567797074000000000000000000000000000000",
+      "0000000000000000000000000000000000000000000000000000000000000000",
+      "0000000000000000000000000000000000000000000000000000000000000000",
+      "00000000000000000000000000000000000000000000507972616d69645f616e"
+    ]
+  },
+  "format_version": 1,
+  "known_stride_validation": [
+    {
+      "actual": "Settlers",
+      "address": 35102496,
+      "expected": "Settlers",
+      "index": 0,
+      "matches": true
+    },
+    {
+      "actual": "Warrior",
+      "address": 35103384,
+      "expected": "Warrior",
+      "index": 6,
+      "matches": true
+    },
+    {
+      "actual": "Militia",
+      "address": 35103532,
+      "expected": "Militia",
+      "index": 7,
+      "matches": true
+    },
+    {
+      "actual": "Legion",
+      "address": 35103680,
+      "expected": "Legion",
+      "index": 8,
+      "matches": true
+    },
+    {
+      "actual": "Archer",
+      "address": 35103828,
+      "expected": "Archer",
+      "index": 9,
+      "matches": true
+    },
+    {
+      "actual": "Riflemen",
+      "address": 35103976,
+      "expected": "Riflemen",
+      "index": 10,
+      "matches": true
+    },
+    {
+      "actual": "Modern Infantry",
+      "address": 35104124,
+      "expected": "Modern Infantry",
+      "index": 11,
+      "matches": true
+    },
+    {
+      "actual": "Horsemen",
+      "address": 35104272,
+      "expected": "Horsemen",
+      "index": 12,
+      "matches": true
+    },
+    {
+      "actual": "Knights",
+      "address": 35104420,
+      "expected": "Knights",
+      "index": 13,
+      "matches": true
+    },
+    {
+      "actual": "Tank",
+      "address": 35104568,
+      "expected": "Tank",
+      "index": 14,
+      "matches": true
+    },
+    {
+      "actual": "Phalanx",
+      "address": 35104716,
+      "expected": "Phalanx",
+      "index": 15,
+      "matches": true
+    },
+    {
+      "actual": "Catapult",
+      "address": 35104864,
+      "expected": "Catapult",
+      "index": 16,
+      "matches": true
+    },
+    {
+      "actual": "Cannon",
+      "address": 35105012,
+      "expected": "Cannon",
+      "index": 17,
+      "matches": true
+    },
+    {
+      "actual": "Artillery",
+      "address": 35105160,
+      "expected": "Artillery",
+      "index": 18,
+      "matches": true
+    },
+    {
+      "actual": "Submarine",
+      "address": 35105308,
+      "expected": "Submarine",
+      "index": 19,
+      "matches": true
+    },
+    {
+      "actual": "Galley",
+      "address": 35105456,
+      "expected": "Galley",
+      "index": 20,
+      "matches": true
+    },
+    {
+      "actual": "Galleon",
+      "address": 35105604,
+      "expected": "Galleon",
+      "index": 21,
+      "matches": true
+    },
+    {
+      "actual": "Cruiser",
+      "address": 35105752,
+      "expected": "Cruiser",
+      "index": 22,
+      "matches": true
+    },
+    {
+      "actual": "Battleship",
+      "address": 35105900,
+      "expected": "Battleship",
+      "index": 23,
+      "matches": true
+    },
+    {
+      "actual": "Bomber",
+      "address": 35106196,
+      "expected": "Bomber",
+      "index": 25,
+      "matches": true
+    },
+    {
+      "actual": "Fighter",
+      "address": 35106344,
+      "expected": "Fighter",
+      "index": 26,
+      "matches": true
+    },
+    {
+      "actual": "Caravan",
+      "address": 35106788,
+      "expected": "Caravan",
+      "index": 29,
+      "matches": true
+    }
+  ],
+  "metadata_byte_columns": [
+    {
+      "distinct": 10,
+      "max": 18,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 16,
+          "value": 0
+        },
+        {
+          "count": 7,
+          "value": 1
+        },
+        {
+          "count": 3,
+          "value": 2
+        },
+        {
+          "count": 3,
+          "value": 4
+        },
+        {
+          "count": 3,
+          "value": 6
+        },
+        {
+          "count": 2,
+          "value": 12
+        },
+        {
+          "count": 1,
+          "value": 3
+        },
+        {
+          "count": 1,
+          "value": 10
+        }
+      ],
+      "offset": 64
+    },
+    {
+      "distinct": 9,
+      "max": 18,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 13,
+          "value": 0
+        },
+        {
+          "count": 10,
+          "value": 1
+        },
+        {
+          "count": 6,
+          "value": 2
+        },
+        {
+          "count": 3,
+          "value": 3
+        },
+        {
+          "count": 2,
+          "value": 6
+        },
+        {
+          "count": 1,
+          "value": 5
+        },
+        {
+          "count": 1,
+          "value": 8
+        },
+        {
+          "count": 1,
+          "value": 18
+        }
+      ],
+      "offset": 65
+    },
+    {
+      "distinct": 8,
+      "max": 40,
+      "min": 1,
+      "most_common": [
+        {
+          "count": 17,
+          "value": 2
+        },
+        {
+          "count": 12,
+          "value": 1
+        },
+        {
+          "count": 3,
+          "value": 3
+        },
+        {
+          "count": 2,
+          "value": 4
+        },
+        {
+          "count": 1,
+          "value": 5
+        },
+        {
+          "count": 1,
+          "value": 6
+        },
+        {
+          "count": 1,
+          "value": 8
+        },
+        {
+          "count": 1,
+          "value": 40
+        }
+      ],
+      "offset": 66
+    },
+    {
+      "distinct": 3,
+      "max": 4,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 36,
+          "value": 0
+        },
+        {
+          "count": 1,
+          "value": 4
+        },
+        {
+          "count": 1,
+          "value": 2
+        }
+      ],
+      "offset": 67
+    },
+    {
+      "distinct": 11,
+      "max": 50,
+      "min": 1,
+      "most_common": [
+        {
+          "count": 10,
+          "value": 3
+        },
+        {
+          "count": 6,
+          "value": 6
+        },
+        {
+          "count": 5,
+          "value": 1
+        },
+        {
+          "count": 4,
+          "value": 4
+        },
+        {
+          "count": 4,
+          "value": 5
+        },
+        {
+          "count": 3,
+          "value": 2
+        },
+        {
+          "count": 2,
+          "value": 10
+        },
+        {
+          "count": 1,
+          "value": 8
+        }
+      ],
+      "offset": 68
+    },
+    {
+      "distinct": 10,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 20,
+          "value": 255
+        },
+        {
+          "count": 3,
+          "value": 4
+        },
+        {
+          "count": 3,
+          "value": 9
+        },
+        {
+          "count": 3,
+          "value": 3
+        },
+        {
+          "count": 3,
+          "value": 6
+        },
+        {
+          "count": 2,
+          "value": 0
+        },
+        {
+          "count": 1,
+          "value": 1
+        },
+        {
+          "count": 1,
+          "value": 2
+        }
+      ],
+      "offset": 69
+    },
+    {
+      "distinct": 3,
+      "max": 2,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 16,
+          "value": 2
+        },
+        {
+          "count": 12,
+          "value": 1
+        },
+        {
+          "count": 10,
+          "value": 0
+        }
+      ],
+      "offset": 70
+    },
+    {
+      "distinct": 8,
+      "max": 24,
+      "min": 3,
+      "most_common": [
+        {
+          "count": 16,
+          "value": 8
+        },
+        {
+          "count": 13,
+          "value": 6
+        },
+        {
+          "count": 2,
+          "value": 5
+        },
+        {
+          "count": 2,
+          "value": 24
+        },
+        {
+          "count": 2,
+          "value": 3
+        },
+        {
+          "count": 1,
+          "value": 10
+        },
+        {
+          "count": 1,
+          "value": 4
+        },
+        {
+          "count": 1,
+          "value": 16
+        }
+      ],
+      "offset": 71
+    },
+    {
+      "distinct": 5,
+      "max": 63,
+      "min": 1,
+      "most_common": [
+        {
+          "count": 20,
+          "value": 1
+        },
+        {
+          "count": 12,
+          "value": 7
+        },
+        {
+          "count": 4,
+          "value": 6
+        },
+        {
+          "count": 1,
+          "value": 63
+        },
+        {
+          "count": 1,
+          "value": 15
+        }
+      ],
+      "offset": 72
+    },
+    {
+      "distinct": 1,
+      "max": 0,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 38,
+          "value": 0
+        }
+      ],
+      "offset": 73
+    },
+    {
+      "distinct": 21,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 13,
+          "value": 0
+        },
+        {
+          "count": 6,
+          "value": 255
+        },
+        {
+          "count": 1,
+          "value": 6
+        },
+        {
+          "count": 1,
+          "value": 2
+        },
+        {
+          "count": 1,
+          "value": 24
+        },
+        {
+          "count": 1,
+          "value": 34
+        },
+        {
+          "count": 1,
+          "value": 4
+        },
+        {
+          "count": 1,
+          "value": 17
+        }
+      ],
+      "offset": 74
+    },
+    {
+      "distinct": 2,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 32,
+          "value": 0
+        },
+        {
+          "count": 6,
+          "value": 255
+        }
+      ],
+      "offset": 75
+    },
+    {
+      "distinct": 12,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 16,
+          "value": 0
+        },
+        {
+          "count": 8,
+          "value": 255
+        },
+        {
+          "count": 4,
+          "value": 6
+        },
+        {
+          "count": 2,
+          "value": 17
+        },
+        {
+          "count": 1,
+          "value": 15
+        },
+        {
+          "count": 1,
+          "value": 34
+        },
+        {
+          "count": 1,
+          "value": 28
+        },
+        {
+          "count": 1,
+          "value": 24
+        }
+      ],
+      "offset": 76
+    },
+    {
+      "distinct": 2,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 30,
+          "value": 0
+        },
+        {
+          "count": 8,
+          "value": 255
+        }
+      ],
+      "offset": 77
+    },
+    {
+      "distinct": 11,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 22,
+          "value": 0
+        },
+        {
+          "count": 4,
+          "value": 24
+        },
+        {
+          "count": 3,
+          "value": 10
+        },
+        {
+          "count": 2,
+          "value": 28
+        },
+        {
+          "count": 1,
+          "value": 255
+        },
+        {
+          "count": 1,
+          "value": 17
+        },
+        {
+          "count": 1,
+          "value": 41
+        },
+        {
+          "count": 1,
+          "value": 34
+        }
+      ],
+      "offset": 78
+    },
+    {
+      "distinct": 2,
+      "max": 255,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 37,
+          "value": 0
+        },
+        {
+          "count": 1,
+          "value": 255
+        }
+      ],
+      "offset": 79
+    },
+    {
+      "distinct": 14,
+      "max": 192,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 8,
+          "value": 32
+        },
+        {
+          "count": 7,
+          "value": 192
+        },
+        {
+          "count": 4,
+          "value": 40
+        },
+        {
+          "count": 4,
+          "value": 8
+        },
+        {
+          "count": 3,
+          "value": 26
+        },
+        {
+          "count": 2,
+          "value": 1
+        },
+        {
+          "count": 2,
+          "value": 12
+        },
+        {
+          "count": 2,
+          "value": 64
+        }
+      ],
+      "offset": 80
+    },
+    {
+      "distinct": 8,
+      "max": 128,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 27,
+          "value": 0
+        },
+        {
+          "count": 3,
+          "value": 64
+        },
+        {
+          "count": 2,
+          "value": 1
+        },
+        {
+          "count": 2,
+          "value": 2
+        },
+        {
+          "count": 1,
+          "value": 5
+        },
+        {
+          "count": 1,
+          "value": 8
+        },
+        {
+          "count": 1,
+          "value": 32
+        },
+        {
+          "count": 1,
+          "value": 128
+        }
+      ],
+      "offset": 81
+    },
+    {
+      "distinct": 7,
+      "max": 32,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 13,
+          "value": 0
+        },
+        {
+          "count": 12,
+          "value": 4
+        },
+        {
+          "count": 7,
+          "value": 8
+        },
+        {
+          "count": 3,
+          "value": 32
+        },
+        {
+          "count": 1,
+          "value": 2
+        },
+        {
+          "count": 1,
+          "value": 9
+        },
+        {
+          "count": 1,
+          "value": 24
+        }
+      ],
+      "offset": 82
+    },
+    {
+      "distinct": 1,
+      "max": 0,
+      "min": 0,
+      "most_common": [
+        {
+          "count": 38,
+          "value": 0
+        }
+      ],
+      "offset": 83
+    }
+  ],
+  "record_start_pointer_refs": [
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33773708,
+      "source_offset": 219276,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33780504,
+      "source_offset": 226072,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33789080,
+      "source_offset": 234648,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33795596,
+      "source_offset": 241164,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33804720,
+      "source_offset": 250288,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33811928,
+      "source_offset": 257496,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33816512,
+      "source_offset": 262080,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33820012,
+      "source_offset": 265580,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33821972,
+      "source_offset": 267540,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33825884,
+      "source_offset": 271452,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 6,
+      "record_name": "Warrior",
+      "source_address": 33839908,
+      "source_offset": 285476,
+      "target_address": 35103384
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33840236,
+      "source_offset": 285804,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33844088,
+      "source_offset": 289656,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33845408,
+      "source_offset": 290976,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33859704,
+      "source_offset": 305272,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33877316,
+      "source_offset": 322884,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33882500,
+      "source_offset": 328068,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33888452,
+      "source_offset": 334020,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33896968,
+      "source_offset": 342536,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33897460,
+      "source_offset": 343028,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33900720,
+      "source_offset": 346288,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33904820,
+      "source_offset": 350388,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33909924,
+      "source_offset": 355492,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33925780,
+      "source_offset": 371348,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33943228,
+      "source_offset": 388796,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33967648,
+      "source_offset": 413216,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33974284,
+      "source_offset": 419852,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 33994824,
+      "source_offset": 440392,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34017356,
+      "source_offset": 462924,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 6,
+      "record_name": "Warrior",
+      "source_address": 34017368,
+      "source_offset": 462936,
+      "target_address": 35103384
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34093940,
+      "source_offset": 539508,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34099312,
+      "source_offset": 544880,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34108016,
+      "source_offset": 553584,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34112516,
+      "source_offset": 558084,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34121668,
+      "source_offset": 567236,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34125736,
+      "source_offset": 571304,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34134344,
+      "source_offset": 579912,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34141880,
+      "source_offset": 587448,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34158940,
+      "source_offset": 604508,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34170644,
+      "source_offset": 616212,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34175260,
+      "source_offset": 620828,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34184988,
+      "source_offset": 630556,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34191604,
+      "source_offset": 637172,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34197268,
+      "source_offset": 642836,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34198376,
+      "source_offset": 643944,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34203332,
+      "source_offset": 648900,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34306232,
+      "source_offset": 751800,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34309868,
+      "source_offset": 755436,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34317336,
+      "source_offset": 762904,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34333848,
+      "source_offset": 779416,
+      "target_address": 35102496
+    },
+    {
+      "component": "arm9",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 34339448,
+      "source_offset": 785016,
+      "target_address": 35102496
+    },
+    {
+      "component": "overlay_003",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 35676864,
+      "source_offset": 3104,
+      "target_address": 35102496
+    },
+    {
+      "component": "overlay_015",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 35690472,
+      "source_offset": 3272,
+      "target_address": 35102496
+    },
+    {
+      "component": "overlay_015",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 35692948,
+      "source_offset": 5748,
+      "target_address": 35102496
+    },
+    {
+      "component": "overlay_015",
+      "record_index": 0,
+      "record_name": "Settlers",
+      "source_address": 35693584,
+      "source_offset": 6384,
+      "target_address": 35102496
+    }
+  ],
+  "record_start_xref_counts": [
+    {
+      "count": 53,
+      "index": 0,
+      "name": "Settlers"
+    },
+    {
+      "count": 2,
+      "index": 6,
+      "name": "Warrior"
+    }
+  ],
+  "records": [
+    {
+      "address": 35102496,
+      "index": 0,
+      "metadata_hex": "0000020004ff00083f00ffff0000000001000000",
+      "metadata_s16": [
+        0,
+        2,
+        -252,
+        2048,
+        63,
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65284,
+        2048,
+        63,
+        65535,
+        0,
+        0,
+        1,
+        0
+      ],
+      "metadata_u32": [
+        131072,
+        134283012,
+        4294901823,
+        0,
+        1
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        4,
+        255,
+        0,
+        8,
+        63,
+        0,
+        255,
+        255,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 0,
+      "slot0": "Settlers",
+      "slot1": "settler_rom",
+      "slot2": "Settler_Male",
+      "slot3": "Settler_Male"
+    },
+    {
+      "address": 35102644,
+      "index": 1,
+      "metadata_hex": "0000020003ff00080f000000ffffffff01000000",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        15,
+        0,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        15,
+        0,
+        65535,
+        65535,
+        1,
+        0
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        15,
+        4294967295,
+        1
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        15,
+        0,
+        0,
+        0,
+        255,
+        255,
+        255,
+        255,
+        1,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 148,
+      "slot0": "FSettler",
+      "slot1": "",
+      "slot2": "Settler",
+      "slot3": "Settler_Female"
+    },
+    {
+      "address": 35102792,
+      "index": 2,
+      "metadata_hex": "0001020001ff0108070000000000180020000000",
+      "metadata_s16": [
+        256,
+        2,
+        -255,
+        2049,
+        7,
+        0,
+        0,
+        24,
+        32,
+        0
+      ],
+      "metadata_u16": [
+        256,
+        2,
+        65281,
+        2049,
+        7,
+        0,
+        0,
+        24,
+        32,
+        0
+      ],
+      "metadata_u32": [
+        131328,
+        134348545,
+        7,
+        1572864,
+        32
+      ],
+      "metadata_u8": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        255,
+        1,
+        8,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        32,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 296,
+      "slot0": "Naval Crew",
+      "slot1": "worker_rom_m",
+      "slot2": "Swordsman",
+      "slot3": "Swordsman"
+    },
+    {
+      "address": 35102940,
+      "index": 3,
+      "metadata_hex": "0101010001ff01060700ffff06000a0028400400",
+      "metadata_s16": [
+        257,
+        1,
+        -255,
+        1537,
+        7,
+        -1,
+        6,
+        10,
+        16424,
+        4
+      ],
+      "metadata_u16": [
+        257,
+        1,
+        65281,
+        1537,
+        7,
+        65535,
+        6,
+        10,
+        16424,
+        4
+      ],
+      "metadata_u32": [
+        65793,
+        100794113,
+        4294901767,
+        655366,
+        278568
+      ],
+      "metadata_u8": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        255,
+        1,
+        6,
+        7,
+        0,
+        255,
+        255,
+        6,
+        0,
+        10,
+        0,
+        40,
+        64,
+        4,
+        0
+      ],
+      "offset_from_settlers": 444,
+      "slot0": "",
+      "slot1": "Barbarian_Hot",
+      "slot2": "Barbarian_Hot",
+      "slot3": "Barbarian_Hot"
+    },
+    {
+      "address": 35103088,
+      "index": 4,
+      "metadata_hex": "0101010001ff01060700ffff06000a0020400400",
+      "metadata_s16": [
+        257,
+        1,
+        -255,
+        1537,
+        7,
+        -1,
+        6,
+        10,
+        16416,
+        4
+      ],
+      "metadata_u16": [
+        257,
+        1,
+        65281,
+        1537,
+        7,
+        65535,
+        6,
+        10,
+        16416,
+        4
+      ],
+      "metadata_u32": [
+        65793,
+        100794113,
+        4294901767,
+        655366,
+        278560
+      ],
+      "metadata_u8": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        255,
+        1,
+        6,
+        7,
+        0,
+        255,
+        255,
+        6,
+        0,
+        10,
+        0,
+        32,
+        64,
+        4,
+        0
+      ],
+      "offset_from_settlers": 592,
+      "slot0": "",
+      "slot1": "Barbarian_Temperate",
+      "slot2": "Barbarian_Temperate",
+      "slot3": "Barbarian_Temperate"
+    },
+    {
+      "address": 35103236,
+      "index": 5,
+      "metadata_hex": "0101010001ff01060700ffff06000a0020400400",
+      "metadata_s16": [
+        257,
+        1,
+        -255,
+        1537,
+        7,
+        -1,
+        6,
+        10,
+        16416,
+        4
+      ],
+      "metadata_u16": [
+        257,
+        1,
+        65281,
+        1537,
+        7,
+        65535,
+        6,
+        10,
+        16416,
+        4
+      ],
+      "metadata_u32": [
+        65793,
+        100794113,
+        4294901767,
+        655366,
+        278560
+      ],
+      "metadata_u8": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        255,
+        1,
+        6,
+        7,
+        0,
+        255,
+        255,
+        6,
+        0,
+        10,
+        0,
+        32,
+        64,
+        4,
+        0
+      ],
+      "offset_from_settlers": 740,
+      "slot0": "",
+      "slot1": "Barbarian_Cold",
+      "slot2": "Barbarian_Cold",
+      "slot3": "Barbarian_Cold"
+    },
+    {
+      "address": 35103384,
+      "index": 6,
+      "metadata_hex": "0101010002ff01060700ffff0600110020010400",
+      "metadata_s16": [
+        257,
+        1,
+        -254,
+        1537,
+        7,
+        -1,
+        6,
+        17,
+        288,
+        4
+      ],
+      "metadata_u16": [
+        257,
+        1,
+        65282,
+        1537,
+        7,
+        65535,
+        6,
+        17,
+        288,
+        4
+      ],
+      "metadata_u32": [
+        65793,
+        100794114,
+        4294901767,
+        1114118,
+        262432
+      ],
+      "metadata_u8": [
+        1,
+        1,
+        1,
+        0,
+        2,
+        255,
+        1,
+        6,
+        7,
+        0,
+        255,
+        255,
+        6,
+        0,
+        17,
+        0,
+        32,
+        1,
+        4,
+        0
+      ],
+      "offset_from_settlers": 888,
+      "slot0": "Warrior",
+      "slot1": "Swordsman",
+      "slot2": "Swordsman",
+      "slot3": "Swordsman"
+    },
+    {
+      "address": 35103532,
+      "index": 7,
+      "metadata_hex": "0001010001ff0108070000000000180020000000",
+      "metadata_s16": [
+        256,
+        1,
+        -255,
+        2049,
+        7,
+        0,
+        0,
+        24,
+        32,
+        0
+      ],
+      "metadata_u16": [
+        256,
+        1,
+        65281,
+        2049,
+        7,
+        0,
+        0,
+        24,
+        32,
+        0
+      ],
+      "metadata_u32": [
+        65792,
+        134348545,
+        7,
+        1572864,
+        32
+      ],
+      "metadata_u8": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        255,
+        1,
+        8,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        32,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 1036,
+      "slot0": "Militia",
+      "slot1": "worker_rom_m",
+      "slot2": "Swordsman",
+      "slot3": "Swordsman"
+    },
+    {
+      "address": 35103680,
+      "index": 8,
+      "metadata_hex": "0201010002010206070006001100180020010400",
+      "metadata_s16": [
+        258,
+        1,
+        258,
+        1538,
+        7,
+        6,
+        17,
+        24,
+        288,
+        4
+      ],
+      "metadata_u16": [
+        258,
+        1,
+        258,
+        1538,
+        7,
+        6,
+        17,
+        24,
+        288,
+        4
+      ],
+      "metadata_u32": [
+        65794,
+        100794626,
+        393223,
+        1572881,
+        262432
+      ],
+      "metadata_u8": [
+        2,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        6,
+        7,
+        0,
+        6,
+        0,
+        17,
+        0,
+        24,
+        0,
+        32,
+        1,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1184,
+      "slot0": "Legion",
+      "slot1": "Legion",
+      "slot2": "Legion",
+      "slot3": "Legion"
+    },
+    {
+      "address": 35103828,
+      "index": 9,
+      "metadata_hex": "0102010002ff0206070002000f00180028050400",
+      "metadata_s16": [
+        513,
+        1,
+        -254,
+        1538,
+        7,
+        2,
+        15,
+        24,
+        1320,
+        4
+      ],
+      "metadata_u16": [
+        513,
+        1,
+        65282,
+        1538,
+        7,
+        2,
+        15,
+        24,
+        1320,
+        4
+      ],
+      "metadata_u32": [
+        66049,
+        100859650,
+        131079,
+        1572879,
+        263464
+      ],
+      "metadata_u8": [
+        1,
+        2,
+        1,
+        0,
+        2,
+        255,
+        2,
+        6,
+        7,
+        0,
+        2,
+        0,
+        15,
+        0,
+        24,
+        0,
+        40,
+        5,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1332,
+      "slot0": "Archer",
+      "slot1": "Archer",
+      "slot2": "Phalanx",
+      "slot3": "Phalanx"
+    },
+    {
+      "address": 35103976,
+      "index": 10,
+      "metadata_hex": "0305010004020206070018002200000028080400",
+      "metadata_s16": [
+        1283,
+        1,
+        516,
+        1538,
+        7,
+        24,
+        34,
+        0,
+        2088,
+        4
+      ],
+      "metadata_u16": [
+        1283,
+        1,
+        516,
+        1538,
+        7,
+        24,
+        34,
+        0,
+        2088,
+        4
+      ],
+      "metadata_u32": [
+        66819,
+        100794884,
+        1572871,
+        34,
+        264232
+      ],
+      "metadata_u8": [
+        3,
+        5,
+        1,
+        0,
+        4,
+        2,
+        2,
+        6,
+        7,
+        0,
+        24,
+        0,
+        34,
+        0,
+        0,
+        0,
+        40,
+        8,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1480,
+      "slot0": "Riflemen",
+      "slot1": "Rifleman",
+      "slot2": "Rifleman",
+      "slot3": "Rifleman"
+    },
+    {
+      "address": 35104124,
+      "index": 11,
+      "metadata_hex": "0408010006050206070022000000000008000400",
+      "metadata_s16": [
+        2052,
+        1,
+        1286,
+        1538,
+        7,
+        34,
+        0,
+        0,
+        8,
+        4
+      ],
+      "metadata_u16": [
+        2052,
+        1,
+        1286,
+        1538,
+        7,
+        34,
+        0,
+        0,
+        8,
+        4
+      ],
+      "metadata_u32": [
+        67588,
+        100795654,
+        2228231,
+        0,
+        262152
+      ],
+      "metadata_u8": [
+        4,
+        8,
+        1,
+        0,
+        6,
+        5,
+        2,
+        6,
+        7,
+        0,
+        34,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1628,
+      "slot0": "Modern Infantry",
+      "slot1": "Modern_Soldier",
+      "slot2": "Modern_Soldier",
+      "slot3": "Modern_Soldier"
+    },
+    {
+      "address": 35104272,
+      "index": 12,
+      "metadata_hex": "02010200040002060600040011001c0060020400",
+      "metadata_s16": [
+        258,
+        2,
+        4,
+        1538,
+        6,
+        4,
+        17,
+        28,
+        608,
+        4
+      ],
+      "metadata_u16": [
+        258,
+        2,
+        4,
+        1538,
+        6,
+        4,
+        17,
+        28,
+        608,
+        4
+      ],
+      "metadata_u32": [
+        131330,
+        100794372,
+        262150,
+        1835025,
+        262752
+      ],
+      "metadata_u8": [
+        2,
+        1,
+        2,
+        0,
+        4,
+        0,
+        2,
+        6,
+        6,
+        0,
+        4,
+        0,
+        17,
+        0,
+        28,
+        0,
+        96,
+        2,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1776,
+      "slot0": "Horsemen",
+      "slot1": "Horseman",
+      "slot2": "Horseman",
+      "slot3": "Horseman"
+    },
+    {
+      "address": 35104420,
+      "index": 13,
+      "metadata_hex": "0402020005000206060011001c00290020020400",
+      "metadata_s16": [
+        516,
+        2,
+        5,
+        1538,
+        6,
+        17,
+        28,
+        41,
+        544,
+        4
+      ],
+      "metadata_u16": [
+        516,
+        2,
+        5,
+        1538,
+        6,
+        17,
+        28,
+        41,
+        544,
+        4
+      ],
+      "metadata_u32": [
+        131588,
+        100794373,
+        1114118,
+        2687004,
+        262688
+      ],
+      "metadata_u8": [
+        4,
+        2,
+        2,
+        0,
+        5,
+        0,
+        2,
+        6,
+        6,
+        0,
+        17,
+        0,
+        28,
+        0,
+        41,
+        0,
+        32,
+        2,
+        4,
+        0
+      ],
+      "offset_from_settlers": 1924,
+      "slot0": "Knights",
+      "slot1": "Knight",
+      "slot2": "Knight",
+      "slot3": "Knight"
+    },
+    {
+      "address": 35104568,
+      "index": 14,
+      "metadata_hex": "0a0603000a04020501001c000000000048000400",
+      "metadata_s16": [
+        1546,
+        3,
+        1034,
+        1282,
+        1,
+        28,
+        0,
+        0,
+        72,
+        4
+      ],
+      "metadata_u16": [
+        1546,
+        3,
+        1034,
+        1282,
+        1,
+        28,
+        0,
+        0,
+        72,
+        4
+      ],
+      "metadata_u32": [
+        198154,
+        84018186,
+        1835009,
+        0,
+        262216
+      ],
+      "metadata_u8": [
+        10,
+        6,
+        3,
+        0,
+        10,
+        4,
+        2,
+        5,
+        1,
+        0,
+        28,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        4,
+        0
+      ],
+      "offset_from_settlers": 2072,
+      "slot0": "Tank",
+      "slot1": "Armor",
+      "slot2": "Armor",
+      "slot3": "Armor"
+    },
+    {
+      "address": 35104716,
+      "index": 15,
+      "metadata_hex": "010301000309010607000f001800220020000400",
+      "metadata_s16": [
+        769,
+        1,
+        2307,
+        1537,
+        7,
+        15,
+        24,
+        34,
+        32,
+        4
+      ],
+      "metadata_u16": [
+        769,
+        1,
+        2307,
+        1537,
+        7,
+        15,
+        24,
+        34,
+        32,
+        4
+      ],
+      "metadata_u32": [
+        66305,
+        100731139,
+        983047,
+        2228248,
+        262176
+      ],
+      "metadata_u8": [
+        1,
+        3,
+        1,
+        0,
+        3,
+        9,
+        1,
+        6,
+        7,
+        0,
+        15,
+        0,
+        24,
+        0,
+        34,
+        0,
+        32,
+        0,
+        4,
+        0
+      ],
+      "offset_from_settlers": 2220,
+      "slot0": "Phalanx",
+      "slot1": "Phalanx",
+      "slot2": "Archer",
+      "slot3": "Archer"
+    },
+    {
+      "address": 35104864,
+      "index": 16,
+      "metadata_hex": "040101000409020601000d001900280028002000",
+      "metadata_s16": [
+        260,
+        1,
+        2308,
+        1538,
+        1,
+        13,
+        25,
+        40,
+        40,
+        32
+      ],
+      "metadata_u16": [
+        260,
+        1,
+        2308,
+        1538,
+        1,
+        13,
+        25,
+        40,
+        40,
+        32
+      ],
+      "metadata_u32": [
+        65796,
+        100796676,
+        851969,
+        2621465,
+        2097192
+      ],
+      "metadata_u8": [
+        4,
+        1,
+        1,
+        0,
+        4,
+        9,
+        2,
+        6,
+        1,
+        0,
+        13,
+        0,
+        25,
+        0,
+        40,
+        0,
+        40,
+        0,
+        32,
+        0
+      ],
+      "offset_from_settlers": 2368,
+      "slot0": "Catapult",
+      "slot1": "Catapult",
+      "slot2": "Catapult",
+      "slot3": "Catapult"
+    },
+    {
+      "address": 35105012,
+      "index": 17,
+      "metadata_hex": "06020100060302060600190028002b0008002000",
+      "metadata_s16": [
+        518,
+        1,
+        774,
+        1538,
+        6,
+        25,
+        40,
+        43,
+        8,
+        32
+      ],
+      "metadata_u16": [
+        518,
+        1,
+        774,
+        1538,
+        6,
+        25,
+        40,
+        43,
+        8,
+        32
+      ],
+      "metadata_u32": [
+        66054,
+        100795142,
+        1638406,
+        2818088,
+        2097160
+      ],
+      "metadata_u8": [
+        6,
+        2,
+        1,
+        0,
+        6,
+        3,
+        2,
+        6,
+        6,
+        0,
+        25,
+        0,
+        40,
+        0,
+        43,
+        0,
+        8,
+        0,
+        32,
+        0
+      ],
+      "offset_from_settlers": 2516,
+      "slot0": "Cannon",
+      "slot1": "Cannon",
+      "slot2": "Cannon",
+      "slot3": "Cannon"
+    },
+    {
+      "address": 35105160,
+      "index": 18,
+      "metadata_hex": "100202000a06020a010028000000000008002000",
+      "metadata_s16": [
+        528,
+        2,
+        1546,
+        2562,
+        1,
+        40,
+        0,
+        0,
+        8,
+        32
+      ],
+      "metadata_u16": [
+        528,
+        2,
+        1546,
+        2562,
+        1,
+        40,
+        0,
+        0,
+        8,
+        32
+      ],
+      "metadata_u32": [
+        131600,
+        167904778,
+        2621441,
+        0,
+        2097160
+      ],
+      "metadata_u8": [
+        16,
+        2,
+        2,
+        0,
+        10,
+        6,
+        2,
+        10,
+        1,
+        0,
+        40,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        32,
+        0
+      ],
+      "offset_from_settlers": 2664,
+      "slot0": "Artillery",
+      "slot1": "Artillery",
+      "slot2": "Artillery",
+      "slot3": "Artillery"
+    },
+    {
+      "address": 35105308,
+      "index": 19,
+      "metadata_hex": "0c0202000504021801001d00000000000a000000",
+      "metadata_s16": [
+        524,
+        2,
+        1029,
+        6146,
+        1,
+        29,
+        0,
+        0,
+        10,
+        0
+      ],
+      "metadata_u16": [
+        524,
+        2,
+        1029,
+        6146,
+        1,
+        29,
+        0,
+        0,
+        10,
+        0
+      ],
+      "metadata_u32": [
+        131596,
+        402785285,
+        1900545,
+        0,
+        10
+      ],
+      "metadata_u8": [
+        12,
+        2,
+        2,
+        0,
+        5,
+        4,
+        2,
+        24,
+        1,
+        0,
+        29,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 2812,
+      "slot0": "Submarine",
+      "slot1": "Submarine",
+      "slot2": "Submarine",
+      "slot3": "Submarine"
+    },
+    {
+      "address": 35105456,
+      "index": 20,
+      "metadata_hex": "0101020006ff02030100ffff17001c0012000000",
+      "metadata_s16": [
+        257,
+        2,
+        -250,
+        770,
+        1,
+        -1,
+        23,
+        28,
+        18,
+        0
+      ],
+      "metadata_u16": [
+        257,
+        2,
+        65286,
+        770,
+        1,
+        65535,
+        23,
+        28,
+        18,
+        0
+      ],
+      "metadata_u32": [
+        131329,
+        50528006,
+        4294901761,
+        1835031,
+        18
+      ],
+      "metadata_u8": [
+        1,
+        1,
+        2,
+        0,
+        6,
+        255,
+        2,
+        3,
+        1,
+        0,
+        255,
+        255,
+        23,
+        0,
+        28,
+        0,
+        18,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 2960,
+      "slot0": "Galley",
+      "slot1": "Galley",
+      "slot2": "Galley",
+      "slot3": "Galley"
+    },
+    {
+      "address": 35105604,
+      "index": 21,
+      "metadata_hex": "0202030006090203010017001b001e001a000000",
+      "metadata_s16": [
+        514,
+        3,
+        2310,
+        770,
+        1,
+        23,
+        27,
+        30,
+        26,
+        0
+      ],
+      "metadata_u16": [
+        514,
+        3,
+        2310,
+        770,
+        1,
+        23,
+        27,
+        30,
+        26,
+        0
+      ],
+      "metadata_u32": [
+        197122,
+        50465030,
+        1507329,
+        1966107,
+        26
+      ],
+      "metadata_u8": [
+        2,
+        2,
+        3,
+        0,
+        6,
+        9,
+        2,
+        3,
+        1,
+        0,
+        23,
+        0,
+        27,
+        0,
+        30,
+        0,
+        26,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3108,
+      "slot0": "Galleon",
+      "slot1": "Galleon",
+      "slot2": "Galleon",
+      "slot3": "Galleon"
+    },
+    {
+      "address": 35105752,
+      "index": 22,
+      "metadata_hex": "060605000803020401001b00000000001a000000",
+      "metadata_s16": [
+        1542,
+        5,
+        776,
+        1026,
+        1,
+        27,
+        0,
+        0,
+        26,
+        0
+      ],
+      "metadata_u16": [
+        1542,
+        5,
+        776,
+        1026,
+        1,
+        27,
+        0,
+        0,
+        26,
+        0
+      ],
+      "metadata_u32": [
+        329222,
+        67240712,
+        1769473,
+        0,
+        26
+      ],
+      "metadata_u8": [
+        6,
+        6,
+        5,
+        0,
+        8,
+        3,
+        2,
+        4,
+        1,
+        0,
+        27,
+        0,
+        0,
+        0,
+        0,
+        0,
+        26,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3256,
+      "slot0": "Cruiser",
+      "slot1": "Cruiser",
+      "slot2": "Cruiser",
+      "slot3": "Cruiser"
+    },
+    {
+      "address": 35105900,
+      "index": 23,
+      "metadata_hex": "0c1204001004021001002300000000001a000000",
+      "metadata_s16": [
+        4620,
+        4,
+        1040,
+        4098,
+        1,
+        35,
+        0,
+        0,
+        26,
+        0
+      ],
+      "metadata_u16": [
+        4620,
+        4,
+        1040,
+        4098,
+        1,
+        35,
+        0,
+        0,
+        26,
+        0
+      ],
+      "metadata_u32": [
+        266764,
+        268567568,
+        2293761,
+        0,
+        26
+      ],
+      "metadata_u8": [
+        12,
+        18,
+        4,
+        0,
+        16,
+        4,
+        2,
+        16,
+        1,
+        0,
+        35,
+        0,
+        0,
+        0,
+        0,
+        0,
+        26,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3404,
+      "slot0": "Battleship",
+      "slot1": "Battleship",
+      "slot2": "Battleship",
+      "slot3": "Battleship"
+    },
+    {
+      "address": 35106048,
+      "index": 24,
+      "metadata_hex": "0003040005030218010000000000000008000000",
+      "metadata_s16": [
+        768,
+        4,
+        773,
+        6146,
+        1,
+        0,
+        0,
+        0,
+        8,
+        0
+      ],
+      "metadata_u16": [
+        768,
+        4,
+        773,
+        6146,
+        1,
+        0,
+        0,
+        0,
+        8,
+        0
+      ],
+      "metadata_u32": [
+        262912,
+        402785029,
+        1,
+        0,
+        8
+      ],
+      "metadata_u8": [
+        0,
+        3,
+        4,
+        0,
+        5,
+        3,
+        2,
+        24,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3552,
+      "slot0": "Space Station",
+      "slot1": "LaunchVehicle",
+      "slot2": "Transport",
+      "slot3": "Transport"
+    },
+    {
+      "address": 35106196,
+      "index": 25,
+      "metadata_hex": "120306040c06010801002900000000000c000000",
+      "metadata_s16": [
+        786,
+        1030,
+        1548,
+        2049,
+        1,
+        41,
+        0,
+        0,
+        12,
+        0
+      ],
+      "metadata_u16": [
+        786,
+        1030,
+        1548,
+        2049,
+        1,
+        41,
+        0,
+        0,
+        12,
+        0
+      ],
+      "metadata_u32": [
+        67502866,
+        134284812,
+        2686977,
+        0,
+        12
+      ],
+      "metadata_u8": [
+        18,
+        3,
+        6,
+        4,
+        12,
+        6,
+        1,
+        8,
+        1,
+        0,
+        41,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3700,
+      "slot0": "Bomber",
+      "slot1": "Bomber",
+      "slot2": "Bomber",
+      "slot3": "Bomber"
+    },
+    {
+      "address": 35106344,
+      "index": 26,
+      "metadata_hex": "060408020606010806002100000000000c200000",
+      "metadata_s16": [
+        1030,
+        520,
+        1542,
+        2049,
+        6,
+        33,
+        0,
+        0,
+        8204,
+        0
+      ],
+      "metadata_u16": [
+        1030,
+        520,
+        1542,
+        2049,
+        6,
+        33,
+        0,
+        0,
+        8204,
+        0
+      ],
+      "metadata_u32": [
+        34079750,
+        134284806,
+        2162694,
+        0,
+        8204
+      ],
+      "metadata_u8": [
+        6,
+        4,
+        8,
+        2,
+        6,
+        6,
+        1,
+        8,
+        6,
+        0,
+        33,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        32,
+        0,
+        0
+      ],
+      "offset_from_settlers": 3848,
+      "slot0": "Fighter",
+      "slot1": "Fighter",
+      "slot2": "Fighter",
+      "slot3": "Fighter"
+    },
+    {
+      "address": 35106492,
+      "index": 27,
+      "metadata_hex": "0000280032070108010000000000000044000200",
+      "metadata_s16": [
+        0,
+        40,
+        1842,
+        2049,
+        1,
+        0,
+        0,
+        0,
+        68,
+        2
+      ],
+      "metadata_u16": [
+        0,
+        40,
+        1842,
+        2049,
+        1,
+        0,
+        0,
+        0,
+        68,
+        2
+      ],
+      "metadata_u32": [
+        2621440,
+        134285106,
+        1,
+        0,
+        131140
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        40,
+        0,
+        50,
+        7,
+        1,
+        8,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        0,
+        2,
+        0
+      ],
+      "offset_from_settlers": 3996,
+      "slot0": "ICBM",
+      "slot1": "ICBM_Silo",
+      "slot2": "ICBM",
+      "slot3": "ICBM"
+    },
+    {
+      "address": 35106640,
+      "index": 28,
+      "metadata_hex": "0000020005ff0108010008000000000040000900",
+      "metadata_s16": [
+        0,
+        2,
+        -251,
+        2049,
+        1,
+        8,
+        0,
+        0,
+        64,
+        9
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65285,
+        2049,
+        1,
+        8,
+        0,
+        0,
+        64,
+        9
+      ],
+      "metadata_u32": [
+        131072,
+        134348549,
+        524289,
+        0,
+        589888
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        5,
+        255,
+        1,
+        8,
+        1,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64,
+        0,
+        9,
+        0
+      ],
+      "offset_from_settlers": 4144,
+      "slot0": "Spy",
+      "slot1": "Spy",
+      "slot2": "Spy",
+      "slot3": "Spy"
+    },
+    {
+      "address": 35106788,
+      "index": 29,
+      "metadata_hex": "0000030006ff010807000e000000000040001800",
+      "metadata_s16": [
+        0,
+        3,
+        -250,
+        2049,
+        7,
+        14,
+        0,
+        0,
+        64,
+        24
+      ],
+      "metadata_u16": [
+        0,
+        3,
+        65286,
+        2049,
+        7,
+        14,
+        0,
+        0,
+        64,
+        24
+      ],
+      "metadata_u32": [
+        196608,
+        134348550,
+        917511,
+        0,
+        1572928
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        3,
+        0,
+        6,
+        255,
+        1,
+        8,
+        7,
+        0,
+        14,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64,
+        0,
+        24,
+        0
+      ],
+      "offset_from_settlers": 4292,
+      "slot0": "Caravan",
+      "slot1": "Caravan_Anc",
+      "slot2": "GreatMerchantAncient",
+      "slot3": "GreatMerchantAncient"
+    },
+    {
+      "address": 35106936,
+      "index": 30,
+      "metadata_hex": "0000020003ff0008010000000000000000800000",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        0,
+        0,
+        -32768,
+        0
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        0,
+        0,
+        32768,
+        0
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        0,
+        32768
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        128,
+        0,
+        0
+      ],
+      "offset_from_settlers": 4440,
+      "slot0": "Great General",
+      "slot1": "GreatGeneral_Medieval",
+      "slot2": "Conquistador",
+      "slot3": "Conquistador"
+    },
+    {
+      "address": 35107084,
+      "index": 31,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 4588,
+      "slot0": "Great Scientist",
+      "slot1": "GreatSci_Male",
+      "slot2": "Explorer",
+      "slot3": "GreatScientistAncient"
+    },
+    {
+      "address": 35107232,
+      "index": 32,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 4736,
+      "slot0": "Great Humanitarian",
+      "slot1": "GreatProphet",
+      "slot2": "Explorer",
+      "slot3": "GreatProphet"
+    },
+    {
+      "address": 35107380,
+      "index": 33,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 4884,
+      "slot0": "Great Explorer",
+      "slot1": "GreatTycoon",
+      "slot2": "Explorer",
+      "slot3": "GreatMerchantAncient"
+    },
+    {
+      "address": 35107528,
+      "index": 34,
+      "metadata_hex": "0000020003ff000501000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        1280,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        1280,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        83951363,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        5,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 5032,
+      "slot0": "Great Builder",
+      "slot1": "GreatEngineer",
+      "slot2": "Explorer",
+      "slot3": "Engineer"
+    },
+    {
+      "address": 35107676,
+      "index": 35,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 5180,
+      "slot0": "Great Artist",
+      "slot1": "GreatArtist_Male",
+      "slot2": "Explorer",
+      "slot3": "GreatArtist"
+    },
+    {
+      "address": 35107824,
+      "index": 36,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 5328,
+      "slot0": "Great Leader",
+      "slot1": "GreatLeader_Med",
+      "slot2": "Explorer",
+      "slot3": "Explorer"
+    },
+    {
+      "address": 35107972,
+      "index": 37,
+      "metadata_hex": "0000020003ff000801000000ffff0000c0000800",
+      "metadata_s16": [
+        0,
+        2,
+        -253,
+        2048,
+        1,
+        0,
+        -1,
+        0,
+        192,
+        8
+      ],
+      "metadata_u16": [
+        0,
+        2,
+        65283,
+        2048,
+        1,
+        0,
+        65535,
+        0,
+        192,
+        8
+      ],
+      "metadata_u32": [
+        131072,
+        134283011,
+        1,
+        65535,
+        524480
+      ],
+      "metadata_u8": [
+        0,
+        0,
+        2,
+        0,
+        3,
+        255,
+        0,
+        8,
+        1,
+        0,
+        0,
+        0,
+        255,
+        255,
+        0,
+        0,
+        192,
+        0,
+        8,
+        0
+      ],
+      "offset_from_settlers": 5476,
+      "slot0": "Great Tycoon",
+      "slot1": "worker_egy_m",
+      "slot2": "Explorer",
+      "slot3": "ModernTycoon"
+    }
+  ],
+  "start_address": 35102496,
+  "validated_record_count": 38
+}

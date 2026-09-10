@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
+import struct
 from pathlib import Path
 
 import pytest
 
 from civds.cli import DEFAULT_PROFILE, build_parser, main
+from civds.profile import write_profile
+from civds.units import UNIT_RECORD_COUNT, UNIT_RECORD_SIZE
 
 
 def test_parser_enforces_civrev_profile_for_rom_writes() -> None:
@@ -61,3 +65,204 @@ def test_profile_create_command_writes_profile(tmp_path: Path) -> None:
 
     assert result == 0
     assert output.exists()
+
+
+def _make_unit_summary_rom(path: Path) -> None:
+    from tests.test_profile import _make_structural_rom
+    from tests.test_units import _text_slot, _unit_record
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    records = []
+    for index in range(UNIT_RECORD_COUNT):
+        if index == 0:
+            records.append(_unit_record("Settlers", model="settler_rom"))
+        elif index == 6:
+            records.append(
+                _unit_record(
+                    "Warrior",
+                    model="Swordsman",
+                    attack=1,
+                    defense=1,
+                    movement=1,
+                    production_cost_quanta=2,
+                    formation_mask=7,
+                    unlock_technology_id=-1,
+                    obsolete_technology_id_1=6,
+                    obsolete_technology_id_2=17,
+                    flags=0x00040120,
+                )
+            )
+        else:
+            records.append(_unit_record(f"Unit {index}"))
+
+    arm9 = b"".join(records) + _text_slot("Pyramids of Egypt")
+    arm9_offset = 0x1000
+    assert len(arm9) == UNIT_RECORD_COUNT * UNIT_RECORD_SIZE + 32
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_units_summarize_validates_profile_and_resolves_technology_names(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_unit_summary_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_units")
+    output = tmp_path / "units.json"
+
+    result = main(
+        [
+            "units",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["record_count"] == UNIT_RECORD_COUNT
+    assert payload["record_size"] == UNIT_RECORD_SIZE
+    warrior = payload["units"][6]
+    assert warrior["name"] == "Warrior"
+    assert warrior["production_cost_quanta"] == 2
+    assert warrior["production_cost"] == 10
+    assert warrior["formation_mask"] == 7
+    assert warrior["formation_size"] == 3
+    assert warrior["reserved_0x49"] == 0
+    assert warrior["unlock_technology_name"] is None
+    assert warrior["obsolete_technology_name_1"] == "Iron Working"
+    assert warrior["obsolete_technology_name_2"] == "Feudalism"
+
+
+def test_units_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_unit_summary_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_units")
+    output = tmp_path / "warrior-patch.json"
+
+    result = main(
+        [
+            "units",
+            "patch-manifest",
+            str(rom),
+            "Warrior",
+            "--profile",
+            str(profile),
+            "--attack",
+            "3",
+            "--defense",
+            "4",
+            "--movement",
+            "2",
+            "--fuel-turn-limit",
+            "5",
+            "--production-cost",
+            "20",
+            "--unlock-technology-id",
+            "6",
+            "--obsolete-technology-id-1",
+            "17",
+            "--obsolete-technology-id-2",
+            "-1",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    warrior_offset = 6 * UNIT_RECORD_SIZE
+    assert payload == {
+        "format_version": 1,
+        "profile_id": "synthetic_units",
+        "patches": [
+            {
+                "id": "unit-006-attack",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x40,
+                "expected": "01",
+                "replacement": "03",
+                "rationale": "Set Warrior attack from 1 to 3",
+            },
+            {
+                "id": "unit-006-defense",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x41,
+                "expected": "01",
+                "replacement": "04",
+                "rationale": "Set Warrior defense from 1 to 4",
+            },
+            {
+                "id": "unit-006-movement",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x42,
+                "expected": "01",
+                "replacement": "02",
+                "rationale": "Set Warrior movement from 1 to 2",
+            },
+            {
+                "id": "unit-006-fuel-turn-limit",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x43,
+                "expected": "00",
+                "replacement": "05",
+                "rationale": "Set Warrior fuel/turn limit from 0 to 5",
+            },
+            {
+                "id": "unit-006-production-cost",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x44,
+                "expected": "02",
+                "replacement": "04",
+                "rationale": "Set Warrior production cost from 10 to 20",
+            },
+            {
+                "id": "unit-006-unlock-technology",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4A,
+                "expected": "ffff",
+                "replacement": "0600",
+                "rationale": "Set Warrior unlock technology from none (-1) to Iron Working (6)",
+            },
+            {
+                "id": "unit-006-obsolete-technology-1",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4C,
+                "expected": "0600",
+                "replacement": "1100",
+                "rationale": (
+                    "Set Warrior obsolete technology 1 from Iron Working (6) "
+                    "to Feudalism (17)"
+                ),
+            },
+            {
+                "id": "unit-006-obsolete-technology-2",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": warrior_offset + 0x4E,
+                "expected": "1100",
+                "replacement": "ffff",
+                "rationale": "Set Warrior obsolete technology 2 from Feudalism (17) to none (-1)",
+            },
+        ],
+    }

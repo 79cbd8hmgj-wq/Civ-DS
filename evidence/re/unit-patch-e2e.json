@@ -1,0 +1,38 @@
+{
+  "arm9_after_sha256": "75e61f682be7971b994ba999b49ead1effd0c6a966f75e07a28050b9478bc0ea",
+  "arm9_before_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+  "arm9_relative_offset": 1549016,
+  "changed_byte_count": 1,
+  "changed_offsets": [
+    1549016
+  ],
+  "expected_hex": "01",
+  "field": "attack",
+  "format_version": 1,
+  "original_value": 1,
+  "patch_application": {
+    "applied": [
+      {
+        "after_sha256": "75e61f682be7971b994ba999b49ead1effd0c6a966f75e07a28050b9478bc0ea",
+        "before_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+        "length": 1,
+        "offset": 1549016,
+        "patch_id": "unit-006-attack",
+        "target": "arm9"
+      }
+    ],
+    "format_version": 1,
+    "patch_file": "warrior-attack.json",
+    "profile_id": "civrev-usa"
+  },
+  "profile_id": "civrev-usa",
+  "rebuild_structural_inspection_completed": true,
+  "rebuilt_profile_supported": false,
+  "rebuilt_rom_sha256": "62dd0c6931b25b07fa62bb23d04bb7cd8d1e545122547913a98f4985e339e9cc",
+  "rebuilt_size": 67108864,
+  "replacement_hex": "02",
+  "replacement_value": 2,
+  "rom_absolute_offset": 1565400,
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "unit": "Warrior"
+}
