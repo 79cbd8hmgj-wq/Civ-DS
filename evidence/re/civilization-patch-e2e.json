@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "civilization_index": 9,
+  "original_leader_name": "Napoleon",
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "profile_id": "civrev-usa",
+  "field_changed": {
+    "field": "leader_name",
+    "rom_absolute_offset": 1612228,
+    "arm9_relative_offset": 1595844,
+    "original_value": "Napoleon",
+    "replacement_value": "Louis",
+    "slot_capacity_bytes": 12,
+    "expected_hex": "4e61706f6c656f6e00000000",
+    "replacement_hex": "4c6f75697300000000000000"
+  },
+  "patch_application": {
+    "format_version": 1,
+    "patch_file": "napoleon-rename.json",
+    "profile_id": "civrev-usa",
+    "applied": [
+      {
+        "patch_id": "civilization-009-leader-name",
+        "target": "arm9",
+        "offset": 1595844,
+        "length": 12
+      }
+    ]
+  },
+  "rebuild": {
+    "format_version": 1,
+    "profile_id": "civrev-usa",
+    "source_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "output_size": 67108864,
+    "exact_copy": false
+  },
+  "post_rebuild_reparse": {
+    "method": "civds.civilization.parse_civilization_records() run directly against the rebuilt ROM's ARM9 image (the rebuilt image no longer matches the pinned exact-ROM profile by design, so `civds civilization summarize` correctly refuses it; this step re-verifies behavior with the same parser used by that command, called directly)",
+    "civilization_ids_in_order": [
+      "Caesar", "Cleopatra", "Alexander", "Isabella", "Bismarck", "Catherine",
+      "Mao", "Lincoln", "Tokugawa", "Louis", "Gandhi", "Saladin",
+      "Montezuma", "Shaka", "Genghis", "Elizabeth"
+    ]
+  },
+  "conclusion": "A guarded civilization patch manifest (renaming civilization 9's leader from Napoleon to Louis, in place within the packed leader-name string pool) was generated from the real ROM, applied to an extracted workspace (already carrying the earlier technology-table e2e patch in this session), rebuilt into a new ROM, and re-parsed - confirming exactly the targeted leader changed and every other civilization's name, index, and pointer stayed intact. This proves the full leader-name table discovery (anchor -> pointer array -> packed string pool with derived per-slot capacity) end to end as a real modding capability, not just a static analysis claim."
+}

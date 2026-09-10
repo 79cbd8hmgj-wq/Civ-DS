@@ -28,7 +28,8 @@ Status legend:
 | Technology effect/flavor text | `DATA_EDITABLE` | `civds technology patch-manifest --effect` (only 6 of 47 technologies use it today - government unlocks - but the field itself is a plain fixed-length ASCII slot, safe to (re)populate on any technology) |
 | Technology `category_mask` | `PARTIAL` | parsed and visible in `civds technology summarize`; values cluster into a small bitset (`-1,1,2,3,4,5,7,8,15`) but no runtime consumer has been traced yet, so it is not exposed as a patch field |
 | Technology `reserved_0x28` | `BLOCKED` | always `-1` across all 48 records in the supported ROM; no consumer found |
-| Civilizations / leaders (names, starting bonuses, AI personality) | `BLOCKED` | not yet located |
+| Civilization leader names (16 civs) | `DATA_EDITABLE` | `civds civilization summarize` / `civds civilization patch-manifest --new-leader-name` |
+| Civilization nation names, starting bonuses, unique units, AI personality | `BLOCKED` | only the leader-name pointer table was located; no companion "nation name" or per-civilization gameplay-parameter table has been found yet |
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
 | Cities / buildings / improvements | `BLOCKED` | not yet located |
 | Wonders | `BLOCKED` | not yet located; likely lives in a table adjacent to or sharing code with technologies (several wonders are technology-adjacent in classic Civ design) but this has not been checked |
@@ -62,6 +63,29 @@ per technology, `-1` = none), this is enough to build an entirely custom
 tech tree — reorder eras, remove gates, add new dependencies among the
 existing 47 technologies — without any binary-format knowledge.
 
+## What "civilization leader names are DATA_EDITABLE" actually means
+
+`civds civilization summarize <rom> --output civilizations.json` lists all
+16 civilizations (index, leader name) by walking a recovered pointer table
+(anchored on the unique `Caesar\0` string, civilization 0) into a packed,
+variable-length ASCII string pool shared with other game text.
+`civds civilization patch-manifest <rom> "<current leader name>" --new-leader-name "<new name>"`
+emits a fail-closed patch: it computes the exact byte capacity of that
+leader's slot (the gap up to whatever string follows it in the shared pool)
+and refuses to build a patch for a name that would not fit, rather than
+silently overflowing into the next string.
+
+Proven end to end on the real ROM: civilization 9's leader was renamed
+`Napoleon` -> `Louis`, the ROM was rebuilt, and the rebuilt ROM was
+re-parsed to confirm exactly that one name changed and all 15 others (and
+their table order/pointers) were untouched
+(`evidence/re/civilization-patch-e2e.json`).
+
+Only the leader *name* is exposed today - no gameplay-parameter table
+(starting techs, unique unit, AI trait, civilization color) has been
+located for civilizations yet, so renaming is a real but narrow slice of
+"civilization modding" (see the `BLOCKED` row above).
+
 ## Prioritized next blockers (highest mod-value first)
 
 1. **Combat resolution formula.** Unit stats are editable, but nobody can
@@ -72,11 +96,13 @@ existing 47 technologies — without any binary-format knowledge.
 2. **City/building/improvement data.** Core to "content mods"; likely a
    fixed-stride table similar in spirit to units/technologies and may be
    locatable with the same anchor-and-stride method used for both.
-2. **Civilization/leader data** (names, unique units/abilities, AI
-   personality) — high content-mod value, likely a small fixed-count table.
-3. **Map/terrain yield tables** — needed for any terrain-balance or
+3. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
+   personality, starting position bias) — the leader-name table found this
+   session is a lead: whatever code renders the leader-select screen next
+   to a nation name and unique-unit blurb is a promising xref target.
+4. **Map/terrain yield tables** — needed for any terrain-balance or
    scenario-design mod.
-4. **`STBL` narrative/advisor text format** — lower gameplay priority than
+5. **`STBL` narrative/advisor text format** — lower gameplay priority than
    the above but high "reflavor the whole game" content-mod value once the
    record format is known.
 

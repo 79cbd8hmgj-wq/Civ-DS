@@ -1,0 +1,102 @@
+{
+  "civilizations": [
+    {
+      "index": 0,
+      "leader_name": "Caesar",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595648
+    },
+    {
+      "index": 1,
+      "leader_name": "Cleopatra",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595880
+    },
+    {
+      "index": 2,
+      "leader_name": "Alexander",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595892
+    },
+    {
+      "index": 3,
+      "leader_name": "Isabella",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595808
+    },
+    {
+      "index": 4,
+      "leader_name": "Bismarck",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595820
+    },
+    {
+      "index": 5,
+      "leader_name": "Catherine",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595904
+    },
+    {
+      "index": 6,
+      "leader_name": "Mao",
+      "leader_name_capacity": 4,
+      "leader_name_offset": 1595604
+    },
+    {
+      "index": 7,
+      "leader_name": "Lincoln",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595704
+    },
+    {
+      "index": 8,
+      "leader_name": "Tokugawa",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595832
+    },
+    {
+      "index": 9,
+      "leader_name": "Napoleon",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595844
+    },
+    {
+      "index": 10,
+      "leader_name": "Gandhi",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595664
+    },
+    {
+      "index": 11,
+      "leader_name": "Saladin",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595720
+    },
+    {
+      "index": 12,
+      "leader_name": "Montezuma",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595916
+    },
+    {
+      "index": 13,
+      "leader_name": "Shaka",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595624
+    },
+    {
+      "index": 14,
+      "leader_name": "Genghis",
+      "leader_name_capacity": 8,
+      "leader_name_offset": 1595736
+    },
+    {
+      "index": 15,
+      "leader_name": "Elizabeth",
+      "leader_name_capacity": 12,
+      "leader_name_offset": 1595940
+    }
+  ],
+  "format_version": 1,
+  "record_count": 16
+}

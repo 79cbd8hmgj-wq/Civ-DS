@@ -15,6 +15,8 @@ from nds_disassembly_toolkit.cli import (
 )
 from nds_disassembly_toolkit.errors import NdsToolkitError
 
+from civds.civilization_patch import write_civilization_patch_manifest
+from civds.civilization_summary import write_civilization_summary
 from civds.inventory import write_inventory_summary
 from civds.profile import write_profile
 from civds.technology_patch import write_technology_patch_manifest
@@ -124,6 +126,33 @@ def _add_technology_parser(
     patch_manifest.add_argument("--output", type=Path, required=True)
 
 
+def _add_civilization_parser(
+    subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+) -> None:
+    parser = subparsers.add_parser(
+        "civilization",
+        help="inspect and patch the recovered Civilization Revolution leader-name table",
+    )
+    commands = parser.add_subparsers(dest="civilization_command")
+    summarize = commands.add_parser(
+        "summarize",
+        help="write deterministic recovered civilization metadata from the exact ROM",
+    )
+    summarize.add_argument("rom", type=Path)
+    summarize.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    summarize.add_argument("--output", type=Path, required=True)
+
+    patch_manifest = commands.add_parser(
+        "patch-manifest",
+        help="write a guarded toolkit patch manifest renaming a civilization's leader",
+    )
+    patch_manifest.add_argument("rom", type=Path)
+    patch_manifest.add_argument("leader")
+    patch_manifest.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    patch_manifest.add_argument("--new-leader-name", required=True)
+    patch_manifest.add_argument("--output", type=Path, required=True)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="civds",
@@ -135,6 +164,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_inventory_parser(subparsers)
     _add_units_parser(subparsers)
     _add_technology_parser(subparsers)
+    _add_civilization_parser(subparsers)
     add_rom_parsers(
         subparsers,
         default_profile=DEFAULT_PROFILE,
@@ -239,6 +269,28 @@ def _run_technology_command(arguments: argparse.Namespace) -> int:
     raise NdsToolkitError("a technology subcommand is required")
 
 
+def _run_civilization_command(arguments: argparse.Namespace) -> int:
+    if arguments.civilization_command == "summarize":
+        output = write_civilization_summary(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+        )
+        print(f"Wrote civilization summary: {output}")
+        return 0
+    if arguments.civilization_command == "patch-manifest":
+        output = write_civilization_patch_manifest(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+            leader_name=arguments.leader,
+            new_leader_name=arguments.new_leader_name,
+        )
+        print(f"Wrote guarded civilization patch manifest: {output}")
+        return 0
+    raise NdsToolkitError("a civilization subcommand is required")
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     parser = build_parser()
@@ -259,6 +311,8 @@ def main(argv: list[str] | None = None) -> int:
             return _run_units_command(arguments)
         if arguments.command == "technology":
             return _run_technology_command(arguments)
+        if arguments.command == "civilization":
+            return _run_civilization_command(arguments)
         if arguments.command == "disasm":
             return disassembly_cli.run_disassembly_command(arguments)
         if arguments.command == "analyze":

@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from civds.civilization import CIVILIZATION_COUNT
 from civds.cli import DEFAULT_PROFILE, build_parser, main
 from civds.profile import write_profile
 from civds.technology import TECH_RECORD_COUNT, TECH_RECORD_SIZE
@@ -231,6 +232,84 @@ def test_technology_patch_manifest_validates_profile_and_writes_guarded_edits(
             },
         ],
     }
+
+
+def _make_civilization_rom(path: Path) -> None:
+    from tests.test_civilization import _blob_with_civilization_table
+    from tests.test_profile import _make_structural_rom
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    arm9 = _blob_with_civilization_table()
+    arm9_offset = 0x1000
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_civilization_summarize_validates_profile_and_resolves_leader_names(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_civilization_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_civ")
+    output = tmp_path / "civilizations.json"
+
+    result = main(
+        [
+            "civilization",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["record_count"] == CIVILIZATION_COUNT
+    assert payload["civilizations"][0]["leader_name"] == "Caesar"
+    assert payload["civilizations"][15]["leader_name"] == "Elizabeth"
+
+
+def test_civilization_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_civilization_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_civ")
+    output = tmp_path / "napoleon-rename.json"
+
+    result = main(
+        [
+            "civilization",
+            "patch-manifest",
+            str(rom),
+            "Napoleon",
+            "--profile",
+            str(profile),
+            "--new-leader-name",
+            "Louis",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["profile_id"] == "synthetic_civ"
+    patches = payload["patches"]
+    assert len(patches) == 1
+    assert patches[0]["id"] == "civilization-009-leader-name"
+    assert bytes.fromhex(patches[0]["expected"]) == b"Napoleon\0\0\0\0"
+    assert bytes.fromhex(patches[0]["replacement"]) == b"Louis\0\0\0\0\0\0\0"
 
 
 def test_units_summarize_validates_profile_and_resolves_technology_names(
