@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from civds.buildings import BUILDING_RECORD_COUNT, BUILDING_RECORD_SIZE
 from civds.civilization import CIVILIZATION_COUNT
 from civds.cli import DEFAULT_PROFILE, build_parser, main
 from civds.combat import COMBAT_CONSTANTS
@@ -392,6 +393,108 @@ def test_combat_patch_manifest_validates_profile_and_writes_guarded_edits(
     assert patches["combat-fortified-in-city-bonus"]["expected"] == "32"
     assert patches["combat-fortified-in-city-bonus"]["replacement"] == "96"
     assert patches["combat-fortifying-bonus"]["replacement"] == "19"
+
+
+def _make_buildings_rom(path: Path) -> None:
+    from tests.test_buildings import _all_building_records, _building_record
+    from tests.test_profile import _make_structural_rom
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    records = _all_building_records()
+    records[10] = _building_record(
+        "Bank",
+        production_cost_quanta=12,
+        prerequisite_technology_id=20,
+        requires_building_mask=1 << 4,
+        description="4x city gold production",
+    )
+
+    arm9 = b"".join(records)
+    assert len(arm9) == BUILDING_RECORD_COUNT * BUILDING_RECORD_SIZE
+    arm9_offset = 0x1000
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_buildings_summarize_validates_profile_and_resolves_prerequisite_names(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_buildings_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_buildings")
+    output = tmp_path / "buildings.json"
+
+    result = main(
+        [
+            "buildings",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["record_count"] == BUILDING_RECORD_COUNT
+    assert payload["record_size"] == BUILDING_RECORD_SIZE
+    bank = payload["buildings"][10]
+    assert bank["name"] == "Bank"
+    assert bank["production_cost"] == 60
+    assert bank["prerequisite_technology_name"] == "Banking"
+    assert bank["requires_building_mask"] == 1 << 4
+
+
+def test_buildings_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_buildings_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_buildings")
+    output = tmp_path / "bank-patch.json"
+
+    result = main(
+        [
+            "buildings",
+            "patch-manifest",
+            str(rom),
+            "Bank",
+            "--profile",
+            str(profile),
+            "--production-cost",
+            "100",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    building_offset = 10 * BUILDING_RECORD_SIZE
+    assert payload == {
+        "format_version": 1,
+        "profile_id": "synthetic_buildings",
+        "patches": [
+            {
+                "id": "building-010-production-cost",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": building_offset + 0x41,
+                "expected": "0c",
+                "replacement": "14",
+                "rationale": "Set Bank production cost from 60 to 100",
+            }
+        ],
+    }
 
 
 def test_units_summarize_validates_profile_and_resolves_technology_names(

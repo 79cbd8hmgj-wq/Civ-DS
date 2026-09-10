@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "building": "Bank",
+  "building_index": 10,
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "profile_id": "civrev-usa",
+  "fields_changed": [
+    {
+      "field": "production_cost_quanta",
+      "rom_absolute_offset": 1556773,
+      "arm9_relative_offset": 1540389,
+      "original_value": 12,
+      "original_production_cost": 60,
+      "replacement_value": 20,
+      "replacement_production_cost": 100,
+      "expected_hex": "0c",
+      "replacement_hex": "14"
+    },
+    {
+      "field": "description",
+      "rom_absolute_offset": 1556784,
+      "arm9_relative_offset": 1540400,
+      "original_value": "4x city gold production",
+      "replacement_value": "6x city gold production"
+    }
+  ],
+  "fields_confirmed_unchanged_after_patch": {
+    "prerequisite_technology_id": 20,
+    "requires_building_mask": "0x00000010",
+    "excludes_building_mask": "0x00000000",
+    "neighbor_records_checked": ["Spice Shop (index 9)", "Cathedral (index 11)"]
+  },
+  "patch_application": {
+    "format_version": 1,
+    "patch_file": "bank-rebalance.json",
+    "profile_id": "civrev-usa",
+    "applied": [
+      {
+        "patch_id": "building-010-production-cost",
+        "target": "arm9",
+        "offset": 1540389,
+        "length": 1
+      },
+      {
+        "patch_id": "building-010-description",
+        "target": "arm9",
+        "offset": 1540400,
+        "length": 128
+      }
+    ]
+  },
+  "rebuild": {
+    "format_version": 1,
+    "profile_id": "civrev-usa",
+    "source_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "output_size": 67108864,
+    "exact_copy": false
+  },
+  "post_rebuild_reparse": {
+    "method": "civds.buildings.parse_building_records() run directly against the rebuilt ROM's ARM9 image (the rebuilt image no longer matches the pinned exact-ROM profile by design, so `civds buildings summarize` correctly refuses it; this step re-verifies with the same parser used by that command)",
+    "bank_production_cost": 100,
+    "bank_description": "6x city gold production",
+    "bank_prerequisite_technology_id": 20,
+    "bank_requires_building_mask": "0x00000010",
+    "neighbor_records": {
+      "9_spice_shop": {"production_cost": 40, "description": "increases city loyalty"},
+      "11_cathedral": {"production_cost": 80, "description": "+2 happiness per citizen."}
+    }
+  },
+  "conclusion": "A guarded building patch manifest (raising Bank's production cost 60 -> 100 and rewriting its effect description) was generated from the real ROM, applied to an extracted workspace, rebuilt into a new ROM, and re-parsed - confirming exactly the two targeted fields changed, the untouched fields on the same record (prerequisite technology, requires-building mask) stayed exactly as before, and neighboring records (Spice Shop, Cathedral) were completely unaffected. This proves the building-table discovery and patch capability end to end as a real modding capability."
+}

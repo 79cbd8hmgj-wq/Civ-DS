@@ -1,0 +1,46 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+from nds_disassembly_toolkit.nds.header import NdsHeader
+from nds_disassembly_toolkit.profile import load_profile, validate_rom
+from nds_disassembly_toolkit.workspace.manifest import write_json_atomic
+
+from civds.buildings import build_building_patch_set, parse_building_records
+
+
+def write_building_patch_manifest(
+    rom: Path,
+    profile_path: Path,
+    output: Path,
+    *,
+    building_name: str,
+    production_cost: int | None = None,
+    prerequisite_technology_id: int | None = None,
+    requires_building_mask: int | None = None,
+    excludes_building_mask: int | None = None,
+    description: str | None = None,
+) -> Path:
+    profile = load_profile(profile_path)
+    validate_rom(rom, profile)
+
+    data = rom.read_bytes()
+    header = NdsHeader.from_bytes(data)
+    arm9_end = header.arm9_offset + header.arm9_size
+    if arm9_end > len(data):
+        raise ValueError("ARM9 range extends beyond the ROM")
+
+    arm9 = data[header.arm9_offset:arm9_end]
+    records = parse_building_records(arm9)
+    payload = build_building_patch_set(
+        records,
+        building_name=building_name,
+        profile_id=profile.id,
+        production_cost=production_cost,
+        prerequisite_technology_id=prerequisite_technology_id,
+        requires_building_mask=requires_building_mask,
+        excludes_building_mask=excludes_building_mask,
+        description=description,
+    )
+    write_json_atomic(output, payload)
+    return output

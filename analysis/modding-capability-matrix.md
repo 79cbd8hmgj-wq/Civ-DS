@@ -31,8 +31,11 @@ Status legend:
 | Civilization leader names (16 civs) | `DATA_EDITABLE` | `civds civilization summarize` / `civds civilization patch-manifest --new-leader-name` |
 | Civilization nation names, starting bonuses, unique units, AI personality | `BLOCKED` | only the leader-name pointer table was located; no companion "nation name" or per-civilization gameplay-parameter table has been found yet |
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
-| Cities / buildings / improvements | `BLOCKED` | not yet located |
-| Wonders | `BLOCKED` | not yet located; likely lives in a table adjacent to or sharing code with technologies (several wonders are technology-adjacent in classic Civ design) but this has not been checked |
+| Building/improvement descriptors (24 records) | `DATA_EDITABLE` | `civds buildings summarize` / `civds buildings patch-manifest`; production cost, prerequisite technology, and requires/excludes building-upgrade masks are patchable (`prerequisite_technology_id`/`requires_building_mask`/`excludes_building_mask` proven via the runtime availability-check function); proven end to end, see `evidence/re/building-patch-e2e.json` and `analysis/buildings-model.md` |
+| Building `unknown_0x40` byte | `BLOCKED` | visible in `civds buildings summarize`; bimodal pattern observed (era-tier-shaped) but no runtime consumer found, so not named or patchable |
+| City-effect application (how a built building actually changes food/production/trade/science/culture/happiness/defense) | `BLOCKED` | the *availability* check (can this city build X) is fully proven; the code that *applies* a completed building's effect to city totals was not located this session - every observed effect is currently only a display string, not a decoded numeric bonus field |
+| City-instance state (built-buildings bitmask, turn/population counters) | `BLOCKED` | a per-city `+0x10` "already-built buildings" bitmask is proven (consumed by the buildings availability check) and a separate `0xBC`-stride per-city array was found with an unresolved field catalog; kept explicitly separate from the building descriptor table per this session's instructions, not promoted to tooling |
+| Wonders (21 records, distinct table) | `PARTIAL` (data-documented, not wired into `civds`) | located precisely (RAM `0x0217B518`, immediately after the unit table, stride `0x14C`) and every field's offset recorded with confidence levels in `analysis/buildings-model.md`/`evidence/re/wonders.json`; `prerequisite_technology_id` and `production_cost_quanta` are strongly supported by real-world tech-name matches but not independently executable-proven, so no `civds wonders` command was added yet |
 | Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`; RNG/round-loop mechanism now proven, read-only) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, 5 modifier sources, and 6 "overwhelming force" thresholds are patchable; the RNG algorithm (global MSVC-style LCG) and the per-round "army" elimination loop (weighted coin-flip winner, random victim-slot pick, up to 3 sub-units/side) are now fully traced and documented but not exposed as patchable constants - each candidate (RNG constants, round-cap, army-size cap) was evidence-checked and rejected as unsafe to patch in isolation; see `analysis/combat-model.md` and `evidence/re/combat-rng-loop-trace.txt` |
 | Diplomacy / AI decision-making | `BLOCKED` | not yet located |
 | Victory conditions | `BLOCKED` | not yet located |
@@ -138,26 +141,64 @@ respectively — documented in the trace file's "What was deliberately not
 exposed" section. This is a deliberate application of the same "safely
 patchable" bar the existing 11 constants meet, not a gap in the tracing.
 
+## What "buildings are DATA_EDITABLE" actually means
+
+`analysis/buildings-model.md` traces production cost and prerequisite
+technology from the 24-record building/improvement table into the exact
+function that decides whether a city can build each one
+(`0x02086cb8`-`0x02087050`), and identifies two further proven fields —
+`requires_building_mask`/`excludes_building_mask` — that the same function
+reads to enforce building-upgrade chains (e.g. Bank requires Market
+already built; Market becomes unbuildable once Bank exists). It also
+separately documents a distinct 21-record wonder table (found because it
+begins exactly where the unit table ends) with every field's offset and
+confidence level recorded, but does not wire wonders into `civds` yet -
+only building fields with either executable proof or a strong,
+convention-consistent data pattern were promoted.
+
+`civds buildings summarize <rom> --output buildings.json` lists all 24
+records (name, model name, cost, prerequisite technology + resolved name,
+requires/excludes masks as hex, description).
+`civds buildings patch-manifest <rom> "<Building>" --production-cost N
+--prerequisite-technology-id N --requires-building-mask 0xNN
+--excludes-building-mask 0xNN --description "<text>" --output patch.json`
+emits guarded, single-field, expected-byte-checked patches. `model_name`
+(likely an asset lookup key, by the same precedent as units/technologies)
+and the unresolved `unknown_0x40` byte are deliberately not exposed.
+
+Proven end to end on the real ROM: Bank's production cost was raised
+60 -> 100 and its description rewritten, applied, rebuilt, and re-parsed —
+confirming exactly those two fields changed, the record's other fields
+were untouched, and neighboring records (Spice Shop, Cathedral) were
+unaffected (`evidence/re/building-patch-e2e.json`).
+
 ## Prioritized next blockers (highest mod-value first)
 
-1. **City/building/improvement data.** Core to "content mods"; likely a
-   fixed-stride table similar in spirit to units/technologies and may be
-   locatable with the same anchor-and-stride method used for both. Now the
-   top blocker: the RNG/round-loop gap that previously outranked it is
-   resolved at the model level (see above), and the remaining combat
-   open questions (the `+0x52` field, the retreat helper, the post-battle
-   roll, the `0x00080000` flag interaction) are narrower, lower-value
-   follow-ups rather than a blocker for trusting unit-stat mods.
-2. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
-   personality, starting position bias) — the leader-name table found this
-   session is a lead: whatever code renders the leader-select screen next
-   to a nation name and unique-unit blurb is a promising xref target.
-3. **Map/terrain yield tables** — needed for any terrain-balance or
+1. **City-effect application path.** Buildings' *availability* is fully
+   proven, but the code that actually applies a completed building's
+   effect to city food/production/trade/science/culture/happiness/defense
+   was not located — every effect is currently only a display string.
+   This is the natural next step to make building mods (not just cost/
+   prerequisite edits) trustworthy, mirroring how the combat RNG/loop
+   pass made unit-stat edits trustworthy.
+2. **Wonders tooling.** The table is fully located and its fields
+   data-documented (`analysis/buildings-model.md`, `evidence/re/wonders.json`);
+   promoting `prerequisite_technology_id`/`production_cost_quanta` to a
+   `civds wonders` command mainly needs one more executable cross-reference
+   pass (the availability-check function already proven to touch this
+   table's stride/location, just not yet traced field-by-field the way
+   the building table was).
+3. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
+   personality, starting position bias) — the leader-name table found in
+   an earlier session is a lead: whatever code renders the leader-select
+   screen next to a nation name and unique-unit blurb is a promising xref
+   target.
+4. **Map/terrain yield tables** — needed for any terrain-balance or
    scenario-design mod.
-4. **`STBL` narrative/advisor text format** — lower gameplay priority than
+5. **`STBL` narrative/advisor text format** — lower gameplay priority than
    the above but high "reflavor the whole game" content-mod value once the
    record format is known.
-5. **Remaining combat open questions** (`+0x52` field semantics, the
+6. **Remaining combat open questions** (`+0x52` field semantics, the
    `0x0209bf7c` retreat/support helper's internals, the post-battle RNG
    draw's consumer, the `0x00080000` flag/combat interaction) — worth a
    future targeted pass but no longer gate trusting the core formula.
