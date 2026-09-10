@@ -1,0 +1,65 @@
+{
+  "format_version": 1,
+  "technology": "Code of Laws",
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "profile_id": "civrev-usa",
+  "fields_changed": [
+    {
+      "field": "prerequisite_technology_ids[1]",
+      "rom_absolute_offset": 1560348,
+      "arm9_relative_offset": 1543964,
+      "original_value": 1,
+      "original_technology_name": "Alphabet",
+      "replacement_value": 5,
+      "replacement_technology_name": "Pottery",
+      "expected_hex": "0100",
+      "replacement_hex": "0500"
+    },
+    {
+      "field": "effect",
+      "rom_absolute_offset": 1560356,
+      "arm9_relative_offset": 1543972,
+      "original_value": "Govt: Republic",
+      "replacement_value": "Govt: Peoples Rule"
+    }
+  ],
+  "patch_application": {
+    "format_version": 1,
+    "patch_file": "code-of-laws.json",
+    "profile_id": "civrev-usa",
+    "applied": [
+      {
+        "patch_id": "technology-009-prerequisite-1",
+        "target": "arm9",
+        "offset": 1543964,
+        "length": 2,
+        "before_sha256": "20a6d997c1958aa86020b5a8357f558f8ef49c76f30396dff55ce5eb42feae33",
+        "after_sha256": "730972aed122d545837b36da6814a4045dc11d66705628d51e2714ee139d9fd6"
+      },
+      {
+        "patch_id": "technology-009-effect",
+        "target": "arm9",
+        "offset": 1543972,
+        "length": 64,
+        "before_sha256": "730972aed122d545837b36da6814a4045dc11d66705628d51e2714ee139d9fd6",
+        "after_sha256": "164bd42506d61c882c8fbaab094e01fdbb9a1ee9fe2e0176f8ab7acf83f3af0a"
+      }
+    ]
+  },
+  "rebuild": {
+    "format_version": 1,
+    "profile_id": "civrev-usa",
+    "source_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "output_sha256": "6b4cc60169e9fee27be6ec6cf032e6dfc955bb9f77b7a20a343a1e136bc46e5d",
+    "output_size": 67108864,
+    "exact_copy": false
+  },
+  "post_rebuild_reparse": {
+    "method": "civds.technology.parse_technology_records() run directly against the rebuilt ROM's ARM9 image (the rebuilt image no longer matches the pinned exact-ROM profile by design, so `civds technology summarize` correctly refuses it; this step re-verifies behavior with the same parser used by that command, called directly)",
+    "record_index": 9,
+    "name": "Code of Laws",
+    "prerequisite_technology_ids": [8, 5, -1],
+    "effect": "Govt: Peoples Rule"
+  },
+  "conclusion": "A guarded technology patch manifest (rewiring one prerequisite slot and rewriting the effect text) was generated from the real ROM, applied to an extracted workspace, rebuilt into a new ROM, and re-parsed - confirming both fields changed exactly as requested and nothing else in the technology table moved. This is the full modding round trip (discover -> patch-manifest -> patch -> rebuild -> verify) for the technology table."
+}

@@ -8,6 +8,7 @@ import pytest
 
 from civds.cli import DEFAULT_PROFILE, build_parser, main
 from civds.profile import write_profile
+from civds.technology import TECH_RECORD_COUNT, TECH_RECORD_SIZE
 from civds.units import UNIT_RECORD_COUNT, UNIT_RECORD_SIZE
 
 
@@ -105,6 +106,131 @@ def _make_unit_summary_rom(path: Path) -> None:
     struct.pack_into("<I", rom, 0x2C, len(arm9))
     struct.pack_into("<I", rom, 0x80, len(rom))
     path.write_bytes(rom)
+
+
+def _make_technology_and_unit_rom(path: Path) -> None:
+    from tests.test_profile import _make_structural_rom
+    from tests.test_technology import _all_technology_records, _tech_record
+    from tests.test_units import _text_slot, _unit_record
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    tech_records = _all_technology_records()
+    tech_records[1] = _tech_record("Alphabet")
+    tech_records[8] = _tech_record("Writing")
+    tech_records[9] = _tech_record(
+        "Code of Laws",
+        prerequisite_technology_ids=(8, 1, -1),
+    )
+
+    unit_records = []
+    for index in range(UNIT_RECORD_COUNT):
+        if index == 0:
+            unit_records.append(_unit_record("Settlers", model="settler_rom"))
+        else:
+            unit_records.append(_unit_record(f"Unit {index}"))
+
+    arm9 = (
+        b"".join(tech_records)
+        + b"".join(unit_records)
+        + _text_slot("Pyramids of Egypt")
+    )
+    assert len(arm9) == (
+        TECH_RECORD_COUNT * TECH_RECORD_SIZE + UNIT_RECORD_COUNT * UNIT_RECORD_SIZE + 32
+    )
+    arm9_offset = 0x1000
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_technology_summarize_validates_profile_and_resolves_prerequisite_names(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_technology_and_unit_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_tech")
+    output = tmp_path / "technologies.json"
+
+    result = main(
+        [
+            "technology",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["record_count"] == TECH_RECORD_COUNT
+    assert payload["record_size"] == TECH_RECORD_SIZE
+    code_of_laws = payload["technologies"][9]
+    assert code_of_laws["name"] == "Code of Laws"
+    assert code_of_laws["prerequisite_technology_ids"] == [8, 1, -1]
+    assert code_of_laws["prerequisite_technology_names"] == ["Writing", "Alphabet", None]
+
+
+def test_technology_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_technology_and_unit_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_tech")
+    output = tmp_path / "code-of-laws-patch.json"
+
+    result = main(
+        [
+            "technology",
+            "patch-manifest",
+            str(rom),
+            "Code of Laws",
+            "--profile",
+            str(profile),
+            "--prerequisite-1",
+            "5",
+            "--effect",
+            "Govt: Republic",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    tech_offset = 9 * TECH_RECORD_SIZE
+    assert payload == {
+        "format_version": 1,
+        "profile_id": "synthetic_tech",
+        "patches": [
+            {
+                "id": "technology-009-prerequisite-1",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": tech_offset + 32 + 2,
+                "expected": "0100",
+                "replacement": "0500",
+                "rationale": "Set Code of Laws prerequisite slot 1 from 1 to 5",
+            },
+            {
+                "id": "technology-009-effect",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": tech_offset + 42,
+                "expected": "00" * 64,
+                "replacement": ("Govt: Republic".encode("ascii") + b"\0" * 50).hex(),
+                "rationale": "Set Code of Laws effect text from '' to 'Govt: Republic'",
+            },
+        ],
+    }
 
 
 def test_units_summarize_validates_profile_and_resolves_technology_names(

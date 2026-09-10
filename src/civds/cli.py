@@ -17,6 +17,8 @@ from nds_disassembly_toolkit.errors import NdsToolkitError
 
 from civds.inventory import write_inventory_summary
 from civds.profile import write_profile
+from civds.technology_patch import write_technology_patch_manifest
+from civds.technology_summary import write_technology_summary
 from civds.unit_patch import write_unit_patch_manifest
 from civds.unit_summary import write_unit_summary
 
@@ -92,6 +94,36 @@ def _add_units_parser(
     patch_manifest.add_argument("--output", type=Path, required=True)
 
 
+def _add_technology_parser(
+    subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+) -> None:
+    parser = subparsers.add_parser(
+        "technology",
+        help="inspect and patch the recovered Civilization Revolution technology table",
+    )
+    commands = parser.add_subparsers(dest="technology_command")
+    summarize = commands.add_parser(
+        "summarize",
+        help="write deterministic recovered technology metadata from the exact ROM",
+    )
+    summarize.add_argument("rom", type=Path)
+    summarize.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    summarize.add_argument("--output", type=Path, required=True)
+
+    patch_manifest = commands.add_parser(
+        "patch-manifest",
+        help="write a guarded toolkit patch manifest for confirmed technology fields",
+    )
+    patch_manifest.add_argument("rom", type=Path)
+    patch_manifest.add_argument("technology")
+    patch_manifest.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    patch_manifest.add_argument("--prerequisite-0", type=int)
+    patch_manifest.add_argument("--prerequisite-1", type=int)
+    patch_manifest.add_argument("--prerequisite-2", type=int)
+    patch_manifest.add_argument("--effect")
+    patch_manifest.add_argument("--output", type=Path, required=True)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="civds",
@@ -102,6 +134,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_profile_parser(subparsers)
     _add_inventory_parser(subparsers)
     _add_units_parser(subparsers)
+    _add_technology_parser(subparsers)
     add_rom_parsers(
         subparsers,
         default_profile=DEFAULT_PROFILE,
@@ -181,6 +214,31 @@ def _run_units_command(arguments: argparse.Namespace) -> int:
     raise NdsToolkitError("a units subcommand is required")
 
 
+def _run_technology_command(arguments: argparse.Namespace) -> int:
+    if arguments.technology_command == "summarize":
+        output = write_technology_summary(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+        )
+        print(f"Wrote technology summary: {output}")
+        return 0
+    if arguments.technology_command == "patch-manifest":
+        output = write_technology_patch_manifest(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+            technology_name=arguments.technology,
+            prerequisite_technology_id_0=arguments.prerequisite_0,
+            prerequisite_technology_id_1=arguments.prerequisite_1,
+            prerequisite_technology_id_2=arguments.prerequisite_2,
+            effect=arguments.effect,
+        )
+        print(f"Wrote guarded technology patch manifest: {output}")
+        return 0
+    raise NdsToolkitError("a technology subcommand is required")
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     parser = build_parser()
@@ -199,6 +257,8 @@ def main(argv: list[str] | None = None) -> int:
             return _run_inventory_command(arguments)
         if arguments.command == "units":
             return _run_units_command(arguments)
+        if arguments.command == "technology":
+            return _run_technology_command(arguments)
         if arguments.command == "disasm":
             return disassembly_cli.run_disassembly_command(arguments)
         if arguments.command == "analyze":
