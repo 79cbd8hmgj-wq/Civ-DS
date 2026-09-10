@@ -21,7 +21,7 @@ Recovered fields used by `civds.units.UnitRecord`:
 | `0x43` | 1 | fuel/turn limit used by air units | confirmed |
 | `0x44` | 1 | production-cost quanta (`value * 5`) | confirmed |
 | `0x45` | 1 | unknown | unresolved; no provenance-backed unit-table consumer recovered |
-| `0x46` | 1 | unknown | unresolved; no provenance-backed unit-table consumer recovered |
+| `0x46` | 1 | unknown | unresolved as a public name; confirmed runtime consumer (see below) |
 | `0x47` | 1 | unknown | unresolved; no provenance-backed unit-table consumer recovered |
 | `0x48` | 1 | formation mask | confirmed |
 | `0x49` | 1 | reserved in supported ROM | all 38 records are zero; no semantic use established |
@@ -71,6 +71,26 @@ The following bits are preserved in the raw `flags` word but are intentionally n
 
 A follow-up scan checked whether `0x00100000` and `0x00200000` were being read through byte/halfword accesses at descriptor `+0x52`. Apparent `0x10`/`0x20` hits were traced to unrelated unit-instance `+0x52` fields or register reuse rather than the descriptor flag word. They therefore do not count as semantic proof for these descriptor bits.
 
+## Byte field consumer note (+0x46)
+
+A table-base-literal-confirmed read of descriptor `+0x46` exists in `overlay_015`
+(`ldrsb ip, [r3, #0x46]` with `r3 = 0x02179f20 + type_index * 0x94`, literal verified
+against the ROM), feeding a stack argument into an `arm9` helper at `0x020b706c`.
+That helper treats the value as a three-way mode selector (`0`, `1`, `2`; any value
+above `2` short-circuits the function) controlling a second, mode-dependent pixel
+offset and a "direction" output applied after an unconditional per-facing position
+offset. The accepted `0..2` range exactly matches every `unknown_0x46` value observed
+across all 38 records, which is strong corroboration that this is genuinely field
+`+0x46` and not a same-stride collision with an unrelated structure.
+
+No string table, asset reference, or further cross-reference was found in this pass
+to pin down which on-map overlay element (e.g. a rank/banner marker) modes 0/1/2
+actually place, so the field keeps its `unknown_0x46` name — only its evidence
+status changes, from "no consumer found" to "confirmed consumer, semantics
+unresolved". Full disassembly and reasoning: `unit-field-0x46-consumer-trace.txt`.
+The same scan found zero comparable accesses for `+0x45` or `+0x47`, whose status is
+unchanged.
+
 ## Evidence files
 
 The committed reverse-engineering evidence remains under `evidence/re/`, especially:
@@ -83,6 +103,7 @@ The committed reverse-engineering evidence remains under `evidence/re/`, especia
 - `unit-high-byte-flag-trace.txt`
 - `unit-unresolved-trace.txt`
 - `unit-formation-flags-trace.txt`
+- `unit-field-0x46-consumer-trace.txt`
 - `units.json`
 
 The supported-ROM evidence should be regenerated whenever a newly proven semantic is added to the public unit summary.

@@ -1,0 +1,149 @@
+=== CONFIRMED CONSUMER OF UNIT DESCRIPTOR OFFSET +0x46 ===
+
+Scope: this trace corrects the previous "no provenance-backed unit-table
+consumer recovered" status for descriptor offset +0x46. It does not affect
++0x45 or +0x47, which remain unresolved (see unit-unresolved-trace.txt and
+the cross-check at the bottom of this file).
+
+Provenance chain
+-----------------
+
+1. Table base literal, confirmed byte-for-byte against the extracted ROM:
+
+   overlay_015 (RAM 0x02208b20..0x02210336), literal pool entry at
+   0x0220a410 == 0x02179f20
+
+   0x02179f20 is the same unit-descriptor table base used throughout the
+   rest of the recovered evidence (Settlers anchor, flag 0x10 trace, etc.).
+
+2. Site of the read (overlay_015, ARM mode):
+
+   FUNCTION (partial; entry not yet bounded) covering 0x0220a1c0..0x0220a340
+   0x0220a1c0: ldr      r8, [sp, #0x24]
+   0x0220a1c4: ldr      r4, [pc, #0x240]
+   0x0220a1c8: mov      sb, r7
+   0x0220a1cc: add      sl, r0, r6            ; sl = unit-instance pointer
+   0x0220a1d0: add      r5, r0, r6, lsl #2    ; r5 = pointer-array slot for this unit
+   0x0220a1d4: mvn      fp, #0
+   0x0220a1d8: ldr      r0, [r8]
+   0x0220a1dc: cmp      r0, #0
+   0x0220a1e0: beq      #0x220a3d4
+   0x0220a1e4: ldr      r0, [sp, #0x20]
+   0x0220a1e8: cmp      r0, #0
+   0x0220a1ec: bne      #0x220a20c
+   0x0220a1f0: strb     fp, [r8, #0x18]
+   0x0220a1f4: mov      r0, #1
+   0x0220a1f8: strb     r0, [r8, #0x19]
+   0x0220a1fc: mov      r0, #0
+   0x0220a200: strb     r0, [r8, #0x1a]
+   0x0220a204: mov      r0, #0xff
+   0x0220a208: strb     r0, [r8, #0x1c]
+   0x0220a20c: ldrb     lr, [sl, #0x58]       ; lr = unit-type index from unit instance
+   0x0220a210: ldr      r3, [pc, #0x1f8]      ; r3 literal -> 0x02179f20 (table base, confirmed)
+   0x0220a214: mov      ip, #0x94             ; record stride
+   0x0220a218: mla      r3, lr, ip, r3        ; r3 = table_base + type_index * 0x94
+   0x0220a21c: ldrsb    ip, [r3, #0x46]       ; *** READ OF UNIT DESCRIPTOR +0x46 ***
+   0x0220a220: mov      r0, #0
+   0x0220a224: cmp      r6, #0
+   0x0220a228: str      ip, [sp]              ; stack arg 0 = descriptor+0x46 value
+   0x0220a22c: mov      ip, r0
+   0x0220a230: str      ip, [sp, #4]          ; stack arg 1 = 0
+   0x0220a234: ldrb     ip, [sl, #0x5e]
+   0x0220a238: moveq    r2, #2
+   0x0220a23c: movne    r2, #6
+   0x0220a240: str      ip, [sp, #8]          ; stack arg 2 = byte at unit-instance+0x5e
+   0x0220a244: ldrb     ip, [sl, #0x60]
+   0x0220a248: mov      r1, r0
+   0x0220a24c: mov      r3, r7
+   0x0220a250: str      ip, [sp, #0xc]        ; stack arg 3 = byte at unit-instance+0x60
+   0x0220a254: add      ip, sp, #0x30
+   0x0220a258: str      ip, [sp, #0x10]       ; stack arg 4 = &out_x
+   0x0220a25c: add      ip, sp, #0x2c
+   0x0220a260: str      ip, [sp, #0x14]       ; stack arg 5 = &out_y
+   0x0220a264: add      ip, sp, #0x28
+   0x0220a268: str      ip, [sp, #0x18]       ; stack arg 6 = &out_direction
+   0x0220a26c: bl       #0x20b706c            ; call into arm9 helper
+
+3. Callee (arm9.bin, ARM mode), the descriptor+0x46 value arrives as this
+   function's r1 via its 5th argument slot (caller's [sp,#0] -> callee's
+   [sp,#0x30] after the callee's own push/sub sp,#8 frame):
+
+   0x020b706c..~0x020b7280 (function boundary approximate; only the part
+   relevant to the +0x46 argument is transcribed)
+   ...
+   0x020b70c4: ldr      r1, [sp, #0x30]       ; r1 = descriptor+0x46 value
+   ...
+   0x020b70e0: cmp      r1, #2
+   0x020b70f0: pophi    {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+                                              ; r1 > 2 (unsigned) -> early return,
+                                              ; no extra offset applied
+   ...                                        ; (unconditional direction-offset
+                                               ; math using a table indexed by a
+                                               ; facing/orientation value, applied
+                                               ; to *out_x/*out_y regardless of mode)
+   0x020b71b0: ldr      r0, [sp]              ; r0 = descriptor+0x46 value again
+   0x020b71b4: cmp      r0, #1
+   0x020b71b8: bne      #0x20b7244
+                                              ; --- mode == 1 branch ---
+   0x020b71bc..0x20b7240:                     ; second per-direction table,
+                                               ; ADDS a rounded offset to *out_x,
+                                               ; and rewrites *out_direction as
+                                               ; (facing - 1) & 7 (also checks a
+                                               ; secondary descriptor byte and can
+                                               ; further adjust *out_direction to
+                                               ; (facing - 2) & 7)
+   0x020b7244: cmp      r0, #2
+   0x020b7248: bne      #0x20b72cc
+                                              ; --- mode == 2 branch ---
+   0x020b724c..0x20b72cc:                     ; same table/shift as mode 1 but
+                                               ; SUBTRACTS instead of adding
+   0x020b72cc: ...                            ; --- mode == 0 falls straight
+                                               ; through to here with no extra
+                                               ; adjustment beyond the
+                                               ; unconditional offset above ---
+
+Interpretation
+--------------
+
+Descriptor byte +0x46 is read directly from the confirmed unit-descriptor
+table (table-base literal verified against the ROM) and passed, unmodified,
+into an ARM9 helper that:
+
+  * always applies a per-facing pixel offset to an already-computed on-map
+    (x, y) position for the unit, then
+  * branches on the +0x46 value (0, 1, or 2) to optionally apply a SECOND,
+    mode-dependent offset (added for mode 1, subtracted for mode 2, skipped
+    for mode 0) and to adjust a third "direction" output value, and
+  * returns immediately with only the first offset applied for any value
+    greater than 2.
+
+This is consistent with a secondary-sprite/marker placement pass (e.g. a
+banner, rank marker, or similar overlay drawn relative to the unit icon)
+that is positioned differently depending on the unit's descriptor-declared
+mode, but no string table, asset reference, or further xref was found in
+this pass to independently confirm which overlay element mode 0/1/2
+actually is. The value range this code accepts (0..2, with >2 explicitly
+short-circuited) exactly matches the value range observed across all 38
+records (see below), which is strong corroborating evidence that this is
+genuinely descriptor field +0x46 and not a coincidental same-stride read of
+an unrelated structure.
+
+Cross-check against evidence/re/units.json (all 38 records):
+  unknown_0x46 values observed: {0, 1, 2} only, no other value ever occurs.
+
+Given no independently-confirmed visual/gameplay meaning for the three
+modes, this field is intentionally NOT promoted to a named
+gameplay-semantic property. `UnitRecord.unknown_0x46` keeps its existing
+name; only its evidence-confidence note in analysis/unit-descriptor.md
+changes from "no consumer found" to "confirmed consumer, mode selector,
+precise visual role unresolved".
+
+Cross-check for +0x45 and +0x47
+--------------------------------
+
+The same table-base-literal-anchored scan that found the above access
+(evidence/re/unit-field-usage.json, metadata_accesses/stride_near_metadata_accesses,
+covering both ARM and Thumb code across arm9 and all 17 overlays) recorded
+zero direct, table-base-confirmed accesses at field_offset 69 (+0x45) or
+field_offset 71 (+0x47). Their status is unchanged: no provenance-backed
+consumer recovered.
