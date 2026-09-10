@@ -1,0 +1,230 @@
+=== BUILDING/WONDER AVAILABILITY-CHECK FUNCTION - EXTENDED TRACE ===
+
+Mined this session (no ROM/disassembler access available) purely from
+already-committed evidence/re/unit-formation-flags-trace.txt, whose
+candidate-context windows happen to overlap this function's address
+range. Same function documented at a higher level in section 3 of
+analysis/buildings-model.md (0x02086cb8-0x02087050); this file adds the
+concrete instruction sequence between the documented summary points,
+recovered by stitching together every context/known-field-access line
+in the source trace whose address falls in this function's range and
+printing them in address order. Gaps mark addresses the source trace
+did not capture (untouched by any candidate window in that file); they
+are NOT missing instructions in the real function, just outside what
+this session could recover without a live disassembler.
+
+Purpose: exhaustively check whether ANY instruction in this range
+performs city-yield arithmetic (an add/mul into a food/gold/trade/
+science/culture accumulator) rather than a pure availability check.
+Finding: no such instruction is present in the recovered portion -
+every instruction here is a comparison, branch, table-stride walk, or
+a bl to a helper (has_researched, and several other already-anchored
+or still-generic helpers) whose own effect is a boolean/list-append,
+not a scalar city-stat update. This is a negative result that narrows
+(does not eliminate) the search: city-yield accumulation, if it
+exists as a discrete step at all, is NOT colocated with this
+function - see evidence/re/city-yield-ui-leads.json for the next
+concrete lead.
+
+    0x02086cb8: ldrsh    r0, [r6, #0x4a] field=0x4a
+    ... (8 bytes / 2 instructions not captured by the source trace) ...
+    0x02086cc4: ldrsb    r1, [r8]
+    0x02086cc8: bl       #0x20957a0
+    0x02086ccc: cmp      r0, #0
+    0x02086cd0: beq      #0x2086df4
+    0x02086cd4: ldrsh    r0, [r6, #0x4c]
+    0x02086cd8: cmp      r0, r4
+    0x02086cdc: beq      #0x2086cf0
+    0x02086ce0: ldrsb    r1, [r8]
+    0x02086ce4: bl       #0x20957a0
+    0x02086ce8: cmp      r0, #0
+    0x02086cec: bne      #0x2086df4
+    0x02086cf0: ldrsh    r0, [r6, #0x4e]
+    0x02086cf4: cmp      r0, r4
+    0x02086cf8: beq      #0x2086d0c
+    0x02086cfc: ldrsb    r1, [r8]
+    0x02086d00: bl       #0x20957a0
+    0x02086d04: cmp      r0, #0
+    0x02086d08: bne      #0x2086df4
+    0x02086d0c: ldr r1, [r6, #0x50] base=r6 disp=0x50 width=4 hits=(80,) shape_hits=3
+    0x02086d10: tst      r1, #2
+    0x02086d14: beq      #0x2086d24
+    0x02086d18: ldr      r0, [r8, #0x24]
+    0x02086d1c: tst      r0, #1
+    0x02086d20: beq      #0x2086df4
+    0x02086d24: tst      r1, #0x4000
+    0x02086d28: ldrne    r0, [pc, #0x55c]
+    0x02086d2c: ldrne    r0, [r0]
+    0x02086d30: cmpne    r7, r0
+    0x02086d34: bne      #0x2086df4
+    0x02086d38: cmp      sb, #6
+    0x02086d3c: ldreq    r0, [pc, #0x548]
+    0x02086d40: ldreq    r0, [r0]
+    0x02086d44: cmpeq    r7, r0
+    0x02086d48: beq      #0x2086df4
+    0x02086d4c: tst      r1, #1
+    0x02086d50: beq      #0x2086d94
+    0x02086d54: ldrsb    r1, [r8]
+    0x02086d58: mov      r0, #0x2d
+    0x02086d5c: mov      r2, #0
+    0x02086d60: bl       #0x2096a58
+    0x02086d64: cmp      r0, #0
+    0x02086d68: bne      #0x2086d84
+    0x02086d6c: ldrsb    r1, [r8]
+    0x02086d70: ldr      r0, [pc, #0x518]
+    0x02086d74: ldr      r0, [r0, r1, lsl #2]
+    0x02086d78: cmp      r0, #5
+    0x02086d7c: movne    r1, #3
+    0x02086d80: bne      #0x2086d88
+    0x02086d84: mov      r1, #2
+    0x02086d88: ldrsb    r0, [r8, #3]
+    0x02086d8c: cmp      r0, r1
+    0x02086d90: blt      #0x2086df4
+    0x02086d94: ldr r0, [r6, #0x50] base=r6 disp=0x50 width=4 hits=(80,) shape_hits=1
+    0x02086d98: tst      r0, #0x20000
+    0x02086d9c: bne      #0x2086df4
+    0x02086da0: ldr      r0, [pc, #0x490]
+    0x02086da4: mov      r1, r7
+    0x02086da8: ldr      fp, [r0]
+    0x02086dac: mov      r0, sb
+    0x02086db0: bl       #0x2095ca8
+    0x02086db4: str      r0, [sp, #0x2c]
+    0x02086db8: mov      r0, sl
+    0x02086dbc: mov      r1, sb
+    0x02086dc0: bl       #0x2095250
+    0x02086dc4: mov      ip, r0
+    0x02086dc8: ldrsb    r3, [r6, #0x44]
+    0x02086dcc: mov      r0, fp
+    0x02086dd0: ldr      r2, [sp, #0x2c]
+    0x02086dd4: mul      fp, r3, ip
+    0x02086dd8: add      r3, fp, fp, lsr #31
+    0x02086ddc: ldr      r1, [pc, #0x4b0]
+    0x02086de0: asr      r3, r3, #1
+    0x02086de4: bl       #0x2023acc
+    0x02086de8: ldr      r0, [pc, #0x478]
+    0x02086dec: str      sb, [r0, r5, lsl #2]
+    0x02086df0: add      r5, r5, #1
+    0x02086df4: ldr      r0, [pc, #0x48c]
+    0x02086df8: add      sb, sb, #1
+    0x02086dfc: ldr      r0, [r0]
+    0x02086e00: add      r6, r6, #0x94
+    0x02086e04: cmp      sb, r0
+    ... (52 bytes / 13 instructions not captured by the source trace) ...
+    0x02086e3c: ldrsh    r0, [r6, #0x42] field=0x42
+    ... (52 bytes / 13 instructions not captured by the source trace) ...
+    0x02086e74: ldr      r6, [pc, #0x420]
+    0x02086e78: add      r4, r0, r7, lsl #4
+    0x02086e7c: mvn      fp, #0
+    0x02086e80: ldrsh    r0, [r6, #0x42]
+    0x02086e84: cmp      r0, fp
+    0x02086e88: beq      #0x2086e9c
+    0x02086e8c: ldrsb    r1, [r8]
+    0x02086e90: bl       #0x20957a0
+    0x02086e94: cmp      r0, #0
+    0x02086e98: beq      #0x2086ff0
+    0x02086e9c: ldr      r0, [r8, #0x10]
+    0x02086ea0: mov      r1, #1
+    0x02086ea4: tst      r0, r1, lsl sb
+    0x02086ea8: bne      #0x2086ff0
+    0x02086eac: ldrsh    r1, [r8, #0x38]
+    0x02086eb0: sub      r1, r1, #0x64
+    0x02086eb4: cmp      sb, r1
+    0x02086eb8: beq      #0x2086ff0
+    0x02086ebc: ldr r1, [r6, #0x48] base=r6 disp=0x48 width=4 hits=(72, 73) shape_hits=3
+    0x02086ec0: cmp      r1, #0
+    0x02086ec4: beq      #0x2086ed0
+    0x02086ec8: tst      r0, r1
+    0x02086ecc: bne      #0x2086ff0
+    0x02086ed0: ldr      r1, [r6, #0x44]
+    0x02086ed4: cmp      r1, #0
+    0x02086ed8: beq      #0x2086ee4
+    0x02086edc: tst      r1, r0
+    0x02086ee0: beq      #0x2086ff0
+    0x02086ee4: cmp      sb, #0x13
+    0x02086ee8: blt      #0x2086f7c
+    0x02086eec: cmp      sb, #0x17
+    0x02086ef0: bge      #0x2086f7c
+    0x02086ef4: ldrsb    r1, [r8]
+    0x02086ef8: ldr      r0, [pc, #0x3a4]
+    0x02086efc: add      r0, r0, r1, lsl #3
+    0x02086f00: ldr      r0, [r0, #4]
+    0x02086f04: cmp      r0, fp
+    0x02086f08: ldreq    r0, [pc, #0x398]
+    0x02086f0c: ldrsheq  r0, [r0, #0x24]
+    0x02086f10: cmpeq    r0, #0
+    0x02086f14: bne      #0x2086ff0
+    0x02086f18: mov      r0, #2
+    0x02086f1c: bl       #0x2096db8
+    0x02086f20: cmp      r0, #0
+    0x02086f24: beq      #0x2086ff0
+    0x02086f28: cmp      sb, #0x26
+    0x02086f2c: bne      #0x2086f40
+
+=== ANNOTATIONS (this session) ===
+
+0x02086cb8-0x02086e04: unit-availability loop (r6 = unit table
+pointer, stride 0x94 confirmed by 'add r6,r6,#0x94' at 0x02086e00;
+fields +0x4a/+0x4c/+0x4e each checked against has_researched via
+0x20957a0, sb = unit index tested as loop counter, bound loaded from
+a literal at 0x02086e04). This confirms the unit and building/wonder
+'what can this city produce' checks live in ONE shared function, not
+three separate ones.
+
+0x02086d0c-0x02086d50: unit flags word (+0x50) bit tests - bit 0x2
+gated on a further r8+0x24 flag bit 0, bit 0x4000 and an era/id
+comparison via two literal-pool-loaded values, and a civ-difficulty
+style comparison (sb vs #6). None of these write a yield total.
+
+0x02086d54-0x02086d90: an AI-difficulty-shaped check - r8 (civ id)
+passed to 0x2096a58 with r0=#0x2d, r2=#0, result branches into an
+indexed table read (r1[r1*4], compared to #5) that selects a
+threshold (2 or 3) compared against r8+3 (a per-civ byte, likely
+difficulty level). Still availability-gating, not yield math.
+
+0x02086db8-0x02086de4: the one arithmetic-looking sequence in this
+whole range - r3 = unit_field(+0x44) * ip, rounded (add lsr#31,
+asr #1 = signed divide-by-2-round-nearest), passed to 0x2023acc
+along with fp/r2/r1. 0x2023acc is a generic helper reused pervasively
+across the tech/unit tracing sessions (list/UI-entry append, per
+evidence/re/unit-tech-link-semantics.json and others) - this reads as
+'append a producible-unit entry with its (cost-derived?) sort/display
+value', not a city-stat write. Not conclusively resolved either way
+without disassembling 0x2023acc itself.
+
+0x02086e3c-0x02086e04-gap: building loop starts (r6 reloaded to the
+building-table literal in the untraced gap before 0x02086e74; sb
+reset to 0). This matches analysis/buildings-model.md section 3
+exactly: ldrsh r0,[r6,#0x42] (prerequisite_technology_id), the
+has_researched call, then ldr r0,[r8,#0x10] (proven city
+built-buildings bitmask) tested against 1<<sb.
+
+0x02086eac-0x02086eb8: the 'second, city-turn-count-based special
+case' analysis/buildings-model.md mentioned but did not transcribe -
+now concrete: ldrsh r1,[r8,#0x38]; sub r1,r1,#0x64; cmp sb,r1; beq
+not_buildable. Confirms city-instance +0x38 (already documented as
+unresolved) gates a SPECIFIC building index equal to (that halfword
+- 100), still availability-only, still not decoded further this
+session (no consumer of what +0x38 actually counts was found).
+
+0x02086ebc-0x02086ee0: requires/excludes-building-mask checks,
+exactly as documented (already PROVEN).
+
+0x02086ee4-0x02086f2c: the 'spaceship parts get an additional cap
+check' analysis/buildings-model.md mentioned but did not transcribe -
+now concrete: gated on sb in [0x13,0x17) i.e. building indices 19-22
+exactly (the 4 spaceship-part buildings per the recovered building
+table); reads a per-civilization 8-byte-stride array at a literal
+base indexed by civ id (r1<<3), loads that record's +4 field,
+compares it against -1 with a further conditional load from
+civ_struct+0x24 (reads as 'has this civ already started the
+spaceship'), then calls 0x2096db8 with r0=#2 (another generic,
+already-seen-elsewhere helper) as a further gate. Still
+availability-only - no yield/stat write.
+
+Overall conclusion: this session's deeper trace of the SAME function
+documented in analysis/buildings-model.md section 3 turned up zero
+evidence of city-yield accumulation anywhere in it. The city-effect
+application path remains genuinely unresolved and is very unlikely
+to be hiding inside this function - see
+evidence/re/city-yield-ui-leads.json for where to look next.
+

@@ -5,6 +5,29 @@ Recovered from the supported US ROM (`profiles/civrev-us.json`, sha256
 component only. All addresses are RAM addresses (`0x02......`); ARM9 loads
 at `0x02000000`, so `arm9_relative_offset = ram_address - 0x02000000`.
 
+## Session note (city-effect follow-up pass)
+
+This follow-up session had no ROM file and no disassembler/emulator
+available in its environment (the ROM is intentionally never committed to
+the repository; a live disassembly session requires a user-supplied ROM,
+as in the session that produced the rest of this document). Nothing below
+that is new this session was obtained by running the toolkit against the
+real ROM - it is entirely static mining of evidence already committed by
+the prior session (`evidence/re/*.json`/`*.txt`), specifically
+`evidence/re/unit-formation-flags-trace.txt`, whose candidate-context
+windows happen to overlap this function's own address range and were not
+fully transcribed into this document the first time. See
+`evidence/re/city-effect-availability-trace-extended.txt` for the full
+stitched trace and `evidence/re/city-yield-ui-leads.json` for concrete
+next-session xref targets. No confidence level in this document was
+upgraded by this pass except where the extended trace made an already-
+documented but not-fully-transcribed detail (the city-turn-count special
+case, the spaceship-part cap check) concrete; the city-effect application
+path itself remains unresolved, and wonders' field confidence levels are
+unchanged (still "strongly supported", not "proven") even though wonders
+are now wired into `civds` - see "What was intentionally not promoted"
+below for why that is still the right bar.
+
 ## Method
 
 Per-instructions, this was targeted structural reconnaissance, not blind
@@ -122,15 +145,33 @@ unit table ends, with no gap.
 
 Only `prerequisite_technology_id` and `production_cost_quanta` have
 strong (not proven-by-execution) support; several fields are outright
-unresolved (`0x42`, `0x48`, `0x14A`), and none of the wonder table's
-fields were cross-referenced against an executable read this session (the
-runtime-availability trace in section 3 confirms the table's *location*
-and *stride*, not its individual field semantics beyond what the building
-table's parallel structure already implies). Per the task's standard
-("do not expose fields merely to increase coverage" / "require executable
-evidence where practical"), no `civds wonders` command was added this
-session — this is recorded as the clearest concrete next step for
-wonders specifically.
+unresolved (`0x42`, `0x46`, `0x48`, `0x14A`), and none of the wonder
+table's fields were cross-referenced against an executable read in the
+session that recovered this table (the runtime-availability trace in
+section 3 confirms the table's *location* and *stride*, not its
+individual field semantics beyond what the building table's parallel
+structure already implies).
+
+**Update (city-effect follow-up session):** `civds wonders summarize` /
+`civds wonders patch-manifest` were added this session, exposing exactly
+`name`, `short_name`, `model_name`, `description` (read-only summary
+fields, mirroring `BuildingRecord`'s own inclusion of equally
+"strongly supported rather than proven" text fields) and, for patching,
+only `production_cost` / `prerequisite_technology_id` / `description` —
+the same confidence bar (strongly supported, unambiguous display text, or
+a clean `quanta * 5` cost convention already proven for buildings/units)
+already used to justify the building table's own patch-manifest fields.
+`unknown_0x42`, `unknown_0x46` (informally called
+`obsolete_technology_id`-shaped in the raw data-extraction evidence, but
+**not** independently proven - kept unnamed per this document's own
+confidence table), `unknown_0x48`, and `unknown_0x14a` remain unnamed and
+unpatchable; `model_name` is excluded from patch-manifest (shared/reused
+asset key, e.g. `Pyramid_anc`, same reasoning as the building table's own
+`model_name` exclusion) and `short_name` is exposed read-only but also
+excluded from patch-manifest pending proof of an independent runtime
+consumer. No new executable cross-reference was performed this session -
+this is the same "safe to expose by precedent, not newly proven" step,
+not an upgrade of any field's confidence level.
 
 ## 3. Runtime availability-check function (proven)
 
@@ -193,23 +234,61 @@ buildings (`+0x42`), and a small 8-byte-stride array holding two further
 led directly to discovering the wonder table (see section 2), since that
 8-byte array's base literal resolved to `0x0217B518`.
 
-## 4. City-effect application path (not located this session)
+## 4. City-effect application path (still not located)
 
 The specific code that, on completing a building, actually *applies* its
 effect to city food/production/trade/science/culture/happiness/defense
-totals was not found this session. What is proven instead is the
-*inverse* direction — a per-city "already-built buildings" bitmask
-(`city_instance + 0x10`, see section 5) that the availability-check
-function reads to decide what's already built and what's excluded. No
-building-descriptor field decodes as a scalar "+N food"/"+N gold"/etc.
-bonus; every effect observed is a `description` *string* (`"+2 food from
-plains"`, `"2x city gold production"`, ...), which strongly suggests the
-actual numeric effect (if any beyond a simple flat/multiplier baked into
-general city-yield code) is computed by a separate, per-effect-category
-function keyed off which building bits are set — that function was not
-located. This is recorded as the clearest concrete next step for
-buildings' *gameplay effect*, distinct from their *availability*, which is
-fully proven.
+totals was not found in the session that recovered the building table.
+What is proven instead is the *inverse* direction — a per-city "already-
+built buildings" bitmask (`city_instance + 0x10`, see section 5) that the
+availability-check function reads to decide what's already built and what's
+excluded. No building-descriptor field decodes as a scalar "+N food"/"+N
+gold"/etc. bonus; every effect observed is a `description` *string* (`"+2
+food from plains"`, `"2x city gold production"`, ...), which strongly
+suggests the actual numeric effect (if any beyond a simple flat/multiplier
+baked into general city-yield code) is computed by a separate, per-effect-
+category function keyed off which building bits are set — that function
+was not located.
+
+**Update (city-effect follow-up session):** this session's own priority
+target was recovering that path. With no ROM/disassembler available (see
+"Session note" above), the achievable work was static-evidence mining
+rather than fresh disassembly:
+
+- The full extent of the availability-check function that this document's
+  section 3 already summarized was re-mined from already-committed
+  evidence (`evidence/re/unit-formation-flags-trace.txt`) and stitched
+  into `evidence/re/city-effect-availability-trace-extended.txt`. Every
+  instruction recovered in `0x02086cb8`-`0x02086f2c` (most, not all, of
+  the documented `0x02086cb8`-`0x02087050` range) is a comparison, branch,
+  table-stride walk, or a call to a boolean/list-append-shaped helper —
+  **no city-yield accumulation instruction was found**. This is a
+  meaningful negative result: it makes it very unlikely the effect-
+  application logic is colocated with the availability check, narrowing
+  (not resolving) the search.
+- That same pass made two previously-summarized-but-not-transcribed
+  details concrete: the "second, city-turn-count-based special case" is
+  `ldrsh r1,[r8,#0x38]; sub r1,r1,#0x64; cmp sb,r1; beq not_buildable`,
+  and the "buildings 19-22 (spaceship parts) get an additional cap check"
+  reads a per-civilization 8-byte-stride array (index = civ id) and calls
+  a generic gate helper (`0x2096db8`) — both still pure availability
+  logic, not effect application.
+- A static survey of the executable string table
+  (`evidence/re/executable-keywords.json`, already committed) surfaced a
+  concrete, unexplored lead: a 4-entry consecutive literal-pool cluster
+  (`City focus is Gold/Food/Production/Science`, one xref each, 4 bytes
+  apart) plus 5 consecutive `+@NUM`-shaped yield-label template strings
+  (`Population:`/`Food +`/`Science +`/`Gold +`/`Culture +`) — recorded
+  with exact addresses in `evidence/re/city-yield-ui-leads.json`. The
+  city-focus cluster in particular is a strong next-session disassembly
+  target: city focus selects which yield category a city's production is
+  biased toward, so its display/selection function is very likely
+  adjacent to (if not part of) the actual per-category yield accumulator.
+
+This remains recorded as the clearest concrete next step for buildings'
+*gameplay effect*, distinct from their *availability*, which is fully
+proven. It is now a session-item with a precise disassembly starting
+point rather than an open-ended search.
 
 ## 5. City-instance state (kept separate from the descriptor table)
 
@@ -223,6 +302,12 @@ folded into `BuildingRecord`:
   - `+0x38`: a halfword used in one further availability special-case
     (`ldrsh r1,[r8,#0x38]; sub r1,r1,#0x64; cmp sb,r1`) — not decoded
     further
+  - `+0x24`: a word tested against bit 0 (`ldr r0,[r8,#0x24]; tst r0,#1`)
+    gating one further unit-flags bit-2 special case, per the extended
+    trace in `evidence/re/city-effect-availability-trace-extended.txt` —
+    newly observed this session, **not decoded further** (recorded per
+    "promote fields only when encountered naturally"; not claimed to be a
+    city-yield field, just logged as an offset on the same base register)
 - A separate, `0xBC`-byte-stride (188-byte) array was observed at two
   other xref sites (`0x0203fe08`-, `0x020872cc`-) with a per-record flags
   word (tested against bit `0x400`) and a per-record halfword compared
@@ -269,3 +354,18 @@ over the table's own indices, a mod author can now restructure the entire
 building upgrade graph (which buildings gate or obsolete which others)
 alongside the already-proven tech-tree editing from `civds technology`,
 without a disassembler.
+
+`civds wonders summarize <rom> --output wonders.json` lists all 21 wonder
+records (name, short name, model name, cost, prerequisite technology +
+resolved name, description).
+`civds wonders patch-manifest <rom> "<Wonder>" --production-cost N
+--prerequisite-technology-id N --description "<text>" --output patch.json`
+emits the same kind of guarded, single-field, expected-byte-checked
+patches as the building command, restricted to the fields with strong or
+better support (see "What was intentionally not promoted" above for the
+reasoning and what is deliberately excluded). This was not proven end to
+end on a real ROM this session (no ROM was available); it is validated by
+55 passing unit/CLI tests against synthetic ROM fixtures using the exact
+byte layout this document already records, following the same test
+pattern already proven correct for buildings/units/technology/
+civilization/combat.

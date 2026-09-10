@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "note": "Static-evidence-mining leads for the city-yield/city-effect application path, mined this session from the already-committed executable string survey (evidence/re/executable-keywords.json). No ARM9 binary/ROM was available in this session, so these are unexplored leads (string location + literal-pool xref address only), NOT executable-traced function recoveries. Confidence: UNRESOLVED / lead-only. All entries below are the arm9 component specifically (the same component the building/wonder tables and their availability-check function live in).",
+  "city_focus_literal_pool_cluster": {
+    "description": "A single, consecutive literal pool of pointers to the 4 city-focus strings plus an adjacent 'no population growth' string, each with exactly one xref, all xref addresses 4 bytes apart (0x20aa3bc, 0x20aa3c0, 0x20aa3c4, 0x20aa3c8, then +0x10 more to 0x20aa3d8 - consistent with one literal pool for one function's string table). This is a strong candidate for the city-focus selection/display function, which is directly adjacent to (or is) city-yield accumulation code (city focus selects which yield category - gold/food/production/science - the city's production is biased toward).",
+    "entries": [
+      {
+        "string": "CityScreenProductionButtons",
+        "string_ram_address": "0x2184e50",
+        "xref_ram_address": "0x20a98ec"
+      },
+      {
+        "string": "City focus is Gold",
+        "string_ram_address": "0x2184f2c",
+        "xref_ram_address": "0x20aa3bc"
+      },
+      {
+        "string": "City focus is Food",
+        "string_ram_address": "0x2184f40",
+        "xref_ram_address": "0x20aa3c0"
+      },
+      {
+        "string": "City focus is Production",
+        "string_ram_address": "0x2184f54",
+        "xref_ram_address": "0x20aa3c4"
+      },
+      {
+        "string": "City focus is Science",
+        "string_ram_address": "0x2184f70",
+        "xref_ram_address": "0x20aa3c8"
+      },
+      {
+        "string": "+0  -> No population growth",
+        "string_ram_address": "0x2184fb4",
+        "xref_ram_address": "0x20aa3d8"
+      }
+    ]
+  },
+  "city_screen_yield_label_templates": {
+    "description": "Five UI label-template strings (Population/Food/Science/Gold/Culture, each '+@NUM'-shaped), consecutive in arm9 and with NO recorded xref there - meaning they are likely referenced via a computed/indexed pointer table rather than a single direct literal-pool load the string scanner would catch, or the referencing code lives outside the scanned range. Note the same 'Population: @NUM' text also appears in overlay_009 (address 0x2206f1c) WITH one xref (0x22067a0) - a distinct, ordinary-looking copy, most likely the city-screen's own overlay code rather than these arm9 strings' consumer. A per-yield-category indexed table over the arm9 copies is itself a plausible shape for the city-yield display path and worth an indexed/table-xref scan in a future session with binary access.",
+    "entries": [
+      {
+        "string": "Population: @NUM",
+        "string_ram_address": "0x217f0dd"
+      },
+      {
+        "string": "Food +@NUM",
+        "string_ram_address": "0x217f0f1"
+      },
+      {
+        "string": "Science +@NUM",
+        "string_ram_address": "0x217f10d"
+      },
+      {
+        "string": "Gold +@NUM",
+        "string_ram_address": "0x217f11d"
+      },
+      {
+        "string": "Culture +@NUM",
+        "string_ram_address": "0x217f129"
+      }
+    ]
+  },
+  "next_session_plan": [
+    "Disassemble the function(s) containing the 4 consecutive xref addresses in city_focus_literal_pool_cluster; this is almost certainly the city-focus UI function, and its callers/callees are the most direct lead to the actual per-category yield accumulator.",
+    "From that function, trace backward (callers) to find what populates the underlying per-city food/production/trade/science/culture/gold totals it must be reading to render the panel.",
+    "Cross-check whether any of those totals are recomputed by walking the proven city built-buildings bitmask (city_instance+0x10) against the building table - if so, that is the city-effect application path this session was tasked to find.",
+    "If the city-focus function only reads already-cached totals, trace forward from end-of-turn / building-completion event handlers instead, since those cached totals must be written somewhere."
+  ]
+}

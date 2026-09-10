@@ -33,9 +33,9 @@ Status legend:
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
 | Building/improvement descriptors (24 records) | `DATA_EDITABLE` | `civds buildings summarize` / `civds buildings patch-manifest`; production cost, prerequisite technology, and requires/excludes building-upgrade masks are patchable (`prerequisite_technology_id`/`requires_building_mask`/`excludes_building_mask` proven via the runtime availability-check function); proven end to end, see `evidence/re/building-patch-e2e.json` and `analysis/buildings-model.md` |
 | Building `unknown_0x40` byte | `BLOCKED` | visible in `civds buildings summarize`; bimodal pattern observed (era-tier-shaped) but no runtime consumer found, so not named or patchable |
-| City-effect application (how a built building actually changes food/production/trade/science/culture/happiness/defense) | `BLOCKED` | the *availability* check (can this city build X) is fully proven; the code that *applies* a completed building's effect to city totals was not located this session - every observed effect is currently only a display string, not a decoded numeric bonus field |
-| City-instance state (built-buildings bitmask, turn/population counters) | `BLOCKED` | a per-city `+0x10` "already-built buildings" bitmask is proven (consumed by the buildings availability check) and a separate `0xBC`-stride per-city array was found with an unresolved field catalog; kept explicitly separate from the building descriptor table per this session's instructions, not promoted to tooling |
-| Wonders (21 records, distinct table) | `PARTIAL` (data-documented, not wired into `civds`) | located precisely (RAM `0x0217B518`, immediately after the unit table, stride `0x14C`) and every field's offset recorded with confidence levels in `analysis/buildings-model.md`/`evidence/re/wonders.json`; `prerequisite_technology_id` and `production_cost_quanta` are strongly supported by real-world tech-name matches but not independently executable-proven, so no `civds wonders` command was added yet |
+| City-effect application (how a built building actually changes food/production/trade/science/culture/happiness/defense) | `BLOCKED` | the *availability* check (can this city build X) is fully proven; the code that *applies* a completed building's effect to city totals has still not been located. A follow-up session, working without ROM/disassembler access, re-mined already-committed evidence and confirmed (negative result) that the availability-check function itself contains no yield-accumulation instruction, and surfaced a concrete next-session xref target (a city-focus UI string cluster) - see `evidence/re/city-effect-availability-trace-extended.txt` and `evidence/re/city-yield-ui-leads.json` |
+| City-instance state (built-buildings bitmask, turn/population counters) | `BLOCKED` | a per-city `+0x10` "already-built buildings" bitmask is proven (consumed by the buildings availability check), a `+0x38` halfword and a `+0x24` word are observed as further availability-gating fields (not decoded), and a separate `0xBC`-stride per-city array was found with an unresolved field catalog; kept explicitly separate from the building descriptor table per instructions, not promoted to tooling |
+| Wonders (21 records, distinct table) | `DATA_EDITABLE` (fields at the strongly-supported bar; not independently executable-proven) | `civds wonders summarize` / `civds wonders patch-manifest` (production cost, prerequisite technology, description); located precisely (RAM `0x0217B518`, immediately after the unit table, stride `0x14C`) with every field's offset and confidence level recorded in `analysis/buildings-model.md`/`evidence/re/wonders.json`; wired into `civds` using the same confidence bar already applied to buildings' own patch-manifest fields, but not proven end to end on a real ROM (no ROM was available this session) - validated by synthetic-ROM unit/CLI tests only |
 | Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`; RNG/round-loop mechanism now proven, read-only) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, 5 modifier sources, and 6 "overwhelming force" thresholds are patchable; the RNG algorithm (global MSVC-style LCG) and the per-round "army" elimination loop (weighted coin-flip winner, random victim-slot pick, up to 3 sub-units/side) are now fully traced and documented but not exposed as patchable constants - each candidate (RNG constants, round-cap, army-size cap) was evidence-checked and rejected as unsafe to patch in isolation; see `analysis/combat-model.md` and `evidence/re/combat-rng-loop-trace.txt` |
 | Diplomacy / AI decision-making | `BLOCKED` | not yet located |
 | Victory conditions | `BLOCKED` | not yet located |
@@ -141,6 +141,26 @@ respectively — documented in the trace file's "What was deliberately not
 exposed" section. This is a deliberate application of the same "safely
 patchable" bar the existing 11 constants meet, not a gap in the tracing.
 
+## What "wonders are DATA_EDITABLE" actually means
+
+`civds wonders summarize <rom> --output wonders.json` /
+`civds wonders patch-manifest <rom> "<Wonder>" --production-cost N
+--prerequisite-technology-id N --description "<text>" --output patch.json`
+mirror the building commands exactly, restricted to the fields already
+documented as "strongly supported" (not independently proven-by-
+execution) in `analysis/buildings-model.md`: cost, prerequisite
+technology, and description text. `model_name` (shared asset key) and the
+outright-unresolved fields (`unknown_0x42`, `unknown_0x46`,
+`unknown_0x48`, `unknown_0x14a`) are excluded, same reasoning as the
+building table's own exclusions. This was added by a follow-up session
+that had no ROM available, so — unlike every other `DATA_EDITABLE` row in
+this matrix — it has **not** been proven end to end on a real ROM; it is
+validated by 9 new unit/CLI tests against synthetic ROM fixtures that
+encode the exact byte layout the earlier disassembly session already
+recorded. A real-ROM patch/rebuild/re-parse proof (mirroring
+`evidence/re/building-patch-e2e.json`) is the natural first step for
+whichever future session has ROM access.
+
 ## What "buildings are DATA_EDITABLE" actually means
 
 `analysis/buildings-model.md` traces production cost and prerequisite
@@ -180,14 +200,20 @@ unaffected (`evidence/re/building-patch-e2e.json`).
    was not located — every effect is currently only a display string.
    This is the natural next step to make building mods (not just cost/
    prerequisite edits) trustworthy, mirroring how the combat RNG/loop
-   pass made unit-stat edits trustworthy.
-2. **Wonders tooling.** The table is fully located and its fields
-   data-documented (`analysis/buildings-model.md`, `evidence/re/wonders.json`);
-   promoting `prerequisite_technology_id`/`production_cost_quanta` to a
-   `civds wonders` command mainly needs one more executable cross-reference
-   pass (the availability-check function already proven to touch this
-   table's stride/location, just not yet traced field-by-field the way
-   the building table was).
+   pass made unit-stat edits trustworthy. A follow-up session (no ROM
+   access) ruled out the availability-check function itself as the
+   location (negative result, see `evidence/re/city-effect-availability-trace-extended.txt`)
+   and identified a precise next disassembly target: the `City focus is
+   Gold/Food/Production/Science` literal-pool cluster
+   (`evidence/re/city-yield-ui-leads.json`) — whoever holds a ROM next
+   should start there rather than re-searching from scratch.
+2. **Wonders real-ROM proof.** `civds wonders summarize`/`patch-manifest`
+   now exist and are synthetic-ROM-tested (see "What 'wonders are
+   DATA_EDITABLE' actually means" above), but — unlike buildings/units/
+   technology/civilization/combat — have not yet been proven end to end
+   on the real ROM (patch → rebuild → re-parse), since no ROM was
+   available in the session that added them. This is a quick, low-risk
+   proof for whichever future session has ROM access, not open-ended RE.
 3. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
    personality, starting position bias) — the leader-name table found in
    an earlier session is a lead: whatever code renders the leader-select

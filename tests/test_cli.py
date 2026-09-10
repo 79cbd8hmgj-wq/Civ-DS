@@ -13,6 +13,7 @@ from civds.combat import COMBAT_CONSTANTS
 from civds.profile import write_profile
 from civds.technology import TECH_RECORD_COUNT, TECH_RECORD_SIZE
 from civds.units import UNIT_RECORD_COUNT, UNIT_RECORD_SIZE
+from civds.wonders import WONDER_RECORD_COUNT, WONDER_RECORD_SIZE
 
 
 def test_parser_enforces_civrev_profile_for_rom_writes() -> None:
@@ -492,6 +493,107 @@ def test_buildings_patch_manifest_validates_profile_and_writes_guarded_edits(
                 "expected": "0c",
                 "replacement": "14",
                 "rationale": "Set Bank production cost from 60 to 100",
+            }
+        ],
+    }
+
+
+def _make_wonders_rom(path: Path) -> None:
+    from tests.test_profile import _make_structural_rom
+    from tests.test_wonders import _all_wonder_records, _wonder_record
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    records = _all_wonder_records()
+    records[0] = _wonder_record(
+        "Pyramids of Egypt",
+        production_cost_quanta=30,
+        prerequisite_technology_id=3,
+        short_name="Pyramid",
+        model_name="Pyramid_anc",
+        description="all forms of government are available.",
+    )
+
+    arm9 = b"".join(records)
+    assert len(arm9) == WONDER_RECORD_COUNT * WONDER_RECORD_SIZE
+    arm9_offset = 0x1000
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_wonders_summarize_validates_profile_and_resolves_prerequisite_names(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_wonders_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_wonders")
+    output = tmp_path / "wonders.json"
+
+    result = main(
+        [
+            "wonders",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["record_count"] == WONDER_RECORD_COUNT
+    assert payload["record_size"] == WONDER_RECORD_SIZE
+    pyramids = payload["wonders"][0]
+    assert pyramids["name"] == "Pyramids of Egypt"
+    assert pyramids["production_cost"] == 150
+    assert pyramids["prerequisite_technology_name"] == "Ceremonial Burial"
+
+
+def test_wonders_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_wonders_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_wonders")
+    output = tmp_path / "pyramids-patch.json"
+
+    result = main(
+        [
+            "wonders",
+            "patch-manifest",
+            str(rom),
+            "Pyramids of Egypt",
+            "--profile",
+            str(profile),
+            "--production-cost",
+            "200",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload == {
+        "format_version": 1,
+        "profile_id": "synthetic_wonders",
+        "patches": [
+            {
+                "id": "wonder-000-production-cost",
+                "type": "binary_replace",
+                "target": "arm9",
+                "offset": 0x40,
+                "expected": "1e00",
+                "replacement": "2800",
+                "rationale": "Set Pyramids of Egypt production cost from 150 to 200",
             }
         ],
     }

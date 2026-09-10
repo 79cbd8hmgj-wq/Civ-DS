@@ -27,6 +27,8 @@ from civds.technology_patch import write_technology_patch_manifest
 from civds.technology_summary import write_technology_summary
 from civds.unit_patch import write_unit_patch_manifest
 from civds.unit_summary import write_unit_summary
+from civds.wonders_patch import write_wonder_patch_manifest
+from civds.wonders_summary import write_wonder_summary
 
 DEFAULT_PROFILE = Path("profiles/civrev-us.json")
 _ROM_COMMANDS = frozenset({"inspect", "extract", "rebuild"})
@@ -221,6 +223,35 @@ def _add_buildings_parser(
     patch_manifest.add_argument("--output", type=Path, required=True)
 
 
+def _add_wonders_parser(
+    subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+) -> None:
+    parser = subparsers.add_parser(
+        "wonders",
+        help="inspect and patch the recovered Civilization Revolution wonder table",
+    )
+    commands = parser.add_subparsers(dest="wonders_command")
+    summarize = commands.add_parser(
+        "summarize",
+        help="write deterministic recovered wonder metadata from the exact ROM",
+    )
+    summarize.add_argument("rom", type=Path)
+    summarize.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    summarize.add_argument("--output", type=Path, required=True)
+
+    patch_manifest = commands.add_parser(
+        "patch-manifest",
+        help="write a guarded toolkit patch manifest for confirmed wonder fields",
+    )
+    patch_manifest.add_argument("rom", type=Path)
+    patch_manifest.add_argument("wonder")
+    patch_manifest.add_argument("--profile", type=Path, default=DEFAULT_PROFILE)
+    patch_manifest.add_argument("--production-cost", type=int)
+    patch_manifest.add_argument("--prerequisite-technology-id", type=int)
+    patch_manifest.add_argument("--description")
+    patch_manifest.add_argument("--output", type=Path, required=True)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="civds",
@@ -235,6 +266,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_civilization_parser(subparsers)
     _add_combat_parser(subparsers)
     _add_buildings_parser(subparsers)
+    _add_wonders_parser(subparsers)
     add_rom_parsers(
         subparsers,
         default_profile=DEFAULT_PROFILE,
@@ -421,6 +453,30 @@ def _run_buildings_command(arguments: argparse.Namespace) -> int:
     raise NdsToolkitError("a buildings subcommand is required")
 
 
+def _run_wonders_command(arguments: argparse.Namespace) -> int:
+    if arguments.wonders_command == "summarize":
+        output = write_wonder_summary(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+        )
+        print(f"Wrote wonder summary: {output}")
+        return 0
+    if arguments.wonders_command == "patch-manifest":
+        output = write_wonder_patch_manifest(
+            arguments.rom.expanduser().resolve(),
+            arguments.profile.expanduser().resolve(),
+            arguments.output,
+            wonder_name=arguments.wonder,
+            production_cost=arguments.production_cost,
+            prerequisite_technology_id=arguments.prerequisite_technology_id,
+            description=arguments.description,
+        )
+        print(f"Wrote guarded wonder patch manifest: {output}")
+        return 0
+    raise NdsToolkitError("a wonders subcommand is required")
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     parser = build_parser()
@@ -447,6 +503,8 @@ def main(argv: list[str] | None = None) -> int:
             return _run_combat_command(arguments)
         if arguments.command == "buildings":
             return _run_buildings_command(arguments)
+        if arguments.command == "wonders":
+            return _run_wonders_command(arguments)
         if arguments.command == "disasm":
             return disassembly_cli.run_disassembly_command(arguments)
         if arguments.command == "analyze":
