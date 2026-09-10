@@ -33,7 +33,7 @@ Status legend:
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
 | Cities / buildings / improvements | `BLOCKED` | not yet located |
 | Wonders | `BLOCKED` | not yet located; likely lives in a table adjacent to or sharing code with technologies (several wonders are technology-adjacent in classic Civ design) but this has not been checked |
-| Combat resolution formula | `BLOCKED` | unit `attack`/`defense`/`movement` values are `DATA_EDITABLE`, but the code that turns those numbers (plus terrain/fortification/etc.) into a combat outcome has not been traced, so interactions between edited stats and hidden multipliers are unverified |
+| Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, and 5 modifier sources (veteran tier, fortified-in-city, fortifying, zone-of-control-style penalty, category halving) plus 6 "overwhelming force" auto-resolve thresholds recovered with addresses and evidence (`analysis/combat-model.md`); RNG/dice-roll instruction and per-round HP loop not located - see that doc's "Open questions" |
 | Diplomacy / AI decision-making | `BLOCKED` | not yet located |
 | Victory conditions | `BLOCKED` | not yet located |
 | Narrative/advisor/tooltip text (`Localization/str_*.STR`, `STBL`-tagged) | `BLOCKED` | file format identified (magic `STBL`) and confirmed to hold flavor/advisor dialogue text (e.g. French "Guerriers", "Colons" advisor lines), but the record format has not been parsed; note the US ROM ships no `str_ENG.STR`, so the base-language text for this content is elsewhere (likely inline in `arm9`/overlays, consistent with the unit/technology name fields already being plain embedded ASCII) |
@@ -86,13 +86,40 @@ Only the leader *name* is exposed today - no gameplay-parameter table
 located for civilizations yet, so renaming is a real but narrow slice of
 "civilization modding" (see the `BLOCKED` row above).
 
+## What "combat is PARTIAL/CODE_PATCHABLE" actually means
+
+`analysis/combat-model.md` traces attack/defense from `UnitRecord` into an
+effective-strength calculation (`base_stat * cumulative_percent_modifier`)
+and a confirmed odds formula
+(`attacker_strength * 100 / (attacker_strength + defender_strength + 1)`),
+identifies 5 modifier sources (2 tied directly to debug-print strings,
+high confidence) and 2 "overwhelming force" auto-resolve threshold checks
+(6 constants total, medium confidence), and documents what remains
+genuinely unknown (the RNG/dice-roll call and the per-round HP loop -
+explicitly left unresolved rather than guessed) rather than claiming the
+system is fully solved.
+
+`civds combat summarize <rom> --output combat.json` lists all 11 recovered
+constants (name, description, confidence, current value).
+`civds combat patch-manifest <rom> --set NAME=VALUE [--set NAME=VALUE ...] --output patch.json`
+emits guarded single-byte patches (each constant is a plain unrotated
+8-bit ARM immediate; the patch replaces only that byte, verified against
+the current value, and the surrounding opcode/registers are provably
+untouched - see the byte-level check in the e2e evidence below).
+
+Proven end to end on the real ROM: `fortified-in-city-bonus` was raised
+100 -> 150 and both `veteran-tier-bonus` constants 50 -> 75 in one
+manifest, applied, rebuilt, and re-parsed - confirming exactly those three
+constants changed and the other eight were untouched
+(`evidence/re/combat-patch-e2e.json`).
+
 ## Prioritized next blockers (highest mod-value first)
 
-1. **Combat resolution formula.** Unit stats are editable, but nobody can
-   safely balance a mod without knowing what else (terrain, fortification,
-   veteran status, randomness bounds) participates in combat. This is the
-   highest-value remaining `BLOCKED` item because it gates confidence in
-   every unit-stat edit already shipped.
+1. **Combat RNG/dice-roll and per-round HP loop.** The formula and several
+   modifiers are now patchable, but the actual random draw and HP-based
+   round resolution were not located (see `analysis/combat-model.md`'s
+   "Open questions"). Closing this gap would make round count, HP totals,
+   and the dice mechanic itself moddable too.
 2. **City/building/improvement data.** Core to "content mods"; likely a
    fixed-stride table similar in spirit to units/technologies and may be
    locatable with the same anchor-and-stride method used for both.

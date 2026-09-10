@@ -8,6 +8,7 @@ import pytest
 
 from civds.civilization import CIVILIZATION_COUNT
 from civds.cli import DEFAULT_PROFILE, build_parser, main
+from civds.combat import COMBAT_CONSTANTS
 from civds.profile import write_profile
 from civds.technology import TECH_RECORD_COUNT, TECH_RECORD_SIZE
 from civds.units import UNIT_RECORD_COUNT, UNIT_RECORD_SIZE
@@ -310,6 +311,87 @@ def test_civilization_patch_manifest_validates_profile_and_writes_guarded_edits(
     assert patches[0]["id"] == "civilization-009-leader-name"
     assert bytes.fromhex(patches[0]["expected"]) == b"Napoleon\0\0\0\0"
     assert bytes.fromhex(patches[0]["replacement"]) == b"Louis\0\0\0\0\0\0\0"
+
+
+def _make_combat_rom(path: Path) -> None:
+    from tests.test_profile import _make_structural_rom
+
+    rom = bytearray(_make_structural_rom(path))
+    rom.extend(b"\xff" * (0x4000 - len(rom)))
+
+    arm9_size = max(constant.arm9_offset for constant in COMBAT_CONSTANTS) + 0x100
+    arm9 = bytearray(arm9_size)
+    for constant in COMBAT_CONSTANTS:
+        arm9[constant.arm9_offset : constant.arm9_offset + 4] = bytes([50, 0x10, 0xA0, 0xE3])
+
+    arm9_offset = 0x1000
+    rom[arm9_offset : arm9_offset + len(arm9)] = arm9
+    struct.pack_into("<I", rom, 0x20, arm9_offset)
+    struct.pack_into("<I", rom, 0x2C, len(arm9))
+    struct.pack_into("<I", rom, 0x80, len(rom))
+    path.write_bytes(rom)
+
+
+def test_combat_summarize_validates_profile_and_reports_current_values(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_combat_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_combat")
+    output = tmp_path / "combat.json"
+
+    result = main(
+        [
+            "combat",
+            "summarize",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["constant_count"] == len(COMBAT_CONSTANTS)
+    assert all(entry["current_value"] == 50 for entry in payload["constants"])
+
+
+def test_combat_patch_manifest_validates_profile_and_writes_guarded_edits(
+    tmp_path: Path,
+) -> None:
+    rom = tmp_path / "game.nds"
+    _make_combat_rom(rom)
+    profile = tmp_path / "profile.json"
+    write_profile(rom, profile, profile_id="synthetic_combat")
+    output = tmp_path / "combat-patch.json"
+
+    result = main(
+        [
+            "combat",
+            "patch-manifest",
+            str(rom),
+            "--profile",
+            str(profile),
+            "--set",
+            "fortified-in-city-bonus=150",
+            "--set",
+            "fortifying-bonus=25",
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert result == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["profile_id"] == "synthetic_combat"
+    patches = {patch["id"]: patch for patch in payload["patches"]}
+    assert len(patches) == 2
+    assert patches["combat-fortified-in-city-bonus"]["expected"] == "32"
+    assert patches["combat-fortified-in-city-bonus"]["replacement"] == "96"
+    assert patches["combat-fortifying-bonus"]["replacement"] == "19"
 
 
 def test_units_summarize_validates_profile_and_resolves_technology_names(

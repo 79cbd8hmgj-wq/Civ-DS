@@ -1,0 +1,80 @@
+{
+  "format_version": 1,
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "profile_id": "civrev-usa",
+  "fields_changed": [
+    {
+      "constant": "fortified-in-city-bonus",
+      "rom_absolute_offset": 588048,
+      "arm9_relative_offset": 571664,
+      "original_value": 100,
+      "replacement_value": 150,
+      "instruction_before": "add r0, r0, #0x64",
+      "instruction_after": "add r0, r0, #0x96",
+      "expected_hex": "64",
+      "replacement_hex": "96"
+    },
+    {
+      "constant": "veteran-tier-bonus-attacker",
+      "rom_absolute_offset": 587564,
+      "arm9_relative_offset": 571180,
+      "original_value": 50,
+      "replacement_value": 75,
+      "instruction_before": "mov r1, #0x32",
+      "instruction_after": "mov r1, #0x4b",
+      "expected_hex": "32",
+      "replacement_hex": "4b"
+    },
+    {
+      "constant": "veteran-tier-bonus-defender",
+      "rom_absolute_offset": 587880,
+      "arm9_relative_offset": 571496,
+      "original_value": 50,
+      "replacement_value": 75,
+      "instruction_before": "mov r1, #0x32",
+      "instruction_after": "mov r1, #0x4b",
+      "expected_hex": "32",
+      "replacement_hex": "4b"
+    }
+  ],
+  "patch_application": {
+    "format_version": 1,
+    "patch_file": "combat-rebalance.json",
+    "profile_id": "civrev-usa",
+    "applied": [
+      {"patch_id": "combat-fortified-in-city-bonus", "target": "arm9", "offset": 571664, "length": 1},
+      {"patch_id": "combat-veteran-tier-bonus-attacker", "target": "arm9", "offset": 571180, "length": 1},
+      {"patch_id": "combat-veteran-tier-bonus-defender", "target": "arm9", "offset": 571496, "length": 1}
+    ]
+  },
+  "rebuild": {
+    "format_version": 1,
+    "profile_id": "civrev-usa",
+    "source_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "output_size": 67108864,
+    "exact_copy": false
+  },
+  "post_rebuild_reparse": {
+    "method": "civds.combat.read_combat_constant_value() run directly against the rebuilt ROM's ARM9 image for every one of the 11 registered constants (the rebuilt image no longer matches the pinned exact-ROM profile by design, so `civds combat summarize` correctly refuses it; this step re-verifies with the same reader used by that command)",
+    "values": {
+      "veteran-tier-bonus-attacker": 75,
+      "veteran-tier-bonus-defender": 75,
+      "fortified-in-city-bonus": 150,
+      "fortifying-bonus": 50,
+      "zone-of-control-penalty": 50,
+      "overwhelm-threshold-primary-match": 2,
+      "overwhelm-threshold-primary-mismatch": 3,
+      "overwhelm-threshold-secondary-match": 6,
+      "overwhelm-threshold-secondary-mismatch": 4,
+      "overwhelm-threshold-tertiary-match": 10,
+      "overwhelm-threshold-tertiary-mismatch": 7
+    }
+  },
+  "byte_level_verification": {
+    "method": "read the raw 4-byte instruction word at the fortified-in-city-bonus offset directly out of the rebuilt ROM file",
+    "before": "640080e2 (add r0, r0, #0x64)",
+    "after": "960080e2 (add r0, r0, #0x96)",
+    "conclusion": "only the immediate byte changed; opcode, condition code, S-bit, and both register fields are bit-for-bit identical, confirming the patch scheme (replace byte 0 of a rotate=0 8-bit-immediate ARM data-processing instruction) is surgically precise"
+  },
+  "conclusion": "Three guarded combat constants (two tied to debug-print strings, high confidence) were patched from the real ROM in one manifest, applied to an extracted workspace, rebuilt into a new ROM, and re-parsed - confirming exactly the three targeted constants changed to their requested values and all eight other registered constants were untouched. This proves the combat-constant patch capability end to end as a real balance-modding tool, not just a static analysis claim."
+}

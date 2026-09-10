@@ -1,0 +1,83 @@
+{
+  "constant_count": 11,
+  "constants": [
+    {
+      "arm9_offset": 571180,
+      "confidence": "high",
+      "current_value": 50,
+      "description": "Percent added to the attacker's effective strength per veteran/condition tier step (clamped to one step; tied to the 'Veteran +50%' debug string)",
+      "name": "veteran-tier-bonus-attacker"
+    },
+    {
+      "arm9_offset": 571496,
+      "confidence": "high",
+      "current_value": 50,
+      "description": "Same as veteran-tier-bonus-attacker, applied on the defender's side",
+      "name": "veteran-tier-bonus-defender"
+    },
+    {
+      "arm9_offset": 571664,
+      "confidence": "high",
+      "current_value": 100,
+      "description": "Percent added to the defender's effective strength when defending in a friendly city tile (tied to the 'Fortified +100%' debug string)",
+      "name": "fortified-in-city-bonus"
+    },
+    {
+      "arm9_offset": 571752,
+      "confidence": "high",
+      "current_value": 50,
+      "description": "Percent added to the defender's effective strength while actively fortifying (tied to the 'Fortifying +50%' debug string)",
+      "name": "fortifying-bonus"
+    },
+    {
+      "arm9_offset": 570724,
+      "confidence": "medium",
+      "current_value": 50,
+      "description": "Percent subtracted from the attacker's effective strength when one of four directional per-tile bit-combination checks matches (pattern consistent with a zone-of-control/flanking penalty; no debug string confirms the exact trigger name)",
+      "name": "zone-of-control-penalty"
+    },
+    {
+      "arm9_offset": 575604,
+      "confidence": "medium",
+      "current_value": 2,
+      "description": "Multiplier applied to the defender's effective strength for an auto-resolve/overwhelming-force threshold check, used when a per-civilization difficulty byte equals the current global difficulty value",
+      "name": "overwhelm-threshold-primary-match"
+    },
+    {
+      "arm9_offset": 575608,
+      "confidence": "medium",
+      "current_value": 3,
+      "description": "Same threshold check as overwhelm-threshold-primary-match, used when the difficulty byte does not match",
+      "name": "overwhelm-threshold-primary-mismatch"
+    },
+    {
+      "arm9_offset": 573324,
+      "confidence": "medium",
+      "current_value": 6,
+      "description": "Multiplier for a second, separate auto-resolve threshold check earlier in the same function, used when a related civilization comparison matches",
+      "name": "overwhelm-threshold-secondary-match"
+    },
+    {
+      "arm9_offset": 573328,
+      "confidence": "medium",
+      "current_value": 4,
+      "description": "Same check as overwhelm-threshold-secondary-match, used when the comparison does not match",
+      "name": "overwhelm-threshold-secondary-mismatch"
+    },
+    {
+      "arm9_offset": 573352,
+      "confidence": "medium",
+      "current_value": 10,
+      "description": "A third variant of the same auto-resolve threshold pattern, used when a further condition matches",
+      "name": "overwhelm-threshold-tertiary-match"
+    },
+    {
+      "arm9_offset": 573356,
+      "confidence": "medium",
+      "current_value": 7,
+      "description": "Same check as overwhelm-threshold-tertiary-match, used when the condition does not match",
+      "name": "overwhelm-threshold-tertiary-mismatch"
+    }
+  ],
+  "format_version": 1
+}
