@@ -103,6 +103,39 @@ what is proven is that these six specific numbers are live comparison
 thresholds inside the authoritative resolution path (mode 0), not display
 code.
 
+### 5. RNG and per-round resolution loop (confirmed)
+
+Full trace: `evidence/re/combat-rng-loop-trace.txt`. Summary:
+
+- **RNG algorithm**: a global (game-wide, not combat-local) linear
+  congruential generator at RAM `0x02192304`, `state = state * 214013 +
+  2531011` — the exact constant pair used by the classic Microsoft
+  Visual C/C++ runtime `rand()`. Confirmed via 24 separate literal-pool
+  references to the state struct spanning nearly the whole first 100KB of
+  `arm9` (`0x02000d60`-`0x02099f78`), so this is shared by many systems,
+  not just combat.
+- **Per-round loop** (mode 0 only — modes 1/2 return the preview odds and
+  never reach this code): up to 3 sub-units can be combined per side (the
+  "army" mechanic). Each round draws the RNG once to decide the winner —
+  a weighted coin flip over `[0, attacker_strength + defender_strength)`
+  compared against `attacker_strength`, i.e. exactly the same probability
+  as the confirmed preview-odds formula — then draws again (retrying on
+  an already-eliminated pick) to choose which of the losing side's
+  remaining sub-units is eliminated. The loser's picked sub-unit is
+  permanently removed from its side's pool; the loop repeats until one
+  side's pool is empty (at most 5 rounds with a 3-unit cap). This is an
+  **elimination model** (remove a whole sub-unit per round), not the
+  classic PC-Civilization gradual-HP-depletion model.
+- A 1000-iteration safety cap exists but is provably unreachable in real
+  play given the 3-unit cap.
+- A retreat-style check (reusing the still-unresolved `0x0209bf7c` helper,
+  mode `0x10`) and a post-battle RNG draw (result not consumed before
+  return, likely read by the caller — a plausible veteran-promotion roll)
+  were both located but not fully decoded.
+- A new lead surfaced for the old unresolved unit-flag group `0x00080000`
+  (Spy/Caravan/Great People): the winning side's flags are tested for
+  this bit right before final cleanup, with extra handling when set.
+
 ## Open questions (explicitly unresolved — not guessed)
 
 - **Where the base attack/defense bytes are read.** No `ldrsb`
@@ -115,19 +148,16 @@ code.
   the flat scan can't resolve without proper CFG/xref analysis). Everything
   downstream of "attacker/defender base stat" is proven; the exact hop
   from "read attack byte from `UnitRecord`" to "call this function" is not.
-- **The dice roll / RNG call and the per-round HP loop.** A shared,
-  seeded RNG is confirmed to exist (`orig seed=`/`cur seed=`/`NetSeed`
-  desync-detection strings), and the function continues for thousands more
-  instructions past the modifier/odds section handling advisor triggers,
-  counters, and flags — but the specific instruction(s) that draw a random
-  number and apply it against the odds computed above, and the loop that
-  decrements HP round by round until one side is defeated, were not
-  located within this session's tracing budget. This is the single
-  biggest remaining gap in the model.
 - **Exact semantics of terrain (`0x0209d008`/`0x0209d36c`) and
   support-bonus (`0x0209bf7c`) helpers.** Confirmed to contribute to the
-  formula; their internal per-tile-type / per-slot value tables were not
-  decoded.
+  formula (and, per the RNG-loop trace, the same `0x0209bf7c` helper also
+  gates a retreat-style check); their internal per-tile-type / per-slot /
+  per-mode value tables were not decoded.
+- **The unit-instance halfword field at `+0x52`.** Read and preserved
+  across each round of the loop but never itself recomputed in the traced
+  code — its purpose is unresolved.
+- **The post-battle RNG draw's consumer** (likely veteran promotion; not
+  confirmed) and **the `0x00080000` flag interaction** noted above.
 
 ## What this unlocks for modding
 
@@ -137,6 +167,19 @@ modifiers and the 6 overwhelm-threshold multipliers as guarded, named,
 single-byte patches (see `src/civds/combat.py` and
 `evidence/re/combat-patch-e2e.json` for a proven real-ROM round trip). A
 mod author can now, for example, halve the city-defense bonus or double
-the veteran bonus without a disassembler. The RNG/HP-loop gap means this
-does **not** yet let a mod author change round count, HP totals, or the
-dice mechanic itself — that remains future work.
+the veteran bonus without a disassembler.
+
+The RNG/round-loop mechanism is now proven (see above and
+`evidence/re/combat-rng-loop-trace.txt`), which is what this note set out
+to establish — unit-stat edits can now be trusted to flow through a known
+formula and a known win-determination roll. No *additional* patchable
+constant was added from this new material: the multiplier/increment are
+a global, game-wide RNG (24 xrefs across the binary, not combat-scoped —
+patching it would affect far more than combat); the 1000-round safety cap
+is provably inert in real play; and the 3-unit army-size cap is coupled
+to fixed-size local buffers and bit-index assumptions elsewhere in the
+same function, so changing it without re-auditing those dependents risks
+stack corruption. Each was deliberately left unpatched rather than force
+a capability that does not clear the same "safely patchable" bar the
+existing 11 constants meet — see `evidence/re/combat-rng-loop-trace.txt`
+("What was deliberately not exposed") for the full reasoning on each.

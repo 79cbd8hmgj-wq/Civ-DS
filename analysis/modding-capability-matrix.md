@@ -33,7 +33,7 @@ Status legend:
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
 | Cities / buildings / improvements | `BLOCKED` | not yet located |
 | Wonders | `BLOCKED` | not yet located; likely lives in a table adjacent to or sharing code with technologies (several wonders are technology-adjacent in classic Civ design) but this has not been checked |
-| Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, and 5 modifier sources (veteran tier, fortified-in-city, fortifying, zone-of-control-style penalty, category halving) plus 6 "overwhelming force" auto-resolve thresholds recovered with addresses and evidence (`analysis/combat-model.md`); RNG/dice-roll instruction and per-round HP loop not located - see that doc's "Open questions" |
+| Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`; RNG/round-loop mechanism now proven, read-only) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, 5 modifier sources, and 6 "overwhelming force" thresholds are patchable; the RNG algorithm (global MSVC-style LCG) and the per-round "army" elimination loop (weighted coin-flip winner, random victim-slot pick, up to 3 sub-units/side) are now fully traced and documented but not exposed as patchable constants - each candidate (RNG constants, round-cap, army-size cap) was evidence-checked and rejected as unsafe to patch in isolation; see `analysis/combat-model.md` and `evidence/re/combat-rng-loop-trace.txt` |
 | Diplomacy / AI decision-making | `BLOCKED` | not yet located |
 | Victory conditions | `BLOCKED` | not yet located |
 | Narrative/advisor/tooltip text (`Localization/str_*.STR`, `STBL`-tagged) | `BLOCKED` | file format identified (magic `STBL`) and confirmed to hold flavor/advisor dialogue text (e.g. French "Guerriers", "Colons" advisor lines), but the record format has not been parsed; note the US ROM ships no `str_ENG.STR`, so the base-language text for this content is elsewhere (likely inline in `arm9`/overlays, consistent with the unit/technology name fields already being plain embedded ASCII) |
@@ -113,25 +113,54 @@ manifest, applied, rebuilt, and re-parsed - confirming exactly those three
 constants changed and the other eight were untouched
 (`evidence/re/combat-patch-e2e.json`).
 
+## What "the RNG/round-loop mechanism is now proven" actually means
+
+`evidence/re/combat-rng-loop-trace.txt` traces forward from the two
+confirmed odds call sites into the third ("mode 0", actual-resolution)
+branch of the same function and recovers, with addresses: the RNG
+algorithm (a global linear congruential generator, `state = state *
+214013 + 2531011` — the exact Microsoft Visual C/C++ runtime `rand()`
+constants, confirmed via 24 xrefs spanning nearly the whole `arm9`
+image); the per-round loop (a "combine up to 3 sub-units per side" army
+model where each round is a weighted coin flip using the same
+attacker/(attacker+defender) probability as the preview odds, the loser's
+randomly-picked sub-unit is eliminated, and the loop repeats until one
+side's pool is empty — an elimination model, not classic gradual
+HP-depletion); a provably-inert 1000-iteration safety cap; and leads
+(not fully resolved) on a retreat-style check, a post-battle RNG draw,
+and a new connection to the still-unnamed unit-flag group `0x00080000`.
+
+No new patchable constant came out of this pass. Three numeric candidates
+(the RNG multiplier/increment, the safety cap, the 3-unit army-size cap)
+were each evaluated and rejected for concrete, checked reasons — global
+blast radius, gameplay inertness, and coupled buffer/bit-index sizing
+respectively — documented in the trace file's "What was deliberately not
+exposed" section. This is a deliberate application of the same "safely
+patchable" bar the existing 11 constants meet, not a gap in the tracing.
+
 ## Prioritized next blockers (highest mod-value first)
 
-1. **Combat RNG/dice-roll and per-round HP loop.** The formula and several
-   modifiers are now patchable, but the actual random draw and HP-based
-   round resolution were not located (see `analysis/combat-model.md`'s
-   "Open questions"). Closing this gap would make round count, HP totals,
-   and the dice mechanic itself moddable too.
-2. **City/building/improvement data.** Core to "content mods"; likely a
+1. **City/building/improvement data.** Core to "content mods"; likely a
    fixed-stride table similar in spirit to units/technologies and may be
-   locatable with the same anchor-and-stride method used for both.
-3. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
+   locatable with the same anchor-and-stride method used for both. Now the
+   top blocker: the RNG/round-loop gap that previously outranked it is
+   resolved at the model level (see above), and the remaining combat
+   open questions (the `+0x52` field, the retreat helper, the post-battle
+   roll, the `0x00080000` flag interaction) are narrower, lower-value
+   follow-ups rather than a blocker for trusting unit-stat mods.
+2. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
    personality, starting position bias) — the leader-name table found this
    session is a lead: whatever code renders the leader-select screen next
    to a nation name and unique-unit blurb is a promising xref target.
-4. **Map/terrain yield tables** — needed for any terrain-balance or
+3. **Map/terrain yield tables** — needed for any terrain-balance or
    scenario-design mod.
-5. **`STBL` narrative/advisor text format** — lower gameplay priority than
+4. **`STBL` narrative/advisor text format** — lower gameplay priority than
    the above but high "reflavor the whole game" content-mod value once the
    record format is known.
+5. **Remaining combat open questions** (`+0x52` field semantics, the
+   `0x0209bf7c` retreat/support helper's internals, the post-battle RNG
+   draw's consumer, the `0x00080000` flag/combat interaction) — worth a
+   future targeted pass but no longer gate trusting the core formula.
 
 Do not decompile rendering/audio/UI/SDK code to chase any of the above; the
 goal is the data/behavior surface a mod author needs, not full source

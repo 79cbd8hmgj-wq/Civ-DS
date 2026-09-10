@@ -1,0 +1,246 @@
+=== COMBAT RNG / PER-ROUND RESOLUTION LOOP ===
+
+Scope: this extends analysis/combat-model.md's mode-0 ("actual resolution",
+as opposed to modes 1/2 "odds preview") path inside the shared combat
+function at arm9 0x0008b6d8 (RAM 0x020897ec). All addresses are RAM
+addresses (arm9-relative offset = address - 0x02000000) unless noted.
+Component: arm9. Disassembled with capstone (ARM mode) directly against
+the extracted, hash-verified ROM's arm9.bin
+(sha256 f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08).
+
+Search method used (per task instructions: trace forward from the two
+confirmed odds call sites, not a blind search): both odds call sites
+(mode 1 at 0x0208bd08 and mode 2 at 0x0208c06c) are inside this same
+function and return immediately after computing the preview odds - they
+never reach the loop below. The loop is reached only via mode 0 (the
+"actually resolve this attack" entry), which shares the same modifier
+computation code as modes 1/2 up to 0x0208bc7c and then diverges into the
+long tail traced here. This is a refinement worth recording: forward
+tracing from the odds computation *inside the function* (not from its
+external callers) is what finds the loop; the two external call sites
+that read the *preview* odds are a dead end for this purpose because they
+never invoke mode 0.
+
+--- 1. RNG algorithm (confirmed) ---
+
+Global RNG state struct at RAM 0x02192304 (arm9 offset 0x00192304),
+referenced by 24 separate literal-pool entries scattered from
+0x02000d60 to 0x02099f78 (nearly the whole first 100KB of arm9) - i.e.
+this is the shared, game-wide RNG, not a combat-local one. (Consistent
+with the "orig seed="/"cur seed="/"NetSeed"/"NetRequestSeed" multiplayer
+desync-detection strings found in the prior session: a shared RNG is
+exactly what a lockstep-synchronized multiplayer implementation needs.)
+
+Update site (repeated verbatim at 0x0208ce88 and 0x0208cf14, once per
+draw):
+
+  0x0208ce88: ldr  r0, [r6, #4]        ; r6 = &rng_state (0x02192304)
+  0x0208ce8c: add  r0, r0, #1
+  0x0208ce90: str  r0, [r6, #4]        ; state.draw_count += 1 (stats only)
+  0x0208ce94: ldr  r1, [r6]
+  0x0208ce98: mla  r0, r1, r4, r5      ; r0 = state.value * 0x343FD + 0x269EC3
+  0x0208ce9c: str  r0, [r6]            ; state.value = r0
+  0x0208cea0: ldr  r1, [r6, #8]
+  0x0208cea4: cmp  r1, #0
+  0x0208cea8: beq  #0x208ceb4
+  0x0208ceac: bl   #0x2159934          ; conditional reseed/perturb (state.reseed_flag != 0)
+  0x0208ceb0: str  r1, [r6]
+  0x0208ceb4: ldr  r0, [r6]
+  0x0208ceb8: bl   #0x215799c          ; int -> double (state.value)
+  0x0208cebc: mov  r2, r0
+  0x0208cec0: mov  r3, r1
+  0x0208cec4: ldr  r0, [r6, #0xc]
+  0x0208cec8: ldr  r1, [r6, #0x10]
+  0x0208cecc: bl   #0x21579d8          ; combine with state.{0xc,0x10} (double op)
+  0x0208ced0: str  r0, [sp, #0xf4]
+  0x0208ced4: mov  sl, r1
+
+  literal r4 (multiplier) @ 0x0208d950 = 0x000343FD = 214013
+  literal r5 (increment)  @ 0x0208d954 = 0x00269EC3 = 2531011
+  literal r6 (state ptr)  @ 0x0208d94c = 0x02192304
+
+  MULTIPLIER/INCREMENT MATCH: `state = state * 214013 + 2531011` is the
+  well-documented Microsoft Visual C/C++ runtime `rand()` LCG (the same
+  constants used by the classic `srand`/`rand` implementation on that
+  toolchain). This is about as strong a confirmation as static analysis
+  can produce for "this is a linear congruential generator" - the exact
+  constant pair is specific enough that a coincidental match is not
+  plausible.
+
+  Given the confirmed global scope (24 xrefs across ~100KB of unrelated
+  code) and the network-sync debug strings, this RNG almost certainly
+  drives far more than combat (AI decisions, barbarian spawns, etc.) and
+  is therefore NOT exposed as a `civds combat` constant - see
+  "What was deliberately not exposed" below.
+
+--- 2. Per-round resolution loop (confirmed) ---
+
+Before the loop, a bitmask of "alive slots" is built per side (up to 3
+stacked units per side - the classic Civilization "army" combine-3-units
+mechanic already flagged in analysis/combat-model.md's support-bonus
+row): a 3-iteration loop (0x0208ce00-0x0208ce64, bound `cmp r1,#3`)
+produces `r8` (attacker alive-slot bitmask) and `sb` (defender alive-slot
+bitmask), each bit corresponding to one of up to 3 combined sub-units.
+
+Loop body (0x0208ce88-0x0208cfe8), each iteration = one round:
+
+  1. RNG draw #1 -> win/loss for this round ("sl", 0x0208ce88-0x0208cf10):
+     the raw draw is combined (0x21579d8/0x2157878, double-precision
+     ops) with (attacker_effective_strength + defender_effective_strength)
+     (from `[sp,#0x44]`/`[sp,#0x40]`, the same `base_stat *
+     cumulative_percent_modifier` values from analysis/combat-model.md)
+     and compared against attacker_effective_strength:
+
+       0x0208ced8: ldr r1, [sp, #0x44]   ; attacker effective strength
+       0x0208cedc: ldr r0, [sp, #0x40]   ; defender effective strength
+       0x0208cee0: add r0, r1, r0        ; combined = attacker + defender
+       0x0208cee4: bl  #0x215799c        ; int -> double
+       ...
+       0x0208cef4: bl  #0x2157878        ; -> r0 = scaled random value in [0, combined)
+       0x0208cef8: ldr r1, [sp, #0x44]
+       0x0208cefc: cmp r0, r1
+       0x0208cf00: movlt sl, #1          ; random < attacker_strength -> attacker wins this round
+       0x0208cf08: movge sl, #0          ; otherwise defender wins this round
+
+     This is precisely a weighted-random draw over the range
+     [0, attacker+defender) compared against attacker's share - the same
+     `attacker / (attacker + defender)` probability as the confirmed
+     preview-odds formula, just implemented as a direct weighted coin
+     flip instead of returning a percentage. This is strong corroboration
+     that the "combat odds" preview genuinely reflects the real resolution
+     probability, not just a cosmetic estimate.
+
+  2. RNG draw #2 (at least once, possibly retried) -> which of the
+     losing side's remaining slots is eliminated
+     (0x0208cf14-0x0208cf84):
+
+       0x0208cf74: cmp sl, #0
+       0x0208cf78: movne r1, sb          ; sl==1 (attacker won) -> pick from defender's mask
+       0x0208cf7c: moveq r1, r8          ; sl==0 (defender won) -> pick from attacker's mask
+       0x0208cf80: tst  r1, r7, lsl r0   ; r0 = drawn slot index (0..2); is that slot still alive?
+       0x0208cf84: beq  #0x208cf14       ; not alive -> redraw (loop back to RNG draw #2)
+
+     So every round consumes exactly 2 "logical" RNG draws (win/loss,
+     then victim slot), except the victim-slot draw can redraw multiple
+     times if it lands on an already-eliminated slot (bounded: at most 2
+     retries, since only 3 slots exist and at least 1 must still be alive
+     on the losing side for the outer loop to still be running).
+
+  3. Apply the result (0x0208cf88-0x0208cfe0):
+
+       0x0208cfb8: beq #0x208cfd0
+       0x0208cfbc: sub sb, sb, r7, lsl r0   ; sl==1 (attacker won) -> clear that bit in defender's mask
+       ...
+       0x0208cfd0: sub r8, r8, r7, lsl r0   ; sl==0 (defender won) -> clear that bit in attacker's mask
+
+     The picked slot/outcome are also recorded into a small local array
+     at `[sp+0xfc + slot*4]` (outcome) and `[sp+0xfc + slot*4 + 0x48]`
+     (drawn index), and a round counter at `[sp,#0x90]` is incremented.
+
+  4. Loop condition (0x0208cfe0-0x0208cfe8):
+
+       0x0208cfe0: cmp  r8, #0
+       0x0208cfe4: cmpne sb, #0
+       0x0208cfe8: bne  #0x208ce88        ; both sides still have >=1 alive slot -> next round
+
+     So this is NOT a gradual per-unit HP-depletion model in the classic
+     PC-Civilization sense. It is a "combined army" elimination model:
+     each round, one random surviving sub-unit from each side is at risk;
+     a single weighted coin flip (using the *combined* effective-strength
+     totals, not per-sub-unit stats) decides the round; the loser's
+     picked sub-unit is permanently removed from its side's pool; repeat
+     until one side's pool is completely empty. With at most 3 units per
+     side this is at most 5 rounds (3+3-1) before one side is fully
+     eliminated - the additional loop-count safety cap described below is
+     never reached by ordinary play.
+
+  5. Safety cap (0x0208cfec-0x0208d010, and mirrored at
+     0x0208d07c-0x0208d08c): `[sp,#0x94]` counts total loop passes
+     (including retried victim-slot draws) and is compared against
+     `#0x3e8` (1000); exceeding it force-exits to the finalize path at
+     0x0208d054. Given the loop can provably only run a handful of times
+     in real play (see point 4), this is a defensive bound against an
+     unexpected infinite loop, not a gameplay constant - see "What was
+     deliberately not exposed" below.
+
+--- 3. Result finalization (partially traced) ---
+
+- A halfword field at unit-instance offset `+0x52` is read at the top of
+  this whole section (`ldrsh r2, [r0, #0x52]` at 0x0208cda4 for the
+  attacker side, and the mirrored read for the defender) into
+  `[sp,#0x98]`/`[sp,#0x6c]`, and written back unchanged at every
+  "still fighting, one more round to go" exit point
+  (0x0208d01c/0x0208d09c write back the same saved value). Within the
+  code traced here this field's value is never itself decremented or
+  recomputed - it is preserved/restored around the loop, not consumed as
+  a running HP counter in the code shown. Its exact purpose (a
+  UI/animation cache slot the sub-function at 0x2098c14 might clobber?
+  something else entirely?) is NOT resolved and is left explicitly
+  unknown rather than guessed.
+- When one side's mask reaches 0 (full defeat), 0x0208d0d0 onward checks
+  a retreat-style condition via the same helper already flagged in
+  analysis/combat-model.md as unresolved ("support/army bonus",
+  `0x0209bf7c`), this time called with a different mode argument (`#0x10`
+  = 16): `bl 0x0209bf7c; cmp r0, #1; ble 0x0208cd7c` loops back toward the
+  top of the whole mode-0 section when the helper returns <= 1. The
+  pattern (checked only right after a side's pool is fully eliminated,
+  before finalizing) is consistent with a "chance to retreat instead of
+  being destroyed" mechanic, but the exact trigger condition and
+  probability are inside that still-unresolved helper, so this is
+  reported as a lead, not a proven mechanic.
+- A further RNG draw happens at 0x0208d134-0x0208d1a8 (same LCG-advance
+  pattern as above) producing a value stored to `[sp,#0x8c]`. This value
+  is not consumed again before the function returns in the code traced
+  here, so it is very likely read by this function's caller (perhaps for
+  a post-battle veteran-promotion roll, matching the advisor string "New
+  units are veterans" / the `Veteran +50%` combat bonus already proven in
+  analysis/combat-model.md) - not confirmed, left explicitly unknown.
+- At 0x0208d1dc, the winning/surviving side's unit descriptor flags are
+  tested for bit `0x80000` - the same still-semantically-unresolved flag
+  group first surveyed in the unit-flag work (`0x00080000`: Spy, Caravan,
+  and the seven Great Person units). When set, extra checks run before
+  falling through to a shared cleanup call at `0x02098c14` (the same
+  helper used elsewhere in this function for "remove this unit from the
+  map", e.g. the barbarian-village early-exit path near the function's
+  entry). This is a new, concrete lead for that old open flag (something
+  about how Spies/Caravans/Great People are affected when a fight
+  involving them resolves), not pursued further here - logged for a
+  future targeted pass rather than guessed at now.
+
+--- What was deliberately not exposed as a `civds combat` constant ---
+
+Three numeric candidates were found and rejected for the patchable
+registry, each for a specific, checkable reason rather than general
+caution:
+
+1. LCG multiplier (214013) / increment (2531011): confirmed global,
+   shared across 24 xref sites spanning nearly the whole arm9 image
+   (0x02000d60-0x02099f78), and tied to multiplayer seed-sync debug
+   strings. Changing it would affect AI, spawns, and everything else that
+   draws from this RNG, not just combat - out of scope for a "combat"
+   constant and a much bigger blast radius than the existing 11 flat
+   percentage/threshold constants.
+2. Round-count safety cap (1000 / 0x3e8): requires a rotated ARM
+   immediate encoding (not the simple unrotated 0-255 byte-replace scheme
+   `civds.combat` uses for the existing 11 constants), and is provably
+   inert in real play (the loop can run at most 5 times with a 3-unit
+   army cap before this cap could ever matter) - changing it would have
+   no observable gameplay effect, so it is not worth the added encoding
+   complexity or the false impression that it does something.
+3. Max stacked-army size (3, the loop bound at 0x0208ce5c and elsewhere):
+   this bound is coupled to fixed-size local buffers in the same function
+   (e.g. the `mov r2, #0x90; bl 0x214cb14` zero-init sized for exactly 3
+   slots' worth of local record storage) and to bit-index assumptions
+   (`tst`/`sub ... lsl r0` with r0 in 0..2) throughout the loop. Changing
+   only the loop bound without re-auditing every dependent array size and
+   bit-shift range risks stack corruption - this is exactly the kind of
+   "safely patchable" bar the existing 11 constants (plain, standalone,
+   single-purpose immediates) were held to, and this one does not clear
+   it without further work.
+
+No new constant was added to `src/civds/combat.py` this session as a
+result. The deliverable here is the model itself, which upgrades several
+"unknown" rows in analysis/combat-model.md's "Open questions" to proven,
+and gives the still-open items (the +0x52 field, the retreat helper, the
+post-battle roll, the 0x80000 flag interaction) much more precise leads
+for a future pass.
