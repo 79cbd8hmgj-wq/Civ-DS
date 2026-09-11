@@ -264,7 +264,22 @@ buildings (`+0x42`), and a small 8-byte-stride array holding two further
 led directly to discovering the wonder table (see section 2), since that
 8-byte array's base literal resolved to `0x0217B518`.
 
-## 4. City-effect application path (still not located)
+## 4. City-effect application path (yield-computation function now located; building/wonder linkage still not proven)
+
+**Update (runtime session 3 - real ROM + real emulator):** a follow-up
+session, supplied with the actual ROM and a working DeSmuME GDB-RSP
+build, resolved the primary open question this document's "Update
+(runtime-capable-toolkit follow-up session)" paragraph below could only
+leave as a static lead. See section 6 for the full write-up: the
+function that computes a city's per-turn food/production/science/gold/
+culture yields is now located and partially disassembled
+(`evidence/re/city-yield-recompute-function-trace.txt`), and all five
+yield fields in the city-instance struct are proven
+(`evidence/re/city-instance-yield-fields.json`). What remains unresolved
+is whether/how *building* ownership specifically (as opposed to worked
+tiles, inter-city distance, and several still-unidentified per-city
+effect-check calls) feeds into this computation - see section 6's
+"Unresolved" list.
 
 The specific code that, on completing a building, actually *applies* its
 effect to city food/production/trade/science/culture/happiness/defense
@@ -363,17 +378,153 @@ folded into `BuildingRecord`:
   role, and relationship (if any) to the `r8` structure above were not
   resolved this session.
 
-No city-instance parser/tooling was added — per-instructions this is
-recorded as a lead, not promoted, since its own field catalog is still
-largely unresolved.
+**Update (runtime session 3 - real ROM + real emulator):** the city
+struct above is now confirmed reachable live (its runtime address is
+data, not fixed - see section 6), and five more of its fields are
+**proven**: `+0x06` (`city_focus`), `+0x40`/`+0x42`/`+0x44`/`+0x46`/
+`+0x48` (the five current-turn yields). The `0xBC`-stride array
+mentioned above was also encountered again this session, live, inside
+the yield-recompute function itself, in enough additional context to
+upgrade it from "very likely a per-city record" to "strongly supported
+to be a fixed 128-entry *all cities in the game* registry" (not the same
+struct as the per-city detail struct reached via `[ui_context+0x124]`)
+— see section 6.
+
+No city-instance parser/tooling was added — none of the newly-proven
+fields are stored in the ROM file (they are pure runtime/heap state, not
+static data), so there is nothing here for `civds` (a ROM-file editing
+tool) to parse or patch; this section remains documentation/evidence
+only, per-instructions.
+
+## 6. City yield recomputation — runtime-proven (real ROM, real emulator)
+
+A follow-up session was supplied with the actual, legally-owned US ROM
+and a working DeSmuME (0.9.14, `--enable-gdb-stub`) build for the first
+time, unblocking the runtime-analysis work two prior sessions could only
+plan for statically. Full narrative, verification commands, and the
+complete annotated disassembly are in
+`evidence/re/city-effect-runtime-session-2.md` (environment/tooling
+notes from the immediately-prior session) and
+`evidence/re/city-yield-recompute-function-trace.txt` (this session's
+capture); the proven field catalog is in
+`evidence/re/city-instance-yield-fields.json`. This section summarizes
+the conclusions.
+
+### 6.1 The city-focus lead, confirmed
+
+The static lead from the prior session — a 6-way switch dispatch at
+`0x020a9c34`, keyed off a byte with a `city_focus`-shaped `-1..4` value
+range, near the already-known `City focus is Gold/Food/Production/
+Science` string cluster — was confirmed exactly. A code breakpoint at
+that address was hit within one rendered frame of opening the in-game
+city panel. The city-instance struct's own `+0x06` byte is **proven**
+(by direct write-then-observe: forcing the byte to `1` changed the live
+on-screen label to "City focus is Gold" on the next frame) to be
+`city_focus` (`0` = Balanced, `1` = Gold; `2`/`3`/`4` are predicted by
+UI string order — Food/Production/Science — but not individually
+write-tested this session).
+
+### 6.2 The five yield fields, proven by a real differential experiment
+
+A write watchpoint on the resolved city struct's `+0x40` halfword fired
+immediately from a *different* function (`~0x02052478`), proving the
+city-focus UI code only *displays* cached per-turn totals rather than
+computing them. Reading the full struct before and after forcing the
+focus to Gold and advancing one real in-game turn (via the actual
+"End Turn" control, not a savestate trick) gave two independent,
+exact numeric matches between `city+0x40/0x42/0x44/0x46/0x48` and the
+in-game city panel's own displayed food-growth/production/science/gold/
+culture numbers — see `evidence/re/city-instance-yield-fields.json` for
+the full before/after byte dumps. This is now **proven**:
+
+| Offset | Width | Field | Confidence |
+| ---: | ---: | --- | --- |
+| `0x40` | 2 (int16) | `current_food_yield` | proven (watchpoint-proven write site + 2/2 value matches) |
+| `0x42` | 2 (int16) | `current_production_yield` | proven by value correlation (2/2 exact matches; this field's own 2->0 change across the two snapshots is what disambiguated the field order) |
+| `0x44` | 2 (int16) | `current_science_yield` | proven by value correlation (2/2 exact matches) |
+| `0x46` | 2 (int16) | `current_gold_yield` | proven by value correlation (2/2 exact matches) |
+| `0x48` | 2 (int16) | `current_culture_yield` | proven by value correlation (2/2 exact matches) |
+
+These fields are a **persistent, once-per-turn-recomputed cache**, not a
+live per-frame recalculation: forcing the focus byte alone (without
+ending a turn) did not change the displayed numbers.
+
+### 6.3 The yield-recompute function itself
+
+The write site resolves into a large function observed across RAM
+`0x02052180`-`0x02052880` (neither its start/prologue nor its end/
+epilogue were reached this session — this is an internal window, not
+the full function). Structurally, in address order, it:
+
+1. Runs a chain of calls to two generic per-city "effect check" helpers
+   (`0x2096a58`, `0x20957fc` — both already seen in a prior session's
+   trace of the building-availability function, reused here with
+   different integer IDs) that gate small additive/multiplicative
+   bonuses into a running yield accumulator.
+2. Applies further multipliers (`x2`, a rounded `x1.5`, a three-way
+   `x2`/`x1.5`/`+1` choice) gated by bits of a *separate* per-city-index
+   global flags word (not the city struct itself), each gate wrapped in
+   another `0x2096a58` call.
+3. Iterates a **128-record, `0xBC`-byte-stride array** — the same stride
+   already flagged in section 5 as an unresolved lead, now much better
+   understood: each record has an owner byte (`+0x00`), a validity/flag
+   word (`+0x10`, tested against bit 0), and `x`/`y` coordinates
+   (`+0x30`/`+0x32`); the loop skips records that don't pass those
+   checks, computes a distance from *this* city's own coordinates, and
+   folds a distance-weighted bonus into the yield accumulators. This is
+   **strongly supported** (not proven) to be a fixed, 128-entry "every
+   city currently in the game" registry, distinct from the per-city
+   detail struct — an inter-city proximity bonus (trade routes / culture
+   pressure), not a building or tile effect.
+4. Iterates a **256-record, `0x54`-byte-stride array** — worked map
+   tiles. Reads a terrain-type byte (validated `< 31`), a "currently
+   worked" flag (`+0x0C` bit 2), and dispatches on `terrain_type - 31`
+   through a 7-way jump table that each accumulate into the same running
+   totals using the identical "sum then round-half-up via `lsr #31`/
+   `asr #1`" pattern already proven for unit production cost — i.e. this
+   is the actual per-worked-tile food/production/trade accumulation.
+5. Writes the five yield fields (section 6.2), each immediately followed
+   by a conditional add into one of **three separate, 40-byte-stride,
+   per-civilization global total arrays** — i.e. **some city yields do
+   feed a civilization-wide total**, structurally proven, though which
+   specific yields and the exact civ-wide semantics were not decoded
+   field-by-field.
+6. A further government/city-size-gated block applies a few more
+   tile-type bonuses through a *third*, distinct generic per-city helper
+   (`0x2095a5c`).
+7. Includes a conditional "zero all five yields" branch gated on a flag
+   bit of the same per-city-index global flags word from step 2, shaped
+   like a civil-disorder/anarchy "this city produces nothing" rule (not
+   decoded further).
+
+### 6.4 What this proves and what it still doesn't, for buildings specifically
+
+**Proven:** city yields are computed by one large, turn-boundary routine
+that reads worked tiles, nearby friendly cities, and at least three
+distinct "does this city/civ have effect X" boolean/counter helper
+calls, then writes both per-city and (for some yields) civilization-wide
+totals.
+
+**Not proven, not found this session:** no direct reference to the
+building descriptor table base (`0x021778EC`) or to the already-proven
+`city+0x10` built-buildings bitmask was located anywhere in the ~1.75 KB
+of this function captured this session. Building bonuses, if applied
+here at all, are not obviously colocated with the worked-tile/inter-city
+loops in the observed window. The three generic per-city helpers
+(`0x2095a5c`, `0x2096a58`, `0x20957fc`) each take a small integer ID
+whose ID-space (technology? building? government? wonder? a unified
+"effect flag" space spanning several of these?) was **not decoded** this
+session — resolving that is the single highest-value next step for
+finally connecting buildings to their gameplay effect (see the modding
+capability matrix's prioritized next blockers).
 
 ## Confidence summary
 
 | Confidence | Fields |
 | --- | --- |
-| **Proven** (executable cross-reference) | building `prerequisite_technology_id`, `requires_building_mask`, `excludes_building_mask`; building/wonder table locations, strides, record counts; the availability-check function and its logic; city-instance `+0x10` built-buildings bitmask |
-| **Strongly supported** (clean, convention-consistent data pattern; not independently executable-proven) | building `production_cost_quanta`/`production_cost`, `name`, `model_name`, `description`; wonder `prerequisite_technology_id`, `production_cost_quanta` |
-| **Unresolved** (no consumer found, no name assigned) | building `unknown_0x40`; wonder `0x42`, `0x46`, `0x48`, `0x14A`; the `0xBC`-stride city array's exact field catalog; the city-effect application path itself |
+| **Proven** (executable cross-reference, or live runtime write-test/value-correlation) | building `prerequisite_technology_id`, `requires_building_mask`, `excludes_building_mask`; building/wonder table locations, strides, record counts; the availability-check function and its logic; city-instance `+0x10` built-buildings bitmask; city-instance `+0x06` `city_focus` (runtime write-test); city-instance `+0x40`/`+0x42`/`+0x44`/`+0x46`/`+0x48` current food/production/science/gold/culture yields (runtime differential, two independent exact value matches); the existence and general shape of the city yield-recompute function (`~0x02052180`-`0x02052880`+) |
+| **Strongly supported** (clean, convention-consistent data pattern; not independently executable-proven) | building `production_cost_quanta`/`production_cost`, `name`, `model_name`, `description`; wonder `prerequisite_technology_id`, `production_cost_quanta`; the `0xBC`-stride array being a 128-entry "all cities" registry (owner byte, validity flag, x/y coordinates); some yields feeding per-civilization 40-byte-stride global totals |
+| **Unresolved** (no consumer found, no name assigned) | building `unknown_0x40`; wonder `0x42`, `0x46`, `0x48`, `0x14A`; city-instance `+0x00`, `+0x24`, `+0x38`; the `0xBC`-stride city array's full field catalog beyond owner/validity/coordinates; whether/how building ownership specifically feeds the yield-recompute function; the ID space consumed by the three generic per-city effect-check helpers (`0x2095a5c`, `0x2096a58`, `0x20957fc`) |
 
 ## What this unlocks for modding
 
@@ -410,9 +561,14 @@ resolved name, description).
 emits the same kind of guarded, single-field, expected-byte-checked
 patches as the building command, restricted to the fields with strong or
 better support (see "What was intentionally not promoted" above for the
-reasoning and what is deliberately excluded). This was not proven end to
-end on a real ROM this session (no ROM was available); it is validated by
-55 passing unit/CLI tests against synthetic ROM fixtures using the exact
-byte layout this document already records, following the same test
-pattern already proven correct for buildings/units/technology/
-civilization/combat.
+reasoning and what is deliberately excluded).
+
+**Update (real-ROM session):** proven end to end on the real ROM. The
+Pyramids of Egypt's production cost was raised 150 -> 200 and its
+description rewritten, applied to an extracted workspace, rebuilt, and
+the rebuilt ROM re-parsed to confirm exactly those two fields changed,
+the record's other fields (prerequisite technology, short name, model
+name) were untouched, and neighboring records (The Great Wall, Hanging
+Gardens of Babylon) were completely unaffected
+(`evidence/re/wonder-patch-e2e.json`) — closing the "Wonders real-ROM
+proof" item from the modding capability matrix's prioritized blockers.

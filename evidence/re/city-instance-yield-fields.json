@@ -1,0 +1,121 @@
+{
+  "format_version": 1,
+  "note": "Live-runtime evidence, captured this session via a real GDB-RSP (DeSmuME) connection to the hash-verified, locally-supplied US ROM (profiles/civrev-us.json). All addresses are RAM addresses observed in one real playthrough (single human civ, Chinese/Beijing, Chieftain difficulty); the city-instance base address itself (0x021a29a4) is a per-playthrough heap allocation and will differ between runs - only the *offsets* and *field semantics* below are the durable finding.",
+  "city_instance_pointer_resolution": {
+    "method": "A code breakpoint at 0x020a9c34 (the city-focus switch dispatch, previously a static-only lead in evidence/re/city-yield-ui-leads.json) was hit while the in-game city panel was open. At that stop, register r9 held a pointer to a small UI-context struct; the city_instance pointer itself was read from [r9 + 0x124].",
+    "observed_city_instance_pointer": "0x021a29a4",
+    "confidence": "proven for this playthrough's session; the [r9+0x124] resolution path is proven, the base UI-context pointer's own stability across sessions is not independently tested"
+  },
+  "fields": [
+    {
+      "offset": "0x00",
+      "width": 1,
+      "name": "unknown_0x00",
+      "confidence": "unresolved",
+      "observed_value": 0,
+      "evidence": "Read consistently as 0 (single-civ game, civ index 0). Not independently proven to be a civ/owner index; plausible by position and by analogy with the separate 0xBC-stride array's own +0x00 owner byte, but not tested with a second civilization this session."
+    },
+    {
+      "offset": "0x06",
+      "width": 1,
+      "name": "city_focus",
+      "confidence": "PROVEN",
+      "type": "signed byte",
+      "evidence": "Directly write-tested: writing 0 displayed \"City focus is Balanced\", writing 1 displayed \"City focus is Gold\" on the next rendered frame, both confirmed by reading the on-screen text. The consuming code is the switch dispatch at 0x020a9c34 (`ldrsb r0,[city_ptr,#6]; add r0,r0,#1; cmp r0,#5; addls pc,pc,r0,lsl#2`), matching the 4 named UI strings (Gold/Food/Production/Science) plus Balanced (0) and one further unnamed case (raw value 4, not exercised this session).",
+      "known_values": {
+        "0": "Balanced",
+        "1": "Gold",
+        "2": "unresolved (predicted Food by UI string order, not exercised)",
+        "3": "unresolved (predicted Production by UI string order, not exercised)",
+        "4": "unresolved (predicted Science by UI string order, not exercised)"
+      }
+    },
+    {
+      "offset": "0x10",
+      "width": 4,
+      "name": "built_buildings_mask",
+      "confidence": "PROVEN (carried over from the prior session's static proof, cross-validated live this session)",
+      "evidence": "Read as 0x00000001 (bit 0 = building index 0 = Palace) on a freshly-founded capital city, exactly matching the already-proven semantics from the building-availability function (analysis/buildings-model.md section 3/5)."
+    },
+    {
+      "offset": "0x24",
+      "width": 4,
+      "name": "unknown_0x24",
+      "confidence": "unresolved",
+      "observed_value": "0x00000201",
+      "evidence": "Bit 0 set, consistent with the already-known `ldr r0,[r8,#0x24]; tst r0,#1` test in the building-availability function. This session additionally observed the SAME address read (as `[r0,#0x24]` off a register carrying the city pointer) inside the yield-recompute function at approximately 0x02052640 (`tst r0,#16` on this same word, a different bit) - confirms the field is read by at least two independent functions but does not resolve its meaning."
+    },
+    {
+      "offset": "0x38",
+      "width": 2,
+      "name": "unknown_0x38",
+      "confidence": "unresolved",
+      "observed_value": 6,
+      "evidence": "Unchanged carry-over from the prior static session's lead (`ldrsh r1,[r8,#0x38]; sub r1,r1,#0x64`). Small integer, plausibly a turn counter, not independently proven this session."
+    },
+    {
+      "offset": "0x40",
+      "width": 2,
+      "name": "current_food_yield",
+      "type": "signed int16",
+      "confidence": "PROVEN",
+      "evidence": "Write site independently proven via a live write watchpoint (fires at the `strh` instruction at RAM 0x02052478, see evidence/re/city-yield-recompute-function-trace.txt). Field value cross-validated against the in-game city panel's displayed \"City growth\" surplus number across two independent snapshots: turn 1 (Balanced focus) value 2 matched an on-screen \"+2 -> City growth in 14 turns\"; turn 2 (Gold focus, after a real turn advance) value 2 again matched \"+2 -> City growth in 13 turns\"."
+    },
+    {
+      "offset": "0x42",
+      "width": 2,
+      "name": "current_production_yield",
+      "type": "signed int16",
+      "confidence": "PROVEN by value correlation; write site strongly supported, not independently watchpoint-tested",
+      "evidence": "Turn 1 (Balanced): value 2, on-screen \"+2 -> Warrior complete in 4 turns\". Turn 2 (Gold focus): value 0, on-screen \"+0 -> No production: Warrior delayed.\" Exact match both times; this is the field that most clearly disambiguated the 5-field order, since it diverged from the other two initially-tied fields (food, science) on turn 2."
+    },
+    {
+      "offset": "0x44",
+      "width": 2,
+      "name": "current_science_yield",
+      "type": "signed int16",
+      "confidence": "PROVEN by value correlation; write site strongly supported, not independently watchpoint-tested",
+      "evidence": "Turn 1 (Balanced): value 2, on-screen science flask icon \"+2\". Turn 2 (Gold focus): value 4, on-screen science flask icon \"+4\". Exact match both times."
+    },
+    {
+      "offset": "0x46",
+      "width": 2,
+      "name": "current_gold_yield",
+      "type": "signed int16",
+      "confidence": "PROVEN by value correlation; write site strongly supported, not independently watchpoint-tested",
+      "evidence": "Value 0 on both turns, on-screen gold coin icon \"+0\" (top bar) on both turns. Unambiguous because it is the only field to read exactly 0 in the first snapshot."
+    },
+    {
+      "offset": "0x48",
+      "width": 2,
+      "name": "current_culture_yield",
+      "type": "signed int16",
+      "confidence": "PROVEN by value correlation; write site strongly supported, not independently watchpoint-tested",
+      "evidence": "Value 5 on both turns, on-screen music-note culture icon \"+5\" on both turns. Unambiguous because it is the only field to read exactly 5 in the first snapshot."
+    }
+  ],
+  "two_snapshot_differential": {
+    "turn_1": {
+      "in_game_date": "4000 BC",
+      "city_focus_forced_to": 0,
+      "focus_label_on_screen": "City focus is Balanced",
+      "raw_struct_bytes_0x00_0xc0": "00000003030000020000000000000300010000000000000000000000000000000000000102000000000000080060f00f000a00030003000600ffff0000000002000200020000000500020002000200000000000000020006040700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000542f220205050501",
+      "offsets": {"food": 2, "production": 2, "science": 2, "gold": 0, "culture": 5}
+    },
+    "turn_2": {
+      "in_game_date": "3900 BC (one real turn advanced via the in-game End Turn control)",
+      "city_focus_forced_to": 1,
+      "focus_label_on_screen": "City focus is Gold",
+      "raw_struct_bytes_0x00_0xc0": "00000003030001020000000000000200010000000000000000000000000000000000000102000000000000080060f00f000a00050003000600ffff000000000200000004000000050004000200000000000000000004000706020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000542f220205050501",
+      "offsets": {"food": 2, "production": 0, "science": 4, "gold": 0, "culture": 5}
+    },
+    "conclusion": "The five city_instance+0x40..0x48 fields are PROVEN to be a persistent, once-per-turn-recomputed cache (not recomputed live per frame - forcing the focus byte alone, without a turn advance, did not change the displayed yield numbers), and their exact identity (food/production/science/gold/culture, in that byte order) is proven by two independent, exact numeric matches against the in-game city panel's own display."
+  },
+  "unresolved_open_questions": [
+    "Whether building ownership (the already-proven city+0x10 mask) is read anywhere inside the yield-recompute function - not observed in the ~1.75 KB window captured this session (see evidence/re/city-yield-recompute-function-trace.txt); may be folded into the unresolved 0x2095a5c/0x2096a58/0x20957fc generic per-city check helpers using an ID space not decoded this session, or may live in a function not yet located.",
+    "The exact ID space (technology? building? government? wonder?) consumed by the three generic per-city helper functions (0x2095a5c, 0x2096a58, 0x20957fc) repeatedly called by the yield-recompute function.",
+    "The full field catalog and base address of the newly-recontextualized 0xBC-stride, 128-record 'all cities' registry (see the trace file's annotation) - only an owner byte (+0x00), a validity/flag word (+0x10), and x/y coordinates (+0x30/+0x32) were exercised this session.",
+    "Which per-civilization 40-byte-stride global array corresponds to which yield category, and whether all five yields (or only a subset) feed civilization-wide totals.",
+    "The function's own start (prologue) and end (epilogue/return) addresses - only the internal range 0x02052180-0x02052880 was captured this session."
+  ]
+}

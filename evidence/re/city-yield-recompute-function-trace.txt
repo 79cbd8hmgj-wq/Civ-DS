@@ -1,0 +1,589 @@
+=== CITY YIELD RECOMPUTATION FUNCTION - LIVE RUNTIME DISASSEMBLY ===
+
+Captured this session via live melonDS-equivalent (DeSmuME 0.9.14,
+--enable-gdb-stub build, ARM9 GDB-RSP) debugging of the real, hash-
+verified US ROM (profiles/civrev-us.json, sha256
+f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08),
+supplied locally by the user for this session and never committed.
+Disassembled from live ARM9 RAM reads (nds-toolkit's own
+`disassemble_binary` helper, which shells out to arm-none-eabi-objdump)
+- NOT reconstructed from the ROM file's static arm9.bin, though the
+addresses are plain code addresses and match the ROM's own static
+layout (ARM9 loads 1:1 at 0x02000000).
+
+RAM range captured: 0x02052180-0x02052880 (1792 bytes). The function
+containing this range starts before 0x02052180 (not found - the capture
+window did not reach a prologue) and continues past 0x02052880 (still
+mid-function at the end of the capture, including what appears to be a
+"reset city yields to zero" branch under some disorder/anarchy-shaped
+condition - see annotations below). Treat the address range below as
+"observed window", not the function's full bounds.
+
+=== HOW THIS FUNCTION WAS FOUND ===
+
+1. The known city-focus display string cluster and its literal-pool
+   xrefs (evidence/re/city-yield-ui-leads.json) led to a live code
+   breakpoint at 0x020a9c34 (the 6-way city-focus switch dispatch
+   already predicted, unproven, by a prior session's static trace -
+   evidence/re/city-effect-runtime-session-2.md). This breakpoint was
+   hit within one frame of opening the in-game city panel, confirming
+   the earlier lead outright.
+2. At that breakpoint, r9 held a pointer to a small "current UI
+   context" struct; [r9+0x124] resolved to a live, dynamically
+   allocated RAM address (0x021a29a4 in this playthrough) whose first
+   32 bytes decoded exactly as the CITY struct predicted by the prior
+   session (see "City-instance fields newly proven" below).
+3. A write watchpoint set on city_ptr+0x40 (the first candidate yield
+   field) fired almost immediately - not from the UI/focus code at all,
+   but from a completely different function at ~0x02052478, proving the
+   UI code only *displays* cached values while a separate routine
+   *computes* them.
+4. Single-stepping and live disassembly around that write site recovered
+   the function below.
+
+=== ANNOTATIONS ===
+
+0x02052180-0x0205227c (start of captured window): a long chain of
+`bl 0x20957fc` / `bl 0x2096a58` calls, each gated by `cmp r0,#0` /
+`bne`/`addne`, accumulating into r9 (later written out as one of the
+five yield fields). Each call passes a small integer in r0 (25, 42, ...)
+and the city index in r1. This is the SAME two generic per-city
+"effect check" helpers already encountered in a prior session's trace of
+the building-availability function (0x2096a58 there gated an AI-
+difficulty check with r0=0x2d/45); here they are reused with different
+IDs to gate small additive/multiplicative yield bonuses. Which ID space
+(technology, building, government, wonder) these integers index into is
+NOT resolved this session - argument shape alone does not disambiguate
+it, and no direct reference to the building table base (0x021778EC) or
+the already-proven city+0x10 built-buildings bitmask was found anywhere
+in the ~1.75 KB captured.
+
+0x020521a0-0x02052270ish: further conditional multipliers (x2 via
+`add r9,r9,r9`; x1.5 via `add+add+asr#1` rounding; a three-way branch
+selecting between x2/x1.5/+1 depending on which of three flag bits -
+0x4000000, 0x1000000, 0x800000, 0x10000000 - is set in a per-city-index
+flags word loaded from a literal table at 0x0205292c, NOT from the city
+struct itself). This flags word is a SEPARATE global array from the
+city struct discovered via [r9+0x124]; only some of its bits were
+exercised this session (0x10000, 0x400, 0x800, 0x1000000, 0x4000000,
+0x800000, 0x10000000, 0x8, 0x80000000-shifted checks elsewhere) and none
+were resolved to a specific building/wonder/government by this session.
+
+0x02052280-0x0205230c: a 128-iteration loop over a record array with
+stride 0xBC (188 bytes) - this is the SAME 0xBC-stride array flagged
+UNRESOLVED in the original building-model.md section 5 ("very likely a
+per-city record", base address/full field catalog not resolved). This
+session's context strongly upgrades that assessment: the loop compares
+each record's owner-civ byte (+0x00) against the current city's owner,
+skips records failing a validity/flag test (`ldr r0,[r3,#0x10]; tst
+r0,#1`), computes a squared-away Chebyshev/Manhattan-style distance from
+this city's own coordinates (city+0x30/city+0x32, matching the pattern
+already used for wonder-adjacent map checks) to the other record's own
+coordinates (+0x30/+0x32), and folds a distance-weighted bonus into the
+running accumulators - consistent with "closest other cities of mine
+contribute a small ongoing trade/culture bonus", not with any building
+or tile mechanic. 128 is a plausible "max cities in a game" cap.
+**Strongly supported, not proven**: this 0xBC array is a fixed-size,
+128-entry "all cities" registry, distinct from the per-city detail
+struct reached via [r9+0x124] (different base, different field values
+observed at the shared-looking +0x10 offset - almost certainly a
+coincidental offset overlap, not the same semantic).
+
+0x02052380-0x02052468: a 256-iteration loop over a record array with
+stride 0x54 (84 bytes) - reads a terrain/tile-type byte (+0x01, valid
+range checked against 31), the record's own owner/worked-by markers
+(+0x0C bit 2 = "worked"), and dispatches on `(tile_type - 31)` through a
+7-way jump table (cases at +0x00/+0x04/.../+0x18 relative to the table)
+that each apply the same "sum, round-half-up via lsr#31/asr#1" pattern
+already proven for unit production cost - i.e. this is per-worked-tile
+yield accumulation (food/production/trade from the city's worked
+squares), folding into the same three registers (sl/r7/r9) that get
+written out as three of the five final yield fields afterward.
+
+0x02052468-0x02052554: five `ldr <literal-table-ptr>; strh <value>,
+[ptr,r4]` writes in a row - **the five final yield fields**. The FIRST
+of these (0x02052478, value taken from a stack slot fed by the tile-
+loop's food accumulator) is the exact instruction whose target address
+was independently PROVEN this session to be city_ptr+0x40 via a live
+write watchpoint. The remaining four (0x020524a8, 0x020524d4,
+0x02052500, 0x02052530) follow the identical pattern one after another
+and, combined with the two independent full-struct memory dumps taken
+before/after a real turn advance (see the JSON evidence file), are
+STRONGLY SUPPORTED (not independently watchpoint-proven per-field this
+session) to be the writes of city+0x42/+0x44/+0x46/+0x48 respectively,
+in that order. Each write is immediately followed by a conditional
+aggregation into one of three separate 40-byte-stride, per-civilization
+global total arrays (literals 0x02052990/0x02052998/0x020529a0-ish),
+gated by `ldr r0,[sp,#0xc]; cmp r0,#0` (an unresolved "is this the
+player's own city" or "should this be added to the empire total" flag)
+- i.e. **some but not all of the five city yields feed a civilization-
+wide total, not just a per-city one**, confirmed structurally though the
+exact civ-wide semantics (which of gold/science/culture stack into
+empire totals) were not decoded field-by-field this session.
+
+0x02052554-0x020526fc: a further government/city-size-gated block
+(`cmp r0,#3` against a per-city category byte) applying flag-bit-gated
+per-tile-type bonuses (harbor/mine-shaped: bits 0x800, 8, 16 tested
+against a per-city-index byte array at literal 0x0205290c) each wrapped
+in a call to a THIRD per-city helper, 0x2095a5c (args: small integer id,
+city index, a third parameter carried in r6 throughout - not resolved
+this session) - structurally identical in shape to 0x2096a58/0x20957fc
+but a distinct address, so a distinct check (not yet disambiguated from
+the other two).
+
+0x02052814-0x02052878ish: a conditional "zero all five yield fields"
+block, gated on bit 3 (0x8) of the SAME per-city flags word tested
+earlier (literal 0x02052914) unless a further check via 0x2096a58 (id
+0x2a/42) passes - shape-consistent with a civil-disorder/anarchy
+"produces nothing this turn" rule, not decoded further this session.
+
+=== RAW INSTRUCTIONS (arm-none-eabi-objdump, ARM mode) ===
+
+    2052180:	12899001 	addne	r9, r9, #1
+    2052184:	eb010d9c 	bl	0x20957fc
+    2052188:	e3500000 	cmp	r0, #0
+    205218c:	e3a0002a 	mov	r0, #42	@ 0x2a
+    2052190:	e1a01005 	mov	r1, r5
+    2052194:	12899002 	addne	r9, r9, #2
+    2052198:	eb010d97 	bl	0x20957fc
+    205219c:	e3500000 	cmp	r0, #0
+    20521a0:	e59f0784 	ldr	r0, [pc, #1924]	@ 0x205292c
+    20521a4:	12899002 	addne	r9, r9, #2
+    20521a8:	e7900004 	ldr	r0, [r0, r4]
+    20521ac:	e3100b01 	tst	r0, #1024	@ 0x400
+    20521b0:	0a000005 	beq	0x20521cc
+    20521b4:	e59f0758 	ldr	r0, [pc, #1880]	@ 0x2052914
+    20521b8:	e1a07107 	lsl	r7, r7, #2
+    20521bc:	e7900004 	ldr	r0, [r0, r4]
+    20521c0:	e3100a02 	tst	r0, #8192	@ 0x2000
+    20521c4:	02877005 	addeq	r7, r7, #5
+    20521c8:	ea000006 	b	0x20521e8
+    20521cc:	e3100010 	tst	r0, #16
+    20521d0:	0a000004 	beq	0x20521e8
+    20521d4:	e59f0738 	ldr	r0, [pc, #1848]	@ 0x2052914
+    20521d8:	e1a07087 	lsl	r7, r7, #1
+    20521dc:	e7900004 	ldr	r0, [r0, r4]
+    20521e0:	e3100a02 	tst	r0, #8192	@ 0x2000
+    20521e4:	02877002 	addeq	r7, r7, #2
+    20521e8:	e3a00019 	mov	r0, #25
+    20521ec:	e1a01005 	mov	r1, r5
+    20521f0:	e3a02000 	mov	r2, #0
+    20521f4:	eb011217 	bl	0x2096a58
+    20521f8:	e3500000 	cmp	r0, #0
+    20521fc:	10870fa7 	addne	r0, r7, r7, lsr #31
+    2052200:	108770c0 	addne	r7, r7, r0, asr #1
+    2052204:	e59f0720 	ldr	r0, [pc, #1824]	@ 0x205292c
+    2052208:	e7900004 	ldr	r0, [r0, r4]
+    205220c:	e3100801 	tst	r0, #65536	@ 0x10000
+    2052210:	0a000007 	beq	0x2052234
+    2052214:	e3a00002 	mov	r0, #2
+    2052218:	e1a01005 	mov	r1, r5
+    205221c:	e3a02000 	mov	r2, #0
+    2052220:	eb01120c 	bl	0x2096a58
+    2052224:	e3500000 	cmp	r0, #0
+    2052228:	13a00002 	movne	r0, #2
+    205222c:	03a00001 	moveq	r0, #1
+    2052230:	e0299990 	mla	r9, r0, r9, r9
+    2052234:	e59f06f0 	ldr	r0, [pc, #1776]	@ 0x205292c
+    2052238:	e7900004 	ldr	r0, [r0, r4]
+    205223c:	e3100301 	tst	r0, #67108864	@ 0x4000000
+    2052240:	10899009 	addne	r9, r9, r9
+    2052244:	e3100401 	tst	r0, #16777216	@ 0x1000000
+    2052248:	0a000003 	beq	0x205225c
+    205224c:	e0890089 	add	r0, r9, r9, lsl #1
+    2052250:	e0800fa0 	add	r0, r0, r0, lsr #31
+    2052254:	e08990c0 	add	r9, r9, r0, asr #1
+    2052258:	ea000005 	b	0x2052274
+    205225c:	e3100502 	tst	r0, #8388608	@ 0x800000
+    2052260:	10899009 	addne	r9, r9, r9
+    2052264:	1a000002 	bne	0x2052274
+    2052268:	e3100201 	tst	r0, #268435456	@ 0x10000000
+    205226c:	10890fa9 	addne	r0, r9, r9, lsr #31
+    2052270:	108990c0 	addne	r9, r9, r0, asr #1
+    2052274:	e59f3694 	ldr	r3, [pc, #1684]	@ 0x2052910
+    2052278:	e3e00000 	mvn	r0, #0
+    205227c:	e0838004 	add	r8, r3, r4
+    2052280:	e1d8c3f2 	ldrsh	ip, [r8, #50]	@ 0x32
+    2052284:	e1d8e3f0 	ldrsh	lr, [r8, #48]	@ 0x30
+    2052288:	e3a02010 	mov	r2, #16
+    205228c:	e3a01000 	mov	r1, #0
+    2052290:	e58d0058 	str	r0, [sp, #88]	@ 0x58
+    2052294:	e1d300d0 	ldrsb	r0, [r3]
+    2052298:	e1550000 	cmp	r5, r0
+    205229c:	1a000016 	bne	0x20522fc
+    20522a0:	e1d3b0d3 	ldrsb	fp, [r3, #3]
+    20522a4:	e35b0000 	cmp	fp, #0
+    20522a8:	da000013 	ble	0x20522fc
+    20522ac:	e59db058 	ldr	fp, [sp, #88]	@ 0x58
+    20522b0:	e150000b 	cmp	r0, fp
+    20522b4:	0a000010 	beq	0x20522fc
+    20522b8:	e5930010 	ldr	r0, [r3, #16]
+    20522bc:	e3100001 	tst	r0, #1
+    20522c0:	0a00000d 	beq	0x20522fc
+    20522c4:	e1d303f2 	ldrsh	r0, [r3, #50]	@ 0x32
+    20522c8:	e1d3b3f0 	ldrsh	fp, [r3, #48]	@ 0x30
+    20522cc:	e040000c 	sub	r0, r0, ip
+    20522d0:	e05bb00e 	subs	fp, fp, lr
+    20522d4:	426bb000 	rsbmi	fp, fp, #0
+    20522d8:	e3500000 	cmp	r0, #0
+    20522dc:	b2600000 	rsblt	r0, r0, #0
+    20522e0:	e15b0000 	cmp	fp, r0
+    20522e4:	c080008b 	addgt	r0, r0, fp, lsl #1
+    20522e8:	d08b0080 	addle	r0, fp, r0, lsl #1
+    20522ec:	e0800fa0 	add	r0, r0, r0, lsr #31
+    20522f0:	e15200c0 	cmp	r2, r0, asr #1
+    20522f4:	e1a000c0 	asr	r0, r0, #1
+    20522f8:	c1a02000 	movgt	r2, r0
+    20522fc:	e28330bc 	add	r3, r3, #188	@ 0xbc
+    2052300:	e2811001 	add	r1, r1, #1
+    2052304:	e3510080 	cmp	r1, #128	@ 0x80
+    2052308:	baffffe1 	blt	0x2052294
+    205230c:	e59f0604 	ldr	r0, [pc, #1540]	@ 0x2052918
+    2052310:	e7901105 	ldr	r1, [r0, r5, lsl #2]
+    2052314:	e3510003 	cmp	r1, #3
+    2052318:	00890fa9 	addeq	r0, r9, r9, lsr #31
+    205231c:	008990c0 	addeq	r9, r9, r0, asr #1
+    2052320:	e3510004 	cmp	r1, #4
+    2052324:	1a000003 	bne	0x2052338
+    2052328:	e08a0faa 	add	r0, sl, sl, lsr #31
+    205232c:	e08aa0c0 	add	sl, sl, r0, asr #1
+    2052330:	e0870fa7 	add	r0, r7, r7, lsr #31
+    2052334:	e08770c0 	add	r7, r7, r0, asr #1
+    2052338:	e3a0000d 	mov	r0, #13
+    205233c:	e1a01005 	mov	r1, r5
+    2052340:	e1a02006 	mov	r2, r6
+    2052344:	eb010dc4 	bl	0x2095a5c
+    2052348:	e3500000 	cmp	r0, #0
+    205234c:	11a07087 	lslne	r7, r7, #1
+    2052350:	e3a00021 	mov	r0, #33	@ 0x21
+    2052354:	e1a01005 	mov	r1, r5
+    2052358:	e1a02006 	mov	r2, r6
+    205235c:	eb010dbe 	bl	0x2095a5c
+    2052360:	e3500000 	cmp	r0, #0
+    2052364:	10870fa7 	addne	r0, r7, r7, lsr #31
+    2052368:	108770c0 	addne	r7, r7, r0, asr #1
+    205236c:	e3a00010 	mov	r0, #16
+    2052370:	e1a01005 	mov	r1, r5
+    2052374:	e2402011 	sub	r2, r0, #17
+    2052378:	eb010db7 	bl	0x2095a5c
+    205237c:	e3500000 	cmp	r0, #0
+    2052380:	e59f05fc 	ldr	r0, [pc, #1532]	@ 0x2052984
+    2052384:	e3a01000 	mov	r1, #0
+    2052388:	e18010b4 	strh	r1, [r0, r4]
+    205238c:	e59f25f4 	ldr	r2, [pc, #1524]	@ 0x2052988
+    2052390:	e3a00b15 	mov	r0, #21504	@ 0x5400
+    2052394:	e0222095 	mla	r2, r5, r0, r2
+    2052398:	11a07087 	lslne	r7, r7, #1
+    205239c:	e3a0e001 	mov	lr, #1
+    20523a0:	e3e0c000 	mvn	ip, #0
+    20523a4:	e1d200d1 	ldrsb	r0, [r2, #1]
+    20523a8:	e350001f 	cmp	r0, #31
+    20523ac:	ba000029 	blt	0x2052458
+    20523b0:	e1d8b3f0 	ldrsh	fp, [r8, #48]	@ 0x30
+    20523b4:	e1d231fc 	ldrsh	r3, [r2, #28]
+    20523b8:	e15b0003 	cmp	fp, r3
+    20523bc:	01d8b3f2 	ldrsheq	fp, [r8, #50]	@ 0x32
+    20523c0:	01d231fe 	ldrsheq	r3, [r2, #30]
+    20523c4:	015b0003 	cmpeq	fp, r3
+    20523c8:	1a000022 	bne	0x2052458
+    20523cc:	e592b00c 	ldr	fp, [r2, #12]
+    20523d0:	e31b0004 	tst	fp, #4
+    20523d4:	11d230d0 	ldrsbne	r3, [r2]
+    20523d8:	1153000c 	cmpne	r3, ip
+    20523dc:	120b3102 	andne	r3, fp, #-2147483648	@ 0x80000000
+    20523e0:	13530102 	cmpne	r3, #-2147483648	@ 0x80000000
+    20523e4:	0a00001b 	beq	0x2052458
+    20523e8:	e240001f 	sub	r0, r0, #31
+    20523ec:	e1d833fc 	ldrsh	r3, [r8, #60]	@ 0x3c
+    20523f0:	e113001e 	tst	r3, lr, lsl r0
+    20523f4:	1a000017 	bne	0x2052458
+    20523f8:	e3500006 	cmp	r0, #6
+    20523fc:	908ff100 	addls	pc, pc, r0, lsl #2
+    2052400:	ea000011 	b	0x205244c
+    2052404:	ea000005 	b	0x2052420
+    2052408:	ea00000f 	b	0x205244c
+    205240c:	ea000007 	b	0x2052430
+    2052410:	ea00000d 	b	0x205244c
+    2052414:	ea00000c 	b	0x205244c
+    2052418:	ea00000b 	b	0x205244c
+    205241c:	ea000007 	b	0x2052440
+    2052420:	e28a3001 	add	r3, sl, #1
+    2052424:	e0833fa3 	add	r3, r3, r3, lsr #31
+    2052428:	e08aa0c3 	add	sl, sl, r3, asr #1
+    205242c:	ea000006 	b	0x205244c
+    2052430:	e2873001 	add	r3, r7, #1
+    2052434:	e0833fa3 	add	r3, r3, r3, lsr #31
+    2052438:	e08770c3 	add	r7, r7, r3, asr #1
+    205243c:	ea000002 	b	0x205244c
+    2052440:	e2893001 	add	r3, r9, #1
+    2052444:	e0833fa3 	add	r3, r3, r3, lsr #31
+    2052448:	e08990c3 	add	r9, r9, r3, asr #1
+    205244c:	e1d833fc 	ldrsh	r3, [r8, #60]	@ 0x3c
+    2052450:	e183001e 	orr	r0, r3, lr, lsl r0
+    2052454:	e1c803bc 	strh	r0, [r8, #60]	@ 0x3c
+    2052458:	e2822054 	add	r2, r2, #84	@ 0x54
+    205245c:	e2811001 	add	r1, r1, #1
+    2052460:	e3510c01 	cmp	r1, #256	@ 0x100
+    2052464:	baffffce 	blt	0x20523a4
+    2052468:	e59d000c 	ldr	r0, [sp, #12]
+    205246c:	e59fb518 	ldr	fp, [pc, #1304]	@ 0x205298c
+    2052470:	e3500000 	cmp	r0, #0
+    2052474:	e59d0040 	ldr	r0, [sp, #64]	@ 0x40
+    2052478:	e18b00b4 	strh	r0, [fp, r4]
+    205247c:	1a000006 	bne	0x205249c
+    2052480:	e3a01028 	mov	r1, #40	@ 0x28
+    2052484:	e0030195 	mul	r3, r5, r1
+    2052488:	e59f0500 	ldr	r0, [pc, #1280]	@ 0x2052990
+    205248c:	e59d1040 	ldr	r1, [sp, #64]	@ 0x40
+    2052490:	e7902003 	ldr	r2, [r0, r3]
+    2052494:	e0821001 	add	r1, r2, r1
+    2052498:	e7801003 	str	r1, [r0, r3]
+    205249c:	e59d000c 	ldr	r0, [sp, #12]
+    20524a0:	e3500000 	cmp	r0, #0
+    20524a4:	e59f04e8 	ldr	r0, [pc, #1256]	@ 0x2052994
+    20524a8:	e18090b4 	strh	r9, [r0, r4]
+    20524ac:	1a000005 	bne	0x20524c8
+    20524b0:	e59f24e0 	ldr	r2, [pc, #1248]	@ 0x2052998
+    20524b4:	e3a00028 	mov	r0, #40	@ 0x28
+    20524b8:	e0010095 	mul	r1, r5, r0
+    20524bc:	e7920001 	ldr	r0, [r2, r1]
+    20524c0:	e0800009 	add	r0, r0, r9
+    20524c4:	e7820001 	str	r0, [r2, r1]
+    20524c8:	e59d000c 	ldr	r0, [sp, #12]
+    20524cc:	e3500000 	cmp	r0, #0
+    20524d0:	e59f044c 	ldr	r0, [pc, #1100]	@ 0x2052924
+    20524d4:	e180a0b4 	strh	sl, [r0, r4]
+    20524d8:	1a000005 	bne	0x20524f4
+    20524dc:	e59f24b8 	ldr	r2, [pc, #1208]	@ 0x205299c
+    20524e0:	e3a00028 	mov	r0, #40	@ 0x28
+    20524e4:	e0010095 	mul	r1, r5, r0
+    20524e8:	e7920001 	ldr	r0, [r2, r1]
+    20524ec:	e080000a 	add	r0, r0, sl
+    20524f0:	e7820001 	str	r0, [r2, r1]
+    20524f4:	e59d000c 	ldr	r0, [sp, #12]
+    20524f8:	e3500000 	cmp	r0, #0
+    20524fc:	e59f041c 	ldr	r0, [pc, #1052]	@ 0x2052920
+    2052500:	e18070b4 	strh	r7, [r0, r4]
+    2052504:	1a000005 	bne	0x2052520
+    2052508:	e59f2490 	ldr	r2, [pc, #1168]	@ 0x20529a0
+    205250c:	e3a00028 	mov	r0, #40	@ 0x28
+    2052510:	e0010095 	mul	r1, r5, r0
+    2052514:	e7920001 	ldr	r0, [r2, r1]
+    2052518:	e0800007 	add	r0, r0, r7
+    205251c:	e7820001 	str	r0, [r2, r1]
+    2052520:	e59d000c 	ldr	r0, [sp, #12]
+    2052524:	e59f1478 	ldr	r1, [pc, #1144]	@ 0x20529a4
+    2052528:	e3500000 	cmp	r0, #0
+    205252c:	e59d0038 	ldr	r0, [sp, #56]	@ 0x38
+    2052530:	e18100b4 	strh	r0, [r1, r4]
+    2052534:	1a000006 	bne	0x2052554
+    2052538:	e3a01028 	mov	r1, #40	@ 0x28
+    205253c:	e0030195 	mul	r3, r5, r1
+    2052540:	e59f0460 	ldr	r0, [pc, #1120]	@ 0x20529a8
+    2052544:	e59d1038 	ldr	r1, [sp, #56]	@ 0x38
+    2052548:	e7902003 	ldr	r2, [r0, r3]
+    205254c:	e0821001 	add	r1, r2, r1
+    2052550:	e7801003 	str	r1, [r0, r3]
+    2052554:	e59f03bc 	ldr	r0, [pc, #956]	@ 0x2052918
+    2052558:	e7900105 	ldr	r0, [r0, r5, lsl #2]
+    205255c:	e3500003 	cmp	r0, #3
+    2052560:	0a000027 	beq	0x2052604
+    2052564:	e59f03c0 	ldr	r0, [pc, #960]	@ 0x205292c
+    2052568:	e7900004 	ldr	r0, [r0, r4]
+    205256c:	e3100b02 	tst	r0, #2048	@ 0x800
+    2052570:	0a000010 	beq	0x20525b8
+    2052574:	e59f0390 	ldr	r0, [pc, #912]	@ 0x205290c
+    2052578:	e59d203c 	ldr	r2, [sp, #60]	@ 0x3c
+    205257c:	e19030d4 	ldrsb	r3, [r0, r4]
+    2052580:	e3a00021 	mov	r0, #33	@ 0x21
+    2052584:	e1a01005 	mov	r1, r5
+    2052588:	e0822083 	add	r2, r2, r3, lsl #1
+    205258c:	e58d203c 	str	r2, [sp, #60]	@ 0x3c
+    2052590:	e1a02006 	mov	r2, r6
+    2052594:	eb010d30 	bl	0x2095a5c
+    2052598:	e3500000 	cmp	r0, #0
+    205259c:	0a000018 	beq	0x2052604
+    20525a0:	e59f0364 	ldr	r0, [pc, #868]	@ 0x205290c
+    20525a4:	e19010d4 	ldrsb	r1, [r0, r4]
+    20525a8:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    20525ac:	e0800001 	add	r0, r0, r1
+    20525b0:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    20525b4:	ea000012 	b	0x2052604
+    20525b8:	e3100008 	tst	r0, #8
+    20525bc:	0a000010 	beq	0x2052604
+    20525c0:	e59f0344 	ldr	r0, [pc, #836]	@ 0x205290c
+    20525c4:	e59d203c 	ldr	r2, [sp, #60]	@ 0x3c
+    20525c8:	e19030d4 	ldrsb	r3, [r0, r4]
+    20525cc:	e3a00003 	mov	r0, #3
+    20525d0:	e1a01005 	mov	r1, r5
+    20525d4:	e0822003 	add	r2, r2, r3
+    20525d8:	e58d203c 	str	r2, [sp, #60]	@ 0x3c
+    20525dc:	e1a02006 	mov	r2, r6
+    20525e0:	eb010d1d 	bl	0x2095a5c
+    20525e4:	e3500000 	cmp	r0, #0
+    20525e8:	0a000005 	beq	0x2052604
+    20525ec:	e59f0318 	ldr	r0, [pc, #792]	@ 0x205290c
+    20525f0:	e19000d4 	ldrsb	r0, [r0, r4]
+    20525f4:	e0801fa0 	add	r1, r0, r0, lsr #31
+    20525f8:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    20525fc:	e08000c1 	add	r0, r0, r1, asr #1
+    2052600:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    2052604:	e3a0001a 	mov	r0, #26
+    2052608:	e1a01005 	mov	r1, r5
+    205260c:	eb010c7a 	bl	0x20957fc
+    2052610:	e3500000 	cmp	r0, #0
+    2052614:	159d003c 	ldrne	r0, [sp, #60]	@ 0x3c
+    2052618:	e1a01005 	mov	r1, r5
+    205261c:	12800001 	addne	r0, r0, #1
+    2052620:	158d003c 	strne	r0, [sp, #60]	@ 0x3c
+    2052624:	e3a00013 	mov	r0, #19
+    2052628:	eb010c73 	bl	0x20957fc
+    205262c:	e3500000 	cmp	r0, #0
+    2052630:	159d003c 	ldrne	r0, [sp, #60]	@ 0x3c
+    2052634:	12800001 	addne	r0, r0, #1
+    2052638:	158d003c 	strne	r0, [sp, #60]	@ 0x3c
+    205263c:	e59f02d0 	ldr	r0, [pc, #720]	@ 0x2052914
+    2052640:	e7900004 	ldr	r0, [r0, r4]
+    2052644:	e3100010 	tst	r0, #16
+    2052648:	0a000005 	beq	0x2052664
+    205264c:	e59f02b8 	ldr	r0, [pc, #696]	@ 0x205290c
+    2052650:	e19000d4 	ldrsb	r0, [r0, r4]
+    2052654:	e0801fa0 	add	r1, r0, r0, lsr #31
+    2052658:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    205265c:	e08000c1 	add	r0, r0, r1, asr #1
+    2052660:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    2052664:	e3a0000c 	mov	r0, #12
+    2052668:	e1a01005 	mov	r1, r5
+    205266c:	e240200d 	sub	r2, r0, #13
+    2052670:	eb010cf9 	bl	0x2095a5c
+    2052674:	e3500000 	cmp	r0, #0
+    2052678:	0a000008 	beq	0x20526a0
+    205267c:	e59f02a8 	ldr	r0, [pc, #680]	@ 0x205292c
+    2052680:	e7900004 	ldr	r0, [r0, r4]
+    2052684:	e3100901 	tst	r0, #16384	@ 0x4000
+    2052688:	0a000004 	beq	0x20526a0
+    205268c:	e59f0278 	ldr	r0, [pc, #632]	@ 0x205290c
+    2052690:	e19010d4 	ldrsb	r1, [r0, r4]
+    2052694:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    2052698:	e0800001 	add	r0, r0, r1
+    205269c:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    20526a0:	e59f0284 	ldr	r0, [pc, #644]	@ 0x205292c
+    20526a4:	e7900004 	ldr	r0, [r0, r4]
+    20526a8:	e3100001 	tst	r0, #1
+    20526ac:	159f0264 	ldrne	r0, [pc, #612]	@ 0x2052918
+    20526b0:	17900105 	ldrne	r0, [r0, r5, lsl #2]
+    20526b4:	13500004 	cmpne	r0, #4
+    20526b8:	0a000020 	beq	0x2052740
+    20526bc:	e59f124c 	ldr	r1, [pc, #588]	@ 0x2052910
+    20526c0:	e59f22b4 	ldr	r2, [pc, #692]	@ 0x205297c
+    20526c4:	e19130d4 	ldrsb	r3, [r1, r4]
+    20526c8:	e59d1014 	ldr	r1, [sp, #20]
+    20526cc:	e19210d1 	ldrsb	r1, [r2, r1]
+    20526d0:	e1530001 	cmp	r3, r1
+    20526d4:	1a000019 	bne	0x2052740
+    20526d8:	e59f12cc 	ldr	r1, [pc, #716]	@ 0x20529ac
+    20526dc:	e7911385 	ldr	r1, [r1, r5, lsl #7]
+    20526e0:	e3510000 	cmp	r1, #0
+    20526e4:	b3a01000 	movlt	r1, #0
+    20526e8:	e3510005 	cmp	r1, #5
+    20526ec:	c3a01005 	movgt	r1, #5
+    20526f0:	e3500002 	cmp	r0, #2
+    20526f4:	03a02002 	moveq	r2, #2
+    20526f8:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    20526fc:	13a02001 	movne	r2, #1
+    2052700:	e0200192 	mla	r0, r2, r1, r0
+    2052704:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    2052708:	e59f022c 	ldr	r0, [pc, #556]	@ 0x205293c
+    205270c:	e5900000 	ldr	r0, [r0]
+    2052710:	ebfeeba6 	bl	0x200d5b0
+    2052714:	e1550000 	cmp	r5, r0
+    2052718:	1a000008 	bne	0x2052740
+    205271c:	e59f0214 	ldr	r0, [pc, #532]	@ 0x2052938
+    2052720:	e5900000 	ldr	r0, [r0]
+    2052724:	e2701002 	rsbs	r1, r0, #2
+    2052728:	43a01000 	movmi	r1, #0
+    205272c:	e3510002 	cmp	r1, #2
+    2052730:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    2052734:	c3a01002 	movgt	r1, #2
+    2052738:	e0800001 	add	r0, r0, r1
+    205273c:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    2052740:	e3a00021 	mov	r0, #33	@ 0x21
+    2052744:	e1a01005 	mov	r1, r5
+    2052748:	e1a02006 	mov	r2, r6
+    205274c:	eb010cc2 	bl	0x2095a5c
+    2052750:	e3500000 	cmp	r0, #0
+    2052754:	0a000005 	beq	0x2052770
+    2052758:	e59f01ac 	ldr	r0, [pc, #428]	@ 0x205290c
+    205275c:	e19000d4 	ldrsb	r0, [r0, r4]
+    2052760:	e0801fa0 	add	r1, r0, r0, lsr #31
+    2052764:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    2052768:	e08000c1 	add	r0, r0, r1, asr #1
+    205276c:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    2052770:	e3a00004 	mov	r0, #4
+    2052774:	e1a01005 	mov	r1, r5
+    2052778:	e1a02006 	mov	r2, r6
+    205277c:	eb010cb6 	bl	0x2095a5c
+    2052780:	e3a00009 	mov	r0, #9
+    2052784:	e1a01005 	mov	r1, r5
+    2052788:	e1a02006 	mov	r2, r6
+    205278c:	eb010cb2 	bl	0x2095a5c
+    2052790:	e3500000 	cmp	r0, #0
+    2052794:	159d003c 	ldrne	r0, [sp, #60]	@ 0x3c
+    2052798:	11a00080 	lslne	r0, r0, #1
+    205279c:	158d003c 	strne	r0, [sp, #60]	@ 0x3c
+    20527a0:	e59f01dc 	ldr	r0, [pc, #476]	@ 0x2052984
+    20527a4:	e19000f4 	ldrsh	r0, [r0, r4]
+    20527a8:	e3100010 	tst	r0, #16
+    20527ac:	0a00000b 	beq	0x20527e0
+    20527b0:	e3a0001c 	mov	r0, #28
+    20527b4:	e1a01005 	mov	r1, r5
+    20527b8:	e240201d 	sub	r2, r0, #29
+    20527bc:	eb010ca6 	bl	0x2095a5c
+    20527c0:	e3500000 	cmp	r0, #0
+    20527c4:	13a01001 	movne	r1, #1
+    20527c8:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    20527cc:	03a01002 	moveq	r1, #2
+    20527d0:	eb041bd4 	bl	0x2159728
+    20527d4:	e59d103c 	ldr	r1, [sp, #60]	@ 0x3c
+    20527d8:	e0810000 	add	r0, r1, r0
+    20527dc:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    20527e0:	e59d000c 	ldr	r0, [sp, #12]
+    20527e4:	e59f11c4 	ldr	r1, [pc, #452]	@ 0x20529b0
+    20527e8:	e3500000 	cmp	r0, #0
+    20527ec:	e59d003c 	ldr	r0, [sp, #60]	@ 0x3c
+    20527f0:	e18100b4 	strh	r0, [r1, r4]
+    20527f4:	1a000006 	bne	0x2052814
+    20527f8:	e3a01028 	mov	r1, #40	@ 0x28
+    20527fc:	e0030195 	mul	r3, r5, r1
+    2052800:	e59f01ac 	ldr	r0, [pc, #428]	@ 0x20529b4
+    2052804:	e59d103c 	ldr	r1, [sp, #60]	@ 0x3c
+    2052808:	e7902003 	ldr	r2, [r0, r3]
+    205280c:	e0821001 	add	r1, r2, r1
+    2052810:	e7801003 	str	r1, [r0, r3]
+    2052814:	e59f00f8 	ldr	r0, [pc, #248]	@ 0x2052914
+    2052818:	e7900004 	ldr	r0, [r0, r4]
+    205281c:	e3100008 	tst	r0, #8
+    2052820:	1a000009 	bne	0x205284c
+    2052824:	e59f00ec 	ldr	r0, [pc, #236]	@ 0x2052918
+    2052828:	e7900105 	ldr	r0, [r0, r5, lsl #2]
+    205282c:	e3500000 	cmp	r0, #0
+    2052830:	1a000010 	bne	0x2052878
+    2052834:	e3a0002a 	mov	r0, #42	@ 0x2a
+    2052838:	e1a01005 	mov	r1, r5
+    205283c:	e3a02000 	mov	r2, #0
+    2052840:	eb011084 	bl	0x2096a58
+    2052844:	e3500000 	cmp	r0, #0
+    2052848:	1a00000a 	bne	0x2052878
+    205284c:	e59f0140 	ldr	r0, [pc, #320]	@ 0x2052994
+    2052850:	e3a09000 	mov	r9, #0
+    2052854:	e18090b4 	strh	r9, [r0, r4]
+    2052858:	e59f00c4 	ldr	r0, [pc, #196]	@ 0x2052924
+    205285c:	e18b90b4 	strh	r9, [fp, r4]
+    2052860:	e18090b4 	strh	r9, [r0, r4]
+    2052864:	e59f00b4 	ldr	r0, [pc, #180]	@ 0x2052920
+    2052868:	e58d9040 	str	r9, [sp, #64]	@ 0x40
+    205286c:	e18090b4 	strh	r9, [r0, r4]
+    2052870:	e1a0a009 	mov	sl, r9
+    2052874:	e1a07009 	mov	r7, r9
+    2052878:	e59d000c 	ldr	r0, [sp, #12]
+    205287c:	e3e01000 	mvn	r1, #0

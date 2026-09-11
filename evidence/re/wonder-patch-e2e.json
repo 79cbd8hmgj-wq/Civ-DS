@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "wonder": "Pyramids of Egypt",
+  "wonder_index": 0,
+  "source_rom_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+  "profile_id": "civrev-usa",
+  "fields_changed": [
+    {
+      "field": "production_cost_quanta",
+      "rom_absolute_offset": 1553752,
+      "original_value": 30,
+      "original_production_cost": 150,
+      "replacement_value": 40,
+      "replacement_production_cost": 200,
+      "expected_hex": "1e00",
+      "replacement_hex": "2800"
+    },
+    {
+      "field": "description",
+      "rom_absolute_offset": 1553890,
+      "original_value": "all forms of government are available.",
+      "replacement_value": "all forms of government are available at half cost."
+    }
+  ],
+  "fields_confirmed_unchanged_after_patch": {
+    "prerequisite_technology_id": 3,
+    "short_name": "Pyramid",
+    "model_name": "Pyramid_anc",
+    "neighbor_records_checked": ["The Great Wall (index 1)", "Hanging Gardens of Babylon (index 2)"]
+  },
+  "patch_application": {
+    "format_version": 1,
+    "patch_file": "pyramids-rebalance.json",
+    "profile_id": "civrev-usa",
+    "applied": [
+      {
+        "patch_id": "wonder-000-production-cost",
+        "target": "arm9",
+        "offset": 1553752,
+        "length": 2
+      },
+      {
+        "patch_id": "wonder-000-description",
+        "target": "arm9",
+        "offset": 1553890,
+        "length": 128
+      }
+    ]
+  },
+  "rebuild": {
+    "format_version": 1,
+    "profile_id": "civrev-usa",
+    "source_sha256": "f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08",
+    "output_size": 67108864,
+    "output_sha256": "fcd482520a4584d70612e7b9eab0789a85dff0987df17ac3ce04b0fcab2f7f7d",
+    "exact_copy": false
+  },
+  "post_rebuild_reparse": {
+    "method": "civds.wonders.parse_wonder_records() run directly against the rebuilt ROM's ARM9 image (the rebuilt image no longer matches the pinned exact-ROM profile by design, so `civds wonders summarize` correctly refuses it; this step re-verifies with the same parser used by that command)",
+    "pyramids_production_cost": 200,
+    "pyramids_description": "all forms of government are available at half cost.",
+    "pyramids_prerequisite_technology_id": 3,
+    "pyramids_short_name": "Pyramid",
+    "pyramids_model_name": "Pyramid_anc",
+    "neighbor_records": {
+      "1_the_great_wall": {"production_cost": 150, "description": "all nations will offer us peace."},
+      "2_hanging_gardens_of_babylon": {"production_cost": 100, "description": "double growth in this city."}
+    }
+  },
+  "conclusion": "A guarded wonder patch manifest (raising the Pyramids of Egypt's production cost 150 -> 200 and rewriting its description) was generated from the real ROM, applied to an extracted workspace, rebuilt into a new ROM, and re-parsed - confirming exactly the two targeted fields changed, the record's other fields (prerequisite technology, short name, model name) stayed exactly as before, and neighboring records (The Great Wall, Hanging Gardens of Babylon) were completely unaffected. This closes the gap flagged in analysis/modding-capability-matrix.md ('Wonders real-ROM proof') and proves the wonder table discovery and patch capability end to end as a real modding capability, on par with buildings/units/technology/civilization/combat."
+}

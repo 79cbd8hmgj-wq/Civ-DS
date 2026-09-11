@@ -33,9 +33,9 @@ Status legend:
 | Map / terrain (tile types, resources, terrain yields) | `BLOCKED` | not yet located |
 | Building/improvement descriptors (24 records) | `DATA_EDITABLE` | `civds buildings summarize` / `civds buildings patch-manifest`; production cost, prerequisite technology, and requires/excludes building-upgrade masks are patchable (`prerequisite_technology_id`/`requires_building_mask`/`excludes_building_mask` proven via the runtime availability-check function); proven end to end, see `evidence/re/building-patch-e2e.json` and `analysis/buildings-model.md` |
 | Building `unknown_0x40` byte | `BLOCKED` | visible in `civds buildings summarize`; bimodal pattern observed (era-tier-shaped) but no runtime consumer found, so not named or patchable |
-| City-effect application (how a built building actually changes food/production/trade/science/culture/happiness/defense) | `BLOCKED` | the *availability* check (can this city build X) is fully proven; the code that *applies* a completed building's effect to city totals has still not been located. A follow-up session, working without ROM/disassembler access, re-mined already-committed evidence and confirmed (negative result) that the availability-check function itself contains no yield-accumulation instruction, and surfaced a concrete next-session xref target (a city-focus UI string cluster) - see `evidence/re/city-effect-availability-trace-extended.txt` and `evidence/re/city-yield-ui-leads.json`. A third session, tasked with using the newly-upgraded toolkit's melonDS runtime layer, verified (via the toolkit's own `runtime doctor` check) that no ROM and no melonDS binary exist in this environment, so no runtime experiment was possible; it narrowed the static lead further to a specific candidate switch-dispatch instruction (`0x020a9c34`) and left a ready-to-run runtime experiment plan - see `evidence/re/city-effect-runtime-session-2.md` |
-| City-instance state (built-buildings bitmask, turn/population counters) | `BLOCKED` | a per-city `+0x10` "already-built buildings" bitmask is proven (consumed by the buildings availability check), a `+0x38` halfword and a `+0x24` word are observed as further availability-gating fields (not decoded), and a separate `0xBC`-stride per-city array was found with an unresolved field catalog; kept explicitly separate from the building descriptor table per instructions, not promoted to tooling |
-| Wonders (21 records, distinct table) | `DATA_EDITABLE` (fields at the strongly-supported bar; not independently executable-proven) | `civds wonders summarize` / `civds wonders patch-manifest` (production cost, prerequisite technology, description); located precisely (RAM `0x0217B518`, immediately after the unit table, stride `0x14C`) with every field's offset and confidence level recorded in `analysis/buildings-model.md`/`evidence/re/wonders.json`; wired into `civds` using the same confidence bar already applied to buildings' own patch-manifest fields, but not proven end to end on a real ROM (no ROM was available this session) - validated by synthetic-ROM unit/CLI tests only |
+| City-effect application (how a built building actually changes food/production/trade/science/culture/happiness/defense) | `PARTIAL` (yield storage + recompute function proven; building linkage not yet proven) | the *availability* check (can this city build X) is fully proven. Two follow-up sessions without ROM/emulator access narrowed a static lead to a specific candidate instruction (`0x020a9c34`) - see `evidence/re/city-effect-availability-trace-extended.txt`, `evidence/re/city-yield-ui-leads.json`, `evidence/re/city-effect-runtime-session-2.md`. A third session, supplied with the real ROM and a working DeSmuME GDB-RSP build, confirmed that lead live, proved the city-instance struct's `city_focus` field and all five current-turn yield fields (food/production/science/gold/culture) by a real write-then-observe differential experiment, and located (partially disassembled, not fully bounded) the yield-recompute function itself at `~0x02052180`-`0x02052880`+ - see `evidence/re/city-instance-yield-fields.json` and `evidence/re/city-yield-recompute-function-trace.txt`. What's proven: worked-tile accumulation, an inter-city proximity bonus, and three distinct generic per-city "effect check" helper calls, plus per-civilization total aggregation. What's still not found: any direct reference to the building table or the already-proven built-buildings bitmask inside the observed ~1.75 KB of that function - building linkage is the clearest remaining gap |
+| City-instance state (built-buildings bitmask, turn/population counters, yield cache) | `PARTIAL` (several fields now proven live) | a per-city `+0x10` "already-built buildings" bitmask is proven (consumed by the buildings availability check, cross-validated live this session), `+0x06` `city_focus` and `+0x40`/`+0x42`/`+0x44`/`+0x46`/`+0x48` (the five current-turn yields) are now proven via a live runtime differential experiment (`evidence/re/city-instance-yield-fields.json`); `+0x38` and `+0x24` remain unresolved; a separate `0xBC`-stride, 128-record array is now strongly supported to be an "all cities in the game" registry (owner byte, validity flag, x/y coordinates), distinct from the per-city detail struct; kept explicitly separate from the building descriptor table per instructions, not promoted to `civds` tooling since none of it is static ROM data |
+| Wonders (21 records, distinct table) | `DATA_EDITABLE` (fields at the strongly-supported bar; not independently executable-proven) | `civds wonders summarize` / `civds wonders patch-manifest` (production cost, prerequisite technology, description); located precisely (RAM `0x0217B518`, immediately after the unit table, stride `0x14C`) with every field's offset and confidence level recorded in `analysis/buildings-model.md`/`evidence/re/wonders.json`; wired into `civds` using the same confidence bar already applied to buildings' own patch-manifest fields; proven end to end on the real ROM (Pyramids of Egypt cost 150 -> 200 and description rewrite, rebuilt, re-parsed — `evidence/re/wonder-patch-e2e.json`) |
 | Combat resolution formula | `PARTIAL` (core formula + 11 modifier constants `CODE_PATCHABLE`; RNG/round-loop mechanism now proven, read-only) | `civds combat summarize` / `civds combat patch-manifest --set NAME=VALUE`; odds formula, effective-strength calc, 5 modifier sources, and 6 "overwhelming force" thresholds are patchable; the RNG algorithm (global MSVC-style LCG) and the per-round "army" elimination loop (weighted coin-flip winner, random victim-slot pick, up to 3 sub-units/side) are now fully traced and documented but not exposed as patchable constants - each candidate (RNG constants, round-cap, army-size cap) was evidence-checked and rejected as unsafe to patch in isolation; see `analysis/combat-model.md` and `evidence/re/combat-rng-loop-trace.txt` |
 | Diplomacy / AI decision-making | `BLOCKED` | not yet located |
 | Victory conditions | `BLOCKED` | not yet located |
@@ -152,14 +152,16 @@ execution) in `analysis/buildings-model.md`: cost, prerequisite
 technology, and description text. `model_name` (shared asset key) and the
 outright-unresolved fields (`unknown_0x42`, `unknown_0x46`,
 `unknown_0x48`, `unknown_0x14a`) are excluded, same reasoning as the
-building table's own exclusions. This was added by a follow-up session
-that had no ROM available, so — unlike every other `DATA_EDITABLE` row in
-this matrix — it has **not** been proven end to end on a real ROM; it is
-validated by 9 new unit/CLI tests against synthetic ROM fixtures that
-encode the exact byte layout the earlier disassembly session already
-recorded. A real-ROM patch/rebuild/re-parse proof (mirroring
-`evidence/re/building-patch-e2e.json`) is the natural first step for
-whichever future session has ROM access.
+building table's own exclusions. It was added by a follow-up session that
+had no ROM available, validated at the time by 9 unit/CLI tests against
+synthetic ROM fixtures encoding the exact byte layout the earlier
+disassembly session recorded. A later session, supplied with the real
+ROM, proved it end to end (patch -> rebuild -> re-parse) the same way as
+every other `DATA_EDITABLE` row in this matrix: the Pyramids of Egypt's
+production cost was raised 150 -> 200 and its description rewritten,
+confirmed unchanged on every other field and on two neighboring records
+(`evidence/re/wonder-patch-e2e.json`, mirroring
+`evidence/re/building-patch-e2e.json`).
 
 ## What "buildings are DATA_EDITABLE" actually means
 
@@ -194,48 +196,46 @@ unaffected (`evidence/re/building-patch-e2e.json`).
 
 ## Prioritized next blockers (highest mod-value first)
 
-1. **City-effect application path.** Buildings' *availability* is fully
-   proven, but the code that actually applies a completed building's
-   effect to city food/production/trade/science/culture/happiness/defense
-   was not located — every effect is currently only a display string.
-   This is the natural next step to make building mods (not just cost/
-   prerequisite edits) trustworthy, mirroring how the combat RNG/loop
-   pass made unit-stat edits trustworthy. A follow-up session (no ROM
-   access) ruled out the availability-check function itself as the
-   location (negative result, see `evidence/re/city-effect-availability-trace-extended.txt`)
-   and identified a precise next disassembly target: the `City focus is
-   Gold/Food/Production/Science` literal-pool cluster
-   (`evidence/re/city-yield-ui-leads.json`). A second follow-up session,
-   tasked specifically with using the upgraded toolkit's melonDS runtime
-   layer (`nds-toolkit runtime ...`, from
-   `NDS-Disassembly-Toolkit@4b08df5a3a070fffafa10d4064f58e89d0c525d1`),
-   verified — via the toolkit's own `runtime doctor` diagnostic, not
-   assumption — that this environment has neither a ROM nor a melonDS
-   binary, so no runtime experiment (probe/snapshot/trace/diff) could run.
-   It narrowed the static lead to one specific instruction
-   (`0x020a9c34`, a 6-way switch dispatch keyed off a `city_focus`-shaped
-   byte) and left a fully-specified runtime differential-trace plan ready
-   to execute — see `evidence/re/city-effect-runtime-session-2.md`.
-   Whoever holds a ROM **and** a melonDS build next should start there
-   rather than re-searching from scratch.
-2. **Wonders real-ROM proof.** `civds wonders summarize`/`patch-manifest`
-   now exist and are synthetic-ROM-tested (see "What 'wonders are
-   DATA_EDITABLE' actually means" above), but — unlike buildings/units/
-   technology/civilization/combat — have not yet been proven end to end
-   on the real ROM (patch → rebuild → re-parse), since no ROM was
-   available in the session that added them. This is a quick, low-risk
-   proof for whichever future session has ROM access, not open-ended RE.
-3. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
+1. **Connect building ownership to the now-located yield-recompute
+   function.** Two static-only follow-up sessions narrowed the search to
+   one instruction; a third session, finally supplied with the real ROM
+   and a working DeSmuME GDB-RSP build, confirmed it live and traced the
+   actual city yield-computation function (`~0x02052180`-`0x02052880`+,
+   `evidence/re/city-yield-recompute-function-trace.txt`), proving the
+   city-instance `city_focus` field and all five current-turn yield
+   fields by a real write-then-observe differential experiment
+   (`evidence/re/city-instance-yield-fields.json`). That function reads
+   worked map tiles, nearby friendly cities (a newly-recontextualized
+   128-entry "all cities" registry), and calls three distinct generic
+   per-city "effect check" helpers (`0x2095a5c`, `0x2096a58`,
+   `0x20957fc`) repeatedly with small integer IDs — but **no reference to
+   the building table or the built-buildings bitmask was found** in the
+   ~1.75 KB captured. The single highest-value next step is deciding
+   what those three helpers' integer IDs index into (technology?
+   building? government? a unified effect-flag space?) — set a code
+   breakpoint on each and read its arguments/return path across a
+   controlled experiment (e.g. build then immediately query a Library,
+   whose effect is known to be "2x science in city" from its description
+   text) to see whether a building index ever appears as one of those
+   IDs. This is now a scoped, well-specified runtime task, not an
+   open-ended search — resume directly from the trace file's own
+   "Unresolved" list rather than re-deriving the function from scratch.
+2. **Per-civilization gameplay data** (nation name, unique unit/ability, AI
    personality, starting position bias) — the leader-name table found in
    an earlier session is a lead: whatever code renders the leader-select
    screen next to a nation name and unique-unit blurb is a promising xref
    target.
-4. **Map/terrain yield tables** — needed for any terrain-balance or
-   scenario-design mod.
-5. **`STBL` narrative/advisor text format** — lower gameplay priority than
+3. **Map/terrain yield tables** — needed for any terrain-balance or
+   scenario-design mod. Partially adjacent to the newly-traced
+   yield-recompute function's own 256-record, worked-tile loop
+   (`evidence/re/city-yield-recompute-function-trace.txt` section on the
+   `0x54`-byte-stride array) — the terrain-type byte and its 7-way
+   yield-switch are a concrete starting point for this item now, rather
+   than a cold search.
+4. **`STBL` narrative/advisor text format** — lower gameplay priority than
    the above but high "reflavor the whole game" content-mod value once the
    record format is known.
-6. **Remaining combat open questions** (`+0x52` field semantics, the
+5. **Remaining combat open questions** (`+0x52` field semantics, the
    `0x0209bf7c` retreat/support helper's internals, the post-battle RNG
    draw's consumer, the `0x00080000` flag/combat interaction) — worth a
    future targeted pass but no longer gate trusting the core formula.
