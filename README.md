@@ -2,7 +2,7 @@
 
 Game-specific reverse-engineering and modding workspace for **Sid Meier's Civilization Revolution (Nintendo DS)**.
 
-This repository is a **consumer** of the standalone [NDS Disassembly Toolkit](https://github.com/79cbd8hmgj-wq/NDS-Disassembly-Toolkit). Nintendo DS parsing, extraction/rebuild, compression, disassembly, static analysis, persistent analysis projects, binary patching, and ARM/Thumb source patching remain owned by that toolkit instead of being copied into Civ-DS.
+This repository is a **consumer** of the standalone [NDS Disassembly Toolkit](https://github.com/79cbd8hmgj-wq/NDS-Disassembly-Toolkit). Nintendo DS parsing, extraction/rebuild, compression, disassembly, static analysis, persistent analysis projects, binary patching, ARM/Thumb source patching, and emulator-backed runtime analysis remain owned by that toolkit instead of being copied into Civ-DS.
 
 The generic Rom-Mod-Toolkit design is used as project architecture guidance: source ROMs are treated as immutable inputs, exact hashes are recorded, mutations are guarded, and rebuilt outputs are verified. Civ-DS owns Civilization-specific profiles, addresses, symbols, table layouts, evidence, and gameplay modifications.
 
@@ -13,9 +13,10 @@ The `civds` command wraps the toolkit with stricter Civilization-specific defaul
 - exact supported-ROM profile required by default for extraction/rebuild;
 - read-only `inspect`, asset inventory, and overlay-map paths can explicitly opt out for investigation;
 - reusable toolkit `patch`, `source-patch`, `analyze`, and persistent `.ndsre` project commands remain available;
-- exact-ROM profile generation is provided by Civ-DS so the project can lock onto the user's specific dump.
+- exact-ROM profile generation is provided by Civ-DS so the project can lock onto the user's specific dump;
+- the pinned toolkit also installs the standalone `nds-toolkit runtime` interface for melonDS GDB-RSP inspection, persisted runtime traces, behavioral differentials, static-project correlation, and managed runtime orchestration.
 
-The toolkit dependency is pinned to commit `50cede2494cbdcfe064b2efc84d172c1031f6851` for reproducibility.
+The toolkit dependency is pinned to commit `4b08df5a3a070fffafa10d4064f58e89d0c525d1` for reproducibility.
 
 ## Setup
 
@@ -113,7 +114,7 @@ Source patches compile against the DS ARMv5TE target and retain the exact Civ Re
 
 ## Reverse engineering
 
-The toolkit's Phase 7A-7G analysis stack is exposed directly:
+The toolkit's static-analysis and decompiler stack is exposed through Civ-DS:
 
 ```bash
 civds analyze \
@@ -123,6 +124,20 @@ civds analyze \
 civds project create analysis/civrev.ndsre
 civds project info analysis/civrev.ndsre
 ```
+
+The upgraded dependency also provides melonDS-backed runtime analysis through the toolkit command installed into the same environment:
+
+```bash
+nds-toolkit runtime probe --cpu arm9
+nds-toolkit runtime snapshot --cpu arm9 --project analysis/civrev.ndsre
+nds-toolkit runtime trace capture \
+  --cpu arm9 \
+  --steps 2000 \
+  --project analysis/civrev.ndsre \
+  --output analysis/civrev-runtime.ndstrace
+```
+
+Runtime traces can be inspected and compared with `nds-toolkit runtime trace inspect` and `nds-toolkit runtime diff`. The runtime layer supports melonDS GDB-RSP inspection and persisted trace/differential workflows while keeping game-specific interpretations in Civ-DS.
 
 As Civ Rev functions, tables, and systems are confirmed, this repository should store the **interpretation layer**: named symbols, known addresses, record schemas, confidence/evidence, patch manifests, and gameplay modifications. Generic DS mechanics stay upstream in the NDS toolkit.
 
