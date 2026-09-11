@@ -28,6 +28,36 @@ unchanged (still "strongly supported", not "proven") even though wonders
 are now wired into `civds` - see "What was intentionally not promoted"
 below for why that is still the right bar.
 
+## Session note 2 (runtime-capable toolkit, still no ROM/emulator)
+
+This session's brief specifically called for melonDS GDB-RSP runtime
+experiments via the newly-upgraded toolkit (`NDS-Disassembly-Toolkit` @
+`4b08df5a3a070fffafa10d4064f58e89d0c525d1`, which adds
+`nds-toolkit runtime ...`). The environment was checked directly rather
+than assumed unavailable: no `.nds` ROM exists anywhere on the machine,
+and the toolkit's own `nds-toolkit runtime doctor --emulator melonds`
+reports `"emulator executable not found"` (melonDS itself is not
+installed either). `nds-toolkit runtime probe` fails immediately with
+connection-refused. **No runtime experiment was possible this session.**
+See `evidence/re/city-effect-runtime-session-2.md` for the full
+verification record and a ready-to-execute runtime plan for a future
+session that has both a ROM and a melonDS build.
+
+What remained achievable — deeper static mining of already-committed
+evidence, the same technique the prior session used — found one new,
+speculative lead: a 6-way switch dispatch at `0x020a9c34`, keyed off a
+byte at `[some_global_pointer, #6]` with a `-1..4` range (matching the
+shape of a `city_focus` enum), sitting roughly `0x780` bytes before the
+`City focus is Gold/Food/Production/Science` string cluster
+(`evidence/re/city-yield-ui-leads.json`). The same pointer's target also
+has five consecutive `ldrsh` reads at `+0x40..+0x48`. This is recorded in
+full in `evidence/re/city-effect-runtime-session-2.md` as a **lead only**
+— it is explicitly not proven that this is the same city struct already
+documented in section 5 below (a different base register is used, and no
+evidence bridges the address gap to the string cluster), and the `+0x40`
+offsets could just as plausibly belong to a wonder-record reader as to a
+city-yield struct. No field names were added or promoted from this lead.
+
 ## Method
 
 Per-instructions, this was targeted structural reconnaissance, not blind
@@ -285,10 +315,27 @@ rather than fresh disassembly:
   biased toward, so its display/selection function is very likely
   adjacent to (if not part of) the actual per-category yield accumulator.
 
+**Update (runtime-capable-toolkit follow-up session):** this session's
+brief specifically called for melonDS runtime experiments to resolve the
+city-focus lead above. No ROM and no melonDS binary were available in
+this environment (verified via the toolkit's own `runtime doctor` check
+and a failed `runtime probe`, not assumed — see "Session note 2" above
+and `evidence/re/city-effect-runtime-session-2.md`), so no runtime
+experiment could be run. Deeper static mining of already-committed
+evidence turned up one new, unproven lead: a 6-way switch dispatch at
+`0x020a9c34`, keyed off a byte with a `city_focus`-shaped value range,
+roughly `0x780` bytes before the city-focus string cluster — full detail,
+including the explicit reasons this is *not* claimed proven, in
+`evidence/re/city-effect-runtime-session-2.md`. The next-session runtime
+plan in that file (breakpoints at `0x020a9c34` and the string-cluster
+xrefs, then a baseline/Gold-focus/Production-focus differential trace) is
+ready to execute as soon as both a ROM and a melonDS build are available.
+
 This remains recorded as the clearest concrete next step for buildings'
 *gameplay effect*, distinct from their *availability*, which is fully
 proven. It is now a session-item with a precise disassembly starting
-point rather than an open-ended search.
+point and a ready-to-run runtime experiment plan, not an open-ended
+search.
 
 ## 5. City-instance state (kept separate from the descriptor table)
 
