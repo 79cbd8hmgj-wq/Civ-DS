@@ -1,0 +1,674 @@
+{
+  "format_version": 1,
+  "experiment": "Library ownership vs. the three generic per-city yield helper calls",
+  "method": "Real DeSmuME (0.9.14, --enable-gdb-stub) GDB-RSP session against the hash-verified US ROM (profiles/civrev-us.json). A fresh single-city game was started (Germans/Berlin, Chieftain). The city-instance pointer was resolved via the already-proven breakpoint at the city-focus switch dispatch (0x020a9c34) -> [r9+0x124], giving city_ptr=0x021a29a4 for this playthrough. Code breakpoints were set on all three helper entry points (0x02095a5c, 0x02096a58, 0x020957fc); each hit's registers were captured, then a temporary breakpoint at the call's own return address (LR) captured the return value (r0) before restoring the three entry breakpoints and continuing. Sitting on the open city panel alone (no turn advance needed) repeatedly re-triggers the same call sequence, which let a clean baseline be captured without ending a turn.",
+  "city_instance_pointer": "0x021a29a4",
+  "pre_library_state": {
+    "built_buildings_mask": "0x1 (bit 0 = Palace only)",
+    "how_established": "fresh capital city, first turn, no construction yet"
+  },
+  "post_library_state": {
+    "built_buildings_mask": "0x21 (bit 0 = Palace, bit 5 = Library)",
+    "how_established": "DIRECT, CLEARLY-DOCUMENTED RUNTIME STATE MANIPULATION (not real gameplay): city_instance+0x10 was written from 0x1 to 0x21 via a live GDB-RSP memory write, simulating Library completion (building index 5, per evidence/re/buildings.json / civds buildings summarize) without playing through the tech research (Alphabet) and production queue (20 cost) that real construction would require. This isolates the single question 'does the yield-recompute function's behavior depend on this bit', independent of any other game-state drift a multi-turn playthrough would introduce."
+  },
+  "yield_recompute_function_bounds": {
+    "start": "0x0205195c",
+    "end": "0x02052888",
+    "confidence": "PROVEN this session (real push {r3-r9,sl,fp,lr} prologue at 0x0205195c and matching popeq {...,pc} epilogue at 0x02052888 read directly from live memory)"
+  },
+  "unique_call_sites_captured": 23,
+  "call_sites_with_changed_behavior": [],
+  "call_sites_identical_pre_post": [
+    {
+      "lr_call_site": "0x2051e0c",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2051e0c",
+        "args": {
+          "r0": "0x1a",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2051e0c",
+        "args": {
+          "r0": "0x1a",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2051f6c",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2051f6c",
+        "args": {
+          "r0": "0x4",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xf"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2051f6c",
+        "args": {
+          "r0": "0x4",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xf"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2051f8c",
+      "pre_library": {
+        "helper": "helper_2096a58",
+        "helper_address": "0x2096a58",
+        "lr_call_site": "0x2051f8c",
+        "args": {
+          "r0": "0x31",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2096a58",
+        "helper_address": "0x2096a58",
+        "lr_call_site": "0x2051f8c",
+        "args": {
+          "r0": "0x31",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2051fd0",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2051fd0",
+        "args": {
+          "r0": "0x26",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2051fd0",
+        "args": {
+          "r0": "0x26",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x205204c",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x205204c",
+        "args": {
+          "r0": "0x1f",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x205204c",
+        "args": {
+          "r0": "0x1f",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052110",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052110",
+        "args": {
+          "r0": "0x15",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052110",
+        "args": {
+          "r0": "0x15",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052124",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052124",
+        "args": {
+          "r0": "0xc",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052124",
+        "args": {
+          "r0": "0xc",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052138",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052138",
+        "args": {
+          "r0": "0x25",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052138",
+        "args": {
+          "r0": "0x25",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x205214c",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205214c",
+        "args": {
+          "r0": "0x1e",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205214c",
+        "args": {
+          "r0": "0x1e",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052160",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052160",
+        "args": {
+          "r0": "0x24",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052160",
+        "args": {
+          "r0": "0x24",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052174",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052174",
+        "args": {
+          "r0": "0x10",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052174",
+        "args": {
+          "r0": "0x10",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052188",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052188",
+        "args": {
+          "r0": "0x1f",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052188",
+        "args": {
+          "r0": "0x1f",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x205219c",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205219c",
+        "args": {
+          "r0": "0x2a",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205219c",
+        "args": {
+          "r0": "0x2a",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x20521f8",
+      "pre_library": {
+        "helper": "helper_2096a58",
+        "helper_address": "0x2096a58",
+        "lr_call_site": "0x20521f8",
+        "args": {
+          "r0": "0x19",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2096a58",
+        "helper_address": "0x2096a58",
+        "lr_call_site": "0x20521f8",
+        "args": {
+          "r0": "0x19",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052348",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052348",
+        "args": {
+          "r0": "0xd",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x21a87a4"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052348",
+        "args": {
+          "r0": "0xd",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x21a87a4"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052360",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052360",
+        "args": {
+          "r0": "0x21",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052360",
+        "args": {
+          "r0": "0x21",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x205237c",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x205237c",
+        "args": {
+          "r0": "0x10",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x205237c",
+        "args": {
+          "r0": "0x10",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052610",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052610",
+        "args": {
+          "r0": "0x1a",
+          "r1": "0x0",
+          "r2": "0x21adba4",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x2052610",
+        "args": {
+          "r0": "0x1a",
+          "r1": "0x0",
+          "r2": "0x21adba4",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x205262c",
+      "pre_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205262c",
+        "args": {
+          "r0": "0x13",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_20957fc",
+        "helper_address": "0x20957fc",
+        "lr_call_site": "0x205262c",
+        "args": {
+          "r0": "0x13",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052674",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052674",
+        "args": {
+          "r0": "0xc",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052674",
+        "args": {
+          "r0": "0xc",
+          "r1": "0x0",
+          "r2": "0xffffffff",
+          "r3": "0x21c8b98"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052750",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052750",
+        "args": {
+          "r0": "0x21",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052750",
+        "args": {
+          "r0": "0x21",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052780",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052780",
+        "args": {
+          "r0": "0x4",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052780",
+        "args": {
+          "r0": "0x4",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0x0"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    },
+    {
+      "lr_call_site": "0x2052790",
+      "pre_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052790",
+        "args": {
+          "r0": "0x9",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "post_library": {
+        "helper": "helper_2095a5c",
+        "helper_address": "0x2095a5c",
+        "lr_call_site": "0x2052790",
+        "args": {
+          "r0": "0x9",
+          "r1": "0x0",
+          "r2": "0x0",
+          "r3": "0xffffffff"
+        },
+        "return_value_r0": "0x0"
+      },
+      "identical": true
+    }
+  ],
+  "conclusion": {
+    "result": "PROVEN (negative result): zero difference",
+    "detail": "All 23 distinct call sites to the three helper functions within the now-fully-bounded yield-recompute function (0x0205195c-0x02052888) produced byte-for-byte identical arguments (r0-r3) and identical return values (all 0x0 / false, both before and after) when the only change was city_instance+0x10 gaining the Library bit. No helper call, anywhere in this function, changed behavior in response to the built-buildings bitmask.",
+    "why": "Live disassembly of all three helpers (this session) shows none of them read city_instance+0x10 or the building descriptor table (RAM 0x021778EC) at all. 0x02095a5c reads the WONDER table (literal resolves to wonder_table_base+0x48 = 0x0217b518+0x48) for its low-range argument values and a separate 8-byte-stride table (0x021c87f0) for its high-range values. 0x020957fc reads a civilization-scoped word array at 0x021c8b98 and a small ruleset/game-state struct at 0x021c83bc, and internally calls the already-proven has_researched() (0x020957a0) and 0x02095a5c. 0x02096a58 reads three parallel tables at 0x021768cc/0x0219fad8/0x0219faf0/0x02182980 with an unresolved nested-lookup structure. None of these touch the building table or city+0x10.",
+    "implication": "Building ownership is NOT wired into city yield computation through these three helpers, and (since the function's exact bounds are now proven and were disassembled in full - see evidence/re/city-yield-recompute-function-trace.txt) it is not read via ANY instruction anywhere in this function either. The Library's 'science' effect must be applied through a mechanism outside this function entirely - the leading hypothesis is a building-completion event handler (not yet located) that writes some other, still-uncharted per-city or per-civilization cache (a strong candidate being the 0x021c8b98 civilization-scoped array already implicated in the wonder/tech-adjacent helper.). A raw bitmask poke would not populate such a cache, which is the most likely reason this experiment produced no effect even though the underlying game mechanic (Library -> 2x science) is real. This has NOT been confirmed - it is the clearest next hypothesis, not a proven conclusion."
+  },
+  "narrowest_unresolved_link": "Where/how the game marks a just-completed building's effect as active, if not via the raw built-buildings bitmask read live during yield recompute. Candidate next steps: (1) locate the building-completion event handler by breakpointing writes to city_instance+0x10 itself during REAL construction (not a poke) and tracing its caller chain outward, watching what ELSE that caller writes; (2) breakpoint reads/writes of the civilization-scoped array at 0x021c8b98 during real Library construction to see whether it changes; (3) as a fallback, complete a real Library via normal gameplay (research Alphabet, ~5 turns; queue and complete Library, cost 20) and repeat this exact experiment to see whether real construction produces a different result than the raw poke - this would definitively confirm or refute the 'derived cache' hypothesis above."
+}

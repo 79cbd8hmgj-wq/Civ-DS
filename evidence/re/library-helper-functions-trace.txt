@@ -1,0 +1,539 @@
+=== LIBRARY/BUILDING -> YIELD LINKAGE INVESTIGATION - LIVE RUNTIME EVIDENCE ===
+
+Captured this session via a real DeSmuME (0.9.14, --enable-gdb-stub) GDB-RSP
+connection to the hash-verified US ROM (profiles/civrev-us.json, sha256
+f19db60920731ba7af2f0e7977870383973fa3a85096aa7d52f9d672e4002c08), supplied
+locally by the user and never committed. This file extends
+evidence/re/city-yield-recompute-function-trace.txt (prior session) with:
+the yield-recompute function's exact, now-fully-proven bounds; full
+disassembly of the three generic per-city "effect check" helpers that
+function calls repeatedly; and a major structural finding about the
+0xBC-stride city array. The pre/post Library differential experiment itself
+is in evidence/re/library-yield-helper-diff.json.
+
+=== 1. YIELD-RECOMPUTE FUNCTION: EXACT BOUNDS (PROVEN) ===
+
+Prior sessions only observed an internal window (0x02052180-0x02052880).
+This session read live memory outward from that window in both directions
+until a genuine ARM function prologue and epilogue were found:
+
+    0205195c: push {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}   <- function start
+    ...
+    02052888: popeq {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}  <- function end (conditional return)
+
+The complete function is RAM 0x0205195c-0x02052888 (0xF2C / 3884 bytes).
+Its single parameter (r0 at entry) becomes r6 for the rest of the function
+and is used as an index (r6 * 0xBC) into the array described in section 2 -
+i.e. this function's parameter is a CITY INDEX, not a city pointer.
+
+The function's very first real work (0x0205195c-0x02051a20, included below
+as "fn_start") reads a byte at city+0x00 (clamped to 0..31, matching the
+already-logged "unknown_0x00" field) and a **new** byte field at city+0x03,
+which is used as an index (*4) into a word table at ROM address 0x0219fac0,
+compared against 6, and dispatched through a 7-way jump table identical in
+shape to the already-known worked-tile terrain-type switch from the prior
+session's trace. This strongly suggests city+0x03 is a "this city's own
+center-tile terrain category" field, but it is NOT semantically proven this
+session (no value correlation performed) - logged as `unknown_0x03`.
+
+=== 2. THE 0xBC-STRIDE ARRAY *IS* THE CITY-INSTANCE STRUCT (STRONGLY SUPPORTED) ===
+
+Prior sessions treated the "128-record, 0xBC-stride city/proximity array"
+(iterated by the inter-city proximity-bonus loop) as a *separate* structure
+from the per-city detail struct reached via [ui_context+0x124]. This
+session's evidence revises that: they are almost certainly the SAME array.
+
+Live-read literal-pool values used throughout the yield-recompute function
+(each nominally "a separate per-city-index global"), for this playthrough
+(city index 0, city_ptr=0x021a29a4):
+
+    0x02052910 -> 0x021a29a4   (== city_ptr exactly;      also the proximity
+                                 loop's own array-base literal, whose stride
+                                 is independently proven to be 0xBC)
+    0x0205290c -> 0x021a29a7   (== city_ptr + 0x03)
+    0x02052914 -> 0x021a29c8   (== city_ptr + 0x24)
+    0x0205292c -> 0x021a29b4   (== city_ptr + 0x10)
+    0x02052920 -> 0x021a29ea   (== city_ptr + 0x46)
+    0x02052924 -> 0x021a29e8   (== city_ptr + 0x44)
+
+Every one of these resolves to exactly `city_ptr + <a small, already-
+meaningful offset>` for city index 0. Combined with the proximity loop's
+own base literal (0x02052910) being provably the same 0xBC-stride array
+(section 6.3 of the prior evidence file), the simplest and only consistent
+explanation is: there is one array, `all_cities[128]`, stride 0xBC; the
+"city_instance" struct this and prior sessions have been reading via
+[ui_context+0x124] is nothing more than `&all_cities[city_index]`. Every
+proven/strongly-supported city field from both sessions (+0x00, +0x03,
++0x06 city_focus, +0x10 built_buildings_mask, +0x24, +0x30/+0x32
+coordinates, +0x38, +0x40..+0x48 yields) is therefore a field of this one
+shared struct, not two overlapping-by-coincidence structs. This also
+resolves why the proximity loop's own "+0x10 tested against bit 0" reads
+as a validity/flag check for *other* cities: bit 0 of the built-buildings
+mask is the Palace bit, and only a real, founded city ever has any bit set
+in that mask - an empty/unused array slot reads 0, so testing bit 0 doubles
+as an implicit "is this array slot a real city" check.
+
+Not yet re-verified with a second, multi-city game (this playthrough only
+ever had one city) - logged as STRONGLY SUPPORTED, not PROVEN, pending a
+same-session confirmation with city index != 0.
+
+=== 3. THE THREE HELPER FUNCTIONS: FULL DISASSEMBLY ===
+
+None of the three functions below reference the building descriptor table
+(RAM 0x021778EC) or city_instance+0x10 anywhere in their bodies. This is
+the direct, disassembly-level counterpart of the empty differential result
+in evidence/re/library-yield-helper-diff.json.
+
+--- 0x02095a5c ("helper_2095a5c") ---
+
+Reads the WONDER table. For its argument (r0) < 21: computes
+`wonder_table_base(0x0217b518) + 0x48 + r0*0x14c` (wonder record stride,
+already proven) and reads a halfword - i.e. wonder_record[r0].unknown_0x48
+(a field this project has NOT previously assigned semantics to). For
+r0 >= 21: indexes a *different*, 8-byte-stride table at 0x021c87f0
+instead. A secondary comparison path (from 0x2095adc onward) reads a
+byte at 0x0219dd51 as a mode flag, and when set, walks a per-record
+lookup table at 0x0219fa84 with a loop bound taken from a small runtime
+counter at 0x021768d8 - not fully decoded this session; not
+building-table- or city-struct-related as far as traced.
+
+--- 0x02096a58 ("helper_2096a58") ---
+
+Reads three small parallel tables (literals resolve to 0x021768cc,
+0x0219fad8, 0x0219faf0, 0x02182980), each indexed by the function's r1
+argument (word-sized, `lsl #2`), feeding into a 16-byte-stride nested
+lookup (`add r1, r3, ip, lsl #4`) and a bounded loop (bound clamped to at
+most 3). Not fully decoded this session. No building-table or city-struct
+reference anywhere in this function.
+
+--- 0x020957fc ("helper_20957fc") ---
+
+Reads a civilization-scoped word array at 0x021c8b98, indexed by its r0
+argument, compared against -1; if present, derives two further halfword
+lookups from a table at 0x0219fa84 and compares them for equality. A
+neighboring function at 0x02095840 (not one of the three named targets,
+but immediately adjacent and worth noting) combines a direct call to the
+already-proven has_researched() (0x020957a0) with a recursive call into
+0x02095a5c (the wonder-checker above) and a small ruleset/game-state
+struct read at 0x021c83bc (fixed offsets +16/+18, small integer
+comparisons against 1/2) - i.e. this neighboring function looks like a
+"tech OR wonder OR ruleset-mode" combined gate, not a building check.
+Again: no building-table or city-struct reference found.
+
+=== 4. RAW INSTRUCTIONS (arm-none-eabi-objdump, ARM mode) ===
+
+--- yield-recompute function start, 0x0205195c-0x02051c08 (previously unread) ---
+
+    205195c:	e92d4ff8 	push	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    2051960:	e24dd060 	sub	sp, sp, #96	@ 0x60
+    2051964:	e1a06000 	mov	r6, r0
+    2051968:	e3a000bc 	mov	r0, #188	@ 0xbc
+    205196c:	e0040096 	mul	r4, r6, r0
+    2051970:	e3a00000 	mov	r0, #0
+    2051974:	e58d0040 	str	r0, [sp, #64]	@ 0x40
+    2051978:	e59f0f8c 	ldr	r0, [pc, #3980]	@ 0x205290c
+    205197c:	e59d9040 	ldr	r9, [sp, #64]	@ 0x40
+    2051980:	e19020d4 	ldrsb	r2, [r0, r4]
+    2051984:	e1a00009 	mov	r0, r9
+    2051988:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    205198c:	e58d0038 	str	r0, [sp, #56]	@ 0x38
+    2051990:	e59f0f78 	ldr	r0, [pc, #3960]	@ 0x2052910
+    2051994:	e3520020 	cmp	r2, #32
+    2051998:	e19050d4 	ldrsb	r5, [r0, r4]
+    205199c:	e58d100c 	str	r1, [sp, #12]
+    20519a0:	a59f0f64 	ldrge	r0, [pc, #3940]	@ 0x205290c
+    20519a4:	a3a0101f 	movge	r1, #31
+    20519a8:	a7c01004 	strbge	r1, [r0, r4]
+    20519ac:	e59d000c 	ldr	r0, [sp, #12]
+    20519b0:	e1a07009 	mov	r7, r9
+    20519b4:	e3500001 	cmp	r0, #1
+    20519b8:	0a00050c 	beq	0x2052df0
+    20519bc:	e59f0f50 	ldr	r0, [pc, #3920]	@ 0x2052914
+    20519c0:	e7900004 	ldr	r0, [r0, r4]
+    20519c4:	e3100004 	tst	r0, #4
+    20519c8:	159d000c 	ldrne	r0, [sp, #12]
+    20519cc:	13e01000 	mvnne	r1, #0
+    20519d0:	11500001 	cmpne	r0, r1
+    20519d4:	0a000006 	beq	0x20519f4
+    20519d8:	e1a00006 	mov	r0, r6
+    20519dc:	ebfffa82 	bl	0x20503ec
+    20519e0:	e59f0f2c 	ldr	r0, [pc, #3884]	@ 0x2052914
+    20519e4:	e7900004 	ldr	r0, [r0, r4]
+    20519e8:	e3c01004 	bic	r1, r0, #4
+    20519ec:	e59f0f20 	ldr	r0, [pc, #3872]	@ 0x2052914
+    20519f0:	e7801004 	str	r1, [r0, r4]
+    20519f4:	e1a00005 	mov	r0, r5
+    20519f8:	eb00fa98 	bl	0x2090460
+    20519fc:	e3500000 	cmp	r0, #0
+    2051a00:	059d000c 	ldreq	r0, [sp, #12]
+    2051a04:	03500000 	cmpeq	r0, #0
+    2051a08:	1a000058 	bne	0x2051b70
+    2051a0c:	e59f0f04 	ldr	r0, [pc, #3844]	@ 0x2052918
+    2051a10:	e3a08032 	mov	r8, #50	@ 0x32
+    2051a14:	e7900105 	ldr	r0, [r0, r5, lsl #2]
+    2051a18:	e3500006 	cmp	r0, #6
+    2051a1c:	908ff100 	addls	pc, pc, r0, lsl #2
+    2051a20:	ea00000f 	b	0x2051a64
+    2051a24:	ea00000e 	b	0x2051a64
+    2051a28:	ea000004 	b	0x2051a40
+    2051a2c:	ea00000c 	b	0x2051a64
+    2051a30:	ea000008 	b	0x2051a58
+    2051a34:	ea000005 	b	0x2051a50
+    2051a38:	ea000008 	b	0x2051a60
+    2051a3c:	ea000001 	b	0x2051a48
+    2051a40:	e3a08019 	mov	r8, #25
+    2051a44:	ea000006 	b	0x2051a64
+    2051a48:	e3a08064 	mov	r8, #100	@ 0x64
+    2051a4c:	ea000004 	b	0x2051a64
+    2051a50:	e3a08019 	mov	r8, #25
+    2051a54:	ea000002 	b	0x2051a64
+    2051a58:	e3a0804b 	mov	r8, #75	@ 0x4b
+    2051a5c:	ea000000 	b	0x2051a64
+    2051a60:	e3a08019 	mov	r8, #25
+    2051a64:	e59f0eb0 	ldr	r0, [pc, #3760]	@ 0x205291c
+    2051a68:	e59f1ea4 	ldr	r1, [pc, #3748]	@ 0x2052914
+    2051a6c:	e7900385 	ldr	r0, [r0, r5, lsl #7]
+    2051a70:	e3500002 	cmp	r0, #2
+    2051a74:	02888019 	addeq	r8, r8, #25
+    2051a78:	e3500001 	cmp	r0, #1
+    2051a7c:	e3a000bc 	mov	r0, #188	@ 0xbc
+    2051a80:	e00a0096 	mul	sl, r6, r0
+    2051a84:	e791200a 	ldr	r2, [r1, sl]
+    2051a88:	e1a00006 	mov	r0, r6
+    2051a8c:	e3823a02 	orr	r3, r2, #8192	@ 0x2000
+    2051a90:	e59f2e7c 	ldr	r2, [pc, #3708]	@ 0x2052914
+    2051a94:	e3a01001 	mov	r1, #1
+    2051a98:	02488019 	subeq	r8, r8, #25
+    2051a9c:	e782300a 	str	r3, [r2, sl]
+    2051aa0:	ebffffad 	bl	0x205195c
+    2051aa4:	e59f1e74 	ldr	r1, [pc, #3700]	@ 0x2052920
+    2051aa8:	e59f0e64 	ldr	r0, [pc, #3684]	@ 0x2052914
+    2051aac:	e191b0fa 	ldrsh	fp, [r1, sl]
+    2051ab0:	e790000a 	ldr	r0, [r0, sl]
+    2051ab4:	e59f1e58 	ldr	r1, [pc, #3672]	@ 0x2052914
+    2051ab8:	e3c02a02 	bic	r2, r0, #8192	@ 0x2000
+    2051abc:	e781200a 	str	r2, [r1, sl]
+    2051ac0:	e1a00006 	mov	r0, r6
+    2051ac4:	e3a01001 	mov	r1, #1
+    2051ac8:	ebffffa3 	bl	0x205195c
+    2051acc:	e59f0e50 	ldr	r0, [pc, #3664]	@ 0x2052924
+    2051ad0:	e59f2e50 	ldr	r2, [pc, #3664]	@ 0x2052928
+    2051ad4:	e19000fa 	ldrsh	r0, [r0, sl]
+    2051ad8:	e1a01fa6 	lsr	r1, r6, #31
+    2051adc:	e15b0000 	cmp	fp, r0
+    2051ae0:	c2888019 	addgt	r8, r8, #25
+    2051ae4:	d2488019 	suble	r8, r8, #25
+    2051ae8:	e0c30892 	smull	r0, r3, r2, r8
+    2051aec:	e1a00fa8 	lsr	r0, r8, #31
+    2051af0:	e08031c3 	add	r3, r0, r3, asr #3
+    2051af4:	e0610f06 	rsb	r0, r1, r6, lsl #30
+    2051af8:	e0810f60 	add	r0, r1, r0, ror #30
+    2051afc:	e1500003 	cmp	r0, r3
+    2051b00:	aa000009 	bge	0x2051b2c
+    2051b04:	e59f0e20 	ldr	r0, [pc, #3616]	@ 0x205292c
+    2051b08:	e7900004 	ldr	r0, [r0, r4]
+    2051b0c:	e3100001 	tst	r0, #1
+    2051b10:	1a000005 	bne	0x2051b2c
+    2051b14:	e59f0df8 	ldr	r0, [pc, #3576]	@ 0x2052914
+    2051b18:	e7900004 	ldr	r0, [r0, r4]
+    2051b1c:	e3801a02 	orr	r1, r0, #8192	@ 0x2000
+    2051b20:	e59f0dec 	ldr	r0, [pc, #3564]	@ 0x2052914
+    2051b24:	e7801004 	str	r1, [r0, r4]
+    2051b28:	ea000004 	b	0x2051b40
+    2051b2c:	e59f0de0 	ldr	r0, [pc, #3552]	@ 0x2052914
+    2051b30:	e7900004 	ldr	r0, [r0, r4]
+    2051b34:	e3c01a02 	bic	r1, r0, #8192	@ 0x2000
+    2051b38:	e59f0dd4 	ldr	r0, [pc, #3540]	@ 0x2052914
+    2051b3c:	e7801004 	str	r1, [r0, r4]
+    2051b40:	e59f0dd4 	ldr	r0, [pc, #3540]	@ 0x205291c
+    2051b44:	e7900385 	ldr	r0, [r0, r5, lsl #7]
+    2051b48:	e3500001 	cmp	r0, #1
+    2051b4c:	1a000007 	bne	0x2051b70
+    2051b50:	e59f0dd8 	ldr	r0, [pc, #3544]	@ 0x2052930
+    2051b54:	e19000f4 	ldrsh	r0, [r0, r4]
+    2051b58:	e3500077 	cmp	r0, #119	@ 0x77
+    2051b5c:	ba000003 	blt	0x2051b70
+    2051b60:	e350007b 	cmp	r0, #123	@ 0x7b
+    2051b64:	b59f0dc8 	ldrlt	r0, [pc, #3528]	@ 0x2052934
+    2051b68:	b3a01003 	movlt	r1, #3
+    2051b6c:	b7c01004 	strblt	r1, [r0, r4]
+    2051b70:	e59f0dc0 	ldr	r0, [pc, #3520]	@ 0x2052938
+    2051b74:	e5900000 	ldr	r0, [r0]
+    2051b78:	e3500000 	cmp	r0, #0
+    2051b7c:	1a000002 	bne	0x2051b8c
+    2051b80:	e59f0db4 	ldr	r0, [pc, #3508]	@ 0x205293c
+    2051b84:	e5900000 	ldr	r0, [r0]
+    2051b88:	ebfeee88 	bl	0x200d5b0
+    2051b8c:	e3a000bc 	mov	r0, #188	@ 0xbc
+    2051b90:	e0000096 	mul	r0, r6, r0
+    2051b94:	e3a01000 	mov	r1, #0
+    2051b98:	e59f2da0 	ldr	r2, [pc, #3488]	@ 0x2052940
+    2051b9c:	e58d0014 	str	r0, [sp, #20]
+    2051ba0:	e7821000 	str	r1, [r2, r0]
+    2051ba4:	e59f0d60 	ldr	r0, [pc, #3424]	@ 0x205290c
+    2051ba8:	e58d1044 	str	r1, [sp, #68]	@ 0x44
+    2051bac:	e19000d4 	ldrsb	r0, [r0, r4]
+    2051bb0:	e3500000 	cmp	r0, #0
+    2051bb4:	da000069 	ble	0x2051d60
+    2051bb8:	e59f0d50 	ldr	r0, [pc, #3408]	@ 0x2052910
+    2051bbc:	e59f1d4c 	ldr	r1, [pc, #3404]	@ 0x2052910
+    2051bc0:	e0800004 	add	r0, r0, r4
+    2051bc4:	e58d0020 	str	r0, [sp, #32]
+    2051bc8:	e59d0014 	ldr	r0, [sp, #20]
+    2051bcc:	e3e0b000 	mvn	fp, #0
+    2051bd0:	e0818000 	add	r8, r1, r0
+    2051bd4:	e59d0020 	ldr	r0, [sp, #32]
+    2051bd8:	e1d005d8 	ldrsb	r0, [r0, #88]	@ 0x58
+    2051bdc:	e58d001c 	str	r0, [sp, #28]
+    2051be0:	e150000b 	cmp	r0, fp
+    2051be4:	1a000005 	bne	0x2051c00
+    2051be8:	e1d803f2 	ldrsh	r0, [r8, #50]	@ 0x32
+    2051bec:	e1d8a3f0 	ldrsh	sl, [r8, #48]	@ 0x30
+    2051bf0:	e58d0034 	str	r0, [sp, #52]	@ 0x34
+    2051bf4:	e3a00008 	mov	r0, #8
+    2051bf8:	e58d0030 	str	r0, [sp, #48]	@ 0x30
+    2051bfc:	ea000013 	b	0x2051c50
+    2051c00:	e59f0d3c 	ldr	r0, [pc, #3388]	@ 0x2052944
+    2051c04:	e59f2d3c 	ldr	r2, [pc, #3388]	@ 0x2052948
+    2051c08:	e5901000 	ldr	r1, [r0]
+
+--- helper 0x02095a5c ---
+
+    2095a5c:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    2095a60:	e3500015 	cmp	r0, #21
+    2095a64:	aa000004 	bge	0x2095a7c
+    2095a68:	e59f41b8 	ldr	r4, [pc, #440]	@ 0x2095c28
+    2095a6c:	e3e03000 	mvn	r3, #0
+    2095a70:	e7946180 	ldr	r6, [r4, r0, lsl #3]
+    2095a74:	e1560003 	cmp	r6, r3
+    2095a78:	1a000001 	bne	0x2095a84
+    2095a7c:	e3a00000 	mov	r0, #0
+    2095a80:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+    2095a84:	e59f31a0 	ldr	r3, [pc, #416]	@ 0x2095c2c
+    2095a88:	e5d33000 	ldrb	r3, [r3]
+    2095a8c:	e3530000 	cmp	r3, #0
+    2095a90:	0a000002 	beq	0x2095aa0
+    2095a94:	e3500015 	cmp	r0, #21
+    2095a98:	a3a00000 	movge	r0, #0
+    2095a9c:	a8bd81f0 	popge	{r4, r5, r6, r7, r8, pc}
+    2095aa0:	e59f3188 	ldr	r3, [pc, #392]	@ 0x2095c30
+    2095aa4:	e1d371f0 	ldrsh	r7, [r3, #16]
+    2095aa8:	e3570000 	cmp	r7, #0
+    2095aac:	1a00000a 	bne	0x2095adc
+    2095ab0:	e3a03f53 	mov	r3, #332	@ 0x14c
+    2095ab4:	e0050390 	mul	r5, r0, r3
+    2095ab8:	e59f4174 	ldr	r4, [pc, #372]	@ 0x2095c34
+    2095abc:	e3e03000 	mvn	r3, #0
+    2095ac0:	e19440f5 	ldrsh	r4, [r4, r5]
+    2095ac4:	e1540003 	cmp	r4, r3
+    2095ac8:	159f3168 	ldrne	r3, [pc, #360]	@ 0x2095c38
+    2095acc:	17933104 	ldrne	r3, [r3, r4, lsl #2]
+    2095ad0:	13530000 	cmpne	r3, #0
+    2095ad4:	13a00000 	movne	r0, #0
+    2095ad8:	18bd81f0 	popne	{r4, r5, r6, r7, r8, pc}
+    2095adc:	e3570001 	cmp	r7, #1
+    2095ae0:	1a00001e 	bne	0x2095b60
+    2095ae4:	e3a03f53 	mov	r3, #332	@ 0x14c
+    2095ae8:	e00c0390 	mul	ip, r0, r3
+    2095aec:	e59f4140 	ldr	r4, [pc, #320]	@ 0x2095c34
+    2095af0:	e3e03000 	mvn	r3, #0
+    2095af4:	e19440fc 	ldrsh	r4, [r4, ip]
+    2095af8:	e1540003 	cmp	r4, r3
+    2095afc:	0a000017 	beq	0x2095b60
+    2095b00:	e59f3134 	ldr	r3, [pc, #308]	@ 0x2095c3c
+    2095b04:	e3a0e000 	mov	lr, #0
+    2095b08:	e5935000 	ldr	r5, [r3]
+    2095b0c:	e3550000 	cmp	r5, #0
+    2095b10:	da000012 	ble	0x2095b60
+    2095b14:	e59f7124 	ldr	r7, [pc, #292]	@ 0x2095c40
+    2095b18:	e59f3124 	ldr	r3, [pc, #292]	@ 0x2095c44
+    2095b1c:	e087700c 	add	r7, r7, ip
+    2095b20:	e1d774f8 	ldrsh	r7, [r7, #72]	@ 0x48
+    2095b24:	e1a04081 	lsl	r4, r1, #1
+    2095b28:	e59fc108 	ldr	ip, [pc, #264]	@ 0x2095c38
+    2095b2c:	e19340f4 	ldrsh	r4, [r3, r4]
+    2095b30:	e79cc107 	ldr	ip, [ip, r7, lsl #2]
+    2095b34:	e3a08001 	mov	r8, #1
+    2095b38:	e1a0708e 	lsl	r7, lr, #1
+    2095b3c:	e19370f7 	ldrsh	r7, [r3, r7]
+    2095b40:	e1540007 	cmp	r4, r7
+    2095b44:	0a000002 	beq	0x2095b54
+    2095b48:	e11c0e18 	tst	ip, r8, lsl lr
+    2095b4c:	13a00000 	movne	r0, #0
+    2095b50:	18bd81f0 	popne	{r4, r5, r6, r7, r8, pc}
+    2095b54:	e28ee001 	add	lr, lr, #1
+    2095b58:	e15e0005 	cmp	lr, r5
+    2095b5c:	bafffff5 	blt	0x2095b38
+    2095b60:	e3e03000 	mvn	r3, #0
+    2095b64:	e1510003 	cmp	r1, r3
+    2095b68:	03a00001 	moveq	r0, #1
+    2095b6c:	08bd81f0 	popeq	{r4, r5, r6, r7, r8, pc}
+    2095b70:	e1510006 	cmp	r1, r6
+    2095b74:	0a000007 	beq	0x2095b98
+    2095b78:	e59f40c4 	ldr	r4, [pc, #196]	@ 0x2095c44
+
+--- helper 0x02096a58 ---
+
+    2096a58:	e92d4010 	push	{r4, lr}
+    2096a5c:	e59f30a0 	ldr	r3, [pc, #160]	@ 0x2096b04
+    2096a60:	e5933000 	ldr	r3, [r3]
+    2096a64:	e1510003 	cmp	r1, r3
+    2096a68:	03a00000 	moveq	r0, #0
+    2096a6c:	08bd8010 	popeq	{r4, pc}
+    2096a70:	e3520000 	cmp	r2, #0
+    2096a74:	0a00000a 	beq	0x2096aa4
+    2096a78:	e59f3088 	ldr	r3, [pc, #136]	@ 0x2096b08
+    2096a7c:	e59f2088 	ldr	r2, [pc, #136]	@ 0x2096b0c
+    2096a80:	e793c101 	ldr	ip, [r3, r1, lsl #2]
+    2096a84:	e59f3084 	ldr	r3, [pc, #132]	@ 0x2096b10
+    2096a88:	e7922101 	ldr	r2, [r2, r1, lsl #2]
+    2096a8c:	e083120c 	add	r1, r3, ip, lsl #4
+    2096a90:	e7911102 	ldr	r1, [r1, r2, lsl #2]
+    2096a94:	e1500001 	cmp	r0, r1
+    2096a98:	03a00001 	moveq	r0, #1
+    2096a9c:	13a00000 	movne	r0, #0
+    2096aa0:	e8bd8010 	pop	{r4, pc}
+    2096aa4:	e59f2060 	ldr	r2, [pc, #96]	@ 0x2096b0c
+    2096aa8:	e59f3060 	ldr	r3, [pc, #96]	@ 0x2096b10
+    2096aac:	e7924101 	ldr	r4, [r2, r1, lsl #2]
+    2096ab0:	e59f2050 	ldr	r2, [pc, #80]	@ 0x2096b08
+    2096ab4:	e3a0e000 	mov	lr, #0
+    2096ab8:	e7921101 	ldr	r1, [r2, r1, lsl #2]
+    2096abc:	e1a0200e 	mov	r2, lr
+    2096ac0:	e083c201 	add	ip, r3, r1, lsl #4
+    2096ac4:	e3a01003 	mov	r1, #3
+    2096ac8:	ea000004 	b	0x2096ae0
+    2096acc:	e79c310e 	ldr	r3, [ip, lr, lsl #2]
+    2096ad0:	e1500003 	cmp	r0, r3
+    2096ad4:	03a00001 	moveq	r0, #1
+    2096ad8:	08bd8010 	popeq	{r4, pc}
+    2096adc:	e28ee001 	add	lr, lr, #1
+    2096ae0:	e1a03004 	mov	r3, r4
+    2096ae4:	e3540000 	cmp	r4, #0
+    2096ae8:	b1a03002 	movlt	r3, r2
+    2096aec:	e3530003 	cmp	r3, #3
+    2096af0:	c1a03001 	movgt	r3, r1
+    2096af4:	e15e0003 	cmp	lr, r3
+    2096af8:	dafffff3 	ble	0x2096acc
+    2096afc:	e3a00000 	mov	r0, #0
+    2096b00:	e8bd8010 	pop	{r4, pc}
+    2096b04:	021768cc 	andseq	r6, r7, #204, 16	@ 0xcc0000
+    2096b08:	0219fad8 	andseq	pc, r9, #216, 20	@ 0xd8000
+    2096b0c:	0219faf0 	andseq	pc, r9, #240, 20	@ 0xf0000
+    2096b10:	02182980 	andseq	r2, r8, #128, 18	@ 0x200000
+    2096b14:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    2096b18:	e1a07002 	mov	r7, r2
+    2096b1c:	e1a04000 	mov	r4, r0
+    2096b20:	e1a06003 	mov	r6, r3
+    2096b24:	e1a08001 	mov	r8, r1
+    2096b28:	e1a00007 	mov	r0, r7
+    2096b2c:	e1a01006 	mov	r1, r6
+    2096b30:	eb0016b4 	bl	0x209c608
+    2096b34:	e59f1164 	ldr	r1, [pc, #356]	@ 0x2096ca0
+    2096b38:	e1a02086 	lsl	r2, r6, #1
+    2096b3c:	e0811307 	add	r1, r1, r7, lsl #6
+    2096b40:	e19210f1 	ldrsh	r1, [r2, r1]
+    2096b44:	e1a05000 	mov	r5, r0
+    2096b48:	e3110902 	tst	r1, #32768	@ 0x8000
+    2096b4c:	13a00000 	movne	r0, #0
+    2096b50:	18bd81f0 	popne	{r4, r5, r6, r7, r8, pc}
+    2096b54:	e59f3148 	ldr	r3, [pc, #328]	@ 0x2096ca4
+    2096b58:	e3a00b15 	mov	r0, #21504	@ 0x5400
+    2096b5c:	e3a02054 	mov	r2, #84	@ 0x54
+    2096b60:	e0020298 	mul	r2, r8, r2
+    2096b64:	e0203094 	mla	r0, r4, r0, r3
+    2096b68:	e19200d0 	ldrsb	r0, [r2, r0]
+    2096b6c:	e3a02094 	mov	r2, #148	@ 0x94
+    2096b70:	e59f3130 	ldr	r3, [pc, #304]	@ 0x2096ca8
+    2096b74:	e1620280 	smulbb	r2, r0, r2
+
+--- helper 0x020957fc (and neighboring 0x02095840) ---
+
+    20957fc:	e59f3034 	ldr	r3, [pc, #52]	@ 0x2095838
+    2095800:	e3e02000 	mvn	r2, #0
+    2095804:	e7930100 	ldr	r0, [r3, r0, lsl #2]
+    2095808:	e1500002 	cmp	r0, r2
+    209580c:	0a000007 	beq	0x2095830
+    2095810:	e59f2024 	ldr	r2, [pc, #36]	@ 0x209583c
+    2095814:	e1a01081 	lsl	r1, r1, #1
+    2095818:	e1a00080 	lsl	r0, r0, #1
+    209581c:	e19210f1 	ldrsh	r1, [r2, r1]
+    2095820:	e19200f0 	ldrsh	r0, [r2, r0]
+    2095824:	e1510000 	cmp	r1, r0
+    2095828:	03a00001 	moveq	r0, #1
+    209582c:	012fff1e 	bxeq	lr
+    2095830:	e3a00000 	mov	r0, #0
+    2095834:	e12fff1e 	bx	lr
+    2095838:	021c8b98 	andseq	r8, ip, #152, 22	@ 0x26000
+    209583c:	0219fa84 	andseq	pc, r9, #132, 20	@ 0x84000
+    2095840:	e92d4010 	push	{r4, lr}
+    2095844:	e59f2044 	ldr	r2, [pc, #68]	@ 0x2095890
+    2095848:	e1a00080 	lsl	r0, r0, #1
+    209584c:	e19200f0 	ldrsh	r0, [r2, r0]
+    2095850:	e3e02000 	mvn	r2, #0
+    2095854:	e1a04001 	mov	r4, r1
+    2095858:	e1500002 	cmp	r0, r2
+    209585c:	0a000009 	beq	0x2095888
+    2095860:	ebffffce 	bl	0x20957a0
+    2095864:	e3500000 	cmp	r0, #0
+    2095868:	1a000006 	bne	0x2095888
+    209586c:	e3a00000 	mov	r0, #0
+    2095870:	e1a01004 	mov	r1, r4
+    2095874:	e2402001 	sub	r2, r0, #1
+    2095878:	eb000077 	bl	0x2095a5c
+    209587c:	e3500000 	cmp	r0, #0
+    2095880:	03a00000 	moveq	r0, #0
+    2095884:	08bd8010 	popeq	{r4, pc}
+    2095888:	e3a00001 	mov	r0, #1
+    209588c:	e8bd8010 	pop	{r4, pc}
+    2095890:	021768e0 	andseq	r6, r7, #224, 16	@ 0xe00000
+    2095894:	e3500001 	cmp	r0, #1
+    2095898:	059f101c 	ldreq	r1, [pc, #28]	@ 0x20958bc
+    209589c:	01d111f2 	ldrsheq	r1, [r1, #18]
+    20958a0:	03510002 	cmpeq	r1, #2
+    20958a4:	03a00000 	moveq	r0, #0
+    20958a8:	012fff1e 	bxeq	lr
+    20958ac:	e3500015 	cmp	r0, #21
+    20958b0:	a3a00000 	movge	r0, #0
+    20958b4:	b3a00001 	movlt	r0, #1
+    20958b8:	e12fff1e 	bx	lr
+    20958bc:	021c83bc 	andseq	r8, ip, #188, 6	@ 0xf0000002
+    20958c0:	e92d4070 	push	{r4, r5, r6, lr}
+    20958c4:	e59f2154 	ldr	r2, [pc, #340]	@ 0x2095a20
+    20958c8:	e1a06000 	mov	r6, r0
+    20958cc:	e7923186 	ldr	r3, [r2, r6, lsl #3]
+    20958d0:	e3e02000 	mvn	r2, #0
+    20958d4:	e1530002 	cmp	r3, r2
+    20958d8:	e1a04001 	mov	r4, r1
+    20958dc:	13a00000 	movne	r0, #0
+    20958e0:	18bd8070 	popne	{r4, r5, r6, pc}
+    20958e4:	ebffffea 	bl	0x2095894
+    20958e8:	e3500000 	cmp	r0, #0
+    20958ec:	03a00000 	moveq	r0, #0
+    20958f0:	08bd8070 	popeq	{r4, r5, r6, pc}
+    20958f4:	e3560013 	cmp	r6, #19
+    20958f8:	1a000019 	bne	0x2095964
+    20958fc:	e59f0120 	ldr	r0, [pc, #288]	@ 0x2095a24
+    2095900:	e59f1120 	ldr	r1, [pc, #288]	@ 0x2095a28
+    2095904:	e7903104 	ldr	r3, [r0, r4, lsl #2]
+    2095908:	e59f011c 	ldr	r0, [pc, #284]	@ 0x2095a2c
+    209590c:	e3530000 	cmp	r3, #0
+    2095910:	b3a03000 	movlt	r3, #0
+    2095914:	e1530000 	cmp	r3, r0
+    2095918:	c1a03000 	movgt	r3, r0
+
+=== 5. CONCLUSION ===
+
+The Library differential experiment (evidence/re/library-yield-helper-diff.json)
+found zero behavioral change in any of the 23 distinct call sites to these
+three helpers when city_instance+0x10 gained the Library bit. This section's
+full disassembly explains why: none of the three helpers, nor the now-fully-
+bounded yield-recompute function itself (0x0205195c-0x02052888, exhaustively
+checked this session), reference the building table or city+0x10 anywhere.
+Building ownership is proven NOT to reach city yields through this call path.
+The clearest remaining candidate mechanism is a building-completion event
+handler (not yet located) that populates a separate, still-uncharted cache -
+most plausibly the civilization-scoped array at 0x021c8b98 already
+implicated in wonder/tech-adjacent checks above - see the "narrowest
+unresolved link" field in evidence/re/library-yield-helper-diff.json for the
+concrete next steps.

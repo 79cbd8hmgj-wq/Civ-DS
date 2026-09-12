@@ -518,13 +518,96 @@ session — resolving that is the single highest-value next step for
 finally connecting buildings to their gameplay effect (see the modding
 capability matrix's prioritized next blockers).
 
+## 7. Library differential experiment — the three helpers ruled out (real ROM, real emulator, session 4)
+
+A follow-up session ran the exact controlled experiment section 6.4 called
+for: resolve the city-instance pointer live, set breakpoints on the three
+generic per-city helpers (`0x2095a5c`, `0x2096a58`, `0x20957fc`), capture
+every call's arguments/return value while the city panel was open (which,
+it turns out, re-triggers the yield-recompute call sequence continuously —
+no turn advance was needed to observe it), then directly write
+`city_instance+0x10` from `0x1` (Palace only) to `0x21` (Palace + Library,
+building index 5) as a **clearly-documented runtime-state manipulation**
+standing in for playing through the tech research and production queue,
+and recaptured the identical sequence. Full data in
+`evidence/re/library-yield-helper-diff.json`; full disassembly in
+`evidence/re/library-helper-functions-trace.txt`.
+
+**Result: PROVEN negative.** All 23 distinct call sites to the three
+helpers inside the yield-recompute function produced byte-identical
+arguments and byte-identical return values (all `0x0`/false) before and
+after the Library bit was set. Zero behavioral change anywhere.
+
+**Why, now proven by full disassembly:**
+
+- The yield-recompute function's **exact bounds are now proven**:
+  `0x0205195c`-`0x02052888` (a real `push {r3-r9,sl,fp,lr}` prologue and
+  matching `popeq {...,pc}` epilogue were read directly from live memory).
+  The entire function — not just the previously-captured internal window —
+  was checked, and it contains **no reference anywhere** to the building
+  descriptor table (`0x021778EC`) or to `city+0x10`.
+- Full disassembly of all three helpers shows what they actually check:
+  `0x2095a5c` reads the **wonder table** (`wonder_table_base(0x0217B518)
+  + 0x48`, i.e. the wonder record's own unresolved `unknown_0x48` field,
+  already documented as unresolved in the wonders model) for low-range
+  arguments, and a separate 8-byte-stride table for high-range arguments.
+  `0x20957fc` reads a civilization-scoped word array and calls the
+  already-proven `has_researched()` in a neighboring function. `0x2096a58`
+  reads three small parallel lookup tables, not fully decoded. **None of
+  the three reference buildings at all** — they gate wonder- and
+  technology/civilization-shaped effects, not building ownership.
+
+This conclusively answers the primary experiment this session set out to
+run: building ownership is **not** wired into city yield computation
+through these three helpers, and — since the function's complete bounds
+are now known and were checked in full — not through any other path
+inside that function either.
+
+**Narrowest unresolved link** (see the full field in
+`evidence/re/library-yield-helper-diff.json`): where a completed
+building's effect actually gets marked active, if not via a live read of
+the raw built-buildings bitmask during yield recompute. The leading
+hypothesis, not yet confirmed, is a building-completion event handler
+(not yet located) that populates a separate cache — a concrete candidate
+being the civilization-scoped array this session found at `0x021c8b98`.
+Two concrete next steps: (1) breakpoint writes to `city+0x10` during
+*real* Library construction (not a poke) and trace the caller outward to
+see what else it writes; (2) repeat this exact experiment after a real
+(not simulated) Library completion to see whether real construction
+produces a different result than the raw poke did.
+
+### 7.1 Structural finding: the 0xBC-stride array *is* the city-instance struct
+
+While resolving the yield function's true start, this session found that
+several "separate per-city-index global" literal-pool values the function
+reads all resolve, for this playthrough, to exactly `city_ptr + <a
+proven/strongly-supported offset>` (e.g. the literal used for the
+`+0x10` read equals `city_ptr + 0x10` exactly; likewise for `+0x03`,
+`+0x24`, `+0x44`, `+0x46`). Combined with the proximity-bonus loop's own
+array-base literal (section 6.3) resolving to the *same* address, the
+simplest consistent explanation is that the "0xBC-stride, 128-record
+city array" and the "city_instance" struct documented throughout this
+file are **the same array**: `city_ptr == &all_cities[city_index]`. This
+is recorded as **strongly supported, not proven** (only tested with a
+single-city game this session). See
+`evidence/re/city-array-field-catalog.json` for the consolidated field
+catalog this implies, and `evidence/re/library-helper-functions-trace.txt`
+section 2 for the full evidence.
+
+A new field was also found at `city+0x03` (byte), read at the very start
+of the yield-recompute function and used as an index into a 7-way
+jump-table dispatch shaped identically to the already-proven worked-tile
+terrain-type switch — **strongly supported** to be the city's own
+center-tile terrain category, but not value-correlated against a known
+terrain type this session, so recorded as `unknown_0x03`.
+
 ## Confidence summary
 
 | Confidence | Fields |
 | --- | --- |
-| **Proven** (executable cross-reference, or live runtime write-test/value-correlation) | building `prerequisite_technology_id`, `requires_building_mask`, `excludes_building_mask`; building/wonder table locations, strides, record counts; the availability-check function and its logic; city-instance `+0x10` built-buildings bitmask; city-instance `+0x06` `city_focus` (runtime write-test); city-instance `+0x40`/`+0x42`/`+0x44`/`+0x46`/`+0x48` current food/production/science/gold/culture yields (runtime differential, two independent exact value matches); the existence and general shape of the city yield-recompute function (`~0x02052180`-`0x02052880`+) |
-| **Strongly supported** (clean, convention-consistent data pattern; not independently executable-proven) | building `production_cost_quanta`/`production_cost`, `name`, `model_name`, `description`; wonder `prerequisite_technology_id`, `production_cost_quanta`; the `0xBC`-stride array being a 128-entry "all cities" registry (owner byte, validity flag, x/y coordinates); some yields feeding per-civilization 40-byte-stride global totals |
-| **Unresolved** (no consumer found, no name assigned) | building `unknown_0x40`; wonder `0x42`, `0x46`, `0x48`, `0x14A`; city-instance `+0x00`, `+0x24`, `+0x38`; the `0xBC`-stride city array's full field catalog beyond owner/validity/coordinates; whether/how building ownership specifically feeds the yield-recompute function; the ID space consumed by the three generic per-city effect-check helpers (`0x2095a5c`, `0x2096a58`, `0x20957fc`) |
+| **Proven** (executable cross-reference, or live runtime write-test/value-correlation) | building `prerequisite_technology_id`, `requires_building_mask`, `excludes_building_mask`; building/wonder table locations, strides, record counts; the availability-check function and its logic; city-instance `+0x10` built-buildings bitmask; city-instance `+0x06` `city_focus` (runtime write-test); city-instance `+0x40`/`+0x42`/`+0x44`/`+0x46`/`+0x48` current food/production/science/gold/culture yields (runtime differential, two independent exact value matches); the yield-recompute function's exact bounds (`0x0205195c`-`0x02052888`, real prologue/epilogue read live); that the three generic helpers (`0x2095a5c`, `0x2096a58`, `0x20957fc`) do not reference the building table or `city+0x10` anywhere in their disassembled bodies, and that setting the Library bit in `city+0x10` produces zero change in any of their 23 call sites within the yield function (`evidence/re/library-yield-helper-diff.json`) |
+| **Strongly supported** (clean, convention-consistent data pattern; not independently executable-proven) | building `production_cost_quanta`/`production_cost`, `name`, `model_name`, `description`; wonder `prerequisite_technology_id`, `production_cost_quanta`; the `0xBC`-stride array being the *same* array as the city-instance struct (`city_ptr == &all_cities[city_index]`), not a separate structure; some yields feeding per-civilization 40-byte-stride global totals; city-instance `+0x03` as a center-tile terrain-category index (7-way jump table, same shape as the proven worked-tile switch) |
+| **Unresolved** (no consumer found, no name assigned) | building `unknown_0x40`; wonder `0x42`, `0x46`, `0x48`, `0x14A`; city-instance `+0x00`, `+0x03` (semantic, not existence), `+0x24`, `+0x38`; the ID spaces consumed by the three generic per-city effect-check helpers' own sub-tables (`0x021c87f0`, `0x021c8b98`, `0x021768cc`/`0x0219fad8`/`0x0219faf0`/`0x02182980`); **where building-completion effects actually get applied**, now that the three named helpers and the entire yield-recompute function are ruled out |
 
 ## What this unlocks for modding
 

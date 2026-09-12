@@ -1,0 +1,142 @@
+{
+  "format_version": 1,
+  "note": "Field-access catalog for the 0xBC(188)-byte-stride, up-to-128-record array, per this session's secondary objective. This session found strong live evidence (evidence/re/library-helper-functions-trace.txt section 2) that this array and the per-city 'city_instance' struct documented in evidence/re/city-instance-yield-fields.json are the SAME array (city_ptr == &array[city_index]). Fields already proven/strongly-supported against city_instance are cross-referenced here rather than restated in full. This is a field-access catalog, not a full struct - only offsets actually observed being read or written by some traced consumer are listed, per instructions not to speculatively fill the whole 0xBC-byte record.",
+  "array_stride": "0xBC (188 bytes)",
+  "array_record_count": 128,
+  "unification_confidence": "STRONGLY SUPPORTED, not PROVEN (single-city playthrough only; not cross-checked with a second city at a nonzero index this session)",
+  "fields": [
+    {
+      "offset": "0x00",
+      "width": 1,
+      "kind": "scalar (byte)",
+      "read_sites": [
+        "yield-recompute fn entry (0x0205197c-0x0205199c): ldrsb r2,[base+r4]; cmp r2,#32; if >=32 clamped to 31 and written back",
+        "inter-city proximity loop (evidence/re/city-yield-recompute-function-trace.txt, prior session): compared against the current city's own owner value to test civ ownership"
+      ],
+      "write_sites": [
+        "yield-recompute fn entry: strbge r1(=31),[literal,r4] when the read value is >= 32 (clamp only, conditional)"
+      ],
+      "observed_value_range": "0 (this session's single-civ game)",
+      "confidence": "unresolved",
+      "semantic_meaning": "unknown_0x00 - plausibly an owner/civ-index byte (consistent with its use in the proximity loop as an ownership comparison), but not independently proven this session; kept unnamed"
+    },
+    {
+      "offset": "0x03",
+      "width": 1,
+      "kind": "scalar (byte), used as an index",
+      "read_sites": [
+        "yield-recompute fn entry (0x2051998): ldrsb r5,[literal(0x02052910)+0x03? via city_ptr+3,r4]; then used as `ldr r0,[table(0x0219fac0), r5, lsl #2]`, cmp r0,#6, 7-way jump dispatch"
+      ],
+      "write_sites": [],
+      "observed_value_range": "not sampled independently this session (only observed via the index-dispatch code path, not read directly)",
+      "confidence": "unresolved (newly discovered this session)",
+      "semantic_meaning": "unknown_0x03 - structurally shaped like a terrain-type index for the city's own center tile (same 7-way-jump-table pattern already proven for worked-tile terrain type in the prior session's trace), but NOT value-correlated against any known terrain type this session; kept unnamed"
+    },
+    {
+      "offset": "0x06",
+      "width": 1,
+      "kind": "scalar (signed byte)",
+      "read_sites": ["city-focus switch dispatch, 0x020a9c34 (prior session)"],
+      "write_sites": ["direct GDB-RSP write, this and prior session (experimental)"],
+      "observed_value_range": "0 (Balanced), 1 (Gold, forced)",
+      "confidence": "PROVEN (prior session; unaffected by this session's work)",
+      "semantic_meaning": "city_focus"
+    },
+    {
+      "offset": "0x10",
+      "width": 4,
+      "kind": "bitmask",
+      "read_sites": [
+        "building-availability-check function (prior-prior session)",
+        "inter-city proximity loop, tested against bit 0 as an other-city validity/flag check (prior session)",
+        "yield-recompute fn (this session, confirmed read but not found to gate any of the 3 traced helper calls)"
+      ],
+      "write_sites": ["building-completion game logic (not directly observed/located any session); direct GDB-RSP write, this session (experimental)"],
+      "observed_value_range": "0x1 (Palace only) before the experiment; 0x21 (Palace+Library) after the experimental write",
+      "confidence": "PROVEN (built_buildings_mask; carried over from prior sessions). This session additionally PROVED (negative result) that this field does not gate any of the three named yield-recompute helper calls.",
+      "semantic_meaning": "built_buildings_mask (bit index = building table's own record index)"
+    },
+    {
+      "offset": "0x24",
+      "width": 4,
+      "kind": "word, tested via bit flags",
+      "read_sites": [
+        "building-availability-check function, tested against bit 0 (prior session)",
+        "yield-recompute fn, tested against bit 0x10 at ~0x2052640 (prior session trace) and read again early in the function this session (0x02052914 literal resolves to city_ptr+0x24)"
+      ],
+      "write_sites": [],
+      "observed_value_range": "0x201 (Chinese/Beijing playthrough, prior session); 0x3 (Germans/Berlin playthrough, this session) - confirms the field is genuinely variable across playthroughs/game state, not a constant",
+      "confidence": "unresolved",
+      "semantic_meaning": "unknown_0x24 - read by at least two independent functions across two sessions, value differs by playthrough; no semantic proven"
+    },
+    {
+      "offset": "0x30",
+      "width": 2,
+      "kind": "scalar (signed halfword)",
+      "read_sites": ["inter-city proximity loop (prior session): this city's own Y-ish coordinate, compared against other records' own +0x30"],
+      "write_sites": [],
+      "observed_value_range": "not independently sampled this session",
+      "confidence": "strongly supported (prior session)",
+      "semantic_meaning": "map coordinate (paired with +0x32)"
+    },
+    {
+      "offset": "0x32",
+      "width": 2,
+      "kind": "scalar (signed halfword)",
+      "read_sites": ["inter-city proximity loop (prior session), paired with +0x30"],
+      "write_sites": [],
+      "observed_value_range": "not independently sampled this session",
+      "confidence": "strongly supported (prior session)",
+      "semantic_meaning": "map coordinate (paired with +0x30)"
+    },
+    {
+      "offset": "0x38",
+      "width": 2,
+      "kind": "scalar (signed halfword)",
+      "read_sites": [
+        "building-availability-check function (prior-prior session): ldrsh r1,[r8,#0x38]; sub r1,r1,#0x64; cmp sb,r1",
+        "passed as an argument (r3) to helper_2095a5c (the wonder-checking helper) from a caller at LR=0x020952b8, OUTSIDE the yield-recompute function - observed this session as r3=0x021a29dc (== city_ptr+0x38) in several helper hits filtered out of the yield-relevant capture as noise from the city-panel's own build-menu/availability computation"
+      ],
+      "write_sites": [],
+      "observed_value_range": "6 (this session, turn 1)",
+      "confidence": "unresolved",
+      "semantic_meaning": "unknown_0x38 - small integer, plausibly a turn counter (per prior-session hypothesis); this session adds that it is also passed directly into the wonder-checking helper from the city-screen's own availability-computation context, which is a new, concrete lead for a future session but not itself proof of meaning"
+    },
+    {
+      "offset": "0x40",
+      "width": 2,
+      "kind": "scalar (signed int16)",
+      "confidence": "PROVEN (prior session)",
+      "semantic_meaning": "current_food_yield"
+    },
+    {
+      "offset": "0x42",
+      "width": 2,
+      "kind": "scalar (signed int16)",
+      "confidence": "PROVEN (prior session)",
+      "semantic_meaning": "current_production_yield"
+    },
+    {
+      "offset": "0x44",
+      "width": 2,
+      "kind": "scalar (signed int16)",
+      "confidence": "PROVEN (prior session)",
+      "semantic_meaning": "current_science_yield"
+    },
+    {
+      "offset": "0x46",
+      "width": 2,
+      "kind": "scalar (signed int16)",
+      "confidence": "PROVEN (prior session)",
+      "semantic_meaning": "current_gold_yield"
+    },
+    {
+      "offset": "0x48",
+      "width": 2,
+      "kind": "scalar (signed int16)",
+      "confidence": "PROVEN (prior session)",
+      "semantic_meaning": "current_culture_yield"
+    }
+  ],
+  "explicitly_not_catalogued": "Every other byte of the 0xBC-byte record (the large majority of it) has no observed read/write site from any session's tracing and is intentionally omitted, per instructions not to speculatively fill the whole struct."
+}
